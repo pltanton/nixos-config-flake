@@ -1,12 +1,11 @@
-pkgs: colors:
+pkgs: base16:
 
 let
+  base16NixTheme = pkgs.writeTextDir "${base16.theme.scheme-slug}-theme.el" (builtins.readFile (base16.templateFile { name = "emacs"; }));
   emmyLuaJar = builtins.fetchurl {
     url = "https://ci.appveyor.com/api/buildjobs/dhcvajo57e3k1nxe/artifacts/EmmyLua-LS/build/libs/EmmyLua-LS-all.jar";
     sha256 = "1x1f4g2bqccfc7nqv03pgrmy9f63dv2llnn67218yj2n8m5xkq5c";
   };
-
-  base16NixTheme = pkgs.writeTextDir "base16-nix-theme.el" (import ./base16-nix-theme.el colors);
 in ''
 
 * Disable default visual GUI shit.
@@ -101,18 +100,16 @@ Load base 16 nix theme
     base16-theme
     :init
     (add-to-list 'custom-theme-load-path "${base16NixTheme}/")
-    :config
-    (load-theme 'base16-nix t)
+  )
 
-    ;; Set the cursor color based on the evil state
-    (defvar my/base16-colors base16-nix-colors)
-    (setq evil-emacs-state-cursor   `(,(plist-get my/base16-colors :base0D) box)
-        evil-insert-state-cursor  `(,(plist-get my/base16-colors :base0D) bar)
-        evil-motion-state-cursor  `(,(plist-get my/base16-colors :base0E) box)
-        evil-normal-state-cursor  `(,(plist-get my/base16-colors :base0B) box)
-        evil-replace-state-cursor `(,(plist-get my/base16-colors :base08) bar)
-        evil-visual-state-cursor  `(,(plist-get my/base16-colors :base09) box))
-    )
+  (load-theme 'base16-${base16.theme.scheme-slug} t)
+
+  (setq evil-emacs-state-cursor   `(,"#${base16.theme.base0D-hex}" box)
+        evil-insert-state-cursor  `(,"#${base16.theme.base0D-hex}" bar)
+        evil-motion-state-cursor  `(,"#${base16.theme.base0E-hex}" box)
+        evil-normal-state-cursor  `(,"#${base16.theme.base0B-hex}" box)
+        evil-replace-state-cursor `(,"#${base16.theme.base08-hex}" bar)
+        evil-visual-state-cursor  `(,"#${base16.theme.base09-hex}" box))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp

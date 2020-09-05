@@ -3,7 +3,7 @@
 {
   home.file = {
     ".emacs.d/config.org" = {
-      text = builtins.readFile (config.lib.base16.templateFile { name = "emacs"; });
+      text = import ./emacs.org pkgs config.lib.base16;
       onChange = "rm ~/.emacs.d/config.el";
     };
     ".emacs.d/init.el".text = ''(org-babel-load-file "~/.emacs.d/config.org")'';

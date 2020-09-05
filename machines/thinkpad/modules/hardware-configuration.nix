@@ -38,5 +38,4 @@
   powerManagement.cpuFreqGovernor = "powersave";
 
   services.xserver.videoDrivers = [ "intel" ];
-  services.xserver.config = pkgs.lib.mkOverride 50 (builtins.readFile ./xorg.conf);
 }

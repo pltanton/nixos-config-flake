@@ -1,8 +1,8 @@
 theme: with theme; ''
 @define-color transparent rgba(0.0, 0.0, 0.0, 0.0);
-@define-color white ${base05-hex};
-@define-color black ${base01-hex};
-@define-color taffy-blue ${base0D-hex};
+@define-color white #${base05-hex};
+@define-color black #${base01-hex};
+@define-color taffy-blue #${base0D-hex};
 
 @define-color active-window-color @white;
 @define-color urgent-window-color @taffy-blue;
@@ -20,7 +20,7 @@ theme: with theme; ''
 
 .taffy-box {
         border-radius: 0px;
-        background-color: ${base00-hex};
+        background-color: #${base00-hex};
 }
 
 .inner-pad {
