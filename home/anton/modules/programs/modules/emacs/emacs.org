@@ -1,0 +1,418 @@
+pkgs: colors:
+
+let
+  emmyLuaJar = builtins.fetchurl {
+    url = "https://ci.appveyor.com/api/buildjobs/dhcvajo57e3k1nxe/artifacts/EmmyLua-LS/build/libs/EmmyLua-LS-all.jar";
+    sha256 = "1x1f4g2bqccfc7nqv03pgrmy9f63dv2llnn67218yj2n8m5xkq5c";
+  };
+
+  base16NixTheme = pkgs.writeTextDir "base16-nix-theme.el" (import ./base16-nix-theme.el colors);
+in ''
+
+* Disable default visual GUI shit.
+#+BEGIN_SRC emacs-lisp
+  (if (not (eq system-type 'darwin)) (menu-bar-mode -1))
+  (toggle-scroll-bar -1)
+  (tool-bar-mode -1)
+  (blink-cursor-mode -1)
+#+END_SRC
+
+
+* Basic EMACS conifg
+Due to reddit [[https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/][post]]:
+#+begin_quote
+gc-cons-threshold is the number of bytes of consing before a garbage collection is invoked.
+It's normally set at 800,000 bytes, but for me that invokes the GC 39 times!!!
+during startup (gcs-done), and the GC is sloooow. I've set it to ~100MB above,
+because I have 16 GB of RAM. And now no GC invocations during startup, and 600ms shaved off my startup time.
+#+end_quote
+
+#+BEGIN_SRC emacs-lisp
+  (setq gc-cons-threshold (* 50 1000 1000))
+
+  (setq user-full-name "Anton Plotnikov")
+  (setq user-mail-address "plotnikovanton@gmail.com")
+  (setq large-file-warning-threshold 100000000)
+
+  (global-hl-line-mode +1)
+  (line-number-mode +1)
+  ;; (global-display-line-numbers-mode 1)
+  (column-number-mode t)
+  (size-indication-mode t)
+
+  ;; disable delay between key type and it displaying
+  (setq echo-keystrokes 0.01)
+
+  (setq inhibit-startup-screen t)
+
+  (set-frame-font "Iosevka 13" nil t)
+  (setq-default line-spacing 0)
+
+
+  (add-hook 'before-save-hook 'whitespace-cleanup)
+  (require 'use-package)
+  (require 'diminish)
+
+  (require 'esup)
+  (setq esup-chld-profile-require-level 0)
+#+END_SRC
+
+Disable tabs, use spaces instead. Inserting a TAB possible by quotted-insert ~C-q <TAB>~.
+
+#+BEGIN_SRC emacs-lisp
+  (defun infer-indentation-style ()
+    ;; if our source file uses tabs, we use tabs, if spaces spaces, and if
+    ;; neither, we use the current indent-tabs-mode
+    (let ((space-count (how-many "^  " (point-min)
+                                 (point-max)))
+          (tab-count (how-many "^\t" (point-min)
+                               (point-max))))
+      (if (> space-count tab-count)
+          (setq indent-tabs-mode nil))
+      (if (> tab-count space-count)
+          (setq indent-tabs-mode t))))
+
+  (setq-default indent-tabs-mode nil)
+  (infer-indentation-style)
+#+END_SRC
+
+
+* Helper functions
+
+Indent whole file, useful for org-mode especially
+#+BEGIN_SRC emacs-lisp
+(defun indent-all () indent-region (point-min) (point-max))
+#+END_SRC
+
+
+* Move annoying backup files to temporary directory.
+#+BEGIN_SRC emacs-lisp
+  (setq backup-directory-alist
+ `((".*" . ,temporary-file-directory)))
+  (setq auto-save-file-name-transforms
+ `((".*" ,temporary-file-directory t)))
+#+END_SRC
+
+
+* Improve visuals
+Load base 16 nix theme
+#+BEGIN_SRC emacs-lisp
+  (use-package
+    base16-theme
+    :init
+    (add-to-list 'custom-theme-load-path "${base16NixTheme}/")
+    :config
+    (load-theme 'base16-nix t)
+
+    ;; Set the cursor color based on the evil state
+    (defvar my/base16-colors base16-nix-colors)
+    (setq evil-emacs-state-cursor   `(,(plist-get my/base16-colors :base0D) box)
+        evil-insert-state-cursor  `(,(plist-get my/base16-colors :base0D) bar)
+        evil-motion-state-cursor  `(,(plist-get my/base16-colors :base0E) box)
+        evil-normal-state-cursor  `(,(plist-get my/base16-colors :base0B) box)
+        evil-replace-state-cursor `(,(plist-get my/base16-colors :base08) bar)
+        evil-visual-state-cursor  `(,(plist-get my/base16-colors :base09) box))
+    )
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (use-package highlight-parentheses
+    :config
+    (highlight-parentheses-mode t))
+#+END_SRC
+
+It mackes cursor blinks on buffer scroll
+#+BEGIN_SRC emacs-lisp
+  (use-package beacon
+    :config
+    (beacon-mode t))
+#+END_SRC
+
+A powerline implemnatation
+#+BEGIN_SRC emacs-lisp
+  (use-package telephone-line
+    :config
+    (telephone-line-mode 1))
+#+END_SRC
+
+
+Awesome [[https://github.com/ema2159/centaur-tabs][centaur-tabs]] plugin for tabs. It also respects projectile!
+#+BEGIN_SRC emacs-lisp
+  (use-package all-the-icons)
+  (use-package centaur-tabs
+    :after (all-the-icons projectile)
+    :custom
+    (centaur-tabs-style "bar")
+    (centaur-tabs-set-icons t)
+    (centaur-tabs-set-modified-marker t)
+    (centaur-tabs-height 32)
+    ; I like to switch between only visible tabs, in other cases it is handful to use ivy
+    (centaur-tabs-cycle-scope 'tabs)
+    :config
+    (centaur-tabs-headline-match)
+    (centaur-tabs-mode t)
+    (centaur-tabs-group-by-projectile-project))
+#+END_SRC
+
+Colorize color variables definitions
+#+BEGIN_SRC emacs-lisp
+  (use-package
+      rainbow-mode
+    :config (add-hook 'after-init-hook #'rainbow-mode))
+#+END_SRC
+
+
+* Org mode
+#+BEGIN_SRC emacs-lisp
+  (use-package org
+    :mode ("\\.org$" . org-mode)
+    :bind (("\C-cl" . org-store-link)
+           ("\C-ca" . org-agenda))
+    :custom
+    (org-log-done t)
+    (org-startup-indented t)
+    :config
+    (add-hook 'org-mode-hook #'visual-line-mode)
+    (use-package ox-confluence)
+    (use-package org-bulltes
+      :after org
+      :hook (org-mode-hook . org-bullets-mode)
+      :config
+      (org-bullets-mode)))
+#+END_SRC
+
+
+* LaTeX
+#+begin_src emacs-lisp
+  (use-package
+      auctex
+    :mode ("\\.(la)?tex\\'" . latex-mode)
+    :config (progn
+              (setq TeX-source-correlate-method 'synctex)
+              (setq TeX-auto-save t)
+              (setq TeX-parse-self t)
+              (setq reftex-plug-into-AUCTeX t)
+              (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+                    TeX-source-correlate-start-server t)
+              (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+              (add-hook 'LaTeX-mode-hook (lambda ()
+                                           (reftex-mode t)
+                                           (flyspell-mode t)))
+              (use-package
+                  pdf-tools
+                :config (progn (pdf-tools-install)
+                               (setq-default pdf-view-display-size 'fit-page)
+                               (setq pdf-annot-activate-created-annotations t)
+                               (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
+                               (define-key pdf-view-mode-map (kbd "C-r") 'isearch-backward)
+                               (add-hook 'pdf-view-mode-hook (lambda ()
+                                                               (bms/pdf-midnite-amber)))))
+              (setq TeX-source-correlate-mode t)))
+
+  (use-package
+      auctex-latexmk
+    :hook (LaTeX-mode . auctex-latexmk-setup))
+#+end_src
+
+
+* Reload file automatically if it changed outside
+#+BEGIN_SRC emacs-lisp
+  (global-auto-revert-mode t)
+#+END_SRC
+
+
+* Evil mode configuration
+#+BEGIN_SRC emacs-lisp
+  (use-package evil
+    :config
+    (evil-mode)
+    (use-package evil-leader
+      :config
+      (global-evil-leader-mode)
+      (evil-leader/set-leader "SPC")
+      (evil-leader/set-key
+        "g" 'centaur-tabs-counsel-switch-group
+
+        "x" 'kill-this-buffer
+        "n" 'centaur-tabs-forward
+        "p" 'centaur-tabs-backward
+
+        "." 'find-file
+        "j" 'counsel-projectile
+        "J" 'counsel-projectile-switch-project
+
+        "b" 'ivy-switch-buffer
+        "r" 'counsel-M-x
+        "e" 'eval-expression
+
+        "t" 'org-time-stamp
+        "c" 'insert-char
+
+        "TAB" 'indent-all))
+      (use-package evil-org
+        :config
+        (evil-org-set-key-theme '(textobjects insert navigation additional shift todo heading))
+        (add-hook 'org-mode-hook (lambda () (evil-org-mode))))
+    )
+
+#+END_SRC
+
+
+* Enable ivy for fuzzy search
+#+BEGIN_SRC emacs-lisp
+  (use-package counsel
+    :after ivy
+    :config
+    (use-package counsel-projectile
+      :after projectile
+      :commands (counsel-projectile counsel-projectile-switch-project)))
+
+  (use-package ivy
+    :diminish
+    :custom
+    (ivy-use-virtual-buffers t)
+    (ivy-count-format "(%d/%d) ")
+    (ivy-height 20)
+    :config
+    (ivy-mode t)
+    ; Enable fuzzy search
+    (use-package flx
+      :custom
+      (ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
+      (ivy-initial-inputs-alist nil)))
+#+END_SRC
+
+
+* Projectile
+
+#+BEGIN_SRC emacs-lisp
+  (use-package projectile
+    :config
+    (projectile-mode t))
+#+END_SRC
+
+
+* File navigation
+Treemacs is perfect replacement of NERDTree.
+Ranger implementation is also good to chose files to edit and import as porjcet if needed.
+#+BEGIN_SRC emacs-lisp
+(use-package treemacs
+  :defer t
+  :after all-the-icons
+  :init
+  (with-eval-after-load 'winum
+    (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
+  :config
+  (progn
+    (treemacs-follow-mode t)
+    (treemacs-filewatch-mode t)
+    (treemacs-fringe-indicator-mode t)
+    (pcase (cons (not (null (executable-find "git")))
+                 (not (null treemacs-python-executable)))
+      (`(t . t)
+       (treemacs-git-mode 'deferred))
+      (`(t . _)
+       (treemacs-git-mode 'simple))))
+  :bind
+  (:map global-map
+        ([f10]      . treemacs)))
+
+(use-package treemacs-evil
+  :after treemacs evil)
+
+(use-package treemacs-projectile
+  :after treemacs projectile)
+
+(use-package treemacs-icons-dired
+  :after treemacs dired
+  :config (treemacs-icons-dired-mode))
+
+(use-package ranger
+  :bind ([f9] . ranger)
+  :custom
+  (ranger-override-dired-mode t))
+#+END_SRC
+
+
+
+* Programming languages intergation
+#+BEGIN_SRC emacs-lisp
+  (use-package
+      haskell-mode
+    :after lsp-mode
+    :mode "\\.hs\\'")
+
+  (use-package
+      lua-mode
+    :after lsp-mode
+    :mode "\\.lua\\'")
+
+  (use-package
+      go-mode
+    :after lsp-mode
+    :mode "\\.go\\'")
+
+  (use-package
+      elisp-format
+    :commands elisp-format-buffer)
+
+  (use-package
+      nix-mode
+    :after lsp-mode
+    :mode "\\.nix\\'")
+
+  (use-package
+      yaml-mode
+    :after lsp-mode
+    :mode ("\\.yaml\\'" "\\.yml\\'"))
+
+  (use-package
+      typescript-mode
+    :after lsp-ui
+    :mode "\\.tsx?\\'"
+    :custom (typescript-indent-level 2)
+    :config (lsp-ui-flycheck-add-mode 'typescript-mode))
+
+
+  (use-package
+      vue-mode
+    :after lsp-ui
+    :mode "\\.vue\\'"
+    :config (add-hook 'vue-mode-hook (lambda ()
+                                       (setq syntax-ppss-table nil))
+                      (lsp-ui-flycheck-add-mode 'vue-html-mode)))
+#+END_SRC
+
+Enable prettier js to apply on save on JS-like modes
+#+BEGIN_SRC emacs-lisp
+  (use-package prettier-js
+    :hook ((vue-mode . prettier-js-mode)
+           (typescript-mode . prettier-js-mode)) )
+#+END_SRC
+
+
+* LSP
+#+BEGIN_SRC emacs-lisp
+
+  (use-package
+      lsp-mode
+    :hook ((prog-mode . lsp)
+           (vue-mode . lsp))
+    ;; if you want which-key integration
+    ;; (lsp-mode . lsp-enable-which-key-integration))
+    :init (use-package
+              flycheck)
+    :commands lsp
+    :config (progn
+              (use-package
+                  lsp-ui)
+              (setq lsp-clients-emmy-lua-jar-path "${emmyLuaJar}")))
+#+END_SRC
+
+
+* Restoe gc settings
+#+BEGIN_SRC emacs-lisp
+  (setq gc-cons-threshold (* 2 1000 1000))
+#+END_SRC
+
+''
