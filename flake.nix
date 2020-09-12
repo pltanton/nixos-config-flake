@@ -52,6 +52,9 @@
             ({ pkgs, ... }: { nixpkgs.overlays = [ inputs.quizanus.overlay ]; })
           ];
           specialArgs = { inherit inputs name specialArgs; };
+          specialArgs.secrets =
+            let secretsPath = ./machines + "/${name}/secrets.nix";
+            in if (builtins.pathExists secretsPath) then import secretsPath else { };
         };
     in lib.genAttrs hosts mkHost;
   };

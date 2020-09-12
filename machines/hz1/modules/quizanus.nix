@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, secrets, ... }:
 
 {
 
@@ -20,10 +20,10 @@
 
       JAVA_HOME = "${pkgs.jre}";
 
-      APP_API_TOKEN = "JBskx2dJ39yVaCrR";
+      APP_API_TOKEN = secrets.quizanus.appApiToken;
 
-      TELEGRAM_TOKEN = "1047800889:AAEAbpGBU3NMNI868XtImr2THUTfkuw3xfY";
-      TELEGRAM_NOTIFICATION_CHANNEL = "-1001335827237";
+      TELEGRAM_TOKEN = secrets.quizanus.telegramToken;
+      TELEGRAM_NOTIFICATION_CHANNEL = secrets.quizanus.telegramNotificationChannel;
     };
   };
 
