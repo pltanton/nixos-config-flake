@@ -115,12 +115,47 @@
         "type": "github"
       }
     },
+    "nixpkgs_5": {
+      "locked": {
+        "lastModified": 1599510591,
+        "narHash": "sha256-rx6LLVncYqChBVVNopRY7tn59aP4qPqNjsAxt2X6/L8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "61525137fd1002f6f2a5eb0ea27d480713362cd5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "quizanus": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_5"
+      },
+      "locked": {
+        "lastModified": 1599904812,
+        "narHash": "sha256-gU8VRyU9jnyaPGZKVgY9nbHE0ZihqpKNMX8gARaJiMU=",
+        "ref": "master",
+        "rev": "ae7ba71d9d7c72678c244e42bc48c9dd57d14a61",
+        "revCount": 137,
+        "type": "git",
+        "url": "ssh://gitea@gitea.kaliwe.ru/pltanton/quizanus.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://gitea@gitea.kaliwe.ru/pltanton/quizanus.git"
+      }
+    },
     "root": {
       "inputs": {
         "base16": "base16",
         "home-manager": "home-manager",
         "nix": "nix",
         "nixpkgs": "nixpkgs_4",
+        "quizanus": "quizanus",
         "zsh-nix-shell": "zsh-nix-shell"
       }
     },

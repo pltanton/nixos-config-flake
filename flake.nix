@@ -10,6 +10,9 @@
       url = "github:chisui/zsh-nix-shell";
       flake = false;
     };
+
+    quizanus.url = "git+ssh://gitea@gitea.kaliwe.ru/pltanton/quizanus.git";
+    #quizanus.url = "/home/anton/workdir/quizanus";
   };
 
   outputs = inputs: {
@@ -46,6 +49,7 @@
             (import (./machines + "/${name}/configuration.nix"))
             inputs.home-manager.nixosModules.home-manager
             hm-nixos-as-super
+            ({ pkgs, ... }: { nixpkgs.overlays = [ inputs.quizanus.overlay ]; })
           ];
           specialArgs = { inherit inputs name specialArgs; };
         };
