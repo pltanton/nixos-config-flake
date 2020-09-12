@@ -1,0 +1,137 @@
+{ pkgs, ... }:
+let
+  gradle2nix = import (fetchTarball {
+    url = "https://github.com/tadfisher/gradle2nix/archive/master.tar.gz";
+    sha256 = "04skv5nhbqzybxsqp7b7l4s7nl66p8cd92f6czlivwcjnj36lzya";
+  }) { pkgs = pkgs; };
+in {
+  home.packages = with pkgs; [
+    #nerdfonts
+    hack-font
+    emacs-all-the-icons-fonts
+
+    gnuplot
+
+    nixfmt
+
+    ###################
+    # Packages for DE #
+    ###################
+    arandr
+    clipit
+    ffmpegthumbnailer
+    kbdd
+    libnotify
+    light
+    maim
+    networkmanagerapplet
+    pamixer
+    paprefs
+    pavucontrol
+    shared_mime_info
+    siji
+    xbanish
+    xclip
+    xdotool
+    pantheon.elementary-files
+    ark
+    xkblayout-state
+    xorg.xbacklight
+    xxkb
+    xorg.xkill
+    glib
+
+    haskellPackages.greenclip
+
+    # Fonts
+    font-awesome_5
+    emojione
+    iosevka-bin
+    #nerdfonts
+
+    #################
+    # Look and feel #
+    #################
+    gnome3.adwaita-icon-theme
+
+    #############
+    # User apps #
+    #############
+    # CLI utils
+    httpie
+    fzf
+    ansible
+    dnsutils
+    jq
+    #gopass
+    bitwarden-cli
+    mpc_cli
+    ncmpcpp
+    htop
+    inetutils
+    killall
+    nfs-utils
+
+    ranger
+    tmux
+    unzip
+    wget
+    tree
+
+    # GUI
+    xournalpp
+    discord
+    zoom-us
+    transmission-remote-gtk
+    transmission-gtk
+    (lowPrio kdenlive)
+    rapid-photo-downloader
+    evince
+    gnome3.eog
+    gthumb
+    gimp
+    mpv
+    tdesktop
+    vlc
+    xsane
+    slack
+    #steam
+    bitwarden
+    bitwarden-rofi
+    sidequest
+    scrcpy
+    darktable
+    tigervnc
+
+    # Web
+    chromium
+    qutebrowser
+
+    # LaTeX
+    (texlive.combine { inherit (texlive) scheme-medium titlesec; })
+
+    # Dev
+    clang-tools
+    gradle2nix
+    morph
+    nodejs
+    insomnia
+    postman
+    postgresql_11
+    adoptopenjdk-bin
+    #jetbrains.idea-community
+    jetbrains.idea-ultimate
+    dbeaver
+    go
+    gopls
+    protobuf
+    grpc
+    (python3.withPackages
+      (pp: with pp; [ pylint jedi flake8 autopep8 grpcio pygments hvac ]))
+    nodePackages.yaml-language-server
+    nodePackages.prettier
+    nodePackages.vue-language-server
+    nodePackages.eslint
+
+  ];
+}

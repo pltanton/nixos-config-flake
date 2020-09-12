@@ -11,6 +11,9 @@
     libinput.enable = true;
 
     displayManager.lightdm.enable = true;
+    desktopManager.xfce = {
+      enable = true;
+    };
 
     config = pkgs.lib.mkOverride 50 ''
       Section "Device"

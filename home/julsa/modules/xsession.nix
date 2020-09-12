@@ -7,17 +7,8 @@
       name = "Paper";
       size = 16;
     };
-    windowManager.awesome = { enable = false; };
-    windowManager.xmonad = {
-      enable = true;
-      extraPackages = haskellPackages:
-        with haskellPackages; [
-          xmonad-extras
-          xmonad-contrib
-          haskellPackages.taffybar
-        ];
-    };
-    importedVariables = [ "GDK_PIXBUF_ICON_LOADER" "GDK_PIXBUF_MODULE_FILE" "PATH" ];
+    windowManager.command = "startxfce4";
+    importedVariables = [ "GDK_PIXBUF_MODULE_FILE" "PATH" ];
 
     initExtra = ''
       ${pkgs.autorandr}/bin/autorandr -c &

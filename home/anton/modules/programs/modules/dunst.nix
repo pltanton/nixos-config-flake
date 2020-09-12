@@ -36,13 +36,13 @@
         foreground = "#${base03-hex}";
       };
       urgency_normal = {
-        background = "#${base01-hex}";
+        background = "#${base02-hex}";
         foreground = "#${base05-hex}";
       };
       urgency_critical = {
         msg_urgency = "CRITICAL";
-        background = "#${base01-hex}";
-        foreground = "#${base08-hex}";
+        background = "#${base08-hex}";
+        foreground = "#${base06-hex}";
       };
 
     };
