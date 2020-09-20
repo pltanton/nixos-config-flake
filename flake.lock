@@ -23,17 +23,13 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1599242479,
-        "narHash": "sha256-hqI+F1S8gW5OJ+DitXl6F/5f/A7RvnmZJAcR7BDndtQ=",
-        "owner": "rycee",
-        "repo": "home-manager",
-        "rev": "41b1af808f1de69c31f3fd164d5274154ee782e4",
-        "type": "github"
+        "narHash": "sha256-hlkWcZg5U29ih0Uv5V8ZwjDl0XH9zJ0SmWtQl+yPkxc=",
+        "path": "/home/anton/workdir/home-manager",
+        "type": "path"
       },
       "original": {
-        "owner": "rycee",
-        "repo": "home-manager",
-        "type": "github"
+        "path": "/home/anton/workdir/home-manager",
+        "type": "path"
       }
     },
     "nix": {
@@ -72,11 +68,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1599025872,
-        "narHash": "sha256-7e3jMpOIDOtCtCRK3KGrNVPdqXmgapiDW6zSVsVVwfw=",
+        "lastModified": 1600409567,
+        "narHash": "sha256-flDOVuG7ujq/OQ9vFVBwyH3xbsKoWaTlz/QltsyVTKc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f1a29ad04178e57ece1e74a511f6c65aa463e8c2",
+        "rev": "68c436b0ccc892c133d6d43a8355e81718829c55",
         "type": "github"
       },
       "original": {
@@ -101,11 +97,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1597943282,
-        "narHash": "sha256-G/VQBlqO7YeFOSvn29RqdvABZxmQBtiRYVA6kjqWZ6o=",
+        "lastModified": 1599858719,
+        "narHash": "sha256-CwcBj3hB5+xdAQigGDTTTynubj+fAFLEr2vXtrKLytI=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c59ea8b8a0e7f927e7291c14ea6cd1bd3a16ff38",
+        "rev": "e0759a49733dfc3aa225b8a7423c00da6e1ecb67",
         "type": "github"
       },
       "original": {
@@ -136,11 +132,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1599904812,
-        "narHash": "sha256-gU8VRyU9jnyaPGZKVgY9nbHE0ZihqpKNMX8gARaJiMU=",
+        "lastModified": 1600144335,
+        "narHash": "sha256-OqN/7b0IByuAb41s7X9eW+zdG/FvsuT6seIGfpb5mN8=",
         "ref": "master",
-        "rev": "ae7ba71d9d7c72678c244e42bc48c9dd57d14a61",
-        "revCount": 137,
+        "rev": "244df7eaef3555c2935d3ef92f580ca5bc79c550",
+        "revCount": 1,
         "type": "git",
         "url": "ssh://gitea@gitea.kaliwe.ru/pltanton/quizanus.git"
       },

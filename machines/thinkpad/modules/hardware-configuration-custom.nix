@@ -18,4 +18,17 @@
     sane.netConf = "192.168.20.3";
   };
 
+  fileSystems."/mnt/home-nfs-archive" = {
+    device = "10.100.0.1:/media/archive/archive";
+    fsType = "nfs";
+    options = ["rw,defaults,noauto"];
+  };
+
+  fileSystems."/mnt/home-nfs-public" = {
+    device = "10.100.0.1:/media/store/media";
+    fsType = "nfs";
+    options = ["rw,defaults,noauto"];
+  };
+
+
 }

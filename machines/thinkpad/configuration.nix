@@ -1,8 +1,6 @@
 { options, config, pkgs, lib, inputs, ... }:
 
-let
-  secrets = import ./secrets.nix;
-in rec {
+{
   imports = builtins.map (name: ./modules + "/${name}")
     (builtins.attrNames (builtins.readDir ./modules));
 
@@ -25,6 +23,7 @@ in rec {
   };
 
   programs.zsh.enable = true;
+  programs.fish.enable = true;
   programs.adb.enable = true;
 
   system = {

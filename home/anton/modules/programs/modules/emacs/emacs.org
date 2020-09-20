@@ -113,9 +113,9 @@ Load base 16 nix theme
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
-  (use-package highlight-parentheses
-    :config
-    (highlight-parentheses-mode t))
+  (use-package
+    rainbow-delimiters
+    :hook ((prog-mode . rainbow-delimiters-mode)))
 #+END_SRC
 
 It mackes cursor blinks on buffer scroll
@@ -156,6 +156,16 @@ Colorize color variables definitions
   (use-package
       rainbow-mode
     :config (add-hook 'after-init-hook #'rainbow-mode))
+#+END_SRC
+
+Setup line numbers displaying
+#+BEGIN_SRC emacs-lisp
+  (setq-default display-line-numbers-type 'visual
+                display-line-numbers-current-absolute t
+                display-line-numbers-width 4
+                display-line-numbers-widen t)
+  (add-hook 'text-mode-hook 'display-line-numbers-mode)
+  (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 #+END_SRC
 
 
@@ -244,6 +254,8 @@ Colorize color variables definitions
 
         "t" 'org-time-stamp
         "c" 'insert-char
+
+        "RET" 'company-complete
 
         "TAB" 'indent-all))
       (use-package evil-org
@@ -388,21 +400,62 @@ Enable prettier js to apply on save on JS-like modes
 #+END_SRC
 
 
+* Which Key
+#+BEGIN_SRC emacs-lisp
+  (use-package
+    which-key
+    :config (which-key-mode))
+#+END_SRC
+
+
+* Company mode
+#+BEGIN_SRC emacs-lisp
+  (use-package
+    company-mode
+    :hook (after-init-hook . global-company-mode)
+    :config (progn
+              (setq company-idle-delay 0.0)))
+#+END_SRC
+
+
+* GIT
+#+BEGIN_SRC emacs-lisp
+  (use-package
+    git-gutter
+    :config (progn (global-git-gutter-mode t)
+                   (custom-set-variables '(git-gutter:modified-sign "==")
+                                         '(git-gutter:added-sign "++")
+                                         '(git-gutter:deleted-sign "--"))))
+  (use-package
+    magit
+    :bind ("C-x g" . magit-status)
+    :config (progn
+              (use-package
+                evil-magit
+                :after evil-mode)
+              (use-package
+                treemacs-magit
+                :after treemacs)))
+#+END_SRC
+
+
+
 * LSP
 #+BEGIN_SRC emacs-lisp
+  (setq lsp-keymap-prefix "c-l")
 
   (use-package
-      lsp-mode
+    lsp-mode
+    :after which-key
     :hook ((prog-mode . lsp)
-           (vue-mode . lsp))
-    ;; if you want which-key integration
-    ;; (lsp-mode . lsp-enable-which-key-integration))
+           (vue-mode . lsp)
+           (lsp-mode . lsp-enable-which-key-integration))
     :init (use-package
-              flycheck)
+            flycheck)
     :commands lsp
     :config (progn
               (use-package
-                  lsp-ui)
+                lsp-ui)
               (setq lsp-clients-emmy-lua-jar-path "${emmyLuaJar}")))
 #+END_SRC
 

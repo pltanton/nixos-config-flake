@@ -6,7 +6,7 @@
     users = {
       anton = {
         isNormalUser = true;
-        shell = pkgs.zsh;
+        shell = pkgs.fish;
         home = "/home/anton";
         extraGroups = [
           "adbusers"
@@ -22,7 +22,7 @@
 
       julsa = {
         isNormalUser = true;
-        shell = pkgs.zsh;
+        shell = pkgs.fish;
         home = "/home/julsa";
         extraGroups = [ "wheel" "networkmanager" "audio" "docker" "lp" "scanner" ];
       };

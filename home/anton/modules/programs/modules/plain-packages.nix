@@ -14,6 +14,8 @@ in {
 
     nixfmt
 
+    gnupg
+
     ###################
     # Packages for DE #
     ###################
@@ -88,6 +90,7 @@ in {
     rapid-photo-downloader
     evince
     gnome3.eog
+    gnome3.geary
     gthumb
     gimp
     mpv
@@ -127,11 +130,15 @@ in {
     protobuf
     grpc
     (python3.withPackages
-      (pp: with pp; [ pylint jedi flake8 autopep8 grpcio pygments hvac ]))
+      (pp: with pp; [ pylint jedi flake8 autopep8 pygments hvac ]))
     nodePackages.yaml-language-server
     nodePackages.prettier
     nodePackages.vue-language-server
     nodePackages.eslint
+    gnumake
+
+    awscli2
+    aws-sam-cli
 
   ];
 }

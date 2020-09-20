@@ -26,12 +26,19 @@
         centaur-tabs
         all-the-icons
 
+        which-key
+
         ivy
         counsel
         counsel-projectile
         flx
         ranger
         base16-theme
+
+        git-gutter
+        magit
+        evil-magit
+        treemacs-magit
 
         projectile
         treemacs
@@ -49,7 +56,7 @@
         yaml-mode
         lua-mode
 
-        highlight-parentheses
+        rainbowDelimiters
         beacon
 
         go-mode
@@ -62,9 +69,9 @@
         lsp-mode
         flycheck
         lsp-ui
-        company-lsp
         lsp-treemacs
         elisp-format
+        company
 
         pdf-tools
         auctex

@@ -20,18 +20,6 @@
       fsType = "vfat";
     };
 
-  fileSystems."/mnt/home-nfs-archive" = {
-    device = "192.168.20.3:/media/archive/archive";
-    fsType = "nfs";
-    options = ["rw,defaults,noauto"];
-  };
-
-  fileSystems."/mnt/home-nfs-public" = {
-    device = "192.168.20.3:/media/store/media";
-    fsType = "nfs";
-    options = ["rw,defaults,noauto"];
-  };
-
   #swapDevices = [ { device = "/dev/sda3"; } ];
 
   nix.maxJobs = lib.mkDefault 4;

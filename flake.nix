@@ -4,7 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nix.url = "github:nixos/nix/6ff9aa8df7ce8266147f74c65e2cc529a1e72ce0";
-    home-manager.url = "github:rycee/home-manager";
+    #home-manager.url = "github:rycee/home-manager";
+    home-manager.url = "/home/anton/workdir/home-manager";
     base16.url = "github:alukardbf/base16-nix";
     zsh-nix-shell = {
       url = "github:chisui/zsh-nix-shell";
@@ -25,7 +26,7 @@
       # in the top-level arguments (e.g. `{ pkgs, lib, inputs, ... }:`).
       specialArgs = { inherit inputs; };
 
-      hm-nixos-as-super = { config, ... }: {
+      hm-nixos-as-super = name: { config, ... }: {
         # Submodules have merge semantics, making it possible to amend
         # the `home-manager.users` submodule for additional functionality.
         options.home-manager.users = lib.mkOption {
@@ -34,6 +35,9 @@
             # Makes specialArgs available to Home Manager modules as well.
             specialArgs = specialArgs // {
               # Allow accessing the parent NixOS configuration.
+              secrets =
+                let secretsPath = ./machines + "/${name}/secrets.nix";
+                in if (builtins.pathExists secretsPath) then import secretsPath else { };
               super = config;
             };
           });
@@ -48,7 +52,7 @@
           modules = [
             (import (./machines + "/${name}/configuration.nix"))
             inputs.home-manager.nixosModules.home-manager
-            hm-nixos-as-super
+            (hm-nixos-as-super name)
             ({ pkgs, ... }: { nixpkgs.overlays = [ inputs.quizanus.overlay ]; })
           ];
           specialArgs = { inherit inputs name specialArgs; };

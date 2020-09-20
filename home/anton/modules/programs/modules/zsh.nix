@@ -2,7 +2,7 @@
   programs.zsh = {
     enable = true;
     oh-my-zsh = {
-      enable = true;
+      enable = false;
       theme = "robbyrussell";
       plugins = [
         "git"
