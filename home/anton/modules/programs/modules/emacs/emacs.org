@@ -292,6 +292,15 @@ Setup line numbers displaying
 #+END_SRC
 
 
+* Editorconfig
+#+BEGIN_SRC emacs-lisp
+  (use-package
+    editorconfig
+    :ensure t
+    :config (editorconfig-mode 1))
+#+END_SRC
+
+
 * Projectile
 
 #+BEGIN_SRC emacs-lisp

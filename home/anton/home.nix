@@ -5,6 +5,7 @@
     (import ../../overlays/customPackages.nix)
     (import ../../overlays/taffybar.nix)
   ];
+  nixpkgs.config.pulseaudio = true;
 
   imports = [../common.nix] ++ builtins.map (name: ./modules + "/${name}")
     (builtins.attrNames (builtins.readDir ./modules));

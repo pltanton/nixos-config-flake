@@ -1,11 +1,13 @@
 { pkgs, ... }: {
   themes.base16 = {
     enable = true;
-    scheme = "gruvbox";
-    variant = "gruvbox-dark-hard";
+    scheme = "onedark";
+    variant = "onedark";
     extraParams = {
       fontConsoleName = "Iosevka Term";
-      fontConsoleSize = "13";
+      fontConsoleSize = "22";
+      fontUIName = "Inter";
+      fontUISize = "22";
     };
   };
 

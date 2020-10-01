@@ -1,6 +1,6 @@
 { pkgs, config, ... }: {
   services.dunst = {
-    enable = true;
+    enable = false;
 
     settings = with config.lib.base16.theme; {
       global = {

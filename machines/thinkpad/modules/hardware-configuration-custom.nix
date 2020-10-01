@@ -18,16 +18,21 @@
     sane.netConf = "192.168.20.3";
   };
 
+  security.wrappers = {
+    mount.source = "${pkgs.utillinux}/bin/mount";
+    umount.source = "${pkgs.utillinux}/bin/umount";
+  };
+
   fileSystems."/mnt/home-nfs-archive" = {
     device = "10.100.0.1:/media/archive/archive";
     fsType = "nfs";
-    options = ["rw,defaults,noauto"];
+    options = ["x-systemd.automount,rw,defaults,noauto"];
   };
 
   fileSystems."/mnt/home-nfs-public" = {
     device = "10.100.0.1:/media/store/media";
     fsType = "nfs";
-    options = ["rw,defaults,noauto"];
+    options = ["x-systemd.automount,rw,defaults,noauto"];
   };
 
 

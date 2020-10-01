@@ -19,25 +19,20 @@ in {
     ###################
     # Packages for DE #
     ###################
-    arandr
+    wdisplays
+    wl-clipboard
+
     clipit
     ffmpegthumbnailer
-    kbdd
     libnotify
     light
-    maim
     networkmanagerapplet
     pamixer
     paprefs
     pavucontrol
     shared_mime_info
-    siji
     xbanish
-    xclip
-    xdotool
     pantheon.elementary-files
-    ark
-    xkblayout-state
     xorg.xbacklight
     xxkb
     xorg.xkill
@@ -49,6 +44,7 @@ in {
     font-awesome_5
     emojione
     iosevka-bin
+    inter
     #nerdfonts
 
     #################
@@ -60,6 +56,8 @@ in {
     # User apps #
     #############
     # CLI utils
+    nix-prefetch-github
+
     httpie
     fzf
     ansible
@@ -98,6 +96,7 @@ in {
     vlc
     xsane
     slack
+    spotify
     #steam
     bitwarden
     bitwarden-rofi

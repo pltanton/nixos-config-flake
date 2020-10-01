@@ -8,20 +8,14 @@
   };
 
   services = {
-    status-notifier-watcher.enable = true;
-    network-manager-applet.enable = true;
-    udiskie.enable = true;
-    pasystray.enable = true;
-    blueman-applet.enable = true;
+    status-notifier-watcher.enable = false;
+    network-manager-applet.enable = false;
+    udiskie.enable = false;
+    pasystray.enable = false;
+    blueman-applet.enable = false;
     unclutter.enable = true;
     gnome-keyring.enable = true;
-    nextcloud-client.enable = true;
-    mpd.enable = true;
+    nextcloud-client.enable = false;
+    mpd.enable = false;
   };
-
-  systemd.user.services.network-manager-applet.Service.ExecStartPre = "${pkgs.coreutils}/bin/sleep 2";
-  systemd.user.services.ubdiskie.Service.ExecStartPre = "${pkgs.coreutils}/bin/sleep 2";
-  systemd.user.services.pasystray.Service.ExecStartPre = "${pkgs.coreutils}/bin/sleep 2";
-  systemd.user.services.blueman-applet.Service.ExecStartPre = "${pkgs.coreutils}/bin/sleep 2";
-
 }

@@ -51,6 +51,23 @@
         "type": "github"
       }
     },
+    "nixDoomEmacs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1601240777,
+        "narHash": "sha256-8jNQhEgEKJ/qTN+eGh3rZ/DbkEQNI5hVQFudCu88YLU=",
+        "owner": "vlaci",
+        "repo": "nix-doom-emacs",
+        "rev": "b344cf066d96b234dab385075c7dc6926b5a79e5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vlaci",
+        "ref": "develop",
+        "repo": "nix-doom-emacs",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1593360652,
@@ -150,25 +167,9 @@
         "base16": "base16",
         "home-manager": "home-manager",
         "nix": "nix",
+        "nixDoomEmacs": "nixDoomEmacs",
         "nixpkgs": "nixpkgs_4",
-        "quizanus": "quizanus",
-        "zsh-nix-shell": "zsh-nix-shell"
-      }
-    },
-    "zsh-nix-shell": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1593533321,
-        "narHash": "sha256-r4B4EjZrOrJrJb4GVkJA7X7GfXCbcqkW549uwTno1vg=",
-        "owner": "chisui",
-        "repo": "zsh-nix-shell",
-        "rev": "6ae30544a284301026d4ee1c437b44f5d1a9952e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "chisui",
-        "repo": "zsh-nix-shell",
-        "type": "github"
+        "quizanus": "quizanus"
       }
     }
   },

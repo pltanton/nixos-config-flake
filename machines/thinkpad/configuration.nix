@@ -25,10 +25,4 @@
   programs.zsh.enable = true;
   programs.fish.enable = true;
   programs.adb.enable = true;
-
-  system = {
-    autoUpgrade.enable = true;
-    autoUpgrade.channel = "https://nixos.org/channels/nixos-unstable";
-    stateVersion = "unstable";
-  };
 }

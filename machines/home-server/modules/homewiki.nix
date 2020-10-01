@@ -1,7 +1,6 @@
-{ config, pkgs, ... }:
+{ config, pkgs, secrets, ... }:
 
-let secrets = import ../secrets.nix;
-in {
+{
   environment.systemPackages = with pkgs; [ hugo ];
 
   services.nginx = {
@@ -10,7 +9,9 @@ in {
     virtualHosts."homewiki.kaliwe.ru" = {
       enableACME = true;
       forceSSL = true;
-      basicAuthFile = secrets.files.homewiki.destination;
+      basicAuth = {
+        admin = secrets.homewikipass;
+      };
       extraConfig = ''
         satisfy any;
         allow 192.168.0.0/16;

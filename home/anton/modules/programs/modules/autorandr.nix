@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   programs.autorandr = {
-    enable = true;
+    enable = false;
     hooks.postswitch = {
       reload-background = "systemctl --user restart random-background";
       reload-dpi = ''

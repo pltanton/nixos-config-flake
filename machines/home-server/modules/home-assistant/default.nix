@@ -1,11 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, secrets, ... }:
 
 let
-  consts = import ../constants.nix;
-  secrets = import ../secrets.nix;
+  consts = import ../../constants.nix;
 
   mqttUrl = "mqtt.kaliwe.ru";
 in {
+  imports = [ ./valetudo.nix ];
   # Generally home-assistant installation is a bunch of applications:
   #   1. The home-assistant in docker container, because nix-based container
   #      is really hard to maintain and it lack of usefull python packages that i need.
@@ -34,14 +34,6 @@ in {
         "--privileged=true" # required to get acces to /dev/tty*
       ];
       volumes = [ "/var/lib/zigbee2mqtt:/app/data" ];
-    };
-
-    valetudo-mapper = let
-    in {
-      image = "rand256/valetudo-mapper";
-      ports = [ "3001:3000" ];
-      #volumes = [ "${config}:/app/config.json" ];
-      volumes = [ "${secrets.files.valetudo-config.destination}:/app/config.json" ];
     };
   };
 
@@ -72,22 +64,6 @@ in {
       virtualHosts."${mqttUrl}" = {
         enableACME = true;
         forceSSL = true;
-      };
-
-      virtualHosts."vacuum.kaliwe.ru" = {
-        enableACME = true;
-        forceSSL = true;
-        basicAuthFile = secrets.files.homewiki.destination;
-        extraConfig = ''
-          satisfy any;
-          allow 192.168.0.0/16;
-          deny all;
-        '';
-
-        locations."/" = {
-          proxyPass = "http://10.1.0.207:80";
-          proxyWebsockets = true;
-        };
       };
 
       virtualHosts."hass.kaliwe.ru" = {

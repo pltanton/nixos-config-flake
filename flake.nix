@@ -7,10 +7,9 @@
     #home-manager.url = "github:rycee/home-manager";
     home-manager.url = "/home/anton/workdir/home-manager";
     base16.url = "github:alukardbf/base16-nix";
-    zsh-nix-shell = {
-      url = "github:chisui/zsh-nix-shell";
-      flake = false;
-    };
+
+    nixDoomEmacs.url = "github:vlaci/nix-doom-emacs/develop";
+    nixDoomEmacs.flake = false;
 
     quizanus.url = "git+ssh://gitea@gitea.kaliwe.ru/pltanton/quizanus.git";
     #quizanus.url = "/home/anton/workdir/quizanus";
@@ -34,7 +33,6 @@
             modules = [ (import inputs.base16.hmModule) ];
             # Makes specialArgs available to Home Manager modules as well.
             specialArgs = specialArgs // {
-              # Allow accessing the parent NixOS configuration.
               secrets =
                 let secretsPath = ./machines + "/${name}/secrets.nix";
                 in if (builtins.pathExists secretsPath) then import secretsPath else { };

@@ -1,15 +1,18 @@
 { pkgs, ... }: {
   xsession = {
-    enable = true;
+    enable = false;
     preferStatusNotifierItems = true;
     pointerCursor = {
       package = pkgs.paper-icon-theme;
       name = "Paper";
       size = 16;
     };
+
+
     windowManager.awesome = { enable = false; };
+    windowManager.command = "startxfce4";
     windowManager.xmonad = {
-      enable = true;
+      enable = false;
       extraPackages = haskellPackages:
         with haskellPackages; [
           xmonad-extras
@@ -17,7 +20,8 @@
           haskellPackages.taffybar
         ];
     };
-    importedVariables = [ "GDK_PIXBUF_ICON_LOADER" "GDK_PIXBUF_MODULE_FILE" "PATH" ];
+    importedVariables =
+      [ "GDK_PIXBUF_ICON_LOADER" "GDK_PIXBUF_MODULE_FILE" "PATH" ];
 
     initExtra = ''
       ${pkgs.autorandr}/bin/autorandr -c &
