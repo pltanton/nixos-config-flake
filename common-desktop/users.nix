@@ -1,6 +1,6 @@
 { pkgs, ... }: {
-  home-manager.users.anton = import ../../../home/anton/home.nix;
-  home-manager.users.julsa = import ../../../home/julsa/home.nix;
+  home-manager.users.anton = import ../home/anton/home.nix;
+  home-manager.users.julsa = import ../home/julsa/home.nix;
 
   users = {
     users = {

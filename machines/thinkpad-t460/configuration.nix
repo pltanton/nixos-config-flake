@@ -1,19 +1,19 @@
 { options, config, pkgs, lib, inputs, ... }:
 
 {
-  imports = builtins.map (name: ./modules + "/${name}")
-    (builtins.attrNames (builtins.readDir ./modules));
+  imports = (builtins.map (name: ./modules + "/${name}")
+    (builtins.attrNames (builtins.readDir ./modules)))
+    ++ (builtins.map (name: ../../common-desktop + "/${name}")
+      (builtins.attrNames (builtins.readDir ../../common-desktop)));
 
   time.timeZone = "Europe/Moscow";
 
-  nixpkgs.overlays =
-    [ (import ../../overlays/customPackages.nix) ];
+  nixpkgs.overlays = [ (import ../../overlays/customPackages.nix) ];
 
   nixpkgs.config = {
     allowBroken = true;
     allowUnfree = true;
   };
-
 
   nix = {
     package = pkgs.nixUnstable;

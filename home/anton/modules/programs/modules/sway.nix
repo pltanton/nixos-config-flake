@@ -33,6 +33,9 @@ in {
         "Print" = "exec ${grabScreenshot}";
         "${modifier}+Insert" =
           "exec ${pkgs.rofi}/bin/rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'";
+        "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 5";
+        "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 5";
+        "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer -t";
       };
 
       gaps = {
