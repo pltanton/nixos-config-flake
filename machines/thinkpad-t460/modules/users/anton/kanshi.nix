@@ -1,5 +1,5 @@
 { pkgs, config, lib, ... }: {
-  home-manager.users.anton.services.kanshi = {
+  services.kanshi = {
     enable = true;
     profiles = {
       bigLg = {

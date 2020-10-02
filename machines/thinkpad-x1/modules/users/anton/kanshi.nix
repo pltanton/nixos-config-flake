@@ -10,17 +10,17 @@
           }
           {
             criteria = "eDP-1";
-            status = "disable";
+            status = "enable";
+            scale = 2.0;
           }
         ];
-        exec = "echo Xft.dpi: 192 | ${pkgs.xorg.xrdb}/bin/xrdb -merge";
       };
       laptopOnly = {
         outputs = [{
           criteria = "eDP-1";
           status = "enable";
+          scale = 2.0;
         }];
-        exec = "echo Xft.dpi: 96 | ${pkgs.xorg.xrdb}/bin/xrdb -merge";
       };
     };
   };
