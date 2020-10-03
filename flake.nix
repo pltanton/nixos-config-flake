@@ -3,13 +3,16 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nix.url = "github:nixos/nix/6ff9aa8df7ce8266147f74c65e2cc529a1e72ce0";
-    #home-manager.url = "github:rycee/home-manager";
-    home-manager.url = "/home/anton/workdir/home-manager";
+    nix.url = "github:nixos/nix";
+    nixos-hardware.url = github:NixOS/nixos-hardware/master;
+
+    home-manager.url = "github:rycee/home-manager";
+    #home-manager.url = "/home/anton/workdir/home-manager";
     base16.url = "github:alukardbf/base16-nix";
 
     nixDoomEmacs.url = "github:vlaci/nix-doom-emacs/develop";
     nixDoomEmacs.flake = false;
+
 
     quizanus.url = "git+ssh://gitea@gitea.kaliwe.ru/pltanton/quizanus.git";
     #quizanus.url = "/home/anton/workdir/quizanus";

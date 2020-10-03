@@ -1,5 +1,5 @@
-{ pkgs, config, lib, ... }: {
-  home-manager.users.anton.services.kanshi = {
+{ pkgs, config, lib, home-manager, ... }: {
+  services.kanshi = {
     enable = true;
     profiles = {
       bigLg = {
@@ -11,7 +11,6 @@
           {
             criteria = "eDP-1";
             status = "enable";
-            scale = 2.0;
           }
         ];
       };
@@ -19,7 +18,6 @@
         outputs = [{
           criteria = "eDP-1";
           status = "enable";
-          scale = 2.0;
         }];
       };
     };

@@ -1,8 +1,9 @@
 { pkgs, config, lib, ... }: {
+  imports = [ ./style.nix ];
+
   programs.waybar = {
     enable = true;
     systemd.enable = true;
-    style = builtins.readFile ./style.css;
     settings = [{
       layer = "top";
       position = "top";
@@ -10,7 +11,7 @@
       modules-left = [ "sway/workspaces" "sway/mode" ];
       modules-center = [ "sway/window" ];
       modules-right =
-        [ "tray" "idle_inhibitor" "pulseaudio" "network" "battery" "clock" ];
+        [ "tray" "pulseaudio" "battery" "clock" "idle_inhibitor" ];
       modules = {
         idle_inhibitor = {
           format = "{icon}";
@@ -20,13 +21,31 @@
           };
         };
         "sway/mode" = { format = ''<span style="italic">{}</span>''; };
+        "sway/workspaces" = {
+          numeric-first = true;
+          disable-scroll = true;
+          disable-markup = false;
+          all-outputs = false;
+          format = "  {value}: {icon}  ";
+          format-icons = {
+            "1" = "";
+            "2" = "";
+            "3" = "";
+            "4" = "";
+
+            "im" = "";
+
+            "focused" = "";
+            "default" = "";
+          };
+        };
         tray = {
           icon-size = 21;
           spacing = 10;
         };
         clock = {
-          tooltip-format = "{=%Y-%m-%d | %H=%M}";
-          format-alt = "{=%Y-%m-%d}";
+          tooltip-format = "{:%Y-%m-%d | %H:%M}";
+          format-alt = "{:%Y-%m-%d}";
         };
         battery = {
           states = {
@@ -37,26 +56,26 @@
           format = "{capacity}% {icon}";
           format-icons = [ "" "" "" "" "" ];
         };
-        "network" = {
-          "format-wifi" = "{essid} ({signalStrength}%) ";
-          "format-ethernet" = "{ifname}= {ipaddr}/{cidr} ";
-          "format-disconnected" = "Disconnected ⚠";
-          "interval" = 7;
+        network = {
+          format-wifi = "{essid} ({signalStrength}%) ";
+          format-ethernet = "{ifname}= {ipaddr}/{cidr} ";
+          format-disconnected = "Disconnected ⚠";
+          interval = 5;
         };
-        "pulseaudio" = {
-          "format" = "{volume}% {icon}";
-          "format-bluetooth" = "{volume}% {icon}";
-          "format-muted" = "";
-          "format-icons" = {
-            "headphones" = "";
-            "handsfree" = "";
-            "headset" = "";
-            "phone" = "";
-            "portable" = "";
-            "car" = "";
-            "default" = [ "" "" ];
+        pulseaudio = {
+          format = "{volume}% {icon}";
+          format-bluetooth = "{volume}% {icon}";
+          format-muted = "";
+          format-icons = {
+            headphones = "";
+            handsfree = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = [ "" "" ];
           };
-          "on-click" = "pavucontrol";
+          on-click = "pavucontrol";
         };
       };
     }];

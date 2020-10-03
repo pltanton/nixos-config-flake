@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }: {
+{ pkgs, config, lib, home-manager, ... }: {
   services.kanshi = {
     enable = true;
     profiles = {

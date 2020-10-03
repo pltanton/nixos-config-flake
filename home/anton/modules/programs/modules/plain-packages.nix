@@ -22,10 +22,8 @@ in {
     wdisplays
     wl-clipboard
 
-    clipit
     ffmpegthumbnailer
     libnotify
-    light
     networkmanagerapplet
     pamixer
     paprefs
@@ -33,8 +31,6 @@ in {
     shared_mime_info
     xbanish
     pantheon.elementary-files
-    xorg.xbacklight
-    xxkb
     xorg.xkill
     glib
 
@@ -47,11 +43,6 @@ in {
     inter
     #nerdfonts
 
-    #################
-    # Look and feel #
-    #################
-    gnome3.adwaita-icon-theme
-
     #############
     # User apps #
     #############
@@ -59,14 +50,10 @@ in {
     nix-prefetch-github
 
     httpie
-    fzf
     ansible
     dnsutils
     jq
-    #gopass
     bitwarden-cli
-    mpc_cli
-    ncmpcpp
     htop
     inetutils
     killall

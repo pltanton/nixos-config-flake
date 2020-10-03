@@ -5,9 +5,9 @@
     variant = "onedark";
     extraParams = {
       fontConsoleName = "Iosevka Term";
-      fontConsoleSize = "22";
+      fontConsoleSize = "19";
       fontUIName = "Inter";
-      fontUISize = "22";
+      fontUISize = "19";
     };
   };
 

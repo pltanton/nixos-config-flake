@@ -9,10 +9,10 @@
 
   services = {
     status-notifier-watcher.enable = false;
-    network-manager-applet.enable = false;
+    network-manager-applet.enable = true;
     udiskie.enable = false;
     pasystray.enable = false;
-    blueman-applet.enable = false;
+    blueman-applet.enable = true;
     unclutter.enable = true;
     gnome-keyring.enable = true;
     nextcloud-client.enable = false;

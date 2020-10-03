@@ -11,7 +11,7 @@
 
 (setq display-line-numbers-type "relative")
 
-(setq doom-font (font-spec :family "Iosevka" :size 28))
+(setq doom-font (font-spec :family "Iosevka" :size 20))
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:

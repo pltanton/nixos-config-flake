@@ -1,6 +1,5 @@
 { pkgs, ... }: {
-  home-manager.users.anton = import ../home/anton/home.nix;
-  home-manager.users.julsa = import ../home/julsa/home.nix;
+  home-manager.useGlobalPkgs = true;
 
   users = {
     users = {
@@ -13,6 +12,7 @@
           "wheel"
           "networkmanager"
           "audio"
+          "video"
           "docker"
           "lp"
           "scanner"
@@ -24,7 +24,8 @@
         isNormalUser = true;
         shell = pkgs.fish;
         home = "/home/julsa";
-        extraGroups = [ "wheel" "networkmanager" "audio" "docker" "lp" "scanner" ];
+        extraGroups =
+          [ "wheel" "networkmanager" "audio" "video" "docker" "lp" "scanner" ];
       };
     };
   };

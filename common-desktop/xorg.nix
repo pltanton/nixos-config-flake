@@ -10,7 +10,7 @@
 
     libinput.enable = true;
 
-    displayManager.lightdm.enable = true;
+    displayManager.gdm.enable = true;
     desktopManager.xfce = {
       enable = true;
     };
