@@ -3,7 +3,7 @@
 {
   nixpkgs.overlays = [
     (import ../../overlays/customPackages.nix)
-    (import ../../overlays/taffybar.nix)
+    (import ../../overlays/.nix)
   ];
   nixpkgs.config.pulseaudio = true;
 

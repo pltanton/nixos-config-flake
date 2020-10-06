@@ -6,7 +6,7 @@
 
   services = {
     autorandr.enable = true;
-
+    pcscd.enable = true;
     upower.enable = true;
   };
 }

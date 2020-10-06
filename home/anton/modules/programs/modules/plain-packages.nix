@@ -66,6 +66,7 @@ in {
     tree
 
     # GUI
+    audacity
     xournalpp
     discord
     zoom-us
@@ -86,7 +87,6 @@ in {
     spotify
     #steam
     bitwarden
-    bitwarden-rofi
     sidequest
     scrcpy
     darktable

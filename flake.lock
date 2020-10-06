@@ -150,11 +150,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1599858719,
-        "narHash": "sha256-CwcBj3hB5+xdAQigGDTTTynubj+fAFLEr2vXtrKLytI=",
+        "lastModified": 1601171649,
+        "narHash": "sha256-G3RUAi2DUq6r3ntASLS+LZC/Eamot55W1+xmBOgEh3M=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "e0759a49733dfc3aa225b8a7423c00da6e1ecb67",
+        "rev": "84d74ae9c9cbed73274b8e4e00be14688ffc93fe",
         "type": "github"
       },
       "original": {
@@ -206,7 +206,24 @@
         "nixDoomEmacs": "nixDoomEmacs",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
-        "quizanus": "quizanus"
+        "quizanus": "quizanus",
+        "swaylock-effects": "swaylock-effects"
+      }
+    },
+    "swaylock-effects": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1596964481,
+        "narHash": "sha256-TOxllQJMvZ2pKtMG16leVAdddgcNSyN1fwFN/OZKJZc=",
+        "owner": "mortie",
+        "repo": "swaylock-effects",
+        "rev": "2cbc0c89dec71634cc13ba22c59f67955d847db4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mortie",
+        "repo": "swaylock-effects",
+        "type": "github"
       }
     }
   },

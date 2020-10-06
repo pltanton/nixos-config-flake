@@ -2,7 +2,10 @@
 
 {
   imports = builtins.map (name: ./modules + "/${name}")
-    (builtins.attrNames (builtins.readDir ./modules));
+    (builtins.attrNames (builtins.readDir ./modules))
+    ++ (builtins.map (name: ../../common-machines + "/${name}")
+      (builtins.attrNames (builtins.readDir ../../common-machines)))
+  ;
 
   boot.loader.systemd-boot.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -33,13 +36,6 @@
 
       5901 # VNC
     ];
-  };
-
-  services = {
-    openssh = {
-      enable = true;
-      permitRootLogin = "yes";
-    };
   };
 
   environment.systemPackages = with pkgs; [

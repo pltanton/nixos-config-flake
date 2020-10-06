@@ -10,9 +10,11 @@
 
     libinput.enable = true;
 
-    displayManager.gdm.enable = true;
-    desktopManager.xfce = {
+    displayManager.gdm = {
       enable = true;
+    };
+    desktopManager.xfce = {
+      enable = false;
     };
 
     config = pkgs.lib.mkOverride 50 ''

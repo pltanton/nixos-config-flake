@@ -2,7 +2,10 @@
 {
   system.stateVersion = "20.09";
   imports = builtins.map (name: ./modules + "/${name}")
-    (builtins.attrNames (builtins.readDir ./modules));
+    (builtins.attrNames (builtins.readDir ./modules))
+    ++ (builtins.map (name: ../../common-machines + "/${name}")
+      (builtins.attrNames (builtins.readDir ../../common-machines)))
+  ;
 
   systemd = {
     network.enable = true;

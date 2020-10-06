@@ -2,6 +2,8 @@
   hardware = {
     enableRedistributableFirmware = true;
 
+    boot.kernelPackages = pkgs.linuxPackages_latest;
+
     opengl.driSupport32Bit = true;
     opengl.enable = true;
     opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];

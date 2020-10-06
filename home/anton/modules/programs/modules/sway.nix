@@ -1,12 +1,10 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, inputs, ... }:
 let
-  grabScreenshot = pkgs.writeShellScript "grapScreenshot" ''
+  grabScreenshot = pkgs.writeShellScript "grabScreenshot" ''
     FILE_PATH=~/screenshots/shot_$(date +"%y%m%d%H%M%S").png
     ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" $FILE_PATH
     ${pkgs.wl-clipboard}/bin/wl-copy < $FILE_PATH
   '';
-
-  lockCommand = "${pkgs.swaylock-effects}/bin/swaylock-effects";
 in {
   wayland.windowManager.sway = {
     enable = true;
@@ -21,9 +19,11 @@ in {
 
     extraConfig = ''
       exec ${pkgs.swayidle}/bin/swayidle -w \
-        timeout 300 '${lockCommand}' \
-        timeout 600 '${pkgs.sway}/bin/swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-        before-sleep '${lockCommand}'
+        timeout 300 'lock' \
+        timeout 315 '${pkgs.sway}/bin/swaymsg "output * dpms off"' \
+        resume '${pkgs.sway}/bin/swaymsg "output * dpms on"' \
+        after-resume '${pkgs.sway}/bin/swaymsg "output * dpms on"' \
+        before-sleep 'lock'
 
       workspace 1 output DP-1
       workspace 2 output DP-1
@@ -38,13 +38,16 @@ in {
       cfg = config.wayland.windowManager.sway;
     in {
       bars = [ ];
-      terminal = "${pkgs.kitty}/bin/kitty";
-      menu = "${pkgs.rofi}/bin/rofi -show drun -show-icons -columns 2";
+      terminal = "${pkgs.alacritty}/bin/alacritty";
+      menu = "${pkgs.wofi}/bin/wofi --show drun";
       workspaceAutoBackAndForth = true;
-     
+
       modifier = "Mod4";
 
       startup = [
+        {
+          command = "${pkgs.wl-clipboard}/bin/wl-paste -t text --watch ${pkgs.clipman}/bin/clipman store";
+        }
         {
           command = "systemctl --user restart waybar";
           always = true;
@@ -54,6 +57,7 @@ in {
           always = true;
         }
         { command = "firefox"; }
+        { command = "emacs"; }
         { command = "telegram-desktop"; }
         { command = "slack"; }
       ];
@@ -65,9 +69,9 @@ in {
         "${modifier}+Return" = "exec ${cfg.config.menu}";
         "Print" = "exec ${grabScreenshot}";
         "${modifier}+Insert" =
-          "exec ${pkgs.rofi}/bin/rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'";
+          "exec ${pkgs.clipman}/bin/clipman pick -t wofi";
 
-        "${modifier}+Shift+l" = "exec ${lockCommand}";
+        "${modifier}+Shift+l" = "exec lock";
 
         "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 5";
         "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 5";
@@ -93,10 +97,7 @@ in {
         "1" = [{ app_id = "^firefox$"; }];
         "2" = [{ class = "^Emacs$"; }];
 
-        "im" = [
-          { app_id = "^telegramdesktop$"; }
-          { class = "^Slack$"; }
-        ];
+        "im" = [ { app_id = "^telegramdesktop$"; } { class = "^Slack$"; } ];
       };
 
       window = {
@@ -106,6 +107,20 @@ in {
             command = "resize set width 1 ppt";
           }
           {
+            criteria = {
+              app_id = "^telegramdesktop$";
+              title = "^Media viewer$";
+            };
+            command = "floating enable";
+          }
+          {
+            criteria = {
+              app_id = "^telegramdesktop$";
+              title = "Choose";
+            };
+            command = "resize set 1100 700";
+          }
+          {
             criteria = { class = "^Slack$"; };
             command = "resize set 4 width ppt";
           }
@@ -113,15 +128,12 @@ in {
       };
 
       gaps = {
-        outer = 5;
         inner = 5;
         smartGaps = false;
         smartBorders = "on";
       };
 
-      output = {
-        "*" = { bg = "${../../../backgrounds/paporotnik.jpg} fill"; };
-      };
+      output = { "*" = { bg = "${../../../backgrounds/tree.jpg} fill"; }; };
 
       input = {
         "1:1:AT_Translated_Set_2_keyboard" = {
@@ -142,8 +154,11 @@ in {
   programs.mako = with config.lib.base16.theme; {
     enable = true;
     font = "${fontUIName} ${fontUISize}";
-    backgroundColor = "#${base01-hex}FF";
-    width = 800;
-    height = 400;
+    backgroundColor = "#${base01-hex}D9";
+    borderColor = "#${base01-hex}";
+    textColor = "#${base05-hex}";
+    groupBy = "app-name";
+    width = 500;
+    height = 800;
   };
 }

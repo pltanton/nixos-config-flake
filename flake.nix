@@ -13,6 +13,9 @@
     nixDoomEmacs.url = "github:vlaci/nix-doom-emacs/develop";
     nixDoomEmacs.flake = false;
 
+    swaylock-effects.url = "github:mortie/swaylock-effects";
+    swaylock-effects.flake = false;
+
 
     quizanus.url = "git+ssh://gitea@gitea.kaliwe.ru/pltanton/quizanus.git";
     #quizanus.url = "/home/anton/workdir/quizanus";

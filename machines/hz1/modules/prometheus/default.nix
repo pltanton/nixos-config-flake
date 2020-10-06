@@ -7,7 +7,7 @@
     prometheus = {
       enable = true;
       alertmanager.enable = false;
-      alertmanager.configurationText = ''
+      alertmanager.configText = ''
         route:
           group_wait: 20s        #  Частота
           group_interval: 20s   #  уведомлений
