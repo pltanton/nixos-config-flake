@@ -1,0 +1,371 @@
+Initializing local storage instance at path: /home/anton/.config/Slack/local-settings.json
+[10/07/20, 14:12:27:997] info: 
+╔══════════════════════════════════════════════════════════════════════╗
+║      Slack 4.9.1, linux 5.4.67 on x64 at 10/07/20, 14:12:27:997      ║
+╚══════════════════════════════════════════════════════════════════════╝ 
+[10/07/20, 14:12:27:997] info: Configured logger via 
+{
+  "identifierOverride": "webapp-console",
+  "logLevel": "info",
+  "numberOfInstances": 2
+}
+[10/07/20, 14:12:27:998] info: Predefined values for process 
+{
+  "NODE_ENV": "production",
+  "platform": "linux",
+  "type": "browser",
+  "PACKAGE_MANIFEST.productName": "Slack",
+  "PACKAGE_MANIFEST.version": "4.9.1",
+  "PACKAGE_MANIFEST.commit": "a4869bd",
+  "PACKAGE_MANIFEST.branch": "HEAD"
+}
+[10/07/20, 14:12:27:998] warn: (electron) crashReporter.start is deprecated in the renderer process. Call it from the main process instead. 
+[10/07/20, 14:12:27:998] info: Creating desktop interface object 
+[10/07/20, 14:12:27:998] info: Exposing context bridge 
+[10/07/20, 14:12:27:998] info: Store: UPSERT_WEB_CONTENTS {
+  "id": 1,
+  "state": "loaded"
+} 
+[10/07/20, 14:12:27:999] info: Store: RECORD_PERFORMANCE_TIMING {
+  "phase": 2,
+  "interval": 172
+} 
+[10/07/20, 14:12:27:999] info: Store: MAIN_WINDOW_SHOWN  
+[10/07/20, 14:12:27:999] info: Store: UPDATE_SETTINGS {
+  "mainWindowSettings": {
+    "fullScreen": false,
+    "maximized": false,
+    "bounds": {
+      "x": 4610,
+      "y": 1007,
+      "width": 1027,
+      "height": 867
+    }
+  }
+} 
+[10/07/20, 14:12:27:999] info: Store: CLEAR_NOTIFICATIONS  
+[10/07/20, 14:12:27:999] info: [METRICS] Starting timers for metrics collection 
+[10/07/20, 14:12:27:999] info: [PERF] setupGantry_w begin 346ms 
+[10/07/20, 14:12:28:000] info: [APP] client 
+[10/07/20, 14:12:28:000] info: [DATE/TIME] 1602069145764 "2020-10-07T11:12:25.764Z" 
+[10/07/20, 14:12:28:000] info: [VERSION] version_hash: ee56fd8ba864cba172dccc74e359a983a973adb1 
+[10/07/20, 14:12:28:000] info: [VERSION] version_ts: 1602046848 
+[10/07/20, 14:12:28:000] info: [VERSION] min_version_data_ts: 1581290339 
+[10/07/20, 14:12:28:000] info: [AUTH] authCookieChanged: started listening to the event 
+[10/07/20, 14:12:28:001] info: [AUTH] Credentials are fresh (psc=1601615694, csc=1601615694) 
+[10/07/20, 14:12:28:001] info: [LOCAL-CONFIG] ingestIncomingConfig(): no incoming payload to process; current teams: T0BDKC7PW:U019YRFQBBN 
+[10/07/20, 14:12:28:001] info: [BOOT] Initial team ID: T0BDKC7PW 
+[10/07/20, 14:12:28:001] info: [PERF] setupGantry_w took 5.81ms 
+[10/07/20, 14:12:28:001] info: [PERF] bootClient_w begin 353ms 
+[10/07/20, 14:12:28:001] info: [BOOT] (T0BDKC7PW) Initializing boot 
+[10/07/20, 14:12:28:001] info: [BOOT] (T0BDKC7PW) Minimum supported data version is 1581290339; currently on 1601886053 
+[10/07/20, 14:12:28:002] info: [PERSIST] (T0BDKC7PW) Getting state from IndexedDB 
+[10/07/20, 14:12:28:002] info: [PERSIST] (T0BDKC7PW) Successfully got state from IndexedDB 
+[10/07/20, 14:12:28:002] info: [BOOT] (T0BDKC7PW) Booting with persisted store 
+[10/07/20, 14:12:28:002] info: [EMOJI_TRANSLATION] Emoji translations not needed for default locale, only adding keywords 
+[10/07/20, 14:12:28:002] info: [PERSIST] (T0BDKC7PW) Checking for persistence method changes 
+[10/07/20, 14:12:28:002] info: [PERSIST] (T0BDKC7PW) Preparing state for hydration 
+[10/07/20, 14:12:28:002] info: [PERSIST] (T0BDKC7PW) State prepared for hydration 
+[10/07/20, 14:12:28:002] info: [PERSIST] (T0BDKC7PW) Checking for required data 
+[10/07/20, 14:12:28:003] info: [EMOJI_TRANSLATION] Emoji translations not needed for default locale, only adding keywords 
+[10/07/20, 14:12:28:003] info: [BOOT] (T0BDKC7PW) Booting warm 
+[10/07/20, 14:12:28:003] info: [DESKTOP-MIDDLEWARE] (T0BDKC7PW) Forwarding redux payload to desktop ["theme","notificationPrefs","featureFlags","unreads","locale","version","userId"] 
+[10/07/20, 14:12:28:003] info: [DESKTOP-SIDE-EFFECT] (T0BDKC7PW) Team T0BDKC7PW booted, creating delegate 
+[10/07/20, 14:12:28:003] info: Exposing workspace desktop delegate for  {
+  "workspaceId": "T0BDKC7PW"
+} 
+[10/07/20, 14:12:28:003] info: Setting global desktop delegate 
+[10/07/20, 14:12:28:003] info: [DESKTOP-SIDE-EFFECT] (T0BDKC7PW) Attempted boot for all workspaces, signaling desktop 
+[10/07/20, 14:12:28:003] info: [BOOT] (T0BDKC7PW) Connecting to socket 
+[10/07/20, 14:12:28:003] info: [SOCKET-MANAGER] (T0BDKC7PW) Changing from never_connected to prov_connect 
+[10/07/20, 14:12:28:003] info: [SOCKET-MANAGER] (T0BDKC7PW) will stay in prov_connect state for up to 10000 ms 
+[10/07/20, 14:12:28:004] info: [SOCKET-MANAGER] (T0BDKC7PW) Changing from prov_connect to prov_connecting 
+[10/07/20, 14:12:28:004] info: [SOCKET-MANAGER] (T0BDKC7PW) will stay in prov_connecting state for up to 35000 ms 
+[10/07/20, 14:12:28:004] info: [BOOT] (T0BDKC7PW) Fetching fresh boot data after booting with persisted store 
+[10/07/20, 14:12:28:004] info: [BOOT] (T0BDKC7PW) Skipping persisted store if it exists because we're forcing fresh data fetch anyway 
+[10/07/20, 14:12:28:004] info: [BOOT-QUEUE] T0BDKC7PW noversion-1602069146.564 client.boot called with reason: deferred-data 
+[10/07/20, 14:12:28:004] info: [BOOT-QUEUE] T0BDKC7PW noversion-1602069146.564 client.boot is ENQUEUED 
+[10/07/20, 14:12:28:004] info: [BOOT-QUEUE] T0BDKC7PW noversion-1602069146.564 client.boot is ACTIVE 
+[10/07/20, 14:12:28:004] info: [BOOT-QUEUE] T0BDKC7PW noversion-1602069146.567 api.features called 
+[10/07/20, 14:12:28:004] info: [BOOT-QUEUE] T0BDKC7PW noversion-1602069146.567 api.features is ENQUEUED 
+[10/07/20, 14:12:28:004] info: [BOOT-QUEUE] T0BDKC7PW noversion-1602069146.568 experiments.getByUser called 
+[10/07/20, 14:12:28:004] info: [BOOT-QUEUE] T0BDKC7PW noversion-1602069146.568 experiments.getByUser is ENQUEUED 
+[10/07/20, 14:12:28:005] info: [BOOT] Booting into channel: D019SSZPGCB 
+[10/07/20, 14:12:28:005] info: [BOOT] (T0BDKC7PW) (T0BDKC7PW) Mounting client 
+[10/07/20, 14:12:28:005] info: [DRAFTS] (T0BDKC7PW) There are no channels with drafts 
+[10/07/20, 14:12:28:005] info: [BOOT] (T0BDKC7PW) Beaconed client boot mount success 
+[10/07/20, 14:12:28:005] info: [PERF] (T0BDKC7PW) Logged time to visible (TTV): 1433.520000000044 
+[10/07/20, 14:12:28:005] info: [WORKSPACE] (T0BDKC7PW) Workspace mounted, transitioning focus to primary view message-pane_message_input 
+[10/07/20, 14:12:28:005] info: [PERF] (T0BDKC7PW) First meaningful paint: 1181ms 
+[10/07/20, 14:12:28:005] info: [PERF] bootClient_w took 1621.01ms 
+[10/07/20, 14:12:28:005] info: [BOOT] Booting other teams:  
+[10/07/20, 14:12:28:005] info: [MIN-VERSION] Starting client min-version poll. 
+[10/07/20, 14:12:28:005] info: [PERSIST] Purging persisted models, except for the following teamIds ["T0BDKC7PW"] 
+[10/07/20, 14:12:28:006] info: [WD] All assets have reported back; s: 10; f: 0 
+[10/07/20, 14:12:28:006] info: [CHECK-UNREADS] (T0BDKC7PW) Checking unreads after workspace became focused 
+[10/07/20, 14:12:28:006] info: [CHECK-UNREADS] (T0BDKC7PW) Not marking D019SSZPGCB because last_read >= latest && channel is read 
+[10/07/20, 14:12:28:006] info: [CHECK-UNREADS] (T0BDKC7PW) Checking unreads after window became focused 
+[10/07/20, 14:12:28:006] info: [CHECK-UNREADS] (T0BDKC7PW) Not marking D019SSZPGCB because last_read >= latest && channel is read 
+[10/07/20, 14:12:28:006] info: Store: UPDATE_SETTINGS {
+  "userTheme": "dark"
+} 
+[10/07/20, 14:12:28:006] info: [DESKTOP-SIDE-EFFECT] Update from desktop for keys  ["settings"] 
+[10/07/20, 14:12:28:006] info: Store: UPDATE_SETTINGS {
+  "systemThemeSyncEnabled": false
+} 
+[10/07/20, 14:12:28:006] info: [DESKTOP-SIDE-EFFECT] Update from desktop for keys  ["settings"] 
+[10/07/20, 14:12:28:006] info: Store: SYNC (Empty) 
+[10/07/20, 14:12:28:007] info: Store: SELECTION_CHANGED T0BDKC7PW 
+[10/07/20, 14:12:28:007] info: Store: REDUX_UPDATE_FROM_WEBAPP (T0BDKC7PW) Changed keys [theme,notificationPrefs,featureFlags,unreads,locale,version,userId] 
+[10/07/20, 14:12:28:007] info: Store: SYNC Synced 1 workspaces with IDs [T0BDKC7PW] 
+[10/07/20, 14:12:28:007] info: Store: SELECTION_CHANGED T0BDKC7PW 
+[10/07/20, 14:12:28:007] info: Store: UPSERT_WEB_CONTENTS {
+  "id": 1,
+  "state": "webapp-loaded"
+} 
+[10/07/20, 14:12:28:007] info: Store: RECORD_PERFORMANCE_TIMING {
+  "phase": 3,
+  "interval": 1028
+} 
+[10/07/20, 14:12:28:007] info: Store: UPDATE_SETTINGS {
+  "forceHiddenInsetTitleBar": false
+} 
+[10/07/20, 14:12:28:007] info: [DESKTOP-SIDE-EFFECT] Update from desktop for keys  ["settings"] 
+[10/07/20, 14:12:28:007] info: Store: UPDATE_SETTINGS {
+  "trafficLightPosition": {
+    "x": 14,
+    "y": 22
+  }
+} 
+[10/07/20, 14:12:28:007] info: [DESKTOP-SIDE-EFFECT] Update from desktop for keys  ["settings"] 
+[10/07/20, 14:12:28:007] info: Store: UPDATE_SETTINGS {
+  "isIAEnabled": true
+} 
+[10/07/20, 14:12:28:007] info: [DESKTOP-SIDE-EFFECT] Update from desktop for keys  ["settings"] 
+[10/07/20, 14:12:28:008] info: [BOOT-QUEUE] T0BDKC7PW noversion-1602069146.564 client.boot is RESOLVED 
+[10/07/20, 14:12:28:008] info: [BOOT-QUEUE] T0BDKC7PW noversion-1602069146.567 api.features is ACTIVE 
+[10/07/20, 14:12:28:008] info: Store: UPDATE_SETTINGS {
+  "mainWindowSettings": {
+    "fullScreen": false,
+    "maximized": true,
+    "bounds": {
+      "width": 1025,
+      "height": 865,
+      "x": 4612,
+      "y": 1009
+    }
+  }
+} 
+[10/07/20, 14:12:28:008] info: [DESKTOP-SIDE-EFFECT] Update from desktop for keys  ["settings"] 
+[10/07/20, 14:12:28:008] info: [SERVICE-WORKER] registration success {} 
+[10/07/20, 14:12:28:008] info: [SERVICE-WORKER-STATE] initial activated 
+[10/07/20, 14:12:28:008] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.696 calendar.getInstalledCalendars called with reason: calendar-get-installed-calendars 
+[10/07/20, 14:12:28:008] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.696 calendar.getInstalledCalendars is ENQUEUED 
+[10/07/20, 14:12:28:008] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.696 calendar.getInstalledCalendars is ACTIVE 
+[10/07/20, 14:12:28:008] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.702 promo.banner called with reason: fetch-megaphone-notification-data 
+[10/07/20, 14:12:28:009] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.702 promo.banner is ENQUEUED 
+[10/07/20, 14:12:28:009] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.702 promo.banner is ACTIVE 
+[10/07/20, 14:12:28:009] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.705 team.whatsNew called with reason: boot-team 
+[10/07/20, 14:12:28:009] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.705 team.whatsNew is ENQUEUED 
+[10/07/20, 14:12:28:009] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.705 team.whatsNew is ACTIVE 
+[10/07/20, 14:12:28:009] info: [DND] (T0BDKC7PW) Preparing to fetch DND times for the following members: U019YRFQBBN,UL2B4U82U,UUEPPJUF7,UFJ2CBK4Y,UL8GM39PE,U010YB97W06,U0185FA2FS6,U0BDRTPC1 
+[10/07/20, 14:12:28:009] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.713 dnd.info called with reason: getDndTimesForSubscribedMembers 
+[10/07/20, 14:12:28:009] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.713 dnd.info is ENQUEUED 
+[10/07/20, 14:12:28:009] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.713 dnd.info is ACTIVE 
+[10/07/20, 14:12:28:009] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.717 dnd.teamInfo called with reason: getDndTimesForSubscribedMembers:self 
+[10/07/20, 14:12:28:009] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.717 dnd.teamInfo is ENQUEUED 
+[10/07/20, 14:12:28:009] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.717 dnd.teamInfo is ACTIVE 
+[10/07/20, 14:12:28:010] info: [BOOT-QUEUE] T0BDKC7PW noversion-1602069146.567 api.features is RESOLVED 
+[10/07/20, 14:12:28:010] info: [BOOT-QUEUE] T0BDKC7PW noversion-1602069146.568 experiments.getByUser is ACTIVE 
+[10/07/20, 14:12:28:010] info: [UNKNOWN-FETCH-MANAGER] (T0BDKC7PW) requesting _all_actions (1) 
+[10/07/20, 14:12:28:010] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.808 apps.actions.list called with reason: fetch-app-actions 
+[10/07/20, 14:12:28:010] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.808 apps.actions.list is ENQUEUED 
+[10/07/20, 14:12:28:010] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.808 apps.actions.list is ACTIVE 
+[10/07/20, 14:12:28:010] info: [PERSIST] Purged persisted models [] 
+[10/07/20, 14:12:28:010] info: [SOCKET-MANAGER] (T0BDKC7PW) Changing from prov_connecting to prov_connected 
+[10/07/20, 14:12:28:010] info: [SOCKET-MANAGER] (T0BDKC7PW) will stay in prov_connected state for up to 60000 ms 
+[10/07/20, 14:12:28:010] info: [SOCKET-MANAGER] (T0BDKC7PW) Changing from prov_connected to prov_finalize 
+[10/07/20, 14:12:28:010] info: [SOCKET-MANAGER] (T0BDKC7PW) will stay in prov_finalize state for up to 10000 ms 
+[10/07/20, 14:12:28:011] info: [SOCKET-MANAGER] (T0BDKC7PW) Changing from prov_finalize to prov_finalizing 
+[10/07/20, 14:12:28:011] info: [SOCKET-MANAGER] (T0BDKC7PW) will stay in prov_finalizing state for up to 10000 ms 
+[10/07/20, 14:12:28:011] info: [SOCKET-MANAGER] (T0BDKC7PW) Changing from prov_finalizing to connected 
+[10/07/20, 14:12:28:011] info: [SOCKET-MANAGER] (T0BDKC7PW) will stay in connected state for up to Infinity ms 
+[10/07/20, 14:12:28:011] info: [SOCKET-MANAGER] (T0BDKC7PW) Connected to primary region 
+[10/07/20, 14:12:28:011] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.849 users.customStatus.list called with reason: fetchCustomStatusOnReconnect 
+[10/07/20, 14:12:28:011] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.849 users.customStatus.list is ENQUEUED 
+[10/07/20, 14:12:28:011] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.849 users.customStatus.list is ACTIVE 
+[10/07/20, 14:12:28:011] info: [EVENTLOG] (T0BDKC7PW) fr=false, lc=false, lt=1602068885.799000 
+[10/07/20, 14:12:28:011] info: [EVENTLOG] (T0BDKC7PW) fetching events since 1602068885.799000 (262 seconds ago) 
+[10/07/20, 14:12:28:011] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.852 ublockworkaround.history called with reason: fetchEventLogHistoryImmediately 
+[10/07/20, 14:12:28:011] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.852 ublockworkaround.history is ENQUEUED 
+[10/07/20, 14:12:28:012] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.852 ublockworkaround.history is ACTIVE 
+[10/07/20, 14:12:28:012] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.853 ublockworkaround.history called with reason: fetchEventLogHistoryImmediately 
+[10/07/20, 14:12:28:012] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.853 ublockworkaround.history is ENQUEUED 
+[10/07/20, 14:12:28:012] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.853 ublockworkaround.history is ACTIVE 
+[10/07/20, 14:12:28:012] info: [MESSAGE-HISTORY] (T0BDKC7PW) Resetting reachedEnd 
+[10/07/20, 14:12:28:012] info: [PRESENCE_PROMPT] (T0BDKC7PW) ignoring prompt due to presence (active) 
+[10/07/20, 14:12:28:012] info: [UNREAD-COUNTS] (T0BDKC7PW) Fetching counts 
+[10/07/20, 14:12:28:012] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.865 client.counts called with reason: client-counts-api/fetchClientCounts 
+[10/07/20, 14:12:28:012] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.865 client.counts is ENQUEUED 
+[10/07/20, 14:12:28:012] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.865 client.counts is ACTIVE 
+[10/07/20, 14:12:28:012] info: [HISTORY-FETCH] (T0BDKC7PW) Fetching history for message pane: D019SSZPGCB oldest: 1602064856.022200 latest: null 
+[10/07/20, 14:12:28:012] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.932 conversations.history called with reason: message-pane/requestHistory 
+[10/07/20, 14:12:28:013] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.932 conversations.history is ENQUEUED 
+[10/07/20, 14:12:28:013] info: [CHECK-UNREADS] (T0BDKC7PW) unreadLineVisible updated: true -> false 
+[10/07/20, 14:12:28:016] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.696 calendar.getInstalledCalendars is RESOLVED 
+[10/07/20, 14:12:28:016] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.932 conversations.history is ACTIVE 
+[10/07/20, 14:12:28:017] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.705 team.whatsNew is RESOLVED 
+[10/07/20, 14:12:28:017] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.713 dnd.info is RESOLVED 
+[10/07/20, 14:12:28:017] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.717 dnd.teamInfo is RESOLVED 
+[10/07/20, 14:12:28:017] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.702 promo.banner is RESOLVED 
+[10/07/20, 14:12:28:017] info: [BOOT-QUEUE] T0BDKC7PW noversion-1602069146.568 experiments.getByUser is RESOLVED 
+[10/07/20, 14:12:28:018] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.808 apps.actions.list is RESOLVED 
+[10/07/20, 14:12:28:019] info: [MESSAGE-LIST] (T0BDKC7PW) componentWillReceiveProps isLoading: true isLoadingOlder: false timestamps: 81 
+[10/07/20, 14:12:28:038] info: [API-Q] (T0BDKC7PW) noversion-1602069148.037 Flannel users/search called with reason: flannel-call:users/search 
+[10/07/20, 14:12:28:039] info: [API-Q] (T0BDKC7PW) noversion-1602069148.037 Flannel users/search is ENQUEUED 
+[10/07/20, 14:12:28:039] info: [API-Q] (T0BDKC7PW) noversion-1602069148.037 Flannel users/search is ACTIVE 
+[10/07/20, 14:12:28:040] info: Store: UPSERT_WEB_CONTENTS {
+  "id": 1,
+  "type": "app",
+  "history": "[REDACTED]"
+} 
+[10/07/20, 14:12:28:040] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.852 ublockworkaround.history is RESOLVED 
+[10/07/20, 14:12:28:045] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.044 calendar.user.info called with reason: calendar-get-user-info 
+[10/07/20, 14:12:28:045] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.044 calendar.user.info is ENQUEUED 
+[10/07/20, 14:12:28:045] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.044 calendar.user.info is ACTIVE 
+[10/07/20, 14:12:28:046] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.853 ublockworkaround.history is RESOLVED 
+[10/07/20, 14:12:28:047] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.849 users.customStatus.list is RESOLVED 
+[10/07/20, 14:12:28:047] info: [DND] (T0BDKC7PW) Fetched DND info for the following member: U019YRFQBBN 
+[10/07/20, 14:12:28:048] info: [DND] (T0BDKC7PW) Checking for changes in DND status for the following members: U019YRFQBBN 
+[10/07/20, 14:12:28:049] info: [DND] (T0BDKC7PW) Will check for changes in DND status again in 5 minutes 
+[10/07/20, 14:12:28:050] info: [DND] (T0BDKC7PW) Fetched DND info for the following members: UL2B4U82U,UUEPPJUF7,UFJ2CBK4Y,UL8GM39PE,U010YB97W06,U0185FA2FS6,U0BDRTPC1 
+[10/07/20, 14:12:28:051] info: [DND] (T0BDKC7PW) Checking for changes in DND status for the following members: U019YRFQBBN,UL2B4U82U,UUEPPJUF7,UFJ2CBK4Y,UL8GM39PE,U010YB97W06,U0185FA2FS6,U0BDRTPC1 
+[10/07/20, 14:12:28:056] info: [DND] (T0BDKC7PW) Will check for changes in DND status again in 5 minutes 
+[10/07/20, 14:12:28:062] info: [UNKNOWN-FETCH-MANAGER] (T0BDKC7PW) received _all_actions (1) 
+[10/07/20, 14:12:28:064] info: [EVENTLOG] (T0BDKC7PW) nothing to process 
+[10/07/20, 14:12:28:064] info: [EVENTLOG] (T0BDKC7PW) nothing to process 
+[10/07/20, 14:12:28:064] info: [EVENTLOG] (T0BDKC7PW) fetched finish (cancelled? false) 
+[10/07/20, 14:12:28:064] info: [EVENTLOG] (T0BDKC7PW) dispatching signal and clearing timestamp 
+[10/07/20, 14:12:28:139] info: [PERSIST] (T0BDKC7PW) Successfully persisted state 
+[10/07/20, 14:12:28:170] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.932 conversations.history is RESOLVED 
+[10/07/20, 14:12:28:176] info: [PLATFORM-CHANNEL-ACTI] (T0BDKC7PW) Not updating count for channel D019SSZPGCB, as count was already set to 0 
+[10/07/20, 14:12:28:180] info: [UNREAD-COUNTS] (T0BDKC7PW) Counting unreads in D019SSZPGCB because (1) timestamps added 
+[10/07/20, 14:12:28:180] info: [UNREAD-COUNTS] (T0BDKC7PW) Checking unreads in D019SSZPGCB after a new message 
+[10/07/20, 14:12:28:180] info: [CHECK-UNREADS] (T0BDKC7PW) Not marking D019SSZPGCB because last_read >= latest && channel is read 
+[10/07/20, 14:12:28:194] info: [MESSAGE-LIST] (T0BDKC7PW) componentWillReceiveProps isLoading: false isLoadingOlder: false timestamps: 81 
+[10/07/20, 14:12:28:201] info: [CHECK-UNREADS] (T0BDKC7PW) unreadLineVisible updated: false -> true 
+[10/07/20, 14:12:28:236] info: [BOOT-QUEUE] T0BDKC7PW noversion-1602069148.235 lab.features called 
+[10/07/20, 14:12:28:236] info: [BOOT-QUEUE] T0BDKC7PW noversion-1602069148.235 lab.features is ENQUEUED 
+[10/07/20, 14:12:28:236] info: [BOOT-QUEUE] T0BDKC7PW noversion-1602069148.235 lab.features is ACTIVE 
+[10/07/20, 14:12:28:237] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.044 calendar.user.info is RESOLVED 
+[10/07/20, 14:12:28:238] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069147.865 client.counts is RESOLVED 
+[10/07/20, 14:12:28:330] info: [COUNTS] (T0BDKC7PW) Applying counts to channels 
+[10/07/20, 14:12:28:330] warn: COUNTS (T0BDKC7PW) Ignoring positive mention_count_display because has_unreads == false for GDB360WE9 {"subtype":"ignoring_positive_mention_count_display"} 
+[10/07/20, 14:12:28:330] warn: COUNTS (T0BDKC7PW) Ignoring positive mention_count_display because has_unreads == false for G011UCC2KU2 {"subtype":"ignoring_positive_mention_count_display"} 
+[10/07/20, 14:12:28:334] info: [COUNTS] (T0BDKC7PW) Recounted D019SSZPGCB; initial: {"unreadCnt":0,"unreadHighlightCnt":0}; after: {"unreadCnt":0,"unreadHighlightCnt":0} 
+[10/07/20, 14:12:28:335] info: [COUNTS] (T0BDKC7PW) Threads has_unreads:false mention_count:0 
+[10/07/20, 14:12:28:335] info: [COUNTS] (T0BDKC7PW) Completed counts processing 
+[10/07/20, 14:12:28:336] info: [API-Q] (T0BDKC7PW) noversion-1602069148.037 Flannel users/search is RESOLVED 
+[10/07/20, 14:12:28:339] info: [API-Q] (T0BDKC7PW) noversion-1602069148.338 Flannel users/info called with reason: flannel-call:users/info 
+[10/07/20, 14:12:28:339] info: [API-Q] (T0BDKC7PW) noversion-1602069148.338 Flannel users/info is ENQUEUED 
+[10/07/20, 14:12:28:340] info: [API-Q] (T0BDKC7PW) noversion-1602069148.338 Flannel users/info is ACTIVE 
+[10/07/20, 14:12:28:340] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.340 team.info called with reason: conditional-fetching 
+[10/07/20, 14:12:28:340] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.340 team.info is ENQUEUED 
+[10/07/20, 14:12:28:341] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.340 team.info is ACTIVE 
+[10/07/20, 14:12:28:341] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.341 help.issues.list called with reason: fetchAndUpsertHelpIssues 
+[10/07/20, 14:12:28:341] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.341 help.issues.list is ENQUEUED 
+[10/07/20, 14:12:28:342] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.341 help.issues.list is ACTIVE 
+[10/07/20, 14:12:28:412] info: [API-Q] (T0BDKC7PW) noversion-1602069148.412 Flannel channels/info called with reason: flannel-call:channels/info 
+[10/07/20, 14:12:28:413] info: [API-Q] (T0BDKC7PW) noversion-1602069148.412 Flannel channels/info is ENQUEUED 
+[10/07/20, 14:12:28:414] info: [API-Q] (T0BDKC7PW) noversion-1602069148.412 Flannel channels/info is ACTIVE 
+[10/07/20, 14:12:28:415] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.413 users.channelSections.list called with reason: conditional-fetch-manager 
+[10/07/20, 14:12:28:416] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.413 users.channelSections.list is ENQUEUED 
+[10/07/20, 14:12:28:417] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.413 users.channelSections.list is ACTIVE 
+[10/07/20, 14:12:28:418] info: [API-Q] (T0BDKC7PW) noversion-1602069148.417 Flannel users/counts called with reason: flannel-call:users/counts 
+[10/07/20, 14:12:28:419] info: [API-Q] (T0BDKC7PW) noversion-1602069148.417 Flannel users/counts is ENQUEUED 
+[10/07/20, 14:12:28:419] info: [API-Q] (T0BDKC7PW) noversion-1602069148.417 Flannel users/counts is ACTIVE 
+[10/07/20, 14:12:28:420] info: [HISTORY-CFM] (T0BDKC7PW) Re-fetching D019SSZPGCB 1602063850.009500 - 1602064839.021900 
+[10/07/20, 14:12:28:421] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.420 conversations.history called with reason: channel-history-store.CFM.fetch 
+[10/07/20, 14:12:28:421] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.420 conversations.history is ENQUEUED 
+[10/07/20, 14:12:28:422] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.420 conversations.history is ACTIVE 
+[10/07/20, 14:12:28:436] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.436 search.autocomplete.model called with reason: no_reason_provided 
+[10/07/20, 14:12:28:437] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.436 search.autocomplete.model is ENQUEUED 
+[10/07/20, 14:12:28:437] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.436 search.autocomplete.model is ACTIVE 
+[10/07/20, 14:12:28:438] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.438 search.autocomplete.offlineFeatures called with reason: no_reason_provided 
+[10/07/20, 14:12:28:439] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.438 search.autocomplete.offlineFeatures is ENQUEUED 
+[10/07/20, 14:12:28:439] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.438 search.autocomplete.offlineFeatures is ACTIVE 
+[10/07/20, 14:12:28:447] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.446 promo.banner called with reason: fetch-megaphone-notification-data 
+[10/07/20, 14:12:28:447] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.446 promo.banner is ENQUEUED 
+[10/07/20, 14:12:28:449] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.446 promo.banner is ACTIVE 
+[10/07/20, 14:12:28:449] info: [BOOT-QUEUE] T0BDKC7PW noversion-1602069148.235 lab.features is RESOLVED 
+[10/07/20, 14:12:28:451] info: [BOOT] (T0BDKC7PW) Dispatching boot data 
+[10/07/20, 14:12:28:492] info: [PLATFORM-CHANNEL-ACTI] (T0BDKC7PW) Not updating count for channel D019SSZPGCB, as count was already set to 0 
+[10/07/20, 14:12:28:494] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.494 commands.list called with reason: loadSlashCommands 
+[10/07/20, 14:12:28:495] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.494 commands.list is ENQUEUED 
+[10/07/20, 14:12:28:496] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.494 i18n.translations.get called with reason: no_reason_provided 
+[10/07/20, 14:12:28:497] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.494 i18n.translations.get is ENQUEUED 
+[10/07/20, 14:12:28:497] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.496 team.whatsNew called with reason: prefs/maybeSetLocaleSideEffect 
+[10/07/20, 14:12:28:497] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.496 team.whatsNew is ENQUEUED 
+[10/07/20, 14:12:28:498] info: [UNREAD-COUNTS] (T0BDKC7PW) Counting unreads in D019SSZPGCB because (28) timestamps added 
+[10/07/20, 14:12:28:498] info: [BOOT] (T0BDKC7PW) Boot complete 
+[10/07/20, 14:12:28:498] info: [DESKTOP-SIDE-EFFECT] (T0BDKC7PW) Reacting to  {"type":"[55] Set a value that represents whether we are currently in the boot phase","payload":false,"error":false} 
+[10/07/20, 14:12:28:545] info: [PERF] (T0BDKC7PW) Logged time to usable (TTU): 3196.2449999998626 
+[10/07/20, 14:12:28:689] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.340 team.info is RESOLVED 
+[10/07/20, 14:12:28:690] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.494 commands.list is ACTIVE 
+[10/07/20, 14:12:28:691] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.341 help.issues.list is RESOLVED 
+[10/07/20, 14:12:28:691] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.494 i18n.translations.get is ACTIVE 
+[10/07/20, 14:12:28:694] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.413 users.channelSections.list is RESOLVED 
+[10/07/20, 14:12:28:695] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.496 team.whatsNew is ACTIVE 
+[10/07/20, 14:12:28:700] info: [API-Q] (T0BDKC7PW) noversion-1602069148.338 Flannel users/info is RESOLVED 
+[10/07/20, 14:12:28:701] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.438 search.autocomplete.offlineFeatures is RESOLVED 
+[10/07/20, 14:12:28:702] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.436 search.autocomplete.model is RESOLVED 
+[10/07/20, 14:12:28:702] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.446 promo.banner is RESOLVED 
+[10/07/20, 14:12:28:703] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.420 conversations.history is RESOLVED 
+[10/07/20, 14:12:28:703] info: [API-Q] (T0BDKC7PW) noversion-1602069148.417 Flannel users/counts is RESOLVED 
+[10/07/20, 14:12:28:704] info: [CHECK-UNREADS] (T0BDKC7PW) Checking unreads after unread line became visible 
+[10/07/20, 14:12:28:704] info: [CHECK-UNREADS] (T0BDKC7PW) Not marking D019SSZPGCB because last_read >= latest && channel is read 
+[10/07/20, 14:12:28:705] info: [UNREAD-COUNTS] (T0BDKC7PW) Checking unreads in D019SSZPGCB after a new message 
+[10/07/20, 14:12:28:705] info: [CHECK-UNREADS] (T0BDKC7PW) Not marking D019SSZPGCB because last_read >= latest && channel is read 
+[10/07/20, 14:12:28:762] info: [PLATFORM-CHANNEL-ACTI] (T0BDKC7PW) Not updating count for channel D019SSZPGCB, as count was already set to 0 
+[10/07/20, 14:12:28:919] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.494 i18n.translations.get is RESOLVED 
+[10/07/20, 14:12:28:920] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.496 team.whatsNew is RESOLVED 
+[10/07/20, 14:12:28:920] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069148.494 commands.list is RESOLVED 
+[10/07/20, 14:12:29:042] info: [API-Q] (T0BDKC7PW) noversion-1602069148.412 Flannel channels/info is RESOLVED 
+[10/07/20, 14:12:29:043] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069149.043 experiments.setExposure called with reason: log-exposure 
+[10/07/20, 14:12:29:043] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069149.043 experiments.setExposure is ENQUEUED 
+[10/07/20, 14:12:29:044] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069149.043 experiments.setExposure is ACTIVE 
+[10/07/20, 14:12:29:046] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069149.046 conversations.genericInfo called with reason: fallback:fetchAndUpsertChannelsById 
+[10/07/20, 14:12:29:047] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069149.046 conversations.genericInfo is ENQUEUED 
+[10/07/20, 14:12:29:047] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069149.046 conversations.genericInfo is ACTIVE 
+[10/07/20, 14:12:29:172] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069149.043 experiments.setExposure is RESOLVED 
+[10/07/20, 14:12:29:319] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069149.046 conversations.genericInfo is RESOLVED 
+[10/07/20, 14:12:29:389] info: [API-Q] (T0BDKC7PW) noversion-1602069149.388 Flannel users/info called with reason: flannel-call:users/info 
+[10/07/20, 14:12:29:389] info: [API-Q] (T0BDKC7PW) noversion-1602069149.388 Flannel users/info is ENQUEUED 
+[10/07/20, 14:12:29:389] info: [API-Q] (T0BDKC7PW) noversion-1602069149.388 Flannel users/info is ACTIVE 
+[10/07/20, 14:12:29:424] info: [API-Q] (T0BDKC7PW) noversion-1602069149.388 Flannel users/info is RESOLVED 
+[10/07/20, 14:13:27:851] info: [CHECK-FOR-OLD-IMS] (T0BDKC7PW) Within limit: 11 
+[10/07/20, 14:13:33:516] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069213.514 channels.suggestions called with reason: channels-suggestions 
+[10/07/20, 14:13:33:516] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069213.514 channels.suggestions is ENQUEUED 
+[10/07/20, 14:13:33:517] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069213.514 channels.suggestions is ACTIVE 
+[10/07/20, 14:13:33:721] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069213.514 channels.suggestions is RESOLVED 
+[10/07/20, 14:13:39:054] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069219.052 client.counts called with reason: client-counts-api/fetchClientCounts 
+[10/07/20, 14:13:39:054] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069219.052 client.counts is ENQUEUED 
+[10/07/20, 14:13:39:054] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069219.052 client.counts is ACTIVE 
+[10/07/20, 14:13:39:211] info: [API-Q] (T0BDKC7PW) ee56fd8b-1602069219.052 client.counts is RESOLVED 
+[10/07/20, 14:13:39:221] info: [COUNTS] (T0BDKC7PW) Applying counts to channels 
+[10/07/20, 14:13:39:221] warn: COUNTS (T0BDKC7PW) Ignoring positive mention_count_display because has_unreads == false for GDB360WE9 {"subtype":"ignoring_positive_mention_count_display"} 
+[10/07/20, 14:13:39:222] warn: COUNTS (T0BDKC7PW) Ignoring positive mention_count_display because has_unreads == false for G011UCC2KU2 {"subtype":"ignoring_positive_mention_count_display"} 
+[10/07/20, 14:13:39:225] info: [COUNTS] (T0BDKC7PW) Recounted D019SSZPGCB; initial: {"unreadCnt":0,"unreadHighlightCnt":0}; after: {"unreadCnt":0,"unreadHighlightCnt":0} 
+[10/07/20, 14:13:39:226] info: [COUNTS] (T0BDKC7PW) Threads has_unreads:false mention_count:0 
+[10/07/20, 14:13:39:226] info: [COUNTS] (T0BDKC7PW) Completed counts processing 
+[10/07/20, 14:13:45:544] info: Store: SET_SYSTEM_IDLE idle_taskbar 
+[10/07/20, 14:13:45:564] info: [DESKTOP-SIDE-EFFECT] Update from desktop for keys  ["app"] 
+[10/07/20, 14:13:55:545] info: Store: SET_SYSTEM_IDLE active 
+[10/07/20, 14:13:55:547] info: [DESKTOP-SIDE-EFFECT] Update from desktop for keys  ["app"] 
+[10/07/20, 14:15:15:543] info: Store: SET_SYSTEM_IDLE idle_taskbar 
+[10/07/20, 14:15:15:546] info: [DESKTOP-SIDE-EFFECT] Update from desktop for keys  ["app"] 
+[10/07/20, 14:15:25:546] info: Store: SET_SYSTEM_IDLE active 
+[10/07/20, 14:15:25:549] info: [DESKTOP-SIDE-EFFECT] Update from desktop for keys  ["app"] 
+[10/07/20, 14:16:26:042] info: [RTM] (T0BDKC7PW) Processed 1 user_typing event(s) in 20.96 ms 
+[10/07/20, 14:17:28:080] info: [DND] (T0BDKC7PW) Checking for changes in DND status for the following members: U019YRFQBBN,UL2B4U82U,UUEPPJUF7,UFJ2CBK4Y,UL8GM39PE,U010YB97W06,U0185FA2FS6,U0BDRTPC1 
+[10/07/20, 14:17:28:081] info: [DND] (T0BDKC7PW) Will check for changes in DND status again in 5 minutes 

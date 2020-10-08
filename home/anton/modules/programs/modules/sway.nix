@@ -5,8 +5,17 @@ let
     ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" $FILE_PATH
     ${pkgs.wl-clipboard}/bin/wl-copy < $FILE_PATH
   '';
+
+  wofiWindowsSwitch = pkgs.writeShellScript "wofiWindowsSwitch" ''
+    windows=$(${pkgs.sway}/bin/swaymsg -t get_tree | ${pkgs.jq}/bin/jq -r 'recurse(.nodes[]?)|recurse(.floating_nodes[]?)|select(.type=="con"),select(.type=="floating_con")|(.id|tostring)+" "+.app_id+": "+.name')
+
+    selected=$(echo "$windows" | wofi --dmenu -i | awk '{print $1}')
+
+    # Tell sway to focus said window
+    ${pkgs.sway}/bin/swaymsg [con_id="$selected"] focus
+  '';
 in {
-  wayland.windowManager.sway = {
+  xsession.windowManager.sway = {
     enable = true;
 
     extraSessionCommands = ''
@@ -67,6 +76,7 @@ in {
         "${modifier}+Shift+c" = "kill";
         "${modifier}+Shift+r" = "reload";
         "${modifier}+Return" = "exec ${cfg.config.menu}";
+        "${modifier}+semicolon" = "exec ${wofiWindowsSwitch}";
         "Print" = "exec ${grabScreenshot}";
         "${modifier}+Insert" =
           "exec ${pkgs.clipman}/bin/clipman pick -t wofi";
@@ -96,6 +106,7 @@ in {
       assigns = {
         "1" = [{ app_id = "^firefox$"; }];
         "2" = [{ class = "^Emacs$"; }];
+        "9" = [{ class = "^Spotify$"; }];
 
         "im" = [ { app_id = "^telegramdesktop$"; } { class = "^Slack$"; } ];
       };

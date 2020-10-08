@@ -7,6 +7,8 @@
     inputs.nixos-hardware.nixosModules.common-cpu-intel
   ];
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   hardware.trackpoint.enable = true;
   hardware.trackpoint.emulateWheel = config.hardware.trackpoint.enable;
 

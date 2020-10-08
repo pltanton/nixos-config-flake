@@ -1,7 +1,7 @@
 { pkgs, ... }: {
 
   services.picom = {
-    enable = true;
+    enable = false;
     fade = true;
     fadeDelta = 3;
     shadow = true;

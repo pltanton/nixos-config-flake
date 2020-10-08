@@ -13,7 +13,7 @@
     udiskie.enable = false;
     pasystray.enable = false;
     blueman-applet.enable = true;
-    unclutter.enable = true;
+    unclutter.enable = false;
     gnome-keyring.enable = true;
     nextcloud-client.enable = false;
     mpd.enable = false;

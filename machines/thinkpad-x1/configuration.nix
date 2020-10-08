@@ -6,10 +6,14 @@
     ++ (builtins.map (name: ../../common-desktop + "/${name}")
       (builtins.attrNames (builtins.readDir ../../common-desktop)))
     ++ (builtins.map (name: ../../common-machines + "/${name}")
-      (builtins.attrNames (builtins.readDir ../../common-machines)))
-  ;
+      (builtins.attrNames (builtins.readDir ../../common-machines)));
 
   time.timeZone = "Europe/Moscow";
+
+  environment.sessionVariables = {
+    WLR_DRM_NO_ATOMIC = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";
+  };
 
   nixpkgs.overlays = [ (import ../../overlays/customPackages.nix) ];
 
