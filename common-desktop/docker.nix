@@ -1,9 +1,9 @@
 { pkgs, ... }: {
   virtualisation = {
-    docker.enable = true;
+    docker.enable = false;
 
     podman = {
-      enable = false;
+      enable = true;
       dockerCompat = true;
     };
 

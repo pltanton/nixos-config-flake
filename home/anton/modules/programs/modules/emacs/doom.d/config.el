@@ -7,7 +7,7 @@
 
 (setq doom-theme 'doom-one)
 
-(setq org-directory "~/nextcloud/orgmode/")
+(setq org-directory "~/Nextcloud/Org/")
 
 (setq display-line-numbers-type "relative")
 

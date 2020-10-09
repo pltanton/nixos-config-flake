@@ -15,58 +15,19 @@ let
     ${pkgs.sway}/bin/swaymsg [con_id="$selected"] focus
   '';
 in {
-  wayland.windowManager.sway = {
+  xsession.windowManager.i3 = {
     enable = true;
 
-    extraSessionCommands = ''
-      export SDL_VIDEODRIVER=wayland
-      export QT_QPA_PLATFORM=wayland
-      export CLUTTER_BACKEND=wayland
-      export _JAVA_AWT_WM_NONREPARENTING=1
-    '';
-
-    extraConfig = ''
-      exec ${pkgs.swayidle}/bin/swayidle -w \
-        timeout 300 'lock' \
-        timeout 315 '${pkgs.sway}/bin/swaymsg "output * dpms off"' \
-        resume '${pkgs.sway}/bin/swaymsg "output * dpms on"' \
-        after-resume '${pkgs.sway}/bin/swaymsg "output * dpms on"' \
-        before-sleep 'lock'
-
-      workspace 1 output DP-1
-      workspace 2 output DP-1
-      workspace 3 output DP-1
-
-      workspace "im" output eDP-1
-    '';
-
     config = let
-      copyCommand = with pkgs; "${grip} -g ";
-      modifier = config.wayland.windowManager.sway.config.modifier;
-      cfg = config.wayland.windowManager.sway;
-    in {
-      bars = [
-        {
-          command = "${pkgs.waybar}/bin/waybar";
-        }
-      ];
-      terminal = "${pkgs.alacritty}/bin/alacritty";
-      menu = "${pkgs.wofi}/bin/wofi --show drun";
-      workspaceAutoBackAndForth = true;
-
       modifier = "Mod4";
+    in {
+      bars = [ ];
+      workspaceAutoBackAndForth = true;
+      modifier = modifier;
 
       startup = [
         {
           command = "${pkgs.wl-clipboard}/bin/wl-paste -t text --watch ${pkgs.clipman}/bin/clipman store";
-        }
-        {
-          command = "systemctl --user restart waybar";
-          always = true;
-        }
-        {
-          command = "systemctl --user restart kanshi";
-          always = true;
         }
         { command = "firefox"; }
         { command = "emacs"; }
@@ -75,10 +36,10 @@ in {
       ];
 
       keybindings = lib.mkOptionDefault {
-        "${modifier}+Shift+Return" = "exec ${cfg.config.terminal}";
+        "${modifier}+Shift+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
         "${modifier}+Shift+c" = "kill";
         "${modifier}+Shift+r" = "reload";
-        "${modifier}+Return" = "exec ${cfg.config.menu}";
+        "${modifier}+Return" = "exec ${pkgs.wofi}/bin/rofi -show drun";
         "${modifier}+semicolon" = "exec ${wofiWindowsSwitch}";
         "Print" = "exec ${grabScreenshot}";
         "${modifier}+Insert" =
@@ -104,32 +65,30 @@ in {
         "${modifier}+apostrophe" = "focus output right";
       };
 
-      keycodebindings = lib.mkOptionDefault { };
-
       assigns = {
-        "1" = [{ app_id = "^firefox$"; }];
+        "1" = [{ class = "^firefox$"; }];
         "2" = [{ class = "^Emacs$"; }];
         "9" = [{ class = "^Spotify$"; }];
 
-        "im" = [ { app_id = "^telegramdesktop$"; } { class = "^Slack$"; } ];
+        "im" = [ { class = "^telegramdesktop$"; } { class = "^Slack$"; } ];
       };
 
       window = {
         commands = [
           {
-            criteria = { app_id = "^telegramdesktop$"; };
+            criteria = { class = "^telegramdesktop$"; };
             command = "resize set width 1 ppt";
           }
           {
             criteria = {
-              app_id = "^telegramdesktop$";
+              class = "^telegramdesktop$";
               title = "^Media viewer$";
             };
             command = "floating enable";
           }
           {
             criteria = {
-              app_id = "^telegramdesktop$";
+              class = "^telegramdesktop$";
               title = "Choose";
             };
             command = "resize set 1100 700";
@@ -146,33 +105,6 @@ in {
         smartGaps = false;
         smartBorders = "on";
       };
-
-      output = { "*" = { bg = "${../../../backgrounds/tree.jpg} fill"; }; };
-
-      input = {
-        "1:1:AT_Translated_Set_2_keyboard" = {
-          xkb_layout = "us,ru";
-          xkb_variant = "dvorak,";
-          xkb_options = "grp:caps_toggle";
-        };
-
-        "51984:16982:Keebio_Keebio_Iris_Rev._4" = {
-          xkb_layout = "us,ru";
-          xkb_variant = ",";
-          xkb_options = "grp:caps_toggle";
-        };
-      };
     };
-  };
-
-  programs.mako = with config.lib.base16.theme; {
-    enable = true;
-    font = "${fontUIName} ${fontUISize}";
-    backgroundColor = "#${base01-hex}D9";
-    borderColor = "#${base01-hex}";
-    textColor = "#${base05-hex}";
-    groupBy = "app-name";
-    width = 500;
-    height = 800;
   };
 }

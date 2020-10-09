@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   xsession = {
-    enable = false;
+    enable = true;
     preferStatusNotifierItems = true;
     pointerCursor = {
       package = pkgs.paper-icon-theme;
@@ -10,7 +10,7 @@
 
 
     windowManager.awesome = { enable = false; };
-    windowManager.command = "startxfce4";
+    # windowManager.command = "startxfce4";
     windowManager.xmonad = {
       enable = false;
       extraPackages = haskellPackages:

@@ -1,12 +1,7 @@
 { pkgs, ... }: {
-  programs = {
-    sway.enable = true;
-    waybar.enable = false;
-  };
-
   services = {
-    autorandr.enable = true;
-    pcscd.enable = true;
+    autorandr.enable = false;
+    pcscd.enable = false;
     upower.enable = true;
   };
 }

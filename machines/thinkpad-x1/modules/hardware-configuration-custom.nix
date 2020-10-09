@@ -12,7 +12,10 @@
   hardware.trackpoint.enable = true;
   hardware.trackpoint.emulateWheel = config.hardware.trackpoint.enable;
 
+  hardware.opengl.enable = true;
+
   services.xserver.videoDrivers = [ "intel" ];
 
-  boot.kernelModules = [ "e1000e" ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+  boot.kernelModules = [ "v4l2loopback" ];
 }

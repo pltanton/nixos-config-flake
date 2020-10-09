@@ -22,6 +22,8 @@ in {
     wdisplays
     wl-clipboard
 
+    arandr
+
     ffmpegthumbnailer
     libnotify
     networkmanagerapplet
@@ -77,6 +79,7 @@ in {
     evince
     gnome3.eog
     gnome3.geary
+    mailspring
     gthumb
     gimp
     mpv

@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   services.xserver = {
-    enable = true;
+    enable = false;
 
     wacom.enable = true;
 
@@ -16,6 +16,7 @@
     desktopManager.xfce = {
       enable = false;
     };
+    desktopManager.xterm.enable = true;
 
     config = pkgs.lib.mkOverride 50 ''
       Section "Device"

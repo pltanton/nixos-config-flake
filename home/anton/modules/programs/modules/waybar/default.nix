@@ -3,7 +3,7 @@
 
   programs.waybar = {
     enable = true;
-    systemd.enable = true;
+    systemd.enable = false;
     settings = [{
       layer = "top";
       position = "top";
@@ -55,12 +55,6 @@
           };
           format = "{capacity}% {icon}";
           format-icons = [ "" "" "" "" "" ];
-        };
-        network = {
-          format-wifi = "{essid} ({signalStrength}%) ";
-          format-ethernet = "{ifname}= {ipaddr}/{cidr} ";
-          format-disconnected = "Disconnected ⚠";
-          interval = 5;
         };
         pulseaudio = {
           format = "{volume}% {icon}";
