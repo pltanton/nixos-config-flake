@@ -20,7 +20,7 @@ in {
         redis = true;
         memcached = false;
       };
-      package = pkgs.nextcloud19;
+      package = pkgs.nextcloud20;
       enable = true;
       config = {
         adminpass = "adminpass";

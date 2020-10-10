@@ -113,7 +113,7 @@ let
 
     #pulseaudio {
         background: #${base0A-hex};
-        color: #${base04-hex};
+        color: #${base00-hex};
     }
 
     #pulseaudio.muted {
