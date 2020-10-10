@@ -18,6 +18,38 @@
         "type": "github"
       }
     },
+    "cachix": {
+      "locked": {
+        "lastModified": 1599903709,
+        "narHash": "sha256-tinVKY7zRdSXmVOp7BAulNtIb2iP5nvNp5UAxihKXNI=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "252bfe0107587d40092057f338e9ffcf7bbd90cb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-20.03",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "cmpkgs": {
+      "locked": {
+        "lastModified": 1601260294,
+        "narHash": "sha256-+IB5tg+rdPTG5+XkxHDlGm5NPg87Lb07hDD6ZUBKlSo=",
+        "owner": "colemickens",
+        "repo": "nixpkgs",
+        "rev": "45417ed2d3e5ca1214d3ac45b149e06b68f6284d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "colemickens",
+        "ref": "cmpkgs",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": "nixpkgs_2"
@@ -119,6 +151,26 @@
         "type": "indirect"
       }
     },
+    "nixpkgs-wayland": {
+      "inputs": {
+        "cachix": "cachix",
+        "cmpkgs": "cmpkgs",
+        "nixpkgs": "nixpkgs_5"
+      },
+      "locked": {
+        "lastModified": 1602223429,
+        "narHash": "sha256-SYHBtYqhebci3RfyJc6uGrRw7qg/SUgZvI0l86SQA2s=",
+        "owner": "colemickens",
+        "repo": "nixpkgs-wayland",
+        "rev": "11b19b046380e75b20a31874ef6eed8332e5d4d5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "colemickens",
+        "repo": "nixpkgs-wayland",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1600409567,
@@ -166,6 +218,22 @@
     },
     "nixpkgs_5": {
       "locked": {
+        "lastModified": 1602066138,
+        "narHash": "sha256-aV0PWKhVYQNLQuFW2qfBXa3JWmPPKSHFJ65ac83JMzE=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "420f89ceb267b461eed5d025b6c3c0e57703cc5c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_6": {
+      "locked": {
         "lastModified": 1599510591,
         "narHash": "sha256-rx6LLVncYqChBVVNopRY7tn59aP4qPqNjsAxt2X6/L8=",
         "owner": "nixos",
@@ -182,7 +250,7 @@
     },
     "quizanus": {
       "inputs": {
-        "nixpkgs": "nixpkgs_5"
+        "nixpkgs": "nixpkgs_6"
       },
       "locked": {
         "lastModified": 1600144335,
@@ -206,6 +274,7 @@
         "nixDoomEmacs": "nixDoomEmacs",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
+        "nixpkgs-wayland": "nixpkgs-wayland",
         "quizanus": "quizanus",
         "swaylock-effects": "swaylock-effects"
       }

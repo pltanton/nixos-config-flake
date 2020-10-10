@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   services.openssh = {
-    permitRootLogin = "yes";
+    permitRootLogin = "no";
     enable = true;
     forwardX11 = true;
   };

@@ -51,7 +51,8 @@ let
         border-bottom: 3px solid #${base05-hex};
     }
 
-    #clock, #battery, #cpu, #memory, #temperature, #backlight, #network, #pulseaudio, #custom-media, #tray, #mode, #idle_inhibitor  {
+    #clock, #battery, #cpu, #memory, #temperature, #backlight, #network,
+    #pulseaudio, #custom-media, #tray, #mode, #idle_inhibitor, #custom-spotify  {
         padding: 0 10px;
         margin: 0 3px;
         background-clip: border-box;
@@ -64,11 +65,11 @@ let
 
     #battery {
         background-color: #${base0D-hex};
-        color: #${base04-hex};
+        color: #${base00-hex};
     }
 
     #battery.charging {
-        color: #${base0B-hex};
+        color: #${base00-hex};
         background-color: #26A65B;
     }
 
@@ -136,6 +137,11 @@ let
     #idle_inhibitor.activated {
         background-color: #${base06-hex};
         color: #${base04-hex};
+    }
+
+    #custom-spotify {
+        color: #${base00-hex};
+        background-color: #1DB954;
     }
   '';
 in { programs.waybar.style = css; }

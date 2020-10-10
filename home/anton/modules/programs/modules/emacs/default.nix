@@ -6,7 +6,7 @@ in {
   #home.packages = [ doom-emacs ];
 
   home.packages = with pkgs; [
-    emacs
+    waylandPkgs.emacs-pgtk
 
     ripgrep
     fd

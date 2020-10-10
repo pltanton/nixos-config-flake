@@ -1,9 +1,12 @@
-{ pkgs, config, lib, ... }: {
+{ pkgs, config, lib, ... }@input:
+let scripts = import ./scripts input;
+in {
   imports = [ ./style.nix ];
 
   programs.waybar = {
+    package = pkgs.waylandPkgs.waybar;
     enable = true;
-    systemd.enable = false;
+    systemd.enable = true;
     settings = [{
       layer = "top";
       position = "top";
@@ -11,7 +14,7 @@
       modules-left = [ "sway/workspaces" "sway/mode" ];
       modules-center = [ "sway/window" ];
       modules-right =
-        [ "tray" "pulseaudio" "battery" "clock" "idle_inhibitor" ];
+        [ "custom/spotify" "tray" "pulseaudio" "battery" "clock" "idle_inhibitor" ];
       modules = {
         idle_inhibitor = {
           format = "{icon}";
@@ -70,6 +73,13 @@
             default = [ "" "" ];
           };
           on-click = "pavucontrol";
+        };
+        "custom/spotify" = {
+          format = " {}";
+          max-length = 40;
+          interval = 1;
+          exec = "${scripts.mediaplayer} 2> /dev/null";
+          exec-if = "pgrep spotify";
         };
       };
     }];

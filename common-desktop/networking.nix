@@ -4,7 +4,5 @@
     hostName = "nixos";
     hosts = { };
     networkmanager.enable = true;
-    firewall.allowedTCPPorts = [ 22 8888 ];
-    firewall.enable = false;
   };
 }
