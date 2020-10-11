@@ -6,18 +6,25 @@
 {
   hardware.enableRedistributableFirmware = true;
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  boot.initrd.luks.devices = {
+    cryptlvm = {
+      device = "/dev/disk/by-uuid/9fc840a3-e519-4e42-bfb6-472f13e5d59d";
+      preLVM = true;
+    };
+  };
+
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/86e58cde-d0ab-4bf9-a3bc-6085df4615d1";
+    { device = "/dev/disk/by-uuid/97b2df92-f152-40cf-9571-4794ffffa849";
       fsType = "btrfs";
     };
 
   fileSystems."/home" =
-    { device = "/dev/mapper/vg00-lv_home";
+    { device = "/dev/disk/by-uuid/1262296b-5892-4a23-87e6-f8398bc252e6";
       fsType = "btrfs";
     };
 
@@ -27,7 +34,7 @@
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/b63ecd60-a3b1-43be-bf38-535f9c150a05"; }
+    [ { device = "/dev/disk/by-uuid/3f252e53-7657-42aa-9e6b-1b7407d3087b"; }
     ];
 
   nix.maxJobs = lib.mkDefault 8;
