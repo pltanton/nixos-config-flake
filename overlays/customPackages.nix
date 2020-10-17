@@ -20,5 +20,19 @@ self: super:
       [ super.pythonPackages.pillow ];
   });
 
+  # fido2luks = import ./pkgs/fido2luks.nix super;
+
+  # fido2luks-fresh = super.fido2luks.overrideAttrs (old: {
+  #   version = "0.2.14";
+  #   src = super.fetchFromGitHub {
+  #     owner = "shimunn";
+  #     repo = super.fido2luks.pname;
+  #     rev = "0.2.14";
+  #     sha256 = "sha256-AKmMWO0u+en8t9Gc2NsHz5JMYA5HWlNVUlJjphkCZcA=";
+  #   };
+
+  #   cargoSha256 = "sha256-tK/Rc02QWq61Q+6kTPqYWlxfIlG6+kIjp1LTIp/7N88=";
+  # });
+
   sublime-music = super.callPackage ./pkgs/sublime-music.nix {};
 }

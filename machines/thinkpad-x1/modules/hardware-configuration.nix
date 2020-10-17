@@ -6,25 +6,30 @@
 {
   hardware.enableRedistributableFirmware = true;
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules =
+    [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  boot.initrd.luks.devices = {
-    cryptlvm = {
-      device = "/dev/disk/by-uuid/9fc840a3-e519-4e42-bfb6-472f13e5d59d";
-      preLVM = true;
+  boot.initrd.luks = {
+    fido2Support = true;
+    devices = {
+      cryptlvm = {
+        device = "/dev/disk/by-uuid/f7bc178e-d0b6-4834-b70d-4ef806ebcb85";
+        preLVM = true;
+        fido2 = {
+          credential = "ff36a96f08cb13015ab38162fcd11276b8154ac3454c2d1d198cec3d2e9eb1f888c652dae2262619c1da2be7562ec9dd94888c71a9326fea70dfe16214b5ea8ec01463080000";
+          gracePeriod = 15;
+          passwordLess = true;
+        };
+      };
     };
   };
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/97b2df92-f152-40cf-9571-4794ffffa849";
-      fsType = "btrfs";
-    };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/1262296b-5892-4a23-87e6-f8398bc252e6";
+  fileSystems."/" =
+    { device = "/dev/mapper/vg0-lv--root";
       fsType = "btrfs";
     };
 
@@ -33,12 +38,18 @@
       fsType = "vfat";
     };
 
+  fileSystems."/home" =
+    { device = "/dev/mapper/vg0-lv--home";
+      fsType = "btrfs";
+    };
+
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/3f252e53-7657-42aa-9e6b-1b7407d3087b"; }
+    [ { device = "/dev/mapper/vg0-lv--swap"; }
     ];
 
   nix.maxJobs = lib.mkDefault 8;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   # High-DPI console
-  console.font = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
+  console.font =
+    lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 }

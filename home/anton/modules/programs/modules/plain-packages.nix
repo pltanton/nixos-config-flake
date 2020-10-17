@@ -19,8 +19,8 @@ in {
     ###################
     # Packages for DE #
     ###################
-    wdisplays
-    wl-clipboard
+    waylandPkgs.wdisplays
+    waylandPkgs.wf-recorder
 
     arandr
 
@@ -49,6 +49,7 @@ in {
     # User apps #
     #############
     # CLI utils
+    fido2luks
     nix-prefetch-github
 
     httpie
@@ -113,6 +114,9 @@ in {
     adoptopenjdk-bin
     #jetbrains.idea-community
     jetbrains.idea-ultimate
+    mongodb
+    mongodb-compass
+    robo3t
     dbeaver
     go
     gopls

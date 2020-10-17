@@ -31,6 +31,7 @@
           "lp"
           "scanner"
           "vboxusers"
+          "kvm"
         ];
       };
     };

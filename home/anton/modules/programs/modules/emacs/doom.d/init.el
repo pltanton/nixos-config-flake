@@ -110,6 +110,7 @@
        python            ; beautiful is better than ugly
        sh                ; she sells {ba,z,fi}sh shells on the C xor
        (yaml +lsp)         ; JSON, but readable
+       data
 
        :email
        ;;(mu4e +gmail)

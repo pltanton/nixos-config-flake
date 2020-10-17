@@ -1,4 +1,5 @@
 { pkgs, ... }: {
+  gtk.iconCache.enable = true;
   services.xserver = {
     enable = false;
 
@@ -33,5 +34,7 @@
       EndSection
     '';
   };
+
+  programs.sway.enable = false;
 
 }

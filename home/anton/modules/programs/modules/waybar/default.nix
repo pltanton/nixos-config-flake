@@ -3,7 +3,7 @@ let scripts = import ./scripts input;
 in {
   imports = [ ./style.nix ];
 
-  programs.waybar = {
+  programs.waybar = with config.lib.base16.theme; {
     package = pkgs.waylandPkgs.waybar;
     enable = true;
     systemd.enable = true;
