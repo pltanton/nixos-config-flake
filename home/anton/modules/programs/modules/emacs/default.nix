@@ -1,12 +1,16 @@
-{ pkgs, config, inputs, ... }:
+{ pkgs, config, ... }:
 
-let
-  doom-emacs = pkgs.callPackage inputs.nixDoomEmacs { doomPrivateDir = ./doom.d; };
-in {
-  #home.packages = [ doom-emacs ];
+{
+  # imports = [ inputs.nix-doom-emacs.hmModule ];
+  # programs.doom-emacs = {
+  #   enable = false;
+  #   package = pkgs.waylandPkgs.emacs-pgtk;
+  #   doomPrivateDir = ./doom.d;
+  # };
 
   home.packages = with pkgs; [
     waylandPkgs.emacs-pgtk
+    # nur.repos.metadark.emacs-pgtk-nativecomp
 
     ripgrep
     fd
@@ -29,8 +33,4 @@ in {
 
     pipenv
   ];
-
-  #home.file.".emacs.d/init.el".text = ''
-  #  (load "default.el")
-  #'';
 }

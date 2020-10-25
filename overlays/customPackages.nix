@@ -20,6 +20,10 @@ self: super:
       [ super.pythonPackages.pillow ];
   });
 
+  howdy = super.callPackage ./pkgs/howdy {};
+  ir-toggle = super.callPackage ./pkgs/ir-toggle {};
+  pam-python = super.callPackage ./pkgs/pam-python.nix {};
+
   # fido2luks = import ./pkgs/fido2luks.nix super;
 
   # fido2luks-fresh = super.fido2luks.overrideAttrs (old: {

@@ -79,8 +79,6 @@ in {
     rapid-photo-downloader
     evince
     gnome3.eog
-    gnome3.geary
-    mailspring
     gthumb
     gimp
     mpv
@@ -90,6 +88,7 @@ in {
     slack
     spotify
     #steam
+    thunderbird
     bitwarden
     sidequest
     scrcpy
@@ -99,11 +98,13 @@ in {
     # Web
     chromium
     qutebrowser
+    # nur.repos.sikmir.qutebrowser-bin
 
     # LaTeX
     (texlive.combine { inherit (texlive) scheme-medium titlesec; })
 
     # Dev
+    docker-compose
     clang-tools
     gradle2nix
     morph

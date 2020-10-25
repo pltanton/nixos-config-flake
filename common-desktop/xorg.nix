@@ -17,24 +17,24 @@
     desktopManager.xfce = {
       enable = false;
     };
-    desktopManager.xterm.enable = true;
+  #   desktopManager.xterm.enable = true;
 
-    config = pkgs.lib.mkOverride 50 ''
-      Section "Device"
-          Identifier  "Intel Graphics"
-          Driver      "intel"
-          Option      "AccelMethod" "sna"
-          Option      "TearFree" "true"
-      EndSection
+  #   config = pkgs.lib.mkOverride 50 ''
+  #     Section "Device"
+  #         Identifier  "Intel Graphics"
+  #         Driver      "intel"
+  #         Option      "AccelMethod" "sna"
+  #         Option      "TearFree" "true"
+  #     EndSection
 
-      Section "Device"
-          Identifier  "Intel Graphics"
-          Driver      "intel"
-          Option      "Backlight"  "intel_backlight"
-      EndSection
-    '';
+  #     Section "Device"
+  #         Identifier  "Intel Graphics"
+  #         Driver      "intel"
+  #         Option      "Backlight"  "intel_backlight"
+  #     EndSection
+  #   '';
   };
 
-  programs.sway.enable = false;
+  programs.sway.enable = true;
 
 }

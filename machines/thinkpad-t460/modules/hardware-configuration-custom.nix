@@ -23,6 +23,12 @@
     umount.source = "${pkgs.utillinux}/bin/umount";
   };
 
+  fileSystems."/mnt/hass" = {
+    device = "10.100.0.1:/var/lib/hass";
+    fsType = "nfs";
+    options = ["rw,defaults,noauto"];
+  };
+
   fileSystems."/mnt/home-nfs-archive" = {
     device = "10.100.0.1:/media/archive/archive";
     fsType = "nfs";

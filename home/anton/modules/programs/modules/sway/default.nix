@@ -1,5 +1,6 @@
 { pkgs, config, lib, inputs, ... }@input:
-let swayPackage = pkgs.waylandPkgs.sway-unwrapped;
+# let swayPackage = pkgs.waylandPkgs.sway-unwrapped;
+let swayPackage = pkgs.sway;
 in with config.lib.base16.theme; {
 
   imports = [ ./keybinds.nix ];
@@ -62,7 +63,7 @@ in with config.lib.base16.theme; {
 
       terminal = "${pkgs.alacritty}/bin/alacritty";
 
-      menu = "wofi --show drun";
+      menu = "wofi -I --show drun";
 
       workspaceAutoBackAndForth = true;
 
@@ -70,24 +71,36 @@ in with config.lib.base16.theme; {
         focused = {
           background = "#${base00-hex}";
           text = "#${base05-hex}";
-          border = "#${base00-hex}";
-          childBorder = "#285577";
-          indicator = "#${base00-hex}";
+          border = "#${base0C-hex}";
+          childBorder = "#${base0D-hex}";
+          indicator = "#${base0F-hex}";
         };
         focusedInactive = {
           background = "#${base00-hex}";
           text = "#${base05-hex}";
+          border = "#${base03-hex}";
+          childBorder = "#${base04-hex}";
+          indicator = "#${base05-hex}";
+        };
+        unfocused = {
+          background = "#${base00-hex}";
+          text = "#${base05-hex}";
           border = "#${base00-hex}";
-          childBorder = "#285577";
-          indicator = "#2e9ef4";
+          childBorder = "#${base01-hex}";
+          indicator = "#${base03-hex}";
         };
       };
 
       startup = [
         { command = "wl-paste -t text --watch clipman store"; }
+        { command = "wl-paste -p -t text --watch clipman store -P --histpath='~/.local/share/clipman-primary.json'"; }
         {
           command =
             "systemctl --user restart network-manager-applet blueman-applet udiskie";
+          always = true;
+        }
+        {
+          command = "systemctl --user restart waybar";
           always = true;
         }
         {
@@ -101,8 +114,8 @@ in with config.lib.base16.theme; {
       ];
 
       assigns = {
-        "1" = [{ app_id = "^firefox$"; }];
-        "2" = [{ app_id = "^emacs$"; }];
+        "1" = [ { app_id = "^firefox$"; } { class = "^Firefox$"; }];
+        "2" = [ { app_id = "^emacs$"; } { class = "^Emacs$"; } ];
         "9" = [{ class = "^Spotify$"; }];
 
         "im" = [ { app_id = "^telegramdesktop$"; } { class = "^Slack$"; } ];

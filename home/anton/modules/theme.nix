@@ -6,7 +6,7 @@ let
     fontUIName = "Inter";
     fontUISize = "16";
     # iconTheme = "Qogir-dark";
-    iconTheme = "Paper";
+    iconTheme = "Paper-Mono-Dark";
     gtkTheme = "Qogir-dark";
     cursorTheme = "Qogir";
   };

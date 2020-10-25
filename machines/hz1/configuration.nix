@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 {
   system.stateVersion = "20.09";
   imports = builtins.map (name: ./modules + "/${name}")
@@ -30,6 +30,8 @@
   security.acme.acceptTerms = true;
 
   nixpkgs.config.allowUnfree = true;
+
+  nixpkgs.overlays = [ inputs.quizanus.overlay ];
 
   users.extraUsers.proxyuser = {
     isSystemUser = true;
