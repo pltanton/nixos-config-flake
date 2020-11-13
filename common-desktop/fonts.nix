@@ -1,7 +1,7 @@
 { pkgs, config, ... }: {
   fonts = {
     enableDefaultFonts = true;
-    fontDir.enable = true;
+    # fontDir.enable = true;
     enableGhostscriptFonts = true;
     fonts = with pkgs; [
       terminus_font

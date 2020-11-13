@@ -2,7 +2,8 @@
 
   programs.firefox = {
     enable = true;
-    # package = pkgs.firefox-wayland;
+    package = pkgs.firefox-wayland;
+    enableAdobeFlash = true;
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
       sidebery
       bitwarden

@@ -7,8 +7,7 @@
       config = {
         "General" = {
           "AutoConnect" = true;
-          "Enable" = "Source,Sink,Media,Control,Gateway,Socket,Headset";
-          "MultiProfile" = "multiple";
+          "Enable" = "Source,Sink,Media,Socket";
         };
       };
     };

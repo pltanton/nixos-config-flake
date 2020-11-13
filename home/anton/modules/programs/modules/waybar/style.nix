@@ -39,7 +39,7 @@ let
 
     #workspaces button.focused {
         background: #${base00-hex};
-        border-bottom: 3px solid #${base05-hex};
+        border-bottom: 3px solid #${base0D-hex};
     }
 
     #workspaces button.urgent {

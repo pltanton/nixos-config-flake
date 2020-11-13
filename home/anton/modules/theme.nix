@@ -5,10 +5,10 @@ let
     fontConsoleSize = "19";
     fontUIName = "Inter";
     fontUISize = "16";
-    # iconTheme = "Qogir-dark";
-    iconTheme = "Paper-Mono-Dark";
+    iconTheme = "Qogir-dark";
+    # iconTheme = "Papirus";
     gtkTheme = "Qogir-dark";
-    cursorTheme = "Qogir";
+    cursorTheme = "Qogir-dark";
   };
 in {
   home.packages = [ pkgs.qogir-icon-theme ];
@@ -26,8 +26,8 @@ in {
       name = themeConsts.gtkTheme;
     };
     iconTheme = {
-      # package = pkgs.qogir-icon-theme;
-      package = pkgs.paper-icon-theme;
+      package = pkgs.qogir-icon-theme;
+      # package = pkgs.papirus-icon-theme;
       name = themeConsts.iconTheme;
     };
     gtk3.extraConfig.gtk-cursor-theme-name = themeConsts.cursorTheme;
@@ -38,14 +38,14 @@ in {
     platformTheme = "gtk";
   };
 
-  home.file.".icons/default/index.theme".text = ''
-    [icon theme]
-    Inherits=${themeConsts.cursorTheme}
-  '';
+  # home.file.".icons/default/index.theme".text = ''
+  #   [icon theme]
+  #   Inherits=${themeConsts.cursorTheme}
+  # '';
 
   xsession.pointerCursor = {
     package = pkgs.qogir-icon-theme;
-    name = "Qogir";
+    name = themeConsts.cursorTheme;
     size = 32;
   };
 }

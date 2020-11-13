@@ -6,8 +6,5 @@
       enable = false;
       dockerCompat = true;
     };
-
-    #virtualbox.host.enable = true;
-    #virtualbox.host.enableExtensionPack = true;
   };
 }

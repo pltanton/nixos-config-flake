@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 let
   gradle2nix = import (fetchTarball {
     url = "https://github.com/tadfisher/gradle2nix/archive/master.tar.gz";
@@ -19,7 +19,7 @@ in {
     ###################
     # Packages for DE #
     ###################
-    waylandPkgs.wdisplays
+    pkgs.wdisplays
     waylandPkgs.wf-recorder
 
     arandr
@@ -52,11 +52,13 @@ in {
     fido2luks
     nix-prefetch-github
 
+    ffmpeg
     httpie
     ansible
     dnsutils
     jq
     bitwarden-cli
+    bitwarden-rofi
     htop
     inetutils
     killall
@@ -68,18 +70,20 @@ in {
     wget
     tree
 
+    filezilla
+
     # GUI
+    libreoffice
     audacity
     xournalpp
     discord
     zoom-us
     transmission-remote-gtk
     transmission-gtk
-    (lowPrio kdenlive)
     rapid-photo-downloader
     evince
-    gnome3.eog
     gthumb
+    gnome-photos
     gimp
     mpv
     tdesktop
@@ -93,7 +97,7 @@ in {
     sidequest
     scrcpy
     darktable
-    tigervnc
+    # tigervnc
 
     # Web
     chromium
@@ -106,7 +110,7 @@ in {
     # Dev
     docker-compose
     clang-tools
-    gradle2nix
+    # gradle2nix
     morph
     nodejs
     insomnia
@@ -119,8 +123,12 @@ in {
     mongodb-compass
     robo3t
     dbeaver
+    gcc
     go
     gopls
+    gotools
+    gocode
+    godef
     protobuf
     grpc
     (python3.withPackages
@@ -130,6 +138,7 @@ in {
     nodePackages.vue-language-server
     nodePackages.eslint
     gnumake
+    zip
 
     awscli2
     aws-sam-cli

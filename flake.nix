@@ -3,19 +3,21 @@
 
   inputs = {
     # Nixos related inputs
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = github:pltanton/nixpkgs/nixos-unstable;
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:pltanton/nixpkgs/nixos-20.09";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-20.09";
     nix.url = github:nixos/nix;
     nixos-hardware.url = github:NixOS/nixos-hardware/master;
 
     # Home-manager and modules
     home-manager.url = github:rycee/home-manager;
     base16.url = github:alukardbf/base16-nix;
-    nix-doom-emacs.url = github:vlaci/nix-doom-emacs/flake;
+    nix-doom-emacs.url = github:vlaci/nix-doom-emacs/master;
 
     # Extra flakes with application sets
     nixpkgs-wayland.url = github:colemickens/nixpkgs-wayland;
     nur.url = github:nix-community/NUR;
+    emacs-overlay.url = github:nix-community/emacs-overlay;
 
     # My own flakes
     quizanus.url = git+ssh://gitea@gitea.kaliwe.ru/pltanton/quizanus.git;
@@ -86,7 +88,7 @@
                   ];
                 };
                 # Overlays available for each host
-                nixpkgs.overlays = [ inputs.nur.overlay ];
+                nixpkgs.overlays = [ inputs.nur.overlay inputs.emacs-overlay.overlay ];
               };
             })
           ];

@@ -9,5 +9,6 @@
     groupBy = "app-name";
     width = 500;
     height = 800;
+    output = "DP-1";
   };
 }

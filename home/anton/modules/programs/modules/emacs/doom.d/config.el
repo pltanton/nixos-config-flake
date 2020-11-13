@@ -2,17 +2,34 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
+(setq gc-cons-threshold 100000000)
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+
+
 (setq user-full-name "Anton Plotnikov"
       user-mail-address "plotnikovanton@gmail.com")
 
 (setq doom-theme 'doom-one)
 
-(setq org-directory "~/Nextcloud/Org/")
-
 (setq display-line-numbers-type "relative")
 
 (setq doom-font (font-spec :family "Iosevka" :size 24))
 
+(setq projectile-project-search-path '("~/Workdir/" "~/Workdir/intellectokids" ))
+
+(defun my-open-calendar ()
+  (interactive)
+  (cfw:open-calendar-buffer
+   :contents-sources
+   (list
+    (cfw:org-create-source "light green")  ; org-agenda source
+    (cfw:org-create-file-source "personal" "~/Nextcloud/Org/gcal-family.org" "royal blue")  ; other org source
+    (cfw:org-create-file-source "family" "~/Nextcloud/Org/gcal-Personal.org" "light slate blue")  ; other org source
+    ; (cfw:ical-create-source "gcal" "https://..../basic.ics" "IndianRed") ; google calendar ICS
+   )))
+
+(setq calendar-week-start-day 1)
+(setq persist--directory-location "~/.emacs.d/persist")
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -30,3 +47,42 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(after! org
+  (map! :map org-mode-map
+        :n "M-j" #'org-metadown
+        :n "M-k" #'org-metaup)
+  (set-face-attribute 'org-level-1 nil
+                      :height 1.2
+                      :weight 'normal)
+  (set-face-attribute 'org-level-2 nil
+                      :height 1.0
+                      :weight 'normal)
+  (set-face-attribute 'org-level-3 nil
+                      :height 1.0
+                      :weight 'normal)
+  (set-face-attribute 'org-level-4 nil
+                      :height 1.0
+                      :weight 'normal)
+  (set-face-attribute 'org-level-5 nil
+                      :weight 'normal)
+  (set-face-attribute 'org-level-6 nil
+                      :weight 'normal)
+  (set-face-attribute 'org-document-title nil
+                      :height 1.75
+                      :weight 'bold)
+  (setq
+   org-directory "~/Nextcloud/Org/"
+   org-bullets-bullet-list '("⁖")
+   org-ellipsis " ... "))
+
+(setq org-gcal-client-id "434844487513-bh857v7fbof2jmuodtt0mt7fd2dlilvk.apps.googleusercontent.com"
+      org-gcal-client-secret "eXdqPJzZo_avwzPIjCdfdHVX"
+      org-gcal-fetch-file-alist '(("plotnikovanton@gmail.com" .  "~/Nextcloud/Org/gcal-personal.org")
+                                  ("3u0e78960q1jdjgi7tvd15iqg8@group.calendar.google.com" .  "~/Nextcloud/Org/gcal-family.org")))
+
+(map! :ne "C-/" #'comment-or-uncomment-region)
+
+(set-popup-rule! "^\\*Org Agenda" :side 'bottom :size 0.90 :select t :ttl nil)
+(set-popup-rule! "^CAPTURE.*\\.org$" :side 'bottom :size 0.90 :select t :ttl nil)
+(set-popup-rule! "^\\*org-brain" :side 'right :size 1.00 :select t :ttl nil)

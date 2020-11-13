@@ -46,6 +46,9 @@ let
       port = 3000;
     };
   };
+
+  valetudoMapperConfig =
+    builtins.toFile "valetudo-config.json" (builtins.toJSON valetudoMapper);
 in {
 
   virtualisation.oci-containers.containers = {
@@ -53,12 +56,16 @@ in {
       image = "rand256/valetudo-mapper";
       ports = [ "3001:3000" ];
       volumes = [
-        "${
-          builtins.toFile "valetudo-config.json"
-          (builtins.toJSON valetudoMapper)
-        }:/app/config.json"
+        "/etc/valetudo-config.json:/app/config.json"
       ];
     };
+  };
+
+  systemd.services.docker-valetudo-mapper = {
+    serviceConfig.ExecStartPre = pkgs.lib.mkForce (pkgs.writeShellScript "valetudo-pre-start.sh" ''
+      ${pkgs.docker}/bin/docker rm -f valetudo-mapper || true
+      install -D ${valetudoMapperConfig} /etc/valetudo-config.json
+    '');
   };
 
   services = {

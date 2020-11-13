@@ -1,41 +1,42 @@
 { pkgs, config, lib, inputs, ... }@input:
-# let swayPackage = pkgs.waylandPkgs.sway-unwrapped;
-let swayPackage = pkgs.sway;
+let swayPackage = pkgs.waylandPkgs.sway-unwrapped;
+# let swayPackage = pkgs.sway;
 in with config.lib.base16.theme; {
 
-  imports = [ ./keybinds.nix ];
+  imports = [ ./keybinds.nix ./inputs.nix ./delay-systemd-service.nix ];
 
-  home.packages = with pkgs; [
-    waylandPkgs.wl-clipboard
-    waylandPkgs.wl-clipboard
-    waylandPkgs.swayidle
-    waylandPkgs.clipman
-    waylandPkgs.waybar
-    waylandPkgs.wofi
-    waylandPkgs.grim
-    waylandPkgs.swaybg
-    waylandPkgs.slurp
+  home.packages = with pkgs.waylandPkgs; [
+    wl-clipboard
+    swayidle
+    clipman
+    waybar
+    grim
+    swaybg
+    slurp
   ];
 
   programs.fish.loginShellInit = ''
-    export SDL_VIDEODRIVER=wayland
-    export QT_QPA_PLATFORM=wayland
-    export CLUTTER_BACKEND=wayland
-    export _JAVA_AWT_WM_NONREPARENTING=1
-
     set TTY1 (tty)
     if test -z "$DISPLAY"; and test $TTY1 = "/dev/tty1"
-      systemctl --user import-environment \
-        DBUS_SESSION_BUS_ADDRESS DISPLAY SSH_AUTH_SOCK XAUTHORITY \
-        XDG_DATA_DIRS XDG_RUNTIME_DIR XDG_SESSION_ID \
-        GDK_PIXBUF_ICON_LOADER GDK_PIXBUF_MODULE_FILE PATH
       exec sway
     end
   '';
 
+  home.sessionVariables = {
+      SDL_VIDEODRIVER = "wayland";
+      QT_QPA_PLATFORM = "wayland";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
+      _JAVA_AWT_WM_NONREPARENTING = 1;
+  };
+
   wayland.windowManager.sway = {
     enable = true;
-    #package = swayPackage;
+    package = swayPackage;
+    systemdIntegration = true;
+    wrapperFeatures = {
+      gtk = true;
+      base = true;
+    };
 
     extraConfig = ''
       exec mako
@@ -44,6 +45,7 @@ in with config.lib.base16.theme; {
         timeout 315 'swaymsg "output * dpms off"' \
         resume 'swaymsg "output * dpms on"' \
         after-resume 'swaymsg "output * dpms on"' \
+        after-resume 'systemctl --user restart kanshi' \
         before-sleep 'lock'
 
       workspace 1 output DP-1
@@ -54,7 +56,19 @@ in with config.lib.base16.theme; {
       workspace 9 output DP-1
       workspace "im" output eDP-1
 
-      seat seat0 xcursor_theme Qogir 32
+      seat seat0 xcursor_theme Qogir-dark 32
+
+      exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+      exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+      set $gnome-schema org.gnome.desktop.interface
+      exec_always {
+          gsettings set $gnome-schema gtk-theme '${gtkTheme}'
+          gsettings set $gnome-schema icon-theme '${iconTheme}'
+          gsettings set $gnome-schema cursor-theme '${cursorTheme}'
+          gsettings set $gnome-schema text-scaling-factor 1.6
+          gsettings set $gnome-schema font-name '${fontUIName} 11'
+      }
     '';
 
     config = let cfg = config.wayland.windowManager.sway;
@@ -63,7 +77,7 @@ in with config.lib.base16.theme; {
 
       terminal = "${pkgs.alacritty}/bin/alacritty";
 
-      menu = "wofi -I --show drun";
+      menu = "wofi --show drun";
 
       workspaceAutoBackAndForth = true;
 
@@ -85,43 +99,40 @@ in with config.lib.base16.theme; {
         unfocused = {
           background = "#${base00-hex}";
           text = "#${base05-hex}";
-          border = "#${base00-hex}";
+          border = "#${base0E-hex}";
           childBorder = "#${base01-hex}";
           indicator = "#${base03-hex}";
         };
       };
 
       startup = [
+        { command = "{pkgs.xsettingsd}/bin/xsettingsd"; }
         { command = "wl-paste -t text --watch clipman store"; }
-        { command = "wl-paste -p -t text --watch clipman store -P --histpath='~/.local/share/clipman-primary.json'"; }
-        {
-          command =
-            "systemctl --user restart network-manager-applet blueman-applet udiskie";
-          always = true;
-        }
-        {
-          command = "systemctl --user restart waybar";
-          always = true;
-        }
+        # {
+        #   command =
+        #     "wl-paste -p -t text --watch clipman store -P --histpath='~/.local/share/clipman-primary.json'";
+        # }
         {
           command = "systemctl --user restart kanshi";
           always = true;
         }
         { command = "firefox"; }
-        { command = "emacs"; }
+        { command = "thunderbird"; }
         { command = "telegram-desktop"; }
         { command = "slack"; }
       ];
 
       assigns = {
-        "1" = [ { app_id = "^firefox$"; } { class = "^Firefox$"; }];
+        "1" = [ { app_id = "^firefox$"; } { class = "^Firefox$"; } ];
         "2" = [ { app_id = "^emacs$"; } { class = "^Emacs$"; } ];
+        "8" = [{ class = "^Thunderbird"; }];
         "9" = [{ class = "^Spotify$"; }];
 
         "im" = [ { app_id = "^telegramdesktop$"; } { class = "^Slack$"; } ];
       };
 
       window = {
+        border = 3;
         commands = [
           {
             criteria = { app_id = "^telegramdesktop$"; };
@@ -156,20 +167,8 @@ in with config.lib.base16.theme; {
 
       fonts = [ "${fontUIName} ${fontUISize}" ];
 
-      output = { "*" = { bg = "${../../../../backgrounds/tree.jpg} fill"; }; };
-
-      input = {
-        "1:1:AT_Translated_Set_2_keyboard" = {
-          xkb_layout = "us,ru";
-          xkb_variant = "dvorak,";
-          xkb_options = "grp:caps_toggle";
-        };
-
-        "51984:16982:Keebio_Keebio_Iris_Rev._4" = {
-          xkb_layout = "us,ru";
-          xkb_variant = ",";
-          xkb_options = "grp:caps_toggle";
-        };
+      output = {
+        "*" = { bg = "${../../../../backgrounds/death-stranding-1.jpg} fill"; };
       };
     };
   };

@@ -23,6 +23,36 @@
           status = "enable";
         }];
       };
+      tvOnlyTwoOutputs = {
+        outputs = [
+          {
+            criteria = "Unknown Mi TV 0x00000001";
+            status = "enable";
+            mode = "3840x2160@30Hz";
+          }
+          {
+            criteria = "eDP-1";
+            status = "disable";
+          }
+        ];
+      };
+      tvOnlyThreeOutputs = {
+        outputs = [
+          {
+            criteria = "Unknown Mi TV 0x00000001";
+            status = "enable";
+            mode = "3840x2160@30Hz";
+          }
+          {
+            criteria = "DP-2";
+            status = "disable";
+          }
+          {
+            criteria = "eDP-1";
+            status = "disable";
+          }
+        ];
+      };
     };
   };
 }

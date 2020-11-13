@@ -17,5 +17,6 @@
     papirus-icon-theme
 
     home-manager
+    super
   ];
 }

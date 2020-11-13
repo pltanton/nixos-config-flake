@@ -4,7 +4,7 @@ in {
   imports = [ ./style.nix ];
 
   programs.waybar = with config.lib.base16.theme; {
-    package = pkgs.waylandPkgs.waybar;
+    package = pkgs.waybar;
     enable = true;
     systemd.enable = true;
     settings = [{
@@ -35,6 +35,8 @@ in {
             "2" = "";
             "3" = "";
             "4" = "";
+            "8" = "";
+            "9" = "";
 
             "im" = "";
 

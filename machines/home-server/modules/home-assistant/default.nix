@@ -16,7 +16,7 @@ in {
   virtualisation.oci-containers.containers = {
     # HASS container itself
     home-assistant = {
-      image = "homeassistant/home-assistant:latest";
+      image = "homeassistant/home-assistant:stable";
       ports = [ "8123:8123" ];
       environment = { TZ = consts.TZ; };
       extraOptions = [ "--network=host" ];

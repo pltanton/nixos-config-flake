@@ -1,6 +1,8 @@
 { config, lib, pkgs, inputs, ... }:
 
-{
+let
+  nfsDeviceDefaults = "x-systemd.mount-timeout=10,x-systemd.idle-timeout=1min,nofail,_netdev,users,rw,noauto";
+in {
   imports = [
     inputs.nixos-hardware.nixosModules.common-pc-laptop-acpi_call
     inputs.nixos-hardware.nixosModules.common-pc-laptop
@@ -25,18 +27,18 @@
   fileSystems."/mnt/hass" = {
     device = "10.100.0.1:/var/lib/hass";
     fsType = "nfs";
-    options = ["user,rw,defaults,noauto"];
+    options = [nfsDeviceDefaults];
   };
 
   fileSystems."/mnt/home-nfs-archive" = {
     device = "10.100.0.1:/media/archive/archive";
     fsType = "nfs";
-    options = ["x-systemd.automount,rw,defaults,noauto"];
+    options = [nfsDeviceDefaults];
   };
 
   fileSystems."/mnt/home-nfs-public" = {
     device = "10.100.0.1:/media/store/media";
     fsType = "nfs";
-    options = ["x-systemd.automount,rw,defaults,noauto"];
+    options = [nfsDeviceDefaults];
   };
 }

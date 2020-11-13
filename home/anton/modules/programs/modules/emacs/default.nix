@@ -1,36 +1,40 @@
-{ pkgs, config, ... }:
+{ pkgs, config, inputs, ... }:
 
 {
-  # imports = [ inputs.nix-doom-emacs.hmModule ];
-  # programs.doom-emacs = {
-  #   enable = false;
-  #   package = pkgs.waylandPkgs.emacs-pgtk;
-  #   doomPrivateDir = ./doom.d;
-  # };
+  imports = [ inputs.nix-doom-emacs.hmModule ];
+  programs.doom-emacs = {
+    enable = true;
+    emacsPackage = pkgs.waylandPkgs.emacs-pgtk;
+    # emacsPackage = pkgs.emacsGcc;
+    doomPrivateDir = ./doom.d;
+  };
 
-  home.packages = with pkgs; [
-    waylandPkgs.emacs-pgtk
-    # nur.repos.metadark.emacs-pgtk-nativecomp
+  home.packages = with pkgs; [ ripgrep ];
 
-    ripgrep
-    fd
+  # home.packages = with pkgs; [
+  #   waylandPkgs.emacs-pgtk
+  #   # nur.repos.metadark.emacs-pgtk-nativecomp
+  #   # emacs
 
-    aspell
-    editorconfig-core-c
+  #   ripgrep
+  #   fd
 
-    gocode
-    gomodifytags
-    gotests
-    gore
-    goimports
+  #   aspell
+  #   editorconfig-core-c
 
-    hlint
-    cabal-install
+  #   gocode
+  #   gomodifytags
+  #   gotests
+  #   gore
+  #   goimports
 
-    ktlint
+  #   hlint
+  #   cabal-install
 
-    shellcheck
+  #   ktlint
 
-    pipenv
-  ];
+  #   shellcheck
+
+  #   pipenv
+  # ];
 }
