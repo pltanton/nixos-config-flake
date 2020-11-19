@@ -4,7 +4,7 @@ in {
   imports = [ ./style.nix ];
 
   programs.waybar = with config.lib.base16.theme; {
-    package = pkgs.waybar;
+    package = pkgs.waylandPkgs.waybar;
     enable = true;
     systemd.enable = true;
     settings = [{

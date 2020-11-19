@@ -22,23 +22,47 @@ in {
       extraOptions = [ "--network=host" ];
       volumes = [ "/var/lib/hass:/config" ];
     };
-
-    # zigbee2mqtt container
-    zigbee2mqtt = {
-      image = "koenkk/zigbee2mqtt";
-      ports = [ "8123:8123" ];
-      environment = { TZ = consts.TZ; };
-      extraOptions = [
-        "--device=/dev/ttyACM0"
-        "--network=host"
-        "--privileged=true" # required to get acces to /dev/tty*
-      ];
-      volumes = [ "/var/lib/zigbee2mqtt:/app/data" ];
-    };
   };
 
   # NIX based pure services
   services = {
+    zigbee2mqtt = {
+      enable = true;
+      config = {
+        homeassistant = true;
+        permit_join = true;
+        serial = {
+          port = "/dev/ttyACM0";
+        };
+        mqtt = {
+          base_topic = "zigbee2mqtt";
+          server = "http://localhost";
+          user = "hass";
+          password = secrets.mqtt_unpacked.hass;
+        };
+        devices = {
+          "0x00158d000301606a" = {
+            friendly_name  = "corridor_light_relay";
+          };
+          "0x00158d00014a9c3c" = {
+            friendly_name = "kitchen_light_relay";
+          };
+          "0x00158d000302ef25" = {
+            friendly_name = "bathroom_light_relay";
+          };
+          "0x00158d00014a5529" = {
+            friendly_name = "room_light_relay";
+          };
+          "0x00124b001f9b061f" = {
+            friendly_name = "bed_wireless_button";
+          };
+          "0x00124b001f877829" = {
+            friendly_name = "balcony_humidiy_sensor";
+          };
+        };
+      };
+    };
+
     mosquitto = {
       enable = true;
       host = "0.0.0.0";

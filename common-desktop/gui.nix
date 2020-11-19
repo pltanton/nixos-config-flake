@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   services.pipewire.enable = true;
-  # gtk.iconCache.enable = true;
+  gtk.iconCache.enable = true;
   xdg.icons.enable = true;
 
   services.xserver = {
@@ -15,7 +15,7 @@
     libinput.enable = true;
 
     displayManager.gdm = {
-      enable = true;
+      enable = false;
     };
     desktopManager.gnome3 = {
       enable = true;
@@ -43,4 +43,7 @@
   # xdg.portal.gtkUsePortal = true;
   # xdg.portal.extraPortals = with pkgs;
   #   [ xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
+  #
+  programs.dconf.enable = true;
+  environment.systemPackages = [ pkgs.gnome3.adwaita-icon-theme pkgs.qogir-icon-theme ];
 }

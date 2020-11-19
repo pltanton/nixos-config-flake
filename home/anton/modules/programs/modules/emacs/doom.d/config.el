@@ -14,7 +14,7 @@
 (setq display-line-numbers-type "relative")
 
 (setq doom-font (font-spec :family "Iosevka" :size 24))
-
+(setq org-directory "~/Nextcloud/Org/")
 (setq projectile-project-search-path '("~/Workdir/" "~/Workdir/intellectokids" ))
 
 (defun my-open-calendar ()
@@ -72,7 +72,6 @@
                       :height 1.75
                       :weight 'bold)
   (setq
-   org-directory "~/Nextcloud/Org/"
    org-bullets-bullet-list '("⁖")
    org-ellipsis " ... "))
 

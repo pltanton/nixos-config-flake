@@ -22,10 +22,6 @@
     # My own flakes
     quizanus.url = git+ssh://gitea@gitea.kaliwe.ru/pltanton/quizanus.git;
 
-    # Extra sources
-    swaylock-effects.url = github:mortie/swaylock-effects;
-    swaylock-effects.flake = false;
-
   };
 
   outputs = inputs: {

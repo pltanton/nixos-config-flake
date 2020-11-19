@@ -13,6 +13,7 @@ in with config.lib.base16.theme; {
     grim
     swaybg
     slurp
+    pkgs.swaylock-fancy
   ];
 
   programs.fish.loginShellInit = ''
@@ -27,6 +28,7 @@ in with config.lib.base16.theme; {
       QT_QPA_PLATFORM = "wayland";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
       _JAVA_AWT_WM_NONREPARENTING = 1;
+      GDK_PIXBUF_MODULE_FILE = "${pkgs.librsvg.out}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
   };
 
   wayland.windowManager.sway = {
@@ -44,8 +46,6 @@ in with config.lib.base16.theme; {
         timeout 300 'lock' \
         timeout 315 'swaymsg "output * dpms off"' \
         resume 'swaymsg "output * dpms on"' \
-        after-resume 'swaymsg "output * dpms on"' \
-        after-resume 'systemctl --user restart kanshi' \
         before-sleep 'lock'
 
       workspace 1 output DP-1
@@ -77,7 +77,7 @@ in with config.lib.base16.theme; {
 
       terminal = "${pkgs.alacritty}/bin/alacritty";
 
-      menu = "wofi --show drun";
+      menu = "wofi --show drun -I";
 
       workspaceAutoBackAndForth = true;
 
@@ -137,6 +137,17 @@ in with config.lib.base16.theme; {
           {
             criteria = { app_id = "^telegramdesktop$"; };
             command = "resize set width 1 ppt";
+          }
+          {
+            criteria = { app_id = "^com.nextcloud.desktopclient.nextcloud$"; };
+            command = "floating enable";
+          }
+          {
+            criteria = {
+              app_id = "^telegramdesktop$";
+              title = "^Media viewer$";
+            };
+            command = "floating enable";
           }
           {
             criteria = {

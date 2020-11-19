@@ -7,5 +7,6 @@
 
   home.file.".Xdefaults".text = ''
     Xft.dpi: 154
+    Xcursor.size: 32
   '';
 }

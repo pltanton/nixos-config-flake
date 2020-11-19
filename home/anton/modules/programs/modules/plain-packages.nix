@@ -22,21 +22,12 @@ in {
     pkgs.wdisplays
     waylandPkgs.wf-recorder
 
-    arandr
-
     ffmpegthumbnailer
-    libnotify
-    networkmanagerapplet
     pamixer
     paprefs
     pavucontrol
     shared_mime_info
-    xbanish
     pantheon.elementary-files
-    xorg.xkill
-    glib
-
-    haskellPackages.greenclip
 
     # Fonts
     font-awesome_5
@@ -51,6 +42,7 @@ in {
     # CLI utils
     fido2luks
     nix-prefetch-github
+    gitAndTools.gh
 
     ffmpeg
     httpie

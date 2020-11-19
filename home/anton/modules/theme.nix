@@ -5,13 +5,14 @@ let
     fontConsoleSize = "19";
     fontUIName = "Inter";
     fontUISize = "16";
+    # iconTheme = "Adwaita";
     iconTheme = "Qogir-dark";
-    # iconTheme = "Papirus";
+    # iconTheme = "Papirus-dark";
     gtkTheme = "Qogir-dark";
     cursorTheme = "Qogir-dark";
   };
 in {
-  home.packages = [ pkgs.qogir-icon-theme ];
+  home.packages = [ pkgs.qogir-icon-theme pkgs.gnome-icon-theme pkgs.hicolor-icon-theme ];
   themes.base16 = {
     enable = true;
     scheme = "onedark";
@@ -28,6 +29,7 @@ in {
     iconTheme = {
       package = pkgs.qogir-icon-theme;
       # package = pkgs.papirus-icon-theme;
+      # package = pkgs.gnome3.adwaita-icon-theme;
       name = themeConsts.iconTheme;
     };
     gtk3.extraConfig.gtk-cursor-theme-name = themeConsts.cursorTheme;
