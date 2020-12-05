@@ -1,8 +1,7 @@
-{ pkgs, home-manager, ... }:
+{ pkgs, home-manager, homeBaseDir, ... }:
 let
-  commonHomePath = ../../../../home;
-  antonHome = commonHomePath + "/anton";
-  julsaHome = commonHomePath + "/julsa";
+  antonHome = homeBaseDir + "/anton";
+  julsaHome = homeBaseDir + "/julsa";
   makeHomeManagerIntegration = commonDir: localDir:
     { pkgs, inputs, ... }@value: {
       imports = builtins.map (name: commonDir + "/modules/${name}")

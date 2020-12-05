@@ -1,14 +1,25 @@
 { config, lib, pkgs, inputs, ... }:
 
 let
-  nfsDeviceDefaults = "x-systemd.mount-timeout=10,x-systemd.idle-timeout=1min,nofail,_netdev,users,rw,noauto";
+  nfsDeviceDefaults =
+    "x-systemd.mount-timeout=10,x-systemd.idle-timeout=1min,nofail,_netdev,users,rw,noauto";
 in {
   imports = [
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
-
+    # inputs.nixos-hardware.nixosModules.common-pc-laptop-acpi_call
+    # inputs.nixos-hardware.nixosModules.common-cpu-intel
+    # inputs.nixos-hardware.nixosModules.common-pc-laptop
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  # hardware.pulseaudio.extraConfig = ''
+  #   load-module module-alsa-sink device=hw:0,3
+  #   load-module module-alsa-sink device=hw:0,4
+  #   load-module module-alsa-sink device=hw:0,5
+  #   load-module module-bluetooth-policy auto_switch=2
+  # '';
+  hardware.pulseaudio.package = pkgs.pulseaudioFull;
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   hardware.trackpoint.enable = true;
   hardware.trackpoint.emulateWheel = config.hardware.trackpoint.enable;
@@ -26,18 +37,18 @@ in {
   fileSystems."/mnt/hass" = {
     device = "10.100.0.1:/var/lib/hass";
     fsType = "nfs";
-    options = [nfsDeviceDefaults];
+    options = [ nfsDeviceDefaults ];
   };
 
   fileSystems."/mnt/home-nfs-archive" = {
     device = "10.100.0.1:/media/archive/archive";
     fsType = "nfs";
-    options = [nfsDeviceDefaults];
+    options = [ nfsDeviceDefaults ];
   };
 
   fileSystems."/mnt/home-nfs-public" = {
     device = "10.100.0.1:/media/store/media";
     fsType = "nfs";
-    options = [nfsDeviceDefaults];
+    options = [ nfsDeviceDefaults ];
   };
 }

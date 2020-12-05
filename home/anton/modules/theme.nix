@@ -9,6 +9,7 @@ let
     iconTheme = "Qogir-dark";
     # iconTheme = "Papirus-dark";
     gtkTheme = "Qogir-dark";
+    # gtkTheme = "Adwaita-dark";
     cursorTheme = "Qogir-dark";
   };
 in {
@@ -35,10 +36,10 @@ in {
     gtk3.extraConfig.gtk-cursor-theme-name = themeConsts.cursorTheme;
   };
 
-  qt = {
-    enable = true;
-    platformTheme = "gtk";
-  };
+  # qt = {
+  #   enable = true;
+  #   platformTheme = "gtk";
+  # };
 
   # home.file.".icons/default/index.theme".text = ''
   #   [icon theme]

@@ -1,18 +1,27 @@
-{ pkgs, config, inputs, ... }:
+{ pkgs, config, inputs, nur, ... }:
 
 {
-  imports = [ inputs.nix-doom-emacs.hmModule ];
   programs.doom-emacs = {
     enable = true;
-    emacsPackage = pkgs.waylandPkgs.emacs-pgtk;
-    # emacsPackage = pkgs.emacsGcc;
+    # emacsPackage = pkgs.waylandPkgs.emacs-pgtk;
+    # emacsPackage = pkgs.nur.repos.metadark.emacs-pgtk-nativecomp;
+    # emacsPackage = pkgs.emacsPgtk;
+    emacsPackage = pkgs.emacsUnstable;
     doomPrivateDir = ./doom.d;
   };
 
-  home.packages = with pkgs; [ ripgrep ];
+  home.packages = with pkgs; [
+    ripgrep
+    hunspell
+    hunspellDicts.en-us
+    hunspellDicts.en-gb-large
+    hunspellDicts.ru-ru
+  ];
 
   # home.packages = with pkgs; [
-  #   waylandPkgs.emacs-pgtk
+  #   # emacsPgtkGcc
+  #   emacsGcc
+  #   emacs-all-the-icons-fonts
   #   # nur.repos.metadark.emacs-pgtk-nativecomp
   #   # emacs
 
@@ -30,8 +39,6 @@
 
   #   hlint
   #   cabal-install
-
-  #   ktlint
 
   #   shellcheck
 

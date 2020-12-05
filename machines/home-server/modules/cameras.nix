@@ -17,23 +17,11 @@ in {
     extraOptions = [ "--network=host" ];
   };
 
-  services = {
-    nginx = {
-      virtualHosts."motioneye.kaliwe.ru" = {
-        enableACME = true;
-        forceSSL = true;
-        locations."/".proxyPass = "http://localhost:8765";
-
-        basicAuth = {
-          admin = secrets.homewikipass;
-        };
-
-        extraConfig = ''
-          satisfy any;
-          allow 192.168.0.0/16;
-          deny all;
-        '';
-        };
+  services.nginx = {
+    virtualHosts."motioneye.kaliwe.ru" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/".proxyPass = "http://localhost:8765";
     };
   };
 }

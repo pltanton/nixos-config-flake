@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   xsession = {
-    enable = true;
+    enable = false;
     preferStatusNotifierItems = true;
     pointerCursor = {
       package = pkgs.paper-icon-theme;

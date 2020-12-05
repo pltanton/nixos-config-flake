@@ -23,6 +23,8 @@ in {
     config = {
       modifier = "Mod4";
 
+      bindkeysToCode = true;
+
       keybindings = lib.mkOptionDefault {
         "${cfg.config.modifier}+Shift+Return" = "exec ${cfg.config.terminal}";
         "${cfg.config.modifier}+Shift+c" = "kill";
@@ -59,6 +61,10 @@ in {
         "${cfg.config.modifier}+apostrophe" = "focus output right";
 
         "${cfg.config.modifier}+n" = "mode mako";
+
+        "${cfg.config.modifier}+Shift+e" =
+                    "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'systemctl --user stop sway-session.target; systemctl --user stop graphical-session.target; swaymsg exit'";
+
       };
 
       keycodebindings = lib.mkOptionDefault { };

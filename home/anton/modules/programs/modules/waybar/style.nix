@@ -1,7 +1,10 @@
 { pkgs, config, ... }:
 let
   toRgba = let t = config.lib.base16.theme;
-           in col: opacity: "rgba(${t."base${col}-rgb-r"},${t."base${col}-rgb-g"},${t."base${col}-rgb-b"},${opacity})";
+  in col: opacity:
+  "rgba(${t."base${col}-rgb-r"},${t."base${col}-rgb-g"},${
+    t."base${col}-rgb-b"
+  },${opacity})";
 
   css = with config.lib.base16.theme; ''
     * {
@@ -52,7 +55,8 @@ let
     }
 
     #clock, #battery, #cpu, #memory, #temperature, #backlight, #network,
-    #pulseaudio, #custom-media, #tray, #mode, #idle_inhibitor, #custom-spotify  {
+    #pulseaudio, #custom-media, #tray, #mode, #idle_inhibitor, #custom-spotify,
+    #custom-layout  {
         padding: 0 10px;
         margin: 0 3px;
         background-clip: border-box;
@@ -60,6 +64,10 @@ let
     }
 
     #clock {
+        background-color: #${base00-hex};
+    }
+
+    #custom-layout {
         background-color: #${base00-hex};
     }
 

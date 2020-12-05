@@ -1,18 +1,19 @@
 { pkgs, config, lib, inputs, ... }@input:
-let swayPackage = pkgs.waylandPkgs.sway-unwrapped;
-# let swayPackage = pkgs.sway;
+let
+  swayPackage = pkgs.waylandPkgs.sway-unwrapped;
+  # let swayPackage = pkgs.sway;
 in with config.lib.base16.theme; {
 
   imports = [ ./keybinds.nix ./inputs.nix ./delay-systemd-service.nix ];
 
-  home.packages = with pkgs.waylandPkgs; [
+  home.packages = with pkgs; [
     wl-clipboard
     swayidle
     clipman
-    waybar
     grim
     swaybg
     slurp
+    swaylock
     pkgs.swaylock-fancy
   ];
 
@@ -24,11 +25,12 @@ in with config.lib.base16.theme; {
   '';
 
   home.sessionVariables = {
-      SDL_VIDEODRIVER = "wayland";
-      QT_QPA_PLATFORM = "wayland";
-      QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
-      _JAVA_AWT_WM_NONREPARENTING = 1;
-      GDK_PIXBUF_MODULE_FILE = "${pkgs.librsvg.out}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
+    SDL_VIDEODRIVER = "wayland";
+    QT_QPA_PLATFORM = "wayland";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
+    _JAVA_AWT_WM_NONREPARENTING = 1;
+    GDK_PIXBUF_MODULE_FILE =
+      "${pkgs.librsvg.out}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
   };
 
   wayland.windowManager.sway = {
@@ -43,10 +45,13 @@ in with config.lib.base16.theme; {
     extraConfig = ''
       exec mako
       exec swayidle -w \
-        timeout 300 'lock' \
-        timeout 315 'swaymsg "output * dpms off"' \
-        resume 'swaymsg "output * dpms on"' \
-        before-sleep 'lock'
+               timeout 300 'lock' \
+               timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+               before-sleep 'lock'
+      # exec swayidle -w \
+      #   timeout 300 'lock' \
+      #   timeout 315 'swaymsg "output * dpms off"' \
+      #   resume 'swaymsg "output * dpms on"'
 
       workspace 1 output DP-1
       workspace 2 output DP-1
@@ -106,8 +111,10 @@ in with config.lib.base16.theme; {
       };
 
       startup = [
-        { command = "{pkgs.xsettingsd}/bin/xsettingsd"; }
-        { command = "wl-paste -t text --watch clipman store"; }
+        {
+          command = "{pkgs.xsettingsd}/bin/xsettingsd";
+        }
+        # { command = "wl-paste -t text --watch clipman store"; }
         # {
         #   command =
         #     "wl-paste -p -t text --watch clipman store -P --histpath='~/.local/share/clipman-primary.json'";
@@ -140,6 +147,10 @@ in with config.lib.base16.theme; {
           }
           {
             criteria = { app_id = "^com.nextcloud.desktopclient.nextcloud$"; };
+            command = "floating enable";
+          }
+          {
+            criteria = { title = "^org.inkscape.Inkscape$"; };
             command = "floating enable";
           }
           {

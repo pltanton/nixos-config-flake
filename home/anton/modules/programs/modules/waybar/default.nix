@@ -13,8 +13,15 @@ in {
       height = 32;
       modules-left = [ "sway/workspaces" "sway/mode" ];
       modules-center = [ "sway/window" ];
-      modules-right =
-        [ "custom/spotify" "tray" "pulseaudio" "battery" "clock" "idle_inhibitor" ];
+      modules-right = [
+        "custom/spotify"
+        "tray"
+        "pulseaudio"
+        "battery"
+        "clock"
+        "idle_inhibitor"
+        "custom/layout"
+      ];
       modules = {
         idle_inhibitor = {
           format = "{icon}";
@@ -82,6 +89,13 @@ in {
           interval = 1;
           exec = "${scripts.mediaplayer} 2> /dev/null";
           exec-if = "pgrep spotify";
+        };
+        "custom/layout" = {
+          "tooltip" = false;
+          "exec" = ''
+            swaymsg -t get_inputs | jq -r '.[] | select(.identifier == "1:1:AT_Translated_Set_2_keyboard") | .xkb_active_layout_name | .[0:2] | ascii_upcase'; \
+            swaymsg -mrt subscribe '["input"]' | jq -r --unbuffered "select(.change == \"xkb_layout\") | .input | select(.type == \"keyboard\") | .xkb_active_layout_name | .[0:2] | ascii_upcase"
+          '';
         };
       };
     }];

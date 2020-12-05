@@ -1,7 +1,7 @@
 { pkgs, inputs, config, ... }:
 let
-  swaylock-effects-master = pkgs.swaylock-effects.overrideAttrs
-    (oldAttrs: rec { src = inputs.swaylock-effects; });
+  # swaylock-effects-master = pkgs.swaylock-effects.overrideAttrs
+  #   (oldAttrs: rec { src = inputs.swaylock-effects; });
 
   lockScript = with config.lib.base16.theme;
     pkgs.writeShellScriptBin "lock" ''
