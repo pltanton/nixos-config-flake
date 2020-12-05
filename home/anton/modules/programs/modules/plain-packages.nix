@@ -5,123 +5,122 @@ let
     sha256 = "04skv5nhbqzybxsqp7b7l4s7nl66p8cd92f6czlivwcjnj36lzya";
   }) { pkgs = pkgs; };
 in {
-  home.packages = with pkgs;
-    [
-      hack-font
+  home.packages = with pkgs; [
+    hack-font
 
-      gnuplot
+    gnuplot
 
-      nixfmt
+    nixfmt
 
-      gnupg
+    gnupg
 
-      ###################
-      # Packages for DE #
-      ###################
-      pkgs.wdisplays
-      waylandPkgs.wf-recorder
+    ###################
+    # Packages for DE #
+    ###################
+    pkgs.wdisplays
+    waylandPkgs.wf-recorder
 
-      ffmpegthumbnailer
-      pamixer
-      paprefs
-      pavucontrol
-      shared_mime_info
-      pantheon.elementary-files
+    ffmpegthumbnailer
+    pamixer
+    paprefs
+    pavucontrol
+    shared_mime_info
+    pantheon.elementary-files
 
-      # Fonts
-      font-awesome_5
-      emojione
-      iosevka-bin
-      inter
-      #nerdfonts
+    # Fonts
+    font-awesome_5
+    emojione
+    iosevka-bin
+    inter
+    #nerdfonts
 
-      #############
-      # User apps #
-      #############
-      # CLI utils
-      nix-prefetch-github
-      gitAndTools.gh
+    #############
+    # User apps #
+    #############
+    # CLI utils
+    nix-prefetch-github
+    gitAndTools.gh
 
-      ffmpeg
-      httpie
-      ansible
-      dnsutils
-      jq
-      bitwarden-cli
-      bitwarden-rofi
-      htop
-      inetutils
-      killall
-      nfs-utils
+    ffmpeg
+    httpie
+    ansible
+    dnsutils
+    jq
+    bitwarden-cli
+    bitwarden-rofi
+    htop
+    inetutils
+    killall
+    nfs-utils
 
-      ranger
-      tmux
-      unzip
-      wget
-      tree
+    ranger
+    tmux
+    unzip
+    wget
+    tree
 
-      # GUI
-      libreoffice
-      audacity
-      xournalpp
-      discord
-      zoom-us
-      transmission-remote-gtk
-      transmission-gtk
-      rapid-photo-downloader
-      evince
-      gthumb
-      gnome-photos
-      gimp
-      mpv
-      tdesktop
-      vlc
-      xsane
-      slack
-      spotify
-      #steam
-      thunderbird
-      bitwarden
-      sidequest
-      scrcpy
-      # darktable
-      # tigervnc
+    # GUI
+    libreoffice
+    audacity
+    xournalpp
+    discord
+    zoom-us
+    transmission-remote-gtk
+    transmission-gtk
+    rapid-photo-downloader
+    evince
+    gthumb
+    gnome-photos
+    gimp
+    mpv
+    tdesktop
+    vlc
+    xsane
+    slack
+    spotify
+    #steam
+    thunderbird
+    bitwarden
+    sidequest
+    scrcpy
+    # darktable
+    # tigervnc
 
-      # Web
-      chromium
-      # nur.repos.sikmir.qutebrowser-bin
+    # Web
+    chromium
+    # nur.repos.sikmir.qutebrowser-bin
 
-      # LaTeX
-      # (texlive.combine { inherit (texlive) scheme-medium titlesec; })
+    # LaTeX
+    # (texlive.combine { inherit (texlive) scheme-medium titlesec; })
 
-      # Dev
-      docker-compose
-      clang-tools
-      # gradle2nix
-      nodejs
-      insomnia
-      adoptopenjdk-bin
-      #jetbrains.idea-community
-      jetbrains.idea-ultimate
-      mongodb
-      robo3t
-      dbeaver
-      gcc
-      go
-      gopls
-      gotools
-      gocode
-      godef
-      (python3.withPackages
-        (pp: with pp; [ pylint jedi flake8 autopep8 pygments hvac ]))
-      nodePackages.yaml-language-server
-      nodePackages.prettier
-      nodePackages.vue-language-server
-      nodePackages.eslint
-      gnumake
-      zip
+    # Dev
+    docker-compose
+    clang-tools
+    # gradle2nix
+    nodejs
+    insomnia
+    adoptopenjdk-bin
+    #jetbrains.idea-community
+    jetbrains.idea-ultimate
+    mongodb
+    robo3t
+    dbeaver
+    gcc
+    go
+    gopls
+    gotools
+    gocode
+    godef
+    (python3.withPackages
+      (pp: with pp; [ pylint jedi flake8 autopep8 pygments hvac ]))
+    nodePackages.yaml-language-server
+    nodePackages.prettier
+    nodePackages.vue-language-server
+    nodePackages.eslint
+    gnumake
+    zip
 
-      awscli2
-      aws-sam-cli
-    ];
+    awscli2
+    aws-sam-cli
+  ];
 }

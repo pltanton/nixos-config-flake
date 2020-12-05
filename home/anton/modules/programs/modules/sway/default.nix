@@ -2,6 +2,7 @@
 let
   swayPackage = pkgs.waylandPkgs.sway-unwrapped;
   # let swayPackage = pkgs.sway;
+  scripts = import ./scripts input;
 in with config.lib.base16.theme; {
 
   imports = [ ./keybinds.nix ./inputs.nix ./delay-systemd-service.nix ];
@@ -15,6 +16,8 @@ in with config.lib.base16.theme; {
     slurp
     swaylock
     pkgs.swaylock-fancy
+
+    scripts.keyboard-layout-per-window
   ];
 
   programs.fish.loginShellInit = ''
@@ -122,6 +125,10 @@ in with config.lib.base16.theme; {
         {
           command = "systemctl --user restart kanshi";
           always = true;
+        }
+        {
+          command =
+            "${scripts.keyboard-layout-per-window}/bin/keyboard-layout-per-window";
         }
         { command = "firefox"; }
         { command = "thunderbird"; }
