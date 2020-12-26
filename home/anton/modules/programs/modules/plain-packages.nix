@@ -17,7 +17,7 @@ in {
     ###################
     # Packages for DE #
     ###################
-    pkgs.wdisplays
+    waylandPkgs.wdisplays
     waylandPkgs.wf-recorder
 
     ffmpegthumbnailer
@@ -78,12 +78,18 @@ in {
     xsane
     slack
     spotify
-    #steam
+    # steam
+
+    (steam.override {
+      extraPkgs = pkgs: [ SDL2 libstdcxx5 ];
+      nativeOnly = false;
+    })
+
     thunderbird
     bitwarden
     sidequest
     scrcpy
-    # darktable
+    darktable
     # tigervnc
 
     # Web
@@ -91,7 +97,8 @@ in {
     # nur.repos.sikmir.qutebrowser-bin
 
     # LaTeX
-    # (texlive.combine { inherit (texlive) scheme-medium titlesec; })
+    texlive.combined.scheme-full
+    # (texlive.combine { inherit (texlive) scheme-medium titlesec wrapfig; })
 
     # Dev
     docker-compose
@@ -112,7 +119,7 @@ in {
     gocode
     godef
     (python3.withPackages
-      (pp: with pp; [ pylint jedi flake8 autopep8 pygments hvac ]))
+      (pp: with pp; [ pylint jedi flake8 autopep8 pygments hvac pika ]))
     nodePackages.yaml-language-server
     nodePackages.prettier
     nodePackages.vue-language-server
@@ -121,6 +128,6 @@ in {
     zip
 
     awscli2
-    aws-sam-cli
+    local.aws-sam-cli
   ];
 }

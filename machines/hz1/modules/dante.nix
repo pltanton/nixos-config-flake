@@ -1,15 +1,22 @@
 { config, pkgs, ... }:
 
 {
+  networking.firewall.allowedUDPPorts = [ 3128 ];
+  networking.firewall.allowedTCPPorts = [ 3128 ];
   services = {
     openssh.enable = true;
     openssh.permitRootLogin = "yes";
     sshd.enable = true;
-    shadowsocks = {
-      enable = false;
-      port = 2282;
-      password = "test";
+    _3proxy = {
+      enable = true;
+      services = [{
+        type = "proxy";
+        bindAddress = "0.0.0.0";
+        bindPort = 3128;
+        auth = [ "none" ];
+      }];
     };
+
     dante = {
       enable = true;
       config = ''

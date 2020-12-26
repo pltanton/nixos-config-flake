@@ -6,12 +6,14 @@
     ++ (builtins.map (name: ../../common-desktop + "/${name}")
       (builtins.attrNames (builtins.readDir ../../common-desktop)))
     ++ (builtins.map (name: ../../common-machines + "/${name}")
-      (builtins.attrNames (builtins.readDir ../../common-machines)))
-  ;
+      (builtins.attrNames (builtins.readDir ../../common-machines)));
 
   time.timeZone = "Europe/Moscow";
 
-  nixpkgs.overlays = [ (import ../../overlays/customPackages.nix) inputs.nixpkgs-wayland.overlay ];
+  nixpkgs.overlays = [
+    (import ../../overlays/customPackages.nix)
+    inputs.nixpkgs-wayland.overlay
+  ];
 
   nixpkgs.config = {
     allowBroken = true;

@@ -39,28 +39,18 @@ self: super: rec {
 
   sublime-music = super.callPackage ./pkgs/sublime-music.nix { };
 
-  # aws-sam-translator-fresh = super.aws-sam-translator.overridePythonAttrs
-  #   (oldAttrs: rec {
-  #     version = "1.30.0";
-  #     src = super.fetchFromGitHub {
-  #       owner = "aws";
-  #       repo = "aws-sam-translator";
-  #       rev = "v1.30.0";
-  #       sha256 = "0000000000000000000000000000000000000000000000000000";
-  #     };
-  #   });
-  # aws-sam-cli-fresh = super.aws-sam-cli.overridePythonAttrs (oldAttrs: rec {
-  #   version = "1.11.0";
-  #   propagatedBuildInputs = oldAttrs.propagatedBuildInputs ++ [
-  #     aws-sam-translator-fresh
-  #   ];
-  #   src = super.fetchFromGitHub {
-  #     owner = "aws";
-  #     repo = "aws-sam-cli";
-  #     rev = "v1.11.0";
-  #     # pname = "aws-sam-cli";
-  #     # version = "1.11.0";
-  #     sha256 = "1qk4zsrnvhn673arfmc8kg1yrfanv1wvy8i0nfsfkzav0r10lisz";
-  #   };
-  # });
+  brother-dcp-t710 =
+    (super.callPackage ./pkgs/brother-dcp-t710w.nix { }).cupswrapper;
+
+  wlroots = super.wlroots.overrideAttrs (oldAttrs: rec {
+    pname = "wlroots";
+    version = "0.12.0";
+
+    src = super.fetchFromGitHub {
+      owner = "swaywm";
+      repo = "wlroots";
+      rev = version;
+      sha256 = "0rlglz6vylm8k0j8mcd5x7krvqf37fgddw5vnxb4ia51ymlwga4h";
+    };
+  });
 }

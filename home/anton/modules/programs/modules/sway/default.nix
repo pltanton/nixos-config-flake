@@ -1,24 +1,29 @@
 { pkgs, config, lib, inputs, ... }@input:
 let
   swayPackage = pkgs.waylandPkgs.sway-unwrapped;
-  # let swayPackage = pkgs.sway;
-  scripts = import ./scripts input;
+  # swayPackage = pkgs.stable.sway;
 in with config.lib.base16.theme; {
 
-  imports = [ ./keybinds.nix ./inputs.nix ./delay-systemd-service.nix ];
+  services.keyboardLayoutPerWindow.enable =
+    config.wayland.windowManager.sway.enable;
 
-  home.packages = with pkgs; [
-    wl-clipboard
-    swayidle
-    clipman
-    grim
-    swaybg
-    slurp
-    swaylock
-    pkgs.swaylock-fancy
+  services.flashfocus.enable = config.wayland.windowManager.sway.enable;
 
-    scripts.keyboard-layout-per-window
-  ];
+  imports =
+    [ ./keybinds.nix ./inputs.nix ./delay-systemd-service.nix ./services ];
+
+  home.packages = lib.mkIf config.wayland.windowManager.sway.enable
+    (with pkgs; [
+      wl-clipboard
+      swayidle
+      clipman
+      grim
+      swaybg
+      slurp
+
+      swaylock-fancy
+      flashfocus
+    ]);
 
   programs.fish.loginShellInit = ''
     set TTY1 (tty)
@@ -31,6 +36,7 @@ in with config.lib.base16.theme; {
     SDL_VIDEODRIVER = "wayland";
     QT_QPA_PLATFORM = "wayland";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
+    MOZ_ENABLE_WAYLAND = 1;
     _JAVA_AWT_WM_NONREPARENTING = 1;
     GDK_PIXBUF_MODULE_FILE =
       "${pkgs.librsvg.out}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
@@ -64,7 +70,9 @@ in with config.lib.base16.theme; {
       workspace 9 output DP-1
       workspace "im" output eDP-1
 
-      seat seat0 xcursor_theme Qogir-dark 32
+      seat * xcursor_theme ${cursorTheme} 32
+      seat * hide_cursor 4000
+      seat * hide_cursor when-typing enable
 
       exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
       exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
@@ -126,14 +134,11 @@ in with config.lib.base16.theme; {
           command = "systemctl --user restart kanshi";
           always = true;
         }
-        {
-          command =
-            "${scripts.keyboard-layout-per-window}/bin/keyboard-layout-per-window";
-        }
         { command = "firefox"; }
         { command = "thunderbird"; }
         { command = "telegram-desktop"; }
         { command = "slack"; }
+        { command = "flashfocus -t 250"; }
       ];
 
       assigns = {
@@ -196,9 +201,7 @@ in with config.lib.base16.theme; {
 
       fonts = [ "${fontUIName} ${fontUISize}" ];
 
-      output = {
-        "*" = { bg = "${../../../../backgrounds/death-stranding-1.jpg} fill"; };
-      };
+      output = { "*" = { bg = "${../../../../backgrounds/storm.jpg} fill"; }; };
     };
   };
 }

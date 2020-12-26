@@ -14,28 +14,25 @@
 
     libinput.enable = true;
 
-    displayManager.gdm = {
-      enable = false;
-    };
-    desktopManager.gnome3 = {
-      enable = true;
-    };
-  #   desktopManager.xterm.enable = true;
+    # displayManager.gdm.enable = false;
+    # displayManager.lightdm.enable = true;
+    desktopManager.gnome3 = { enable = true; };
+    #   desktopManager.xterm.enable = true;
 
-  #   config = pkgs.lib.mkOverride 50 ''
-  #     Section "Device"
-  #         Identifier  "Intel Graphics"
-  #         Driver      "intel"
-  #         Option      "AccelMethod" "sna"
-  #         Option      "TearFree" "true"
-  #     EndSection
+    #   config = pkgs.lib.mkOverride 50 ''
+    #     Section "Device"
+    #         Identifier  "Intel Graphics"
+    #         Driver      "intel"
+    #         Option      "AccelMethod" "sna"
+    #         Option      "TearFree" "true"
+    #     EndSection
 
-  #     Section "Device"
-  #         Identifier  "Intel Graphics"
-  #         Driver      "intel"
-  #         Option      "Backlight"  "intel_backlight"
-  #     EndSection
-  #   '';
+    #     Section "Device"
+    #         Identifier  "Intel Graphics"
+    #         Driver      "intel"
+    #         Option      "Backlight"  "intel_backlight"
+    #     EndSection
+    #   '';
   };
 
   programs.sway.enable = false;
@@ -45,5 +42,6 @@
   #   [ xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
   #
   programs.dconf.enable = true;
-  environment.systemPackages = [ pkgs.gnome3.adwaita-icon-theme pkgs.qogir-icon-theme ];
+  environment.systemPackages =
+    [ pkgs.gnome3.adwaita-icon-theme pkgs.qogir-icon-theme ];
 }

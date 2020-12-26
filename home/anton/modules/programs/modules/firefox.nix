@@ -2,8 +2,10 @@
 
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-wayland;
-    enableAdobeFlash = false;
+    package = pkgs.master.firefox-wayland;
+    # package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
+    #   extraPolicies = { ExtensionSettings = { }; };
+    # };
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
       sidebery
       bitwarden
@@ -12,7 +14,6 @@
       ublock-origin
       react-devtools
       stylus
-      dark-night-mode
     ];
     profiles = {
       default = {

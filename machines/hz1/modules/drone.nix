@@ -1,15 +1,11 @@
 { config, pkgs, ... }:
 
 {
-  docker-containers.drone = {
+  virtualisation.oci-containers.containers.drone = {
     image = "drone/drone:1.1";
-    ports = [
-      "3011:80"
-    ];
-    volumes = [
-      "/root/drone:/data"
-      "/var/run/docker.sock:/var/run/docker.sock"
-    ];
+    ports = [ "3011:80" ];
+    volumes =
+      [ "/root/drone:/data" "/var/run/docker.sock:/var/run/docker.sock" ];
     environment = {
       DRONE_GITEA_SERVER = "https://gitea.kaliwe.ru";
       DRONE_GIT_ALWAYS_AUTH = "false";

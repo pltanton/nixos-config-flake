@@ -1,4 +1,4 @@
-{ pkgs, inputs, config, ... }:
+{ pkgs, lib, inputs, config, ... }:
 let
   # swaylock-effects-master = pkgs.swaylock-effects.overrideAttrs
   #   (oldAttrs: rec { src = inputs.swaylock-effects; });
@@ -43,4 +43,9 @@ let
         --text-caps-lock-color ${base0A-hex} \
         --text-wrong-color ${base0A-hex}
     '';
-in { home.packages = [ pkgs.swaylock-fancy lockScript ]; }
+in {
+  home.packages = lib.mkIf config.wayland.windowManager.sway.enable [
+    pkgs.swaylock-fancy
+    lockScript
+  ];
+}

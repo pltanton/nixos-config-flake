@@ -1,6 +1,5 @@
 { config, pkgs, ... }:
-let
-  secrets = import ../secrets.nix;
+let secrets = import ../secrets.nix;
 in {
   networking.firewall.connectionTrackingModules = [ "sane" ];
   services = {
@@ -32,13 +31,10 @@ in {
 
   users.users.nextcloud = {
     isNormalUser = true;
-    openssh.authorizedKeys.keys = [
-      secrets.homeAssistantSshPub
-    ];
+    openssh.authorizedKeys.keys = [ secrets.homeAssistantSshPub ];
     extraGroups = [ "scanner" "lp" ];
   };
 
   networking.firewall.allowedUDPPorts = [ 631 ];
   networking.firewall.allowedTCPPorts = [ 631 ];
-
 }

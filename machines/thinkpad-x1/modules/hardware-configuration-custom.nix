@@ -11,20 +11,23 @@ in {
     # inputs.nixos-hardware.nixosModules.common-pc-laptop
   ];
 
-  # hardware.pulseaudio.extraConfig = ''
-  #   load-module module-alsa-sink device=hw:0,3
-  #   load-module module-alsa-sink device=hw:0,4
-  #   load-module module-alsa-sink device=hw:0,5
-  #   load-module module-bluetooth-policy auto_switch=2
-  # '';
+  hardware.pulseaudio.extraConfig = ''
+    load-module module-alsa-sink device=hw:0,3
+    load-module module-bluetooth-policy auto_switch=2
+  '';
   hardware.pulseaudio.package = pkgs.pulseaudioFull;
+  # hardware.pulseaudio.package = pkgs.master.pulseaudioFull;
+
+  hardware.steam-hardware.enable = true;
+  hardware.pulseaudio.support32Bit = true;
+
+  hardware.opengl.enable = true;
+  hardware.opengl.driSupport32Bit = true;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   hardware.trackpoint.enable = true;
   hardware.trackpoint.emulateWheel = config.hardware.trackpoint.enable;
-
-  hardware.opengl.enable = true;
 
   services.xserver.videoDrivers = [ "intel" ];
 
@@ -50,5 +53,11 @@ in {
     device = "10.100.0.1:/media/store/media";
     fsType = "nfs";
     options = [ nfsDeviceDefaults ];
+  };
+
+  fileSystems."/mnt/windows" = {
+    device = "/dev/nvme0n1p4";
+    fsType = "ntfs";
+    options = [ "rw" ];
   };
 }

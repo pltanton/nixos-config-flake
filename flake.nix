@@ -3,25 +3,28 @@
 
   inputs = {
     # Nixos related inputs
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:pltanton/nixpkgs/nixos-20.09";
-    nixpkgs.url = "/home/anton/Workdir/nixpkgs";
+    nixpkgs-local.url = "github:pltanton/nixpkgs/master";
+    # nixpkgs-local.url = "/home/anton/Workdir/nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-20.09";
-    nix.url = github:nixos/nix;
-    nixos-hardware.url = github:NixOS/nixos-hardware/master;
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    # nixpkgs-aws-sam.url = "github:freezeboy/nixpkgs/update-aws-sam-cli";
+
+    nix.url = "github:nixos/nix";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Home-manager and modules
-    home-manager.url = github:rycee/home-manager;
-    base16.url = github:alukardbf/base16-nix;
-    nix-doom-emacs.url = github:vlaci/nix-doom-emacs/master;
+    home-manager.url = "github:nix-community/home-manager/release-20.09";
+    base16.url = "github:alukardbf/base16-nix";
+    nix-doom-emacs.url = "github:vlaci/nix-doom-emacs/master";
 
     # Extra flakes with application sets
-    nixpkgs-wayland.url = github:colemickens/nixpkgs-wayland;
-    nur.url = github:nix-community/NUR;
-    emacs-overlay.url = github:nix-community/emacs-overlay;
+    nixpkgs-wayland.url = "github:colemickens/nixpkgs-wayland";
+    nur.url = "github:nix-community/NUR";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
 
     # My own flakes
-    quizanus.url = git+ssh://gitea@gitea.kaliwe.ru/pltanton/quizanus.git;
+    quizanus.url = "git+ssh://gitea@gitea.kaliwe.ru/pltanton/quizanus.git";
 
   };
 
@@ -52,9 +55,7 @@
                 inputs.nix-doom-emacs.hmModule
                 (import ./home/common.nix)
               ];
-              specialArgs = (buildSpecialArgs name) // {
-                super = config;
-              };
+              specialArgs = (buildSpecialArgs name) // { super = config; };
             });
           };
         };
@@ -73,7 +74,8 @@
             (import (./machines + "/${name}/configuration.nix"))
 
             # Home manager with default overridings
-            inputs.home-manager.nixosModules.home-manager (hm-nixos-as-super name)
+            inputs.home-manager.nixosModules.home-manager
+            (hm-nixos-as-super name)
 
             # Some defaults like binary caches, that available for each host
             ({ pkgs, config, ... }: {
@@ -92,7 +94,24 @@
                   ];
                 };
                 # Overlays available for each host
-                nixpkgs.overlays = [ inputs.nur.overlay inputs.emacs-overlay.overlay ];
+                nixpkgs.overlays = [
+                  inputs.nur.overlay
+                  inputs.emacs-overlay.overlay
+                  (final: prev: {
+                    master = import inputs.nixpkgs-master {
+                      system = "x86_64-linux";
+                      config.allowUnfree = true;
+                    };
+                    stable = import inputs.nixpkgs-stable {
+                      system = "x86_64-linux";
+                      config.allowUnfree = true;
+                    };
+                    local = import inputs.nixpkgs-local {
+                      system = "x86_64-linux";
+                      config.allowUnfree = true;
+                    };
+                  })
+                ];
               };
             })
           ];
