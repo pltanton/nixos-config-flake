@@ -1,4 +1,5 @@
-{ pkgs, config, lib, ... }: let
+{ pkgs, config, lib, ... }:
+let
   cfg = config.wayland.windowManager.sway;
 
   grabScreenshot = pkgs.writeShellScript "grabScreenshot" ''
@@ -56,28 +57,26 @@ in {
         "${cfg.config.modifier}+shift+tab" = "move container to workspace im";
 
         "${cfg.config.modifier}+Shift+comma" = "move workspace to output left";
-        "${cfg.config.modifier}+Shift+apostrophe" = "move workspace to output right";
+        "${cfg.config.modifier}+Shift+apostrophe" =
+          "move workspace to output right";
         "${cfg.config.modifier}+comma" = "focus output left";
         "${cfg.config.modifier}+apostrophe" = "focus output right";
 
         "${cfg.config.modifier}+n" = "mode mako";
-
-        "${cfg.config.modifier}+Shift+e" =
-                    "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'systemctl --user stop sway-session.target; systemctl --user stop graphical-session.target; swaymsg exit'";
-
       };
 
       keycodebindings = lib.mkOptionDefault { };
 
-      modes = let
-        makoctl = "${pkgs.mako}/bin/makoctl";
+      modes = let makoctl = "${pkgs.mako}/bin/makoctl";
       in lib.mkOptionDefault {
         mako = {
           Escape = "mode default";
           "Shift+d" = "exec ${makoctl} dismiss --all; mode default";
           "Shift+x" = "exec ${makoctl} dismiss --group";
-          "Shift+i" = "exec ${makoctl} menu ${wofi} -d -p 'Chose action:'; mode default;";
-          "Return" = "exec ${makoctl} invoke; exec ${makoctl} dismiss; mode default";
+          "Shift+i" =
+            "exec ${makoctl} menu ${wofi} -d -p 'Chose action:'; mode default;";
+          "Return" =
+            "exec ${makoctl} invoke; exec ${makoctl} dismiss; mode default";
           "d" = "exec ${makoctl} dismiss";
         };
       };

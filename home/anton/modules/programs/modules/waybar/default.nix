@@ -4,9 +4,9 @@ in {
   imports = [ ./style.nix ];
 
   programs.waybar = with config.lib.base16.theme; {
-    # package = pkgs.waylandPkgs.waybar;
-    # enable = config.wayland.windowManager.sway.enable;
-    enable = false;
+    package = pkgs.waylandPkgs.waybar;
+    enable = config.wayland.windowManager.sway.enable;
+    # enable = true;
     systemd.enable = true;
     settings = [{
       layer = "top";

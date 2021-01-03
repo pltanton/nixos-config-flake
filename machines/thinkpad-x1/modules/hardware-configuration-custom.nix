@@ -5,10 +5,10 @@ let
     "x-systemd.mount-timeout=10,x-systemd.idle-timeout=1min,nofail,_netdev,users,rw,noauto";
 in {
   imports = [
-    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
-    # inputs.nixos-hardware.nixosModules.common-pc-laptop-acpi_call
-    # inputs.nixos-hardware.nixosModules.common-cpu-intel
-    # inputs.nixos-hardware.nixosModules.common-pc-laptop
+    # inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
+    inputs.nixos-hardware.nixosModules.common-pc-laptop-acpi_call
+    inputs.nixos-hardware.nixosModules.common-cpu-intel
+    inputs.nixos-hardware.nixosModules.common-pc-laptop
   ];
 
   hardware.pulseaudio.extraConfig = ''

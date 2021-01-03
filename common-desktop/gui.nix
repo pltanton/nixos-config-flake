@@ -8,15 +8,15 @@
 
     wacom.enable = true;
 
-    layout = "us,ru";
-    #xkbVariant = "dvorak,";
+    layout = "us,us";
+    xkbVariant = "dvorak,";
     xkbOptions = "eurosign:e,grp:caps_toggle,grp:alt_space_toggle";
 
     libinput.enable = true;
 
     # displayManager.gdm.enable = false;
     # displayManager.lightdm.enable = true;
-    desktopManager.gnome3 = { enable = true; };
+    # desktopManager.gnome3 = { enable = true; };
     #   desktopManager.xterm.enable = true;
 
     #   config = pkgs.lib.mkOverride 50 ''

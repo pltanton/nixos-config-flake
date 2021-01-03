@@ -29,6 +29,8 @@ in with config.lib.base16.theme; {
     set TTY1 (tty)
     if test -z "$DISPLAY"; and test $TTY1 = "/dev/tty1"
       exec sway
+      systemctl --user stop sway-session.target
+      systemctl --user stop graphical-session.target
     end
   '';
 
@@ -122,14 +124,12 @@ in with config.lib.base16.theme; {
       };
 
       startup = [
+        { command = "{pkgs.xsettingsd}/bin/xsettingsd"; }
+        { command = "wl-paste -t text --watch clipman store"; }
         {
-          command = "{pkgs.xsettingsd}/bin/xsettingsd";
+          command =
+            "wl-paste -p -t text --watch clipman store -P --histpath='~/.local/share/clipman-primary.json'";
         }
-        # { command = "wl-paste -t text --watch clipman store"; }
-        # {
-        #   command =
-        #     "wl-paste -p -t text --watch clipman store -P --histpath='~/.local/share/clipman-primary.json'";
-        # }
         {
           command = "systemctl --user restart kanshi";
           always = true;
@@ -138,13 +138,12 @@ in with config.lib.base16.theme; {
         { command = "thunderbird"; }
         { command = "telegram-desktop"; }
         { command = "slack"; }
-        { command = "flashfocus -t 250"; }
       ];
 
       assigns = {
         "1" = [ { app_id = "^firefox$"; } { class = "^Firefox$"; } ];
         "2" = [ { app_id = "^emacs$"; } { class = "^Emacs$"; } ];
-        "8" = [{ class = "^Thunderbird"; }];
+        "8" = [ { app_id = "^thunderbird"; } { class = "^Thunderbird"; } ];
         "9" = [{ class = "^Spotify$"; }];
 
         "im" = [ { app_id = "^telegramdesktop$"; } { class = "^Slack$"; } ];

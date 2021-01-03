@@ -18,36 +18,36 @@
   #  hunspellDicts.ru-ru
   #];
 
-  # home.packages = with pkgs; [
-  #   # emacsPgtkGcc
-  #   # emacsGcc
-  #   # emacsPgtk
-  #   emacs
-  #   emacs-all-the-icons-fonts
-  #   # nur.repos.metadark.emacs-pgtk-nativecomp
-  #   # emacs
+  home.packages = with pkgs; [
+    emacsPgtkGcc
+    # emacsGcc
+    # emacsPgtk
+    # emacs
+    emacs-all-the-icons-fonts
+    # nur.repos.metadark.emacs-pgtk-nativecomp
+    # emacs
 
-  #   ripgrep
-  #   fd
+    ripgrep
+    fd
 
-  #   hunspell
-  #   hunspellDicts.en-us
-  #   hunspellDicts.ru-ru
-  #   hunspellDicts.en-gb-large
+    hunspell
+    hunspellDicts.en-us
+    hunspellDicts.ru-ru
+    hunspellDicts.en-gb-large
 
-  #   editorconfig-core-c
+    editorconfig-core-c
 
-  #   gocode
-  #   gomodifytags
-  #   gotests
-  #   gore
-  #   goimports
+    gocode
+    gomodifytags
+    gotests
+    gore
+    goimports
 
-  #   hlint
-  #   cabal-install
+    hlint
+    cabal-install
 
-  #   shellcheck
+    shellcheck
 
-  #   pipenv
-  # ];
+    pipenv
+  ];
 }
