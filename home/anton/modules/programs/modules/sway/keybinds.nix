@@ -19,6 +19,33 @@ let
     # Tell sway to focus said window
     ${cfg.package}/bin/swaymsg [con_id="$selected"] focus
   '';
+
+  wobWrapper = pkgs.writeShellScript "wobWrapper" ''
+    # returns 0 (success) if $1 is running and is attached to this sway session; else 1
+    is_running_on_this_screen() {
+        pkill -0 $1 || return 1
+        for pid in $( pgrep $1 ); do
+            WOB_SWAYSOCK="$( tr '\0' '\n' < /proc/$pid/environ | awk -F'=' '/^SWAYSOCK/ {print $2}' )"
+            if [[ "$WOB_SWAYSOCK" == "$SWAYSOCK" ]]; then
+                return 0
+            fi
+        done
+        return 1
+    }
+
+    new_value=$1 # null or a percent; no checking!!
+
+    wob_pipe=~/.cache/$( basename $SWAYSOCK ).wob
+
+    [[ -p $wob_pipe ]] || mkfifo $wob_pipe
+
+    # wob does not appear in $(swaymsg -t get_msg), so:
+    is_running_on_this_screen wob || {
+        tail -f $wob_pipe | ${pkgs.wob}/bin/wob &
+    }
+
+    [[ "$new_value" ]] && echo $new_value > $wob_pipe
+  '';
 in {
   wayland.windowManager.sway = {
     config = {
@@ -35,13 +62,21 @@ in {
         "Print" = "exec ${grabScreenshot}";
         "${cfg.config.modifier}+Shift+v" = "exec clipman pick -t wofi";
 
+        "${cfg.config.modifier}+Shift+a" = "exec wofi-emoji";
+
         "${cfg.config.modifier}+Shift+l" = "exec lock";
 
-        "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 5";
-        "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 5";
-        "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer -t";
-        "XF86MonBrightnessUp" = "exec light -A 10";
-        "XF86MonBrightnessDown" = "exec light -U 10";
+        "XF86AudioRaiseVolume" =
+          "exec ${pkgs.pamixer}/bin/pamixer -ui 5 && ${wobWrapper} $(${pkgs.pamixer}/bin/pamixer --get-volume)";
+        "XF86AudioLowerVolume" =
+          "exec ${pkgs.pamixer}/bin/pamixer -ud 5 && ${wobWrapper} $(${pkgs.pamixer}/bin/pamixer --get-volume)";
+        "XF86AudioMute" =
+          "exec ${pkgs.pamixer}/bin/pamixer --toggle-mute && ${wobWrapper} $(( ${pkgs.pamixer}/bin/pamixer --get-mute && echo 0 > $SWAYSOCK.wob ) || ${pkgs.pamixer}/bin/pamixer --get-volume)";
+
+        "XF86MonBrightnessUp" =
+          "exec ${pkgs.light}/bin/light -A 5 && ${wobWrapper} $(light -G | cut -d'.' -f1)";
+        "XF86MonBrightnessDown" =
+          "exec ${pkgs.light}/bin/light -U 5 && light -G | ${wobWrapper} $(cut -d'.' -f1)";
 
         "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play";
         "XF86AudioStop" = "exec ${pkgs.playerctl}/bin/playerctl pause";

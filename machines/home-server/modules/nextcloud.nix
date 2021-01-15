@@ -20,6 +20,7 @@ in {
         redis = true;
         memcached = false;
       };
+      autoUpdateApps.enable = true;
       package = pkgs.nextcloud20;
       enable = true;
       config = {
@@ -77,6 +78,7 @@ in {
   users.users.nginx.extraGroups = [ "lp" ];
 
   environment.systemPackages = with pkgs; [
+    phpExtensions.pdlib
     phpExtensions.bz2
     dlib
     netpbm

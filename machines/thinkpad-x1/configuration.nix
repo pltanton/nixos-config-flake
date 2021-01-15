@@ -15,7 +15,11 @@
     WLR_NO_HARDWARE_CURSORS = "1";
   };
 
-  nixpkgs.overlays = [ (import ../../overlays/customPackages.nix) inputs.nixpkgs-wayland.overlay ];
+  nixpkgs.overlays = [
+    (import ../../overlays/customPackages.nix)
+    (import ../../overlays/scripts)
+    inputs.nixpkgs-wayland.overlay
+  ];
 
   nixpkgs.config = {
     allowBroken = true;

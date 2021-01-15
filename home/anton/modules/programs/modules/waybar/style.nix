@@ -6,17 +6,19 @@ let
     t."base${col}-rgb-b"
   },${opacity})";
 
+  backgroundColor-hex = "21242b";
+
   css = with config.lib.base16.theme; ''
     * {
         border: none;
         border-radius: 0;
         font-family: ${fontUIName},'Font Awesome 5', 'SFNS Display',  Helvetica, Arial, sans-serif;
-        font-size: ${fontUISize}px;
+        font-size: 18px;
         min-height: 0;
     }
 
     window#waybar {
-        background: #${base01-hex};
+        background: #${backgroundColor-hex};
         background-clip: padding-box;
 
         border-bottom: 3px solid rgba(1, 1, 1, 0);
@@ -29,7 +31,7 @@ let
 
     /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
     #workspaces button {
-        padding: 0 3px;
+        padding: 0 1px;
         background: transparent;
         color: #${base05-hex};
         border-bottom: 3px solid transparent;
@@ -37,7 +39,7 @@ let
 
     #workspaces button.visible {
         background: #${base00-hex};
-        border-bottom: 3px solid rgba(90, 90, 90, 0.5);
+        border-bottom: 3px solid #${base00-hex};
     }
 
     #workspaces button.focused {
@@ -57,28 +59,24 @@ let
     #clock, #battery, #cpu, #memory, #temperature, #backlight, #network,
     #pulseaudio, #custom-media, #tray, #mode, #idle_inhibitor, #custom-spotify,
     #custom-layout  {
-        padding: 0 10px;
+        padding: 5px 10px;
         margin: 0 3px;
         background-clip: border-box;
-        border-bottom: 3px solid rgba(90, 90, 90, 0.5);
+        border-bottom: 3px solid #${base01-hex};
     }
 
     #clock {
-        background-color: #${base00-hex};
     }
 
     #custom-layout {
-        background-color: #${base00-hex};
     }
 
     #battery {
-        background-color: #${base0D-hex};
-        color: #${base00-hex};
+        border-bottom: 3px solid #${base0D-hex};
     }
 
     #battery.charging {
-        color: #${base00-hex};
-        background-color: #26A65B;
+        border-bottom: 3px solid #${base0B-hex};
     }
 
     @keyframes blink {
@@ -112,7 +110,13 @@ let
     }
 
     #network {
-        background: #2980b9;
+        background-color: #${base0B-hex};
+        color: #${base01-hex};
+    }
+
+    #network.disabled {
+        background: #f53c3c;
+        color: #${base01-hex};
     }
 
     #network.disconnected {
@@ -120,13 +124,12 @@ let
     }
 
     #pulseaudio {
-        background: #${base0A-hex};
-        color: #${base00-hex};
+        border-bottom: 3px solid #${base0A-hex};
     }
 
     #pulseaudio.muted {
-        background: #${base0B-hex};
-        color: #${base04-hex};
+        background-color: #${base01-hex};
+        border-bottom: 3px solid #${base01-hex};
     }
 
     #custom-media {
@@ -135,20 +138,19 @@ let
     }
 
     #tray {
-        background-color: #${base00-hex};
     }
 
     #idle_inhibitor {
-        background-color: #${base00-hex};
     }
 
     #idle_inhibitor.activated {
         background-color: #${base06-hex};
         color: #${base04-hex};
+        border-bottom: 3px solid #${base06-hex};
     }
 
     #custom-spotify {
-        color: #${base00-hex};
+        color: #${base01-hex};
         background-color: #1DB954;
     }
   '';

@@ -41,16 +41,4 @@ self: super: rec {
 
   brother-dcp-t710 =
     (super.callPackage ./pkgs/brother-dcp-t710w.nix { }).cupswrapper;
-
-  wlroots = super.wlroots.overrideAttrs (oldAttrs: rec {
-    pname = "wlroots";
-    version = "0.12.0";
-
-    src = super.fetchFromGitHub {
-      owner = "swaywm";
-      repo = "wlroots";
-      rev = version;
-      sha256 = "0rlglz6vylm8k0j8mcd5x7krvqf37fgddw5vnxb4ia51ymlwga4h";
-    };
-  });
 }

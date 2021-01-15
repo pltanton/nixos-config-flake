@@ -7,6 +7,6 @@
     "${pkgs.coreutils}/bin/sleep 2";
   systemd.user.services.blueman-applet.Service.ExecStartPre =
     "${pkgs.coreutils}/bin/sleep 2";
-  systemd.user.services.waybar.Service.ExecStartPre =
-    "${pkgs.coreutils}/bin/sleep 1";
+  # systemd.user.services.waybar.Service.ExecStartPre =
+  #   "${pkgs.coreutils}/bin/sleep 1";
 }

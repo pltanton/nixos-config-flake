@@ -12,7 +12,7 @@
 
 (setq doom-theme 'doom-one)
 
-(setq display-line-numbers-type "relative")
+(setq display-line-numbers-type nil)
 
 (setq doom-font (font-spec :family "Iosevka" :size 24))
 (setq org-directory "~/Nextcloud/Org/")

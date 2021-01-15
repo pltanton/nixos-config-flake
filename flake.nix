@@ -14,7 +14,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Home-manager and modules
-    home-manager.url = "github:nix-community/home-manager/release-20.09";
+    home-manager.url = "github:nix-community/home-manager/master";
     base16.url = "github:alukardbf/base16-nix";
     nix-doom-emacs.url = "github:vlaci/nix-doom-emacs/master";
 

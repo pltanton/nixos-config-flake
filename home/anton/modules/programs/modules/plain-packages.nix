@@ -56,6 +56,7 @@ in {
     ranger
     tmux
     unzip
+    unrar
     wget
     tree
 

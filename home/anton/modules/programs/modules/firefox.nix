@@ -14,6 +14,7 @@
       ublock-origin
       react-devtools
       stylus
+      foxyproxy-standard
     ];
     profiles = {
       default = {

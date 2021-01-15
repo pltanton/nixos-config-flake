@@ -18,6 +18,8 @@ in {
         "custom/spotify"
         "tray"
         "pulseaudio"
+        # "network#ethernet"
+        # "network#wifi"
         "battery"
         "clock"
         "idle_inhibitor"
@@ -69,6 +71,22 @@ in {
           format = "{capacity}% {icon}";
           format-icons = [ "" "" "" "" "" ];
         };
+        # "network#wifi" = {
+        #   interface = "wlp0s20f3";
+        #   format = "{essid} ({signalStrength}%) ";
+        #   format-disconnected = "";
+        #   tooltip-format-wifi = "{essid} ({signalStrength}%) ";
+        #   tooltip-format-disconnected = "Disconnected";
+        #   max-length = 50;
+        # };
+        # "network#ethernet" = {
+        #   interface = "enp0s31f6";
+        #   format = "";
+        #   format-disconnected = "";
+        #   tooltip-format-ethernet = "{ifname} ";
+        #   tooltip-format-disconnected = "Disconnected";
+        #   max-length = 50;
+        # };
         pulseaudio = {
           format = "{volume}% {icon}";
           format-bluetooth = "{volume}% {icon}";

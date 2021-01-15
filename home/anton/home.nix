@@ -3,7 +3,7 @@
 {
   nixpkgs.overlays = [
     (import ../../overlays/customPackages.nix)
-    (import ../../overlays/.nix)
+    (import ../../overlays/scripts)
   ];
   nixpkgs.config.pulseaudio = true;
 

@@ -8,6 +8,7 @@ in with config.lib.base16.theme; {
     config.wayland.windowManager.sway.enable;
 
   services.flashfocus.enable = config.wayland.windowManager.sway.enable;
+  services.clipman.enable = config.wayland.windowManager.sway.enable;
 
   imports =
     [ ./keybinds.nix ./inputs.nix ./delay-systemd-service.nix ./services ];
@@ -23,14 +24,14 @@ in with config.lib.base16.theme; {
 
       swaylock-fancy
       flashfocus
+
+      wofi-emoji
     ]);
 
   programs.fish.loginShellInit = ''
     set TTY1 (tty)
     if test -z "$DISPLAY"; and test $TTY1 = "/dev/tty1"
-      exec sway
-      systemctl --user stop sway-session.target
-      systemctl --user stop graphical-session.target
+      exec sh -c 'sway; systemctl --user stop sway-session.target; systemctl --user stop graphical-session.target'
     end
   '';
 
@@ -65,7 +66,7 @@ in with config.lib.base16.theme; {
       #   resume 'swaymsg "output * dpms on"'
 
       workspace 1 output DP-1
-      workspace 2 output DP-1
+      workspace 2 outpu DP-1
       workspace 3 output DP-1
       workspace 4 output DP-1
 
@@ -81,11 +82,11 @@ in with config.lib.base16.theme; {
 
       set $gnome-schema org.gnome.desktop.interface
       exec_always {
-          gsettings set $gnome-schema gtk-theme '${gtkTheme}'
-          gsettings set $gnome-schema icon-theme '${iconTheme}'
-          gsettings set $gnome-schema cursor-theme '${cursorTheme}'
-          gsettings set $gnome-schema text-scaling-factor 1.6
-          gsettings set $gnome-schema font-name '${fontUIName} 11'
+          ${pkgs.glib}/bin/gsettings set $gnome-schema gtk-theme '${gtkTheme}'
+          ${pkgs.glib}/bin/gsettings set $gnome-schema icon-theme '${iconTheme}'
+          ${pkgs.glib}/bin/gsettings set $gnome-schema cursor-theme '${cursorTheme}'
+          ${pkgs.glib}/bin/gsettings set $gnome-schema text-scaling-factor 1.6
+          ${pkgs.glib}/bin/gsettings set $gnome-schema font-name '${fontUIName} 11'
       }
     '';
 
@@ -124,12 +125,14 @@ in with config.lib.base16.theme; {
       };
 
       startup = [
-        { command = "{pkgs.xsettingsd}/bin/xsettingsd"; }
-        { command = "wl-paste -t text --watch clipman store"; }
         {
-          command =
-            "wl-paste -p -t text --watch clipman store -P --histpath='~/.local/share/clipman-primary.json'";
+          command = "${pkgs.xsettingsd}/bin/xsettingsd";
         }
+        # { command = "wl-paste -t text --watch clipman store"; }
+        # {
+        #   command =
+        #     "wl-paste -p -t text --watch clipman store -P --histpath='~/.local/share/clipman-primary.json'";
+        # }
         {
           command = "systemctl --user restart kanshi";
           always = true;
@@ -138,6 +141,10 @@ in with config.lib.base16.theme; {
         { command = "thunderbird"; }
         { command = "telegram-desktop"; }
         { command = "slack"; }
+        {
+          command =
+            "exec mkfifo $SWAYSOCK.wob; tail -f $SWAYSOCK.wob | ${pkgs.wob}/bin/wob";
+        }
       ];
 
       assigns = {
@@ -152,6 +159,10 @@ in with config.lib.base16.theme; {
       window = {
         border = 3;
         commands = [
+          {
+            criteria = { title = "Firefox — Sharing Indicator"; };
+            command = "kill";
+          }
           {
             criteria = { app_id = "^telegramdesktop$"; };
             command = "resize set width 1 ppt";

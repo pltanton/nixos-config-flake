@@ -9,11 +9,21 @@
     sshd.enable = true;
     _3proxy = {
       enable = true;
+      usersFile = pkgs.writeText "3proxy_userfile" ''
+        proxy:CR:$1$nPdrLpvx$d3gMiEibqWj2DZurlqtva0
+      '';
       services = [{
         type = "proxy";
         bindAddress = "0.0.0.0";
         bindPort = 3128;
-        auth = [ "none" ];
+        auth = [ "strong" ];
+        acl = [
+          {
+            rule = "allow";
+            users = [ "proxy" ];
+          }
+          { rule = "deny"; }
+        ];
       }];
     };
 
