@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./blackbox.nix ];
+  imports = [ ./blackbox.nix ./json.nix ];
 
   services = {
     prometheus = {
@@ -22,10 +22,7 @@
             url: 'http://ip_telegram_bot:8080'
       '';
 
-
-      exporters = {
-        node.enable = true;
-      };
+      exporters = { node.enable = true; };
 
       scrapeConfigs = [
         {

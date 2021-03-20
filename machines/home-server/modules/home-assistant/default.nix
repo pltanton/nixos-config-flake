@@ -31,9 +31,7 @@ in {
       config = {
         homeassistant = true;
         permit_join = true;
-        serial = {
-          port = "/dev/ttyACM0";
-        };
+        serial = { port = "/dev/ttyACM0"; };
         mqtt = {
           base_topic = "zigbee2mqtt";
           server = "http://localhost";
@@ -41,24 +39,14 @@ in {
           password = secrets.mqtt_unpacked.hass;
         };
         devices = {
-          "0x00158d000301606a" = {
-            friendly_name  = "corridor_light_relay";
-          };
-          "0x00158d00014a9c3c" = {
-            friendly_name = "kitchen_light_relay";
-          };
-          "0x00158d000302ef25" = {
-            friendly_name = "bathroom_light_relay";
-          };
-          "0x00158d00014a5529" = {
-            friendly_name = "room_light_relay";
-          };
-          "0x00124b001f9b061f" = {
-            friendly_name = "bed_wireless_button";
-          };
-          "0x00124b001f877829" = {
-            friendly_name = "balcony_humidiy_sensor";
-          };
+          "0x00158d000301606a" = { friendly_name = "corridor_light_relay"; };
+          "0x00158d000302ef25" = { friendly_name = "bathroom_light_relay"; };
+          "0x00158d00014a5529" = { friendly_name = "room_light_relay"; };
+          "0x00124b001f9b061f" = { friendly_name = "bed_wireless_button"; };
+          "0x00158d00014a9c3c" = { friendly_name = "kitchen_light_relay"; };
+          "0x00124b002236c654" = { friendly_name = "kitchen_proxy_switch"; };
+          "0x00124b001f877829" = { friendly_name = "balcony_climate_sensor"; };
+          "0x00124b002236ebf7" = { friendly_name = "balcony_light_switch"; };
         };
       };
     };
@@ -108,7 +96,5 @@ in {
     };
   };
 
-  security.acme.certs."${mqttUrl}" = {
-    group = "mosquitto";
-  };
+  security.acme.certs."${mqttUrl}" = { group = "mosquitto"; };
 }

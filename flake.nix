@@ -26,60 +26,60 @@
     # My own flakes
     quizanus.url = "git+ssh://gitea@gitea.kaliwe.ru/pltanton/quizanus.git";
 
+    deploy-rs.url = "github:serokell/deploy-rs";
+
   };
 
-  outputs = inputs: {
-    nixosConfigurations = let
-      inherit (inputs.nixpkgs) lib;
+  outputs =
+    { self, deploy-rs, nixpkgs, nix-doom-emacs, home-manager, ... }@inputs: {
+      nixosConfigurations = let
+        inherit (inputs.nixpkgs) lib;
 
-      # Special args for booth home-manager and nixos system configuration
-      buildSpecialArgs = name: {
-        inherit inputs; # Add an inputs raw link
+        # Special args for booth home-manager and nixos system configuration
+        buildSpecialArgs = name: {
+          inherit inputs; # Add an inputs raw link
 
-        homeBaseDir = ./home;
-        # Add secrets if present
-        secrets = let secretsPath = ./machines + "/${name}/secrets.nix";
-        in if (builtins.pathExists secretsPath) then
-          import secretsPath
-        else
-          { };
-      };
-
-      # Default home-manager user overrides (add modules and special args)
-      hm-nixos-as-super = name:
-        { config, ... }: {
-          options.home-manager.users = lib.mkOption {
-            type = lib.types.attrsOf (lib.types.submoduleWith {
-              modules = [
-                (import inputs.base16.hmModule)
-                inputs.nix-doom-emacs.hmModule
-                (import ./home/common.nix)
-              ];
-              specialArgs = (buildSpecialArgs name) // { super = config; };
-            });
-          };
+          homeBaseDir = ./home;
+          # Add secrets if present
+          secrets = let secretsPath = ./machines + "/${name}/secrets.nix";
+          in if (builtins.pathExists secretsPath) then
+            import secretsPath
+          else
+            { };
         };
 
-      # Hosts contains an array for each system
-      hosts = (builtins.attrNames (builtins.readDir ./machines));
+        # Default home-manager user overrides (add modules and special args)
+        hm-nixos-as-super = name:
+          { config, ... }: {
+            options.home-manager.users = lib.mkOption {
+              type = lib.types.attrsOf (lib.types.submoduleWith {
+                modules = [
+                  (import inputs.base16.hmModule)
+                  inputs.nix-doom-emacs.hmModule
+                  (import ./home/common.nix)
+                ];
 
-      # Main host declaration
-      mkHost = name:
-        lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = (buildSpecialArgs name);
+                specialArgs = (buildSpecialArgs name) // { super = config; };
+              });
+            };
+          };
 
-          modules = [
-            # A host configuration itself
-            (import (./machines + "/${name}/configuration.nix"))
+        # Hosts contains an array for each system
+        hosts = (builtins.attrNames (builtins.readDir ./machines));
 
-            # Home manager with default overridings
-            inputs.home-manager.nixosModules.home-manager
-            (hm-nixos-as-super name)
+        # Main host declaration
+        mkHost = name:
+          lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = (buildSpecialArgs name);
+            modules = [
+              # A host configuration itself
+              (import (./machines + "/${name}/configuration.nix"))
 
-            # Some defaults like binary caches, that available for each host
-            ({ pkgs, config, ... }: {
-              config = {
+              # Home manager with default overridings
+              home-manager.nixosModules.home-manager
+              (hm-nixos-as-super name)
+              ({ pkgs, ... }: {
                 nix = {
                   # add binary caches
                   binaryCachePublicKeys = [
@@ -112,10 +112,41 @@
                     };
                   })
                 ];
-              };
-            })
-          ];
+              })
+            ];
+          };
+      in lib.genAttrs hosts mkHost;
+
+      # devShell.x86_64-linux = pkgs.mkShell {
+      #   buildInputs = [ deploy-rs.packages.x86_64-linux.deploy-rs pkgs.gnumake ];
+      # };
+
+      deploy.nodes = {
+        hz1 = {
+          hostname = "hz1.kaliwe.ru";
+          fastConnection = true;
+          profiles = {
+            system = {
+              sshUser = "root";
+              path = deploy-rs.lib.x86_64-linux.activate.nixos
+                self.nixosConfigurations.hz1;
+              # user = "root";
+            };
+          };
         };
-    in lib.genAttrs hosts mkHost;
-  };
+
+        thinkpad-x1 = {
+          hostname = "hz1.kaliwe.ru";
+          fastConnection = true;
+          profiles = {
+            system = {
+              sshUser = "root";
+              path = deploy-rs.lib.x86_64-linux.activate.nixos
+                self.nixosConfigurations.thinkpad-x1;
+              # user = "root";
+            };
+          };
+        };
+      };
+    };
 }

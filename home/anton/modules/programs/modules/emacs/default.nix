@@ -3,11 +3,9 @@
 {
   programs.doom-emacs = {
     enable = true;
-    # emacsPackage = pkgs.waylandPkgs.emacs-pgtk;
-    # emacsPackage = pkgs.nur.repos.metadark.emacs-pgtk-nativecomp;
     # emacsPackage = pkgs.emacsPgtk;
+    # emacsPackage = pkgs.emacsGcc;
     emacsPackage = pkgs.emacs;
-    # emacsPackage = pkgs.emacsUnstable;
     doomPrivateDir = ./doom.d;
   };
 

@@ -4,6 +4,7 @@ let
   secrets = import ../secrets.nix;
   consts = import ../constants.nix;
   nextcloudHome = "${consts.archiveMountPoint}/nextcloud-home";
+  nextcloudPackage = pkgs.nextcloud21;
 
   archiveDst = "${nextcloudHome}/data/anton/files/Archive";
 
@@ -13,15 +14,30 @@ let
   photoDst = "${archiveDst}/photo";
   photoRawDst = "${archiveDst}/photo_raw";
 in {
+  systemd = {
+    timers.simple-timer = {
+      wantedBy = [ "timers.target" ];
+      partOf = [ "nextcloud-facerecognition.service" ];
+      timerConfig.OnCalendar = "hourly";
+    };
+    services.nextcloud-facerecognition = {
+      serviceConfig.Type = "oneshot";
+      script = ''
+        /run/current-system/sw/bin/nextcloud-occ face:background_job
+      '';
+    };
+  };
+
   services = {
     nextcloud = {
+      phpExtraExtensions = all: with all; [ pdlib bz2 ];
       caching = {
         apcu = false;
         redis = true;
         memcached = false;
       };
       autoUpdateApps.enable = true;
-      package = pkgs.nextcloud20;
+      package = nextcloudPackage;
       enable = true;
       config = {
         adminpass = "adminpass";
@@ -43,7 +59,7 @@ in {
         "opcache.fast_shutdown" = "1";
         "openssl.cafile" = "/etc/ssl/certs/ca-certificates.crt";
         catch_workers_output = "yes";
-        "bz2.extension" = "${pkgs.phpExtensions.bz2}/lib/php/extensions/bz2.so";
+        memory_limit = "5120M";
       };
     };
 
@@ -77,12 +93,7 @@ in {
   users.users.nextcloud.extraGroups = [ "lp" "privatestore" ];
   users.users.nginx.extraGroups = [ "lp" ];
 
-  environment.systemPackages = with pkgs; [
-    phpExtensions.pdlib
-    phpExtensions.bz2
-    dlib
-    netpbm
-  ];
+  environment.systemPackages = with pkgs; [ dlib netpbm ];
 
   fileSystems = {
     "${photoDst}" = {

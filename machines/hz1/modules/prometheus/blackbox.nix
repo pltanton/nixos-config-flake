@@ -24,7 +24,7 @@ in {
             "https://bitwarden.kaliwe.ru"
             "https://gitea.kaliwe.ru"
             "https://jellyfin.kaliwe.ru"
-            "https://torrent.kaliwe.ru"
+            # "https://torrent.kaliwe.ru"
             "https://monitorrent.kaliwe.ru"
             "https://filestash.kaliwe.ru"
           ];

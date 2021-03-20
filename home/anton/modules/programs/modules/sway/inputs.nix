@@ -5,6 +5,9 @@
       xkb_variant = "dvorak,";
       xkb_options = "grp:caps_toggle";
     };
+
+    "1133:16534:Logitech_ERGO_M575" = { pointer_accel = "0.8"; };
+
     # "1:1:AT_Translated_Set_2_keyboard" = {
     #   xkb_layout = "us,ru";
     #   xkb_variant = "dvorak,";

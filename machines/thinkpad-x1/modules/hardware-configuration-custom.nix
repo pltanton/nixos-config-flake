@@ -14,6 +14,10 @@ in {
   hardware.pulseaudio.extraConfig = ''
     load-module module-alsa-sink device=hw:0,3
     load-module module-bluetooth-policy auto_switch=2
+
+    load-module module-echo-cancel aec_method=webrtc source_name=echoCancel_source sink_name=echoCancel_sink
+    set-default-source echoCancel_source
+    set-default-sink echoCancel_sink
   '';
   hardware.pulseaudio.package = pkgs.pulseaudioFull;
   # hardware.pulseaudio.package = pkgs.master.pulseaudioFull;
@@ -25,6 +29,7 @@ in {
   hardware.opengl.driSupport32Bit = true;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_zen;
 
   hardware.trackpoint.enable = true;
   hardware.trackpoint.emulateWheel = config.hardware.trackpoint.enable;

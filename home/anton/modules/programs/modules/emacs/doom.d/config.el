@@ -12,11 +12,11 @@
 
 (setq doom-theme 'doom-one)
 
-(setq display-line-numbers-type nil)
+(setq display-line-numbers-type "relative")
 
-(setq doom-font (font-spec :family "Iosevka" :size 24))
+(setq doom-font (font-spec :family "Iosevka" :size 29))
 (setq org-directory "~/Nextcloud/Org/")
-(setq projectile-project-search-path '("~/Workdir/" "~/Workdir/intellectokids" ))
+(setq projectile-project-search-path '("~/Workdir/" "~/Workdir/intellectokids" "~/Workdir/blackbird-platform" ))
 
 (defun my-open-calendar ()
   (interactive)

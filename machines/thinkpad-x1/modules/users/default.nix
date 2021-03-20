@@ -11,5 +11,5 @@ let
     };
 in {
   home-manager.users.anton = makeHomeManagerIntegration antonHome ./anton;
-  home-manager.users.julsa = makeHomeManagerIntegration julsaHome ./julsa;
+  # home-manager.users.julsa = makeHomeManagerIntegration julsaHome ./julsa;
 }

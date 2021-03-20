@@ -11,6 +11,7 @@ in {
     gnuplot
 
     nixfmt
+    shfmt
 
     gnupg
 
@@ -47,7 +48,6 @@ in {
     dnsutils
     jq
     bitwarden-cli
-    bitwarden-rofi
     htop
     inetutils
     killall
@@ -82,7 +82,7 @@ in {
     # steam
 
     (steam.override {
-      extraPkgs = pkgs: [ SDL2 libstdcxx5 ];
+      # extraPkgs = pkgs: [ SDL2 libstdcxx5 ];
       nativeOnly = false;
     })
 
@@ -107,9 +107,11 @@ in {
     # gradle2nix
     nodejs
     insomnia
+    postman
     adoptopenjdk-bin
     #jetbrains.idea-community
     jetbrains.idea-ultimate
+    android-studio
     mongodb
     robo3t
     dbeaver
@@ -118,6 +120,7 @@ in {
     gopls
     gotools
     gocode
+    delve # Go debugging tool
     godef
     (python3.withPackages
       (pp: with pp; [ pylint jedi flake8 autopep8 pygments hvac pika ]))

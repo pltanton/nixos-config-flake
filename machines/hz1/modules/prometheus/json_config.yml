@@ -1,0 +1,9 @@
+metrics:
+  - name: croudness
+    path: "$.data.club.people"
+    help: Number of peoples in the club
+    labels:
+      name: "$.data.club.name"
+
+headers:
+  X-Auth-Token: 5fdde574bc8b116203a91e68eb54ab8e60c264730009a025

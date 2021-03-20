@@ -2,7 +2,7 @@
 
 {
   virtualisation.oci-containers.containers.drone = {
-    image = "drone/drone:1.1";
+    image = "drone/drone:latest";
     ports = [ "3011:80" ];
     volumes =
       [ "/root/drone:/data" "/var/run/docker.sock:/var/run/docker.sock" ];

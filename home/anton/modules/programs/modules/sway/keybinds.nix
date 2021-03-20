@@ -83,7 +83,7 @@ in {
         "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
         "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
 
-        "${cfg.config.modifier}+f12" = "exec ${pkgs.bitwarden-rofi}/bin/bwmenu";
+        # "${cfg.config.modifier}+f12" = "exec ${pkgs.bitwarden-rofi}/bin/bwmenu";
 
         "${cfg.config.modifier}+y" = "workspace next_on_output";
         "${cfg.config.modifier}+p" = "workspace prev_on_output";

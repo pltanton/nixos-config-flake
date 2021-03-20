@@ -3,8 +3,6 @@
 {
   #imports = [ (nixpkgs + "/nixos/modules/profiles/qemu-guest.nix") ];
 
-  security.rngd.enable = lib.mkDefault false;
-
   boot = {
     initrd.postDeviceCommands = ''
       # Set the system time from the hardware clock to work around a
