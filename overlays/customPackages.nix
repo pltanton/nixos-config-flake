@@ -2,7 +2,7 @@ self: super: rec {
   my-rapid-photo-downloader =
     super.callPackage ./pkgs/my-rapid-photo-downloader.nix { };
   bitwarden-rofi = super.callPackage ./pkgs/bitwarden-rofi { };
-  texlab = super.callPackage ./pkgs/texlab.nix { };
+  # texlab = super.callPackage ./pkgs/texlab.nix { };
   fuzzylite = super.callPackage ./pkgs/fuzzylite.nix { };
   vcmi = super.callPackage ./pkgs/vcmi.nix { };
   keepmenu = super.callPackage ./pkgs/keepmenu.nix { };
@@ -41,4 +41,15 @@ self: super: rec {
 
   brother-dcp-t710 =
     (super.callPackage ./pkgs/brother-dcp-t710w.nix { }).cupswrapper;
+
+  brlaser_fork = super.brlaser.overrideAttrs (oldAttrs: rec {
+    version = "master";
+    src = super.fetchFromGitHub {
+      owner = "QORTEC";
+      repo = "brlaser";
+      rev = "d3b07f150e3b5e41013e88abe53ee443598f54dc";
+      sha256 = "05lpr4ny2p04p0sz3c9ki2zywvynwkimnwrk4in0kybvhk7djq9q";
+    };
+  });
+
 }

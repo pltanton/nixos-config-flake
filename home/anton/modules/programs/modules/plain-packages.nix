@@ -60,16 +60,20 @@ in {
     wget
     tree
 
+    plantuml
+
     # GUI
     libreoffice
     audacity
     xournalpp
     discord
     zoom-us
+    skype
     transmission-remote-gtk
     transmission-gtk
-    rapid-photo-downloader
+    stable.rapid-photo-downloader
     evince
+    zathura
     gthumb
     gnome-photos
     gimp
@@ -80,6 +84,7 @@ in {
     slack
     spotify
     # steam
+    shotcut
 
     (steam.override {
       # extraPkgs = pkgs: [ SDL2 libstdcxx5 ];
@@ -99,18 +104,21 @@ in {
 
     # LaTeX
     texlive.combined.scheme-full
+    texlab
     # (texlive.combine { inherit (texlive) scheme-medium titlesec wrapfig; })
 
     # Dev
     docker-compose
     clang-tools
     # gradle2nix
+    graphviz
     nodejs
     insomnia
     postman
     adoptopenjdk-bin
     #jetbrains.idea-community
     jetbrains.idea-ultimate
+    jetbrains.datagrip
     android-studio
     mongodb
     robo3t
@@ -122,8 +130,20 @@ in {
     gocode
     delve # Go debugging tool
     godef
-    (python3.withPackages
-      (pp: with pp; [ pylint jedi flake8 autopep8 pygments hvac pika ]))
+    python38Packages.pip
+    (python3.withPackages (pp:
+      with pp; [
+        pip
+        pylint
+        jedi
+        flake8
+        autopep8
+        pygments
+        hvac
+        pika
+        python-language-server
+      ]))
+
     nodePackages.yaml-language-server
     nodePackages.prettier
     nodePackages.vue-language-server
@@ -132,6 +152,6 @@ in {
     zip
 
     awscli2
-    local.aws-sam-cli
+    aws-sam-cli
   ];
 }

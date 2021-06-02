@@ -39,10 +39,15 @@ in with config.lib.base16.theme; {
     SDL_VIDEODRIVER = "wayland";
     QT_QPA_PLATFORM = "wayland";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
-    MOZ_ENABLE_WAYLAND = 1;
+    # MOZ_ENABLE_WAYLAND = 1;
     _JAVA_AWT_WM_NONREPARENTING = 1;
     GDK_PIXBUF_MODULE_FILE =
       "${pkgs.librsvg.out}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
+
+    WLR_DRM_NO_MODIFIERS = 1;
+
+    XDG_CURRENT_DESKTOP = "sway";
+    XDG_SESSION_TYPE = "wayland";
   };
 
   wayland.windowManager.sway = {

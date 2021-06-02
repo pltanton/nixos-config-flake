@@ -112,3 +112,15 @@
         (ispell-hunspell-add-multi-dic "ru_RU,en_GB,en_US")
         (setq ispell-dictionary "ru_RU,en_GB,en_US")
 )
+
+;; Extra major modes for languages
+(use-package caddyfile-mode
+  :ensure t
+  :mode (("Caddyfile\\'" . caddyfile-mode)
+         ("caddy\\.conf\\'" . caddyfile-mode)))
+
+(use-package caddyfile-mode
+  :ensure t
+  :mode (("\\.proto\\'" . protobuf-mode)))
+
+(setq +latex-viewers '(zathura))

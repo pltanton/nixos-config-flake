@@ -4,8 +4,9 @@
   services = {
     gitea = {
       enable = true;
-	  domain = "gitea.kaliwe.ru";
-	  rootUrl = "https://gitea.kaliwe.ru";
+      httpPort = 3003;
+      domain = "gitea.kaliwe.ru";
+      rootUrl = "https://gitea.kaliwe.ru";
       database = {
         type = "postgres";
         passwordFile = "/secrets/gitea-database";
@@ -19,7 +20,7 @@
       enableACME = true;
       forceSSL = true;
 
-      locations."/".proxyPass = "http://127.0.0.1:3000";
+      locations."/".proxyPass = "http://127.0.0.1:3003";
     };
   };
 

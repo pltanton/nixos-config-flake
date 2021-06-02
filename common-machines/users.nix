@@ -1,6 +1,4 @@
 { pkgs, ... }: {
-  security.sudo.wheelNeedsPassword = true;
-
   nix.trustedUsers = [ "root" "@wheel" ];
 
   programs.fish = {

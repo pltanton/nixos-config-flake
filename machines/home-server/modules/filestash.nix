@@ -26,8 +26,6 @@ in {
     };
   };
 
-  users.users.airsonic.extraGroups = [ "publicstore" ];
-
   virtualisation.oci-containers.containers."felstash" = {
     image = "machines/filestash";
     ports = [ "${publicPort}:8334" ];

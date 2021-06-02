@@ -14,20 +14,23 @@ in {
   };
 
   config = mkIf cfg.enable {
-    systemd.user.services.clipman = {
-      Unit = {
-        Description = "Clipman service";
-        PartOf = [ "graphical-session.target" ];
-      };
+    systemd.user.services = {
+      clipman = {
+        Unit = {
+          Description = "Clipman service";
+          PartOf = [ "graphical-session.target" ];
+        };
 
-      Service = {
-        Type = "simple";
-        ExecStart =
-          "${pkgs.wl-clipboard}/bin/wl-paste -t text --watch ${pkgs.clipman}/bin/clipman store";
-        Restart = "always";
-      };
+        Service = {
+          Type = "simple";
+          ExecPre = "${pkgs.clipman}/bin/clipman restore";
+          ExecStart =
+            "${pkgs.wl-clipboard}/bin/wl-paste -t text --watch ${pkgs.clipman}/bin/clipman store -P --max-items=100 --notify";
+          Restart = "always";
+        };
 
-      Install = { WantedBy = [ "graphical-session.target" ]; };
+        Install = { WantedBy = [ "graphical-session.target" ]; };
+      };
     };
   };
 }

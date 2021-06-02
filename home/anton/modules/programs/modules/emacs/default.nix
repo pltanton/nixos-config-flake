@@ -7,6 +7,12 @@
     # emacsPackage = pkgs.emacsGcc;
     emacsPackage = pkgs.emacs;
     doomPrivateDir = ./doom.d;
+
+    emacsPackagesOverlay = self: super:
+      {
+        # caddyfile-mode = super.caddyfile-mode.overrideAttrs
+        #   (esuper: { buildInputs = esuper.buildInputs ++ [ pkgs.git ]; });
+      };
   };
 
   home.packages = with pkgs; [

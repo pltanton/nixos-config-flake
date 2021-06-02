@@ -1,6 +1,6 @@
-{nixpkgs, ...}: {
+{ nixpkgs, ... }: {
   services.gotify.enable = true;
-  services.gotify.port = 3030;
+  services.gotify.port = 3031;
 
   services.nginx = {
     enable = true;
@@ -10,7 +10,7 @@
 
       locations."/" = {
         proxyWebsockets = true;
-        proxyPass = "http://127.0.0.1:3030";
+        proxyPass = "http://127.0.0.1:3031";
       };
     };
   };

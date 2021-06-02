@@ -4,8 +4,7 @@
   imports = builtins.map (name: ./modules + "/${name}")
     (builtins.attrNames (builtins.readDir ./modules))
     ++ (builtins.map (name: ../../common-machines + "/${name}")
-      (builtins.attrNames (builtins.readDir ../../common-machines)))
-  ;
+      (builtins.attrNames (builtins.readDir ../../common-machines)));
 
   boot.loader.systemd-boot.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -38,25 +37,21 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [
-    vim
-    tmux
-    git
-  ];
+  environment.systemPackages = with pkgs; [ vim tmux git ];
 
   users = {
     users = {
       publicstore = {
+        isSystemUser = true;
         shell = pkgs.bashInteractive;
         uid = 1040;
       };
       privatestore = {
+        isSystemUser = true;
         shell = pkgs.bashInteractive;
         uid = 1050;
       };
-      nginx = {
-        extraGroups = [ "mosquitto" ];
-      };
+      nginx = { extraGroups = [ "mosquitto" ]; };
     };
 
     groups = {
@@ -64,7 +59,6 @@
       privatestore = { gid = 1050; };
     };
   };
-
 
   nixpkgs.config.allowUnfree = true;
   security.acme.acceptTerms = true;

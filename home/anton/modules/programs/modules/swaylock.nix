@@ -14,7 +14,7 @@ let
         --screenshots \
         --fade-in 0.3 \
         --effect-blur 7x5 \
-        --grace 2 \
+        --grace 20 \
         --effect-vignette 0.1:0.7 \
         --indicator-radius 100 \
         --indicator-thickness 7 \

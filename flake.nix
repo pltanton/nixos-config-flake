@@ -30,8 +30,8 @@
 
   };
 
-  outputs =
-    { self, deploy-rs, nixpkgs, nix-doom-emacs, home-manager, ... }@inputs: {
+  outputs = { self, deploy-rs, nixpkgs, nix-doom-emacs, home-manager, nur
+    , emacs-overlay, ... }@inputs: {
       nixosConfigurations = let
         inherit (inputs.nixpkgs) lib;
 
@@ -95,8 +95,9 @@
                 };
                 # Overlays available for each host
                 nixpkgs.overlays = [
-                  inputs.nur.overlay
-                  inputs.emacs-overlay.overlay
+
+                  nur.overlay
+                  emacs-overlay.overlay
                   (final: prev: {
                     master = import inputs.nixpkgs-master {
                       system = "x86_64-linux";
@@ -136,14 +137,14 @@
         };
 
         thinkpad-x1 = {
-          hostname = "hz1.kaliwe.ru";
+          hostname = "localhost";
           fastConnection = true;
           profiles = {
             system = {
-              sshUser = "root";
+              sshUser = "anton";
               path = deploy-rs.lib.x86_64-linux.activate.nixos
                 self.nixosConfigurations.thinkpad-x1;
-              # user = "root";
+              user = "anton";
             };
           };
         };

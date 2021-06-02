@@ -28,7 +28,7 @@ in {
   services = {
     zigbee2mqtt = {
       enable = true;
-      config = {
+      settings = {
         homeassistant = true;
         permit_join = true;
         serial = { port = "/dev/ttyACM0"; };
@@ -54,6 +54,7 @@ in {
     mosquitto = {
       enable = true;
       host = "0.0.0.0";
+      checkPasswords = true;
       ssl = {
         enable = true;
         certfile = "/var/lib/acme/${mqttUrl}/cert.pem";
@@ -63,7 +64,9 @@ in {
       users = {
         hass = {
           acl = [ "topic readwrite #" ];
-          hashedPassword = secrets.mqtt.hass;
+          password = "jHSMoBqZeHquJkYWFty05LcWi";
+          # hashedPassword =
+          # "$6$UnJaE3YIuwd+A2Ns$iXISY1S8PueeraD6bWpj8H/bfKTnmR+4uDb+jSboMp87zNUPc9l1shruAn3VQe+wpcdEE1beYbOdvj5k6mxVgQ==";
         };
         anton = {
           acl = [ "topic readwrite #" ];

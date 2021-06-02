@@ -4,15 +4,6 @@
     enable = true;
     plugins = [
       {
-        name = "async-prompt";
-        src = pkgs.fetchFromGitHub {
-          owner = "acomagu";
-          repo = "fish-async-prompt";
-          rev = "7b3dc39c031ad460a438b145c389a5b9570c68a0";
-          sha256 = "18nxl53nc0hwpilgp2izz89mjmklh1r2iaacz9lw5kg4xw2h75hc";
-        };
-      }
-      {
         name = "fasd";
         src = pkgs.fetchFromGitHub {
           owner = "oh-my-fish";

@@ -13,6 +13,9 @@
   environment.sessionVariables = {
     WLR_DRM_NO_ATOMIC = "1";
     WLR_NO_HARDWARE_CURSORS = "1";
+
+    XDG_CURRENT_DESKTOP = "sway";
+    XDG_SESSION_TYPE = "wayland";
   };
 
   nixpkgs.overlays = [
@@ -24,7 +27,11 @@
   nixpkgs.config = {
     allowBroken = true;
     allowUnfree = true;
+
+    permittedInsecurePackages = [ "ffmpeg-3.4.8" ];
   };
+
+  networking.firewall.enable = false;
 
   nix = {
     package = pkgs.nixUnstable;

@@ -1,8 +1,7 @@
 { pkgs, ... }: {
-
   programs.firefox = {
     enable = true;
-    package = pkgs.master.firefox-wayland;
+    # package = pkgs.firefox-wayland;
     # package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
     #   extraPolicies = { ExtensionSettings = { }; };
     # };

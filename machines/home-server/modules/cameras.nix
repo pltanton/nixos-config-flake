@@ -17,6 +17,12 @@ in {
     extraOptions = [ "--network=host" ];
   };
 
+
+  networking.firewall.allowedTCPPorts = [
+    8081
+    8082
+  ];
+
   services.nginx = {
     virtualHosts."motioneye.kaliwe.ru" = {
       enableACME = true;

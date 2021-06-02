@@ -30,7 +30,7 @@ in {
   hardware.sane = { enable = true; };
 
   users.users.nextcloud = {
-    isNormalUser = true;
+    isSystemUser = true;
     openssh.authorizedKeys.keys = [ secrets.homeAssistantSshPub ];
     extraGroups = [ "scanner" "lp" ];
   };

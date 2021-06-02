@@ -36,11 +36,13 @@
   };
 
   programs.sway.enable = false;
-  # xdg.portal.enable = true;
+  xdg.portal.enable = true;
   # xdg.portal.gtkUsePortal = true;
-  # xdg.portal.extraPortals = with pkgs;
-  #   [ xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
-  #
+  xdg.portal.extraPortals = with pkgs; [
+    xdg-desktop-portal-wlr
+    xdg-desktop-portal-gtk
+  ];
+
   programs.dconf.enable = true;
   environment.systemPackages =
     [ pkgs.gnome3.adwaita-icon-theme pkgs.qogir-icon-theme ];
