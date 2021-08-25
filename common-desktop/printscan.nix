@@ -1,5 +1,5 @@
 { pkgs, ... }:
-let printerIp = "192.168.30.18";
+let printerIp = "192.168.50.31";
 in {
   # imports = [ inputs.nixos-hardware.nixosModules.common-pc-laptop-acpi_call ];
 

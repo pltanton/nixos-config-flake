@@ -11,6 +11,7 @@ in {
     inputs.nixos-hardware.nixosModules.common-pc-laptop
   ];
 
+  services.ofono.enable = true;
   hardware.pulseaudio.extraConfig = ''
     load-module module-alsa-sink device=hw:0,3
     load-module module-bluetooth-policy auto_switch=2
@@ -40,10 +41,11 @@ in {
   boot.extraModprobeConfig = ''
     options v4l2loopback devices=2 video_nr=5,6 card_label="wfrecorder","fakecam" exclusive_caps=1
   '';
-  boot.kernelModules = [ "v4l2loopback" ];
+  boot.kernelModules = [ "v4l2loopback" "i2c-dev" ];
 
   fileSystems."/mnt/hass" = {
     device = "10.100.0.1:/var/lib/hass";
+    # device = ":/var/lib/hass";
     fsType = "nfs";
     options = [ nfsDeviceDefaults ];
   };

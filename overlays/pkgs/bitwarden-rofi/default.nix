@@ -1,6 +1,6 @@
 # Original: https://github.com/kylesferrazza/nix/blob/master/overlay/bitwarden-rofi/default.nix
-{ stdenv, fetchFromGitHub, makeWrapper, unixtools,
-xsel, xclip, wl-clipboard, xdotool, bitwarden-cli, rofi, jq, keyutils }:
+{ stdenv, fetchFromGitHub, makeWrapper, unixtools, lib, xsel, xclip
+, wl-clipboard, xdotool, bitwarden-cli, rofi, jq, keyutils }:
 
 let
   bins = [
@@ -25,9 +25,7 @@ in stdenv.mkDerivation {
     sha256 = "0g70zia8h31sqf25qla6wss7pmcg5q6va3v9y967806g1xi47hms";
   };
 
-  buildInputs = [
-    makeWrapper
-  ];
+  buildInputs = [ makeWrapper ];
 
   installPhase = ''
     mkdir -p "$out/bin"
@@ -37,13 +35,13 @@ in stdenv.mkDerivation {
     install -Dm755 -d "$out/usr/share/doc/bitwarden-rofi/img"
     install -Dm644 "README.md" "$out/usr/share/doc/bitwarden-rofi/README.md"
     install -Dm644 img/* "$out/usr/share/doc/bitwarden-rofi/img/"
-    wrapProgram "$out/bin/bwmenu" --prefix PATH : ${stdenv.lib.makeBinPath bins}
+    wrapProgram "$out/bin/bwmenu" --prefix PATH : ${lib.makeBinPath bins}
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     license = licenses.gpl3;
     platforms = platforms.linux;
-    homepage = https://github.com/mattydebie/bitwarden-rofi;
+    homepage = "https://github.com/mattydebie/bitwarden-rofi";
     maintainers = with maintainers; [ kylesferrazza ];
   };
 

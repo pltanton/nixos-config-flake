@@ -3,14 +3,15 @@
 
   hardware = {
     bluetooth = {
+      enable = true;
       settings = {
         "General" = {
           "AutoConnect" = true;
-          "Enable" = "Source,Sink,Media,Socket";
+          "Enable" = "Source,Sink,Media,Control,Gateway,Socket,Headset";
+          # "MultiProfile" = "multiple";
         };
       };
+      hsphfpd.enable = true;
     };
-
-    bluetooth.enable = true;
   };
 }

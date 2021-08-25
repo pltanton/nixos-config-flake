@@ -3,8 +3,8 @@
 let
   secrets = import ../secrets.nix;
 
-  lan = "enp8s0";
-  wifi = "wlp7s0";
+  lan = "enp1s0";
+  wifi = "wlp8s0";
   prefixLength = 24;
   ipAddress = "10.1.0.1";
   dhcpRange = "10.1.0.2,10.1.0.199,5m";
@@ -38,7 +38,8 @@ in {
 
       dhcp-range=${dhcpRange}
 
-      dhcp-host=34:ce:00:bc:be:b2,10.1.0.200
+      dhcp-host=34:ce:00:bc:be:b2,10.1.0.200 # Kitchen philips light
+      dhcp-host=34:ce:00:bc:c7:4b,10.1.0.201 # Room philips light
       dhcp-host=04:cf:8c:7b:71:17,10.1.0.202 # YeeLight bulb color toilet
       dhcp-host=04:cf:8c:77:37:83,10.1.0.203 # YeeLight bulb color bed
       dhcp-host=80:7d:3a:68:45:f7,10.1.0.204

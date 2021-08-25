@@ -1,0 +1,5 @@
+github.com/intellectokids-backend,starts-with,qutebrowser -B /home/anton/.local/share/qutebrowser-profiles/intellectokids --qt-arg name intellectokids
+asana.com,host-contains,qutebrowser -B /home/anton/.local/share/qutebrowser-profiles/intellectokids --qt-arg name intellectokids
+bamboohr.com,host-contains,qutebrowser -B /home/anton/.local/share/qutebrowser-profiles/intellectokids --qt-arg name intellectokids
+intellectokids.com,host-contains,qutebrowser -B /home/anton/.local/share/qutebrowser-profiles/intellectokids --qt-arg name intellectokids
+intellectokids-services.com,host-contains,qutebrowser -B /home/anton/.local/share/qutebrowser-profiles/intellectokids --qt-arg name intellectokids

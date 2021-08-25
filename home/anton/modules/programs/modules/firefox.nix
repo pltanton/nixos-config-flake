@@ -2,14 +2,15 @@
   programs.firefox = {
     enable = true;
     # package = pkgs.firefox-wayland;
+    # package = pkgs.latest.firefox-nightly-bin;
     # package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
     #   extraPolicies = { ExtensionSettings = { }; };
     # };
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      sidebery
+      # sidebery
       bitwarden
-      vim-vixen
-      privacy-badger
+      # tridactyl
+      # vim-vixen
       ublock-origin
       react-devtools
       stylus
@@ -19,7 +20,29 @@
       default = {
         id = 0;
         settings = {
-          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          # "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          "browser.startup.homepage" = "https://start.duckduckgo.com";
+          "gfx.webrender.all" = true;
+        };
+        # userChrome = ''
+        #   #TabsToolbar {
+        #     visibility: collapse !important;
+        #     margin-bottom: 21px !important;
+        #   }
+
+        #   #titlebar {
+        #     visibility: collapse !important;
+        #   }
+
+        #   #sidebar-header {
+        #     visibility: collapse !important;
+        #   }
+        # '';
+      };
+      intellectokids = {
+        id = 1;
+        settings = {
+          # "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "browser.startup.homepage" = "https://start.duckduckgo.com";
           "gfx.webrender.all" = true;
         };

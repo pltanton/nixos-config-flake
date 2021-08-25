@@ -1,5 +1,4 @@
 { pkgs, ... }: {
-  services.pipewire.enable = true;
   gtk.iconCache.enable = true;
   xdg.icons.enable = true;
 
@@ -37,7 +36,7 @@
 
   programs.sway.enable = false;
   xdg.portal.enable = true;
-  # xdg.portal.gtkUsePortal = true;
+  xdg.portal.gtkUsePortal = true;
   xdg.portal.extraPortals = with pkgs; [
     xdg-desktop-portal-wlr
     xdg-desktop-portal-gtk

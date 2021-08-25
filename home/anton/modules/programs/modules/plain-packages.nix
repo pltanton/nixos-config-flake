@@ -41,9 +41,16 @@ in {
     # CLI utils
     nix-prefetch-github
     gitAndTools.gh
+    libnotify
 
     ffmpeg
-    httpie
+    # httpie
+    curlie # replacement for httpie
+    bat # cat but with highlights
+    exa # modern ls
+    duf # beauty df
+    tldr # cheatsheets for cli
+    procs # modern ps
     ansible
     dnsutils
     jq
@@ -52,6 +59,7 @@ in {
     inetutils
     killall
     nfs-utils
+    nix-direnv
 
     ranger
     tmux
@@ -67,8 +75,13 @@ in {
     audacity
     xournalpp
     discord
-    zoom-us
-    skype
+    # zoom-us
+    zoom
+
+    qmapshack
+
+    master.skypeforlinux
+
     transmission-remote-gtk
     transmission-gtk
     stable.rapid-photo-downloader
@@ -78,7 +91,7 @@ in {
     gnome-photos
     gimp
     mpv
-    tdesktop
+    master.tdesktop
     vlc
     xsane
     slack
@@ -101,6 +114,7 @@ in {
     # Web
     chromium
     # nur.repos.sikmir.qutebrowser-bin
+    # qutebrowser
 
     # LaTeX
     texlive.combined.scheme-full
@@ -130,18 +144,20 @@ in {
     gocode
     delve # Go debugging tool
     godef
+    black # Python code formatter
+    python-language-server
     python38Packages.pip
     (python3.withPackages (pp:
       with pp; [
         pip
         pylint
+        pyright
         jedi
         flake8
         autopep8
         pygments
         hvac
         pika
-        python-language-server
       ]))
 
     nodePackages.yaml-language-server
@@ -151,7 +167,7 @@ in {
     gnumake
     zip
 
-    awscli2
-    aws-sam-cli
+    stable.awscli2
+    stable.aws-sam-cli
   ];
 }

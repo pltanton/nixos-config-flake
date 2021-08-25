@@ -16,8 +16,8 @@ in {
   home.packages = [ pkgs.qogir-icon-theme pkgs.gnome-icon-theme pkgs.hicolor-icon-theme ];
   themes.base16 = {
     enable = true;
-    scheme = "onedark";
-    variant = "onedark";
+    scheme = "gruvbox";
+    variant = "gruvbox-dark-hard";
     extraParams = themeConsts;
   };
 
@@ -28,7 +28,8 @@ in {
       name = themeConsts.gtkTheme;
     };
     iconTheme = {
-      package = pkgs.qogir-icon-theme;
+      package = pkgs.numix-icon-theme;
+      # package = pkgs.qogir-icon-theme;
       # package = pkgs.papirus-icon-theme;
       # package = pkgs.gnome3.adwaita-icon-theme;
       name = themeConsts.iconTheme;

@@ -4,14 +4,14 @@ in {
   imports = [ ./style.nix ];
 
   programs.waybar = with config.lib.base16.theme; {
-    package = pkgs.waylandPkgs.waybar;
+    package = pkgs.master.waybar;
     enable = config.wayland.windowManager.sway.enable;
     # enable = true;
     systemd.enable = true;
     settings = [{
       layer = "top";
       position = "top";
-      height = 32;
+      height = 42;
       modules-left = [ "sway/workspaces" "sway/mode" ];
       modules-center = [ "sway/window" ];
       modules-right = [
@@ -55,7 +55,7 @@ in {
           };
         };
         tray = {
-          icon-size = 21;
+          icon-size = 23;
           spacing = 10;
         };
         clock = {
@@ -116,6 +116,7 @@ in {
             swaymsg -mrt subscribe '["input"]' | jq -r --unbuffered "select(.change == \"xkb_layout\") | .input | select(.type == \"keyboard\") | .xkb_active_layout_name | .[0:2] | ascii_upcase"
           '';
         };
+        # "sway/language" = {};
       };
     }];
   };

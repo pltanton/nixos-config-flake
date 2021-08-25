@@ -6,14 +6,14 @@ let
     t."base${col}-rgb-b"
   },${opacity})";
 
-  backgroundColor-hex = "21242b";
+  backgroundColor-hex = "${config.lib.base16.theme.base00-hex}";
 
   css = with config.lib.base16.theme; ''
     * {
         border: none;
         border-radius: 0;
         font-family: ${fontUIName},'Font Awesome 5', 'SFNS Display',  Helvetica, Arial, sans-serif;
-        font-size: 18px;
+        font-size: 22px;
         min-height: 0;
     }
 

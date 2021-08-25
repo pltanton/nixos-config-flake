@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, inputs, ... }:
 let
   cfg = config.wayland.windowManager.sway;
 
@@ -74,16 +74,16 @@ in {
           "exec ${pkgs.pamixer}/bin/pamixer --toggle-mute && ${wobWrapper} $(( ${pkgs.pamixer}/bin/pamixer --get-mute && echo 0 > $SWAYSOCK.wob ) || ${pkgs.pamixer}/bin/pamixer --get-volume)";
 
         "XF86MonBrightnessUp" =
-          "exec ${pkgs.light}/bin/light -A 5 && ${wobWrapper} $(light -G | cut -d'.' -f1)";
+          "exec ${pkgs.light}/bin/light -A 5 && ${wobWrapper} $(light -G | cut -d'.' -f1) && ${pkgs.ddcutil}/bin/ddcutil setvcp 10 $(light -G | cut -d'.' -f1)";
         "XF86MonBrightnessDown" =
-          "exec ${pkgs.light}/bin/light -U 5 && light -G | ${wobWrapper} $(cut -d'.' -f1)";
+          "exec ${pkgs.light}/bin/light -U 5 && light -G | ${wobWrapper} $(cut -d'.' -f1) && ${pkgs.ddcutil}/bin/ddcutil setvcp 10 $(light -G | cut -d'.' -f1)";
 
         "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play";
         "XF86AudioStop" = "exec ${pkgs.playerctl}/bin/playerctl pause";
         "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
         "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
 
-        # "${cfg.config.modifier}+f12" = "exec ${pkgs.bitwarden-rofi}/bin/bwmenu";
+        "${cfg.config.modifier}+backslash" = "exec ${inputs.bwmenu.defaultPackage.x86_64-linux}/bin/bwmenu";
 
         "${cfg.config.modifier}+y" = "workspace next_on_output";
         "${cfg.config.modifier}+p" = "workspace prev_on_output";

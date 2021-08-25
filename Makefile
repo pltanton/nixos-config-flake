@@ -1,4 +1,5 @@
-deploy-home-server: target = root@home.kaliwe.ru
+# deploy-home-server: target = root@home.kaliwe.ru
+deploy-home-server: target = root@home-server.home
 deploy-hz1: target = root@hz1.kaliwe.ru
 deploy-thinkpad-t460: target = localhost
 deploy-thinkpad-x1: target = localhost

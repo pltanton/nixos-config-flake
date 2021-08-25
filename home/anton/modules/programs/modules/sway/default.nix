@@ -1,7 +1,7 @@
 { pkgs, config, lib, inputs, ... }@input:
 let
-  swayPackage = pkgs.waylandPkgs.sway-unwrapped;
-  # swayPackage = pkgs.stable.sway;
+  # swayPackage = pkgs.waylandPkgs.sway-unwrapped;
+  swayPackage = pkgs.stable.sway;
 in with config.lib.base16.theme; {
 
   services.keyboardLayoutPerWindow.enable =
@@ -216,7 +216,7 @@ in with config.lib.base16.theme; {
 
       fonts = [ "${fontUIName} ${fontUISize}" ];
 
-      output = { "*" = { bg = "${../../../../backgrounds/storm.jpg} fill"; }; };
+      output = { "*" = { bg = "${../../../../backgrounds/forest.jpg} fill"; }; };
     };
   };
 }

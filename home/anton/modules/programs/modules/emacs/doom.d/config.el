@@ -11,6 +11,8 @@
       user-mail-address "plotnikovanton@gmail.com")
 
 (setq doom-theme 'doom-one)
+;; (setq doom-theme 'doom-gruvbox)
+;; (setq doom-gruvbox-dark-variant "hard")
 
 (setq display-line-numbers-type "relative")
 
@@ -107,11 +109,11 @@
 (setq default-input-method "cyrillic-dvorak")
 
 (after! ispell
-        (setenv "LANG" "en_US")
-        (ispell-set-spellchecker-params)
-        (ispell-hunspell-add-multi-dic "ru_RU,en_GB,en_US")
-        (setq ispell-dictionary "ru_RU,en_GB,en_US")
-)
+  (setenv "LANG" "en_US")
+  (ispell-set-spellchecker-params)
+  (ispell-hunspell-add-multi-dic "ru_RU,en_GB,en_US")
+  (setq ispell-dictionary "ru_RU,en_GB,en_US")
+  )
 
 ;; Extra major modes for languages
 (use-package caddyfile-mode
@@ -124,3 +126,9 @@
   :mode (("\\.proto\\'" . protobuf-mode)))
 
 (setq +latex-viewers '(zathura))
+(after! lsp-python-ms
+  (setq lsp-python-ms-executable (executable-find "python-language-server"))
+  (set-lsp-priority! 'mspyls 1))
+
+;; Disable minibuffer for treemacs
+(setq treemacs-read-string-input 'from-minibuffer)
