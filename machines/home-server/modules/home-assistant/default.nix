@@ -64,13 +64,9 @@ in {
       users = {
         hass = {
           acl = [ "topic readwrite #" ];
-          password = "jHSMoBqZeHquJkYWFty05LcWi";
+          password = secrets.mqtt_unpacked.hass;
           # hashedPassword =
           # "$6$UnJaE3YIuwd+A2Ns$iXISY1S8PueeraD6bWpj8H/bfKTnmR+4uDb+jSboMp87zNUPc9l1shruAn3VQe+wpcdEE1beYbOdvj5k6mxVgQ==";
-        };
-        anton = {
-          acl = [ "topic readwrite #" ];
-          hashedPassword = secrets.mqtt.anton;
         };
       };
     };

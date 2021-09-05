@@ -105,8 +105,8 @@
 
 
 ;; Russian language support
-(load-file "~/.doom.d/cyrillic-dvorak.el")
-(setq default-input-method "cyrillic-dvorak")
+;; (load-file "~/.doom.d/cyrillic-dvorak.el")
+;; (setq default-input-method "cyrillic-dvorak")
 
 (after! ispell
   (setenv "LANG" "en_US")

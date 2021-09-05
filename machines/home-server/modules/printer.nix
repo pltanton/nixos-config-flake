@@ -29,11 +29,11 @@ in {
 
   hardware.sane = { enable = true; };
 
-  users.users.nextcloud = {
-    isSystemUser = true;
-    openssh.authorizedKeys.keys = [ secrets.homeAssistantSshPub ];
-    extraGroups = [ "scanner" "lp" ];
-  };
+  # users.users.nextcloud = {
+  #   isSystemUser = true;
+  #   # openssh.authorizedKeys.keys = [ secrets.homeAssistantSshPub ];
+  #   extraGroups = [ "scanner" "lp" ];
+  # };
 
   networking.firewall.allowedUDPPorts = [ 631 ];
   networking.firewall.allowedTCPPorts = [ 631 ];
