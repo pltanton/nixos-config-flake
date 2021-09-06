@@ -1,10 +1,10 @@
 { pkgs, ... }: {
   security.rtkit.enable = true;
 
-  programs.noisetorch.enable = true;
+  programs.noisetorch.enable = false;
 
   services.pipewire = {
-    enable = true;
+    enable = false;
     alsa.enable = true;
     # alsa.support32Bit = true;
     pulse.enable = true;
@@ -73,19 +73,29 @@
   };
 
   nixpkgs.config.pulseaudio = true;
-  # hardware = {
-  #   pulseaudio.enable = false;
-  #   pulseaudio.support32Bit = true;
-  #   # pulseaudio.extraConfig = ''
-  #   #   load-module module-alsa-sink device=hw:0,7
-  #   #   load-module module-bluetooth-policy auto_switch=2
-  #   # '';
+  services.ofono.enable = true;
+  hardware = {
+    pulseaudio.package = pkgs.pulseaudioFull;
+    pulseaudio.extraConfig = ''
+      load-module module-alsa-sink device=hw:0,3
+      load-module module-bluetooth-policy auto_switch=2
 
-  #   pulseaudio.extraModules = [ pkgs.pulseaudio-modules-bt ];
+      load-module module-echo-cancel aec_method=webrtc source_name=echoCancel_source sink_name=echoCancel_sink
+      set-default-source echoCancel_source
+      set-default-sink echoCancel_sink
+    '';
+    pulseaudio.enable = true;
+    pulseaudio.support32Bit = true;
+    # pulseaudio.extraConfig = ''
+    #   load-module module-alsa-sink device=hw:0,7
+    #   load-module module-bluetooth-policy auto_switch=2
+    # '';
 
-  #   pulseaudio.tcp.anonymousClients.allowedIpRanges =
-  #     [ "127.0.0.1" "192.168.0.0/16" ];
-  #   pulseaudio.tcp.enable = true;
-  #   pulseaudio.zeroconf.publish.enable = true;
-  # };
+    pulseaudio.extraModules = [ pkgs.pulseaudio-modules-bt ];
+
+    pulseaudio.tcp.anonymousClients.allowedIpRanges =
+      [ "127.0.0.1" "192.168.0.0/16" ];
+    pulseaudio.tcp.enable = true;
+    pulseaudio.zeroconf.publish.enable = true;
+  };
 }

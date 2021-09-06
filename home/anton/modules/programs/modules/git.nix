@@ -3,10 +3,10 @@
     enable = true;
     userName = "Anton Plotnikov";
     userEmail = "plotnikovanton@gmail.com";
-    #signing = {
-    #  key = secrets.anton.gitSignFootprint;
-    #  signByDefault = true;
-    #};
+    signing = {
+     key = secrets.anton.gitSignFootprint;
+     signByDefault = true;
+    };
     extraConfig = {
       # url = {
       #   "ssh://git@gitlab.com/" = { insteadOf = "https://gitlab.com/"; };

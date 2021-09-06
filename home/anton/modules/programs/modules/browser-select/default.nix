@@ -10,7 +10,7 @@ let
       "Desktop Entry" = {
         Type = "Application";
         Exec =
-          "env DOMAIN_LIST_FILE=${domainsList} DEFAULT_BROWSER=qutebrowser ${script} %u";
+          "env DOMAIN_LIST_FILE=${domainsList} DEFAULT_BROWSER=firefox ${script} %u";
         Terminal = false;
         Name = "Select browser by regexp";
         Icon = "browser";

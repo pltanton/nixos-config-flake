@@ -3,7 +3,7 @@
 {
   networking.wireguard.interfaces = {
     wg0-home = {
-      privateKeyFile = "/root/nixos/wg/home";
+      privateKeyFile = "/root/secrets/wg/home";
       ips = [ "10.100.0.3/32" ];
       peers = [
         {

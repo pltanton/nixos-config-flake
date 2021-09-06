@@ -15,6 +15,7 @@
       react-devtools
       stylus
       foxyproxy-standard
+      pkgs.nur.repos.ethancedwards8.firefox-addons.enhancer-for-youtube
     ];
     profiles = {
       default = {
