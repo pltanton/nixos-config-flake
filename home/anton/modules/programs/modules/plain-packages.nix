@@ -82,6 +82,8 @@ in {
 
     master.skypeforlinux
 
+    master.easyeffects
+
     transmission-remote-gtk
     transmission-gtk
     stable.rapid-photo-downloader

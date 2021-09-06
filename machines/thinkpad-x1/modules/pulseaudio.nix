@@ -1,12 +1,12 @@
 { pkgs, ... }: {
-  security.rtkit.enable = true;
+  security.rtkit.enable = false;
 
   programs.noisetorch.enable = false;
 
   services.pipewire = {
-    enable = false;
+    enable = true;
     alsa.enable = true;
-    # alsa.support32Bit = true;
+    alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
 
@@ -25,6 +25,37 @@
         #"default.clock.min-quantum" = 32;
         #"default.clock.max-quantum" = 8192;
       };
+
+    };
+
+    config.pipewire-pulse = {
+      "context.modules" = [
+        {
+          "name" = "libpipewire-module-rtkit";
+          "args" = { };
+          "flags" = [ "ifexists" "nofail" ];
+        }
+        { "name" = "libpipewire-module-protocol-native"; }
+        { "name" = "libpipewire-module-client-node"; }
+        { "name" = "libpipewire-module-adapter"; }
+        { "name" = "libpipewire-module-metadata"; }
+        {
+          "name" = "libpipewire-module-protocol-pulse";
+          "args" = {
+            "server.address" = [ "unix=native" ];
+            "vm.overrides" = { "pulse.min.quantum" = "1024/48000"; };
+          };
+        }
+        {
+          name = "libpipewire-module-echo-cancel";
+          args = {
+            # "aec.method" = "webrtc";
+            # # node.latency = 1024/48000
+            # "source.props" = { "node.name" = "Echo Cancellation Source"; };
+            # "sink.props" = { "node.name" = "Echo Cancellation Sink"; };
+          };
+        }
+      ];
     };
 
     media-session.config.alsa-monitor = {
@@ -73,21 +104,21 @@
   };
 
   nixpkgs.config.pulseaudio = true;
-  services.ofono.enable = true;
+  services.ofono.enable = false;
   hardware = {
+    pulseaudio.enable = false;
+    pulseaudio.support32Bit = true;
     pulseaudio.package = pkgs.pulseaudioFull;
     pulseaudio.extraConfig = ''
-      load-module module-alsa-sink device=hw:0,3
+      load-module module-alsa-sink device=hw=0,3
       load-module module-bluetooth-policy auto_switch=2
 
       load-module module-echo-cancel aec_method=webrtc source_name=echoCancel_source sink_name=echoCancel_sink
       set-default-source echoCancel_source
       set-default-sink echoCancel_sink
     '';
-    pulseaudio.enable = true;
-    pulseaudio.support32Bit = true;
     # pulseaudio.extraConfig = ''
-    #   load-module module-alsa-sink device=hw:0,7
+    #   load-module module-alsa-sink device=hw=0,7
     #   load-module module-bluetooth-policy auto_switch=2
     # '';
 
