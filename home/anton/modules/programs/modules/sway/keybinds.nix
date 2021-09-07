@@ -1,5 +1,6 @@
 { pkgs, config, lib, inputs, ... }:
 let
+  scripts = import ./scripts pkgs;
   cfg = config.wayland.windowManager.sway;
 
   grabScreenshot = pkgs.writeShellScript "grabScreenshot" ''
@@ -74,9 +75,11 @@ in {
           "exec ${pkgs.pamixer}/bin/pamixer --toggle-mute && ${wobWrapper} $(( ${pkgs.pamixer}/bin/pamixer --get-mute && echo 0 > $SWAYSOCK.wob ) || ${pkgs.pamixer}/bin/pamixer --get-volume)";
 
         "XF86MonBrightnessUp" =
-          "exec ${pkgs.light}/bin/light -A 5 && ${wobWrapper} $(light -G | cut -d'.' -f1) && ${pkgs.ddcutil}/bin/ddcutil setvcp 10 $(light -G | cut -d'.' -f1)";
+          "exec ${wobWrapper} $(${scripts.brightness}/bin/brightness --inc -d 5)";
+          # "exec ${pkgs.light}/bin/light -A 5 && ${wobWrapper} $(light -G | cut -d'.' -f1) && ${pkgs.ddcutil}/bin/ddcutil setvcp 10 $(light -G | cut -d'.' -f1)";
         "XF86MonBrightnessDown" =
-          "exec ${pkgs.light}/bin/light -U 5 && light -G | ${wobWrapper} $(cut -d'.' -f1) && ${pkgs.ddcutil}/bin/ddcutil setvcp 10 $(light -G | cut -d'.' -f1)";
+          "exec ${wobWrapper} $(${scripts.brightness}/bin/brightness --dec -d 5)";
+          # "exec ${pkgs.light}/bin/light -U 5 && light -G | ${wobWrapper} $(cut -d'.' -f1) && ${pkgs.ddcutil}/bin/ddcutil setvcp 10 $(light -G | cut -d'.' -f1)";
 
         "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play";
         "XF86AudioStop" = "exec ${pkgs.playerctl}/bin/playerctl pause";
