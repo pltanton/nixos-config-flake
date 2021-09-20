@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  security.rtkit.enable = false;
+  security.rtkit.enable = true;
 
   programs.noisetorch.enable = false;
 
@@ -8,7 +8,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    jack.enable = true;
+    jack.enable = false;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -42,17 +42,25 @@
         {
           "name" = "libpipewire-module-protocol-pulse";
           "args" = {
-            "server.address" = [ "unix=native" ];
+            "server.address" = [ "unix:native" ];
             "vm.overrides" = { "pulse.min.quantum" = "1024/48000"; };
           };
         }
         {
           name = "libpipewire-module-echo-cancel";
           args = {
-            # "aec.method" = "webrtc";
-            # # node.latency = 1024/48000
-            # "source.props" = { "node.name" = "Echo Cancellation Source"; };
-            # "sink.props" = { "node.name" = "Echo Cancellation Sink"; };
+            "aec.method" = "webrtc";
+            "node.latency" = "1024/48000";
+            "source.props" = {
+              "node.name" = "Echo Cancellation Mic";
+              "node.passive" = true;
+              "node.pause-on-idle" = true;
+            };
+            "sink.props" = {
+              "node.name" = "Echo Cancellation Output";
+              "node.passive" = true;
+              "node.pause-on-idle" = true;
+            };
           };
         }
       ];
@@ -110,6 +118,11 @@
     pulseaudio.support32Bit = true;
     pulseaudio.package = pkgs.pulseaudioFull;
     pulseaudio.extraConfig = ''
+      unload-module module-role-cork
+
+      load-module module-alsa-sink device=hw:0,0 channels=4
+      load-module module-alsa-source device=hw:0,6 channels=4
+
       load-module module-alsa-sink device=hw=0,3
       load-module module-bluetooth-policy auto_switch=2
 

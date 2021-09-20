@@ -13,12 +13,12 @@ let
   rofi = "${pkgs.rofi}/bin/rofi";
 
   wofiWindowsSwitch = pkgs.writeShellScript "wofiWindowsSwitch" ''
-    windows=$(${cfg.package}/bin/swaymsg -t get_tree | ${pkgs.jq}/bin/jq -r 'recurse(.nodes[]?)|recurse(.floating_nodes[]?)|select(.type=="con"),select(.type=="floating_con")|(.id|tostring)+" "+.app_id+": "+.name')
+    windows=$(swaymsg -t get_tree | ${pkgs.jq}/bin/jq -r 'recurse(.nodes[]?)|recurse(.floating_nodes[]?)|select(.type=="con"),select(.type=="floating_con")|(.id|tostring)+" "+.app_id+": "+.name')
 
     selected=$(echo "$windows" | ${wofi} --dmenu -i | awk '{print $1}')
 
     # Tell sway to focus said window
-    ${cfg.package}/bin/swaymsg [con_id="$selected"] focus
+    swaymsg [con_id="$selected"] focus
   '';
 
   wobWrapper = pkgs.writeShellScript "wobWrapper" ''
@@ -50,6 +50,7 @@ let
 in {
   wayland.windowManager.sway = {
     config = {
+
       modifier = "Mod4";
 
       bindkeysToCode = true;
@@ -63,7 +64,9 @@ in {
         "Print" = "exec ${grabScreenshot}";
         "${cfg.config.modifier}+Shift+v" = "exec clipman pick -t wofi";
 
-        "${cfg.config.modifier}+Shift+a" = "exec wofi-emoji";
+        "${cfg.config.modifier}+Shift+e" = "exec wofi-emoji";
+        "${cfg.config.modifier}+Shift+q" =
+          "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit; systemctl --user stop sway-session.target; systemctl --user stop graphical-session.targetsystemctl --user stop sway-session.target; systemctl --user stop graphical-session.target'";
 
         "${cfg.config.modifier}+Shift+l" = "exec lock";
 
@@ -75,18 +78,19 @@ in {
           "exec ${pkgs.pamixer}/bin/pamixer --toggle-mute && ${wobWrapper} $(( ${pkgs.pamixer}/bin/pamixer --get-mute && echo 0 > $SWAYSOCK.wob ) || ${pkgs.pamixer}/bin/pamixer --get-volume)";
 
         "XF86MonBrightnessUp" =
-          "exec ${wobWrapper} $(${scripts.brightness}/bin/brightness --inc -d 5)";
-          # "exec ${pkgs.light}/bin/light -A 5 && ${wobWrapper} $(light -G | cut -d'.' -f1) && ${pkgs.ddcutil}/bin/ddcutil setvcp 10 $(light -G | cut -d'.' -f1)";
+          "exec ${scripts.brightness}/bin/brightness --inc -d 5 | head -n 1 | xargs -n1 ${wobWrapper}";
+        # "exec ${pkgs.light}/bin/light -A 5 && ${wobWrapper} $(light -G | cut -d'.' -f1) && ${pkgs.ddcutil}/bin/ddcutil setvcp 10 $(light -G | cut -d'.' -f1)";
         "XF86MonBrightnessDown" =
-          "exec ${wobWrapper} $(${scripts.brightness}/bin/brightness --dec -d 5)";
-          # "exec ${pkgs.light}/bin/light -U 5 && light -G | ${wobWrapper} $(cut -d'.' -f1) && ${pkgs.ddcutil}/bin/ddcutil setvcp 10 $(light -G | cut -d'.' -f1)";
+          "exec ${scripts.brightness}/bin/brightness --dec -d 5 | head -n 1 | xargs -n1 ${wobWrapper}";
+        # "exec ${pkgs.light}/bin/light -U 5 && light -G | ${wobWrapper} $(cut -d'.' -f1) && ${pkgs.ddcutil}/bin/ddcutil setvcp 10 $(light -G | cut -d'.' -f1)";
 
         "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play";
         "XF86AudioStop" = "exec ${pkgs.playerctl}/bin/playerctl pause";
         "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
         "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
 
-        "${cfg.config.modifier}+backslash" = "exec ${inputs.bwmenu.defaultPackage.x86_64-linux}/bin/bwmenu";
+        "${cfg.config.modifier}+backslash" =
+          "exec ${inputs.bwmenu.defaultPackage.x86_64-linux}/bin/bwmenu";
 
         "${cfg.config.modifier}+y" = "workspace next_on_output";
         "${cfg.config.modifier}+p" = "workspace prev_on_output";
@@ -101,6 +105,8 @@ in {
         "${cfg.config.modifier}+apostrophe" = "focus output right";
 
         "${cfg.config.modifier}+n" = "mode mako";
+
+        "${cfg.config.modifier}+Shift+a" = "focus child";
       };
 
       keycodebindings = lib.mkOptionDefault { };

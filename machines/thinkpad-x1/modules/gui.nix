@@ -1,4 +1,17 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }:
+let
+  wlgreetConfig = pkgs.writeText "wlgreet-sway.conf" ''
+    exec "${lib.makeBinPath [ pkgs.greetd.wlgreet ]}/wlgreet --command sway; swaymsg exit"
+
+    bindsym Mod4+shift+e exec swaynag \
+    -t warning \
+    -m 'What do you want to do?' \
+    -b 'Poweroff' 'systemctl poweroff' \
+    -b 'Reboot' 'systemctl reboot'
+
+    include /etc/sway/config.d/*
+  '';
+in {
   gtk.iconCache.enable = true;
   xdg.icons.enable = true;
 
@@ -13,10 +26,16 @@
 
     libinput.enable = true;
 
-    # displayManager.gdm.enable = false;
+    desktopManager.plasma5 = { enable = false; };
+    # displayManager.sddm.enable = false;
     # displayManager.lightdm.enable = true;
-    # desktopManager.gnome3 = { enable = true; };
-    #   desktopManager.xterm.enable = true;
+    displayManager.gdm = {
+      enable = false;
+      wayland = true;
+    };
+    # displayManager.lightdm.enable = true;
+    desktopManager.gnome = { enable = false; };
+    desktopManager.xterm.enable = false;
 
     #   config = pkgs.lib.mkOverride 50 ''
     #     Section "Device"
@@ -45,4 +64,14 @@
   programs.dconf.enable = true;
   environment.systemPackages =
     [ pkgs.gnome3.adwaita-icon-theme pkgs.qogir-icon-theme ];
+
+  services.greetd = {
+    enable = false;
+    settings = {
+      default_session = {
+        command = "${lib.makeBinPath [ pkgs.sway ]}/sway -c ${wlgreetConfig}";
+        user = "greeter";
+      };
+    };
+  };
 }

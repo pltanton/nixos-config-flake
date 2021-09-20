@@ -1,7 +1,16 @@
 { pkgs, config, lib, inputs, ... }@input:
 let
-  # swayPackage = pkgs.waylandPkgs.sway-unwrapped;
-  swayPackage = pkgs.stable.sway;
+  swayPackage = pkgs.waylandPkgs.sway-unwrapped;
+  # swayPackage = pkgs.master.sway;
+  # swayPackage = pkgs.sway;
+  # swayPackage = pkgs.sway.overrideAttrs (soldAttrs: {
+  #   src = pkgs.fetchFromGitHub {
+  #     owner = "RPigott";
+  #     repo = "sway";
+  #     rev = "54e3c4969835c7af1e83eeb8d3051fae8aabb3fc";
+  #     hash = "sha256-HjLxiCTt+EI8+UzJzNvAgw/5m3Ynj/yu1HMxoXGUzlo=";
+  #   };
+  # });
 in with config.lib.base16.theme; {
 
   services.keyboardLayoutPerWindow.enable =
@@ -28,14 +37,15 @@ in with config.lib.base16.theme; {
       wofi-emoji
     ]);
 
-  programs.fish.loginShellInit = ''
-    set TTY1 (tty)
-    if test -z "$DISPLAY"; and test $TTY1 = "/dev/tty1"
-      exec sh -c 'sway; systemctl --user stop sway-session.target; systemctl --user stop graphical-session.target'
-    end
-  '';
+  programs.fish.loginShellInit =
+    lib.mkIf config.wayland.windowManager.sway.enable ''
+      set TTY1 (tty)
+      if test -z "$DISPLAY"; and test $TTY1 = "/dev/tty1"
+        exec sh -c '${swayPackage}/bin/sway; systemctl --user stop sway-session.target; systemctl --user stop graphical-session.target'
+      end
+    '';
 
-  home.sessionVariables = {
+  home.sessionVariables = lib.mkIf config.wayland.windowManager.sway.enable {
     SDL_VIDEODRIVER = "wayland";
     QT_QPA_PLATFORM = "wayland";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
@@ -214,9 +224,14 @@ in with config.lib.base16.theme; {
         smartBorders = "on";
       };
 
-      fonts = [ "${fontUIName} ${fontUISize}" ];
+      fonts = {
+        names = [ "${fontUIName}" ];
+        size = 16.0;
+      };
 
-      output = { "*" = { bg = "${../../../../backgrounds/forest.jpg} fill"; }; };
+      output = {
+        "*" = { bg = "${../../../../backgrounds/forest.jpg} fill"; };
+      };
     };
   };
 }
