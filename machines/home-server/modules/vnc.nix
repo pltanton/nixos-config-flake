@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let username = "remote";
     enableGraphics = false;
@@ -19,16 +19,16 @@ in {
     zeroconf.discovery.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [ tigervnc gthumb mpv firefox
-                                            #steam
-                                          ];
+  environment.systemPackages = lib.mkIf enableGraphics (with pkgs; [ tigervnc gthumb mpv firefox
+                                                                     #steam
+                                                                   ]);
 
   services = {
     xserver = {
       enable = enableGraphics;
       videoDrivers =
         [ "amdgpu" "radeon" "cirrus" "vesa" "vmware" "modesetting" ];
-      desktopManager.xfce.enable = true;
+      desktopManager.xfce.enable = enableGraphics;
     };
   };
 

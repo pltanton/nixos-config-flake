@@ -155,7 +155,7 @@ in with config.lib.base16.theme; {
         { command = "firefox"; }
         { command = "thunderbird"; }
         { command = "telegram-desktop"; }
-        { command = "slack"; }
+        # { command = "slack"; }
         {
           command =
             "exec mkfifo $SWAYSOCK.wob; tail -f $SWAYSOCK.wob | ${pkgs.wob}/bin/wob";

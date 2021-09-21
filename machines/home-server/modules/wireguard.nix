@@ -12,12 +12,12 @@
 
       peers = [
         {
-        allowedIPs = [ "10.100.0.2/32" ];
-        publicKey = "TZeNcgaKDcQRsUktBPcjtcKbVLouDkc24jdoSrWHtVs=";
+          allowedIPs = [ "10.100.0.2/32" ];
+          publicKey = "+Sn1TvwU92p1ZiGQfv0qSCbSML894x/u7OuLRH0URig=";
         }
         {
-        allowedIPs = [ "10.100.0.3/32" ];
-        publicKey = "s0FRSfH6u9aGupCIc3CHgwk4rv26+z6yKX165E3W+WA=";
+          allowedIPs = [ "10.100.0.3/32" ];
+          publicKey = "TZeNcgaKDcQRsUktBPcjtcKbVLouDkc24jdoSrWHtVs=";
         }
       ];
     };
