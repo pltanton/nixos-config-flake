@@ -2,9 +2,7 @@
 
 {
   imports = (builtins.map (name: ./modules + "/${name}")
-    (builtins.attrNames (builtins.readDir ./modules)))
-    ++ (builtins.map (name: ../../common-machines + "/${name}")
-      (builtins.attrNames (builtins.readDir ../../common-machines)));
+    (builtins.attrNames (builtins.readDir ./modules)));
 
   time.timeZone = "Europe/Moscow";
 
@@ -17,8 +15,8 @@
   };
 
   nixpkgs.overlays = [
-    (import ../../overlays/customPackages.nix)
-    (import ../../overlays/scripts)
+    (import ./overlays/customPackages.nix)
+    (import ./overlays/scripts)
     inputs.nixpkgs-wayland.overlay
   ];
 
