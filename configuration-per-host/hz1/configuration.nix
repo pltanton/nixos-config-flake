@@ -1,9 +1,7 @@
 { config, pkgs, inputs, ... }: {
   system.stateVersion = "20.09";
   imports = builtins.map (name: ./modules + "/${name}")
-    (builtins.attrNames (builtins.readDir ./modules))
-    ++ (builtins.map (name: ../../common-machines + "/${name}")
-      (builtins.attrNames (builtins.readDir ../../common-machines)));
+    (builtins.attrNames (builtins.readDir ./modules));
 
   systemd = {
     network.enable = true;
@@ -29,8 +27,6 @@
   security.acme.acceptTerms = true;
 
   nixpkgs.config.allowUnfree = true;
-
-  nixpkgs.overlays = [ inputs.quizanus.overlay ];
 
   users.extraUsers.proxyuser = {
     isSystemUser = true;
