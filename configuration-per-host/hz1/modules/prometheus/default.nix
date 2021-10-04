@@ -28,7 +28,7 @@
         {
           job_name = "node";
           scrape_interval = "10s";
-          static_configs = [{ targets = [ "localhost:9100" ]; }];
+          static_configs = [{ targets = [ "localhost:9100" "10.10.10.10:9100" ]; }];
         }
         {
           job_name = "hass";

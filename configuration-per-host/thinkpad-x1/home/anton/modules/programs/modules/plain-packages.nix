@@ -132,8 +132,8 @@ in {
     insomnia
     postman
     adoptopenjdk-bin
-    #jetbrains.idea-community
-    jetbrains.idea-ultimate
+    jetbrains.idea-community
+    # jetbrains.idea-ultimate
     jetbrains.datagrip
     android-studio
     mongodb
