@@ -8,9 +8,7 @@ in {
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.nixos-hardware.nixosModules.common-pc-laptop
   ];
-  hardware.steam-hardware.enable = true;
   hardware.pulseaudio.support32Bit = true;
-
   hardware.opengl.enable = true;
   hardware.opengl.driSupport32Bit = true;
 
