@@ -1,11 +1,11 @@
-{ pkgs, fetchPypi, inputs, ... }:
+{ pkgs, lib, fetchPypi, inputs, ... }:
 let
   gradle2nix = import (fetchTarball {
     url = "https://github.com/tadfisher/gradle2nix/archive/master.tar.gz";
     sha256 = "04skv5nhbqzybxsqp7b7l4s7nl66p8cd92f6czlivwcjnj36lzya";
   }) { pkgs = pkgs; };
 in {
-  home.packages = with pkgs; [
+  home.packages = with pkgs; lib.mkIf false [
     hack-font
 
     gnuplot

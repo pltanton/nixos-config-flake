@@ -1,19 +1,19 @@
 { config, pkgs, ... }:
 
 {
-  networking.wireguard.interfaces = {
-    wg0-home = {
-      privateKeyFile = "/root/secrets/wg/home";
-      ips = [ "10.100.0.3/32" ];
-      peers = [
-        {
-          publicKey = "Rv9ZSp8/fvFj1Zohwragvv4K4Z+qo0c9rinZvfaJ5CY=";
-          allowedIPs = [ "10.100.0.0/24" ];
-          endpoint = "home.kaliwe.ru:51820";
-          persistentKeepalive = 25;
-        }
-      ];
-    };
+  # networking.wireguard.interfaces = {
+  #   wg0-home = {
+  #     privateKeyFile = "/root/secrets/wg/home";
+  #     ips = [ "10.100.0.3/32" ];
+  #     peers = [
+  #       {
+  #         publicKey = "Rv9ZSp8/fvFj1Zohwragvv4K4Z+qo0c9rinZvfaJ5CY=";
+  #         allowedIPs = [ "10.100.0.0/24" ];
+  #         endpoint = "home.kaliwe.ru:51820";
+  #         persistentKeepalive = 25;
+  #       }
+  #     ];
+  #   };
 
 #  wg0-kaliwe = let
 #    host = "195.201.150.251";
@@ -43,5 +43,5 @@
 #    ];
 #  };
 
-  };
+  # };
 }

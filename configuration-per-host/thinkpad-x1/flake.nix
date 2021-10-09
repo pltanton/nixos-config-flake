@@ -77,7 +77,7 @@
                   modules = [
                     (import inputs.base16.hmModule)
                     inputs.nix-doom-emacs.hmModule
-                    (import ../../home/common.nix)
+                    # (import ../../home/common.nix)
                   ];
 
                   specialArgs = commonSpecialArgs // { super = config; };

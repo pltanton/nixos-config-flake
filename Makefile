@@ -7,7 +7,7 @@ deploy-hz1: build_host = root@hz1.kaliwe.ru
 deploy-thinkpad-x1: target = localhost
 deploy-thinkpad-x1: build_host = localhost
 
-deploy-thinkbook: target = 192.168.50.218
+deploy-thinkbook: target = root@192.168.50.218
 deploy-thinkbook: build_host = localhost
 
 deploy-%:
