@@ -18,8 +18,8 @@ in {
     ###################
     # Packages for DE #
     ###################
-    waylandPkgs.wdisplays
-    waylandPkgs.wf-recorder
+    wdisplays
+    wf-recorder
 
     ffmpegthumbnailer
     pamixer

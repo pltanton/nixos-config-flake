@@ -1,7 +1,7 @@
 { pkgs, config, lib, home-manager, ... }: {
   services.kanshi = {
     enable = true;
-    package = pkgs.waylandPkgs.kanshi;
+    # package = pkgs.waylandPkgs.kanshi;
     profiles = {
       bigLg = {
         outputs = [

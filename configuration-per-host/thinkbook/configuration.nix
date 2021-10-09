@@ -4,5 +4,5 @@
   imports = (builtins.map (name: ./modules + "/${name}")
     (builtins.attrNames (builtins.readDir ./modules)));
 
-  networking.hostName = "thinkpad-x1";
+  networking.hostName = "NB-SPB-A215";
 }

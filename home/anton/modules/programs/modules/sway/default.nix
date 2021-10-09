@@ -1,7 +1,7 @@
 { pkgs, config, lib, inputs, ... }@input:
 let
-  swayPackage = pkgs.waylandPkgs.sway-unwrapped;
-  # swayPackage = pkgs.master.sway;
+  # swayPackage = pkgs.waylandPkgs.sway-unwrapped;
+  swayPackage = pkgs.master.sway;
   # swayPackage = pkgs.sway;
   # swayPackage = pkgs.sway.overrideAttrs (soldAttrs: {
   #   src = pkgs.fetchFromGitHub {

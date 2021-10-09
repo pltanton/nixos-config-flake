@@ -9,7 +9,7 @@ let
     wl-copy -t image/png < $FILE_PATH
   '';
 
-  wofi = "${pkgs.waylandPkgs.wofi}/bin/wofi";
+  wofi = "${pkgs.wofi}/bin/wofi";
   rofi = "${pkgs.rofi}/bin/rofi";
 
   wofiWindowsSwitch = pkgs.writeShellScript "wofiWindowsSwitch" ''

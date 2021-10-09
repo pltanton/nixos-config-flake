@@ -7,6 +7,9 @@ deploy-hz1: build_host = root@hz1.kaliwe.ru
 deploy-thinkpad-x1: target = localhost
 deploy-thinkpad-x1: build_host = localhost
 
+deploy-thinkbook: target = 192.168.50.218
+deploy-thinkbook: build_host = localhost
+
 deploy-%:
 	@echo Run nixos-rebuild for machine $* on host: ${target} with build_host: ${build_host}
 	nixos-rebuild --flake ./configuration-per-host/$*#$* --build-host ${build_host} --target-host ${target} --use-remote-sudo switch
