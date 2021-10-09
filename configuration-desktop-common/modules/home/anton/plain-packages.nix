@@ -85,7 +85,7 @@ in {
     xsane
     slack
     spotify
-    # steam
+    teams
 
     thunderbird
     bitwarden
