@@ -4,6 +4,7 @@ let
   cfg = config.wayland.windowManager.sway;
 
   grabScreenshot = pkgs.writeShellScript "grabScreenshot" ''
+    mkdir -p ~/Screenshots
     FILE_PATH=~/Screenshots/shot_$(date +"%y%m%d%H%M%S").png
     grim -g "$(slurp)" $FILE_PATH
     wl-copy -t image/png < $FILE_PATH
