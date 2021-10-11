@@ -108,6 +108,7 @@ in {
     docker-compose
     clang-tools
     kubectl
+    kubectx
     # gradle2nix
     graphviz
     nodejs
