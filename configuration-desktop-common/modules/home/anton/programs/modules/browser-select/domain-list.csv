@@ -1,5 +1,4 @@
-firefox -P intellectokids
-asana.com,host-contains,firefox -P intellectokdis
-bamboohr.com,host-contains,firefox -P intellectokdis
-intellectokids.com,host-contains,firefox -P intellectokdis
-intellectokids-services.com,host-contains,firefox -P intellectokdis
+asana.com,host-contains,firefox -P ozon
+bamboohr.com,host-contains,firefox -P ozon
+ozon.ru,host-contains,firefox -P ozon
+o3.ru,host-contains,firefox -P ozon

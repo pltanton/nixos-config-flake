@@ -18,7 +18,7 @@
 
 (setq doom-font (font-spec :family "Iosevka" :size 29))
 (setq org-directory "~/Nextcloud/Org/")
-(setq projectile-project-search-path '("~/Workdir/" "~/Workdir/intellectokids" "~/Workdir/blackbird-platform" ))
+(setq projectile-project-search-path '("~/Workdir/" "~/Workdir/ozon" "~/Workdir/blackbird-platform" ))
 
 (defun my-open-calendar ()
   (interactive)

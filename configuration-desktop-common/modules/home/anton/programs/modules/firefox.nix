@@ -40,7 +40,7 @@
         #   }
         # '';
       };
-      intellectokids = {
+      ozon = {
         id = 1;
         settings = {
           # "toolkit.legacyUserProfileCustomizations.stylesheets" = true;

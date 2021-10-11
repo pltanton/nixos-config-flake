@@ -14,4 +14,16 @@ let
         Categories = "Development;";
       };
     });
-in { home.packages = [ dbeaver-x11 ]; }
+  firefox-ozon = pkgs.writeTextDir "share/applications/firefox-ozon.desktop"
+    (lib.generators.toINI { } {
+      "Desktop Entry" = {
+        Categories = "Network;WebBrowser;";
+        Type = "Application";
+        Exec = "firefox -p ozon %U";
+        Terminal = false;
+        Name = "Firefox (OZON)";
+        Icon = "firefox";
+        GenericName = "Web Browser";
+      };
+    });
+in { home.packages = [ dbeaver-x11 firefox-ozon ]; }
