@@ -1,16 +1,13 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [ fasd ];
 
-  home.sessionVariables = { GOPATH = "$HOME/go"; };
-
-  home.sessionPath = [ "$GOPATH/bin" "$GOROOT/bin" ];
+  home.sessionPath = [ "/home/anton/go/bin" ];
 
   programs.fish = {
     enable = true;
 
     shellInit = ''
       go env -w GOPROXY=https://athens.s.o3.ru,https://proxy.golang.org,direct
-      go env -w GOPRIVATE="*.ozon.ru"
     '';
 
     plugins = [

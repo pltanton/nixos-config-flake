@@ -38,6 +38,8 @@
     nixpkgs-mozilla.url = "github:mozilla/nixpkgs-mozilla";
     nixpkgs-mozilla.flake = false;
 
+    goose.url = "github:pressly/goose/v3.1.0";
+    goose.flake = false;
   };
 
   outputs = { self, deploy-rs, nixpkgs, nix-doom-emacs, home-manager, nur

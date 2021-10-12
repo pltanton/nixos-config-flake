@@ -57,7 +57,6 @@ in {
     bitwarden-cli
     htop
     inetutils
-    killall
     nfs-utils
 
     ranger
@@ -109,6 +108,9 @@ in {
     clang-tools
     kubectl
     kubectx
+    sqlite
+    postgresql
+    busybox
     # gradle2nix
     graphviz
     nodejs
@@ -121,12 +123,6 @@ in {
     robo3t
     dbeaver
     gcc
-    go
-    gopls
-    gotools
-    gocode
-    delve # Go debugging tool
-    godef
     black # Python code formatter
     python-language-server
     python38Packages.pip

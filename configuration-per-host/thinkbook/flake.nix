@@ -20,7 +20,7 @@
     home-manager.url = "github:nix-community/home-manager/release-21.05";
     # base16.url = "github:alukardbf/base16-nix";
     base16.url = "github:pltanton/base16-nix";
-    nix-doom-emacs.url = "github:vlaci/nix-doom-emacs/master";
+    nix-doom-emacs.url = "github:vlaci/nix-doom-emacs/develop";
 
     qbpm.url = "github:pvsr/qbpm";
 
@@ -38,6 +38,8 @@
     nixpkgs-mozilla.url = "github:mozilla/nixpkgs-mozilla";
     nixpkgs-mozilla.flake = false;
 
+    goose.url = "github:pressly/goose/v3.1.0";
+    goose.flake = false;
   };
 
   outputs = { self, deploy-rs, nixpkgs, nix-doom-emacs, home-manager, nur

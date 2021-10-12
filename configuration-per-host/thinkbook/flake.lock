@@ -278,6 +278,23 @@
         "type": "github"
       }
     },
+    "goose": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1629513529,
+        "narHash": "sha256-3Uu24QLF85r0g41tKR715aIYNVpNhlGjV/6qtoRC/+o=",
+        "owner": "pressly",
+        "repo": "goose",
+        "rev": "d15e25ab596691c99064efe936a7dff9c71735b1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pressly",
+        "ref": "v3.1.0",
+        "repo": "goose",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": "nixpkgs_4"
@@ -352,19 +369,20 @@
         "org-yt": "org-yt",
         "php-extras": "php-extras",
         "revealjs": "revealjs",
-        "rotate-text": "rotate-text"
+        "rotate-text": "rotate-text",
+        "straight": "straight"
       },
       "locked": {
-        "lastModified": 1627398156,
-        "narHash": "sha256-Ru1aV3NuIFXAsvUE3de8KR7xDZOo1GCBJdsWKJn+Ebw=",
+        "lastModified": 1631192516,
+        "narHash": "sha256-HaS2f8N7uGBz8bGAiC7y9xkWzsrtThpudcoaTsh5OkE=",
         "owner": "vlaci",
         "repo": "nix-doom-emacs",
-        "rev": "fee14d217b7a911aad507679dafbeaa8c1ebf5ff",
+        "rev": "33064319607745856f488a998ca3db8ffcede865",
         "type": "github"
       },
       "original": {
         "owner": "vlaci",
-        "ref": "master",
+        "ref": "develop",
         "repo": "nix-doom-emacs",
         "type": "github"
       }
@@ -372,16 +390,15 @@
     "nix-straight": {
       "flake": false,
       "locked": {
-        "lastModified": 1621543597,
-        "narHash": "sha256-E/m2Hrw2og//CfOCOWe2yapYC01Tqhozn4YMPYJsC3o=",
+        "lastModified": 1628630968,
+        "narHash": "sha256-eh5QpnX3F8/0iKv1BvyU3KyZ/ksLlRegcd5c41pm/L8=",
         "owner": "vlaci",
         "repo": "nix-straight.el",
-        "rev": "8e84d04f10b2298de856b2b8b9a0d13abc91b5ca",
+        "rev": "e3f8aaff9ba889c6f2ee6c6d349736d21f21c685",
         "type": "github"
       },
       "original": {
         "owner": "vlaci",
-        "ref": "v2.2.0",
         "repo": "nix-straight.el",
         "type": "github"
       }
@@ -822,6 +839,7 @@
         "bwmenu": "bwmenu",
         "deploy-rs": "deploy-rs",
         "emacs-overlay": "emacs-overlay",
+        "goose": "goose",
         "home-manager": "home-manager",
         "nix": "nix",
         "nix-doom-emacs": "nix-doom-emacs",
@@ -851,6 +869,22 @@
       "original": {
         "owner": "debug-ito",
         "repo": "rotate-text.el",
+        "type": "github"
+      }
+    },
+    "straight": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1632765185,
+        "narHash": "sha256-Mh555zVj4joLqnCzDzv4lu9RKRnmtYqVR9SbNs7A6tY=",
+        "owner": "raxod502",
+        "repo": "straight.el",
+        "rev": "af5437f2afd00936c883124d6d3098721c2d306c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "raxod502",
+        "repo": "straight.el",
         "type": "github"
       }
     },
