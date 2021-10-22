@@ -6,7 +6,7 @@ let
 
 in {
   virtualisation.oci-containers.containers."motioneye" = {
-    image = "ccrisan/motioneye:master-amd64";
+    image = "ccrisan/motioneye:dev-amd64";
     ports = [ "8765:8765" ];
     volumes = [
       "/etc/localtime:/etc/localtime:ro"

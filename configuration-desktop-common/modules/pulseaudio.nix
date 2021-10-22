@@ -53,13 +53,13 @@
             "node.latency" = "1024/48000";
             "source.props" = {
               "node.name" = "Echo Cancellation Mic";
-              "node.passive" = true;
-              "node.pause-on-idle" = true;
+              # "node.passive" = false;
+              # "node.pause-on-idle" = false;
             };
             "sink.props" = {
               "node.name" = "Echo Cancellation Output";
-              "node.passive" = true;
-              "node.pause-on-idle" = true;
+              # "node.passive" = false;
+              # "node.pause-on-idle" = false;
             };
           };
         }

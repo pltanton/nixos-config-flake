@@ -24,7 +24,12 @@ in {
     xkbVariant = "dvorak,";
     xkbOptions = "eurosign:e,grp:caps_toggle,grp:alt_space_toggle";
 
-    libinput.enable = true;
+    libinput = {
+      enable = true;
+      touchpad = {
+        tapping = true;
+      };
+    };
 
     desktopManager.plasma5 = { enable = false; };
     # displayManager.sddm.enable = false;

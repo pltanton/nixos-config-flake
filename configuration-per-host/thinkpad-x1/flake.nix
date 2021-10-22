@@ -40,6 +40,9 @@
 
     goose.url = "github:pressly/goose/v3.1.0";
     goose.flake = false;
+
+    doom-emacs.url = "github:hlissner/doom-emacs/develop";
+    doom-emacs.flake = false;
   };
 
   outputs = { self, deploy-rs, nixpkgs, nix-doom-emacs, home-manager, nur

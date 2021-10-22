@@ -1,5 +1,5 @@
-deploy-home-server: target = root@home-server.home
-deploy-home-server: build_host = root@home-server.home
+deploy-home-server: target = root@home.kaliwe.ru
+deploy-home-server: build_host = root@home.kaliwe.ru
 
 deploy-hz1: target = root@hz1.kaliwe.ru
 deploy-hz1: build_host = root@hz1.kaliwe.ru

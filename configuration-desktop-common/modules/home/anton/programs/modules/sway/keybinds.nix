@@ -72,9 +72,9 @@ in {
         "${cfg.config.modifier}+Shift+l" = "exec lock";
 
         "XF86AudioRaiseVolume" =
-          "exec ${pkgs.pamixer}/bin/pamixer -ui 5 && ${wobWrapper} $(${pkgs.pamixer}/bin/pamixer --get-volume)";
+          "exec ${wobWrapper} $(${pkgs.pamixer}/bin/pamixer --get-volume -ui 5)";
         "XF86AudioLowerVolume" =
-          "exec ${pkgs.pamixer}/bin/pamixer -ud 5 && ${wobWrapper} $(${pkgs.pamixer}/bin/pamixer --get-volume)";
+          "exec ${wobWrapper} $(${pkgs.pamixer}/bin/pamixer --get-volume -ud 5)";
         "XF86AudioMute" =
           "exec ${pkgs.pamixer}/bin/pamixer --toggle-mute && ${wobWrapper} $(( ${pkgs.pamixer}/bin/pamixer --get-mute && echo 0 > $SWAYSOCK.wob ) || ${pkgs.pamixer}/bin/pamixer --get-volume)";
 

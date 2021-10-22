@@ -2,9 +2,9 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq gc-cons-threshold 1000000000)
-(setq read-process-output-max (* 3 (* 1024 1024))) ;; 1mb
-(setq redisplay-dont-pause t)
+;; (setq gc-cons-threshold 1000000000)
+;; (setq read-process-output-max (* 3 (* 1024 1024))) ;; 1mb
+;; (setq redisplay-dont-pause t)
 
 
 (setq user-full-name "Anton Plotnikov"
@@ -115,15 +115,15 @@
   (setq ispell-dictionary "ru_RU,en_GB,en_US")
   )
 
-;; Extra major modes for languages
-(use-package caddyfile-mode
-  :ensure t
-  :mode (("Caddyfile\\'" . caddyfile-mode)
-         ("caddy\\.conf\\'" . caddyfile-mode)))
+;; ;; Extra major modes for languages
+;; (use-package caddyfile-mode
+;;   :ensure t
+;;   :mode (("Caddyfile\\'" . caddyfile-mode)
+;;          ("caddy\\.conf\\'" . caddyfile-mode)))
 
-(use-package caddyfile-mode
-  :ensure t
-  :mode (("\\.proto\\'" . protobuf-mode)))
+;; (use-package caddyfile-mode
+;;   :ensure t
+;;   :mode (("\\.proto\\'" . protobuf-mode)))
 
 (setq +latex-viewers '(zathura))
 (after! lsp-python-ms
@@ -132,3 +132,7 @@
 
 ;; Disable minibuffer for treemacs
 (setq treemacs-read-string-input 'from-minibuffer)
+
+;; Setup format all
+;; (setq +format-with-lsp nil)
+;; (setq-hook! 'go-mode-hook +format-with 'goimports)

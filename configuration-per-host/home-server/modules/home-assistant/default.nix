@@ -31,7 +31,7 @@ in {
       settings = {
         homeassistant = true;
         permit_join = true;
-        serial = { port = "/dev/ttyACM0"; };
+        serial = { port = "/dev/ttyUSB0"; };
         mqtt = {
           base_topic = "zigbee2mqtt";
           server = "http://localhost";
