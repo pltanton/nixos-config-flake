@@ -1,4 +1,4 @@
-;;;; $Id: cyrillic-dvorak.el,v 1.3 2005/07/07 07:06:31 kirill Exp $
+;;eieio-defclass-internal: Given parent class xref-location is not a classeieio-defclass-internal: Given parent class xref-location is not a class;; $Id: cyrillic-dvorak.el,v 1.3 2005/07/07 07:06:31 kirill Exp $
 ;;;; $Author: kirill $
 ;;;; Distributed under the GPL
 

@@ -112,13 +112,16 @@ in {
     postgresql
     busybox
     # gradle2nix
+    grpc
+    evans # grpc client
     graphviz
     nodejs
     insomnia
     postman
     # jetbrains.idea-ultimate
-    jetbrains.datagrip
-    android-studio
+    jetbrains.idea-community
+    # jetbrains.datagrip
+    # android-studio
     mongodb
     robo3t
     dbeaver
@@ -146,7 +149,7 @@ in {
     gnumake
     zip
 
-    stable.awscli2
-    stable.aws-sam-cli
+    # stable.awscli2
+    # stable.aws-sam-cli
   ];
 }

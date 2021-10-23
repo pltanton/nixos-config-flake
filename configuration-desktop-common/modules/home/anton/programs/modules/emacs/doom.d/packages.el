@@ -49,3 +49,5 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
+
+(package! xref :pin "a82f459b37b31546bf274388baf8aca79e9c30d9")
