@@ -19,8 +19,12 @@ in {
       image = "homeassistant/home-assistant:stable";
       ports = [ "8123:8123" ];
       environment = { TZ = consts.TZ; };
-      extraOptions = [ "--network=host" ];
-      volumes = [ "/var/lib/hass:/config" ];
+      extraOptions = [
+        "--network=host"
+        # "--device=/dev/ttyUSB0"
+      ];
+      volumes = [ "/var/lib/hass:/config"];
+      # devices = [ "/dev/ttyUSB0:/dev/ttyUSB0" ];
     };
   };
 
@@ -31,7 +35,8 @@ in {
       settings = {
         homeassistant = true;
         permit_join = true;
-        serial = { port = "/dev/ttyACM0"; };
+        serial = { port = "/dev/ttyUSB0"; };
+        advanced = { rtscts = false; };
         mqtt = {
           base_topic = "zigbee2mqtt";
           server = "http://localhost";
