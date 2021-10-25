@@ -10,9 +10,9 @@
 (setq user-full-name "Anton Plotnikov"
       user-mail-address "plotnikovanton@gmail.com")
 
-;; (setq doom-theme 'doom-one)
-(setq doom-gruvbox-dark-variant "hard")
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-one)
+;; (setq doom-gruvbox-dark-variant "hard")
+;; (setq doom-theme 'doom-gruvbox)
 
 (setq display-line-numbers-type "relative")
 
