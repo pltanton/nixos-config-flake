@@ -2,7 +2,7 @@
 let
   # swayPackage = pkgs.waylandPkgs.sway-unwrapped;
   # swayPackage = pkgs.master.sway;
-  swayPackage = pkgs.sway-unwrapped;
+  swayPackage = pkgs.master.sway-unwrapped;
   # swayPackage = pkgs.sway.overrideAttrs (soldAttrs: {
   #   src = pkgs.fetchFromGitHub {
   #     owner = "RPigott";
@@ -160,6 +160,9 @@ in with config.lib.base16.theme; {
         {
           command =
             "exec mkfifo $SWAYSOCK.wob; tail -f $SWAYSOCK.wob | ${pkgs.wob}/bin/wob";
+        }
+        {
+          command = "exec ${pkgs.master.autotiling}/bin/autotiling -w 2 3 4 5 6 7 9 0";
         }
       ];
 

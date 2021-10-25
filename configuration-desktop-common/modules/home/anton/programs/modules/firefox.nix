@@ -2,7 +2,7 @@
 
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox;
+    package = pkgs.master.firefox;
     # package = pkgs.latest.firefox-nightly-bin;
     # package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
     #   extraPolicies = { ExtensionSettings = { }; };

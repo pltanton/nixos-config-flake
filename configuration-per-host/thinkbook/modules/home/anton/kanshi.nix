@@ -3,6 +3,21 @@
     enable = true;
     # package = pkgs.waylandPkgs.kanshi;
     profiles = {
+      ozonThinkVision = {
+        outputs = [
+          {
+            # criteria = "Goldstar Company Ltd LG HDR 4K 0x0000D544";
+            criteria = "Lenovo Group Limited LEN T27p-10 0x00005E36";
+            status = "enable";
+            position = "0,0";
+          }
+          {
+            criteria = "eDP-1";
+            status = "enable";
+            position = "3840,826";
+          }
+        ];
+      };
       bigLg = {
         outputs = [
           {
@@ -14,7 +29,7 @@
           {
             criteria = "eDP-1";
             status = "enable";
-            position = "3840,811";
+            position = "3840,826";
           }
         ];
       };
