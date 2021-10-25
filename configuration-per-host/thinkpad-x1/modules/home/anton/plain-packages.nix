@@ -1,6 +1,6 @@
 { pkgs, lib, fetchPypi, inputs, ... }:
 {
-  home.packages = with pkgs; lib.mkIf false [
+  home.packages = with pkgs; lib.mkIf true [
     audacity
     discord
     zoom
