@@ -13,11 +13,14 @@ let
     cursorTheme = "Qogir-dark";
   };
 in {
-  home.packages = [ pkgs.qogir-icon-theme pkgs.gnome-icon-theme pkgs.hicolor-icon-theme ];
+  home.packages =
+    [ pkgs.qogir-icon-theme pkgs.gnome-icon-theme pkgs.hicolor-icon-theme ];
   themes.base16 = {
     enable = true;
-    scheme = "gruvbox";
-    variant = "gruvbox-dark-hard";
+    scheme = "nord";
+    variant = "nord";
+    # scheme = "gruvbox";
+    # variant = "gruvbox-dark-hard";
     extraParams = themeConsts;
   };
 

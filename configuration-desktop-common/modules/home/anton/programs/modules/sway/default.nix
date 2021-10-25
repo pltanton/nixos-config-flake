@@ -234,7 +234,7 @@ in with config.lib.base16.theme; {
       };
 
       output = {
-        "*" = { bg = "${../../../../backgrounds/forest.jpg} fill"; };
+        "*" = { bg = "${../../../../backgrounds/nord-1.jpg} fill"; };
       };
     };
   };
