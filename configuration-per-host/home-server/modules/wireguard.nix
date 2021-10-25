@@ -17,7 +17,11 @@
         }
         {
           allowedIPs = [ "10.100.0.3/32" ];
-          publicKey = "TZeNcgaKDcQRsUktBPcjtcKbVLouDkc24jdoSrWHtVs=";
+          publicKey = "TZeNcgaKDcQRsUktBPcjtcKbVLouDkc24jdoSrWHtVs="; # Thinkpad x1
+        }
+        {
+          allowedIPs = [ "10.100.0.4/32" ];
+          publicKey = "q1iXNfb6u4J5clKyE4dT4iyPGwB0kWcieLX3pjscaSE="; # Ozon Thnikbook
         }
       ];
     };

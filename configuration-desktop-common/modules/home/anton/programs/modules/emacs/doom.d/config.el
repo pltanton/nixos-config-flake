@@ -10,9 +10,9 @@
 (setq user-full-name "Anton Plotnikov"
       user-mail-address "plotnikovanton@gmail.com")
 
-(setq doom-theme 'doom-one)
-;; (setq doom-theme 'doom-gruvbox)
-;; (setq doom-gruvbox-dark-variant "hard")
+;; (setq doom-theme 'doom-one)
+(setq doom-gruvbox-dark-variant "hard")
+(setq doom-theme 'doom-gruvbox)
 
 (setq display-line-numbers-type "relative")
 
@@ -55,34 +55,7 @@
   (map! :map org-mode-map
         :n "M-j" #'org-metadown
         :n "M-k" #'org-metaup)
-  ;; (set-face-attribute 'org-level-1 nil
-  ;;                     :height 1.2
-  ;;                     :weight 'normal)
-  ;; (set-face-attribute 'org-level-2 nil
-  ;;                     :height 1.0
-  ;;                     :weight 'normal)
-  ;; (set-face-attribute 'org-level-3 nil
-  ;;                     :height 1.0
-  ;;                     :weight 'normal)
-  ;; (set-face-attribute 'org-level-4 nil
-  ;;                     :height 1.0
-  ;;                     :weight 'normal)
-  ;; (set-face-attribute 'org-level-5 nil
-  ;;                     :weight 'normal)
-  ;; (set-face-attribute 'org-level-6 nil
-  ;;                     :weight 'normal)
-  ;; (set-face-attribute 'org-document-title nil
-  ;;                     :height 1.75
-  ;;                     :weight 'bold)
-  ;; (setq
-  ;;  org-bullets-bullet-list '("⁖")
-  ;;  org-ellipsis " ... "))
   )
-
-(setq org-gcal-client-id "434844487513-bh857v7fbof2jmuodtt0mt7fd2dlilvk.apps.googleusercontent.com"
-      org-gcal-client-secret "eXdqPJzZo_avwzPIjCdfdHVX"
-      org-gcal-fetch-file-alist '(("plotnikovanton@gmail.com" .  "~/Nextcloud/Org/gcal-personal.org")
-                                  ("3u0e78960q1jdjgi7tvd15iqg8@group.calendar.google.com" .  "~/Nextcloud/Org/gcal-family.org")))
 
 (map! :ne "C-/" #'comment-or-uncomment-region)
 
@@ -90,7 +63,7 @@
 (set-popup-rule! "^CAPTURE.*\\.org$" :side 'bottom :size 0.90 :select t :ttl nil)
 (set-popup-rule! "^\\*org-brain" :side 'right :size 1.00 :select t :ttl nil)
 
-;; Local prodject snippets
+;; Local project snippets
 
 (setq +snippets-dir "~/.emacs.d/snippets")
 (defun add-project-snippets ()
@@ -114,6 +87,33 @@
   (ispell-hunspell-add-multi-dic "ru_RU,en_GB,en_US")
   (setq ispell-dictionary "ru_RU,en_GB,en_US")
   )
+
+;; Add golang extra configuration
+(after! go-mode
+  (setq gofmt-command "goimports"))
+
+
+;; LSP extra configuration
+(setq lsp-headerline-breadcrumb-enable t)
+(setq lsp-ui-doc-enable t)
+(setq lsp-ui-doc-show-with-cursor t)
+(setq lsp-ui-doc-show-with-mouse t)
+(setq lsp-lens-enable t)
+
+
+;; Chain checkers with lsp checker for flycheck
+(defvar-local my/flycheck-local-cache nil)
+
+(defun my/flycheck-checker-get (fn checker property)
+  (or (alist-get property (alist-get checker my/flycheck-local-cache))
+      (funcall fn checker property)))
+
+(advice-add 'flycheck-checker-get :around 'my/flycheck-checker-get)
+
+(add-hook 'lsp-managed-mode-hook
+          (lambda ()
+            (when (derived-mode-p 'go-mode)
+              (setq my/flycheck-local-cache '((lsp . ((next-checkers . (golangci-lint)))))))))
 
 ;; ;; Extra major modes for languages
 ;; (use-package caddyfile-mode

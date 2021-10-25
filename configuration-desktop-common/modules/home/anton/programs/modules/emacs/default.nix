@@ -55,11 +55,13 @@ in {
 
     editorconfig-core-c
 
+    # Golang utilities
     gocode
     gomodifytags
     gotests
     gore
     goimports
+    golangci-lint
 
     hlint
     cabal-install
@@ -82,7 +84,7 @@ in {
     configFile = {
       "doom-config" = {
         source = ./doom.d;
-        onChange = update-doom;
+        # onChange = update-doom;
       };
       "emacs" = {
         source = inputs.doom-emacs;

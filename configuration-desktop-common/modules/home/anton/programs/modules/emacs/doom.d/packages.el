@@ -51,3 +51,10 @@
 ;(unpin! t)
 
 (package! xref :pin "a82f459b37b31546bf274388baf8aca79e9c30d9")
+
+(package! gitconfig-mode
+	  :recipe (:host github :repo "magit/git-modes"
+			 :files ("gitconfig-mode.el")))
+(package! gitignore-mode
+	  :recipe (:host github :repo "magit/git-modes"
+			 :files ("gitignore-mode.el")))
