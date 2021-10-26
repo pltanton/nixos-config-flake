@@ -1,3 +1,4 @@
+ozonru.me,host-contains,firefox -P ozon
 office365.com,host-contains,firefox -P ozon
 ozon.ru,host-contains,firefox -P ozon
 o3.ru,host-contains,firefox -P ozon

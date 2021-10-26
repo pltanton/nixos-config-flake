@@ -18,6 +18,7 @@ in with config.lib.base16.theme; {
 
   services.flashfocus.enable = config.wayland.windowManager.sway.enable;
   services.clipman.enable = config.wayland.windowManager.sway.enable;
+  services.wob.enable = config.wayland.windowManager.sway.enable;
 
   imports =
     [ ./keybinds.nix ./inputs.nix ./delay-systemd-service.nix ./services ];
@@ -58,6 +59,8 @@ in with config.lib.base16.theme; {
 
     XDG_CURRENT_DESKTOP = "sway";
     XDG_SESSION_TYPE = "wayland";
+
+    # WOBSOCK = "$XDG_RUNTIME_DIR/wob.sock";
   };
 
   wayland.windowManager.sway = {
@@ -159,10 +162,7 @@ in with config.lib.base16.theme; {
         { command = "keyctl link @u @s"; }
         {
           command =
-            "exec mkfifo $SWAYSOCK.wob; tail -f $SWAYSOCK.wob | ${pkgs.wob}/bin/wob";
-        }
-        {
-          command = "exec ${pkgs.master.autotiling}/bin/autotiling -w 2 3 4 5 6 7 9 0";
+            "exec ${pkgs.master.autotiling}/bin/autotiling -w 2 3 4 5 6 7 9 0";
         }
       ];
 

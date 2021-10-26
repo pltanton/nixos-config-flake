@@ -72,17 +72,17 @@ in {
         "${cfg.config.modifier}+Shift+l" = "exec lock";
 
         "XF86AudioRaiseVolume" =
-          "exec ${wobWrapper} $(${pkgs.pamixer}/bin/pamixer --get-volume -ui 5)";
+          "exec ${pkgs.pamixer}/bin/pamixer --get-volume -ui 5 > $WOBSOCK";
         "XF86AudioLowerVolume" =
-          "exec ${wobWrapper} $(${pkgs.pamixer}/bin/pamixer --get-volume -ud 5)";
+          "exec ${pkgs.pamixer}/bin/pamixer --get-volume -ud 5 > $WOBSOCK";
         "XF86AudioMute" =
-          "exec ${pkgs.pamixer}/bin/pamixer --toggle-mute && ${wobWrapper} $(( ${pkgs.pamixer}/bin/pamixer --get-mute && echo 0 > $SWAYSOCK.wob ) || ${pkgs.pamixer}/bin/pamixer --get-volume)";
+          "exec ${pkgs.pamixer}/bin/pamixer --toggle-mute && ((${pkgs.pamixer}/bin/pamixer --get-mute && echo 0) || ${pkgs.pamixer}/bin/pamixer --get-volume) | tail -n 1 > $WOBSOCK ";
 
         "XF86MonBrightnessUp" =
-          "exec ${scripts.brightness}/bin/brightness --inc -d 5 | head -n 1 | xargs -n1 ${wobWrapper}";
+          "exec ${scripts.brightness}/bin/brightness --inc -d 5 | head -n 1 > $WOBSOCK";
         # "exec ${pkgs.light}/bin/light -A 5 && ${wobWrapper} $(light -G | cut -d'.' -f1) && ${pkgs.ddcutil}/bin/ddcutil setvcp 10 $(light -G | cut -d'.' -f1)";
         "XF86MonBrightnessDown" =
-          "exec ${scripts.brightness}/bin/brightness --dec -d 5 | head -n 1 | xargs -n1 ${wobWrapper}";
+          "exec ${scripts.brightness}/bin/brightness --dec -d 5 | head -n 1 > $WOBSOCK";
         # "exec ${pkgs.light}/bin/light -U 5 && light -G | ${wobWrapper} $(cut -d'.' -f1) && ${pkgs.ddcutil}/bin/ddcutil setvcp 10 $(light -G | cut -d'.' -f1)";
 
         "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play";
