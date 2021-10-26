@@ -110,7 +110,7 @@ in {
     kubectx
     sqlite
     postgresql
-    busybox
+    coreutils
     # gradle2nix
     grpc
     evans # grpc client
