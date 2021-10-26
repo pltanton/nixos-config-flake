@@ -77,6 +77,23 @@
     "doom-emacs": {
       "flake": false,
       "locked": {
+        "lastModified": 1634812062,
+        "narHash": "sha256-LL6aP+Y/L4TPfYzO2v1WCeRY6v9MW9vX7kC6sxgWah0=",
+        "owner": "hlissner",
+        "repo": "doom-emacs",
+        "rev": "0869d28483b5d81b818b110af351fd5c4dc04dd9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hlissner",
+        "ref": "develop",
+        "repo": "doom-emacs",
+        "type": "github"
+      }
+    },
+    "doom-emacs_2": {
+      "flake": false,
+      "locked": {
         "lastModified": 1626604817,
         "narHash": "sha256-z+dvjB02cHU+VQ5EMkzqSdX817PZar9AkmmfK27q0vo=",
         "owner": "hlissner",
@@ -279,6 +296,23 @@
         "type": "github"
       }
     },
+    "goose": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1629513529,
+        "narHash": "sha256-3Uu24QLF85r0g41tKR715aIYNVpNhlGjV/6qtoRC/+o=",
+        "owner": "pressly",
+        "repo": "goose",
+        "rev": "d15e25ab596691c99064efe936a7dff9c71735b1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pressly",
+        "ref": "v3.1.0",
+        "repo": "goose",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": "nixpkgs_4"
@@ -357,7 +391,7 @@
     },
     "nix-doom-emacs": {
       "inputs": {
-        "doom-emacs": "doom-emacs",
+        "doom-emacs": "doom-emacs_2",
         "doom-snippets": "doom-snippets",
         "emacs-overlay": "emacs-overlay_2",
         "emacs-so-long": "emacs-so-long",
@@ -631,11 +665,11 @@
     },
     "nixpkgs_7": {
       "locked": {
-        "lastModified": 1633083543,
-        "narHash": "sha256-thXKms0SvDirYb8/Hw0zqAE1TsuSFWd0y51mSzkPGLU=",
+        "lastModified": 1635070614,
+        "narHash": "sha256-eRup9WsvSIhsRrSlNugPcQ7gfGOsbk3d4izufwVlz1Q=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "92609f3d9bc3acffbdbe54fa1c591a885612aa73",
+        "rev": "3b1789322fcbcb5cf51228d732752714f1bf77da",
         "type": "github"
       },
       "original": {
@@ -844,7 +878,9 @@
         "base16": "base16",
         "bwmenu": "bwmenu",
         "deploy-rs": "deploy-rs",
+        "doom-emacs": "doom-emacs",
         "emacs-overlay": "emacs-overlay",
+        "goose": "goose",
         "home-manager": "home-manager",
         "nix": "nix",
         "nix-doom-emacs": "nix-doom-emacs",
