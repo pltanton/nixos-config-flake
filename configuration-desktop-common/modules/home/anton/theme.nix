@@ -8,7 +8,7 @@ let
     # iconTheme = "Adwaita";
     iconTheme = "Qogir-dark";
     # iconTheme = "Papirus-dark";
-    gtkTheme = "Qogir-dark";
+    gtkTheme = "Nordic-bluish-accent";
     # gtkTheme = "Adwaita-dark";
     cursorTheme = "Qogir-dark";
   };
@@ -27,7 +27,8 @@ in {
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.qogir-theme;
+      # package = pkgs.qogir-theme;
+      package = pkgs.nordic;
       name = themeConsts.gtkTheme;
     };
     iconTheme = {

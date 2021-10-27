@@ -5,171 +5,173 @@ let
     sha256 = "04skv5nhbqzybxsqp7b7l4s7nl66p8cd92f6czlivwcjnj36lzya";
   }) { pkgs = pkgs; };
 in {
-  home.packages = with pkgs; lib.mkIf false [
-    hack-font
+  home.packages = with pkgs;
+    lib.mkIf false [
+      hack-font
 
-    gnuplot
+      gnuplot
 
-    nixfmt
-    shfmt
+      nixfmt
+      shfmt
 
-    gnupg
+      gnupg
 
-    ###################
-    # Packages for DE #
-    ###################
-    wdisplays
-    wf-recorder
+      ###################
+      # Packages for DE #
+      ###################
+      wdisplays
+      wf-recorder
 
-    ffmpegthumbnailer
-    pamixer
-    paprefs
-    pavucontrol
-    shared_mime_info
-    pantheon.elementary-files
+      ffmpegthumbnailer
+      pamixer
+      paprefs
+      pavucontrol
+      shared_mime_info
+      pantheon.elementary-files
+      pcmanfm
 
-    # Fonts
-    font-awesome_5
-    emojione
-    iosevka-bin
-    inter
-    #nerdfonts
+      # Fonts
+      font-awesome_5
+      emojione
+      iosevka-bin
+      inter
+      #nerdfonts
 
-    #############
-    # User apps #
-    #############
-    # CLI utils
-    nix-prefetch-github
-    gitAndTools.gh
-    libnotify
+      #############
+      # User apps #
+      #############
+      # CLI utils
+      nix-prefetch-github
+      gitAndTools.gh
+      libnotify
 
-    ffmpeg
-    # httpie
-    curlie # replacement for httpie
-    bat # cat but with highlights
-    exa # modern ls
-    duf # beauty df
-    tldr # cheatsheets for cli
-    procs # modern ps
-    ansible
-    dnsutils
-    jq
-    bitwarden-cli
-    htop
-    inetutils
-    killall
-    nfs-utils
-    nix-direnv
+      ffmpeg
+      # httpie
+      curlie # replacement for httpie
+      bat # cat but with highlights
+      exa # modern ls
+      duf # beauty df
+      tldr # cheatsheets for cli
+      procs # modern ps
+      ansible
+      dnsutils
+      jq
+      bitwarden-cli
+      htop
+      inetutils
+      killall
+      nfs-utils
+      nix-direnv
 
-    ranger
-    tmux
-    unzip
-    unrar
-    wget
-    tree
+      ranger
+      tmux
+      unzip
+      unrar
+      wget
+      tree
 
-    plantuml
+      plantuml
 
-    # GUI
-    libreoffice
-    audacity
-    xournalpp
-    discord
-    # zoom-us
-    zoom
+      # GUI
+      libreoffice
+      audacity
+      xournalpp
+      discord
+      # zoom-us
+      zoom
 
-    qmapshack
+      qmapshack
 
-    master.skypeforlinux
+      master.skypeforlinux
 
-    master.easyeffects
+      master.easyeffects
 
-    transmission-remote-gtk
-    transmission-gtk
-    stable.rapid-photo-downloader
-    evince
-    zathura
-    gthumb
-    gnome-photos
-    gimp
-    mpv
-    master.tdesktop
-    vlc
-    xsane
-    slack
-    spotify
-    # steam
-    shotcut
+      transmission-remote-gtk
+      transmission-gtk
+      stable.rapid-photo-downloader
+      evince
+      zathura
+      gthumb
+      gnome-photos
+      gimp
+      mpv
+      master.tdesktop
+      vlc
+      xsane
+      slack
+      spotify
+      # steam
+      shotcut
 
-    (steam.override {
-      # extraPkgs = pkgs: [ SDL2 libstdcxx5 ];
-      nativeOnly = false;
-    })
+      (steam.override {
+        # extraPkgs = pkgs: [ SDL2 libstdcxx5 ];
+        nativeOnly = false;
+      })
 
-    thunderbird
-    bitwarden
-    sidequest
-    scrcpy
-    darktable
-    # tigervnc
+      thunderbird
+      bitwarden
+      sidequest
+      scrcpy
+      darktable
+      # tigervnc
 
-    # Web
-    chromium
-    # nur.repos.sikmir.qutebrowser-bin
-    # qutebrowser
+      # Web
+      chromium
+      # nur.repos.sikmir.qutebrowser-bin
+      # qutebrowser
 
-    # LaTeX
-    texlive.combined.scheme-full
-    texlab
-    # (texlive.combine { inherit (texlive) scheme-medium titlesec wrapfig; })
+      # LaTeX
+      texlive.combined.scheme-full
+      texlab
+      # (texlive.combine { inherit (texlive) scheme-medium titlesec wrapfig; })
 
-    # Dev
-    docker-compose
-    clang-tools
-    # gradle2nix
-    graphviz
-    nodejs
-    insomnia
-    postman
-    adoptopenjdk-bin
-    jetbrains.idea-community
-    # jetbrains.idea-ultimate
-    jetbrains.datagrip
-    android-studio
-    mongodb
-    robo3t
-    dbeaver
-    gcc
-    go
-    gopls
-    gotools
-    gocode
-    delve # Go debugging tool
-    godef
-    black # Python code formatter
-    python-language-server
-    python38Packages.pip
-    (python3.withPackages (pp:
-      with pp; [
-        pip
-        pylint
-        pyright
-        jedi
-        flake8
-        autopep8
-        pygments
-        hvac
-        pika
-      ]))
+      # Dev
+      docker-compose
+      clang-tools
+      # gradle2nix
+      graphviz
+      nodejs
+      insomnia
+      postman
+      adoptopenjdk-bin
+      jetbrains.idea-community
+      # jetbrains.idea-ultimate
+      jetbrains.datagrip
+      android-studio
+      mongodb
+      robo3t
+      dbeaver
+      gcc
+      go
+      gopls
+      gotools
+      gocode
+      delve # Go debugging tool
+      godef
+      black # Python code formatter
+      python-language-server
+      python38Packages.pip
+      (python3.withPackages (pp:
+        with pp; [
+          pip
+          pylint
+          pyright
+          jedi
+          flake8
+          autopep8
+          pygments
+          hvac
+          pika
+        ]))
 
-    nodePackages.yaml-language-server
-    nodePackages.prettier
-    nodePackages.vue-language-server
-    nodePackages.eslint
-    gnumake
-    zip
+      nodePackages.yaml-language-server
+      nodePackages.prettier
+      nodePackages.vue-language-server
+      nodePackages.eslint
+      gnumake
+      zip
 
-    stable.awscli2
-    stable.aws-sam-cli
-  ];
+      stable.awscli2
+      stable.aws-sam-cli
+    ];
 }

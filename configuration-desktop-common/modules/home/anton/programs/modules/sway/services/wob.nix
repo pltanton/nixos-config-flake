@@ -18,7 +18,7 @@ in {
 
     systemd.user = {
 
-      services.wob = {
+      services.wob = with config.lib.base16.theme; {
         Unit = {
           Description =
             "A lightweight overlay volume/backlight/progress/anything bar for Wayland";
@@ -32,7 +32,13 @@ in {
         Service = {
           Type = "simple";
           StandardInput = "socket";
-          ExecStart = "${pkgs.wob}/bin/wob -O \\*";
+          ExecStart = ''
+            ${pkgs.wob}/bin/wob \
+                        --background-color #C8${base00-hex} \
+                        --border-color #FF${base05-hex} \
+                        --bar-color #FF${base05-hex} \
+                        -O '*'
+          '';
           Restart = "always";
         };
 
