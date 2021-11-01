@@ -159,11 +159,13 @@ in with config.lib.base16.theme; {
         { command = "thunderbird"; }
         { command = "telegram-desktop"; }
         { command = "slack"; }
-        { command = "keyctl link @u @s"; }
         {
-          command =
-            "exec ${pkgs.master.autotiling}/bin/autotiling -w 2 3 4 5 6 7 9 0";
+          command = "keyctl link @u @s";
         }
+        # {
+        #   command =
+        #     "exec ${pkgs.master.autotiling}/bin/autotiling -w 2 3 4 5 6 7 9 0";
+        # }
       ];
 
       assigns = {

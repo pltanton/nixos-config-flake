@@ -1,7 +1,9 @@
 { pkgs, lib, ... }:
 let
   wlgreetConfig = pkgs.writeText "wlgreet-sway.conf" ''
-    exec "${lib.makeBinPath [ pkgs.greetd.wlgreet ]}/wlgreet --command sway; swaymsg exit"
+    exec "${
+      lib.makeBinPath [ pkgs.greetd.wlgreet ]
+    }/wlgreet --command sway; swaymsg exit"
 
     bindsym Mod4+shift+e exec swaynag \
     -t warning \
@@ -26,9 +28,7 @@ in {
 
     libinput = {
       enable = true;
-      touchpad = {
-        tapping = true;
-      };
+      touchpad = { tapping = true; };
     };
 
     desktopManager.plasma5 = { enable = false; };

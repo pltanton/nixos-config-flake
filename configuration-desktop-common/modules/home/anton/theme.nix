@@ -13,8 +13,12 @@ let
     cursorTheme = "Qogir-dark";
   };
 in {
-  home.packages =
-    [ pkgs.qogir-icon-theme pkgs.gnome-icon-theme pkgs.hicolor-icon-theme ];
+  home.packages = [
+    pkgs.qogir-theme
+    pkgs.qogir-icon-theme
+    pkgs.gnome-icon-theme
+    pkgs.hicolor-icon-theme
+  ];
   themes.base16 = {
     enable = true;
     scheme = "nord";

@@ -12,6 +12,8 @@
 
     XDG_CURRENT_DESKTOP = "sway";
     XDG_SESSION_TYPE = "wayland";
+
+    KUBECONFIG = "/home/anton/.kube/config";
   };
 
   nixpkgs.overlays = [
