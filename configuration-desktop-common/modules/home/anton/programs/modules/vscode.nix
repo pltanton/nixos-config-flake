@@ -5,7 +5,7 @@
     enable = true;
     extensions = with pkgs.vscode-extensions; [
       golang.Go
-      vscode.vim
+      vscodevim.vim
       bbenoist.Nix
     ];
   };
