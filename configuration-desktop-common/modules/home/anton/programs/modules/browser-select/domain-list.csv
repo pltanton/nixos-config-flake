@@ -1,3 +1,4 @@
+microsoftonline.com,host-contains,firefox -P ozon
 bozon.tech,host-contains,firefox -P ozon
 ozonru.me,host-contains,firefox -P ozon
 office365.com,host-contains,firefox -P ozon

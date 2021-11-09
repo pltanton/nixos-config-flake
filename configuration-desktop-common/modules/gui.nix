@@ -31,16 +31,16 @@ in {
       touchpad = { tapping = true; };
     };
 
-    desktopManager.plasma5 = { enable = false; };
-    # displayManager.sddm.enable = false;
+    # desktopManager.plasma5 = { enable = true; };
+    # displayManager.sddm.enable = true;
     # displayManager.lightdm.enable = true;
-    displayManager.gdm = {
-      enable = false;
-      wayland = true;
-    };
+    # displayManager.gdm = {
+    #   enable = false;
+    #   wayland = true;
+    # };
     # displayManager.lightdm.enable = true;
-    desktopManager.gnome = { enable = false; };
-    desktopManager.xterm.enable = false;
+    # desktopManager.gnome = { enable = false; };
+    # desktopManager.xterm.enable = false;
 
     #   config = pkgs.lib.mkOverride 50 ''
     #     Section "Device"
