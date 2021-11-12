@@ -7,11 +7,16 @@
 
   home.packages = with pkgs;
     lib.mkIf config.programs.go.enable [
-      gopls
-      gotools
-      gocode
       delve # Go debugging tool
+      gocode
       godef
+      goimports
+      golangci-lint
+      gomodifytags
+      gopls
+      gore
+      gotests
+      gotools
       mockgen
     ];
 }

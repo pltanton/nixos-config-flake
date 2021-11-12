@@ -26,4 +26,16 @@ let
         GenericName = "Web Browser";
       };
     });
+  teams-chromium = pkgs.writeTextDir "share/applications/teams-chromium.desktop"
+    (lib.generators.toINI { } {
+      "Desktop Entry" = {
+        Categories = "Network;";
+        Type = "Application";
+        Exec = "chromium --app=https://teams.microsoft.com";
+        Terminal = false;
+        Name = "Chromium (Microsoft Teams)";
+        Icon = "temas";
+        GenericName = "Web Browser";
+      };
+    });
 in { home.packages = [ dbeaver-x11 firefox-ozon ]; }

@@ -58,6 +58,7 @@ in {
       jq
       bitwarden-cli
       htop
+      master.btop
       inetutils
       nfs-utils
 

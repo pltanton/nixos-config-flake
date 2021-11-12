@@ -11,36 +11,11 @@ let
     fi
   ''}";
 in {
-  # programs.doom-emacs = {
-  #   enable = true;
-  #   emacsPackage = pkgs.emacsPgtk;
-  #   # emacsPackage = pkgs.emacsGcc;
-  #   # emacsPackage = pkgs.emacs;
-  #   doomPrivateDir = ./doom.d;
-
-  #   emacsPackagesOverlay = self: super:
-  #     {
-  #       # caddyfile-mode = super.caddyfile-mode.overrideAttrs
-  #       #   (esuper: { buildInputs = esuper.buildInputs ++ [ pkgs.git ]; });
-  #     };
-  # };
-
-  # home.packages = with pkgs; [
-  #   ripgrep
-  #   hunspell
-  #   hunspellDicts.en-us
-  #   hunspellDicts.en-gb-large
-  #   hunspellDicts.ru-ru
-  # ];
-
   home.packages = with pkgs; [
     emacsPgtkGcc
-    # emacsGcc
-    # emacsPgtk
-    # emacs
     emacs-all-the-icons-fonts
-    # nur.repos.metadark.emacs-pgtk-nativecomp
-    # emacs
+
+    graphviz # org-roam graph vizualization
 
     binutils
     gnutls
@@ -54,14 +29,6 @@ in {
     hunspellDicts.en-gb-large
 
     editorconfig-core-c
-
-    # Golang utilities
-    gocode
-    gomodifytags
-    gotests
-    gore
-    goimports
-    golangci-lint
 
     hlint
     cabal-install

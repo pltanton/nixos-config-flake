@@ -18,19 +18,33 @@
 (setq display-line-numbers-type "relative")
 
 (setq doom-font (font-spec :family "Iosevka" :size 29))
-(setq org-directory "~/Nextcloud/Org/")
+
+(make-directory "~/org" t)
+(setq org-directory "~/org")
+
+;; Org roam configuration
+
+(make-directory "~/org-roam" t)
+(setq org-roam-directory "~/org-roam")
+
+;; (use-package! websocket
+;;   :after org-roam)
+
+;; (use-package! org-roam-ui
+;;   :after org-roam ;; or :after org
+;;   ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;;   ;;         a hookable mode anymore, you're advised to pick something yourself
+;;   ;;         if you don't care about startup time, use
+;;   ;;  :hook (after-init . org-roam-ui-mode)
+;;   :config
+;;   (setq org-roam-ui-sync-theme t
+;;         org-roam-ui-follow t
+;;         org-roam-ui-update-on-save t
+;;         org-roam-ui-open-on-start t))
+
+
 (setq projectile-project-search-path '("~/Workdir/" "~/Workdir/ozon" "~/Workdir/blackbird-platform" ))
 
-(defun my-open-calendar ()
-  (interactive)
-  (cfw:open-calendar-buffer
-   :contents-sources
-   (list
-    (cfw:org-create-source "light green")  ; org-agenda source
-    (cfw:org-create-file-source "family" "~/Nextcloud/Org/gcal-family.org" "royal blue")  ; other org source
-    (cfw:org-create-file-source "personal" "~/Nextcloud/Org/gcal-Personal.org" "light slate blue")  ; other org source
-                                        ; (cfw:ical-create-source "gcal" "https://..../basic.ics" "IndianRed") ; google calendar ICS
-    )))
 
 (setq calendar-week-start-day 1)
 (setq persist--directory-location "~/.emacs.d/persist")
