@@ -46,7 +46,10 @@ in {
       "jellyfin.kaliwe.ru" = {
         enableACME = true;
         forceSSL = true;
-        locations."/".proxyPass = "http://localhost:8096";
+        locations."/" = {
+          proxyWebsockets = true;
+          proxyPass = "http://localhost:8096";
+        };
       };
 
       "plex.kaliwe.ru" = {

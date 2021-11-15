@@ -35,7 +35,7 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [ vim tmux git ];
+  environment.systemPackages = with pkgs; [ vim tmux git htop ffmpeg ];
 
   users = {
     users = {

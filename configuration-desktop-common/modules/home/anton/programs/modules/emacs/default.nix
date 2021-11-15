@@ -12,7 +12,8 @@ let
   ''}";
 in {
   home.packages = with pkgs; [
-    emacsPgtkGcc
+    # emacsPgtkGcc
+    emacs
     emacs-all-the-icons-fonts
 
     graphviz # org-roam graph vizualization

@@ -8,9 +8,9 @@
     openFirewall = true;
   };
 
-  users.users.sonarr = { extraGroups = [ "publicstore" ]; };
+  # users.users.sonarr = { extraGroups = [ "publicstore" ]; };
   services.sonarr = {
-    enable = true;
+    enable = false;
     dataDir = "/media/store/media/app-homes/sonarr-home/";
     # user = "publicstore";
     # group = "publicstore";
