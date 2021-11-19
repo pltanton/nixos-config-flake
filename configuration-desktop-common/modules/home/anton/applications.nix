@@ -34,8 +34,8 @@ let
         Exec = "chromium --app=https://teams.microsoft.com";
         Terminal = false;
         Name = "Chromium (Microsoft Teams)";
-        Icon = "temas";
+        Icon = "teams";
         GenericName = "Web Browser";
       };
     });
-in { home.packages = [ dbeaver-x11 firefox-ozon ]; }
+in { home.packages = [ dbeaver-x11 firefox-ozon teams-chromium ]; }

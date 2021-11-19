@@ -6,10 +6,10 @@
       ozonThinkVision = {
         outputs = [
           {
-            # criteria = "Goldstar Company Ltd LG HDR 4K 0x0000D544";
             criteria = "Lenovo Group Limited LEN T27p-10 0x00005E36";
             status = "enable";
             position = "0,0";
+            mode = "3840x2160@60Hz";
           }
           {
             criteria = "eDP-1";
