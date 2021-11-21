@@ -10,6 +10,7 @@
             criteria = "Goldstar Company Ltd LG HDR 4K 0x00000101";
             status = "enable";
             position = "0,0";
+            mode = "3840x2160@59.997";
           }
           {
             criteria = "eDP-1";

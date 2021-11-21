@@ -23,7 +23,7 @@ in {
         "--network=host"
         # "--device=/dev/ttyUSB0"
       ];
-      volumes = [ "/var/lib/hass:/config"];
+      volumes = [ "/var/lib/hass:/config" ];
       # devices = [ "/dev/ttyUSB0:/dev/ttyUSB0" ];
     };
   };
@@ -32,6 +32,7 @@ in {
   services = {
     zigbee2mqtt = {
       enable = true;
+      package = pkgs.nur.repos.mweinelt.zigbee2mqtt;
       settings = {
         homeassistant = true;
         permit_join = true;
@@ -52,6 +53,7 @@ in {
           "0x00124b002236c654" = { friendly_name = "kitchen_proxy_switch"; };
           "0x00124b001f877829" = { friendly_name = "balcony_climate_sensor"; };
           "0x00124b002236ebf7" = { friendly_name = "balcony_light_switch"; };
+          "0x9035eafffea4e4a2" = { friendly_name = "room_air_quality_sensor"; };
         };
       };
     };

@@ -44,6 +44,7 @@ in {
       nix-prefetch-github
       gitAndTools.gh
       libnotify
+      xdg-utils
 
       ffmpeg
       # httpie

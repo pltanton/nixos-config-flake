@@ -11,7 +11,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs, nur, ... }@inputs: {
     nixosConfigurations = let inherit (inputs.nixpkgs) lib;
     in {
       home-server = lib.nixosSystem {
@@ -40,6 +40,7 @@
             };
             # Overlays available for each host
             nixpkgs.overlays = [
+              nur.overlay
               (final: prev: {
                 master = import inputs.nixpkgs-master {
                   system = "x86_64-linux";
