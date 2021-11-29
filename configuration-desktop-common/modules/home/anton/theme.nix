@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   themeConsts = {
-    fontConsoleName = "Iosevka Term";
+    fontConsoleName = "Iosevka";
     fontConsoleSize = "19";
     fontUIName = "Inter";
     fontUISize = "16";

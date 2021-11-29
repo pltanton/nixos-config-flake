@@ -13,7 +13,9 @@ let
 in {
   home.packages = with pkgs; [
     # emacsPgtkGcc
-    emacs
+    # emacs
+    # emacsGit
+    emacsGcc28
     emacs-all-the-icons-fonts
 
     graphviz # org-roam graph vizualization

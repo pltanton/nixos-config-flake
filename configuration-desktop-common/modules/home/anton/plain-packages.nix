@@ -33,7 +33,7 @@ in {
       # Fonts
       font-awesome_5
       emojione
-      iosevka-bin
+      iosevka
       inter
       #nerdfonts
 

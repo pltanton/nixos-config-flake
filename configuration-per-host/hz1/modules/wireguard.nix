@@ -3,6 +3,7 @@
 {
   networking.nat.enable = true;
   networking.nat.internalInterfaces = [ "wg0" ];
+  networking.nat.externalInterface = "ens3";
   networking.firewall = { allowedUDPPorts = [ 51820 ]; };
 
   networking.wireguard.interfaces = {
@@ -10,10 +11,17 @@
       ips = [ "10.10.10.1/24" ];
       listenPort = 51820;
       privateKeyFile = "/root/nixos/wgkey";
-      peers = [{
-        allowedIPs = [ "10.10.10.10/32" ]; # Home server
-        publicKey = "8AEkjWAMTQg20MKLY6GHqLO5y9pWm4rTVOugKs8FpQk=";
-      }];
+      peers = [
+        {
+          allowedIPs = [ "10.10.10.10/32" ]; # Home server
+          publicKey = "8AEkjWAMTQg20MKLY6GHqLO5y9pWm4rTVOugKs8FpQk=";
+        }
+        {
+          allowedIPs = [ "10.10.10.4/32" ];
+          publicKey = "6HRTAMMZi/+rw+niq8RX8KblxY0bYB3Cs9tKuaHqNg8=";
+        }
+      ];
     };
+
   };
 }

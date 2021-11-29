@@ -1,6 +1,6 @@
 { pkgs, config, ... }: {
   programs.kitty = {
-    enable = true;
+    enable = false;
     settings = {
       font_family = config.lib.base16.theme.fontConsoleName;
       font_size = config.lib.base16.theme.fontConsoleSize;
