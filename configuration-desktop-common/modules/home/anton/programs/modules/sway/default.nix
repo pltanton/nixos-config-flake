@@ -185,12 +185,19 @@ in with config.lib.base16.theme; {
             command = "kill";
           }
           {
+            criteria = {
+              class = "^Steam$";
+              title = "^(?!Steam$)";
+            };
+            command = "floating enable";
+          }
+          {
             criteria = { app_id = "^telegramdesktop$"; };
             command = "resize set width 1 ppt";
           }
           {
             criteria = { app_id = "^com.nextcloud.desktopclient.nextcloud$"; };
-            command = "floating enable";
+            command = "floating enable; move position cursor";
           }
           {
             criteria = { title = "^org.inkscape.Inkscape$"; };

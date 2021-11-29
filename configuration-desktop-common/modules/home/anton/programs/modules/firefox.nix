@@ -9,14 +9,13 @@
     #   extraPolicies = { ExtensionSettings = { }; };
     # };
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      # sidebery
       bitwarden
-      # tridactyl
-      # vim-vixen
       ublock-origin
       react-devtools
       stylus
       foxyproxy-standard
+      multi-account-containers
+
       pkgs.nur.repos.ethancedwards8.firefox-addons.enhancer-for-youtube
     ];
     profiles = {
