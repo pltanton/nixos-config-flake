@@ -15,7 +15,7 @@ in {
     # emacsPgtkGcc
     # emacs
     # emacsGit
-    emacsGcc28
+    emacsGcc
     emacs-all-the-icons-fonts
 
     graphviz # org-roam graph vizualization

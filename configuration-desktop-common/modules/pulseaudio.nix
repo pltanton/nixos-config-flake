@@ -77,6 +77,8 @@
             # "api.alsa.period-size" =
             #   16; # defaults to 1024, tweak by trial-and-error
             #"api.alsa.disable-batch" = true; # generally, USB soundcards use the batch mode
+
+            "api.alsa.use-acp" = false;
           };
         };
       }];
@@ -93,6 +95,7 @@
             "bluez5.msbc-support" = true;
             # SBC-XQ is not expected to work on all headset + adapter combinations.
             "bluez5.sbc-xq-support" = true;
+            "bluez5.autoswitch-profile" = true;
           };
         };
       }
@@ -115,7 +118,7 @@
   services.ofono.enable = false;
   hardware = {
     pulseaudio.enable = false;
-    pulseaudio.support32Bit = true;
+    pulseaudio.support32Bit = false;
     pulseaudio.package = pkgs.pulseaudioFull;
     pulseaudio.extraConfig = ''
       unload-module module-role-cork

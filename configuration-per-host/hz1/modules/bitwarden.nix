@@ -4,13 +4,13 @@
   services = {
     bitwarden_rs = {
       enable = true;
-	  config = {
+      config = {
         domain = "https://bitwarden.kaliwe.ru";
         signupsAllowed = true;
         #databaseUrl = "postgresql://bitwarden:bitwarden@localhost/bitwarden";
         #enableDbWal = false;
         #extendedLogging = true;
-      rocketPort = 8222;
+        rocketPort = 8222;
       };
     };
   };

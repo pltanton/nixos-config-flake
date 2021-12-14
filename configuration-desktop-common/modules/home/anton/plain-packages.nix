@@ -113,7 +113,7 @@ in {
       kubectl
       kubectx
       sqlite
-      postgresql
+      postgresql_13
       coreutils
       # gradle2nix
       grpc

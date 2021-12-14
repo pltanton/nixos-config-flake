@@ -27,7 +27,8 @@
     # Extra flakes with application sets
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nur.url = "github:nix-community/NUR";
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    # emacs-overlay.url = "github:nix-community/emacs-overlay";
+    emacs-overlay.url = "github:nix-community/emacs-overlay?rev=64580e3ac034e2704895a272f341a0729d165b93";
 
     # My own flakes
     quizanus.url = "git+ssh://gitea@gitea.kaliwe.ru/pltanton/quizanus.git";

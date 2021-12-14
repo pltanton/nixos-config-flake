@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   services.postgresql = {
     enable = true;
-    package = pkgs.postgresql_11;
+    package = pkgs.postgresql_13;
     enableTCPIP = true;
     authentication = pkgs.lib.mkOverride 10 ''
       local all all trust
