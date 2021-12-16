@@ -4,12 +4,9 @@
   inputs = {
     # Nixos related inputs
     nixpkgs-local.url = "github:pltanton/nixpkgs/master";
-    # nixpkgs-local.url = "/home/anton/Workdir/nixpkgs";
-    # nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-21.05";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.05";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-21.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-21.11";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
-    nixpkgs-old.url = "github:nixos/nixpkgs/nixos-20.09";
     # nixpkgs-aws-sam.url = "github:freezeboy/nixpkgs/update-aws-sam-cli";
 
     nix.url = "github:nixos/nix";
@@ -20,7 +17,7 @@
     home-manager.url = "github:nix-community/home-manager/release-21.05";
     # base16.url = "github:alukardbf/base16-nix";
     base16.url = "github:pltanton/base16-nix";
-    nix-doom-emacs.url = "github:vlaci/nix-doom-emacs/develop";
+    nix-doom-emacs.url = "github:vlaci/nix-doom-emacs/master";
 
     qbpm.url = "github:pvsr/qbpm";
 
@@ -43,6 +40,9 @@
 
     doom-emacs.url = "github:hlissner/doom-emacs/develop";
     doom-emacs.flake = false;
+
+    fish-z-plugin.url = "github:jethrokuan/z";
+    fish-z-plugin.flake = false;
   };
 
   outputs = { self, deploy-rs, nixpkgs, nix-doom-emacs, home-manager, nur

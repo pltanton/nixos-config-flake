@@ -4,9 +4,9 @@
   programs.vscode = {
     enable = true;
     extensions = with pkgs.vscode-extensions; [
-      golang.Go
+      golang.go
       vscodevim.vim
-      bbenoist.Nix
+      bbenoist.nix
     ];
   };
 }

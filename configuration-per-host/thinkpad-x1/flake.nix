@@ -4,12 +4,9 @@
   inputs = {
     # Nixos related inputs
     nixpkgs-local.url = "github:pltanton/nixpkgs/master";
-    # nixpkgs-local.url = "/home/anton/Workdir/nixpkgs";
-    # nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-21.05";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.05";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-21.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-21.11";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
-    nixpkgs-old.url = "github:nixos/nixpkgs/nixos-20.09";
     # nixpkgs-aws-sam.url = "github:freezeboy/nixpkgs/update-aws-sam-cli";
 
     nix.url = "github:nixos/nix";
@@ -28,7 +25,8 @@
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nur.url = "github:nix-community/NUR";
     # emacs-overlay.url = "github:nix-community/emacs-overlay";
-    emacs-overlay.url = "github:nix-community/emacs-overlay?rev=64580e3ac034e2704895a272f341a0729d165b93";
+    emacs-overlay.url =
+      "github:nix-community/emacs-overlay?rev=64580e3ac034e2704895a272f341a0729d165b93";
 
     # My own flakes
     quizanus.url = "git+ssh://gitea@gitea.kaliwe.ru/pltanton/quizanus.git";
@@ -44,6 +42,11 @@
 
     doom-emacs.url = "github:hlissner/doom-emacs/develop";
     doom-emacs.flake = false;
+
+    fish-z-plugin.url = "github:jethrokuan/z";
+    fish-z-plugin.flake = false;
+    fish-colored-man-plugin.url = "github:decors/fish-colored-man";
+    fish-colored-man-plugin.flake = false;
   };
 
   outputs = { self, deploy-rs, nixpkgs, nix-doom-emacs, home-manager, nur
