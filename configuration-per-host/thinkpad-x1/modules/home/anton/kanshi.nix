@@ -30,7 +30,7 @@
           {
             criteria = "Unknown Mi TV 0x00000001";
             status = "enable";
-            mode = "3840x2160@30Hz";
+            mode = "1920x1080@59.940Hz";
           }
           {
             criteria = "eDP-1";
@@ -43,7 +43,7 @@
           {
             criteria = "Unknown Mi TV 0x00000001";
             status = "enable";
-            mode = "3840x2160@30Hz";
+            mode = "1920x1080@59.940Hz";
           }
           {
             criteria = "DP-2";

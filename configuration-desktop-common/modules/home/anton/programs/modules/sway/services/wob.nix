@@ -34,9 +34,9 @@ in {
           StandardInput = "socket";
           ExecStart = ''
             ${pkgs.wob}/bin/wob \
-                        --background-color #C8${base00-hex} \
-                        --border-color #FF${base05-hex} \
-                        --bar-color #FF${base05-hex} \
+                        --background-color #${base00-hex}C8 \
+                        --border-color #${base05-hex}FF \
+                        --bar-color #${base05-hex}FF \
                         -O '*'
           '';
           Restart = "always";

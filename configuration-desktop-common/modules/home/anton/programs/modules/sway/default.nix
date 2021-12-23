@@ -31,6 +31,7 @@ in with config.lib.base16.theme; {
       grim
       swaybg
       slurp
+      swappy
 
       swaylock-fancy
       flashfocus
@@ -112,7 +113,7 @@ in with config.lib.base16.theme; {
     in {
       bars = [ ];
 
-      terminal = "${pkgs.alacritty}/bin/alacritty";
+      terminal = "alacritty";
 
       menu = "wofi --show drun -I";
 

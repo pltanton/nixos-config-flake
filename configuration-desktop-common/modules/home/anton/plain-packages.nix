@@ -63,7 +63,6 @@ in {
       inetutils
       nfs-utils
 
-      ranger
       tmux
       unzip
       unrar
@@ -79,6 +78,7 @@ in {
 
       evince
       zathura
+      imv
       gthumb
       gnome-photos
       gimp

@@ -6,7 +6,7 @@ let
   grabScreenshot = pkgs.writeShellScript "grabScreenshot" ''
     mkdir -p ~/Screenshots
     FILE_PATH=~/Screenshots/shot_$(date +"%y%m%d%H%M%S").png
-    grim -g "$(slurp)" $FILE_PATH
+    grim -g "$(slurp)" - | swappy -f - -o "$FILE_PATH"
     wl-copy -t image/png < $FILE_PATH
   '';
 
@@ -20,33 +20,6 @@ let
 
     # Tell sway to focus said window
     swaymsg [con_id="$selected"] focus
-  '';
-
-  wobWrapper = pkgs.writeShellScript "wobWrapper" ''
-    # returns 0 (success) if $1 is running and is attached to this sway session; else 1
-    is_running_on_this_screen() {
-        pkill -0 $1 || return 1
-        for pid in $( pgrep $1 ); do
-            WOB_SWAYSOCK="$( tr '\0' '\n' < /proc/$pid/environ | awk -F'=' '/^SWAYSOCK/ {print $2}' )"
-            if [[ "$WOB_SWAYSOCK" == "$SWAYSOCK" ]]; then
-                return 0
-            fi
-        done
-        return 1
-    }
-
-    new_value=$1 # null or a percent; no checking!!
-
-    wob_pipe=~/.cache/$( basename $SWAYSOCK ).wob
-
-    [[ -p $wob_pipe ]] || mkfifo $wob_pipe
-
-    # wob does not appear in $(swaymsg -t get_msg), so:
-    is_running_on_this_screen wob || {
-        tail -f $wob_pipe | ${pkgs.wob}/bin/wob &
-    }
-
-    [[ "$new_value" ]] && echo $new_value > $wob_pipe
   '';
 in {
   wayland.windowManager.sway = {
@@ -80,10 +53,8 @@ in {
 
         "XF86MonBrightnessUp" =
           "exec ${scripts.brightness}/bin/brightness --inc -d 5 | head -n 1 > $WOBSOCK";
-        # "exec ${pkgs.light}/bin/light -A 5 && ${wobWrapper} $(light -G | cut -d'.' -f1) && ${pkgs.ddcutil}/bin/ddcutil setvcp 10 $(light -G | cut -d'.' -f1)";
         "XF86MonBrightnessDown" =
           "exec ${scripts.brightness}/bin/brightness --dec -d 5 | head -n 1 > $WOBSOCK";
-        # "exec ${pkgs.light}/bin/light -U 5 && light -G | ${wobWrapper} $(cut -d'.' -f1) && ${pkgs.ddcutil}/bin/ddcutil setvcp 10 $(light -G | cut -d'.' -f1)";
 
         "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play";
         "XF86AudioStop" = "exec ${pkgs.playerctl}/bin/playerctl pause";
