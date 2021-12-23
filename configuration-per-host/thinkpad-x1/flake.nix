@@ -14,7 +14,7 @@
 
     # Home-manager and modules
     # home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.url = "github:nix-community/home-manager/release-21.05";
+    home-manager.url = "github:nix-community/home-manager/release-21.11";
     # base16.url = "github:alukardbf/base16-nix";
     base16.url = "github:pltanton/base16-nix";
     nix-doom-emacs.url = "github:vlaci/nix-doom-emacs/master";

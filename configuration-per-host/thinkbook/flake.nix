@@ -14,7 +14,7 @@
 
     # Home-manager and modules
     # home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.url = "github:nix-community/home-manager/release-21.05";
+    home-manager.url = "github:nix-community/home-manager/release-21.11";
     # base16.url = "github:alukardbf/base16-nix";
     base16.url = "github:pltanton/base16-nix";
     nix-doom-emacs.url = "github:vlaci/nix-doom-emacs/master";
@@ -43,6 +43,8 @@
 
     fish-z-plugin.url = "github:jethrokuan/z";
     fish-z-plugin.flake = false;
+    fish-colored-man-plugin.url = "github:decors/fish-colored-man";
+    fish-colored-man-plugin.flake = false;
   };
 
   outputs = { self, deploy-rs, nixpkgs, nix-doom-emacs, home-manager, nur
