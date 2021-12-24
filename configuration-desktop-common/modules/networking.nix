@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   networking = {
-    #nameservers = [ "8.8.8.8" ];
+    nameservers = [ "10.100.0.1" ];
     hosts = { };
     networkmanager.enable = true;
 

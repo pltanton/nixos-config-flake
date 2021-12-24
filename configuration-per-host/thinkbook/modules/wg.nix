@@ -16,7 +16,7 @@
   };
 
   networking.wireguard.interfaces = {
-    wg-home = {
+    wg0-home = {
       privateKey = secrets.wg.home.privateKey;
       ips = [ "10.100.0.4/32" ];
       peers = [{
@@ -27,16 +27,16 @@
       }];
     };
 
-    wg-hz1 = {
-      privateKey = secrets.wg.hz1.privateKey;
-      ips = [ "10.10.10.4/32" ];
-      peers = [{
-        publicKey = "0vuNrDaID3o8YwbNBZ7RViB0O0z6Kt32mpK36PUDgg8=";
-        allowedIPs = [ "0.0.0.0/0" ];
-        endpoint = "hz1.kaliwe.ru:51820";
-        persistentKeepalive = 25;
-      }];
-    };
+    # wg-hz1 = {
+    #   privateKey = secrets.wg.hz1.privateKey;
+    #   ips = [ "10.10.10.4/32" ];
+    #   peers = [{
+    #     publicKey = "0vuNrDaID3o8YwbNBZ7RViB0O0z6Kt32mpK36PUDgg8=";
+    #     allowedIPs = [ "0.0.0.0/0" ];
+    #     endpoint = "hz1.kaliwe.ru:51820";
+    #     persistentKeepalive = 25;
+    #   }];
+    # };
 
     # wg0-kaliwe = let
     #   host = "195.201.150.251";
