@@ -55,7 +55,7 @@ in {
 
       address=/home.kaliwe.ru/192.168.50.2
       address=/hass.kaliwe.ru/192.168.50.2
-      address=/jellifyn.kaliwe.ru/192.168.50.2
+      address=/jellyfin.kaliwe.ru/192.168.50.2
       address=/filestash.kaliwe.ru/192.168.50.2
       address=/monitorrent.kaliwe.ru/192.168.50.2
       address=/nextcloud.kaliwe.ru/192.168.50.2
