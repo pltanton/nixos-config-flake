@@ -33,6 +33,7 @@ in {
     extraConfig = ''
       domain=lan
       interface=${wifi}
+      interface=${lan}
       interface=wg0
       bind-interfaces
 
@@ -51,6 +52,18 @@ in {
       address=/server.home/10.100.0.1
       address=/thinkpad-x1.home/10.100.0.3
       address=/thinkbook.home/10.100.0.4
+
+      address=/home.kaliwe.ru/192.168.50.2
+      address=/hass.kaliwe.ru/192.168.50.2
+      address=/jellifyn.kaliwe.ru/192.168.50.2
+      address=/filestash.kaliwe.ru/192.168.50.2
+      address=/monitorrent.kaliwe.ru/192.168.50.2
+      address=/nextcloud.kaliwe.ru/192.168.50.2
+      address=/mqtt.kaliwe.ru/192.168.50.2
+      address=/torrent.kaliwe.ru/192.168.50.2
+      address=/plex.kaliwe.ru/192.168.50.2
+      address=/vacuum.kaliwe.ru/192.168.50.2
+      address=/motioneye.kaliwe.ru/192.168.50.2
     '';
   };
   networking.firewall.allowedUDPPorts = [ 53 67 ]; # DNS & DHCP
