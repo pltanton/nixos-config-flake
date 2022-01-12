@@ -9,7 +9,6 @@
           "AutoConnect" = true;
           "Enable" = "Source,Sink,Media,Control,Gateway,Socket,Headset";
           "MultiProfile" = "multiple";
-          "Experemental" = true;
           "AutoEnable" = true;
         };
       };
