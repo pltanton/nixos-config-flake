@@ -1,4 +1,4 @@
-self: super: rec {
+inputs: self: super: rec {
   my-rapid-photo-downloader =
     super.callPackage ./pkgs/my-rapid-photo-downloader.nix { };
   bitwarden-rofi = super.callPackage ./pkgs/bitwarden-rofi { };
@@ -27,14 +27,9 @@ self: super: rec {
   # fido2luks = import ./pkgs/fido2luks.nix super;
 
   swaylock-effects = super.swaylock-effects.overrideAttrs (oldAttrs: rec {
-    version = "v1.6-3";
+    version = inputs.swaylock-effects-src.rev;
 
-    src = super.fetchFromGitHub {
-      owner = "mortie";
-      repo = "swaylock-effects";
-      rev = version;
-      sha256 = "162aic40dfvlrz40zbzmhcmggihcdymxrfljxb7j7i5qy38iflpg";
-    };
+    src = inputs.swaylock-effects-src;
   });
 
   sublime-music = super.callPackage ./pkgs/sublime-music.nix { };

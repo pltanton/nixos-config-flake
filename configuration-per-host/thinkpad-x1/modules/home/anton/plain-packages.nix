@@ -21,5 +21,10 @@
 
       adoptopenjdk-bin
       jetbrains.idea-community
+
+      darktable
+      kdenlive
+      shotcut
+      rawtherapee
     ];
 }

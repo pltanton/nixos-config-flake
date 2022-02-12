@@ -4,7 +4,7 @@ in {
   imports = [ ./style.nix ];
 
   programs.waybar = with config.lib.base16.theme; {
-    package = pkgs.master.waybar;
+    package = pkgs.waybar;
     enable = config.wayland.windowManager.sway.enable;
     # enable = true;
     systemd.enable = true;

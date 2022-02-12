@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 let
   wlgreetConfig = pkgs.writeText "wlgreet-sway.conf" ''
     exec "${
@@ -17,6 +17,9 @@ in {
   gtk.iconCache.enable = true;
   xdg.icons.enable = true;
 
+  services.gnome.chrome-gnome-shell.enable = false;
+  # config.services.xserver.desktopManager.gnome.enable;
+
   services.xserver = {
     enable = false;
 
@@ -34,12 +37,12 @@ in {
     # desktopManager.plasma5 = { enable = true; };
     # displayManager.sddm.enable = true;
     # displayManager.lightdm.enable = true;
-    # displayManager.gdm = {
-    #   enable = false;
-    #   wayland = true;
-    # };
+    displayManager.gdm = {
+      enable = false;
+      wayland = false;
+    };
     # displayManager.lightdm.enable = true;
-    # desktopManager.gnome = { enable = false; };
+    desktopManager.gnome = { enable = false; };
     # desktopManager.xterm.enable = false;
 
     #   config = pkgs.lib.mkOverride 50 ''
@@ -58,7 +61,7 @@ in {
     #   '';
   };
 
-  programs.sway.enable = false;
+  # programs.sway.enable = false;
   xdg.portal.enable = true;
   xdg.portal.gtkUsePortal = true;
   xdg.portal.extraPortals = with pkgs; [
@@ -70,13 +73,13 @@ in {
   environment.systemPackages =
     [ pkgs.gnome3.adwaita-icon-theme pkgs.qogir-icon-theme ];
 
-  services.greetd = {
-    enable = false;
-    settings = {
-      default_session = {
-        command = "${lib.makeBinPath [ pkgs.sway ]}/sway -c ${wlgreetConfig}";
-        user = "greeter";
-      };
-    };
-  };
+  # services.greetd = {
+  #   enable = false;
+  #   settings = {
+  #     default_session = {
+  #       command = "${lib.makeBinPath [ pkgs.sway ]}/sway -c ${wlgreetConfig}";
+  #       user = "greeter";
+  #     };
+  #   };
+  # };
 }

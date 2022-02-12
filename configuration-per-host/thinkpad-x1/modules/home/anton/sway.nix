@@ -1,7 +1,8 @@
 { pkgs, config, lib, ... }: {
   wayland.windowManager.sway = {
     config.output = {
-      "eDP-1" = { scale = "1.6"; };
+      # "DP-1" = { scale = "1.1"; };
+      # "eDP-1" = { scale = "1.6"; };
     };
   };
 

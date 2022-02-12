@@ -45,7 +45,7 @@ let
     '';
 in {
   home.packages = lib.mkIf config.wayland.windowManager.sway.enable [
-    pkgs.swaylock-fancy
+    pkgs.swaylock-effects
     lockScript
   ];
 }

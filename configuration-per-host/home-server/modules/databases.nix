@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+  environment.systemPackages = [ pkgs.postgresql_11 ];
   services = {
     mysql = {
       enable = true;
@@ -13,12 +14,10 @@
       package = pkgs.postgresql_11;
 
       ensureDatabases = [ "nextcloud" ];
-      ensureUsers = [
-        {
-          name = "nextcloud";
-          ensurePermissions = { "DATABASE nextcloud" = "ALL PRIVILEGES"; };
-        }
-      ];
+      ensureUsers = [{
+        name = "nextcloud";
+        ensurePermissions = { "DATABASE nextcloud" = "ALL PRIVILEGES"; };
+      }];
 
       enableTCPIP = true;
 

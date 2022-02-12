@@ -2,7 +2,7 @@
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = false;
 
-  nix.trustedUsers = [ "root" "@wheel" ];
+  nix.settings.trusted-users = [ "root" "@wheel" ];
 
   programs.fish = {
     shellInit = ''

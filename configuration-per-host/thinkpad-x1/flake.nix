@@ -4,7 +4,7 @@
   inputs = {
     # Nixos related inputs
     nixpkgs-local.url = "github:pltanton/nixpkgs/master";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.11";
+    nixpkgs.url = "github:nixos/nixpkgs/master";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-21.11";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     # nixpkgs-aws-sam.url = "github:freezeboy/nixpkgs/update-aws-sam-cli";
@@ -13,8 +13,8 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Home-manager and modules
-    # home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.url = "github:nix-community/home-manager/release-21.11";
+    home-manager.url = "github:nix-community/home-manager/master";
+    # home-manager.url = "github:nix-community/home-manager/release-21.11";
     # base16.url = "github:alukardbf/base16-nix";
     base16.url = "github:pltanton/base16-nix";
     nix-doom-emacs.url = "github:vlaci/nix-doom-emacs/master";
@@ -24,9 +24,8 @@
     # Extra flakes with application sets
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nur.url = "github:nix-community/NUR";
-    # emacs-overlay.url = "github:nix-community/emacs-overlay";
-    emacs-overlay.url =
-      "github:nix-community/emacs-overlay?rev=64580e3ac034e2704895a272f341a0729d165b93";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    emacs-ng.url = "github:emacs-ng/emacs-ng";
 
     # My own flakes
     quizanus.url = "git+ssh://gitea@gitea.kaliwe.ru/pltanton/quizanus.git";
@@ -47,6 +46,15 @@
     fish-z-plugin.flake = false;
     fish-colored-man-plugin.url = "github:decors/fish-colored-man";
     fish-colored-man-plugin.flake = false;
+
+    sway-borders-src = {
+      url = "github:fluix-dev/sway-borders";
+      flake = false;
+    };
+    swaylock-effects-src = {
+      url = "github:mortie/swaylock-effects";
+      flake = false;
+    };
   };
 
   outputs = { self, deploy-rs, nixpkgs, nix-doom-emacs, home-manager, nur
@@ -95,23 +103,26 @@
             })
 
             ({ pkgs, ... }: {
-              nix = {
+              nix.settings = {
                 # add binary caches
-                binaryCachePublicKeys = [
+                trusted-public-keys = [
                   "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-                  # "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+                  "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
                   "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+                  "emacsng.cachix.org-1:i7wOr4YpdRpWWtShI8bT6V7lOTnPeI7Ho6HaZegFWMI="
                 ];
-                binaryCaches = [
+                binary-caches = [
                   "https://cache.nixos.org"
-                  # "https://nixpkgs-wayland.cachix.org"
+                  "https://nixpkgs-wayland.cachix.org"
                   "https://nix-community.cachix.org"
+                  "https://emacsng.cachix.org"
                 ];
               };
-              # Overlays available for each host
+
               nixpkgs.overlays = [
                 nur.overlay
                 emacs-overlay.overlay
+
                 (final: prev: {
                   master = import inputs.nixpkgs-master {
                     system = "x86_64-linux";
@@ -128,6 +139,7 @@
                 })
 
                 (import "${nixpkgs-mozilla}/firefox-overlay.nix")
+
                 # inputs.nixpkgs-wayland.overlay
               ];
             })

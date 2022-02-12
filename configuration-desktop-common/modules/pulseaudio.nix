@@ -29,6 +29,11 @@
     };
 
     config.pipewire-pulse = {
+      "context.exec" = [{
+        path = "${pkgs.pulseaudio}/bin/pactl";
+        args =
+          "load-module module-combine-sink slaves=bluez_output.00_1B_66_B1_06_16.a2dp-sink,alsa_output.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__hw_sofhdadsp__sink sink_name=Headphones";
+      }];
       "context.modules" = [
         {
           "name" = "libpipewire-module-rtkit";
@@ -95,7 +100,7 @@
             "bluez5.msbc-support" = true;
             # SBC-XQ is not expected to work on all headset + adapter combinations.
             "bluez5.sbc-xq-support" = true;
-            "bluez5.autoswitch-profile" = false;
+            "bluez5.autoswitch-profile" = true;
           };
         };
       }
@@ -115,6 +120,7 @@
   };
 
   nixpkgs.config.pulseaudio = true;
+
   services.ofono.enable = false;
   hardware = {
     pulseaudio.enable = false;

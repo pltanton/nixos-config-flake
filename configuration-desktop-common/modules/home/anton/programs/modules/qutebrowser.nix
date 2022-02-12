@@ -1,6 +1,6 @@
 { pkgs, config, lib, inputs, ... }: {
   programs.qutebrowser = with config.lib.base16.theme; {
-    enable = true;
+    enable = false;
     settings = {
       spellcheck.languages = [ "en-US" "ru-RU" ];
       fonts = {
@@ -23,8 +23,4 @@
         config.bind(',,', "spawn --userscript qute-bitwarden -t -d 'wofi -d -i -p Bitwarden'")
       '';
   };
-
-  home.packages = lib.mkIf config.wayland.windowManager.sway.enable [
-    inputs.qbpm.defaultPackage.x86_64-linux
-  ];
 }

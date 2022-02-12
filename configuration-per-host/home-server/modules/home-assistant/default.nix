@@ -32,7 +32,7 @@ in {
   services = {
     zigbee2mqtt = {
       enable = true;
-      package = pkgs.nur.repos.mweinelt.zigbee2mqtt;
+      # package = pkgs.nur.repos.mweinelt.zigbee2mqtt;
       settings = {
         homeassistant = true;
         permit_join = true;
@@ -60,29 +60,33 @@ in {
 
     mosquitto = {
       enable = true;
-      host = "0.0.0.0";
-      checkPasswords = true;
-      ssl = {
-        enable = true;
-        certfile = "/var/lib/acme/${mqttUrl}/cert.pem";
-        cafile = "/var/lib/acme/${mqttUrl}/chain.pem";
-        keyfile = "/var/lib/acme/${mqttUrl}/key.pem";
-      };
-      users = {
-        hass = {
-          acl = [ "topic readwrite #" ];
-          password = secrets.mqtt_unpacked.hass;
-          # hashedPassword =
-          # "$6$UnJaE3YIuwd+A2Ns$iXISY1S8PueeraD6bWpj8H/bfKTnmR+4uDb+jSboMp87zNUPc9l1shruAn3VQe+wpcdEE1beYbOdvj5k6mxVgQ==";
+      listeners = [{
+        settings = {
+
         };
-      };
+        users = {
+          hass = {
+            acl = [ "readwrite #" ];
+            password = secrets.mqtt_unpacked.hass;
+            # hashedPassword =
+            # "$6$UnJaE3YIuwd+A2Ns$iXISY1S8PueeraD6bWpj8H/bfKTnmR+4uDb+jSboMp87zNUPc9l1shruAn3VQe+wpcdEE1beYbOdvj5k6mxVgQ==";
+          };
+        };
+        # settings = {
+        #   host = "0.0.0.0";
+        #   checkPasswords = true;
+        # ssl = {
+        #   enable = true;
+        #   certfile = "/var/lib/acme/${mqttUrl}/cert.pem";
+        #   cafile = "/var/lib/acme/${mqttUrl}/chain.pem";
+        #   keyfile = "/var/lib/acme/${mqttUrl}/key.pem";
+        # };
+        # };
+      }];
     };
 
     nginx = {
-      virtualHosts."${mqttUrl}" = {
-        enableACME = true;
-        forceSSL = true;
-      };
+      virtualHosts."${mqttUrl}" = { enableACME = true; };
 
       virtualHosts."hass.kaliwe.ru" = {
         enableACME = true;
@@ -102,5 +106,6 @@ in {
     };
   };
 
-  security.acme.certs."${mqttUrl}" = { group = "mosquitto"; };
+  users.groups.acme.members = [ "mosquitto" ];
+  # security.acme.certs."${mqttUrl}" = { allowKeysForGroup = "mosquitto"; };
 }

@@ -16,6 +16,8 @@ in {
     # emacs
     # emacsGit
     emacsGcc
+    # inputs.emacs-ng.defaultPackage.x86_64-linux
+    # emacsUnstable-nox
     emacs-all-the-icons-fonts
 
     graphviz # org-roam graph vizualization

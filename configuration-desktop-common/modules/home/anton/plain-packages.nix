@@ -1,10 +1,4 @@
-{ pkgs, lib, fetchPypi, inputs, ... }:
-let
-  gradle2nix = import (fetchTarball {
-    url = "https://github.com/tadfisher/gradle2nix/archive/master.tar.gz";
-    sha256 = "04skv5nhbqzybxsqp7b7l4s7nl66p8cd92f6czlivwcjnj36lzya";
-  }) { pkgs = pkgs; };
-in {
+{ pkgs, lib, fetchPypi, inputs, ... }: {
   home.packages = with pkgs;
     lib.mkIf true [
       hack-font
@@ -22,10 +16,15 @@ in {
       wdisplays
       wf-recorder
 
+      gnome.gnome-tweaks
+      gnome.gnome-shell-extensions
+
       ffmpegthumbnailer
       pamixer
       paprefs
       pavucontrol
+      pulseaudio
+      qjackctl
       shared_mime_info
       pantheon.elementary-files
       pcmanfm
@@ -59,7 +58,7 @@ in {
       jq
       bitwarden-cli
       htop
-      master.btop
+      btop
       inetutils
       nfs-utils
 
@@ -74,8 +73,6 @@ in {
       # GUI
       libreoffice
 
-      master.easyeffects
-
       evince
       zathura
       imv
@@ -83,18 +80,17 @@ in {
       gnome-photos
       gimp
       mpv
-      master.tdesktop
+      tdesktop
       vlc
       xsane
-      slack
+      stable.slack
       spotify
       teams
 
-      thunderbird
+      stable.thunderbird
       bitwarden
       sidequest
       scrcpy
-      darktable
       # tigervnc
 
       # Web
@@ -115,7 +111,6 @@ in {
       sqlite
       postgresql_13
       coreutils
-      # gradle2nix
       grpc
       evans # grpc client
       graphviz
@@ -129,6 +124,7 @@ in {
       mongodb
       robo3t
       dbeaver
+      beekeeper-studio
       gcc
       black # Python code formatter
       python-language-server

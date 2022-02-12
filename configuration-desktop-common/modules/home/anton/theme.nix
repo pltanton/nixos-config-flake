@@ -10,7 +10,9 @@ let
     # iconTheme = "Papirus-dark";
     gtkTheme = "Nordic-bluish-accent";
     # gtkTheme = "Adwaita-dark";
-    cursorTheme = "Qogir-dark";
+    # cursorTheme = "Qogir-dark";
+    cursorTheme = "phinger-cursors";
+    cursorSize = 32;
   };
 in {
   home.packages = [
@@ -18,6 +20,7 @@ in {
     pkgs.qogir-icon-theme
     pkgs.gnome-icon-theme
     pkgs.hicolor-icon-theme
+    pkgs.phinger-cursors
   ];
   themes.base16 = {
     enable = true;
@@ -43,6 +46,9 @@ in {
       name = themeConsts.iconTheme;
     };
     gtk3.extraConfig.gtk-cursor-theme-name = themeConsts.cursorTheme;
+    gtk3.extraConfig.gtk-cursor-theme-size = themeConsts.cursorSize;
+    gtk4.extraConfig.gtk-cursor-theme-name = themeConsts.cursorTheme;
+    gtk4.extraConfig.gtk-cursor-theme-size = themeConsts.cursorSize;
   };
 
   # qt = {
@@ -58,6 +64,6 @@ in {
   xsession.pointerCursor = {
     package = pkgs.qogir-icon-theme;
     name = themeConsts.cursorTheme;
-    size = 32;
+    size = themeConsts.cursorSize;
   };
 }

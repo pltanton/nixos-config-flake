@@ -3,8 +3,8 @@
 
   inputs = {
     nixpkgs-local.url = "github:pltanton/nixpkgs/master";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.05";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-21.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-21.11";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs-old.url = "github:nixos/nixpkgs/nixos-20.09";
     nix.url = "github:nixos/nix";

@@ -40,11 +40,13 @@
   users = {
     users = {
       publicstore = {
+        group = "publicstore";
         isSystemUser = true;
         shell = pkgs.bashInteractive;
         uid = 1040;
       };
       privatestore = {
+        group = "privatestore";
         isSystemUser = true;
         shell = pkgs.bashInteractive;
         uid = 1050;

@@ -12,7 +12,8 @@
           "AutoEnable" = true;
         };
       };
-      hsphfpd.enable = true;
+      # hsphfpd.enable = true;
+      # disabledPlugins = [ "sap" ];
     };
   };
 }

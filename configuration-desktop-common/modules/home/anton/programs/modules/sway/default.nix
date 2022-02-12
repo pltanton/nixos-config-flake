@@ -3,6 +3,7 @@ let
   # swayPackage = pkgs.waylandPkgs.sway-unwrapped;
   # swayPackage = pkgs.master.sway;
   swayPackage = pkgs.sway-unwrapped;
+  # swayPackage = pkgs.sway-borders;
   # swayPackage = pkgs.sway.overrideAttrs (soldAttrs: {
   #   src = pkgs.fetchFromGitHub {
   #     owner = "RPigott";
@@ -56,12 +57,16 @@ in with config.lib.base16.theme; {
     GDK_PIXBUF_MODULE_FILE =
       "${pkgs.librsvg.out}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
 
-    WLR_DRM_NO_MODIFIERS = 1;
+    WLR_DRM_NO_ATOMIC = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";
 
     XDG_CURRENT_DESKTOP = "sway";
     XDG_SESSION_TYPE = "wayland";
 
+    WLR_DRM_NO_MODIFIERS = 1;
+
     # WOBSOCK = "$XDG_RUNTIME_DIR/wob.sock";
+    NIXOS_OZONE_WL = "1";
   };
 
   wayland.windowManager.sway = {
@@ -72,6 +77,13 @@ in with config.lib.base16.theme; {
       gtk = true;
       base = true;
     };
+
+    extraSessionCommands = let
+      schema = pkgs.gsettings-desktop-schemas;
+      datadir = "${schema}/share/gsettings-schemas/${schema.name}";
+    in ''
+      XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
+    '';
 
     extraConfig = ''
       exec mako
@@ -104,7 +116,10 @@ in with config.lib.base16.theme; {
           ${pkgs.glib}/bin/gsettings set $gnome-schema gtk-theme '${gtkTheme}'
           ${pkgs.glib}/bin/gsettings set $gnome-schema icon-theme '${iconTheme}'
           ${pkgs.glib}/bin/gsettings set $gnome-schema cursor-theme '${cursorTheme}'
-          ${pkgs.glib}/bin/gsettings set $gnome-schema text-scaling-factor 1.6
+          ${pkgs.glib}/bin/gsettings set $gnome-schema cursor-size '${
+            toString cursorSize
+          }'
+          # ${pkgs.glib}/bin/gsettings set $gnome-schema text-scaling-factor 1.6
           ${pkgs.glib}/bin/gsettings set $gnome-schema font-name '${fontUIName} 11'
       }
     '';

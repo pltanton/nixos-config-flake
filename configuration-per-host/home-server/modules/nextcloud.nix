@@ -4,7 +4,7 @@ let
   secrets = import ../secrets.nix;
   consts = import ../constants.nix;
   nextcloudHome = "${consts.archiveMountPoint}/nextcloud-home";
-  nextcloudPackage = pkgs.nextcloud22;
+  nextcloudPackage = pkgs.nextcloud23;
 
   archiveDst = "${nextcloudHome}/data/anton/files/Archive";
 
@@ -32,7 +32,7 @@ in {
     nextcloud = {
       phpExtraExtensions = all: with all; [ pdlib bz2 ];
       caching = {
-        apcu = false;
+        apcu = true;
         redis = true;
         memcached = false;
       };
@@ -40,7 +40,8 @@ in {
       package = nextcloudPackage;
       enable = true;
       config = {
-        adminpass = "adminpass";
+        # adminpass = "adminpass";
+        adminpassFile = "/media/archive/nextcloud-home/adminpass";
         dbtype = "pgsql";
       };
       home = "/media/archive/nextcloud-home";
@@ -51,6 +52,7 @@ in {
         expose_php = "Off";
         error_reporting = "E_ALL & ~E_DEPRECATED & ~E_STRICT";
         display_errors = "stderr";
+        "opcache.enbale" = "1";
         "opcache.enable_cli" = "1";
         "opcache.interned_strings_buffer" = "8";
         "opcache.max_accelerated_files" = "10000";

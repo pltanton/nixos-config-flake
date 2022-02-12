@@ -3,9 +3,10 @@
   programs.firefox = {
     enable = true;
     # package = inputs.firefox-nightly.firefox-nightly-bin;
-    package = pkgs.master.firefox-beta-bin;
+    # package = pkgs.firefox-beta-bin;
     # package = pkgs.latest.firefox-nightly-bin;
     # package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
+    package = pkgs.master.firefox-wayland;
     #   extraPolicies = { ExtensionSettings = { }; };
     # };
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
@@ -25,6 +26,7 @@
           # "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "browser.startup.homepage" = "https://start.duckduckgo.com";
           "gfx.webrender.all" = true;
+          "layout.css.devPixelsPerPx" = "-1.0";
         };
         # userChrome = ''
         #   #TabsToolbar {
@@ -47,6 +49,7 @@
           # "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "browser.startup.homepage" = "https://start.duckduckgo.com";
           "gfx.webrender.all" = true;
+          "layout.css.devPixelsPerPx" = "-1.0";
         };
         userChrome = ''
           #TabsToolbar {
