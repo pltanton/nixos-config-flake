@@ -16,8 +16,8 @@
       #   # extraPkgs = pkgs: [ SDL2 libstdcxx5 ];
       #   nativeOnly = false;
       # })
-      steam
-      steam-run
+      # steam
+      # steam-run
 
       adoptopenjdk-bin
       jetbrains.idea-community

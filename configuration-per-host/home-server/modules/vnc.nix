@@ -1,7 +1,8 @@
 { config, pkgs, lib, ... }:
 
-let username = "remote";
-    enableGraphics = false;
+let
+  username = "remote";
+  enableGraphics = false;
 in {
   users.extraUsers."${username}" = {
     description = "User that runs vnc server";
@@ -19,9 +20,13 @@ in {
     zeroconf.discovery.enable = true;
   };
 
-  environment.systemPackages = lib.mkIf enableGraphics (with pkgs; [ tigervnc gthumb mpv firefox
-                                                                     #steam
-                                                                   ]);
+  environment.systemPackages = lib.mkIf enableGraphics (with pkgs; [
+    tigervnc
+    gthumb
+    mpv
+    firefox
+    #steam
+  ]);
 
   services = {
     xserver = {
@@ -50,5 +55,5 @@ in {
   #   };
   # };
 
-  hardware.steam-hardware.enable = enableGraphics;
+  # hardware.steam-hardware.enable = enableGraphics;
 }

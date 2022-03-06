@@ -1,17 +1,16 @@
 { pkgs, lib, config, ... }:
 let
-  wlgreetConfig = pkgs.writeText "wlgreet-sway.conf" ''
-    exec "${
-      lib.makeBinPath [ pkgs.greetd.wlgreet ]
-    }/wlgreet --command sway; swaymsg exit"
+  swayConfig = pkgs.writeText "wlgreet-sway-config" ''
+    xwayland false
 
-    bindsym Mod4+shift+e exec swaynag \
-    -t warning \
-    -m 'What do you want to do?' \
-    -b 'Poweroff' 'systemctl poweroff' \
-    -b 'Reboot' 'systemctl reboot'
+    exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP GTK_IM_MODULE QT_IM_MODULE XMODIFIERS DBUS_SESSION_BUS_ADDRESS
 
-    include /etc/sway/config.d/*
+    exec "${pkgs.greetd.wlgreet}/bin/gtkgreet -l; ${pkgs.sway}/bin/swaymsg exit"
+    bindsym Mod4+Shift+e exec swaynag \
+    	-t warning \
+    	-m 'What do you want to do?' \
+    	-b 'Poweroff' 'systemctl poweroff' \
+    	-b 'Reboot' 'systemctl reboot'
   '';
 in {
   gtk.iconCache.enable = true;
@@ -34,8 +33,8 @@ in {
       touchpad = { tapping = true; };
     };
 
-    # desktopManager.plasma5 = { enable = true; };
-    # displayManager.sddm.enable = true;
+    desktopManager.plasma5 = { enable = false; };
+    displayManager.sddm.enable = false;
     # displayManager.lightdm.enable = true;
     displayManager.gdm = {
       enable = false;
@@ -77,7 +76,7 @@ in {
   #   enable = false;
   #   settings = {
   #     default_session = {
-  #       command = "${lib.makeBinPath [ pkgs.sway ]}/sway -c ${wlgreetConfig}";
+  #       command = "${pkgs.sway}/bin/sway -c ${swayConfig}";
   #       user = "greeter";
   #     };
   #   };

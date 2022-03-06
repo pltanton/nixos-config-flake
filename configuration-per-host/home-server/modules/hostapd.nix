@@ -27,6 +27,10 @@ in {
     prefixLength = prefixLength;
   }];
 
+  systemd.services.dnsmasq = {
+    after = [ "wireguard-wg0.service" ];
+    requires = [ "wireguard-wg0.service" ];
+  };
   services.dnsmasq = {
     enable = true;
     servers = [ "8.8.8.8" "8.8.4.4" ];

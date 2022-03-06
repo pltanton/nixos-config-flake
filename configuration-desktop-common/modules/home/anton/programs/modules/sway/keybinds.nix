@@ -1,6 +1,6 @@
 { pkgs, config, lib, inputs, ... }:
 let
-  scripts = import ./scripts pkgs;
+  scripts = import ./scripts pkgs config;
   cfg = config.wayland.windowManager.sway;
 
   grabScreenshot = pkgs.writeShellScript "grabScreenshot" ''
@@ -32,6 +32,9 @@ in {
       keybindings = lib.mkOptionDefault {
         "${cfg.config.modifier}+Shift+Return" = "exec ${cfg.config.terminal}";
         "${cfg.config.modifier}+Shift+c" = "kill";
+        # Fade out
+        # "${cfg.config.modifier}+Shift+c" =
+        #   "mark quit; exec ${scripts}/bin/fadeout";
         "${cfg.config.modifier}+Shift+r" = "reload";
         "${cfg.config.modifier}+Return" = "exec ${cfg.config.menu}";
         "${cfg.config.modifier}+semicolon" = "exec ${wofiWindowsSwitch}";
@@ -52,9 +55,9 @@ in {
           "exec ${pkgs.pamixer}/bin/pamixer --toggle-mute && ((${pkgs.pamixer}/bin/pamixer --get-mute && echo 0) || ${pkgs.pamixer}/bin/pamixer --get-volume) | tail -n 1 > $WOBSOCK ";
 
         "XF86MonBrightnessUp" =
-          "exec ${scripts.brightness}/bin/brightness --inc -d 5 | head -n 1 > $WOBSOCK";
+          "exec ${scripts}/bin/brightness --inc -d 5 | head -n 1 > $WOBSOCK";
         "XF86MonBrightnessDown" =
-          "exec ${scripts.brightness}/bin/brightness --dec -d 5 | head -n 1 > $WOBSOCK";
+          "exec ${scripts}/bin/brightness --dec -d 5 | head -n 1 > $WOBSOCK";
 
         "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play";
         "XF86AudioStop" = "exec ${pkgs.playerctl}/bin/playerctl pause";
@@ -79,6 +82,17 @@ in {
         "${cfg.config.modifier}+n" = "mode mako";
 
         "${cfg.config.modifier}+Shift+a" = "focus child";
+
+        # "${cfg.config.modifier}+1" = "exec ${scripts}/bin/workspacefade 1";
+        # "${cfg.config.modifier}+2" = "exec ${scripts}/bin/workspacefade 2";
+        # "${cfg.config.modifier}+3" = "exec ${scripts}/bin/workspacefade 3";
+        # "${cfg.config.modifier}+4" = "exec ${scripts}/bin/workspacefade 4";
+        # "${cfg.config.modifier}+5" = "exec ${scripts}/bin/workspacefade 5";
+        # "${cfg.config.modifier}+6" = "exec ${scripts}/bin/workspacefade 6";
+        # "${cfg.config.modifier}+7" = "exec ${scripts}/bin/workspacefade 7";
+        # "${cfg.config.modifier}+8" = "exec ${scripts}/bin/workspacefade 8";
+        # "${cfg.config.modifier}+9" = "exec ${scripts}/bin/workspacefade 9";
+        # "${cfg.config.modifier}+0" = "exec ${scripts}/bin/workspacefade 10";
       };
 
       keycodebindings = lib.mkOptionDefault { };

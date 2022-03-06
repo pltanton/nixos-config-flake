@@ -20,7 +20,7 @@ in {
     pkgs.qogir-icon-theme
     pkgs.gnome-icon-theme
     pkgs.hicolor-icon-theme
-    pkgs.phinger-cursors
+    pkgs.master.phinger-cursors
   ];
   themes.base16 = {
     enable = true;

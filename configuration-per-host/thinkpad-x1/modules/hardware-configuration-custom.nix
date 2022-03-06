@@ -11,8 +11,7 @@ in {
     inputs.nixos-hardware.nixosModules.common-pc-laptop
   ];
 
-
-  hardware.steam-hardware.enable = true;
+  hardware.steam-hardware.enable = false;
   hardware.pulseaudio.support32Bit = true;
 
   hardware.opengl.enable = true;

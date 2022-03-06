@@ -32,7 +32,7 @@
   networking.firewall.enable = false;
 
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.master.nixUnstable;
     extraOptions = ''
       experimental-features = nix-command flakes ca-derivations
     '';

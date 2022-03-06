@@ -1,5 +1,6 @@
 { pkgs, config, lib, inputs, ... }@input:
 let
+  # scripts = import ./scripts pkgs config;
   # swayPackage = pkgs.waylandPkgs.sway-unwrapped;
   # swayPackage = pkgs.master.sway;
   swayPackage = pkgs.sway-unwrapped;
@@ -82,7 +83,7 @@ in with config.lib.base16.theme; {
       schema = pkgs.gsettings-desktop-schemas;
       datadir = "${schema}/share/gsettings-schemas/${schema.name}";
     in ''
-      XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
+      export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
     '';
 
     extraConfig = ''

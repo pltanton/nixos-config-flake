@@ -80,7 +80,7 @@
       gnome-photos
       gimp
       mpv
-      tdesktop
+      master.tdesktop
       vlc
       xsane
       stable.slack

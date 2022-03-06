@@ -29,6 +29,7 @@
   nixpkgs.config.allowUnfree = true;
 
   users.extraUsers.proxyuser = {
+    group = "proxyuser";
     isSystemUser = true;
     description = "User for proxy athentication";
   };

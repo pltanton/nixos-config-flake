@@ -25,6 +25,7 @@
         modules = [
           # The host configuration itself
           (import ./configuration.nix)
+          (import ../../configuration-common)
 
           ({ pkgs, ... }: {
             nix = {

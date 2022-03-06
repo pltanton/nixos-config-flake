@@ -4,7 +4,7 @@
   inputs = {
     # Nixos related inputs
     nixpkgs-local.url = "github:pltanton/nixpkgs/master";
-    nixpkgs.url = "github:nixos/nixpkgs/master";
+    nixpkgs.url = "github:nixos/nixpkgs/21.11";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-21.11";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     # nixpkgs-aws-sam.url = "github:freezeboy/nixpkgs/update-aws-sam-cli";
@@ -12,9 +12,9 @@
     nix.url = "github:nixos/nix";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    # Home-manager and modules
-    home-manager.url = "github:nix-community/home-manager/master";
-    # home-manager.url = "github:nix-community/home-manager/release-21.11";
+    # Home-manager and modules# 
+    home-manager.url =
+      "github:nix-community/home-manager/master"; # home-manager.url = "github:nix-community/home-manager/release-21.11";
     # base16.url = "github:alukardbf/base16-nix";
     base16.url = "github:pltanton/base16-nix";
     nix-doom-emacs.url = "github:vlaci/nix-doom-emacs/master";
@@ -83,6 +83,7 @@
             # A host configuration itself
             (import ./configuration.nix)
             (import ../../configuration-desktop-common)
+            (import ../../configuration-common)
 
             # Home manager with default overridings
             home-manager.nixosModules.home-manager
@@ -103,19 +104,21 @@
             })
 
             ({ pkgs, ... }: {
-              nix.settings = {
+              nix = {
                 # add binary caches
-                trusted-public-keys = [
-                  "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+                # trusted-public-keys = [
+                binaryCachePublicKeys = [
                   "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
                   "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
                   "emacsng.cachix.org-1:i7wOr4YpdRpWWtShI8bT6V7lOTnPeI7Ho6HaZegFWMI="
+                  "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
                 ];
-                binary-caches = [
-                  "https://cache.nixos.org"
+                # binary-caches = [
+                binaryCaches = [
                   "https://nixpkgs-wayland.cachix.org"
                   "https://nix-community.cachix.org"
                   "https://emacsng.cachix.org"
+                  "https://cache.nixos.org"
                 ];
               };
 

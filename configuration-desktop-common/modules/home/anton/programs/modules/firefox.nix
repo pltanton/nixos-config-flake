@@ -3,10 +3,10 @@
   programs.firefox = {
     enable = true;
     # package = inputs.firefox-nightly.firefox-nightly-bin;
-    # package = pkgs.firefox-beta-bin;
+    package = pkgs.firefox;
     # package = pkgs.latest.firefox-nightly-bin;
     # package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
-    package = pkgs.master.firefox-wayland;
+    # package = pkgs.master.firefox-wayland;
     #   extraPolicies = { ExtensionSettings = { }; };
     # };
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
@@ -16,6 +16,7 @@
       stylus
       foxyproxy-standard
       multi-account-containers
+      sponsorblock
 
       pkgs.nur.repos.ethancedwards8.firefox-addons.enhancer-for-youtube
     ];

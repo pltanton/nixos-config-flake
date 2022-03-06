@@ -2,7 +2,7 @@
 
 {
   programs.vscode = {
-    enable = false;
+    enable = true;
     extensions = with pkgs.vscode-extensions; [
       golang.go
       vscodevim.vim

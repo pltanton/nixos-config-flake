@@ -18,8 +18,8 @@ let
     }
 
     window#waybar {
-        /* background: #${backgroundColor-hex}; */
-        background: rgba(0,0,0,0);
+        background: #${backgroundColor-hex};
+        /* background: rgba(0,0,0,0); */
         background-clip: padding-box;
 
         border-bottom: 3px solid rgba(1, 1, 1, 0);
