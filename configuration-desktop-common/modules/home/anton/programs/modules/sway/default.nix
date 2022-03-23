@@ -1,9 +1,35 @@
 { pkgs, config, lib, inputs, ... }@input:
 let
   # scripts = import ./scripts pkgs config;
-  # swayPackage = pkgs.waylandPkgs.sway-unwrapped;
+  # swayPackage = inputs.nixpkgs-wayland.packages.x86_64-linux.sway-unwrapped;
   # swayPackage = pkgs.master.sway;
   swayPackage = pkgs.sway-unwrapped;
+  swayPackageB =
+    inputs.nixpkgs-wayland.packages.x86_64-linux.sway-unwrapped.overrideAttrs
+    (old: {
+      __contentAddressed = true;
+      src = inputs.sway-borders;
+
+      patches = (old.patches or [ ]) ++ [
+        (pkgs.fetchpatch {
+          url =
+            "https://github.com/swaywm/sway/commit/f8990523b456ad4eba2bd9c22dff87772d7b0953.patch";
+          sha256 = "sha256-KaMcRj6MXMy4MbzrZZAJezqiLKcOLLSCPkNFQ3iPxrc=";
+        })
+
+        (pkgs.fetchpatch {
+          url =
+            "https://github.com/swaywm/sway/commit/85d1c98476b653368e9a9f41650eb6e2f6aac596.patch";
+          sha256 = "sha256-gInPCDlHB6ecwOb0QkjeHnreo0zMYt9rwFboc5tVXB0=";
+        })
+
+        (pkgs.fetchpatch {
+          url =
+            "https://github.com/swaywm/sway/commit/04676936e71f6fccccb098f3232d16572b140902.patch";
+          sha256 = "sha256-sh3i4YZnPvhVH6+9O7rTabgMvjyer6Ir9gQ3rNzIG48=";
+        })
+      ];
+    });
   # swayPackage = pkgs.sway-borders;
   # swayPackage = pkgs.sway.overrideAttrs (soldAttrs: {
   #   src = pkgs.fetchFromGitHub {
@@ -86,7 +112,8 @@ in with config.lib.base16.theme; {
       export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
     '';
 
-    extraConfig = ''
+    extraConfig = let borderImage = ./assets/border.png;
+    in ''
       exec mako
       exec swayidle -w \
                timeout 300 'lock' \
@@ -108,6 +135,11 @@ in with config.lib.base16.theme; {
       seat * xcursor_theme ${cursorTheme} 32
       seat * hide_cursor 4000
       seat * hide_cursor when-typing enable
+
+      # border_images.unfocused ${borderImage}
+      # border_images.focused ${borderImage}
+      # border_images.focused_inactive ${borderImage}
+      # border_images.urgent ${borderImage}
 
       exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
       exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK

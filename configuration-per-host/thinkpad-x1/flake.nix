@@ -47,10 +47,9 @@
     fish-colored-man-plugin.url = "github:decors/fish-colored-man";
     fish-colored-man-plugin.flake = false;
 
-    sway-borders-src = {
-      url = "github:fluix-dev/sway-borders";
-      flake = false;
-    };
+    sway-borders.url = "github:fluix-dev/sway-borders";
+    sway-borders.flake = false;
+
     swaylock-effects-src = {
       url = "github:mortie/swaylock-effects";
       flake = false;

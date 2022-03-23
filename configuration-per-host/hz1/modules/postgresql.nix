@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+  environment.systemPackages = [ pkgs.pgloader ];
   services = {
     postgresql = {
       enable = true;

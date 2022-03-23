@@ -8,6 +8,9 @@ deploy-home-server: build_host = root@home.kaliwe.ru
 deploy-hz1: target = root@hz1.kaliwe.ru
 deploy-hz1: build_host = root@hz1.kaliwe.ru
 
+deploy-sprintbox: target = root@sprintbox.kaliwe.ru
+deploy-sprintbox: build_host =  root@sprintbox.kaliwe.ru
+
 # deploy-thinkpad-x1: prepare-desktop
 deploy-thinkpad-x1: target = localhost
 deploy-thinkpad-x1: build_host = localhost

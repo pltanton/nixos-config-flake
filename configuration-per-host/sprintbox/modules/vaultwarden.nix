@@ -6,9 +6,9 @@
       enable = true;
       dbBackend = "postgresql";
       config = {
-        domain = "https://bitwarden-de.kaliwe.ru";
+        domain = "https://bitwarden.kaliwe.ru";
         signupsAllowed = true;
-        databaseUrl = "postgresql://bitwarden:bitwarden@localhost/bitwarden";
+        databaseUrl = "postgresql://vaultwarden@localhost/vaultwarden";
         #enableDbWal = false;
         #extendedLogging = true;
         rocketPort = 8222;
@@ -17,8 +17,7 @@
   };
 
   services.nginx = {
-    enable = true;
-    virtualHosts."bitwarden-de.kaliwe.ru" = {
+    virtualHosts."bitwarden.kaliwe.ru" = {
       enableACME = true;
       forceSSL = true;
       locations."/".proxyPass = "http://127.0.0.1:8222";
@@ -26,6 +25,6 @@
   };
 
   security.acme.certs = {
-    "bitwarden-de.kaliwe.ru".email = "plotnikovanton@gmail.com";
+    "bitwarden.kaliwe.ru".email = "plotnikovanton@gmail.com";
   };
 }

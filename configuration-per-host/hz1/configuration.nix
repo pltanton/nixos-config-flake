@@ -8,6 +8,8 @@
     enableEmergencyMode = false;
   };
 
+  environment.systemPackages = [ pkgs.vim ];
+
   networking = {
     firewall = {
       allowedUDPPorts = [ 51820 2282 ];

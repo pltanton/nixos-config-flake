@@ -26,6 +26,7 @@
 
 (make-directory "~/org-roam" t)
 (setq org-roam-directory "~/org-roam")
+
 (use-package! websocket
   :after org-roam)
 

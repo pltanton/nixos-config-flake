@@ -25,8 +25,38 @@
           publicKey =
             "CJAsUIfb2ifA0l9usxC+bGtx6CmFd2r98XQK86thMR0="; # thinkpad-x1
         }
+        #
+        # Shared mobile clients
+        #
+        {
+          allowedIPs = [ "10.10.10.201/32" ]; # anton phone
+          publicKey = "X+hnsZvI22mPPdQ2f3W6XZwBXfoblDcJGtJtSj0x4lU=";
+        }
+        {
+          allowedIPs = [ "10.10.10.202/32" ]; # slava phone
+          publicKey = "gPpywei9tp2L9Y3e0Grl1ZaL44sJzYoUwafAe0gPyhY=";
+        }
+        {
+          allowedIPs = [ "10.10.10.203/32" ]; # slava pc
+          publicKey = "SalQn0TxkJtK2CTIhTjbfYN/b1XaOjOb+TTLegZFvRg=";
+        }
+        {
+          allowedIPs = [ "10.10.10.204/32" ]; # julsa phone
+          publicKey = "1438i5+NSf/+7V5T1NpT+cU3XfCLgTiydpb/TW46vnQ=";
+        }
+        {
+          allowedIPs = [ "10.10.10.205/32" ]; # julsa pc
+          publicKey = "nQUPd8lfyOtkuwOBLkv/DF6937QGYWBIE8YrnNSEr0E=";
+        }
+        {
+          allowedIPs = [ "10.10.10.206/32" ]; # ilya phone
+          publicKey = "MB2qObDD68J+vfcj6hyf7gCoZcbA9anqh7W2A2wo8F8=";
+        }
+        {
+          allowedIPs = [ "10.10.10.207/32" ]; # ilya pc
+          publicKey = "DOGViCn15QPd3kBPHZpIPy8DS574iEY0MVM0Aa0G9QY=";
+        }
       ];
     };
-
   };
 }

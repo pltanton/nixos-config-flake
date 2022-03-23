@@ -62,6 +62,7 @@ in {
         "openssl.cafile" = "/etc/ssl/certs/ca-certificates.crt";
         catch_workers_output = "yes";
         memory_limit = "5120M";
+        default_phone_region = "RU";
       };
     };
 

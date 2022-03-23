@@ -7,7 +7,7 @@ in {
   networking.nat = {
     enable = true;
     externalInterface = "ens3";
-    internalInterfaces  = [ vpn-dev ];
+    internalInterfaces = [ vpn-dev ];
   };
 
   networking.firewall.allowedUDPPorts = [ port ];
@@ -31,7 +31,10 @@ in {
       push "dhcp-option DNS 8.8.4.4"
 
       keepalive 20 60
-      comp-lzo
+      compress
+      cipher AES-128-CBC
+      ncp-disable
+      tun-mtu 1400
 
       log-append /var/log/openvpn.log
       verb 3
