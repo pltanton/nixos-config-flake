@@ -5,7 +5,7 @@ let
   script = pkgs.stdenv.mkDerivation {
     name = "keyboard-layout-per-window";
     buildInputs = [
-      (pkgs.python38.withPackages
+      (pkgs.python3.withPackages
         (pythonPackages: with pythonPackages; [ i3ipc ]))
     ];
     unpackPhase = "true";

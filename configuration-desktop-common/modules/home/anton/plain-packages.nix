@@ -38,7 +38,7 @@ in {
       pavucontrol
       pulseaudio
       qjackctl
-      shared_mime_info
+      shared-mime-info
       pantheon.elementary-files
       pcmanfm
 
@@ -96,7 +96,7 @@ in {
       master.tdesktop
       vlc
       xsane
-      slack-ozone
+      stable.slack
       spotify
       teams
 
@@ -141,7 +141,6 @@ in {
       gcc
       black # Python code formatter
       python-language-server
-      python38Packages.pip
       (python3.withPackages (pp:
         with pp; [
           pip

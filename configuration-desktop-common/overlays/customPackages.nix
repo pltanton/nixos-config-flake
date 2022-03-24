@@ -22,15 +22,15 @@ inputs: self: super: rec {
 
   howdy = super.callPackage ./pkgs/howdy { };
   ir-toggle = super.callPackage ./pkgs/ir-toggle { };
-  pam-python = super.callPackage ./pkgs/pam-python.nix { };
+  # pam-python = super.callPackage ./pkgs/pam-python.nix { };
 
   # fido2luks = import ./pkgs/fido2luks.nix super;
 
-  swaylock-effects = super.swaylock-effects.overrideAttrs (oldAttrs: rec {
-    version = inputs.swaylock-effects-src.rev;
-
-    src = inputs.swaylock-effects-src;
-  });
+  # swaylock-effects = super.swaylock-effects.overrideAttrs (oldAttrs: rec {
+ #    version = inputs.swaylock-effects-src.rev;
+# 
+  #   src = inputs.swaylock-effects-src;
+  # });
 
   sublime-music = super.callPackage ./pkgs/sublime-music.nix { };
 

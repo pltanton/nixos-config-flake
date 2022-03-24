@@ -11,7 +11,7 @@
       delve # Go debugging tool
       gocode
       godef
-      goimports
+      gotools
       golangci-lint
       gomodifytags
       gopls

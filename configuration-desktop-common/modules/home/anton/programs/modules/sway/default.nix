@@ -93,7 +93,7 @@ in with config.lib.base16.theme; {
     WLR_DRM_NO_MODIFIERS = 1;
 
     # WOBSOCK = "$XDG_RUNTIME_DIR/wob.sock";
-    NIXOS_OZONE_WL = "1";
+    # NIXOS_OZONE_WL = "1";
   };
 
   wayland.windowManager.sway = {

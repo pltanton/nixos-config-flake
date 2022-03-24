@@ -3,7 +3,7 @@
   programs.firefox = {
     enable = true;
     # package = inputs.firefox-nightly.firefox-nightly-bin;
-    package = pkgs.firefox;
+    package = pkgs.stable.firefox;
     # package = pkgs.latest.firefox-nightly-bin;
     # package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
     # package = pkgs.master.firefox-wayland;
