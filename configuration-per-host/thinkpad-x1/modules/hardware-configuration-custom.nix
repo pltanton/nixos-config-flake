@@ -17,7 +17,7 @@ in {
   hardware.opengl.enable = true;
   hardware.opengl.driSupport32Bit = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages;
   # boot.kernelPackages = pkgs.linuxPackages_zen;
 
   hardware.trackpoint.enable = true;
