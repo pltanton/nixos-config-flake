@@ -4,7 +4,8 @@
   inputs = {
     # Nixos related inputs
     nixpkgs-local.url = "github:pltanton/nixpkgs/master";
-    nixpkgs.url = "github:nixos/nixpkgs/21.11";
+    # nixpkgs.url = "github:nixos/nixpkgs/21.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-21.11";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     # nixpkgs-aws-sam.url = "github:freezeboy/nixpkgs/update-aws-sam-cli";
@@ -45,6 +46,9 @@
     fish-z-plugin.flake = false;
     fish-colored-man-plugin.url = "github:decors/fish-colored-man";
     fish-colored-man-plugin.flake = false;
+
+    swaylock-effects-src.url = "github:mortie/swaylock-effects";
+    swaylock-effects-src.flake = false;
   };
 
   outputs = { self, deploy-rs, nixpkgs, nix-doom-emacs, home-manager, nur

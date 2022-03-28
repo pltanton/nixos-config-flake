@@ -4,7 +4,8 @@
   inputs = {
     # Nixos related inputs
     nixpkgs-local.url = "github:pltanton/nixpkgs/master";
-    nixpkgs.url = "github:nixos/nixpkgs/21.11";
+    # nixpkgs.url = "github:nixos/nixpkgs/21.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-21.11";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     # nixpkgs-aws-sam.url = "github:freezeboy/nixpkgs/update-aws-sam-cli";
@@ -12,9 +13,9 @@
     nix.url = "github:nixos/nix";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    # Home-manager and modules# 
-    home-manager.url =
-      "github:nix-community/home-manager/master"; # home-manager.url = "github:nix-community/home-manager/release-21.11";
+    # Home-manager and modules
+    home-manager.url = "github:nix-community/home-manager/master";
+    # home-manager.url = "github:nix-community/home-manager/release-21.11";
     # base16.url = "github:alukardbf/base16-nix";
     base16.url = "github:pltanton/base16-nix";
     nix-doom-emacs.url = "github:vlaci/nix-doom-emacs/master";
@@ -25,7 +26,6 @@
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nur.url = "github:nix-community/NUR";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
-    emacs-ng.url = "github:emacs-ng/emacs-ng";
 
     # My own flakes
     quizanus.url = "git+ssh://gitea@gitea.kaliwe.ru/pltanton/quizanus.git";
@@ -47,13 +47,8 @@
     fish-colored-man-plugin.url = "github:decors/fish-colored-man";
     fish-colored-man-plugin.flake = false;
 
-    sway-borders.url = "github:fluix-dev/sway-borders";
-    sway-borders.flake = false;
-
-    swaylock-effects-src = {
-      url = "github:mortie/swaylock-effects";
-      flake = false;
-    };
+    swaylock-effects-src.url = "github:mortie/swaylock-effects";
+    swaylock-effects-src.flake = false;
   };
 
   outputs = { self, deploy-rs, nixpkgs, nix-doom-emacs, home-manager, nur

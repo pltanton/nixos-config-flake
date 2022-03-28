@@ -1,12 +1,12 @@
 { pkgs, inputs, config, ... }: {
   programs.go = {
-    package = pkgs.go_1_17;
+    package = pkgs.master.go_1_18;
     enable = true;
     packages = { "github.com/pressly/goose/v3/cmd/goose" = inputs.goose; };
     goPrivate = [ "*.ozon.ru" ];
   };
 
-  home.packages = with pkgs;
+  home.packages = with pkgs.master;
     lib.mkIf config.programs.go.enable [
       delve # Go debugging tool
       gocode
