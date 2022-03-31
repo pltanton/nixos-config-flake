@@ -691,16 +691,16 @@
     },
     "nixpkgs_7": {
       "locked": {
-        "lastModified": 1648110426,
-        "narHash": "sha256-CdGrs1X5mQza9E2T5m9wMC4sKQ1QXcAY2dqdmilbWys=",
+        "lastModified": 1648632716,
+        "narHash": "sha256-kCmnDeiaMsdhfnNKjxdOzwRh2H6eQb8yWAL+nNabC/Y=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "2d2fd406c4289a1bb60b4f7a7c93a565f002b735",
+        "rev": "710fed5a2483f945b14f4a58af2cd3676b42d8c8",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "master",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -921,7 +921,8 @@
         "nixpkgs-wayland": "nixpkgs-wayland",
         "nur": "nur",
         "qbpm": "qbpm",
-        "quizanus": "quizanus"
+        "quizanus": "quizanus",
+        "swaylock-effects-src": "swaylock-effects-src"
       }
     },
     "rotate-text": {
@@ -937,6 +938,22 @@
       "original": {
         "owner": "debug-ito",
         "repo": "rotate-text.el",
+        "type": "github"
+      }
+    },
+    "swaylock-effects-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1633886507,
+        "narHash": "sha256-GN+cxzC11Dk1nN9wVWIyv+rCrg4yaHnCePRYS1c4JTk=",
+        "owner": "mortie",
+        "repo": "swaylock-effects",
+        "rev": "a8fc557b86e70f2f7a30ca9ff9b3124f89e7f204",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mortie",
+        "repo": "swaylock-effects",
         "type": "github"
       }
     },

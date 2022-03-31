@@ -218,7 +218,11 @@ in with config.lib.base16.theme; {
       ];
 
       assigns = {
-        "1" = [ { app_id = "^firefox$"; } { class = "^Firefox$"; } ];
+        "1" = [
+          { app_id = "^firefox$"; }
+          { class = "^Firefox$"; }
+          { class = "^firefox-default$"; }
+        ];
         "2" = [ { app_id = "^emacs$"; } { class = "^Emacs$"; } ];
         "8" = [ { app_id = "^thunderbird"; } { class = "^Thunderbird"; } ];
         "9" = [{ class = "^Spotify$"; }];
