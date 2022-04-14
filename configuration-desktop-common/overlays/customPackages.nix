@@ -52,5 +52,4 @@ inputs: self: super: rec {
       wrapProgram $out/bin/zoom-us --unset XDG_SESSION_TYPE
     '';
   });
-
 }

@@ -19,6 +19,11 @@ in {
   services.gnome.chrome-gnome-shell.enable = false;
   # config.services.xserver.desktopManager.gnome.enable;
 
+  # Add bismuth if plasma 5 is enabled
+  environment.systemPackages =
+    lib.mkIf config.services.xserver.desktopManager.plasma5.enable
+    [ pkgs.libsForQt5.bismuth ];
+
   services.xserver = {
     enable = false;
 
@@ -33,8 +38,12 @@ in {
       touchpad = { tapping = true; };
     };
 
-    desktopManager.plasma5 = { enable = false; };
+    desktopManager.plasma5 = {
+      enable = false;
+      supportDDC = false;
+    };
     displayManager.sddm.enable = false;
+
     # displayManager.lightdm.enable = true;
     displayManager.gdm = {
       enable = false;
@@ -42,22 +51,6 @@ in {
     };
     # displayManager.lightdm.enable = true;
     desktopManager.gnome = { enable = false; };
-    # desktopManager.xterm.enable = false;
-
-    #   config = pkgs.lib.mkOverride 50 ''
-    #     Section "Device"
-    #         Identifier  "Intel Graphics"
-    #         Driver      "intel"
-    #         Option      "AccelMethod" "sna"
-    #         Option      "TearFree" "true"
-    #     EndSection
-
-    #     Section "Device"
-    #         Identifier  "Intel Graphics"
-    #         Driver      "intel"
-    #         Option      "Backlight"  "intel_backlight"
-    #     EndSection
-    #   '';
   };
 
   # programs.sway.enable = false;
@@ -69,16 +62,5 @@ in {
   ];
 
   programs.dconf.enable = true;
-  environment.systemPackages =
-    [ pkgs.gnome3.adwaita-icon-theme pkgs.qogir-icon-theme ];
 
-  # services.greetd = {
-  #   enable = false;
-  #   settings = {
-  #     default_session = {
-  #       command = "${pkgs.sway}/bin/sway -c ${swayConfig}";
-  #       user = "greeter";
-  #     };
-  #   };
-  # };
 }

@@ -47,8 +47,10 @@ in {
     };
     gtk3.extraConfig.gtk-cursor-theme-name = themeConsts.cursorTheme;
     gtk3.extraConfig.gtk-cursor-theme-size = themeConsts.cursorSize;
+    gtk3.extraConfig.gtk-prefer-dark-theme = 1;
     gtk4.extraConfig.gtk-cursor-theme-name = themeConsts.cursorTheme;
     gtk4.extraConfig.gtk-cursor-theme-size = themeConsts.cursorSize;
+    gtk4.extraConfig.gtk-prefer-dark-theme = 1;
   };
 
   # qt = {

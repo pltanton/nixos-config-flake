@@ -4,8 +4,8 @@
   inputs = {
     # Nixos related inputs
     nixpkgs-local.url = "github:pltanton/nixpkgs/master";
-    # nixpkgs.url = "github:nixos/nixpkgs/21.11";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.11";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-21.11";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     # nixpkgs-aws-sam.url = "github:freezeboy/nixpkgs/update-aws-sam-cli";

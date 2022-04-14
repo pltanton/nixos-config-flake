@@ -15,7 +15,7 @@
 ;; (setq doom-theme 'doom-gruvbox)
 ;; (setq doom-gruvbox-dark-variant "hard")
 
-(setq display-line-numbers-type "relative")
+;; (setq display-line-numbers-type "relative")
 
 (setq doom-font (font-spec :family "Iosevka" :size 29))
 
@@ -153,5 +153,28 @@
 ;; (setq-hook! 'go-mode-hook +format-with 'goimports)
 
 (after! so-long
-(setq so-long-threshold 2048)
+  (setq so-long-threshold 2048)
   (delq! 'go-mode so-long-target-modes))
+
+                                        ; complete by copilot first, then company-mode
+(defun my-tab ()
+  (interactive)
+  (or (copilot-accept-completion)
+      (company-indent-or-complete-common nil)))
+
+(after! company
+                                        ; disable inline previews
+  (delq 'company-preview-if-just-one-frontend company-frontends)
+                                        ; enable tab completion
+  (define-key company-mode-map (kbd "<tab>") 'my-tab)
+  (define-key company-mode-map (kbd "TAB") 'my-tab)
+  (define-key company-active-map (kbd "<tab>") 'my-tab)
+  (define-key company-active-map (kbd "TAB") 'my-tab))
+
+(use-package! copilot
+  :config
+  (add-hook 'post-command-hook (lambda ()
+                                 (copilot-clear-overlay)
+                                 (when (evil-insert-state-p)
+                                   (copilot-complete))))
+  )

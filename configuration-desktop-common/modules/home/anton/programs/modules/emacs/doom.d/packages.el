@@ -67,3 +67,7 @@
 ;;
 (unpin! org-roam)
 (package! org-roam-ui)
+
+(package! copilot
+  :recipe (:host github :repo "zerolfx/copilot.el"
+           :files ("dist" "copilot.el")))

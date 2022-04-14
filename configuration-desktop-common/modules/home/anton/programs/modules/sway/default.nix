@@ -1,49 +1,8 @@
 { pkgs, config, lib, inputs, ... }@input:
-let
-  # scripts = import ./scripts pkgs config;
-  # swayPackage = inputs.nixpkgs-wayland.packages.x86_64-linux.sway-unwrapped;
-  # swayPackage = pkgs.master.sway;
-  swayPackage = pkgs.sway-unwrapped;
-  swayPackageB =
-    inputs.nixpkgs-wayland.packages.x86_64-linux.sway-unwrapped.overrideAttrs
-    (old: {
-      __contentAddressed = true;
-      src = inputs.sway-borders;
-
-      patches = (old.patches or [ ]) ++ [
-        (pkgs.fetchpatch {
-          url =
-            "https://github.com/swaywm/sway/commit/f8990523b456ad4eba2bd9c22dff87772d7b0953.patch";
-          sha256 = "sha256-KaMcRj6MXMy4MbzrZZAJezqiLKcOLLSCPkNFQ3iPxrc=";
-        })
-
-        (pkgs.fetchpatch {
-          url =
-            "https://github.com/swaywm/sway/commit/85d1c98476b653368e9a9f41650eb6e2f6aac596.patch";
-          sha256 = "sha256-gInPCDlHB6ecwOb0QkjeHnreo0zMYt9rwFboc5tVXB0=";
-        })
-
-        (pkgs.fetchpatch {
-          url =
-            "https://github.com/swaywm/sway/commit/04676936e71f6fccccb098f3232d16572b140902.patch";
-          sha256 = "sha256-sh3i4YZnPvhVH6+9O7rTabgMvjyer6Ir9gQ3rNzIG48=";
-        })
-      ];
-    });
-  # swayPackage = pkgs.sway-borders;
-  # swayPackage = pkgs.sway.overrideAttrs (soldAttrs: {
-  #   src = pkgs.fetchFromGitHub {
-  #     owner = "RPigott";
-  #     repo = "sway";
-  #     rev = "54e3c4969835c7af1e83eeb8d3051fae8aabb3fc";
-  #     hash = "sha256-HjLxiCTt+EI8+UzJzNvAgw/5m3Ynj/yu1HMxoXGUzlo=";
-  #   };
-  # });
+let swayPackage = pkgs.sway-unwrapped;
 in with config.lib.base16.theme; {
-
   services.keyboardLayoutPerWindow.enable =
     config.wayland.windowManager.sway.enable;
-
   services.flashfocus.enable = config.wayland.windowManager.sway.enable;
   services.clipman.enable = config.wayland.windowManager.sway.enable;
   services.wob.enable = config.wayland.windowManager.sway.enable;

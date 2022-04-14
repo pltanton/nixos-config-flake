@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   home.file = {
-    ".jdks/adoptjdk11".source = pkgs.adoptopenjdk-bin;
-    ".jdks/adoptjdk8".source = pkgs.adoptopenjdk-hotspot-bin-8;
+    ".jdks/adoptjdk".source = pkgs.adoptopenjdk-bin;
+    ".jdks/adoptjdk16".source = pkgs.adoptopenjdk-openj9-bin-16;
   };
 }

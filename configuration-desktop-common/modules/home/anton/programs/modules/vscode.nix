@@ -7,6 +7,7 @@
       golang.go
       vscodevim.vim
       bbenoist.nix
+      github.copilot
     ];
   };
 }
