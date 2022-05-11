@@ -128,9 +128,9 @@ in with config.lib.base16.theme; {
 
       colors = {
         focused = {
-          background = "#${base00-hex}";
-          text = "#${base05-hex}";
-          border = "#${base0C-hex}";
+          background = "#${base0D-hex}";
+          text = "#${base00-hex}";
+          border = "#${base0D-hex}";
           childBorder = "#${base0D-hex}";
           indicator = "#${base0F-hex}";
         };
@@ -144,7 +144,7 @@ in with config.lib.base16.theme; {
         unfocused = {
           background = "#${base00-hex}";
           text = "#${base05-hex}";
-          border = "#${base0E-hex}";
+          border = "#${base00-hex}";
           childBorder = "#${base01-hex}";
           indicator = "#${base03-hex}";
         };
@@ -166,7 +166,7 @@ in with config.lib.base16.theme; {
         { command = "firefox"; }
         { command = "thunderbird"; }
         { command = "telegram-desktop"; }
-        { command = "slack"; }
+        { command = "mattermost"; }
         {
           command = "keyctl link @u @s";
         }

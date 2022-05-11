@@ -23,3 +23,7 @@ deploy-thinkbook: build_host = localhost
 deploy-%:
 	@echo Run nixos-rebuild for machine $* on host: ${target} with build_host: ${build_host}
 	nixos-rebuild --flake ./configuration-per-host/$*#$* --build-host ${build_host} --target-host ${target} --use-remote-sudo switch
+
+update-%:
+	@echo Run nix flake update form machine $*
+	cd ./configuration-per-host/$*; nix flake update

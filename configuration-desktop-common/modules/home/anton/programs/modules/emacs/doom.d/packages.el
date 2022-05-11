@@ -50,7 +50,7 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
                                         ;(unpin! t)
 
-(package! xref :pin "a82f459b37b31546bf274388baf8aca79e9c30d9")
+;; (package! xref :pin "a82f459b37b31546bf274388baf8aca79e9c30d9")
 
 (package! gitconfig-mode
   :recipe (:host github :repo "magit/git-modes"
@@ -65,8 +65,8 @@
 ;;   :recipe (:host github :repo "org-roam/org-roam-ui"
 ;;            :files ("*.el" "out")))
 ;;
-(unpin! org-roam)
-(package! org-roam-ui)
+;; (unpin! org-roam)
+;; (package! org-roam-ui)
 
 (package! copilot
   :recipe (:host github :repo "zerolfx/copilot.el"

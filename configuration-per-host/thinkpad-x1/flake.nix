@@ -46,9 +46,12 @@
     fish-z-plugin.flake = false;
     fish-colored-man-plugin.url = "github:decors/fish-colored-man";
     fish-colored-man-plugin.flake = false;
+    fish-grc.url = "github:oh-my-fish/plugin-grc";
+    fish-grc.flake = false;
 
     swaylock-effects-src.url = "github:mortie/swaylock-effects";
     swaylock-effects-src.flake = false;
+
   };
 
   outputs = { self, deploy-rs, nixpkgs, nix-doom-emacs, home-manager, nur

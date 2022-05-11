@@ -1,5 +1,5 @@
 { pkgs, inputs, ... }: {
-  home.packages = with pkgs; [ fasd fzf ];
+  home.packages = with pkgs; [ fasd fzf grc ];
 
   home.sessionPath = [ "/home/anton/go/bin" ];
 
@@ -18,6 +18,10 @@
       {
         name = "colored-man";
         src = inputs.fish-colored-man-plugin;
+      }
+      {
+        name = "grc";
+        src = inputs.fish-grc;
       }
       (with fzf-fish; { inherit name src; })
       (with done; { inherit name src; })

@@ -77,14 +77,29 @@
       # stable.zathura
       imv
       gthumb
+      digikam
       gnome-photos
       gimp
+      # (gimp-with-plugins.override {
+      #   plugins = with gimpPlugins; [ resynthesizer ];
+      # })
       mpv
       master.tdesktop
       vlc
       xsane
       stable.slack
-      mattermost-desktop
+
+      # Mattermost desktop
+      (master.mattermost-desktop.overrideAttrs (old: rec {
+        name = "mattermost-desktop";
+        version = "5.0.4";
+        src = fetchurl {
+          url =
+            "https://releases.mattermost.com/desktop/5.0.4/mattermost-desktop-5.0.4-linux-x64.tar.gz";
+          hash = "sha256-y9KYHOKC7s/qEWfFANkAzdMb0EGwhhAldDt9WOTLkik=";
+        };
+      }))
+
       spotify
       teams
 

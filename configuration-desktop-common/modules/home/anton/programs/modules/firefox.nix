@@ -3,10 +3,10 @@
   programs.firefox = {
     enable = true;
     # package = inputs.firefox-nightly.firefox-nightly-bin;
-    # package = pkgs.firefox;
+    package = pkgs.firefox;
     # package = pkgs.latest.firefox-nightly-bin;
     # package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
-    package = pkgs.firefox-wayland;
+    # package = pkgs.firefox-wayland;
     #   extraPolicies = { ExtensionSettings = { }; };
     # };
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [

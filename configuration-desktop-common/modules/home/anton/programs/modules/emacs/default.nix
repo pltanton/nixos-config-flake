@@ -15,7 +15,7 @@ in {
     # emacsPgtkGcc
     # emacs
     # emacsGit
-    emacsGcc
+    emacsNativeComp
     # inputs.emacs-ng.defaultPackage.x86_64-linux
     # emacsUnstable-nox
     emacs-all-the-icons-fonts
