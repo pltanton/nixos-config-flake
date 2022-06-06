@@ -5,22 +5,28 @@
     # Nixos related inputs
     nixpkgs-local.url = "github:pltanton/nixpkgs/master";
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.11";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-21.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.05";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
-    # nixpkgs-aws-sam.url = "github:freezeboy/nixpkgs/update-aws-sam-cli";
 
     nix.url = "github:nixos/nix";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Home-manager and modules
-    home-manager.url = "github:nix-community/home-manager/master";
-    # home-manager.url = "github:nix-community/home-manager/release-21.11";
+    # home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.url = "github:nix-community/home-manager/release-22.05";
     # base16.url = "github:alukardbf/base16-nix";
     base16.url = "github:pltanton/base16-nix";
-    nix-doom-emacs.url = "github:vlaci/nix-doom-emacs/master";
 
-    qbpm.url = "github:pvsr/qbpm";
+    nix-alien = {
+      url = "github:thiagokokada/nix-alien";
+      inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
+    };
+
+    activate-linux = {
+      url = "github:Kljunas2/activate-linux";
+      inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
+    };
 
     # Extra flakes with application sets
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
@@ -30,11 +36,6 @@
     # My own flakes
     quizanus.url = "git+ssh://gitea@gitea.kaliwe.ru/pltanton/quizanus.git";
     bwmenu.url = "github:pltanton/bitwarden-dmenu";
-
-    deploy-rs.url = "github:serokell/deploy-rs";
-
-    nixpkgs-mozilla.url = "github:mozilla/nixpkgs-mozilla";
-    nixpkgs-mozilla.flake = false;
 
     goose.url = "github:pressly/goose/v3.1.0";
     goose.flake = false;
@@ -54,8 +55,8 @@
 
   };
 
-  outputs = { self, deploy-rs, nixpkgs, nix-doom-emacs, home-manager, nur
-    , emacs-overlay, nixpkgs-mozilla, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, nur, nix-alien, emacs-overlay, ...
+    }@inputs: {
       nixosConfigurations = let
         inherit (inputs.nixpkgs) lib;
 
@@ -89,11 +90,7 @@
             ({ config, ... }: {
               options.home-manager.users = lib.mkOption {
                 type = lib.types.attrsOf (lib.types.submoduleWith {
-                  modules = [
-                    (import inputs.base16.hmModule)
-                    inputs.nix-doom-emacs.hmModule
-                    # (import ../../home/common.nix)
-                  ];
+                  modules = [ (import inputs.base16.hmModule) ];
 
                   specialArgs = commonSpecialArgs // { super = config; };
                 });
@@ -122,6 +119,7 @@
               nixpkgs.overlays = [
                 nur.overlay
                 emacs-overlay.overlay
+                nix-alien.overlay
 
                 (final: prev: {
                   master = import inputs.nixpkgs-master {
@@ -137,8 +135,6 @@
                     config.allowUnfree = true;
                   };
                 })
-
-                (import "${nixpkgs-mozilla}/firefox-overlay.nix")
 
                 # inputs.nixpkgs-wayland.overlay
               ];

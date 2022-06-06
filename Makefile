@@ -24,6 +24,9 @@ deploy-%:
 	@echo Run nixos-rebuild for machine $* on host: ${target} with build_host: ${build_host}
 	nixos-rebuild --flake ./configuration-per-host/$*#$* --build-host ${build_host} --target-host ${target} --use-remote-sudo switch
 
+deploy-offline-thinkpad-x1:
+	nixos-rebuild --flake ./configuration-per-host/thinkpad-x1#thinkpad-x1 --use-remote-sudo --fast switch --option substitute false
+
 update-%:
 	@echo Run nix flake update form machine $*
 	cd ./configuration-per-host/$*; nix flake update

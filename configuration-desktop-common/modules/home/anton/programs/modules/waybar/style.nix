@@ -13,7 +13,7 @@ let
         border: none;
         border-radius: 0;
         font-family: ${fontUIName},'Font Awesome 5', 'SFNS Display',  Helvetica, Arial, sans-serif;
-        font-size: 22px;
+        font-size: 18.5px;
         min-height: 0;
     }
 
@@ -21,8 +21,6 @@ let
         background: #${backgroundColor-hex};
         /* background: rgba(0,0,0,0); */
         background-clip: padding-box;
-
-        border-bottom: 3px solid rgba(1, 1, 1, 0);
         color: #${base05-hex};
     }
 
@@ -35,7 +33,6 @@ let
         padding: 0 1px;
         background: transparent;
         color: #${base05-hex};
-        border-bottom: 3px solid transparent;
     }
 
     #workspaces button.visible {
@@ -59,11 +56,12 @@ let
 
     #clock, #battery, #cpu, #memory, #temperature, #backlight, #network,
     #pulseaudio, #custom-media, #tray, #mode, #idle_inhibitor, #custom-spotify,
-    #custom-layout  {
-        padding: 5px 10px;
-        margin: 0 3px;
-        background-clip: border-box;
-        border-bottom: 3px solid #${base01-hex};
+    #custom-layout, #language  {
+        background-color: #${base01-hex};
+        padding: 0 12px;
+        margin: 9px 4px 9px 4px;
+        border-radius: 90px;
+        background-clip: padding-box;
     }
 
     #clock {
@@ -73,11 +71,13 @@ let
     }
 
     #battery {
-        border-bottom: 3px solid #${base0D-hex};
+        /* border-bottom: 3px solid #${base0D-hex}; */
+        color: #${base0D-hex};
     }
 
     #battery.charging {
-        border-bottom: 3px solid #${base0B-hex};
+        /* border-bottom: 3px solid #${base0B-hex}; */
+        color: #${base0B-hex};
     }
 
     @keyframes blink {
@@ -125,12 +125,15 @@ let
     }
 
     #pulseaudio {
-        border-bottom: 3px solid #${base0A-hex};
+        /* border-bottom: 3px solid #${base0A-hex}; */
+        color: #${base0A-hex};
+        min-width: 1.5em;
     }
 
     #pulseaudio.muted {
-        background-color: #${base01-hex};
-        border-bottom: 3px solid #${base01-hex};
+        background-color: #${base02-hex};
+        /* border-bottom: 3px solid #${base01-hex}; */
+        color: #${base00-hex};
     }
 
     #custom-media {
@@ -142,17 +145,27 @@ let
     }
 
     #idle_inhibitor {
+        min-width: 1.5em;
+    }
+
+    #idle_inhibitor.deactivated {
+        color: #${base00-hex};
     }
 
     #idle_inhibitor.activated {
-        background-color: #${base06-hex};
-        color: #${base04-hex};
-        border-bottom: 3px solid #${base06-hex};
+        background-color: #${base02-hex};
+        /* color: #${base04-hex};
+        color: #${base05-hex};
+        border-bottom: 3px solid #${base06-hex}; */
     }
 
     #custom-spotify {
         color: #${base01-hex};
         background-color: #1DB954;
+    }
+
+    #language {
+        min-width: 1.5em;
     }
   '';
 in { programs.waybar.style = css; }

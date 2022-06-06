@@ -13,7 +13,8 @@
       "x-scheme-handler/unknown" = browser;
 
       # "x-scheme-handler/mailto" = "userapp-Thunderbird-X4TET0.desktop";
-      "x-scheme-handler/tg" = "telegramdesktop.desktop";
+      "x-scheme-handler/tg;application/x-xdg-protocol-tg" =
+        "telegramdesktop.desktop";
       # "x-scheme-handler/zoommtng" = "Zoom.desktop";
     };
   };

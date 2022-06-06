@@ -43,7 +43,7 @@ in {
 
         "${cfg.config.modifier}+Shift+e" = "exec wofi-emoji";
         "${cfg.config.modifier}+Shift+q" =
-          "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit; systemctl --user stop sway-session.target; systemctl --user stop graphical-session.targetsystemctl --user stop sway-session.target; systemctl --user stop graphical-session.target'";
+          "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'systemctl --user stop graphical-session.target; systemctl --user stop sway-session.target; swaymsg exit'";
 
         "${cfg.config.modifier}+Shift+l" = "exec lock";
 

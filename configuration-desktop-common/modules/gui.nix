@@ -5,7 +5,7 @@ let
 
     exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP GTK_IM_MODULE QT_IM_MODULE XMODIFIERS DBUS_SESSION_BUS_ADDRESS
 
-    exec "${pkgs.greetd.wlgreet}/bin/gtkgreet -l; ${pkgs.sway}/bin/swaymsg exit"
+    exec "${pkgs.greetd.wlgreet}/bin/gtkgreet -l; swaymsg exit"
     bindsym Mod4+Shift+e exec swaynag \
     	-t warning \
     	-m 'What do you want to do?' \
@@ -16,13 +16,10 @@ in {
   gtk.iconCache.enable = true;
   xdg.icons.enable = true;
 
-  services.gnome.chrome-gnome-shell.enable = false;
+  services.gnome.chrome-gnome-shell.enable = true;
   # config.services.xserver.desktopManager.gnome.enable;
 
-  # Add bismuth if plasma 5 is enabled
-  environment.systemPackages =
-    lib.mkIf config.services.xserver.desktopManager.plasma5.enable
-    [ pkgs.libsForQt5.bismuth ];
+  # environment.systemPackages = with pkgs; [ gnomeExtensions.material-shell ];
 
   services.xserver = {
     enable = false;
@@ -47,10 +44,13 @@ in {
     # displayManager.lightdm.enable = true;
     displayManager.gdm = {
       enable = false;
-      wayland = false;
+      wayland = true;
     };
     # displayManager.lightdm.enable = true;
-    desktopManager.gnome = { enable = false; };
+    desktopManager.gnome = {
+      enable = false;
+
+    };
   };
 
   # programs.sway.enable = false;

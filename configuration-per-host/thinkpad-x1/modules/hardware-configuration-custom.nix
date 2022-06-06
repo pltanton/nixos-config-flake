@@ -14,11 +14,15 @@ in {
   hardware.steam-hardware.enable = false;
   hardware.pulseaudio.support32Bit = true;
 
-  hardware.opengl.enable = true;
-  hardware.opengl.driSupport32Bit = true;
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [ vaapiIntel intel-media-driver ];
+    driSupport32Bit = true;
+  };
+  environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
 
-  boot.kernelPackages = pkgs.linuxPackages;
-  # boot.kernelPackages = pkgs.linuxPackages_zen;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   hardware.trackpoint.enable = true;
   hardware.trackpoint.emulateWheel = config.hardware.trackpoint.enable;

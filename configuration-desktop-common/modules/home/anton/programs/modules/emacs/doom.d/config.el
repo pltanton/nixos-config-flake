@@ -17,7 +17,7 @@
 
 ;; (setq display-line-numbers-type "relative")
 
-(setq doom-font (font-spec :family "Iosevka" :size 29))
+(setq doom-font (font-spec :family "Iosevka" :size 24))
 
 (make-directory "~/org" t)
 (setq org-directory "~/org")

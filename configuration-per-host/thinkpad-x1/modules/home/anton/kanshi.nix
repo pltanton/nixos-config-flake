@@ -3,6 +3,22 @@
     enable = true;
     # package = pkgs.waylandPkgs.kanshi;
     profiles = {
+      ozonThinkVision = {
+        outputs = [
+          {
+            criteria = "Lenovo Group Limited LEN T27p-10 0x00005E36";
+            status = "enable";
+            position = "0,0";
+            mode = "3840x2160@60Hz";
+          }
+          {
+            criteria = "eDP-1";
+            status = "enable";
+            position = "3202,530";
+            scale = 1.7;
+          }
+        ];
+      };
       bigLg = {
         outputs = [
           {

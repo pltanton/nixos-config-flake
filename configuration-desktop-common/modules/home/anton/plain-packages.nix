@@ -16,8 +16,7 @@
       wdisplays
       wf-recorder
 
-      gnome.gnome-tweaks
-      gnome.gnome-shell-extensions
+      libsForQt5.bismuth
 
       ffmpegthumbnailer
       pamixer
@@ -77,7 +76,7 @@
       # stable.zathura
       imv
       gthumb
-      digikam
+      # digikam
       gnome-photos
       gimp
       # (gimp-with-plugins.override {
@@ -87,18 +86,24 @@
       master.tdesktop
       vlc
       xsane
-      stable.slack
 
+      # master.mattermost-desktop
       # Mattermost desktop
       (master.mattermost-desktop.overrideAttrs (old: rec {
         name = "mattermost-desktop";
-        version = "5.0.4";
+        version = "5.1.0";
         src = fetchurl {
           url =
-            "https://releases.mattermost.com/desktop/5.0.4/mattermost-desktop-5.0.4-linux-x64.tar.gz";
-          hash = "sha256-y9KYHOKC7s/qEWfFANkAzdMb0EGwhhAldDt9WOTLkik=";
+            "https://releases.mattermost.com/desktop/5.1.0/mattermost-desktop-5.1.0-linux-x64.tar.gz";
+          hash = "sha256-KmtQUqg2ODbZ6zJjsnwlvB+vhR1xbK2X9qqmZpyTR78=";
         };
       }))
+
+      nix-alien
+      nix-index
+      nix-index-update
+
+      inputs.activate-linux.defaultPackage.x86_64-linux
 
       spotify
       teams

@@ -45,27 +45,28 @@ in {
       # package = pkgs.gnome3.adwaita-icon-theme;
       name = themeConsts.iconTheme;
     };
-    gtk3.extraConfig.gtk-cursor-theme-name = themeConsts.cursorTheme;
-    gtk3.extraConfig.gtk-cursor-theme-size = themeConsts.cursorSize;
-    gtk3.extraConfig.gtk-prefer-dark-theme = 1;
-    gtk4.extraConfig.gtk-cursor-theme-name = themeConsts.cursorTheme;
-    gtk4.extraConfig.gtk-cursor-theme-size = themeConsts.cursorSize;
-    gtk4.extraConfig.gtk-prefer-dark-theme = 1;
+    # gtk3.extraConfig.gtk-cursor-theme-name = themeConsts.cursorTheme;
+    # gtk3.extraConfig.gtk-cursor-theme-size = themeConsts.cursorSize;
+    # gtk4.extraConfig.gtk-cursor-theme-name = themeConsts.cursorTheme;
+    # gtk4.extraConfig.gtk-cursor-theme-size = themeConsts.cursorSize;
+    # gtk4.extraConfig.gtk-prefer-dark-theme = 1;
   };
 
-  # qt = {
-  #   enable = true;
-  #   platformTheme = "gtk";
-  # };
+  qt = {
+    enable = true;
+    platformTheme = "gtk";
+  };
 
   # home.file.".icons/default/index.theme".text = ''
   #   [icon theme]
   #   Inherits=${themeConsts.cursorTheme}
   # '';
 
-  xsession.pointerCursor = {
+  home.pointerCursor = {
     package = pkgs.qogir-icon-theme;
     name = themeConsts.cursorTheme;
     size = themeConsts.cursorSize;
+    x11.enable = true;
+    gtk.enable = true;
   };
 }

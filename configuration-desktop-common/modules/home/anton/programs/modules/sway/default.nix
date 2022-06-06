@@ -16,7 +16,7 @@ in with config.lib.base16.theme; {
       swayidle
       clipman
       grim
-      swaybg
+      # waylandPkgs.swaybg
       slurp
       swappy
 
@@ -51,8 +51,7 @@ in with config.lib.base16.theme; {
 
     WLR_DRM_NO_MODIFIERS = 1;
 
-    # WOBSOCK = "$XDG_RUNTIME_DIR/wob.sock";
-    # NIXOS_OZONE_WL = "1";
+    NIXOS_OZONE_WL = "1";
   };
 
   wayland.windowManager.sway = {
@@ -111,7 +110,7 @@ in with config.lib.base16.theme; {
           ${pkgs.glib}/bin/gsettings set $gnome-schema cursor-size '${
             toString cursorSize
           }'
-          # ${pkgs.glib}/bin/gsettings set $gnome-schema text-scaling-factor 1.6
+          ${pkgs.glib}/bin/gsettings set $gnome-schema text-scaling-factor 1.2
           ${pkgs.glib}/bin/gsettings set $gnome-schema font-name '${fontUIName} 11'
       }
     '';
@@ -135,18 +134,18 @@ in with config.lib.base16.theme; {
           indicator = "#${base0F-hex}";
         };
         focusedInactive = {
-          background = "#${base00-hex}";
-          text = "#${base05-hex}";
+          background = "#${base0D-hex}";
+          text = "#${base00-hex}";
           border = "#${base03-hex}";
-          childBorder = "#${base04-hex}";
-          indicator = "#${base05-hex}";
+          childBorder = "#${base00-hex}";
+          indicator = "#${base00-hex}";
         };
         unfocused = {
           background = "#${base00-hex}";
           text = "#${base05-hex}";
           border = "#${base00-hex}";
-          childBorder = "#${base01-hex}";
-          indicator = "#${base03-hex}";
+          childBorder = "#${base00-hex}";
+          indicator = "#${base00-hex}";
         };
       };
 
@@ -166,14 +165,13 @@ in with config.lib.base16.theme; {
         { command = "firefox"; }
         { command = "thunderbird"; }
         { command = "telegram-desktop"; }
-        { command = "mattermost"; }
+        { command = "mattermost-desktop"; }
+        { command = "keyctl link @u @s"; }
         {
-          command = "keyctl link @u @s";
+          command =
+            "exec ${pkgs.master.autotiling}/bin/autotiling -w 2 3 4 5 6 7 9 0";
+          always = true;
         }
-        # {
-        #   command =
-        #     "exec ${pkgs.master.autotiling}/bin/autotiling -w 2 3 4 5 6 7 9 0";
-        # }
       ];
 
       assigns = {
@@ -186,7 +184,8 @@ in with config.lib.base16.theme; {
         "8" = [ { app_id = "^thunderbird"; } { class = "^Thunderbird"; } ];
         "9" = [{ class = "^Spotify$"; }];
 
-        "im" = [ { app_id = "^telegramdesktop$"; } { class = "^Slack$"; } ];
+        "im" =
+          [ { app_id = "^telegramdesktop$"; } { class = "^Mattermost$"; } ];
       };
 
       window = {
@@ -237,8 +236,15 @@ in with config.lib.base16.theme; {
             command = "resize set 1100 700";
           }
           {
-            criteria = { class = "^Slack$"; };
-            command = "resize set 4 width ppt";
+            criteria = {
+              app_id = "^telegramdesktop$";
+              title = "^Telegram.*";
+            };
+            command = "resize set width 33 ppt";
+          }
+          {
+            criteria = { class = "^Mattermost$"; };
+            command = "resize set width 67 ppt";
           }
         ];
       };
@@ -255,7 +261,7 @@ in with config.lib.base16.theme; {
       };
 
       output = {
-        "*" = { bg = "${../../../../backgrounds/nord-1.jpg} fill"; };
+        "*" = { bg = "${../../../../backgrounds/nord-5.png} fill"; };
       };
     };
   };

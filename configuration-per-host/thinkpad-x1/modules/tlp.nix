@@ -1,1 +1,1 @@
-{ pkgs, ... }: { services.tlp.enable = true; }
+{ pkgs, ... }: { services.tlp.enable = false; }

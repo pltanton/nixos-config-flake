@@ -18,5 +18,8 @@
       gotests
       gotools
       mockgen
+      go-outline
+      gopkgs
+      go-tools
     ];
 }
