@@ -12,10 +12,11 @@ let
   ''}";
 in {
   home.packages = with pkgs; [
-    # emacsPgtkGcc
+    emacsPgtkNativeComp
+    # emacsGitNativeComp
     # emacs
     # emacsGit
-    emacsNativeComp
+    # emacsNativeComp
     # inputs.emacs-ng.defaultPackage.x86_64-linux
     # emacsUnstable-nox
     emacs-all-the-icons-fonts

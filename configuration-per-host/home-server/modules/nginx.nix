@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   services.nginx = {
     enable = true;
 
@@ -10,5 +9,5 @@
     };
   };
 
-  security.acme.email = "plotnikovanton@gmail.com";
+  security.acme.defaults.email = "plotnikovanton@gmail.com";
 }

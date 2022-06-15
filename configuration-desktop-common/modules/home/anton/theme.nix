@@ -11,8 +11,9 @@ let
     gtkTheme = "Nordic-bluish-accent";
     # gtkTheme = "Adwaita-dark";
     # cursorTheme = "Qogir-dark";
+    # cursorTheme = "Adwaita";
     cursorTheme = "phinger-cursors";
-    cursorSize = 32;
+    cursorSize = 48;
   };
 in {
   home.packages = [
@@ -21,6 +22,7 @@ in {
     pkgs.gnome-icon-theme
     pkgs.hicolor-icon-theme
     pkgs.master.phinger-cursors
+    pkgs.gnome3.adwaita-icon-theme
   ];
   themes.base16 = {
     enable = true;

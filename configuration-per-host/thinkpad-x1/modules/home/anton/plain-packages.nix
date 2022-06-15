@@ -3,8 +3,6 @@
     lib.mkIf true [
       audacity
       discord
-      zoom
-      master.skypeforlinux
 
       transmission-remote-gtk
       transmission-gtk
@@ -16,7 +14,7 @@
       #   # extraPkgs = pkgs: [ SDL2 libstdcxx5 ];
       #   nativeOnly = false;
       # })
-      # steam
+      steam
       # steam-run
 
       adoptopenjdk-bin

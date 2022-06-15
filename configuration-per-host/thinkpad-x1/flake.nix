@@ -22,9 +22,12 @@
       url = "github:thiagokokada/nix-alien";
       inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
     };
-
     activate-linux = {
       url = "github:Kljunas2/activate-linux";
+      inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
+    };
+    swaymonad = {
+      url = "github:pltanton/swaymonad";
       inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
     };
 

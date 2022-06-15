@@ -16,14 +16,11 @@
       wdisplays
       wf-recorder
 
-      libsForQt5.bismuth
-
       ffmpegthumbnailer
       pamixer
       paprefs
       pavucontrol
       pulseaudio
-      qjackctl
       shared-mime-info
       pantheon.elementary-files
       pcmanfm
@@ -45,15 +42,12 @@
       xdg-utils
 
       ffmpeg
-      # httpie
       curlie # replacement for httpie
       bat # cat but with highlights
       exa # modern ls
       duf # beauty df
       tldr # cheatsheets for cli
       procs # modern ps
-      ansible
-      dnsutils
       jq
       bitwarden-cli
       htop
@@ -71,19 +65,16 @@
 
       # GUI
       libreoffice
-
       evince
-      # stable.zathura
       imv
       gthumb
-      # digikam
       gnome-photos
       gimp
       # (gimp-with-plugins.override {
       #   plugins = with gimpPlugins; [ resynthesizer ];
       # })
       mpv
-      master.tdesktop
+      tdesktop
       vlc
       xsane
 
@@ -97,6 +88,11 @@
             "https://releases.mattermost.com/desktop/5.1.0/mattermost-desktop-5.1.0-linux-x64.tar.gz";
           hash = "sha256-KmtQUqg2ODbZ6zJjsnwlvB+vhR1xbK2X9qqmZpyTR78=";
         };
+        # Add electron ozone options for native wayland support
+        postInstall = (old.postInstall or "") + ''
+          substituteInPlace $out/share/applications/Mattermost.desktop \
+            --replace "bin/mattermost-desktop\"" "bin/mattermost-desktop\" --ozone-platform=wayland --enable-features=UseOzonePlatform"
+        '';
       }))
 
       nix-alien
@@ -104,15 +100,12 @@
       nix-index-update
 
       inputs.activate-linux.defaultPackage.x86_64-linux
-
-      spotify
       teams
 
-      stable.thunderbird
+      thunderbird-wayland
       bitwarden
       sidequest
       scrcpy
-      # tigervnc
 
       # Web
       chromium
@@ -136,14 +129,11 @@
       evans # grpc client
       graphviz
       nodejs
-      insomnia
-      postman
       # jetbrains.idea-ultimate
       jetbrains.idea-community
       # jetbrains.datagrip
       # android-studio
       mongodb
-      robo3t
       dbeaver
       beekeeper-studio
       gcc

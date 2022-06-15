@@ -25,7 +25,7 @@
   services.atd.enable = true;
 
   virtualisation.docker.enable = true;
-  security.acme.email = "plotnikovanton@gmail.com";
+  security.acme.defaults.email = "plotnikovanton@gmail.com";
   security.acme.acceptTerms = true;
 
   nixpkgs.config.allowUnfree = true;

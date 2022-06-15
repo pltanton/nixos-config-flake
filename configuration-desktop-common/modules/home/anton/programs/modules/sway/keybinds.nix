@@ -83,16 +83,26 @@ in {
 
         "${cfg.config.modifier}+Shift+a" = "focus child";
 
-        # "${cfg.config.modifier}+1" = "exec ${scripts}/bin/workspacefade 1";
-        # "${cfg.config.modifier}+2" = "exec ${scripts}/bin/workspacefade 2";
-        # "${cfg.config.modifier}+3" = "exec ${scripts}/bin/workspacefade 3";
-        # "${cfg.config.modifier}+4" = "exec ${scripts}/bin/workspacefade 4";
-        # "${cfg.config.modifier}+5" = "exec ${scripts}/bin/workspacefade 5";
-        # "${cfg.config.modifier}+6" = "exec ${scripts}/bin/workspacefade 6";
-        # "${cfg.config.modifier}+7" = "exec ${scripts}/bin/workspacefade 7";
-        # "${cfg.config.modifier}+8" = "exec ${scripts}/bin/workspacefade 8";
-        # "${cfg.config.modifier}+9" = "exec ${scripts}/bin/workspacefade 9";
-        # "${cfg.config.modifier}+0" = "exec ${scripts}/bin/workspacefade 10";
+        # "${cfg.config.modifier}+x" = "mode layout";
+        # "${cfg.config.modifier}+v" = "nop reflect x";
+        # "${cfg.config.modifier}+h" = "nop reflect y";
+        # "${cfg.config.modifier}+t" = "nop transpose";
+
+        # "${cfg.config.modifier}+Shift+Left" = "nop move left";
+        # "${cfg.config.modifier}+Shift+Right" = "nop move reght";
+        # "${cfg.config.modifier}+Shift+Up" = "nop move up";
+        # "${cfg.config.modifier}+Shift+Down" = "nop move down";
+
+        # "${cfg.config.modifier}+f" = "nop fullscreen";
+
+        # "${cfg.config.modifier}+Return" = "nop promote_window";
+
+        # "${cfg.config.modifier}+j" = "nop focus_next_window";
+        # "${cfg.config.modifier}+k" = "nop focus_prev_window";
+
+        # "${cfg.config.modifier}+Shift+j" = "nop swap_with_next_window";
+        # "${cfg.config.modifier}+Shift+k" = "nop swap_with_prev_window";
+
       };
 
       keycodebindings = lib.mkOptionDefault { };
@@ -109,6 +119,15 @@ in {
             "exec ${makoctl} invoke; exec ${makoctl} dismiss; mode default";
           "d" = "exec ${makoctl} dismiss";
         };
+        # layout = {
+        #   Escape = "mode default";
+        #   Return = "mode default";
+        #   t = "nop set_layout tall";
+        #   "3" = "nop set_layout 3_col";
+        #   "n" = "nop set_layout nop";
+        #   "i" = "nop increment_masters";
+        #   "d" = "nop decrement_masters";
+        # };
       };
     };
   };

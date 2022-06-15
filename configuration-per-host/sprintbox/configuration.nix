@@ -28,7 +28,7 @@
 
   system.stateVersion = "21.11"; # Did you read the comment?
 
-  security.acme.email = "plotnikovanton@gmail.com";
+  security.acme.defaults.email = "plotnikovanton@gmail.com";
   security.acme.acceptTerms = true;
 
   nix = {

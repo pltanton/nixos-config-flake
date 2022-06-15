@@ -3,7 +3,9 @@ let swayPackage = pkgs.sway-unwrapped;
 in with config.lib.base16.theme; {
   services.keyboardLayoutPerWindow.enable =
     config.wayland.windowManager.sway.enable;
-  services.flashfocus.enable = config.wayland.windowManager.sway.enable;
+  services.flashfocus.enable = false
+    && config.wayland.windowManager.sway.enable;
+  services.swaymonad.enable = false && config.wayland.windowManager.sway.enable;
   services.clipman.enable = config.wayland.windowManager.sway.enable;
   services.wob.enable = config.wayland.windowManager.sway.enable;
 
@@ -16,7 +18,6 @@ in with config.lib.base16.theme; {
       swayidle
       clipman
       grim
-      # waylandPkgs.swaybg
       slurp
       swappy
 
@@ -42,9 +43,10 @@ in with config.lib.base16.theme; {
     _JAVA_AWT_WM_NONREPARENTING = 1;
     GDK_PIXBUF_MODULE_FILE =
       "${pkgs.librsvg.out}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
+    GDK_BACKEND = "wayland";
 
     WLR_DRM_NO_ATOMIC = "1";
-    WLR_NO_HARDWARE_CURSORS = "1";
+    # WLR_NO_HARDWARE_CURSORS = "1";
 
     XDG_CURRENT_DESKTOP = "sway";
     XDG_SESSION_TYPE = "wayland";
@@ -77,10 +79,6 @@ in with config.lib.base16.theme; {
                timeout 300 'lock' \
                timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
                before-sleep 'lock'
-      # exec swayidle -w \
-      #   timeout 300 'lock' \
-      #   timeout 315 'swaymsg "output * dpms off"' \
-      #   resume 'swaymsg "output * dpms on"'
 
       workspace 1 output DP-1
       workspace 2 outpu DP-1
@@ -90,7 +88,7 @@ in with config.lib.base16.theme; {
       workspace 9 output DP-1
       workspace "im" output eDP-1
 
-      seat * xcursor_theme ${cursorTheme} 32
+      seat * xcursor_theme ${cursorTheme} ${toString cursorSize} 
       seat * hide_cursor 4000
       seat * hide_cursor when-typing enable
 
@@ -118,9 +116,7 @@ in with config.lib.base16.theme; {
     config = let cfg = config.wayland.windowManager.sway;
     in {
       bars = [ ];
-
       terminal = "alacritty";
-
       menu = "wofi --show drun -I";
 
       workspaceAutoBackAndForth = true;
@@ -150,14 +146,7 @@ in with config.lib.base16.theme; {
       };
 
       startup = [
-        {
-          command = "${pkgs.xsettingsd}/bin/xsettingsd";
-        }
-        # { command = "wl-paste -t text --watch clipman store"; }
-        # {
-        #   command =
-        #     "wl-paste -p -t text --watch clipman store -P --histpath='~/.local/share/clipman-primary.json'";
-        # }
+        { command = "${pkgs.xsettingsd}/bin/xsettingsd"; }
         {
           command = "systemctl --user restart kanshi";
           always = true;
@@ -165,13 +154,18 @@ in with config.lib.base16.theme; {
         { command = "firefox"; }
         { command = "thunderbird"; }
         { command = "telegram-desktop"; }
-        { command = "mattermost-desktop"; }
-        { command = "keyctl link @u @s"; }
         {
           command =
-            "exec ${pkgs.master.autotiling}/bin/autotiling -w 2 3 4 5 6 7 9 0";
-          always = true;
+            "mattermost-desktop --ozone-platform=wayland --enable-features=UseOzonePlatform";
         }
+        {
+          command = "keyctl link @u @s";
+        }
+        # {
+        #   command =
+        #     "exec ${pkgs.master.autotiling}/bin/autotiling -w 2 3 4 5 6 7 9 0";
+        #   always = true;
+        # }
       ];
 
       assigns = {
@@ -184,8 +178,10 @@ in with config.lib.base16.theme; {
         "8" = [ { app_id = "^thunderbird"; } { class = "^Thunderbird"; } ];
         "9" = [{ class = "^Spotify$"; }];
 
-        "im" =
-          [ { app_id = "^telegramdesktop$"; } { class = "^Mattermost$"; } ];
+        "im" = [
+          { app_id = "^telegramdesktop$"; }
+          { title = "^Mattermost Desktop App$"; }
+        ];
       };
 
       window = {
@@ -211,6 +207,13 @@ in with config.lib.base16.theme; {
             command = "floating enable; move position cursor";
           }
           {
+            criteria = {
+              app_id = "darktable";
+              window_type = "floating_con";
+            };
+            command = "move position cursor";
+          }
+          {
             criteria = { title = "^org.inkscape.Inkscape$"; };
             command = "floating enable";
           }
@@ -221,13 +224,13 @@ in with config.lib.base16.theme; {
             };
             command = "floating enable";
           }
-          {
-            criteria = {
-              app_id = "^telegramdesktop$";
-              title = "^Media viewer$";
-            };
-            command = "floating enable";
-          }
+          # {
+          #   criteria = {
+          #     app_id = "^telegramdesktop$";
+          #     title = "^Media viewer$";
+          #   };
+          #   command = "floating enable";
+          # }
           {
             criteria = {
               app_id = "^telegramdesktop$";
@@ -243,7 +246,7 @@ in with config.lib.base16.theme; {
             command = "resize set width 33 ppt";
           }
           {
-            criteria = { class = "^Mattermost$"; };
+            criteria = { title = "^Mattermost Desktop App$"; };
             command = "resize set width 67 ppt";
           }
         ];

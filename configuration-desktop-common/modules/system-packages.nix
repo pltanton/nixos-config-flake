@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     acpi
+    busybox
 
     exfat
     ntfs3g
@@ -10,11 +11,7 @@
     suidChroot
 
     sshfs
-
     keyutils
-
-    hicolor-icon-theme
-    papirus-icon-theme
 
     home-manager
     super

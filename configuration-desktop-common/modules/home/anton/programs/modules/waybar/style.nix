@@ -51,7 +51,7 @@ let
 
     #mode {
         background: #64727D;
-        border-bottom: 3px solid #${base05-hex};
+        /* border-bottom: 3px solid #${base05-hex}; */
     }
 
     #clock, #battery, #cpu, #memory, #temperature, #backlight, #network,
