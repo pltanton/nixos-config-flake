@@ -35,7 +35,16 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [ vim tmux git htop ffmpeg ];
+  environment.systemPackages = with pkgs; [
+    vim
+    tmux
+    git
+    htop
+    ffmpeg
+    ranger
+    btop
+    duf
+  ];
 
   users = {
     users = {
@@ -62,4 +71,6 @@
 
   nixpkgs.config.allowUnfree = true;
   security.acme.acceptTerms = true;
+
+  system.stateVersion = "21.11";
 }

@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   services.mongodb = {
-    enable = true;
+    enable = false;
     dbpath = "/home/common/db/mongodb";
     bind_ip = "0.0.0.0";
   };

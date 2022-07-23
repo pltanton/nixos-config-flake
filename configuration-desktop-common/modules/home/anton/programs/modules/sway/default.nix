@@ -36,14 +36,10 @@ in with config.lib.base16.theme; {
     '';
 
   home.sessionVariables = lib.mkIf config.wayland.windowManager.sway.enable {
-    SDL_VIDEODRIVER = "wayland";
-    QT_QPA_PLATFORM = "wayland";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
-    # MOZ_ENABLE_WAYLAND = 1;
-    _JAVA_AWT_WM_NONREPARENTING = 1;
     GDK_PIXBUF_MODULE_FILE =
       "${pkgs.librsvg.out}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
-    GDK_BACKEND = "wayland";
+
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
 
     WLR_DRM_NO_ATOMIC = "1";
     # WLR_NO_HARDWARE_CURSORS = "1";
@@ -52,8 +48,6 @@ in with config.lib.base16.theme; {
     XDG_SESSION_TYPE = "wayland";
 
     WLR_DRM_NO_MODIFIERS = 1;
-
-    NIXOS_OZONE_WL = "1";
   };
 
   wayland.windowManager.sway = {
@@ -152,20 +146,18 @@ in with config.lib.base16.theme; {
           always = true;
         }
         { command = "firefox"; }
-        { command = "thunderbird"; }
+        { command = "thunderbird-wayland"; }
         { command = "telegram-desktop"; }
         {
           command =
             "mattermost-desktop --ozone-platform=wayland --enable-features=UseOzonePlatform";
         }
+        { command = "keyctl link @u @s"; }
         {
-          command = "keyctl link @u @s";
+          command =
+            "exec ${pkgs.master.autotiling}/bin/autotiling -w 2 3 4 5 6 7 9 0";
+          always = true;
         }
-        # {
-        #   command =
-        #     "exec ${pkgs.master.autotiling}/bin/autotiling -w 2 3 4 5 6 7 9 0";
-        #   always = true;
-        # }
       ];
 
       assigns = {

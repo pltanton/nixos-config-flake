@@ -14,28 +14,16 @@ let
         Categories = "Development;";
       };
     });
-  firefox-ozon = pkgs.writeTextDir "share/applications/firefox-ozon.desktop"
+  firefox-nc = pkgs.writeTextDir "share/applications/firefox-nc.desktop"
     (lib.generators.toINI { } {
       "Desktop Entry" = {
         Categories = "Network;WebBrowser;";
         Type = "Application";
-        Exec = "firefox -p ozon %U";
+        Exec = "firefox -p nc %U";
         Terminal = false;
-        Name = "Firefox (OZON)";
+        Name = "Firefox (NeoCrypt)";
         Icon = "firefox";
         GenericName = "Web Browser";
       };
     });
-  teams-chromium = pkgs.writeTextDir "share/applications/teams-chromium.desktop"
-    (lib.generators.toINI { } {
-      "Desktop Entry" = {
-        Categories = "Network;";
-        Type = "Application";
-        Exec = "chromium --app=https://teams.microsoft.com";
-        Terminal = false;
-        Name = "Chromium (Microsoft Teams)";
-        Icon = "teams";
-        GenericName = "Web Browser";
-      };
-    });
-in { home.packages = [ dbeaver-x11 firefox-ozon teams-chromium ]; }
+in { home.packages = [ dbeaver-x11 firefox-nc ]; }

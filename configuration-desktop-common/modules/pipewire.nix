@@ -51,8 +51,8 @@
         {
           name = "libpipewire-module-echo-cancel";
           args = {
-            "aec.method" = "webrtc";
-            "node.latency" = "1024/48000";
+            # "aec.method" = "webrtc";
+            # "node.latency" = "1024/48000";
             "source.props" = {
               "node.name" = "Echo Cancellation Mic";
               # "node.passive" = false;
@@ -117,4 +117,5 @@
   };
 
   nixpkgs.config.pulseaudio = true;
+  hardware.pulseaudio.enable = false;
 }

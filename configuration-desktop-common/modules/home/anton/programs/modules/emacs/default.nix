@@ -13,6 +13,7 @@ let
 in {
   home.packages = with pkgs; [
     emacsPgtkNativeComp
+    # emacsPgtk
     # emacsGitNativeComp
     # emacs
     # emacsGit

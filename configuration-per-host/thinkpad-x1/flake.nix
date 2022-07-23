@@ -18,6 +18,11 @@
     # base16.url = "github:alukardbf/base16-nix";
     base16.url = "github:pltanton/base16-nix";
 
+    hyprland = {
+      url = "github:vaxerski/Hyprland";
+      # build with your own instance of nixpkgs
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-alien = {
       url = "github:thiagokokada/nix-alien";
       inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
@@ -58,8 +63,8 @@
 
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, nix-alien, emacs-overlay, ...
-    }@inputs: {
+  outputs = { self, nixpkgs, home-manager, nur, nix-alien, emacs-overlay
+    , hyprland, ... }@inputs: {
       nixosConfigurations = let
         inherit (inputs.nixpkgs) lib;
 
@@ -81,6 +86,11 @@
           system = "x86_64-linux";
           specialArgs = commonSpecialArgs;
           modules = [
+            hyprland.nixosModules.default
+            {
+              programs.hyprland.enable = true;
+            }
+
             # A host configuration itself
             (import ./configuration.nix)
             (import ../../configuration-desktop-common)

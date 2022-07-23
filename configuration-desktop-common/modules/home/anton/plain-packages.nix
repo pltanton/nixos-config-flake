@@ -54,6 +54,7 @@
       btop
       inetutils
       nfs-utils
+      ddcutil # utility to control external monitor brightness
 
       tmux
       unzip
@@ -78,31 +79,16 @@
       vlc
       xsane
 
-      # master.mattermost-desktop
-      # Mattermost desktop
-      (master.mattermost-desktop.overrideAttrs (old: rec {
-        name = "mattermost-desktop";
-        version = "5.1.0";
-        src = fetchurl {
-          url =
-            "https://releases.mattermost.com/desktop/5.1.0/mattermost-desktop-5.1.0-linux-x64.tar.gz";
-          hash = "sha256-KmtQUqg2ODbZ6zJjsnwlvB+vhR1xbK2X9qqmZpyTR78=";
-        };
-        # Add electron ozone options for native wayland support
-        postInstall = (old.postInstall or "") + ''
-          substituteInPlace $out/share/applications/Mattermost.desktop \
-            --replace "bin/mattermost-desktop\"" "bin/mattermost-desktop\" --ozone-platform=wayland --enable-features=UseOzonePlatform"
-        '';
-      }))
+      slack
 
       nix-alien
       nix-index
       nix-index-update
 
       inputs.activate-linux.defaultPackage.x86_64-linux
-      teams
+      master.zoom-us
 
-      thunderbird-wayland
+      master.thunderbird-wayland
       bitwarden
       sidequest
       scrcpy

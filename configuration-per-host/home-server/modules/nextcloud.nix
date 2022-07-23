@@ -4,7 +4,7 @@ let
   secrets = import ../secrets.nix;
   consts = import ../constants.nix;
   nextcloudHome = "${consts.archiveMountPoint}/nextcloud-home";
-  nextcloudPackage = pkgs.nextcloud23;
+  nextcloudPackage = pkgs.nextcloud24;
 
   archiveDst = "${nextcloudHome}/data/anton/files/Archive";
 

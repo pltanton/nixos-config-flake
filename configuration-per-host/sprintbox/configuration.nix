@@ -30,12 +30,4 @@
 
   security.acme.defaults.email = "plotnikovanton@gmail.com";
   security.acme.acceptTerms = true;
-
-  nix = {
-    package = pkgs.nixUnstable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
 }
-

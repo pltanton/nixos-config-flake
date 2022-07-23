@@ -1,8 +1,1 @@
-yammer.com,host-contains,firefox -P ozon
-opsgenie.com,host-contains,firefox -P ozon
-microsoftonline.com,host-contains,firefox -P ozon
-bozon.tech,host-contains,firefox -P ozon
-ozonru.me,host-contains,firefox -P ozon
-office365.com,host-contains,firefox -P ozon
-ozon.ru,host-contains,firefox -P ozon
-o3.ru,host-contains,firefox -P ozon
+fix.ru,host-contains,firefox -P nc

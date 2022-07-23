@@ -35,11 +35,4 @@
     isSystemUser = true;
     description = "User for proxy athentication";
   };
-
-  nix = {
-    package = pkgs.nixUnstable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
 }

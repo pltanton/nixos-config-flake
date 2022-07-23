@@ -6,7 +6,7 @@
       ozonThinkVision = {
         outputs = [
           {
-            criteria = "Lenovo Group Limited LEN T27p-10 0x00005E36";
+            criteria = "Lenovo Group Limited LEN T27p-10";
             status = "enable";
             position = "0,0";
             mode = "3840x2160@60Hz";
@@ -14,7 +14,7 @@
           {
             criteria = "eDP-1";
             status = "enable";
-            position = "3202,530";
+            position = "3840,888";
             scale = 1.7;
           }
         ];
@@ -56,7 +56,9 @@
           }
           {
             criteria = "eDP-1";
-            status = "disable";
+            status = "enable";
+            position = "0,1080";
+            scale = 1.7;
           }
         ];
       };
@@ -69,11 +71,15 @@
           }
           {
             criteria = "DP-2";
-            status = "disable";
+            status = "enable";
+            position = "0,1080";
+            mode = "3840x2160@59.997";
           }
           {
             criteria = "eDP-1";
-            status = "disable";
+            status = "enable";
+            position = "3840,1968";
+            scale = 1.7;
           }
         ];
       };

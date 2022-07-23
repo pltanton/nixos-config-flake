@@ -13,10 +13,10 @@ let
   wofi = "${pkgs.wofi}/bin/wofi";
   rofi = "${pkgs.rofi}/bin/rofi";
 
-  wofiWindowsSwitch = pkgs.writeShellScript "wofiWindowsSwitch" ''
+  rofiWindowsSwitch = pkgs.writeShellScript "rofiWindowsSwitch" ''
     windows=$(swaymsg -t get_tree | ${pkgs.jq}/bin/jq -r 'recurse(.nodes[]?)|recurse(.floating_nodes[]?)|select(.type=="con"),select(.type=="floating_con")|(.id|tostring)+" "+.app_id+": "+.name')
 
-    selected=$(echo "$windows" | ${wofi} --dmenu -i | awk '{print $1}')
+    selected=$(echo "$windows" | rofi -dmenu -i | awk '{print $1}')
 
     # Tell sway to focus said window
     swaymsg [con_id="$selected"] focus
@@ -30,18 +30,21 @@ in {
       bindkeysToCode = true;
 
       keybindings = lib.mkOptionDefault {
+        "${cfg.config.modifier}+c" = "exec wl-copy";
+        "${cfg.config.modifier}+v" = "exec wl-paste";
+
         "${cfg.config.modifier}+Shift+Return" = "exec ${cfg.config.terminal}";
         "${cfg.config.modifier}+Shift+c" = "kill";
         # Fade out
         # "${cfg.config.modifier}+Shift+c" =
         #   "mark quit; exec ${scripts}/bin/fadeout";
         "${cfg.config.modifier}+Shift+r" = "reload";
-        "${cfg.config.modifier}+Return" = "exec ${cfg.config.menu}";
-        "${cfg.config.modifier}+semicolon" = "exec ${wofiWindowsSwitch}";
+        # "${cfg.config.modifier}+Return" = "exec ${cfg.config.menu}";
+        "${cfg.config.modifier}+Return" = "exec rofi -show drun -show-icons";
+        "${cfg.config.modifier}+semicolon" = "exec ${rofiWindowsSwitch}";
         "Print" = "exec ${grabScreenshot}";
-        "${cfg.config.modifier}+Shift+v" = "exec clipman pick -t wofi";
-
-        "${cfg.config.modifier}+Shift+e" = "exec wofi-emoji";
+        "${cfg.config.modifier}+Shift+v" = "exec clipman pick -t rofi";
+        "${cfg.config.modifier}+Shift+e" = "exec rofi -show emoji -modi emoji";
         "${cfg.config.modifier}+Shift+q" =
           "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'systemctl --user stop graphical-session.target; systemctl --user stop sway-session.target; swaymsg exit'";
 
@@ -76,8 +79,12 @@ in {
         "${cfg.config.modifier}+Shift+comma" = "move workspace to output left";
         "${cfg.config.modifier}+Shift+apostrophe" =
           "move workspace to output right";
+        "${cfg.config.modifier}+Shift+a" = "move workspace to output down";
+        "${cfg.config.modifier}+Shift+o" = "move workspace to output up";
         "${cfg.config.modifier}+comma" = "focus output left";
         "${cfg.config.modifier}+apostrophe" = "focus output right";
+        "${cfg.config.modifier}+a" = "focus output down";
+        "${cfg.config.modifier}+o" = "focus output up";
 
         "${cfg.config.modifier}+n" = "mode mako";
 
@@ -114,7 +121,7 @@ in {
           "Shift+d" = "exec ${makoctl} dismiss --all; mode default";
           "Shift+x" = "exec ${makoctl} dismiss --group";
           "Shift+i" =
-            "exec ${makoctl} menu ${wofi} -d -p 'Chose action:'; mode default;";
+            "exec ${makoctl} menu rofi -d -p 'Chose action:'; mode default;";
           "Return" =
             "exec ${makoctl} invoke; exec ${makoctl} dismiss; mode default";
           "d" = "exec ${makoctl} dismiss";

@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, config, lib, ... }:
 let
   themeConsts = {
     fontConsoleName = "Iosevka";
-    fontConsoleSize = "19";
+    fontConsoleSize = "21";
     fontUIName = "Inter";
     fontUISize = "16";
     # iconTheme = "Adwaita";
@@ -34,7 +34,7 @@ in {
   };
 
   gtk = {
-    enable = true;
+    enable = config.wayland.windowManager.sway.enable;
     theme = {
       # package = pkgs.qogir-theme;
       package = pkgs.nordic;
@@ -64,7 +64,7 @@ in {
   #   Inherits=${themeConsts.cursorTheme}
   # '';
 
-  home.pointerCursor = {
+  home.pointerCursor = lib.mkIf config.wayland.windowManager.sway.enable {
     package = pkgs.qogir-icon-theme;
     name = themeConsts.cursorTheme;
     size = themeConsts.cursorSize;

@@ -44,28 +44,13 @@
         #   }
         # '';
       };
-      ozon = {
+      nc = {
         id = 1;
         settings = {
-          # "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "browser.startup.homepage" = "https://start.duckduckgo.com";
           "gfx.webrender.all" = true;
           "layout.css.devPixelsPerPx" = "-1.0";
         };
-        userChrome = ''
-          #TabsToolbar {
-            visibility: collapse !important;
-            margin-bottom: 21px !important;
-          }
-
-          #titlebar {
-            visibility: collapse !important;
-          }
-
-          #sidebar-header {
-            visibility: collapse !important;
-          }
-        '';
       };
     };
   };

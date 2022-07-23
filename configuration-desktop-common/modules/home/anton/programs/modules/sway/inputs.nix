@@ -12,6 +12,10 @@
       accel_profile = "adaptive";
     };
 
+    "1133:45085:Logitech_MX_Ergo_Multi-Device_Trackball" = {
+      pointer_accel = "1.0";
+    };
+
     # "1:1:AT_Translated_Set_2_keyboard" = {
     #   xkb_layout = "us,ru";
     #   xkb_variant = "dvorak,";

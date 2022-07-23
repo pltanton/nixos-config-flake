@@ -11,9 +11,6 @@
       user-mail-address "plotnikovanton@gmail.com")
 
 (setq doom-theme 'doom-nord)
-;; (setq doom-theme 'doom-one)
-;; (setq doom-theme 'doom-gruvbox)
-;; (setq doom-gruvbox-dark-variant "hard")
 
 ;; (setq display-line-numbers-type "relative")
 
@@ -25,7 +22,9 @@
 ;; Org roam configuration
 
 (make-directory "~/org-roam" t)
-(setq org-roam-directory "~/org-roam")
+(setq org-roam-database-connector 'sqlite3)
+(setq org-roam-directory (file-truename "~/org-roam"))
+
 
 ;; (use-package! websocket
 ;;   :after org-roam)
@@ -43,7 +42,7 @@
 ;;         org-roam-ui-open-on-start t))
 
 
-(setq projectile-project-search-path '("~/Workdir/" "~/Workdir/ozon" "~/Workdir/blackbird-platform" ))
+(setq projectile-project-search-path '("~/Workdir/" "~/Workdir/nc" "~/Workdir/blackbird-platform" ))
 
 
 (setq calendar-week-start-day 1)

@@ -3,6 +3,18 @@
 
   home.sessionPath = [ "/home/anton/go/bin" ];
 
+  home.sessionVariables = {
+    # Wayland enable
+    NIXOS_OZONE_WL = "1";
+    SDL_VIDEODRIVER = "wayland";
+    QT_QPA_PLATFORM = "wayland";
+    # MOZ_ENABLE_WAYLAND = 1;
+    _JAVA_AWT_WM_NONREPARENTING = 1;
+    GDK_BACKEND = "wayland";
+
+    KUBECONFIG = "/home/anton/.kube/config";
+  };
+
   programs.fish = {
     enable = true;
 
