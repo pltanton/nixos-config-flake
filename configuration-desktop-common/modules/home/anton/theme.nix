@@ -6,8 +6,8 @@ let
     fontUIName = "Inter";
     fontUISize = "16";
     # iconTheme = "Adwaita";
-    iconTheme = "Qogir-dark";
-    # iconTheme = "Papirus-dark";
+    # iconTheme = "Qogir-dark";
+    iconTheme = "Papirus-Dark";
     gtkTheme = "Nordic-bluish-accent";
     # gtkTheme = "Adwaita-dark";
     # cursorTheme = "Qogir-dark";
@@ -21,6 +21,7 @@ in {
     pkgs.qogir-icon-theme
     pkgs.gnome-icon-theme
     pkgs.hicolor-icon-theme
+    pkgs.papirus-icon-theme
     pkgs.master.phinger-cursors
     pkgs.gnome3.adwaita-icon-theme
   ];
@@ -41,9 +42,9 @@ in {
       name = themeConsts.gtkTheme;
     };
     iconTheme = {
-      package = pkgs.numix-icon-theme;
+      # package = pkgs.numix-icon-theme;
       # package = pkgs.qogir-icon-theme;
-      # package = pkgs.papirus-icon-theme;
+      package = pkgs.papirus-icon-theme;
       # package = pkgs.gnome3.adwaita-icon-theme;
       name = themeConsts.iconTheme;
     };
@@ -70,5 +71,10 @@ in {
     size = themeConsts.cursorSize;
     x11.enable = true;
     gtk.enable = true;
+  };
+
+  home.sessionVariables = {
+    XCURSOR_THEME = themeConsts.cursorTheme;
+    XCURSOR_SIZE = themeConsts.cursorSize;
   };
 }

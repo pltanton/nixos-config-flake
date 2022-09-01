@@ -44,8 +44,9 @@ let
         --text-wrong-color ${base0A-hex}
     '';
 in {
-  home.packages = lib.mkIf config.wayland.windowManager.sway.enable [
-    pkgs.swaylock-effects
-    lockScript
-  ];
+  home.packages = lib.mkIf (config.wayland.windowManager.sway.enable
+    || config.wayland.windowManager.hyprland.enable) [
+      pkgs.swaylock-effects
+      lockScript
+    ];
 }

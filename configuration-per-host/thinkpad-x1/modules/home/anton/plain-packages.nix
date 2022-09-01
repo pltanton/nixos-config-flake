@@ -10,15 +10,14 @@
 
       shotcut
 
+      # tor-browser-bundle-bin
+
       # (steam.override {
       #   # extraPkgs = pkgs: [ SDL2 libstdcxx5 ];
       #   nativeOnly = false;
       # })
       steam
       # steam-run
-
-      adoptopenjdk-bin
-      jetbrains.idea-community
 
       darktable
       kdenlive

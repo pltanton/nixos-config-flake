@@ -96,7 +96,7 @@ in {
   users.users.nextcloud.extraGroups = [ "lp" "privatestore" ];
   users.users.nginx.extraGroups = [ "lp" ];
 
-  environment.systemPackages = with pkgs; [ dlib netpbm ];
+  environment.systemPackages = with pkgs; [ dlib netpbm nodejs ];
 
   fileSystems = {
     "${photoDst}" = {

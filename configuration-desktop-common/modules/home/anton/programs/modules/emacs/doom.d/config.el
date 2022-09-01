@@ -25,7 +25,6 @@
 (setq org-roam-database-connector 'sqlite3)
 (setq org-roam-directory (file-truename "~/org-roam"))
 
-
 ;; (use-package! websocket
 ;;   :after org-roam)
 
@@ -43,7 +42,6 @@
 
 
 (setq projectile-project-search-path '("~/Workdir/" "~/Workdir/nc" "~/Workdir/blackbird-platform" ))
-
 
 (setq calendar-week-start-day 1)
 (setq persist--directory-location "~/.emacs.d/persist")
@@ -90,7 +88,6 @@
 (require 'quail)
 (setq yas-triggers-in-field t)
 
-
 ;; Russian language support
 ;; (load-file "~/.doom.d/cyrillic-dvorak.el")
 ;; (setq default-input-method "cyrillic-dvorak")
@@ -108,11 +105,16 @@
 
 
 ;; LSP extra configuration
-(setq lsp-headerline-breadcrumb-enable t)
-(setq lsp-ui-doc-enable t)
-(setq lsp-ui-doc-show-with-cursor t)
-(setq lsp-ui-doc-show-with-mouse t)
-(setq lsp-lens-enable t)
+(after! lsp-mode
+  ;; (setq lsp-headerline-breadcrumb-enable t)
+  ;; (setq lsp-ui-doc-enable t)
+  ;; (setq lsp-ui-doc-show-with-cursor t)
+  ;; (setq lsp-ui-doc-show-with-mouse t)
+  ;; (setq lsp-lens-enable t)
+  ;; (setq lsp-ui-sideline-show-diagnostics t)
+  ;; (setq lsp-ui-sideline-show-hover t)
+  ;; (setq lsp-ui-sideline-show-code-actions t)
+  (setq lsp-pylsp-server-command "pylsp"))
 
 
 ;; Chain checkers with lsp checker for flycheck
@@ -129,51 +131,22 @@
             (when (derived-mode-p 'go-mode)
               (setq my/flycheck-local-cache '((lsp . ((next-checkers . (golangci-lint)))))))))
 
-;; ;; Extra major modes for languages
-;; (use-package caddyfile-mode
-;;   :ensure t
-;;   :mode (("Caddyfile\\'" . caddyfile-mode)
-;;          ("caddy\\.conf\\'" . caddyfile-mode)))
-
-;; (use-package caddyfile-mode
-;;   :ensure t
-;;   :mode (("\\.proto\\'" . protobuf-mode)))
 
 (setq +latex-viewers '(zathura))
-(after! lsp-python-ms
-  (setq lsp-python-ms-executable (executable-find "python-language-server"))
-  (set-lsp-priority! 'mspyls 1))
 
 ;; Disable minibuffer for treemacs
 (setq treemacs-read-string-input 'from-minibuffer)
-
-;; Setup format all
-;; (setq +format-with-lsp nil)
-;; (setq-hook! 'go-mode-hook +format-with 'goimports)
 
 (after! so-long
   (setq so-long-threshold 2048)
   (delq! 'go-mode so-long-target-modes))
 
-                                        ; complete by copilot first, then company-mode
-(defun my-tab ()
-  (interactive)
-  (or (copilot-accept-completion)
-      (company-indent-or-complete-common nil)))
 
-(after! company
-                                        ; disable inline previews
-  (delq 'company-preview-if-just-one-frontend company-frontends)
-                                        ; enable tab completion
-  (define-key company-mode-map (kbd "<tab>") 'my-tab)
-  (define-key company-mode-map (kbd "TAB") 'my-tab)
-  (define-key company-active-map (kbd "<tab>") 'my-tab)
-  (define-key company-active-map (kbd "TAB") 'my-tab))
-
-(use-package! copilot
-  :config
-  (add-hook 'post-command-hook (lambda ()
-                                 (copilot-clear-overlay)
-                                 (when (evil-insert-state-p)
-                                   (copilot-complete))))
-  )
+;; Org mode jira
+(make-directory "~/.org-jira" t)
+(setq jiralib-url "https://jira.fix.ru")
+(after! auth-source
+  (setq jiralib-token
+        (cons "Authorization"
+              (concat "Bearer " (auth-source-pick-first-password
+                                 :host "jira.fix.ru")))))

@@ -15,10 +15,6 @@ deploy-sprintbox: build_host =  root@sprintbox.kaliwe.ru
 deploy-thinkpad-x1: target = localhost
 deploy-thinkpad-x1: build_host = localhost
 
-# deploy-thinkbook: prepare-desktop
-deploy-thinkbook: target = localhost
-deploy-thinkbook: build_host = localhost
-
 
 deploy-%:
 	@echo Run nixos-rebuild for machine $* on host: ${target} with build_host: ${build_host}

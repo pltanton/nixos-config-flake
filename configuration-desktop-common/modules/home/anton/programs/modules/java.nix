@@ -1,6 +1,9 @@
 { pkgs, ... }: {
-  home.file = {
-    ".jdks/adoptjdk".source = pkgs.adoptopenjdk-bin;
-    ".jdks/adoptjdk16".source = pkgs.adoptopenjdk-openj9-bin-16;
+  home = {
+    packages = with pkgs; [ pkgs.jdk kotlin ];
+    file = {
+      ".jdks/openjdk".source = pkgs.jdk;
+
+    };
   };
 }

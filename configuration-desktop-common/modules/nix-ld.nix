@@ -1,4 +1,1 @@
-{ pkgs, lib, ... }:
-{
-  # programs.nix-ld.enable = true;
-}
+{ pkgs, lib, ... }: { programs.nix-ld.enable = true; }

@@ -30,7 +30,7 @@ let
 
     /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
     #workspaces button {
-        padding: 0 1px;
+        padding: 0 8px;
         background: transparent;
         color: #${base05-hex};
     }
@@ -41,6 +41,11 @@ let
     }
 
     #workspaces button.focused {
+        background: #${base00-hex};
+        border-bottom: 3px solid #${base0D-hex};
+    }
+
+    #workspaces button.active {
         background: #${base00-hex};
         border-bottom: 3px solid #${base0D-hex};
     }

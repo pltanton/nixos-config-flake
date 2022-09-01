@@ -4,16 +4,21 @@ in {
   imports = [ ./style.nix ];
 
   programs.waybar = with config.lib.base16.theme; {
-    package = pkgs.waybar;
-    enable = config.wayland.windowManager.sway.enable;
+    package = if config.wayland.windowManager.sway.enable then
+      pkgs.waybar
+    else
+      pkgs.waybar-hyprland;
+    enable = config.wayland.windowManager.sway.enable
+      || config.wayland.windowManager.hyprland.enable;
     # enable = true;
     systemd.enable = true;
     settings = [{
       layer = "top";
       position = "top";
       height = 42;
-      modules-left = [ "sway/workspaces" "sway/mode" ];
-      modules-center = [ "sway/window" ];
+      # modules-left = [ "wlr/workspaces" "sway/workspaces" "sway/mode" ];
+      modules-left = [ "wlr/workspaces" ];
+      # modules-center = [ "sway/window" ];
       modules-right = [
         "custom/spotify"
         "tray"
@@ -23,7 +28,7 @@ in {
         "battery"
         "clock"
         "idle_inhibitor"
-        "sway/language"
+        # "sway/language"
       ];
       idle_inhibitor = {
         format = "{icon}";
@@ -46,9 +51,23 @@ in {
           "4" = "";
           "8" = "";
           "9" = "";
-
           "im" = "";
-
+          "focused" = "";
+          "default" = "";
+        };
+      };
+      "wlr/workspaces" = {
+        format = "{name}: {icon}";
+        sort-by-coordinates = true;
+        on-click = "activate";
+        format-icons = {
+          "1" = "";
+          "2" = "";
+          "3" = "";
+          "4" = "";
+          "8" = "";
+          "9" = "";
+          "10" = "";
           "focused" = "";
           "default" = "";
         };

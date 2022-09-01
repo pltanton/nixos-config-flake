@@ -8,8 +8,6 @@
       nixfmt
       shfmt
 
-      gnupg
-
       ###################
       # Packages for DE #
       ###################
@@ -84,6 +82,7 @@
       nix-alien
       nix-index
       nix-index-update
+      rnix-hashes
 
       inputs.activate-linux.defaultPackage.x86_64-linux
       master.zoom-us
@@ -112,20 +111,28 @@
       postgresql_13
       coreutils
       grpc
-      evans # grpc client
+      grpcurl # grpc client
       graphviz
       nodejs
+      # intellij-idea-ultimate
+      # master.jetbrains.idea-community
       # jetbrains.idea-ultimate
-      jetbrains.idea-community
+      # intellij-idea-community-eap
       # jetbrains.datagrip
       # android-studio
+      (jetbrains.idea-ultimate.overrideAttrs (oldAttrs: rec {
+        src = fetchurl {
+          url = "https://download.jetbrains.com/idea/ideaIU-2022.2.tar.gz";
+          sha256 = "1rqh2q2bgp78n0sxgpw3iwhl99pj559gxvjc30kn9x971d5lwr8m";
+        };
+      }))
+
       mongodb
       dbeaver
       beekeeper-studio
       gcc
       black # Python code formatter
-      python-language-server
-      (python3.withPackages (pp:
+      (python310.withPackages (pp:
         with pp; [
           pip
           pylint
@@ -136,7 +143,14 @@
           pygments
           hvac
           pika
+          grpcio-tools
+          python-lsp-server
         ]))
+      # python-language-server
+      inputs.mach-nix.defaultPackage.x86_64-linux
+      protobuf
+      protoc-gen-go
+      protoc-gen-go-grpc
 
       nodePackages.yaml-language-server
       nodePackages.prettier

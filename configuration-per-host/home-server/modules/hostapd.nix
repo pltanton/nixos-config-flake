@@ -52,6 +52,7 @@ in {
       dhcp-host=f0:b4:29:0f:2b:f4,10.1.0.206 # YeeLight white
       dhcp-host=78:11:dc:e9:55:fd,10.1.0.207 # vacuum cleaner
       dhcp-host=7c:49:eb:b2:84:0a,10.1.0.208 # humidifier
+      dhcp-host=58:b6:23:9c:67:cf,10.1.0.209 # fan
 
       address=/server.home/10.100.0.1
       address=/thinkpad-x1.home/10.100.0.3

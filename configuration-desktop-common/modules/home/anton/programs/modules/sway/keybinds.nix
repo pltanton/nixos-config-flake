@@ -10,9 +10,6 @@ let
     wl-copy -t image/png < $FILE_PATH
   '';
 
-  wofi = "${pkgs.wofi}/bin/wofi";
-  rofi = "${pkgs.rofi}/bin/rofi";
-
   rofiWindowsSwitch = pkgs.writeShellScript "rofiWindowsSwitch" ''
     windows=$(swaymsg -t get_tree | ${pkgs.jq}/bin/jq -r 'recurse(.nodes[]?)|recurse(.floating_nodes[]?)|select(.type=="con"),select(.type=="floating_con")|(.id|tostring)+" "+.app_id+": "+.name')
 
@@ -30,9 +27,6 @@ in {
       bindkeysToCode = true;
 
       keybindings = lib.mkOptionDefault {
-        "${cfg.config.modifier}+c" = "exec wl-copy";
-        "${cfg.config.modifier}+v" = "exec wl-paste";
-
         "${cfg.config.modifier}+Shift+Return" = "exec ${cfg.config.terminal}";
         "${cfg.config.modifier}+Shift+c" = "kill";
         # Fade out
@@ -40,10 +34,18 @@ in {
         #   "mark quit; exec ${scripts}/bin/fadeout";
         "${cfg.config.modifier}+Shift+r" = "reload";
         # "${cfg.config.modifier}+Return" = "exec ${cfg.config.menu}";
+
+        #################
+        ##### ROFI ######
+        #################
+
+        "${cfg.config.modifier}+backslash" =
+          "exec ${inputs.bwmenu.defaultPackage.x86_64-linux}/bin/bwmenu --rofi";
         "${cfg.config.modifier}+Return" = "exec rofi -show drun -show-icons";
         "${cfg.config.modifier}+semicolon" = "exec ${rofiWindowsSwitch}";
         "Print" = "exec ${grabScreenshot}";
         "${cfg.config.modifier}+Shift+v" = "exec clipman pick -t rofi";
+        "${cfg.config.modifier}+v" = "exec rofi-vpn";
         "${cfg.config.modifier}+Shift+e" = "exec rofi -show emoji -modi emoji";
         "${cfg.config.modifier}+Shift+q" =
           "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'systemctl --user stop graphical-session.target; systemctl --user stop sway-session.target; swaymsg exit'";
@@ -67,11 +69,8 @@ in {
         "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
         "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
 
-        "${cfg.config.modifier}+backslash" =
-          "exec ${inputs.bwmenu.defaultPackage.x86_64-linux}/bin/bwmenu";
-
-        "${cfg.config.modifier}+y" = "workspace next_on_output";
-        "${cfg.config.modifier}+p" = "workspace prev_on_output";
+        # "${cfg.config.modifier}+y" = "workspace next_on_output";
+        # "${cfg.config.modifier}+p" = "workspace prev_on_output";
 
         "${cfg.config.modifier}+tab" = "workspace im";
         "${cfg.config.modifier}+shift+tab" = "move container to workspace im";
@@ -79,37 +78,34 @@ in {
         "${cfg.config.modifier}+Shift+comma" = "move workspace to output left";
         "${cfg.config.modifier}+Shift+apostrophe" =
           "move workspace to output right";
-        "${cfg.config.modifier}+Shift+a" = "move workspace to output down";
-        "${cfg.config.modifier}+Shift+o" = "move workspace to output up";
+        "${cfg.config.modifier}+Shift+period" = "move workspace to output down";
+        "${cfg.config.modifier}+Shift+p" = "move workspace to output up";
         "${cfg.config.modifier}+comma" = "focus output left";
         "${cfg.config.modifier}+apostrophe" = "focus output right";
-        "${cfg.config.modifier}+a" = "focus output down";
-        "${cfg.config.modifier}+o" = "focus output up";
+        "${cfg.config.modifier}+period" = "focus output down";
+        "${cfg.config.modifier}+p" = "focus output up";
 
         "${cfg.config.modifier}+n" = "mode mako";
 
         "${cfg.config.modifier}+Shift+a" = "focus child";
 
-        # "${cfg.config.modifier}+x" = "mode layout";
-        # "${cfg.config.modifier}+v" = "nop reflect x";
-        # "${cfg.config.modifier}+h" = "nop reflect y";
-        # "${cfg.config.modifier}+t" = "nop transpose";
+        "${cfg.config.modifier}+Shift+s" = "sticky togge";
+
+        "${cfg.config.modifier}+x" = "mode layout";
 
         # "${cfg.config.modifier}+Shift+Left" = "nop move left";
-        # "${cfg.config.modifier}+Shift+Right" = "nop move reght";
+        # "${cfg.config.modifier}+Shift+Right" = "nop move right";
         # "${cfg.config.modifier}+Shift+Up" = "nop move up";
         # "${cfg.config.modifier}+Shift+Down" = "nop move down";
 
         # "${cfg.config.modifier}+f" = "nop fullscreen";
+        # "${cfg.config.modifier}+space" = "nop promote_window";
 
-        # "${cfg.config.modifier}+Return" = "nop promote_window";
-
-        # "${cfg.config.modifier}+j" = "nop focus_next_window";
+        # "${cfg.config.modifier}+j" = "nop focus_naext_window";
         # "${cfg.config.modifier}+k" = "nop focus_prev_window";
 
         # "${cfg.config.modifier}+Shift+j" = "nop swap_with_next_window";
         # "${cfg.config.modifier}+Shift+k" = "nop swap_with_prev_window";
-
       };
 
       keycodebindings = lib.mkOptionDefault { };
@@ -129,11 +125,16 @@ in {
         # layout = {
         #   Escape = "mode default";
         #   Return = "mode default";
-        #   t = "nop set_layout tall";
+        #   "t" = "nop set_layout tall";
         #   "3" = "nop set_layout 3_col";
         #   "n" = "nop set_layout nop";
         #   "i" = "nop increment_masters";
         #   "d" = "nop decrement_masters";
+        #   "x" = "nop reflect_x";
+        #   "y" = "nop reflect_y";
+        #   "z" = "nop transpose";
+
+        #   "Shift+t" = "layout tabbed";
         # };
       };
     };

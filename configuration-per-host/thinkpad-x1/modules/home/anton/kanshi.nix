@@ -68,6 +68,7 @@
             criteria = "Unknown Mi TV 0x00000001";
             status = "enable";
             mode = "1920x1080@59.940Hz";
+            position = "0,0";
           }
           {
             criteria = "DP-2";

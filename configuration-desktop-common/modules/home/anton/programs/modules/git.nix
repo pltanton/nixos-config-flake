@@ -10,7 +10,7 @@
     # };
     extraConfig = {
       url = {
-        "ssh://git@gitlab.ozon.ru/" = { insteadOf = "https://gitlab.ozon.ru/"; };
+        "ssh://git@gitlab.fix.ru/" = { insteadOf = "https://gitlab.fix.ru/"; };
       };
       url = { "git@github.com:" = { insteadOf = [ "https://github.com/" ]; }; };
     };

@@ -1,1 +1,2 @@
 fix.ru,host-contains,firefox -P nc
+rtbst.com.ru,host-contains,firefox -P nc

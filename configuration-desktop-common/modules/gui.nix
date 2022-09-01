@@ -34,7 +34,7 @@
   # programs.sway.enable = false;
   xdg.portal = lib.mkIf (!config.services.xserver.desktopManager.gnome.enable) {
     enable = true;
-    gtkUsePortal = true;
+    # gtkUsePortal = true;
     extraPortals = with pkgs; [ xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
   };
 

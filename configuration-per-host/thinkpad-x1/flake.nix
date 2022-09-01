@@ -5,9 +5,10 @@
     # Nixos related inputs
     nixpkgs-local.url = "github:pltanton/nixpkgs/master";
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.05";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nix.url = "github:nixos/nix";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -18,11 +19,17 @@
     # base16.url = "github:alukardbf/base16-nix";
     base16.url = "github:pltanton/base16-nix";
 
-    hyprland = {
-      url = "github:vaxerski/Hyprland";
-      # build with your own instance of nixpkgs
-      inputs.nixpkgs.follows = "nixpkgs";
+    jetbrains-flake = {
+      url =
+        "github:liff/jetbrains-flake/23dad5cf87c27cef3dd8cc927de1272d0c08119b";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      # build with your own instance of nixpkgs
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprpaper = { url = "github:hyprwm/hyprpaper"; };
     nix-alien = {
       url = "github:thiagokokada/nix-alien";
       inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
@@ -33,6 +40,10 @@
     };
     swaymonad = {
       url = "github:pltanton/swaymonad";
+      inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
+    };
+    mach-nix = {
+      url = "github:DavHau/mach-nix";
       inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
     };
 
@@ -48,7 +59,7 @@
     goose.url = "github:pressly/goose/v3.1.0";
     goose.flake = false;
 
-    doom-emacs.url = "github:hlissner/doom-emacs/develop";
+    doom-emacs.url = "github:doomemacs/doomemacs/master";
     doom-emacs.flake = false;
 
     fish-z-plugin.url = "github:jethrokuan/z";
@@ -64,7 +75,7 @@
   };
 
   outputs = { self, nixpkgs, home-manager, nur, nix-alien, emacs-overlay
-    , hyprland, ... }@inputs: {
+    , mach-nix, jetbrains-flake, hyprland, hyprpaper, ... }@inputs: {
       nixosConfigurations = let
         inherit (inputs.nixpkgs) lib;
 
@@ -86,10 +97,10 @@
           system = "x86_64-linux";
           specialArgs = commonSpecialArgs;
           modules = [
-            hyprland.nixosModules.default
-            {
-              programs.hyprland.enable = true;
-            }
+            # hyprland.nixosModules.default
+            # {
+            #   programs.hyprland.package = null;
+            # }
 
             # A host configuration itself
             (import ./configuration.nix)
@@ -111,21 +122,24 @@
             })
 
             ({ pkgs, ... }: {
-              nix = {
+              nix.settings = {
                 # add binary caches
                 # trusted-public-keys = [
-                binaryCachePublicKeys = [
+                trusted-users = [
                   "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
                   "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
                   "emacsng.cachix.org-1:i7wOr4YpdRpWWtShI8bT6V7lOTnPeI7Ho6HaZegFWMI="
                   "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+                  "liff.cachix.org-1:Uid73LCbEljychK4hx5pn3BkTehHPDBt+S717gFBp90="
+                  "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
                 ];
                 # binary-caches = [
-                binaryCaches = [
+                substituters = [
                   "https://nixpkgs-wayland.cachix.org"
                   "https://nix-community.cachix.org"
                   "https://emacsng.cachix.org"
                   "https://cache.nixos.org"
+                  "https://hyprland.cachix.org"
                 ];
               };
 
@@ -133,8 +147,15 @@
                 nur.overlay
                 emacs-overlay.overlay
                 nix-alien.overlay
+                jetbrains-flake.overlay
+                hyprland.overlays.default
+                hyprpaper.overlays.default
 
                 (final: prev: {
+                  unstable = import inputs.nixpkgs-unstable {
+                    system = "x86_64-linux";
+                    config.allowUnfree = true;
+                  };
                   master = import inputs.nixpkgs-master {
                     system = "x86_64-linux";
                     config.allowUnfree = true;

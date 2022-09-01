@@ -6,8 +6,10 @@ in with config.lib.base16.theme; {
   services.flashfocus.enable = false
     && config.wayland.windowManager.sway.enable;
   services.swaymonad.enable = false && config.wayland.windowManager.sway.enable;
-  services.clipman.enable = config.wayland.windowManager.sway.enable;
-  services.wob.enable = config.wayland.windowManager.sway.enable;
+  services.autotiling = {
+    enable = true && config.wayland.windowManager.sway.enable;
+    workspaces = "2 3 4 5 6 7 9 0";
+  };
 
   imports =
     [ ./keybinds.nix ./inputs.nix ./delay-systemd-service.nix ./services ];
@@ -51,7 +53,7 @@ in with config.lib.base16.theme; {
   };
 
   wayland.windowManager.sway = {
-    enable = true;
+    enable = false;
     package = swayPackage;
     systemdIntegration = true;
     wrapperFeatures = {
@@ -152,12 +154,14 @@ in with config.lib.base16.theme; {
           command =
             "mattermost-desktop --ozone-platform=wayland --enable-features=UseOzonePlatform";
         }
-        { command = "keyctl link @u @s"; }
         {
-          command =
-            "exec ${pkgs.master.autotiling}/bin/autotiling -w 2 3 4 5 6 7 9 0";
-          always = true;
+          command = "keyctl link @u @s";
         }
+        # {
+        #   command =
+        #     "exec ${pkgs.master.autotiling}/bin/autotiling -w 2 3 4 5 6 7 9 0";
+        #   always = true;
+        # }
       ];
 
       assigns = {

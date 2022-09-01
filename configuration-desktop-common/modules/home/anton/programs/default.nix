@@ -1,11 +1,18 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, ... }:
+let
+  tilingEnabled = config.wayland.windowManager.sway.enable
+    || config.wayland.windowManager.hyprland.enable;
+in {
+
   imports = builtins.map (name: ./modules + "/${name}")
     (builtins.attrNames (builtins.readDir ./modules));
 
   services = {
-    network-manager-applet.enable = config.wayland.windowManager.sway.enable;
-    blueman-applet.enable = config.wayland.windowManager.sway.enable;
-    nextcloud-client.enable = config.wayland.windowManager.sway.enable;
-    udiskie.enable = config.wayland.windowManager.sway.enable;
+    network-manager-applet.enable = tilingEnabled;
+    blueman-applet.enable = tilingEnabled;
+    nextcloud-client.enable = tilingEnabled;
+    udiskie.enable = tilingEnabled;
+    clipman.enable = tilingEnabled;
+    wob.enable = tilingEnabled;
   };
 }

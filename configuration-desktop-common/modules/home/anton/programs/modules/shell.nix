@@ -1,26 +1,27 @@
-{ pkgs, inputs, ... }: {
-  home.packages = with pkgs; [ fasd fzf grc ];
+{ pkgs, inputs, lib, ... }: {
+  home = {
+    packages = with pkgs; [ fasd fzf grc ];
 
-  home.sessionPath = [ "/home/anton/go/bin" ];
+    sessionPath = [ "/home/anton/go/bin" ];
 
-  home.sessionVariables = {
-    # Wayland enable
-    NIXOS_OZONE_WL = "1";
-    SDL_VIDEODRIVER = "wayland";
-    QT_QPA_PLATFORM = "wayland";
-    # MOZ_ENABLE_WAYLAND = 1;
-    _JAVA_AWT_WM_NONREPARENTING = 1;
-    GDK_BACKEND = "wayland";
+    sessionVariables = rec {
+      KUBECONFIG = "/home/anton/.kube/config";
 
-    KUBECONFIG = "/home/anton/.kube/config";
+      NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [ pkgs.stdenv.cc.cc ];
+      LD_LIBRARY_PATH = lib.makeLibraryPath [ pkgs.stdenv.cc.cc ];
+      NIX_LD = pkgs.binutils.dynamicLinker;
+    };
   };
 
   programs.fish = {
     enable = true;
 
-    shellInit = ''
-      go env -w GOPROXY=https://athens.s.o3.ru,https://proxy.golang.org,direct
-    '';
+    shellInit = "";
+
+    functions = {
+      gitignore = "curl -sL https://www.gitignore.io/api/$argv";
+      shell = "nix shell n#$argv";
+    };
 
     plugins = with pkgs.fishPlugins; [
       {
