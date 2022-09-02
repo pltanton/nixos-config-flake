@@ -17,12 +17,13 @@
     ];
     timeouts = [
       {
-        timeout = 300;
+        timeout = 200;
         command = "lock";
       }
       {
-        timeout = 600;
+        timeout = 300;
         command = "hyprctl dispatch dpms off";
+        resumeCommand = "hyprctl dispatch dpms on";
       }
     ];
   };

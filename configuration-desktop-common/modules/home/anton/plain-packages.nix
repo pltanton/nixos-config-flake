@@ -24,7 +24,7 @@
       pcmanfm
 
       # Fonts
-      font-awesome_5
+      font-awesome
       emojione
       iosevka
       inter
@@ -52,7 +52,6 @@
       btop
       inetutils
       nfs-utils
-      ddcutil # utility to control external monitor brightness
 
       tmux
       unzip

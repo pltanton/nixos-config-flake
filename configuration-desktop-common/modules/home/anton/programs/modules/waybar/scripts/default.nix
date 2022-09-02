@@ -1,3 +1,1 @@
-{ pkgs, ... }@input: {
-  mediaplayer = import ./mediaplayer.nix input;
-}
+{ pkgs, ... }@input: { mediaplayer = import ./mediaplayer.nix input; }

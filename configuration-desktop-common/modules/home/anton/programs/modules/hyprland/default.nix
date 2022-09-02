@@ -1,9 +1,11 @@
 { config, lib, pkgs, inputs, ... }: {
   imports = [
     inputs.hyprland.homeManagerModules.default
-    ./config.nix
+    ./config
     ./hyprpaper.nix
     ./swayidle.nix
+    ./targets.nix
+    ./targets-config.nix
   ];
 
   wayland.windowManager.hyprland = {
@@ -18,9 +20,9 @@
     lib.mkIf config.wayland.windowManager.hyprland.enable ''
       set TTY1 (tty)
       if test -z "$DISPLAY"; and test $TTY1 = "/dev/tty1"
-        exec sh -c 'XCURSOR_SIZE=${
-          toString config.lib.base16.theme.cursorSize
-        } Hyprland; systemctl --user stop hyprland-session.target; systemctl --user stop graphical-session.target'
+        export XCURSOR_SIZE=${toString config.lib.base16.theme.cursorSize}
+        systemctl --user import-environment PATH
+        exec sh -c 'Hyprland; systemctl --user stop hyprland-session.target; systemctl --user stop graphical-session.target'
       end
     '';
 
@@ -38,6 +40,8 @@
 
       XDG_CURRENT_DESKTOP = "hyprland";
       XDG_SESSION_TYPE = "wayland";
+      XDG_DATA_DIRS =
+        "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:$XDG_DATA_DIRS";
 
       WLR_DRM_NO_MODIFIERS = 1;
 

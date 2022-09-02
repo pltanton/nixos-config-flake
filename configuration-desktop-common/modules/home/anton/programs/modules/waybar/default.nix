@@ -15,26 +15,42 @@ in {
     settings = [{
       layer = "top";
       position = "top";
-      height = 42;
-      # modules-left = [ "wlr/workspaces" "sway/workspaces" "sway/mode" ];
-      modules-left = [ "wlr/workspaces" ];
-      # modules-center = [ "sway/window" ];
+      height = 49;
+      modules-left = [ "cpu" "memory" ];
+      modules-center = [ "wlr/workspaces" ];
       modules-right = [
         "custom/spotify"
         "tray"
-        "pulseaudio"
-        # "network#ethernet"
-        # "network#wifi"
-        "battery"
         "clock"
+        "keyboard-state"
+        "pulseaudio"
+        "battery"
         "idle_inhibitor"
-        # "sway/language"
       ];
       idle_inhibitor = {
         format = "{icon}";
         format-icons = {
           activated = "";
           deactivated = "";
+        };
+      };
+      "memory" = {
+        "interval" = 30;
+        "format" = "{}% ";
+        "max-length" = 10;
+      };
+      "cpu" = {
+        "interval" = 10;
+        "format" = "{}% ";
+        "max-length" = 10;
+      };
+      "keyboard-state" = {
+        "numlock" = false;
+        "capslock" = true;
+        "format" = "{name} {icon}";
+        "format-icons" = {
+          "locked" = "";
+          "unlocked" = "";
         };
       };
       "sway/mode" = { format = ''<span style="italic">{}</span>''; };
@@ -89,22 +105,6 @@ in {
         format = "{capacity}% {icon}";
         format-icons = [ "" "" "" "" "" ];
       };
-      # "network#wifi" = {
-      #   interface = "wlp0s20f3";
-      #   format = "{essid} ({signalStrength}%) ";
-      #   format-disconnected = "";
-      #   tooltip-format-wifi = "{essid} ({signalStrength}%) ";
-      #   tooltip-format-disconnected = "Disconnected";
-      #   max-length = 50;
-      # };
-      # "network#ethernet" = {
-      #   interface = "enp0s31f6";
-      #   format = "";
-      #   format-disconnected = "";
-      #   tooltip-format-ethernet = "{ifname} ";
-      #   tooltip-format-disconnected = "Disconnected";
-      #   max-length = 50;
-      # };
       pulseaudio = {
         format = "{volume}% {icon}";
         format-bluetooth = "{volume}% {icon}";
@@ -125,7 +125,7 @@ in {
         max-length = 40;
         interval = 1;
         exec = "${scripts.mediaplayer} 2> /dev/null";
-        exec-if = "pgrep spotify";
+        exec-if = "${pkgs.busybox}/bin/pgrep spotify";
       };
       "sway/language" = { "format" = "{short}"; };
     }];

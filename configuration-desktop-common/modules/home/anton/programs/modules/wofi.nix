@@ -1,9 +1,13 @@
-{pkgs, config, ...}: let
+{ pkgs, config, ... }:
+let
   configDir = "${config.xdg.configHome}/wofi";
   styleFile = "${configDir}/style.css";
   configFile = "${configDir}/config";
   toRgba = let t = config.lib.base16.theme;
-           in col: opacity: "rgba(${t."base${col}-rgb-r"},${t."base${col}-rgb-g"},${t."base${col}-rgb-b"},${opacity})";
+  in col: opacity:
+  "rgba(${t."base${col}-rgb-r"},${t."base${col}-rgb-g"},${
+    t."base${col}-rgb-b"
+  },${opacity})";
 in {
   home.packages = with pkgs; [ wofi ];
 
