@@ -21,6 +21,7 @@ let
       cursorTheme = theme.cursorTheme;
       cursorSize = toString theme.cursorSize;
 
+      base00_hex = base01-hex;
       base01_hex = base01-hex;
       base02_hex = base02-hex;
       base03_hex = base03-hex;
