@@ -21,22 +21,22 @@ let
       cursorTheme = theme.cursorTheme;
       cursorSize = toString theme.cursorSize;
 
-      base00_hex = base01-hex;
-      base01_hex = base01-hex;
-      base02_hex = base02-hex;
-      base03_hex = base03-hex;
-      base04_hex = base04-hex;
-      base05_hex = base05-hex;
-      base06_hex = base06-hex;
-      base07_hex = base07-hex;
-      base08_hex = base08-hex;
-      base09_hex = base09-hex;
-      base0A_hex = base0A-hex;
-      base0B_hex = base0B-hex;
-      base0C_hex = base0C-hex;
-      base0D_hex = base0D-hex;
-      base0E_hex = base0E-hex;
-      base0F_hex = base0F-hex;
+      base0 = base00-hex;
+      base1 = base01-hex;
+      base2 = base02-hex;
+      base3 = base03-hex;
+      base4 = base04-hex;
+      base5 = base05-hex;
+      base6 = base06-hex;
+      base7 = base07-hex;
+      base8 = base08-hex;
+      base9 = base09-hex;
+      baseA = base0A-hex;
+      baseB = base0B-hex;
+      baseC = base0C-hex;
+      baseD = base0D-hex;
+      baseE = base0E-hex;
+      baseF = base0F-hex;
 
       inherit (theme) fontUIName;
     });

@@ -8,10 +8,9 @@
 }
 
 window#waybar {
-  background: #@backgroundColor_hex@;
-  /* background: rgba(0,0,0,0); */
+  background: #@backgroundColor@;
   background-clip: padding-box;
-  color: #@base05_hex@;
+  color: #@base5@;
   padding: 0 4px 0 4px;
 }
 
@@ -23,31 +22,30 @@ window#waybar.hidden {
 #workspaces button {
   padding: 0 8px;
   background: transparent;
-  color: #@base05_hex@;
+  color: #@base5@;
 }
 
 #workspaces button.visible {
-  background: #@base00_hex@;
-  border-bottom: 3px solid #@base00_hex@;
+  background: #@base0@;
+  border-bottom: 3px solid #@base0@;
 }
 
 #workspaces button.focused {
-  background: #@base00_hex@;
-  border-bottom: 3px solid #@base0D_hex@;
+  background: #@base0@;
+  border-bottom: 3px solid #@baseD@;
 }
 
 #workspaces button.active {
-  background: #@base00_hex@;
-  border-bottom: 3px solid #@base0D_hex@;
+  background: #@base0@;
+  border-bottom: 3px solid #@baseD@;
 }
 
 #workspaces button.urgent {
-  background-color: #@base08_hex@;
+  background-color: #@base8@;
 }
 
 #mode {
   background: #64727d;
-  /* border-bottom: 3px solid #@base05_hex@; */
 }
 
 #clock,
@@ -65,7 +63,7 @@ window#waybar.hidden {
 #custom-spotify,
 #custom-layout,
 #language {
-  background-color: #@base01_hex@;
+  background-color: #@base1@;
   padding: 0 12px;
   margin: 9px 4px 9px 4px;
   border-radius: 10px;
@@ -79,26 +77,24 @@ window#waybar.hidden {
 }
 
 #battery {
-  /* border-bottom: 3px solid #@base0D_hex@; */
-  background-color: #@base0D_hex@;
-  color: #@backgroundColor_hex@;
+  background-color: #@baseD@;
+  color: #@backgroundColor@;
 }
 
 #battery.charging {
-  /* border-bottom: 3px solid #@base0B_hex@; */
-  background-color: #@base0C_hex@;
-  color: #@base05_hex@;
+  background-color: #@baseC@;
+  color: #@base5@;
 }
 
 @keyframes blink {
   to {
-    background-color: #@base05_hex@;
+    background-color: #@base5@;
     color: #000000;
   }
 }
 
 #battery.critical:not(.charging) {
-  background: #@base08_hex@;
+  background: #@base8@;
   color: #ffffff;
   animation-name: blink;
   animation-duration: 0.5s;
@@ -108,14 +104,14 @@ window#waybar.hidden {
 }
 
 #cpu {
-  background: #@base07_hex@;
-  color: #@base04_hex@;
-  color: #@backgroundColor_hex@;
+  background: #@base7@;
+  color: #@base4@;
+  color: #@backgroundColor@;
 }
 
 #memory {
-  background: #@base0E_hex@;
-  color: #@backgroundColor_hex@;
+  background: #@baseE@;
+  color: #@backgroundColor@;
 }
 
 #backlight {
@@ -123,13 +119,13 @@ window#waybar.hidden {
 }
 
 #network {
-  background-color: #@base0B_hex@;
-  color: #@base01_hex@;
+  background-color: #@baseB@;
+  color: #@base1@;
 }
 
 #network.disabled {
   background: #f53c3c;
-  color: #@base01_hex@;
+  color: #@base1@;
 }
 
 #network.disconnected {
@@ -137,16 +133,14 @@ window#waybar.hidden {
 }
 
 #pulseaudio {
-  /* border-bottom: 3px solid #@base0A_hex@; */
-  background-color: #@base0A_hex@;
+  background-color: #@baseA@;
   min-width: 1.5em;
-  color: #@backgroundColor_hex@;
+  color: #@backgroundColor@;
 }
 
 #pulseaudio.muted {
-  background-color: #@base02_hex@;
-  /* border-bottom: 3px solid #@base01_hex@; */
-  color: #@base00_hex@;
+  background-color: #@base2@;
+  color: #@base0@;
 }
 
 #custom-media {
@@ -162,20 +156,17 @@ window#waybar.hidden {
 }
 
 #idle_inhibitor.deactivated {
-  color: #@base05_hex@;
-  background-color: #@base01_hex@;
+  color: #@base5@;
+  background-color: #@base1@;
 }
 
 #idle_inhibitor.activated {
-  background-color: #@base05_hex@;
-  color: #@base01_hex@;
-  /* color: #@base04_hex@;
-    color: #@base05_hex@;
-    border-bottom: 3px solid #@base06_hex@; */
+  background-color: #@base5@;
+  color: #@base1@;
 }
 
 #custom-spotify {
-  color: #@base01_hex@;
+  color: #@base1@;
   background-color: #1db954;
 }
 
