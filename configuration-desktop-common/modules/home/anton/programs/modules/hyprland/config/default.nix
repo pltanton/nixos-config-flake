@@ -15,6 +15,7 @@ let
 
       glib = "${pkgs.glib}/bin/gsettings";
       brightness = "${pkgs.brightness}/bin/brightness";
+      xprop = "${pkgs.xorg.xprop}/bin/xprop";
 
       gtkTheme = theme.gtkTheme;
       iconTheme = theme.iconTheme;

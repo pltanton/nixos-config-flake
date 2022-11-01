@@ -77,6 +77,6 @@ in {
 
   home.sessionVariables = {
     XCURSOR_THEME = themeConsts.cursorTheme;
-    XCURSOR_SIZE = themeConsts.cursorSize;
+    # XCURSOR_SIZE = themeConsts.cursorSize;
   };
 }

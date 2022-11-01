@@ -89,7 +89,7 @@ in {
       "wlr/workspaces" = {
         format = "{name}: {icon}";
         # sort-by-coordinates = false;
-        sort-by-name = true;
+        sort-by-number = true;
         on-click = "activate";
         on-scroll-up = "hyprctl dispatch workspace e+1";
         on-scroll-down = "hyprctl dispatch workspace e-1";

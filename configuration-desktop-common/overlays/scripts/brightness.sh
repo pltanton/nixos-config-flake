@@ -44,6 +44,7 @@ NEXT_DDC_EXECUTION_FILE="/tmp/brightness_next_ddc_execution"
 
 cur_time=$(($(date +%s3%N)))
 
+next_ddc_execution=0
 if [ -f "$NEXT_DDC_EXECUTION_FILE" ]; then
   next_ddc_execution=$(<"$NEXT_DDC_EXECUTION_FILE")
 fi

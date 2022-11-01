@@ -3,8 +3,6 @@
     lib.mkIf true [
       hack-font
 
-      gnuplot
-
       nixfmt
       shfmt
 
@@ -80,7 +78,6 @@
       slack
 
       inputs.activate-linux.defaultPackage.x86_64-linux
-      master.zoom-us
 
       thunderbird-wayland
       bitwarden
@@ -107,7 +104,6 @@
       coreutils
       grpc
       grpcurl # grpc client
-      graphviz
       nodejs
       # intellij-idea-ultimate
       # master.jetbrains.idea-community
@@ -156,8 +152,6 @@
       gnumake
       zip
 
-      # stable.awscli2
-      # stable.aws-sam-cli
       steam-run-native
     ];
 }

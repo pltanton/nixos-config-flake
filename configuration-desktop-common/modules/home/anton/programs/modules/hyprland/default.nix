@@ -26,8 +26,11 @@
       end
     '';
 
-  home.sessionVariables =
+  home.sessionVariables = with config.lib.base16.theme;
     lib.mkIf config.wayland.windowManager.hyprland.enable {
+      GDK_SCALE = "2";
+      XCURSOR_SIZE = toString (cursorSize * 2);
+
       WLR_DRM_NO_ATOMIC = "1";
       XDG_DATA_DIRS =
         "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:$XDG_DATA_DIRS";
