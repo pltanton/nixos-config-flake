@@ -38,8 +38,8 @@ in {
         "clock"
         "pulseaudio"
         "battery"
-        # "hyprland/language"
         "custom/kbd"
+        # "hyprland/language"
       ];
       idle_inhibitor = {
         format = "{icon}";

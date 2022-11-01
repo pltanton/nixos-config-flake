@@ -3,7 +3,7 @@
   xdg.icons.enable = true;
 
   # Gnome system packages
-  services.gnome.chrome-gnome-shell.enable =
+  services.gnome.gnome-browser-connector.enable =
     config.services.xserver.desktopManager.gnome.enable;
   environment.systemPackages = with pkgs;
     lib.mkIf (config.services.xserver.desktopManager.gnome.enable) [

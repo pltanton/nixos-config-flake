@@ -9,7 +9,6 @@
 
 window#waybar {
   background: transparent;
-  color: #@base5@;
   border-radius: 14px;
 }
 
@@ -66,12 +65,12 @@ window#waybar.hidden {
 
 #battery {
   background-color: #@baseD@;
-  color: #@base1@;
+  color: #@backgroundColor@;
 }
 
 #battery.charging {
   background-color: #@baseC@;
-  color: #@base1@;
+  color: #@backgroundColor@;
 }
 
 @keyframes blink {
@@ -91,11 +90,11 @@ window#waybar.hidden {
   animation-direction: alternate;
 }
 
-#cpu {
-  background: #@base7@;
-  color: #@base4@;
-  color: #@backgroundColor@;
-}
+/* #cpu { */
+/*   background: #@base7@; */
+/*   color: #@base4@; */
+/*   color: #@backgroundColor@; */
+/* } */
 
 #memory {
   background: #@baseE@;
@@ -192,4 +191,10 @@ window#waybar.hidden {
 #workspaces button.urgent {
   color: #@base0@;
   background-color: #@base8@;
+}
+
+label:disabled,
+button:disabled {
+  color: inherit;
+  background-image: none;
 }
