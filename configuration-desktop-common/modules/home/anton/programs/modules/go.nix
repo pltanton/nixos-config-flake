@@ -5,7 +5,7 @@
     packages = { "github.com/pressly/goose/v3/cmd/goose" = inputs.goose; };
   };
 
-  home.packages = with pkgs.master;
+  home.packages = with pkgs;
     lib.mkIf config.programs.go.enable [
       delve # Go debugging tool
       gocode
@@ -13,7 +13,6 @@
       gotools
       golangci-lint
       gomodifytags
-      gopls
       gore
       gotests
       gotools
@@ -21,5 +20,6 @@
       go-outline
       gopkgs
       go-tools
+      cobra-cli
     ];
 }

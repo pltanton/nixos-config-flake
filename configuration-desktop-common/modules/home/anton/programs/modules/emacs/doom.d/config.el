@@ -1,20 +1,15 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets.
-;; (setq gc-cons-threshold 1000000000)
-;; (setq read-process-output-max (* 3 (* 1024 1024))) ;; 1mb
-;; (setq redisplay-dont-pause t)
+(setq fancy-splash-image "$DOOMDIR/images/Emacs-logo-vim.svg")
 
-
-(setq user-full-name "Anton Plotnikov"
+(setq  user-full-name "Anton Plotnikov"
       user-mail-address "plotnikovanton@gmail.com")
 
 (setq doom-theme 'doom-nord)
 
 ;; (setq display-line-numbers-type "relative")
 
-(setq doom-font (font-spec :family "Iosevka" :size 30))
+(setq doom-font (font-spec :family "Iosevka" :size 23))
 
 (make-directory "~/org" t)
 (setq org-directory "~/org")
@@ -143,10 +138,10 @@
 
 
 ;; Org mode jira
-(make-directory "~/.org-jira" t)
-(setq jiralib-url "https://jira.fix.ru")
-(after! auth-source
-  (setq jiralib-token
-        (cons "Authorization"
-              (concat "Bearer " (auth-source-pick-first-password
-                                 :host "jira.fix.ru")))))
+;; (make-directory "~/.org-jira" t)
+;; (setq jiralib-url "https://jira.fix.ru")
+;; (after! auth-source
+;;   (setq jiralib-token
+;;         (cons "Authorization"
+;;               (concat "Bearer " (auth-source-pick-first-password
+;;                                  :host "jira.fix.ru")))))

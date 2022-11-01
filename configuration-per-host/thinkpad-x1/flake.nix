@@ -3,7 +3,8 @@
 
   inputs = {
     # Nixos related inputs
-    nixpkgs-local.url = "github:pltanton/nixpkgs/master";
+    # nixpkgs-local.url = "github:pltanton/nixpkgs/master";
+    nixpkgs-local.url = "path:/home/anton/Workdir/nixpkgs";
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.05";
@@ -14,8 +15,8 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Home-manager and modules
-    # home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.url = "github:nix-community/home-manager/release-22.05";
+    home-manager.url = "github:nix-community/home-manager/master";
+    # home-manager.url = "github:nix-community/home-manager/release-22.05";
     # base16.url = "github:alukardbf/base16-nix";
     base16.url = "github:pltanton/base16-nix";
 
@@ -26,8 +27,12 @@
     };
     hyprland = {
       url = "github:hyprwm/Hyprland";
+      # url = "github:tomahk/Hyprland";
+      # url = "path:/home/anton/Workdir/Hyprland";
       # build with your own instance of nixpkgs
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.wlroots.url =
+      #   "gitlab:wlroots/wlroots/7c575922c05e4d5fd9a403c2aa631a54c7531d44?host=gitlab.freedesktop.org";
     };
     hyprpaper = { url = "github:hyprwm/hyprpaper"; };
     nix-alien = {
@@ -59,7 +64,7 @@
     goose.url = "github:pressly/goose/v3.1.0";
     goose.flake = false;
 
-    doom-emacs.url = "github:doomemacs/doomemacs/master";
+    doom-emacs.url = "github:doomemacs/doomemacs";
     doom-emacs.flake = false;
 
     fish-z-plugin.url = "github:jethrokuan/z";
@@ -170,7 +175,7 @@
                   };
                 })
 
-                # inputs.nixpkgs-wayland.overlay
+                inputs.nixpkgs-wayland.overlay
               ];
             })
           ];

@@ -4,10 +4,14 @@ in {
   imports = [ ./style.nix ];
 
   programs.waybar = with config.lib.base16.theme; {
-    package = if config.wayland.windowManager.sway.enable then
-      pkgs.waybar
-    else
-      pkgs.waybar-hyprland;
+    # package = pkgs.waybar.overrideAttrs (oldAttrs: {
+    #   mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    # });
+    # package = if config.wayland.windowManager.sway.enable then
+    #   pkgs.waybar
+    # else
+    #   pkgs.waybar-hyprland;
+    # package = pkgs.waybar-hyprland;
     enable = config.wayland.windowManager.sway.enable
       || config.wayland.windowManager.hyprland.enable;
     # enable = true;
@@ -15,17 +19,27 @@ in {
     settings = [{
       layer = "top";
       position = "top";
-      height = 49;
-      modules-left = [ "cpu" "memory" ];
-      modules-center = [ "wlr/workspaces" ];
-      modules-right = [
+      height = 29;
+      margin = "12 18 0 18";
+      modules-left = [
+        # "sway/worspaces"
+        "wlr/workspaces"
         "custom/spotify"
+        "custom/submap"
+        # "sway/mode"
+      ];
+      modules-center = [
+        "hyprland/window"
+
+      ];
+      modules-right = [
         "tray"
+        "idle_inhibitor"
         "clock"
-        "keyboard-state"
         "pulseaudio"
         "battery"
-        "idle_inhibitor"
+        # "hyprland/language"
+        "custom/kbd"
       ];
       idle_inhibitor = {
         format = "{icon}";
@@ -36,12 +50,12 @@ in {
       };
       "memory" = {
         "interval" = 30;
-        "format" = "{}% ";
+        "format" = " {}%";
         "max-length" = 10;
       };
       "cpu" = {
         "interval" = 10;
-        "format" = "{}% ";
+        "format" = " {}%";
         "max-length" = 10;
       };
       "keyboard-state" = {
@@ -74,8 +88,11 @@ in {
       };
       "wlr/workspaces" = {
         format = "{name}: {icon}";
-        sort-by-coordinates = true;
+        # sort-by-coordinates = false;
+        sort-by-name = true;
         on-click = "activate";
+        on-scroll-up = "hyprctl dispatch workspace e+1";
+        on-scroll-down = "hyprctl dispatch workspace e-1";
         format-icons = {
           "1" = "";
           "2" = "";
@@ -102,12 +119,12 @@ in {
           warning = 30;
           critical = 15;
         };
-        format = "{capacity}% {icon}";
+        format = "{icon} {capacity}%";
         format-icons = [ "" "" "" "" "" ];
       };
       pulseaudio = {
-        format = "{volume}% {icon}";
-        format-bluetooth = "{volume}% {icon}";
+        format = "{icon} {volume}%";
+        format-bluetooth = "{icon} {volume}%";
         format-muted = "";
         format-icons = {
           headphones = "";
@@ -123,11 +140,29 @@ in {
       "custom/spotify" = {
         format = " {}";
         max-length = 40;
+        on-click = "playerctl play-pause";
         interval = 1;
-        exec = "${scripts.mediaplayer} 2> /dev/null";
+        exec = "${scripts.mediaplayer}/bin/mediaplayer 2> /dev/null";
         exec-if = "${pkgs.busybox}/bin/pgrep spotify";
       };
+      "custom/submap" = {
+        format = "{}";
+        return-type = "json";
+        exec = "${scripts.hyprland-submap}/bin/hyprland-submap";
+      };
+      "custom/kbd" = {
+        format = "{}";
+        return-type = "json";
+        exec = "${scripts.hyprland-kbd}/bin/hyprland-kbd";
+      };
       "sway/language" = { "format" = "{short}"; };
+      "hyprland/window" = { "format" = "{}"; };
+      "hyprland/language" = {
+        "format" = "{}";
+        "format-en" = "en";
+        "format-ru" = "ru";
+        # "keyboard-name" = "AT Translated Set 2 keyboard";
+      };
     }];
   };
 }

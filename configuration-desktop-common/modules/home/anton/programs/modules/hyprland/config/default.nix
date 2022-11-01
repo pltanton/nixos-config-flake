@@ -47,10 +47,6 @@ in {
       wl-clipboard
 
       clipman
-      # For screenshots
-      grim
-      slurp
-      swappy
 
       swaylock-fancy
       wofi-emoji
@@ -58,6 +54,7 @@ in {
 
       # Scripts
       brightness
+      screenshot
     ]);
 
   wayland.windowManager.hyprland = {

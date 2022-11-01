@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, secrets, ... }:
 
 {
   services = {
@@ -13,6 +13,7 @@
         #extendedLogging = true;
         rocketPort = 8222;
       };
+      environmentFile = "/root/vaultvarden.env";
     };
   };
 

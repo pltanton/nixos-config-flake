@@ -4,7 +4,8 @@
   imports = (builtins.map (name: ./modules + "/${name}")
     (builtins.attrNames (builtins.readDir ./modules)));
 
-  time.timeZone = "Europe/Moscow";
+  # time.timeZone = "Europe/Moscow";
+  time.timeZone = "Asia/Nicosia";
 
   nixpkgs.overlays = [
     (import ./overlays/customPackages.nix inputs)

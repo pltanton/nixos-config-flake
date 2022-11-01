@@ -9,6 +9,7 @@
     package = pkgs.firefox-wayland;
     #   extraPolicies = { ExtensionSettings = { }; };
     # };
+    # enableGnomeExtensions = true;
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
       bitwarden
       ublock-origin
@@ -17,6 +18,7 @@
       foxyproxy-standard
       multi-account-containers
       sponsorblock
+      vimium
 
       pkgs.nur.repos.ethancedwards8.firefox-addons.enhancer-for-youtube
     ];
@@ -28,6 +30,7 @@
           "browser.startup.homepage" = "https://start.duckduckgo.com";
           "gfx.webrender.all" = true;
           "layout.css.devPixelsPerPx" = "-1.0";
+          "privacy.webrtc.legacyGlobalIndicator" = false;
         };
         # userChrome = ''
         #   #TabsToolbar {

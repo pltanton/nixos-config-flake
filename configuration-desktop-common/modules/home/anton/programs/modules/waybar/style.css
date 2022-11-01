@@ -3,46 +3,28 @@
   border-radius: 0;
   font-family: @fontUIName@, "Font Awesome 6", "SFNS Display", Helvetica, Arial,
     sans-serif;
-  font-size: 18.5px;
+  font-size: 16.5px;
   min-height: 0;
 }
 
 window#waybar {
-  background: #@backgroundColor@;
-  background-clip: padding-box;
+  background: transparent;
   color: #@base5@;
-  padding: 0 4px 0 4px;
+  border-radius: 14px;
+}
+
+.modules-left {
+  /* padding-left: 10px; */
+}
+
+.modules-right {
+  /* padding-right: 10px; */
 }
 
 window#waybar.hidden {
   opacity: 0;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#workspaces button {
-  padding: 0 8px;
-  background: transparent;
-  color: #@base5@;
-}
-
-#workspaces button.visible {
-  background: #@base0@;
-  border-bottom: 3px solid #@base0@;
-}
-
-#workspaces button.focused {
-  background: #@base0@;
-  border-bottom: 3px solid #@baseD@;
-}
-
-#workspaces button.active {
-  background: #@base0@;
-  border-bottom: 3px solid #@baseD@;
-}
-
-#workspaces button.urgent {
-  background-color: #@base8@;
-}
 
 #mode {
   background: #64727d;
@@ -61,19 +43,25 @@ window#waybar.hidden {
 #mode,
 #idle_inhibitor,
 #custom-spotify,
+#workspaces button,
 #custom-layout,
+#custom-submap,
+#custom-kbd,
+#window,
 #language {
-  background-color: #@base1@;
+  background-color: #@base5@;
+  color: #@base1@;
   padding: 0 12px;
-  margin: 9px 4px 9px 4px;
-  border-radius: 10px;
+  margin: 0 8px;
+  border-radius: 6px;
   background-clip: padding-box;
 }
 
 #clock {
+  /* color: #@base5@; */
 }
 
-#custom-layout {
+#custom-submap {
 }
 
 #battery {
@@ -83,7 +71,7 @@ window#waybar.hidden {
 
 #battery.charging {
   background-color: #@baseC@;
-  color: #@base5@;
+  color: #@backgroundColor@;
 }
 
 @keyframes blink {
@@ -149,6 +137,7 @@ window#waybar.hidden {
 }
 
 #tray {
+  background: transparent;
 }
 
 #idle_inhibitor {
@@ -157,7 +146,8 @@ window#waybar.hidden {
 
 #idle_inhibitor.deactivated {
   color: #@base5@;
-  background-color: #@base1@;
+  /* background-color: #@base1@; */
+  background-color: transparent;
 }
 
 #idle_inhibitor.activated {
@@ -170,6 +160,36 @@ window#waybar.hidden {
   background-color: #1db954;
 }
 
+#custom-kbd,
 #language {
   min-width: 1.5em;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button {
+  padding: 0 6px;
+  background-color: #@base5@;
+  color: #@base0@;
+}
+
+#workspaces button.visible {
+  background-color: #@base5@;
+  color: #@base0@;
+  /* border-bottom: 3px solid #@base0@; */
+}
+
+#workspaces button.focused {
+  background-color: #@base5@;
+  /* border-bottom: 3px solid #@baseD@; */
+}
+
+#workspaces button.active {
+  background-color: #@baseD@;
+  color: #@base0@;
+  /* border-bottom: 3px solid #@baseD@; */
+}
+
+#workspaces button.urgent {
+  color: #@base0@;
+  background-color: #@base8@;
 }

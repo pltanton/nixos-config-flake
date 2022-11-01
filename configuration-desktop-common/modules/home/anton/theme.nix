@@ -2,9 +2,9 @@
 let
   themeConsts = {
     fontConsoleName = "Iosevka";
-    fontConsoleSize = "21";
+    fontConsoleSize = "17";
     fontUIName = "Inter";
-    fontUISize = "16";
+    fontUISize = "15";
     # iconTheme = "Adwaita";
     # iconTheme = "Qogir-dark";
     iconTheme = "Papirus-Dark";
@@ -13,8 +13,10 @@ let
     # cursorTheme = "Qogir-dark";
     # cursorTheme = "Adwaita";
     cursorTheme = "phinger-cursors";
-    cursorSize = 48;
+    cursorSize = 32;
   };
+  tilingWM = true && (config.wayland.windowManager.sway.enable
+    || config.wayland.windowManager.hyprland.enable);
 in {
   home.packages = [
     pkgs.qogir-theme
@@ -23,7 +25,7 @@ in {
     pkgs.hicolor-icon-theme
     pkgs.papirus-icon-theme
     pkgs.master.phinger-cursors
-    pkgs.gnome3.adwaita-icon-theme
+    pkgs.gnome.adwaita-icon-theme
   ];
   themes.base16 = {
     enable = true;
@@ -35,7 +37,7 @@ in {
   };
 
   gtk = {
-    enable = config.wayland.windowManager.sway.enable;
+    enable = tilingWM;
     theme = {
       # package = pkgs.qogir-theme;
       package = pkgs.nordic;
@@ -56,7 +58,7 @@ in {
   };
 
   qt = {
-    enable = true;
+    enable = tilingWM;
     platformTheme = "gtk";
   };
 
@@ -65,12 +67,12 @@ in {
   #   Inherits=${themeConsts.cursorTheme}
   # '';
 
-  home.pointerCursor = lib.mkIf config.wayland.windowManager.sway.enable {
+  home.pointerCursor = lib.mkIf tilingWM {
     package = pkgs.qogir-icon-theme;
     name = themeConsts.cursorTheme;
     size = themeConsts.cursorSize;
-    x11.enable = true;
-    gtk.enable = true;
+    x11.enable = tilingWM;
+    gtk.enable = tilingWM;
   };
 
   home.sessionVariables = {

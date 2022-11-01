@@ -10,5 +10,9 @@
     width = 500;
     height = 800;
     output = "DP-1";
+    extraConfig = ''
+      [mode=do-not-disturb]
+      invisible=1
+    '';
   };
 }

@@ -33,6 +33,7 @@
           "scanner"
           "vboxusers"
           "kvm"
+          "input"
         ];
       };
 

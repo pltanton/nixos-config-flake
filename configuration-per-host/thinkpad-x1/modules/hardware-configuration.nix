@@ -4,29 +4,28 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules =
+    [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
-  boot.initrd.luks.devices.crypted.device = "/dev/disk/by-uuid/e47f3c28-fca8-4bf2-8cc2-e3ad39a07f84";
+  boot.initrd.luks.devices.crypted.device =
+    "/dev/disk/by-uuid/e47f3c28-fca8-4bf2-8cc2-e3ad39a07f84";
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/mapper/vg-root";
-      fsType = "btrfs";
-    };
+  fileSystems."/" = {
+    device = "/dev/mapper/vg-root";
+    fsType = "btrfs";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/B83A-1E85";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/B83A-1E85";
+    fsType = "vfat";
+  };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/346cdefe-8c2b-4d1a-8772-6e8987b3781d"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/346cdefe-8c2b-4d1a-8772-6e8987b3781d"; }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   # high-resolution display

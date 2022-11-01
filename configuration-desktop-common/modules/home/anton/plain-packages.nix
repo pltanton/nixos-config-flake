@@ -22,6 +22,7 @@
       shared-mime-info
       pantheon.elementary-files
       pcmanfm
+      xournal
 
       # Fonts
       font-awesome
@@ -50,6 +51,7 @@
       bitwarden-cli
       htop
       btop
+      powertop
       inetutils
       nfs-utils
 
@@ -66,27 +68,21 @@
       evince
       imv
       gthumb
-      gnome-photos
       gimp
       # (gimp-with-plugins.override {
       #   plugins = with gimpPlugins; [ resynthesizer ];
       # })
       mpv
       tdesktop
-      vlc
       xsane
+      spotify
 
       slack
-
-      nix-alien
-      nix-index
-      nix-index-update
-      rnix-hashes
 
       inputs.activate-linux.defaultPackage.x86_64-linux
       master.zoom-us
 
-      master.thunderbird-wayland
+      thunderbird-wayland
       bitwarden
       sidequest
       scrcpy
@@ -119,12 +115,13 @@
       # intellij-idea-community-eap
       # jetbrains.datagrip
       # android-studio
-      (jetbrains.idea-ultimate.overrideAttrs (oldAttrs: rec {
+      (stable.jetbrains.idea-ultimate.overrideAttrs (oldAttrs: rec {
         src = fetchurl {
-          url = "https://download.jetbrains.com/idea/ideaIU-2022.2.tar.gz";
-          sha256 = "1rqh2q2bgp78n0sxgpw3iwhl99pj559gxvjc30kn9x971d5lwr8m";
+          url = "https://download.jetbrains.com/idea/ideaIU-2022.2.3.tar.gz";
+          sha256 = "1cw4c6ai4q9g35nkc19c0allvvlxp216pmlld0bggjffff0xxyg1";
         };
       }))
+      # stable.jetbrains.idea-ultimate
 
       mongodb
       dbeaver
@@ -144,6 +141,7 @@
           pika
           grpcio-tools
           python-lsp-server
+          poetry
         ]))
       # python-language-server
       inputs.mach-nix.defaultPackage.x86_64-linux
@@ -160,5 +158,6 @@
 
       # stable.awscli2
       # stable.aws-sam-cli
+      steam-run-native
     ];
 }

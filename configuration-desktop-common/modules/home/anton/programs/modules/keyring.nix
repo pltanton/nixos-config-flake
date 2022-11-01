@@ -1,5 +1,5 @@
 { pkgs, config, ... }: {
-  home.packages = with pkgs; [ gnome3.seahorse ];
+  home.packages = with pkgs; [ gnome.seahorse ];
 
   services = {
     gnome-keyring.enable = config.wayland.windowManager.sway.enable;

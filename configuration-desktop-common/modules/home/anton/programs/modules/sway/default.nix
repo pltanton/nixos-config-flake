@@ -249,9 +249,9 @@ in with config.lib.base16.theme; {
       };
 
       gaps = {
-        inner = 5;
+        inner = 7;
         smartGaps = false;
-        smartBorders = "on";
+        smartBorders = "off";
       };
 
       fonts = {

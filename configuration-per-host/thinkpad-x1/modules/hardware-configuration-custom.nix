@@ -22,7 +22,8 @@ in {
   environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages;
+  # boot.kernelPackages = pkgs.linuxPackages_zen;
 
   hardware.trackpoint.enable = true;
   hardware.trackpoint.emulateWheel = config.hardware.trackpoint.enable;
@@ -30,10 +31,27 @@ in {
   services.xserver.videoDrivers = [ "intel" ];
 
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
-  boot.extraModprobeConfig = ''
-    options v4l2loopback devices=2 video_nr=5,6 card_label="wfrecorder","fakecam" exclusive_caps=1
-  '';
-  boot.kernelModules = [ "v4l2loopback" "i2c-dev" ];
+  boot.kernel.sysctl = {
+    "vm.dirty_writeback_centisecs" = 6000;
+    "kernel.nmi_watchdog" = 0;
+  };
+  boot.kernelParams = [
+    "intel_pstate=enable"
+    "msr.allow_writes=on"
+    "workqueue.power_efficient=true"
+  ];
+  boot.extraModprobeConfig = lib.mkMerge [
+    ''
+      options v4l2loopback devices=2 video_nr=5,6 card_label="wfrecorder","fakecam" exclusive_caps=1''
+    "options iwlwifi power_save=1 uapsd_disable=0"
+    "options iwlmvm power_scheme=3"
+    "options iwldvm force_cam=0"
+    "options i915 enable_guc=2"
+    "options i915 enable_fbc=1"
+    "options i915 enable_psr=1"
+    "options i915 enable_rc6=1"
+  ];
+  boot.kernelModules = [ "v4l2loopback" "i2c-dev" "iwlwifi" ];
 
   fileSystems."/mnt/hass" = {
     device = "10.100.0.1:/var/lib/hass";
@@ -59,4 +77,8 @@ in {
     fsType = "ntfs";
     options = [ "rw" ];
   };
+
+  # powerManagement.scsiLinkPolicy = "min_power";
+
+  # boot.initrd.availableKernelModules = [ "thinkpad_acpi" ];
 }

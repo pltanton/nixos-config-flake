@@ -8,7 +8,7 @@
       KUBECONFIG = "/home/anton/.kube/config";
 
       NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [ pkgs.stdenv.cc.cc ];
-      LD_LIBRARY_PATH = lib.makeLibraryPath [ pkgs.stdenv.cc.cc ];
+      # LD_LIBRARY_PATH = lib.makeLibraryPath [ pkgs.stdenv.cc.cc ];
       NIX_LD = pkgs.binutils.dynamicLinker;
     };
   };
@@ -20,7 +20,11 @@
 
     functions = {
       gitignore = "curl -sL https://www.gitignore.io/api/$argv";
-      shell = "nix shell n#$argv";
+      nshell = "nix shell n#$argv";
+      mshell = "nix shell m#$argv";
+      sshell = "nix shell s#$argv";
+      limcpu =
+        ''systemd-run -p CPUQuota="$argv[1]"% --scope --user -- $argv[2..-1]'';
     };
 
     plugins = with pkgs.fishPlugins; [

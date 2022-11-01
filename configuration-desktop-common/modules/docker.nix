@@ -1,10 +1,13 @@
 { pkgs, ... }: {
   virtualisation = {
-    docker.enable = true;
+    docker.enable = false;
+
+    oci-containers.backend = "podman";
 
     podman = {
-      enable = false;
-      dockerCompat = true;
+      enable = true;
+      dockerCompat = false;
+      defaultNetwork.dnsname.enable = true;
     };
   };
 }
