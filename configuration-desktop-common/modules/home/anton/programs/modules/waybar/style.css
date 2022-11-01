@@ -66,12 +66,12 @@ window#waybar.hidden {
 
 #battery {
   background-color: #@baseD@;
-  color: #@backgroundColor@;
+  color: #@base1@;
 }
 
 #battery.charging {
   background-color: #@baseC@;
-  color: #@backgroundColor@;
+  color: #@base1@;
 }
 
 @keyframes blink {

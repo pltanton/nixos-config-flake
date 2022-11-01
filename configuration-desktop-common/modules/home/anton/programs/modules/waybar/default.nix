@@ -11,7 +11,7 @@ in {
     #   pkgs.waybar
     # else
     #   pkgs.waybar-hyprland;
-    # package = pkgs.waybar-hyprland;
+    package = pkgs.waybar-hyprland;
     enable = config.wayland.windowManager.sway.enable
       || config.wayland.windowManager.hyprland.enable;
     # enable = true;

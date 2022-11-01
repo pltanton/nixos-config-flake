@@ -21,8 +21,8 @@ in {
   };
   environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
 
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPackages = pkgs.linuxPackages;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages;
   # boot.kernelPackages = pkgs.linuxPackages_zen;
 
   hardware.trackpoint.enable = true;
