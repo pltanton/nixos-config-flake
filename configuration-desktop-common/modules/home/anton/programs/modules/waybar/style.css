@@ -3,7 +3,7 @@
   border-radius: 0;
   font-family: @fontUIName@, "Font Awesome 6", "SFNS Display", Helvetica, Arial,
     sans-serif;
-  font-size: 16.5px;
+  font-size: 14.5px;
   min-height: 0;
 }
 
@@ -54,6 +54,11 @@ window#waybar.hidden {
   margin: 0 8px;
   border-radius: 6px;
   background-clip: padding-box;
+}
+
+#window {
+   background: transparent;
+   color: #@base5@;
 }
 
 #clock {

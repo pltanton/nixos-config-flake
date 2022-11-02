@@ -61,9 +61,6 @@
     quizanus.url = "git+ssh://gitea@gitea.kaliwe.ru/pltanton/quizanus.git";
     bwmenu.url = "github:pltanton/bitwarden-dmenu";
 
-    goose.url = "github:pressly/goose/v3.1.0";
-    goose.flake = false;
-
     doom-emacs.url = "github:doomemacs/doomemacs";
     doom-emacs.flake = false;
 

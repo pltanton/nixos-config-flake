@@ -2,7 +2,6 @@
   programs.go = {
     package = pkgs.master.go_1_18;
     enable = true;
-    packages = { "github.com/pressly/goose/v3/cmd/goose" = inputs.goose; };
   };
 
   home.packages = with pkgs;
@@ -21,5 +20,20 @@
       gopkgs
       go-tools
       cobra-cli
+
+      (buildGoModule {
+        name = "goose";
+        version = "3.5.3";
+
+        src = pkgs.fetchFromGitHub {
+          owner = "pressly";
+          repo = "goose";
+          rev = "5f1f43cfb2ba11d901b1ea2f28c88bf2577985cb";
+          sha256 = "13hcbn4v78142brqjcjg1q297p4hs28n25y1fkb9i25l5k2bwk7f";
+        };
+
+        vendorSha256 = "1yng6dlmr4j8cq2f43jg5nvcaaik4n51y79p5zmqwdzzmpl8jgrv";
+        subPackages = [ "cmd/goose" ];
+      })
     ];
 }

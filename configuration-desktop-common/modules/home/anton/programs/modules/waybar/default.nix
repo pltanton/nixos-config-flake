@@ -19,7 +19,7 @@ in {
     settings = [{
       layer = "top";
       position = "top";
-      height = 29;
+      height = 24;
       margin = "12 18 0 18";
       modules-left = [
         # "sway/worspaces"
@@ -91,8 +91,8 @@ in {
         # sort-by-coordinates = false;
         sort-by-number = true;
         on-click = "activate";
-        on-scroll-up = "hyprctl dispatch workspace e+1";
-        on-scroll-down = "hyprctl dispatch workspace e-1";
+        on-scroll-down = "hyprctl dispatch workspace e+1";
+        on-scroll-up = "hyprctl dispatch workspace e-1";
         format-icons = {
           "1" = "";
           "2" = "";
@@ -156,7 +156,10 @@ in {
         exec = "${scripts.hyprland-kbd}/bin/hyprland-kbd";
       };
       "sway/language" = { "format" = "{short}"; };
-      "hyprland/window" = { "format" = "{}"; };
+      "hyprland/window" = {
+        "format" = "{}";
+        "separate-outputs" = true;
+      };
       "hyprland/language" = {
         "format" = "{}";
         "format-en" = "en";

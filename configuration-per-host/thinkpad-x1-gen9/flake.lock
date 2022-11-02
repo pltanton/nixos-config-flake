@@ -248,23 +248,6 @@
         "type": "github"
       }
     },
-    "goose": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1629513529,
-        "narHash": "sha256-3Uu24QLF85r0g41tKR715aIYNVpNhlGjV/6qtoRC/+o=",
-        "owner": "pressly",
-        "repo": "goose",
-        "rev": "d15e25ab596691c99064efe936a7dff9c71735b1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "pressly",
-        "ref": "v3.1.0",
-        "repo": "goose",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": "nixpkgs_4",
@@ -807,7 +790,6 @@
         "fish-colored-man-plugin": "fish-colored-man-plugin",
         "fish-grc": "fish-grc",
         "fish-z-plugin": "fish-z-plugin",
-        "goose": "goose",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "hyprpaper": "hyprpaper",
