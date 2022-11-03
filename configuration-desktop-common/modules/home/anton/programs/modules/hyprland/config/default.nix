@@ -21,6 +21,7 @@ let
       iconTheme = theme.iconTheme;
       cursorTheme = theme.cursorTheme;
       cursorSize = toString theme.cursorSize;
+      xcursorSize = toString (cursorSize * 2);
 
       base0 = base00-hex;
       base1 = base01-hex;

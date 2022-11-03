@@ -6,9 +6,4 @@
       # "eDP-1" = { scale = "1.7"; };
     };
   };
-
-  home.file.".Xdefaults".text = ''
-    Xft.dpi: 154
-    Xcursor.size: 32
-  '';
 }

@@ -2,10 +2,10 @@
   services.tlp = {
     enable = !config.services.xserver.desktopManager.gnome.enable;
     settings = {
-      PLATFORM_PROFILE_ON_AC = "performance";
+      PLATFORM_PROFILE_ON_AC = "balanced";
       PLATFORM_PROFILE_ON_BAT = "low-power";
 
-      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "balanced_performance";
       CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
 
       START_CHARGE_THRESH_BAT0 = 80;

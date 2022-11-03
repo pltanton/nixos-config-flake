@@ -16,40 +16,27 @@
 
     # Home-manager and modules
     home-manager.url = "github:nix-community/home-manager/master";
-    # home-manager.url = "github:nix-community/home-manager/release-22.05";
-    # base16.url = "github:alukardbf/base16-nix";
     base16.url = "github:pltanton/base16-nix";
 
-    jetbrains-flake = {
-      url =
-        "github:liff/jetbrains-flake/23dad5cf87c27cef3dd8cc927de1272d0c08119b";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
     hyprland = {
       url = "github:hyprwm/Hyprland";
-      # url = "github:tomahk/Hyprland";
-      # url = "path:/home/anton/Workdir/Hyprland";
-      # build with your own instance of nixpkgs
       inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.wlroots.url =
-      #   "gitlab:wlroots/wlroots/7c575922c05e4d5fd9a403c2aa631a54c7531d44?host=gitlab.freedesktop.org";
     };
-    hyprpaper = { url = "github:hyprwm/hyprpaper"; };
+    hyprpaper = {
+      url = "github:hyprwm/hyprpaper";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-alien = {
       url = "github:thiagokokada/nix-alien";
-      inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     activate-linux = {
       url = "github:Kljunas2/activate-linux";
-      inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     swaymonad = {
       url = "github:pltanton/swaymonad";
-      inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
-    };
-    mach-nix = {
-      url = "github:DavHau/mach-nix";
-      inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Extra flakes with application sets

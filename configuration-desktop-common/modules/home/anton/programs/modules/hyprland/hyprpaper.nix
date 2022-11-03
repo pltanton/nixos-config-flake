@@ -7,6 +7,5 @@ in {
     wallpaper = eDP-1,${wallpaper}
     wallpaper = DP-1,${wallpaper}
     wallpaper = DP-2,${wallpaper}
-    ipc = off
   '';
 }
