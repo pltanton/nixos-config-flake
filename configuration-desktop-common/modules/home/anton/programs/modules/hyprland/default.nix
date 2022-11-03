@@ -29,15 +29,9 @@
 
   home.sessionVariables = with config.lib.base16.theme;
     lib.mkIf config.wayland.windowManager.hyprland.enable {
-<<<<<<< HEAD
-      GDK_SCALE = "2";
-      # QT_SCALE_FACTOR = "2";
-      # XCURSOR_SIZE = toString (cursorSize * 2);
-=======
       GDK_SCALE = "3";
       # QT_SCALE_FACTOR = "2";
       XCURSOR_SIZE = toString (cursorSize * 2);
->>>>>>> 2f4e425 (Readme, many Hyprland tweaks)
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
 
       WLR_DRM_NO_ATOMIC = "1";
