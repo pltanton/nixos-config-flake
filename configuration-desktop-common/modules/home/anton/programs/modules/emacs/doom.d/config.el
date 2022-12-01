@@ -2,6 +2,9 @@
 
 (setq fancy-splash-image "$DOOMDIR/images/Emacs-logo-vim.svg")
 
+(set-frame-parameter nil 'alpha-background 85) ; For current frame
+(add-to-list 'default-frame-alist '(alpha-background . 85)) ; For all new frames henceforth
+
 (setq  user-full-name "Anton Plotnikov"
       user-mail-address "plotnikovanton@gmail.com")
 

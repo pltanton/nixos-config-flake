@@ -1,12 +1,13 @@
 { pkgs, config, lib, ... }:
 let
-  themeConsts = {
+  themeConsts = rec {
     fontConsoleName = "Iosevka";
     fontConsoleSize = "17";
     fontUIName = "Inter";
     fontUISize = "15";
     # iconTheme = "Adwaita";
     # iconTheme = "Qogir-dark";
+    iconPackage = pkgs.papirus-icon-theme;
     iconTheme = "Papirus-Dark";
     gtkTheme = "Nordic-bluish-accent";
     # gtkTheme = "Adwaita-dark";
@@ -14,6 +15,12 @@ let
     # cursorTheme = "Adwaita";
     cursorTheme = "phinger-cursors";
     cursorSize = 32;
+    cursorSizeX2 = cursorSize * 2;
+
+    gradient0 = "8fbcbb";
+    gradient1 = "88c0d0";
+    gradient2 = "81a1c1";
+    gradient3 = "5e81ac";
   };
   tilingWM = true && (config.wayland.windowManager.sway.enable
     || config.wayland.windowManager.hyprland.enable);
@@ -26,28 +33,23 @@ in {
     pkgs.papirus-icon-theme
     pkgs.master.phinger-cursors
     pkgs.gnome.adwaita-icon-theme
+    pkgs.nordic
   ];
   themes.base16 = {
     enable = true;
     scheme = "nord";
     variant = "nord";
-    # scheme = "gruvbox";
-    # variant = "gruvbox-dark-hard";
     extraParams = themeConsts;
   };
 
   gtk = {
     enable = tilingWM;
     theme = {
-      # package = pkgs.qogir-theme;
       package = pkgs.nordic;
       name = themeConsts.gtkTheme;
     };
     iconTheme = {
-      # package = pkgs.numix-icon-theme;
-      # package = pkgs.qogir-icon-theme;
-      package = pkgs.papirus-icon-theme;
-      # package = pkgs.gnome3.adwaita-icon-theme;
+      package = themeConsts.iconPackage;
       name = themeConsts.iconTheme;
     };
     # gtk3.extraConfig.gtk-cursor-theme-name = themeConsts.cursorTheme;
@@ -58,8 +60,8 @@ in {
   };
 
   qt = {
-    enable = tilingWM;
-    platformTheme = "gtk";
+    #    enable = tilingWM;
+    #    platformTheme = "gtk";
   };
 
   # home.file.".icons/default/index.theme".text = ''
@@ -75,8 +77,8 @@ in {
     gtk.enable = tilingWM;
   };
 
-  home.sessionVariables = {
+  home.sessionVariables = lib.mkIf tilingWM {
     XCURSOR_THEME = themeConsts.cursorTheme;
-    # XCURSOR_SIZE = themeConsts.cursorSize;
+    XCURSOR_SIZE = themeConsts.cursorSize;
   };
 }

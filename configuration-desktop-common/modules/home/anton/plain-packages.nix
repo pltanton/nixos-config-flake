@@ -41,7 +41,6 @@
       ffmpeg
       curlie # replacement for httpie
       bat # cat but with highlights
-      exa # modern ls
       duf # beauty df
       tldr # cheatsheets for cli
       procs # modern ps

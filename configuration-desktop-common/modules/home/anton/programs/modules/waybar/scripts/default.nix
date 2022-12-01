@@ -1,4 +1,4 @@
-{ pkgs, ... }@input: {
+{ pkgs, config, ... }@input: {
   mediaplayer = pkgs.writeShellApplication {
     name = "mediaplayer";
     runtimeInputs = with pkgs; [ playerctl ];
@@ -13,7 +13,12 @@
 
   hyprland-kbd = pkgs.writeShellApplication {
     name = "hyprland-kbd";
-    runtimeInputs = with pkgs; [ netcat ];
+    runtimeInputs = with pkgs; [
+      gnugrep
+      netcat
+      busybox
+      config.wayland.windowManager.hyprland.package
+    ];
     text = builtins.readFile ./hyprland-kbd.bash;
   };
 }

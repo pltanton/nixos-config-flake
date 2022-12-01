@@ -6,6 +6,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.05";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-old.url = "github:nixos/nixpkgs/nixos-21.11";
     nix.url = "github:nixos/nix";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -43,6 +44,10 @@
             nixpkgs.overlays = [
               (final: prev: {
                 master = import inputs.nixpkgs-master {
+                  system = "x86_64-linux";
+                  config.allowUnfree = true;
+                };
+                unstable = import inputs.nixpkgs-unstable {
                   system = "x86_64-linux";
                   config.allowUnfree = true;
                 };

@@ -31,3 +31,6 @@ deploy-offline-thinkpad-x1-gen9:
 update-%:
 	@echo Run nix flake update form machine $*
 	cd ./configuration-per-host/$*; nix flake update
+
+boot:
+	sudo nixos-rebuild --flake ./configuration-per-host/thinkpad-x1-gen9#thinkpad-x1-gen9 --option substitute false --fast boot

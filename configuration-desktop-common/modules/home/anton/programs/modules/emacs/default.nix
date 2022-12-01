@@ -16,6 +16,7 @@ let
   # withPgtk = true;
   # });
   emacsPackage = pkgs.emacsPgtkNativeComp;
+  # emacsPackage = pkgs.emacsng;
   # emacsPackage = pkgs.emacs;
 in {
   home.packages = with pkgs; [

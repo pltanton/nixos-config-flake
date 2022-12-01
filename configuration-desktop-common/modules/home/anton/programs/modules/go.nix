@@ -1,7 +1,8 @@
 { pkgs, inputs, config, ... }: {
   programs.go = {
-    package = pkgs.master.go_1_18;
+    package = pkgs.master.go_1_19;
     enable = true;
+    goPrivate = [ "gitlab.fix.ru/neocrypto" ];
   };
 
   home.packages = with pkgs;

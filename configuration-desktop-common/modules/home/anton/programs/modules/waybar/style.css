@@ -17,7 +17,7 @@ window#waybar {
 }
 
 .modules-right {
-  /* padding-right: 10px; */
+  /* background-image: linear-gradient(to right, #@gradient0@, #@gradient1@, #@gradient2@, #@gradient3@); */
 }
 
 window#waybar.hidden {
@@ -51,7 +51,7 @@ window#waybar.hidden {
   background-color: #@base5@;
   color: #@base1@;
   padding: 0 12px;
-  margin: 0 8px;
+  margin: 0 4px;
   border-radius: 6px;
   background-clip: padding-box;
 }
@@ -62,14 +62,16 @@ window#waybar.hidden {
 }
 
 #clock {
-  /* color: #@base5@; */
+  background-color: #@gradient0@;
 }
 
 #custom-submap {
 }
 
 #battery {
-  background-color: #@baseD@;
+  /* background-color: #@baseD@; */
+  /* background-color: #@gradient2@; */
+  background-image: linear-gradient(to right, #@gradient2@, #@gradient3@);
   color: #@backgroundColor@;
 }
 
@@ -107,7 +109,8 @@ window#waybar.hidden {
 }
 
 #backlight {
-  background: #90b1b1;
+  /* background: #@gradient1@; */
+  background-image: linear-gradient(to right, #@gradient1@, #@gradient2@);
 }
 
 #network {
@@ -125,13 +128,15 @@ window#waybar.hidden {
 }
 
 #pulseaudio {
-  background-color: #@baseA@;
+  /* background-color: #@baseA@; */
+  /* background-color: #@gradient0@; */
+  background-image: linear-gradient(to right, #@gradient0@, #@gradient1@);
   min-width: 1.5em;
   color: #@backgroundColor@;
 }
 
 #pulseaudio.muted {
-  background-color: #@base2@;
+  /* background-color: #@base2@; */
   color: #@base0@;
 }
 
@@ -143,6 +148,14 @@ window#waybar.hidden {
 #tray {
   background: transparent;
 }
+
+/* #tray > .passive { */
+/*     -gtk-icon-effect: dim; */
+/* } */
+
+/* #tray > .needs-attention { */
+/*     -gtk-icon-effect: highlight; */
+/* } */
 
 #idle_inhibitor {
   min-width: 1.5em;
@@ -166,24 +179,29 @@ window#waybar.hidden {
 
 #custom-kbd,
 #language {
-  min-width: 1.5em;
+  background-color: #@gradient3@;
+  min-width: 2em;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button {
-  padding: 0 6px;
-  background-color: #@base5@;
-  color: #@base0@;
+  padding: 0px;
+  min-width: 24px;
+  /* background-color: #@base5@; */
+  background-color: transparent;
+  color: #@base3@;
+  border-radius: 14px;
+  transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.68);
 }
 
 #workspaces button.visible {
-  background-color: #@base5@;
-  color: #@base0@;
+  /* background-color: #@base5@; */
+  /* color: #@base0@; */
   /* border-bottom: 3px solid #@base0@; */
 }
 
 #workspaces button.focused {
-  background-color: #@base5@;
+  /* background-color: #@base5@; */
   /* border-bottom: 3px solid #@baseD@; */
 }
 
@@ -191,11 +209,12 @@ window#waybar.hidden {
   background-color: #@baseD@;
   color: #@base0@;
   /* border-bottom: 3px solid #@baseD@; */
+  transition: all 0.2s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
 #workspaces button.urgent {
-  color: #@base0@;
-  background-color: #@base8@;
+  /* color: #@base0@; */
+  /* background-color: #@base8@; */
 }
 
 label:disabled,

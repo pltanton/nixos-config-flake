@@ -6,11 +6,18 @@
   systemd = {
     network.enable = true;
     enableEmergencyMode = false;
+    targets.network-online.wantedBy =
+      pkgs.lib.mkForce [ ]; # Normally ["multi-user.target"]
+    services.NetworkManager-wait-online.wantedBy =
+      pkgs.lib.mkForce [ ]; # Normally ["network-online.target"]
+
   };
 
   environment.systemPackages = [ pkgs.vim ];
-
   networking = {
+    # useDHCP = true;
+    # defaultGateway.interface = "ens3";
+    # networkmanager.enable = true;
     firewall = {
       allowedUDPPorts = [ 51820 2282 ];
       allowedTCPPorts =

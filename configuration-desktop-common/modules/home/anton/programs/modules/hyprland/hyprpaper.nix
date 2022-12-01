@@ -7,5 +7,6 @@ in {
     wallpaper = eDP-1,${wallpaper}
     wallpaper = DP-1,${wallpaper}
     wallpaper = DP-2,${wallpaper}
+    wallpaper = DP-3,${wallpaper}
   '';
 }

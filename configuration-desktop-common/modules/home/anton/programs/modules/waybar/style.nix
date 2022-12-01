@@ -13,7 +13,7 @@ let
     pkgs.substituteAll ({
       src = ./style.css;
 
-      backgroundColor = "${config.lib.base16.theme.base00-hex}";
+      backgroundColor = base00-hex;
       base0 = base00-hex;
       base1 = base01-hex;
       base2 = base02-hex;
@@ -30,6 +30,8 @@ let
       baseD = base0D-hex;
       baseE = base0E-hex;
       baseF = base0F-hex;
+
+      inherit gradient0 gradient1 gradient2 gradient3;
 
       inherit fontUIName;
     });

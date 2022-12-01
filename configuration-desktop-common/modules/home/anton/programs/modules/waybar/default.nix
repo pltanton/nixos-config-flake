@@ -1,5 +1,7 @@
 { pkgs, config, lib, ... }@input:
-let scripts = import ./scripts input;
+let
+  scripts = import ./scripts input;
+  hyprlandPkg = config.wayland.windowManager.hyprland.package;
 in {
   imports = [ ./style.nix ];
 
@@ -37,6 +39,7 @@ in {
         "idle_inhibitor"
         "clock"
         "pulseaudio"
+        "backlight"
         "battery"
         "custom/kbd"
         # "hyprland/language"
@@ -67,6 +70,11 @@ in {
           "unlocked" = "";
         };
       };
+      "backlight" = {
+        "device" = "intel_backlight";
+        "format" = "{icon} {percent}%";
+        "format-icons" = [ "" "" "" ];
+      };
       "sway/mode" = { format = ''<span style="italic">{}</span>''; };
       "sway/workspaces" = {
         numeric-first = true;
@@ -87,12 +95,13 @@ in {
         };
       };
       "wlr/workspaces" = {
-        format = "{name}: {icon}";
+        # format = "{name}: {icon}";
+        format = "{name}";
         # sort-by-coordinates = false;
         sort-by-number = true;
         on-click = "activate";
-        on-scroll-down = "hyprctl dispatch workspace e+1";
-        on-scroll-up = "hyprctl dispatch workspace e-1";
+        on-scroll-down = "${hyprlandPkg}/bin/hyprctl dispatch workspace e+1";
+        on-scroll-up = "${hyprlandPkg}/bin/hyprctl dispatch workspace e-1";
         format-icons = {
           "1" = "";
           "2" = "";
@@ -136,6 +145,7 @@ in {
           default = [ "" "" ];
         };
         on-click = "pavucontrol";
+        ignored-sinks = [ "EasyEffects Sink" ];
       };
       "custom/spotify" = {
         format = " {}";
@@ -168,4 +178,7 @@ in {
       };
     }];
   };
+
+  systemd.user.services.waybar.Service.Environment =
+    [ "PATH=$PATH:${hyprlandPkg}/bin" ];
 }

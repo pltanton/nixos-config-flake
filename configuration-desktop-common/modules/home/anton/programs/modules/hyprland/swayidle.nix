@@ -1,4 +1,7 @@
-{ config, lib, pkgs, inputs, ... }: {
+{ config, lib, pkgs, inputs, ... }:
+let hyprlandPkg = config.wayland.windowManager.hyprland.package;
+in {
+  systemd.user.services.swayidle.Service.Environment = lib.mkForce [ ];
   services.swayidle = lib.mkIf config.wayland.windowManager.hyprland.enable {
     enable = true;
     events = [
@@ -12,18 +15,18 @@
       }
       {
         event = "after-resume";
-        command = "hyprctl dispatch dpms on";
+        command = "${hyprlandPkg}/bin/hyprctl dispatch dpms on";
       }
     ];
     timeouts = [
       {
         timeout = 200;
-        command = "lock";
+        command = "lock --grace 5";
       }
       {
         timeout = 300;
-        command = "hyprctl dispatch dpms off";
-        resumeCommand = "hyprctl dispatch dpms on";
+        command = "${hyprlandPkg}/bin/hyprctl dispatch dpms off";
+        resumeCommand = "${hyprlandPkg}/bin/hyprctl dispatch dpms on";
       }
     ];
   };

@@ -5,7 +5,7 @@
     });
 
   services.easyeffects = {
-    enable = false;
+    enable = true;
     preset = "advanced-auto-gain";
   };
 

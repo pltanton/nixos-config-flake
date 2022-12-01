@@ -39,25 +39,23 @@ if [ "$DECREASE" = "true" ]; then
   light -U "$DELTA"
 fi
 
-DDC_BRIGHTNESS_FILE="/tmp/brightness_next_ddc_brightness"
-NEXT_DDC_EXECUTION_FILE="/tmp/brightness_next_ddc_execution"
+DDC_LOCK_FILE="/tmp/ddc_lock_file"
 
 cur_time=$(($(date +%s3%N)))
 
-next_ddc_execution=0
-if [ -f "$NEXT_DDC_EXECUTION_FILE" ]; then
-  next_ddc_execution=$(<"$NEXT_DDC_EXECUTION_FILE")
-fi
-
 cur_brightness=$(light -G | cut -d'.' -f1)
-echo "$cur_brightness" >"$DDC_BRIGHTNESS_FILE"
 
-if [ -z "$next_ddc_execution" ] || [ "$next_ddc_execution" -le "$cur_time" ]; then
-  echo $((cur_time + 190)) >"$NEXT_DDC_EXECUTION_FILE"
+if [ ! -f "$DDC_LOCK_FILE" ] || [ "$(<$DDC_LOCK_FILE)" -le "$cur_time" ]; then
   (
-    sleep 0.2
-    ddcutil setvcp 10 "$(<"$DDC_BRIGHTNESS_FILE")" 2>/dev/null
+    now_time=$(($(date +%s3%N)))
+    while [ "$(<$DDC_LOCK_FILE)" -ge "$now_time" ]; do
+      sleep 0.2
+      now_time=$(($(date +%s3%N)))
+    done
+    ddcutil setvcp 10 "$(light -G | cut -d'.' -f1)" >/dev/null 2>&1
   ) &
 fi
+
+echo $((cur_time + 205)) >"$DDC_LOCK_FILE"
 
 echo "$cur_brightness"

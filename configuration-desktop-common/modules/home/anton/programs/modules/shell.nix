@@ -7,9 +7,9 @@
     sessionVariables = rec {
       KUBECONFIG = "/home/anton/.kube/config";
 
-      NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [ pkgs.stdenv.cc.cc ];
+      # NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [ pkgs.stdenv.cc.cc ];
       # LD_LIBRARY_PATH = lib.makeLibraryPath [ pkgs.stdenv.cc.cc ];
-      NIX_LD = pkgs.binutils.dynamicLinker;
+      # NIX_LD = pkgs.binutils.dynamicLinker;
     };
   };
 
@@ -20,18 +20,14 @@
 
     functions = {
       gitignore = "curl -sL https://www.gitignore.io/api/$argv";
-      nshell = "nix shell n#$argv";
-      mshell = "nix shell m#$argv";
-      sshell = "nix shell s#$argv";
+      nshell = "nix shell --impure n#$argv";
+      mshell = "nix shell --impure m#$argv";
+      sshell = "nix shell --impure s#$argv";
       limcpu =
         ''systemd-run -p CPUQuota="$argv[1]"% --scope --user -- $argv[2..-1]'';
     };
 
     plugins = with pkgs.fishPlugins; [
-      {
-        name = "fasd";
-        src = inputs.fish-z-plugin;
-      }
       {
         name = "colored-man";
         src = inputs.fish-colored-man-plugin;
@@ -45,5 +41,15 @@
       (with pure; { inherit name src; })
       (with pisces; { inherit name src; })
     ];
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
+  programs.exa = {
+    enable = true;
+    enableAliases = true;
   };
 }

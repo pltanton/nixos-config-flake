@@ -1,8 +1,5 @@
 { pkgs, lib, inputs, config, ... }:
 let
-  # swaylock-effects-master = pkgs.swaylock-effects.overrideAttrs
-  #   (oldAttrs: rec { src = inputs.swaylock-effects; });
-
   lockScript = with config.lib.base16.theme;
     pkgs.writeShellScriptBin "lock" ''
       ${pkgs.swaylock-effects}/bin/swaylock \
@@ -13,8 +10,7 @@ let
         --effect-greyscale \
         --screenshots \
         --fade-in 0.3 \
-        --effect-blur 7x5 \
-        --grace 5 \
+        --effect-blur 10x5 \
         --effect-vignette 0.1:0.7 \
         --indicator-radius 100 \
         --indicator-thickness 7 \
@@ -41,12 +37,10 @@ let
         --text-ver-color ${base0A-hex} \
         --text-clear-color ${base0A-hex} \
         --text-caps-lock-color ${base0A-hex} \
-        --text-wrong-color ${base0A-hex}
+        --text-wrong-color ${base0A-hex} $@
     '';
 in {
+  nixpkgs.overlays = [ (self: super: { swaylock = lockScript; }) ];
   home.packages = lib.mkIf (config.wayland.windowManager.sway.enable
-    || config.wayland.windowManager.hyprland.enable) [
-      pkgs.swaylock-effects
-      lockScript
-    ];
+    || config.wayland.windowManager.hyprland.enable) [ lockScript ];
 }

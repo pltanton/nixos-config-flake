@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  services.thermald = { enable = true; };
+  services.thermald = { enable = false; };
 }

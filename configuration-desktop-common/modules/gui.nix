@@ -19,9 +19,13 @@
 
   services.xserver = {
     enable = false;
+
     displayManager.gdm.enable = false;
     displayManager.gdm.wayland = false;
     desktopManager.gnome.enable = false;
+
+    displayManager.sddm.enable = false;
+    desktopManager.plasma5.enable = false;
 
     wacom.enable = true;
 
@@ -37,18 +41,26 @@
     desktopManager.session = [{
       name = "hyprland";
       start = ''
-        ${pkgs.runtimeShell} $HOME/.xsession &
-        waitPID=$!
+        Hyprland
       '';
     }];
   };
 
   # programs.sway.enable = false;
-  xdg.portal = lib.mkIf (!config.services.xserver.desktopManager.gnome.enable) {
-    enable = true;
-    wlr.enable = false;
-    extraPortals = with pkgs; [ xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
-  };
+  xdg.portal = lib.mkIf (!config.services.xserver.desktopManager.gnome.enable
+    && !config.services.xserver.desktopManager.plasma5.enable) {
+      enable = true;
+      wlr.enable = true;
+      wlr.settings = {
+        screencast = {
+          output_name = "HDMI-A-1";
+          max_fps = 15;
+          chooser_type = "simple";
+          chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -or";
+        };
+
+      };
+    };
 
   programs.dconf.enable =
     lib.mkIf (!config.services.xserver.desktopManager.gnome.enable) true;

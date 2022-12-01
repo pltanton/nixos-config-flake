@@ -18,6 +18,9 @@
     home-manager.url = "github:nix-community/home-manager/master";
     base16.url = "github:pltanton/base16-nix";
 
+    ddcsync.url = "path:/home/anton/Workdir/ddcsync";
+    ddcsync.inputs.nixpkgs.follows = "nixpkgs";
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -67,7 +70,7 @@
   };
 
   outputs = { self, nixpkgs, home-manager, nur, nix-alien, emacs-overlay
-    , mach-nix, jetbrains-flake, hyprland, hyprpaper, ... }@inputs: {
+    , mach-nix, jetbrains-flake, hyprland, hyprpaper, ddsync, ... }@inputs: {
       nixosConfigurations = let
         inherit (inputs.nixpkgs) lib;
 
@@ -106,7 +109,11 @@
             ({ config, ... }: {
               options.home-manager.users = lib.mkOption {
                 type = lib.types.attrsOf (lib.types.submoduleWith {
-                  modules = [ (import inputs.base16.hmModule) ];
+                  modules = [
+                    (import inputs.base16.hmModule)
+                    hyprland.homeManagerModules.default
+                    ddcsync.homeManagerModules.default
+                  ];
 
                   specialArgs = commonSpecialArgs // { super = config; };
                 });

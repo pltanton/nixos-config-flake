@@ -1,7 +1,6 @@
 { pkgs, config, ... }: {
   programs.mako = with config.lib.base16.theme; {
-    enable = config.wayland.windowManager.sway.enable
-      || config.wayland.windowManager.hyprland.enable;
+    enable = false;
     font = "${fontUIName} ${fontUISize}";
     backgroundColor = "#${base01-hex}D9";
     borderColor = "#${base01-hex}";

@@ -2,7 +2,7 @@
 
 {
   services.throttled = {
-    enable = false;
+    enable = true;
     extraConfig = ''
       [GENERAL]
       # Enable or disable the script execution
@@ -56,13 +56,13 @@
       # All voltage values are expressed in mV and *MUST* be negative (i.e. undervolt)!
       [UNDERVOLT.BATTERY]
       # CPU core voltage offset (mV)
-      CORE: -130
+      CORE: -95
       # Integrated GPU voltage offset (mV)
-      GPU: -120
+      GPU: -200
       # CPU cache voltage offset (mV)
-      CACHE: -130
+      CACHE: -95
       # System Agent voltage offset (mV)
-      UNCORE: -130
+      UNCORE: -95
       # Analog I/O voltage offset (mV)
       ANALOGIO: 0
 
@@ -71,7 +71,7 @@
       # CPU core voltage offset (mV)
       CORE: -95
       # Integrated GPU voltage offset (mV)
-      GPU: -80
+      GPU: -200
       # CPU cache voltage offset (mV)
       CACHE: -95
       # System Agent voltage offset (mV)

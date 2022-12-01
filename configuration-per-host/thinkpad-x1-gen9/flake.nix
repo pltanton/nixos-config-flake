@@ -3,8 +3,7 @@
 
   inputs = {
     # Nixos related inputs
-    # nixpkgs-local.url = "github:pltanton/nixpkgs/master";
-    nixpkgs-local.url = "path:/home/anton/Workdir/nixpkgs";
+    # nixpkgs-local.url = "path:/home/anton/Workdir/nixpkgs";
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.05";
@@ -20,21 +19,18 @@
     # base16.url = "github:alukardbf/base16-nix";
     base16.url = "github:pltanton/base16-nix";
 
-    jetbrains-flake = {
-      url =
-        "github:liff/jetbrains-flake/23dad5cf87c27cef3dd8cc927de1272d0c08119b";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # ddcsync.url = "path:/home/anton/Workdir/ddcsync";
+    ddcsync.url = "github:pltanton/ddcsync";
+    ddcsync.inputs.nixpkgs.follows = "nixpkgs";
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
-      # url = "github:tomahk/Hyprland";
-      # url = "path:/home/anton/Workdir/Hyprland";
-      # build with your own instance of nixpkgs
-      inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.wlroots.url =
-      #   "gitlab:wlroots/wlroots/7c575922c05e4d5fd9a403c2aa631a54c7531d44?host=gitlab.freedesktop.org";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprpaper = { url = "github:hyprwm/hyprpaper"; };
+    hyprpaper = {
+      url = "github:hyprwm/hyprpaper";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-alien = {
       url = "github:thiagokokada/nix-alien";
       inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
@@ -47,18 +43,14 @@
       url = "github:pltanton/swaymonad";
       inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
     };
-    mach-nix = {
-      url = "github:DavHau/mach-nix";
-      inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
-    };
 
     # Extra flakes with application sets
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nur.url = "github:nix-community/NUR";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
+    emacs-ng.url = "github:emacs-ng/emacs-ng";
 
     # My own flakes
-    quizanus.url = "git+ssh://gitea@gitea.kaliwe.ru/pltanton/quizanus.git";
     bwmenu.url = "github:pltanton/bitwarden-dmenu";
 
     doom-emacs.url = "github:doomemacs/doomemacs";
@@ -77,7 +69,7 @@
   };
 
   outputs = { self, nixpkgs, home-manager, nur, nix-alien, emacs-overlay
-    , mach-nix, jetbrains-flake, hyprland, hyprpaper, ... }@inputs: {
+    , emacs-ng, mach-nix, hyprland, hyprpaper, ddcsync, ... }@inputs: {
       nixosConfigurations = let
         inherit (inputs.nixpkgs) lib;
 
@@ -99,11 +91,6 @@
           system = "x86_64-linux";
           specialArgs = commonSpecialArgs;
           modules = [
-            # hyprland.nixosModules.default
-            # {
-            #   programs.hyprland.package = null;
-            # }
-
             # A host configuration itself
             (import ./configuration.nix)
             (import ../../configuration-desktop-common)
@@ -116,7 +103,11 @@
             ({ config, ... }: {
               options.home-manager.users = lib.mkOption {
                 type = lib.types.attrsOf (lib.types.submoduleWith {
-                  modules = [ (import inputs.base16.hmModule) ];
+                  modules = [
+                    (import inputs.base16.hmModule)
+                    hyprland.homeManagerModules.default
+                    ddcsync.homeManagerModules.default
+                  ];
 
                   specialArgs = commonSpecialArgs // { super = config; };
                 });
@@ -125,8 +116,6 @@
 
             ({ pkgs, ... }: {
               nix.settings = {
-                # add binary caches
-                # trusted-public-keys = [
                 trusted-users = [
                   "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
                   "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
@@ -135,7 +124,6 @@
                   "liff.cachix.org-1:Uid73LCbEljychK4hx5pn3BkTehHPDBt+S717gFBp90="
                   "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
                 ];
-                # binary-caches = [
                 substituters = [
                   "https://nixpkgs-wayland.cachix.org"
                   "https://nix-community.cachix.org"
@@ -148,10 +136,11 @@
               nixpkgs.overlays = [
                 nur.overlay
                 emacs-overlay.overlay
+                emacs-ng.overlays.default
                 nix-alien.overlay
-                jetbrains-flake.overlay
                 hyprland.overlays.default
                 hyprpaper.overlays.default
+                ddcsync.overlays.default
 
                 (final: prev: {
                   unstable = import inputs.nixpkgs-unstable {
@@ -163,10 +152,6 @@
                     config.allowUnfree = true;
                   };
                   stable = import inputs.nixpkgs-stable {
-                    system = "x86_64-linux";
-                    config.allowUnfree = true;
-                  };
-                  local = import inputs.nixpkgs-local {
                     system = "x86_64-linux";
                     config.allowUnfree = true;
                   };

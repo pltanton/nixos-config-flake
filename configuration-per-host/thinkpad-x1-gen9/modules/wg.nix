@@ -10,50 +10,59 @@ let
     "${ip} route ${action} default dev ${iface} table 80"
   ];
 in {
-  systemd.services.wireguard-wg-home = { wantedBy = lib.mkForce [ ]; };
-  systemd.services.wireguard-wg-hz1 = { wantedBy = lib.mkForce [ ]; };
-  systemd.services.wireguard-wg-sprintbox = { wantedBy = lib.mkForce [ ]; };
+  # systemd.services.wireguard-wg-home = {
+  #   before = lib.mkForce [ ];
+  #   after = lib.mkForce [ ];
+  # };
+  # systemd.services.wireguard-wg-hz1 = {
+  #   before = lib.mkForce [ ];
+  #   after = lib.mkForce [ ];
+  # };
+  # systemd.services.wireguard-wg-sprintbox = {
+  #   before = lib.mkForce [ ];
+  #   after = lib.mkForce [ ];
+  # };
 
   networking.wireguard.interfaces = {
-    wg-home = {
-      privateKeyFile = "/root/secrets/wg/home";
-      ips = [ "10.100.0.3/32" ];
-      peers = [{
-        publicKey = "Rv9ZSp8/fvFj1Zohwragvv4K4Z+qo0c9rinZvfaJ5CY=";
-        allowedIPs = [ "10.100.0.0/24" ];
-        # allowedIPs = [ "0.0.0.0/0" ];
-        endpoint = "home.kaliwe.ru:51820";
-        persistentKeepalive = 25;
-      }];
-    };
+    # wg-home = {
+    #   privateKeyFile = "/root/secrets/wg/home";
+    #   ips = [ "10.100.0.3/32" ];
+    #   peers = [{
+    #     publicKey = "Rv9ZSp8/fvFj1Zohwragvv4K4Z+qo0c9rinZvfaJ5CY=";
+    #     allowedIPs = [ "10.100.0.0/24" ];
+    #     # allowedIPs = [ "0.0.0.0/0" ];
+    #     endpoint = "home.kaliwe.ru:51820";
+    #     persistentKeepalive = 25;
+    #   }];
+    # };
 
-    wg-sprintbox = {
-      privateKey = secrets.wg.sprintbox.privateKey;
-      ips = [ "10.10.10.2/32" ];
+    # wg-sprintbox = {
+    #   privateKey = secrets.wg.sprintbox.privateKey;
+    #   ips = [ "10.10.10.2/32" ];
 
-      peers = [{
-        allowedIPs = [ "0.0.0.0/0" ];
-        publicKey = "Yu5mgRISx/lZO0bBsBXeXi2jgzcJLupjEDPBCzgZFFo=";
-        endpoint = "141.8.195.83:51820";
-        persistentKeepalive = 25;
-      }];
-    };
+    #   peers = [{
+    #     allowedIPs = [ "0.0.0.0/0" ];
+    #     publicKey = "Yu5mgRISx/lZO0bBsBXeXi2jgzcJLupjEDPBCzgZFFo=";
+    #     endpoint = "141.8.195.83:51820";
+    #     persistentKeepalive = 25;
+    #   }];
+    # };
 
-    wg-hz1 = let host = "195.201.150.251";
-    in {
-      ips = [ "10.10.10.2/32" ];
-      privateKey = secrets.wg.hz1.privateKey;
-      allowedIPsAsRoutes = false;
-      postSetup = rules "add" host "wg-hz1";
-      postShutdown = rules "del" host "wg-hz1";
+    #   wg-hz1 = let host = "195.201.150.251";
+    #   in {
+    #     ips = [ "10.10.10.2/32" ];
+    #     privateKey = secrets.wg.hz1.privateKey;
+    #     allowedIPsAsRoutes = false;
+    #     postSetup = rules "add" host "wg-hz1";
+    #     postShutdown = rules "del" host "wg-hz1";
 
-      peers = [{
-        allowedIPs = [ "0.0.0.0/0" ];
-        publicKey = "0vuNrDaID3o8YwbNBZ7RViB0O0z6Kt32mpK36PUDgg8=";
-        endpoint = "${host}:51820";
-        persistentKeepalive = 25;
-      }];
-    };
+    #     peers = [{
+    #       allowedIPs = [ "0.0.0.0/0" ];
+    #       publicKey = "0vuNrDaID3o8YwbNBZ7RViB0O0z6Kt32mpK36PUDgg8=";
+    #       endpoint = "${host}:51820";
+    #       persistentKeepalive = 25;
+    #     }];
+    #   };
 
   };
 }

@@ -1,6 +1,5 @@
 { config, lib, pkgs, inputs, ... }: {
   imports = [
-    inputs.hyprland.homeManagerModules.default
     ./config
     ./hyprpaper.nix
     ./swayidle.nix
@@ -13,6 +12,8 @@
     enable = true;
     xwayland.enable = true;
     xwayland.hidpi = true;
+    recommendedEnvironment = true;
+    systemdIntegration = true;
   };
 
   # home.packages = [ (pkgs.hiPrio pkgs.unstable.xwayland) ];
@@ -21,17 +22,14 @@
     lib.mkIf config.wayland.windowManager.hyprland.enable ''
       set TTY1 (tty)
       if test -z "$DISPLAY"; and test $TTY1 = "/dev/tty1"
-        systemctl --user import-environment PATH
         exec sh -c 'Hyprland; systemctl --user stop hyprland-session.target; systemctl --user stop graphical-session.target'
-        # exec sh -c 'Hyprland > hyprland.log 2>&1; systemctl --user stop hyprland-session.target; systemctl --user stop graphical-session.target'
       end
     '';
 
   home.sessionVariables = with config.lib.base16.theme;
     lib.mkIf config.wayland.windowManager.hyprland.enable {
-      GDK_SCALE = "3";
+      # GDK_SCALE = "2";
       # QT_SCALE_FACTOR = "2";
-      XCURSOR_SIZE = toString (cursorSize * 2);
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
 
       WLR_DRM_NO_ATOMIC = "1";
@@ -48,9 +46,15 @@
 
   xresources = lib.mkIf config.wayland.windowManager.hyprland.enable {
     properties = {
-      "*dpi" = "154";
-      "Xft.dpi" = "154";
-      "Xcursor.size" = lib.mkOverride 10 "64";
+      # "*dpi" = "192";
+      # "Xft.dpi" = "192";
+      # "Xcursor.size" =
+      #   lib.mkForce (toString config.lib.base16.theme.cursorSizeX2);
     };
   };
+
+  xdg.configFile."hypr/hyprland.conf".text = (pkgs.lib.mkBefore ''
+    exec=systemctl --user import-environment PATH XDG_BACKEND XDG_SESSION_TYPE
+  '');
+
 }

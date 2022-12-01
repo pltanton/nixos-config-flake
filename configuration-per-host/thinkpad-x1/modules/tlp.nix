@@ -1,6 +1,7 @@
 { pkgs, config, ... }: {
   services.tlp = {
-    enable = !config.services.xserver.desktopManager.gnome.enable;
+    enable = !config.services.xserver.desktopManager.gnome.enable
+      && !config.services.xserver.desktopManager.plasma5.enable;
     settings = {
       PLATFORM_PROFILE_ON_AC = "performance";
       PLATFORM_PROFILE_ON_BAT = "low-power";

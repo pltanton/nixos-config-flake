@@ -21,7 +21,6 @@ let
       iconTheme = theme.iconTheme;
       cursorTheme = theme.cursorTheme;
       cursorSize = toString theme.cursorSize;
-      xcursorSize = toString (cursorSize * 2);
 
       base0 = base00-hex;
       base1 = base01-hex;
@@ -39,6 +38,8 @@ let
       baseD = base0D-hex;
       baseE = base0E-hex;
       baseF = base0F-hex;
+
+      inherit gradient0 gradient1 gradient2 gradient3;
 
       inherit (theme) fontUIName;
     });

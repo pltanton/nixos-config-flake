@@ -1,10 +1,10 @@
-{ nixpkgs, ... }: {
-  services.gotify.enable = true;
+{ nixpkgs, lib, config, ... }: {
+  services.gotify.enable = false;
   services.gotify.port = 3031;
 
   services.nginx = {
     enable = true;
-    virtualHosts."gotify.kaliwe.ru" = {
+    virtualHosts."gotify.kaliwe.ru" = lib.mkIf (config.services.gotify.enable) {
       enableACME = true;
       forceSSL = true;
 
@@ -15,7 +15,7 @@
     };
   };
 
-  security.acme.certs = {
-    "gitea.kaliwe.ru".email = "plotnikovanton@gmail.com";
+  security.acme.certs = lib.mkIf (config.services.gotify.enable) {
+    "gotify.kaliwe.ru".email = "plotnikovanton@gmail.com";
   };
 }
