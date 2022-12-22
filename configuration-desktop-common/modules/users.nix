@@ -2,14 +2,6 @@
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
-  nix.settings.trusted-users = [ "root" "@wheel" ];
-
-  programs.fish = {
-    shellInit = ''
-      set fish_greeting
-    '';
-  };
-
   users = {
     users = {
       anton = {
@@ -20,7 +12,6 @@
         };
 
         isNormalUser = true;
-        shell = pkgs.fish;
         home = "/home/anton";
         extraGroups = [
           "adbusers"
@@ -39,7 +30,6 @@
 
       julsa = {
         isNormalUser = true;
-        shell = pkgs.fish;
         home = "/home/julsa";
         extraGroups =
           [ "wheel" "networkmanager" "audio" "video" "docker" "lp" "scanner" ];

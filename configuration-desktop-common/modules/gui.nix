@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: {
+{ pkgs, lib, config, inputs, ... }: {
   gtk.iconCache.enable = true;
   xdg.icons.enable = true;
 
@@ -20,6 +20,9 @@
   services.xserver = {
     enable = false;
 
+    displayManager.lightdm = { enable = false; };
+    displayManager.startx = { enable = true; };
+
     displayManager.gdm.enable = false;
     displayManager.gdm.wayland = false;
     desktopManager.gnome.enable = false;
@@ -37,31 +40,15 @@
       enable = true;
       touchpad = { tapping = true; };
     };
-
-    desktopManager.session = [{
-      name = "hyprland";
-      start = ''
-        Hyprland
-      '';
-    }];
   };
 
   # programs.sway.enable = false;
-  xdg.portal = lib.mkIf (!config.services.xserver.desktopManager.gnome.enable
-    && !config.services.xserver.desktopManager.plasma5.enable) {
-      enable = true;
-      wlr.enable = true;
-      wlr.settings = {
-        screencast = {
-          output_name = "HDMI-A-1";
-          max_fps = 15;
-          chooser_type = "simple";
-          chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -or";
-        };
+  # xdg.portal
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
 
-      };
-    };
-
-  programs.dconf.enable =
-    lib.mkIf (!config.services.xserver.desktopManager.gnome.enable) true;
+  # programs.dconf.enable =
+  #   lib.mkIf (!config.services.xserver.desktopManager.gnome.enable) true;
 }

@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, osConfig, ... }:
 let
   toRgba = let t = config.lib.base16.theme;
   in col: opacity:
@@ -9,31 +9,35 @@ let
   theme = config.lib.base16.theme;
   backgroundColor-hex = "${theme.base00-hex}";
 
-  styleFile = with theme;
+  styleFile = with osConfig.stylix.palette;
     pkgs.substituteAll ({
       src = ./style.css;
 
-      backgroundColor = base00-hex;
-      base0 = base00-hex;
-      base1 = base01-hex;
-      base2 = base02-hex;
-      base3 = base03-hex;
-      base4 = base04-hex;
-      base5 = base05-hex;
-      base6 = base06-hex;
-      base7 = base07-hex;
-      base8 = base08-hex;
-      base9 = base09-hex;
-      baseA = base0A-hex;
-      baseB = base0B-hex;
-      baseC = base0C-hex;
-      baseD = base0D-hex;
-      baseE = base0E-hex;
-      baseF = base0F-hex;
+      backgroundColor = base00;
+      base0 = base00;
+      base1 = base01;
+      base2 = base02;
+      base3 = base03;
+      base4 = base04;
+      base5 = base05;
+      base6 = base06;
+      base7 = base07;
+      base8 = base08;
+      base9 = base09;
+      baseA = base0A;
+      baseB = base0B;
+      baseC = base0C;
+      baseD = base0D;
+      baseE = base0E;
+      baseF = base0F;
 
-      inherit gradient0 gradient1 gradient2 gradient3;
+      # TODO Replace it with stylix
+      gradient0 = "8fbcbb";
+      gradient1 = "88c0d0";
+      gradient2 = "81a1c1";
+      gradient3 = "5e81ac";
 
-      inherit fontUIName;
+      fontUIName = "Inter";
     });
 
 in { programs.waybar.style = styleFile; }

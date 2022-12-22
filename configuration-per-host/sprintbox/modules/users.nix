@@ -1,18 +1,7 @@
 { pkgs, config, ... }: {
-  security.sudo.wheelNeedsPassword = false;
-
-  nix.trustedUsers = [ "root" "@wheel" ];
-
-  programs.fish = {
-    shellInit = ''
-      set fish_greeting
-    '';
-  };
-
   users.groups.deploy = { };
   users = {
     users = {
-      root = { shell = pkgs.fish; };
       anton = {
         openssh.authorizedKeys = {
           keys = [

@@ -6,9 +6,10 @@
     # nixpkgs-local.url = "path:/home/anton/Workdir/nixpkgs";
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.11";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-mesa.url = "github:K900/nixpkgs/mesa-22.3";
 
     nix.url = "github:nixos/nix";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -17,7 +18,13 @@
     home-manager.url = "github:nix-community/home-manager/master";
     # home-manager.url = "github:nix-community/home-manager/release-22.05";
     # base16.url = "github:alukardbf/base16-nix";
-    base16.url = "github:pltanton/base16-nix";
+    # base16.url = "github:pltanton/base16-nix";
+
+    base16-schemes = {
+      url = "github:base16-project/base16-schemes";
+      flake = false;
+    };
+    stylix.url = "github:danth/stylix";
 
     # ddcsync.url = "path:/home/anton/Workdir/ddcsync";
     ddcsync.url = "github:pltanton/ddcsync";
@@ -39,9 +46,9 @@
       url = "github:Kljunas2/activate-linux";
       inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
     };
-    swaymonad = {
-      url = "github:pltanton/swaymonad";
-      inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
+    jetbrains-flake = {
+      url = "github:liff/jetbrains-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Extra flakes with application sets
@@ -69,7 +76,8 @@
   };
 
   outputs = { self, nixpkgs, home-manager, nur, nix-alien, emacs-overlay
-    , emacs-ng, mach-nix, hyprland, hyprpaper, ddcsync, ... }@inputs: {
+    , emacs-ng, mach-nix, hyprland, hyprpaper, ddcsync, jetbrains-flake, stylix
+    , ... }@inputs: {
       nixosConfigurations = let
         inherit (inputs.nixpkgs) lib;
 
@@ -98,13 +106,15 @@
 
             # Home manager with default overridings
             home-manager.nixosModules.home-manager
+            hyprland.nixosModules.default
+            stylix.nixosModules.stylix
 
             # Default home-manager user overrides (add modules and special args)
             ({ config, ... }: {
               options.home-manager.users = lib.mkOption {
                 type = lib.types.attrsOf (lib.types.submoduleWith {
                   modules = [
-                    (import inputs.base16.hmModule)
+                    # (import inputs.base16.hmModule)
                     hyprland.homeManagerModules.default
                     ddcsync.homeManagerModules.default
                   ];
@@ -116,7 +126,7 @@
 
             ({ pkgs, ... }: {
               nix.settings = {
-                trusted-users = [
+                trusted-public-keys = [
                   "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
                   "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
                   "emacsng.cachix.org-1:i7wOr4YpdRpWWtShI8bT6V7lOTnPeI7Ho6HaZegFWMI="
@@ -141,6 +151,7 @@
                 hyprland.overlays.default
                 hyprpaper.overlays.default
                 ddcsync.overlays.default
+                jetbrains-flake.overlays.default
 
                 (final: prev: {
                   unstable = import inputs.nixpkgs-unstable {
@@ -152,6 +163,10 @@
                     config.allowUnfree = true;
                   };
                   stable = import inputs.nixpkgs-stable {
+                    system = "x86_64-linux";
+                    config.allowUnfree = true;
+                  };
+                  nixpkgs-mesa = import inputs.nixpkgs-mesa {
                     system = "x86_64-linux";
                     config.allowUnfree = true;
                   };

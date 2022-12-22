@@ -1,13 +1,17 @@
-{ pkgs, ... }: {
+{ pkgs, lib, config, ... }: {
   virtualisation = {
-    docker.enable = false;
+    docker.enable = true;
 
-    oci-containers.backend = "podman";
+    oci-containers.backend = "docker";
 
     podman = {
-      enable = true;
+      enable = false;
       dockerCompat = false;
       defaultNetwork.dnsname.enable = true;
     };
   };
+
+  environment.systemPackages =
+    lib.mkIf (config.virtualisation.docker.enable) [ pkgs.docker-compose ];
+
 }

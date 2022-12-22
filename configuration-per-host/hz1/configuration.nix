@@ -21,7 +21,7 @@
     firewall = {
       allowedUDPPorts = [ 51820 2282 ];
       allowedTCPPorts =
-        [ 53589 9090 1194 8080 8200 2282 3256 3000 443 80 3030 ];
+        [ 53589 9090 1194 8080 8200 2282 3256 3000 443 80 3030 6878 ];
       extraCommands = ''
         iptables -t nat -A POSTROUTING -s10.10.10.0/24 -j MASQUERADE
       '';

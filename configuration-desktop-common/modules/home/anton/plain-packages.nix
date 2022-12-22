@@ -104,26 +104,27 @@
       grpc
       grpcurl # grpc client
       nodejs
-      # intellij-idea-ultimate
       # master.jetbrains.idea-community
       # jetbrains.idea-ultimate
       # intellij-idea-community-eap
       # jetbrains.datagrip
       # android-studio
-      (stable.jetbrains.idea-ultimate.overrideAttrs (oldAttrs: rec {
-        src = fetchurl {
-          url = "https://download.jetbrains.com/idea/ideaIU-2022.2.3.tar.gz";
-          sha256 = "1cw4c6ai4q9g35nkc19c0allvvlxp216pmlld0bggjffff0xxyg1";
-        };
-      }))
-      # stable.jetbrains.idea-ultimate
+      # (stable.jetbrains.idea-ultimate.overrideAttrs (oldAttrs: rec {
+      #   src = fetchurl {
+      #     url = "https://download.jetbrains.com/idea/ideaIU-2022.3.tar.gz";
+      #     sha256 =
+      #       "9675c15bea4b3d0e2b00265f1b4c7c775f4187cfda9b894b4109c90ceb8e3061";
+      #   };
+      # }))
+      jetbrains.idea-ultimate
+      # intellij-idea-ultimate
 
       mongodb
       dbeaver
       beekeeper-studio
       gcc
       black # Python code formatter
-      (python310.withPackages (pp:
+      (stable.python310.withPackages (pp:
         with pp; [
           pip
           pylint

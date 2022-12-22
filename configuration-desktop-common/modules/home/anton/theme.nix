@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, inputs, ... }:
 let
   themeConsts = rec {
     fontConsoleName = "Iosevka";
@@ -35,19 +35,19 @@ in {
     pkgs.gnome.adwaita-icon-theme
     pkgs.nordic
   ];
-  themes.base16 = {
-    enable = true;
-    scheme = "nord";
-    variant = "nord";
-    extraParams = themeConsts;
-  };
+  # themes.base16 = {
+  #   enable = true;
+  #   scheme = "nord";
+  #   variant = "nord";
+  #   extraParams = themeConsts;
+  # };
 
   gtk = {
     enable = tilingWM;
-    theme = {
-      package = pkgs.nordic;
-      name = themeConsts.gtkTheme;
-    };
+    # theme = {
+    #   package = pkgs.nordic;
+    #   # name = themeConsts.gtkTheme;
+    # };
     iconTheme = {
       package = themeConsts.iconPackage;
       name = themeConsts.iconTheme;

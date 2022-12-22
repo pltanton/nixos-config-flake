@@ -6,7 +6,7 @@
 (add-to-list 'default-frame-alist '(alpha-background . 85)) ; For all new frames henceforth
 
 (setq  user-full-name "Anton Plotnikov"
-      user-mail-address "plotnikovanton@gmail.com")
+       user-mail-address "plotnikovanton@gmail.com")
 
 (setq doom-theme 'doom-nord)
 
@@ -140,11 +140,70 @@
   (delq! 'go-mode so-long-target-modes))
 
 
-;; Org mode jira
-;; (make-directory "~/.org-jira" t)
-;; (setq jiralib-url "https://jira.fix.ru")
-;; (after! auth-source
-;;   (setq jiralib-token
-;;         (cons "Authorization"
-;;               (concat "Bearer " (auth-source-pick-first-password
-;;                                  :host "jira.fix.ru")))))
+;; Configure org latex export
+
+(after! ox-latex
+  (setq Tex-command-default "LuaLaTeX")
+  (setq org-latex-compiller "lualatex")
+  (add-to-list 'org-latex-classes
+               '("org-note"
+                 "\\documentclass[11pt]{report}
+% \\renewcommand\\maketitle{}
+\\usepackage[russian,english]{babel}
+\\babelfont{rm}{Liberation Serif}
+\\babelfont{sf}{Liberation Sans}
+\\usepackage[a4paper,margin=1.5cm,left=2cm]{geometry}
+
+\\usepackage{listings}
+\\usepackage{xcolor}
+
+\\definecolor{codegreen}{rgb}{0,0.6,0}
+\\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\\lstdefinestyle{mystyle}{
+    backgroundcolor=\\color{backcolour},
+    commentstyle=\\color{codegreen},
+    keywordstyle=\\color{magenta},
+    numberstyle=\\tiny\\color{codegray},
+    stringstyle=\\color{codepurple},
+    basicstyle=\\ttfamily\\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\\lstset{style=mystyle}
+"
+                 ("\\section*{%s}" . "\\section*{%s}")
+                 ("\\subsection*{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection*{%s}" . "\\subsubsection*{%s}")
+                 ("\\paragraph*{%s}" . "\\paragraph*{%s}")
+                 ("\\subparagraph*{%s}" . "\\subparagraph*{%s}")))
+  (setq org-latex-default-class "org-note")
+  (setq org-latex-listings t)
+  (setq org-latex-toc-command "")
+  ;; (setq org-latex-pdf-process
+  ;;       '("lualatex -shell-escape -interaction nonstopmode %f"
+  ;;         "lualatex -shell-escape -interaction nonstopmode %f"))
+  (setq org-latex-default-packages-alist
+        '(;; ("russian,english"   "babel"   t)
+          (""     "graphicx"  t)
+          (""     "longtable" nil)
+          (""     "wrapfig"   nil)
+          (""     "rotating"  nil)
+          ("normalem" "ulem"  t)
+          (""     "amsmath"   t)
+          (""     "amssymb"   t)
+          (""     "capt-of"   nil)
+          (""     "hyperref"  nil))
+        )
+  )

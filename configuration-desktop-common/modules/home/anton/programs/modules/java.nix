@@ -1,6 +1,9 @@
 { pkgs, ... }: {
   home = {
-    packages = with pkgs; [ pkgs.jdk kotlin ];
-    file = { ".jdks/openjdk".source = pkgs.jdk; };
+    packages = with pkgs; [ pkgs.jdk kotlin kotlin-language-server ];
+    file = {
+      ".jdks/openjdk".source = "${pkgs.jdk}/lib/openjdk";
+      ".jdks/openjdk11".source = "${pkgs.jdk11}/lib/openjdk";
+    };
   };
 }

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
+{ osConfig, config, lib, pkgs, inputs, ... }:
 let
   grabScreenshot = pkgs.writeShellScript "grabScreenshot" ''
     mkdir -p ~/Screenshots
@@ -7,9 +7,7 @@ let
     wl-copy -t image/png < $FILE_PATH
   '';
 
-  theme = config.lib.base16.theme;
-
-  hyprctlConfig = with theme;
+  hyprctlConfig = with osConfig.stylix.palette;
     pkgs.substituteAll ({
       src = ./hyprland.conf;
 
@@ -17,31 +15,33 @@ let
       brightness = "${pkgs.brightness}/bin/brightness";
       xprop = "${pkgs.xorg.xprop}/bin/xprop";
 
-      gtkTheme = theme.gtkTheme;
-      iconTheme = theme.iconTheme;
-      cursorTheme = theme.cursorTheme;
-      cursorSize = toString theme.cursorSize;
+      gtkTheme = config.gtk.theme.name;
+      iconTheme = config.gtk.iconTheme.name;
+      cursorTheme = config.home.pointerCursor.name;
+      cursorSize = toString config.home.pointerCursor.size;
 
-      base0 = base00-hex;
-      base1 = base01-hex;
-      base2 = base02-hex;
-      base3 = base03-hex;
-      base4 = base04-hex;
-      base5 = base05-hex;
-      base6 = base06-hex;
-      base7 = base07-hex;
-      base8 = base08-hex;
-      base9 = base09-hex;
-      baseA = base0A-hex;
-      baseB = base0B-hex;
-      baseC = base0C-hex;
-      baseD = base0D-hex;
-      baseE = base0E-hex;
-      baseF = base0F-hex;
+      base0 = base00;
+      base1 = base01;
+      base2 = base02;
+      base3 = base03;
+      base4 = base04;
+      base5 = base05;
+      base6 = base06;
+      base7 = base07;
+      base8 = base08;
+      base9 = base09;
+      baseA = base0A;
+      baseB = base0B;
+      baseC = base0C;
+      baseD = base0D;
+      baseE = base0E;
+      baseF = base0F;
 
-      inherit gradient0 gradient1 gradient2 gradient3;
-
-      inherit (theme) fontUIName;
+      # TODO Replace it with stylix
+      gradient0 = "8fbcbb";
+      gradient1 = "88c0d0";
+      gradient2 = "81a1c1";
+      gradient3 = "5e81ac";
     });
 in {
   home.packages = lib.mkIf config.wayland.windowManager.hyprland.enable

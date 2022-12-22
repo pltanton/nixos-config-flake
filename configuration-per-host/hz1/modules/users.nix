@@ -1,7 +1,7 @@
 { pkgs, config, ... }: {
   security.sudo.wheelNeedsPassword = false;
 
-  nix.trustedUsers = [ "root" "@wheel" ];
+  nix.settings.trusted_users = [ "root" "@wheel" ];
 
   programs.fish = {
     shellInit = ''

@@ -7,9 +7,13 @@ in {
   services = {
     grafana = {
       enable = true;
-	  domain = domain;
-	  rootUrl = "https://${domain}";
-      port = port;
+      settings = {
+        server = {
+          domain = domain;
+          root_url = "https://${domain}";
+          http_port = port;
+        };
+      };
     };
   };
 
@@ -23,7 +27,5 @@ in {
     };
   };
 
-  security.acme.certs = {
-    "${domain}".email = "plotnikovanton@gmail.com";
-  };
+  security.acme.certs = { "${domain}".email = "plotnikovanton@gmail.com"; };
 }

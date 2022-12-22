@@ -31,6 +31,9 @@
       # GDK_SCALE = "2";
       # QT_SCALE_FACTOR = "2";
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+      # XCURSOR_SIZE = 64;
+      # XCURSOR_SIZE =
+      #   lib.mkForce (toString config.lib.base16.theme.cursorSizeX2);
 
       WLR_DRM_NO_ATOMIC = "1";
       XDG_DATA_DIRS =
@@ -44,14 +47,14 @@
       XDG_CURRENT_DESKTOP = "gnome";
     };
 
-  xresources = lib.mkIf config.wayland.windowManager.hyprland.enable {
-    properties = {
-      # "*dpi" = "192";
-      # "Xft.dpi" = "192";
-      # "Xcursor.size" =
-      #   lib.mkForce (toString config.lib.base16.theme.cursorSizeX2);
-    };
-  };
+  # xresources = lib.mkIf config.wayland.windowManager.hyprland.enable {
+  #   properties = {
+  #     "*dpi" = "192";
+  #     "Xft.dpi" = "192";
+  #     "Xcursor.size" =
+  #       lib.mkForce (toString config.lib.base16.theme.cursorSizeX2);
+  #   };
+  # };
 
   xdg.configFile."hypr/hyprland.conf".text = (pkgs.lib.mkBefore ''
     exec=systemctl --user import-environment PATH XDG_BACKEND XDG_SESSION_TYPE

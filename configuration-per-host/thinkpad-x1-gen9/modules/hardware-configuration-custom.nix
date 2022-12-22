@@ -13,12 +13,15 @@ in {
     enable = true;
     extraPackages = with pkgs; [ vaapiIntel intel-media-driver ];
     driSupport32Bit = true;
+    package = pkgs.nixpkgs-mesa.mesa.drivers;
+    package32 = pkgs.nixpkgs-mesa.pkgsi686Linux.mesa.drivers;
   };
   # environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
 
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.kernelPackages = pkgs.linuxPackages;
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  # boot.kernelPackages = pkgs.linuxPackages_zen;
+  # boot.kernelPackages = pkgs.linuxPackages_xanmod;
 
   hardware.trackpoint.enable = true;
   hardware.trackpoint.emulateWheel = config.hardware.trackpoint.enable;
@@ -27,7 +30,7 @@ in {
 
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   boot.kernel.sysctl = { };
-  boot.kernelParams = [ ];
+  boot.kernelParams = [ "i915.enable_psr=0" ];
   # boot.kernelModules = [ "v4l2loopback" "i2c-dev" "iwlwifi" ];
   boot.kernelModules = [ "i2c-dev" "iwlwifi" ];
 

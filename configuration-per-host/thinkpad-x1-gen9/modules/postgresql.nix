@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   services.postgresql = {
     enable = true;
     package = pkgs.postgresql_13;
@@ -9,4 +9,5 @@
       host  all  all 0.0.0.0/0 md5
     '';
   };
+  systemd.services.postgresql = { wantedBy = lib.mkForce [ ]; };
 }
