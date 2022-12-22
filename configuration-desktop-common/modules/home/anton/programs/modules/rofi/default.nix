@@ -1,20 +1,30 @@
-{ pkgs, config, ... }:
+{ pkgs, osConfig, config, inputs, ... }:
 let
   rofi = pkgs.rofi-wayland.override {
     plugins = with pkgs; [ rofi-emoji rofi-power-menu ];
   };
 
-in with config.lib.base16.theme; {
+in {
 
   programs.rofi = {
     enable = true;
     package = rofi;
-    font = "${fontUIName} 20";
-    theme = ./nord.rasi;
-    # theme = "${config.lib.base16.templateFile {
-    #   name = "rofi";
-    #   # type = "color";
-    # }}";
+    font = "${osConfig.stylix.fonts.serif.name} 20";
+    theme = (osConfig.lib.stylix.colors inputs.base16-rofi);
+    extraConfig = {
+      width = 30;
+      line-margin = 10;
+      lines = 6;
+      columns = 2;
+
+      display-emoji = "🫠";
+      display-ssh = "";
+      display-run = "";
+      display-drun = "";
+      display-window = "";
+      display-combi = "";
+      show-icons = true;
+    };
   };
 
   home.packages = with pkgs; [

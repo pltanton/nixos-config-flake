@@ -42,6 +42,22 @@
         "type": "github"
       }
     },
+    "base16-rofi": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1668291378,
+        "narHash": "sha256-RZpjCQ8KGO3cv9A/lNNoTE+WJ9sNk5sz0zJq02zzxA8=",
+        "owner": "tinted-theming",
+        "repo": "base16-rofi",
+        "rev": "3f64a9f8d8cb7db796557b516682b255172c4ab4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tinted-theming",
+        "repo": "base16-rofi",
+        "type": "github"
+      }
+    },
     "base16-schemes": {
       "flake": false,
       "locked": {
@@ -476,11 +492,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1671637262,
-        "narHash": "sha256-VvgzpNVKlk9Ahl0ujrz+qpmJji7xgsdLJnNtr57tyUU=",
+        "lastModified": 1671711938,
+        "narHash": "sha256-gbeeJhBLUi+0NHoyre2Lz0j6+gjywWp9vfctMW4JrXI=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "96cb47fc64438c93e7663afa832a567120f82128",
+        "rev": "21cc6d7ae5b502b48377486aae5937ec405f1f52",
         "type": "github"
       },
       "original": {
@@ -1015,6 +1031,7 @@
     "root": {
       "inputs": {
         "activate-linux": "activate-linux",
+        "base16-rofi": "base16-rofi",
         "base16-schemes": "base16-schemes",
         "bwmenu": "bwmenu",
         "ddcsync": "ddcsync",

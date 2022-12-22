@@ -9,7 +9,7 @@ let
   theme = config.lib.base16.theme;
   backgroundColor-hex = "${theme.base00-hex}";
 
-  styleFile = with osConfig.stylix.palette;
+  styleFile = with osConfig.lib.stylix.colors;
     pkgs.substituteAll ({
       src = ./style.css;
 

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ osConfig, config, lib, pkgs, ... }:
 with lib;
 let cfg = config.services.wob;
 in {
@@ -18,7 +18,7 @@ in {
 
     systemd.user = {
 
-      services.wob = with config.lib.base16.theme; {
+      services.wob = with osConfig.lib.stylix.colors; {
         Unit = {
           Description =
             "A lightweight overlay volume/backlight/progress/anything bar for Wayland";
@@ -34,9 +34,9 @@ in {
           StandardInput = "socket";
           ExecStart = ''
             ${pkgs.wob}/bin/wob \
-                        --background-color #${base00-hex}C8 \
-                        --border-color #${base05-hex}FF \
-                        --bar-color #${base05-hex}FF \
+                        --background-color #${base00}C8 \
+                        --border-color #${base05}FF \
+                        --bar-color #${base05}FF \
                         -O '*'
           '';
           Restart = "always";

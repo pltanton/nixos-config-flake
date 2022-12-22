@@ -1,6 +1,7 @@
-{ pkgs, lib, inputs, config, ... }:
+{ pkgs, lib, inputs, config, osConfig, ... }:
 let
-  lockScript = with config.lib.base16.theme;
+  lockScript = with osConfig.lib.stylix.colors;
+  ## TODO Replace fonts with stylix
     pkgs.writeShellScriptBin "lock" ''
       ${pkgs.swaylock-effects}/bin/swaylock \
         -f \
@@ -15,7 +16,7 @@ let
         --indicator-radius 100 \
         --indicator-thickness 7 \
         --key-hl-color ${base0A} \
-        --font ${fontUIName}\
+        --font Inter\
         --separator-color 00000000 \
         --line-color 00000000 \
         --line-ver-color 00000000 \
@@ -28,16 +29,16 @@ let
         --inside-clear-color 00000088 \
         --inside-caps-lock-color 00000088 \
         --inside-wrong-color 00000088 \
-        --ring-color ${base0D-hex} \
-        --ring-ver-color ${base0B-hex} \
-        --ring-clear-color ${base0C-hex} \
-        --ring-caps-lock-color ${base09-hex} \
-        --ring-wrong-color ${base08-hex} \
-        --text-color ${base0A-hex} \
-        --text-ver-color ${base0A-hex} \
-        --text-clear-color ${base0A-hex} \
-        --text-caps-lock-color ${base0A-hex} \
-        --text-wrong-color ${base0A-hex} $@
+        --ring-color ${base0D} \
+        --ring-ver-color ${base0B} \
+        --ring-clear-color ${base0C} \
+        --ring-caps-lock-color ${base09} \
+        --ring-wrong-color ${base08} \
+        --text-color ${base0A} \
+        --text-ver-color ${base0A} \
+        --text-clear-color ${base0A} \
+        --text-caps-lock-color ${base0A} \
+        --text-wrong-color ${base0A} $@
     '';
 in {
   nixpkgs.overlays = [ (self: super: { swaylock = lockScript; }) ];

@@ -3,7 +3,7 @@
 {
   services.dunst = {
     enable = true;
-    settings = with osConfig.stylix.palette; {
+    settings = with osConfig.lib.stylix.colors; {
       global = {
         width = 500;
         offset = "10x10";

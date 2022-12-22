@@ -7,7 +7,7 @@ let
     wl-copy -t image/png < $FILE_PATH
   '';
 
-  hyprctlConfig = with osConfig.stylix.palette;
+  hyprctlConfig = with osConfig.lib.stylix.colors;
     pkgs.substituteAll ({
       src = ./hyprland.conf;
 

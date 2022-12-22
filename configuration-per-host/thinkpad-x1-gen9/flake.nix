@@ -25,6 +25,10 @@
       flake = false;
     };
     stylix.url = "github:danth/stylix";
+    base16-rofi = {
+      url = "github:tinted-theming/base16-rofi";
+      flake = false;
+    };
 
     # ddcsync.url = "path:/home/anton/Workdir/ddcsync";
     ddcsync.url = "github:pltanton/ddcsync";
