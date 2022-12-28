@@ -2,7 +2,7 @@
 
 {
   services.throttled = {
-    enable = false;
+    enable = true;
     extraConfig = ''
       [GENERAL]
       # Enable or disable the script execution

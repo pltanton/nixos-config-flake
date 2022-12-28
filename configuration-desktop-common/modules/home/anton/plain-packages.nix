@@ -116,7 +116,8 @@
       #       "9675c15bea4b3d0e2b00265f1b4c7c775f4187cfda9b894b4109c90ceb8e3061";
       #   };
       # }))
-      jetbrains.idea-ultimate
+      # jetbrains.idea-ultimate
+      nur.repos.utybo.jetbrains.idea-ultimate
       # intellij-idea-ultimate
 
       mongodb

@@ -38,7 +38,6 @@
       }
       (with fzf-fish; { inherit name src; })
       (with done; { inherit name src; })
-      (with pure; { inherit name src; })
       (with pisces; { inherit name src; })
     ];
   };

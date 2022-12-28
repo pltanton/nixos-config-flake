@@ -1,7 +1,7 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: @fontUIName@, "Font Awesome 6", "SFNS Display", Helvetica, Arial,
+  font-family: "Font Awesome 6", @fontUIName@, "SFNS Display", Helvetica, Arial,
     sans-serif;
   font-size: 14.5px;
   min-height: 0;

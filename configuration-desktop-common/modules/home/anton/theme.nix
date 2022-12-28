@@ -7,14 +7,14 @@ let
     fontUISize = "15";
     # iconTheme = "Adwaita";
     # iconTheme = "Qogir-dark";
-    iconPackage = pkgs.papirus-icon-theme;
-    iconTheme = "Papirus-Dark";
+    iconPackage = pkgs.kora-icon-theme;
+    iconTheme = "kora";
     gtkTheme = "Nordic-bluish-accent";
     # gtkTheme = "Adwaita-dark";
     # cursorTheme = "Qogir-dark";
     # cursorTheme = "Adwaita";
     cursorTheme = "phinger-cursors";
-    cursorSize = 32;
+    cursorSize = 48;
     cursorSizeX2 = cursorSize * 2;
 
     gradient0 = "8fbcbb";

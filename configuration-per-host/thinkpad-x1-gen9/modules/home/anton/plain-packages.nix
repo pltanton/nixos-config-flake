@@ -12,11 +12,11 @@
 
       # tor-browser-bundle-bin
 
-      # (steam.override {
-      #   # extraPkgs = pkgs: [ SDL2 libstdcxx5 ];
-      #   nativeOnly = false;
-      # })
-      steam
+      (steam.override {
+        extraPkgs = pkgs: with pkgs; [ SDL2 renderdoc ];
+        extraProfile = "unset VK_ICD_FILENAMES";
+      })
+      # steam
       # steam-run
 
       darktable
