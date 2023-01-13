@@ -7,7 +7,7 @@
       global = {
         width = 500;
         offset = "10x10";
-        alignment = "right";
+        alignment = "center";
         # TODO Replace it with stylix or custom module
         frame_width = 0;
         separator_height = 0;

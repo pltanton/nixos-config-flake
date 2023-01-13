@@ -16,8 +16,6 @@
   programs.fish = {
     enable = true;
 
-    shellInit = "";
-
     functions = {
       gitignore = "curl -sL https://www.gitignore.io/api/$argv";
       nshell = "nix shell --impure n#$argv";
@@ -36,10 +34,20 @@
         name = "grc";
         src = inputs.fish-grc;
       }
+      # {
+      #   name = "async-prompt";
+      #   src = inputs.fish-async-prompt-plugin;
+      # }
       (with fzf-fish; { inherit name src; })
       (with done; { inherit name src; })
       (with pisces; { inherit name src; })
+      (with pure; { inherit name src; })
+      # (with hydro; { inherit name src; })
     ];
+
+    shellInit = ''
+      # set -g async_prompt_functions _pure_prompt_git
+    '';
   };
 
   programs.zoxide = {

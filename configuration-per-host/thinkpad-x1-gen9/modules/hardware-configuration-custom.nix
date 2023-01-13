@@ -13,8 +13,8 @@ in {
     enable = true;
     extraPackages = with pkgs; [ vaapiIntel intel-media-driver ];
     driSupport32Bit = true;
-    package = pkgs.nixpkgs-mesa.mesa.drivers;
-    package32 = pkgs.nixpkgs-mesa.pkgsi686Linux.mesa.drivers;
+    # package = pkgs.nixpkgs-mesa.mesa.drivers;
+    # package32 = pkgs.nixpkgs-mesa.pkgsi686Linux.mesa.drivers;
   };
   # environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
 

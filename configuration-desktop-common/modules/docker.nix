@@ -7,7 +7,6 @@
     podman = {
       enable = false;
       dockerCompat = false;
-      defaultNetwork.dnsname.enable = true;
     };
   };
 

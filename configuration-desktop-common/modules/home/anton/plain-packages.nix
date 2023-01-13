@@ -70,7 +70,7 @@
       #   plugins = with gimpPlugins; [ resynthesizer ];
       # })
       mpv
-      tdesktop
+      stable.tdesktop
       xsane
       spotify
 
@@ -120,7 +120,6 @@
       nur.repos.utybo.jetbrains.idea-ultimate
       # intellij-idea-ultimate
 
-      mongodb
       dbeaver
       beekeeper-studio
       gcc

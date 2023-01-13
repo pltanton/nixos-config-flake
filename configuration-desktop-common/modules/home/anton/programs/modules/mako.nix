@@ -1,14 +1,11 @@
-{ pkgs, config, ... }: {
-  programs.mako = with config.lib.base16.theme; {
+{ pkgs, osConfig, lib, ... }: {
+  programs.mako = with osConfig.lib.stylix.colors; {
     enable = false;
-    font = "${fontUIName} ${fontUISize}";
-    backgroundColor = "#${base01-hex}D9";
-    borderColor = "#${base01-hex}";
-    textColor = "#${base05-hex}";
-    groupBy = "app-name";
+    package = pkgs.waylandPkgs.mako;
+    borderColor = lib.mkForce "#${base01-hex}";
     width = 500;
     height = 800;
-    output = "DP-1";
+    anchor = "top-center";
     extraConfig = ''
       [mode=do-not-disturb]
       invisible=1

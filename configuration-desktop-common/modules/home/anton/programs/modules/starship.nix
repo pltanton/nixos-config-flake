@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   programs.starship = {
-    enable = true;
+    enable = false;
     settings = {
       #   aws = { symbol = "  "; };
       #   buf = { symbol = " "; };

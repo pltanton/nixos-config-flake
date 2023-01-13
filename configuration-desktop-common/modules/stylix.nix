@@ -16,7 +16,8 @@
       };
 
       monospace = {
-        package = pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; };
+        # package = pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; };
+        package = pkgs.iosevka;
         name = "Iosevka";
       };
 

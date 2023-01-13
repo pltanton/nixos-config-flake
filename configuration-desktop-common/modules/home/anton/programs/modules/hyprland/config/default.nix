@@ -56,7 +56,7 @@ in {
       pamixer
 
       # Scripts
-      brightness
+      # brightness
       screenshot
     ]);
 

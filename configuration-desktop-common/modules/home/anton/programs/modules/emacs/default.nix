@@ -15,7 +15,7 @@ let
   # emacsPackage = (pkgs.emacs.override {
   # withPgtk = true;
   # });
-  emacsPackage = pkgs.emacsPgtkNativeComp;
+  emacsPackage = pkgs.emacsPgtk;
   # emacsPackage = pkgs.emacsng;
   # emacsPackage = pkgs.emacs;
 in {
@@ -23,16 +23,17 @@ in {
     # emacsPgtkNativeComp
     # emacsPgtk
     # emacsGitNativeComp
-    emacsPackage
+    # emacsPackage
 
-    emacs-all-the-icons-fonts
-    font-awesome_5
+    # emacs-all-the-icons-fonts
+    # font-awesome_5
 
     graphviz # org-roam graph vizualization
 
     binutils
     gnutls
     direnv
+    # ripgrep
     (ripgrep.override { withPCRE2 = true; })
     fd
 
@@ -55,32 +56,38 @@ in {
     gopls
   ];
 
-  services.emacs = {
+  programs.doom-emacs = {
     enable = true;
-    package = emacsPackage;
+    doomPrivateDir = ./doom.d;
+    emacsPackage = emacsPackage;
   };
 
-  home = {
-    sessionPath = [ "${config.xdg.configHome}/emacs/bin" ];
-    sessionVariables = {
-      DOOMDIR = "${config.xdg.configHome}/doom-config";
-      DOOMLOCALDIR = "${config.xdg.configHome}/doom-local";
-      DOOMPROFILELOADFILE = "${config.xdg.configHome}/doom-profiles/load.el";
-    };
-  };
+  # services.emacs = {
+  #   enable = true;
+  #   package = emacsPackage;
+  # };
 
-  xdg = {
-    enable = true;
-    configFile = {
-      "doom-config" = {
-        source = ./doom.d;
-        # onChange = update-doom;
-      };
-      "emacs" = {
-        source = inputs.doom-emacs;
-        onChange = update-doom;
-      };
-      # "emacs/profiles" = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/doom-profiles";
-    };
-  };
+  # home = {
+  #   sessionPath = [ "${config.xdg.configHome}/emacs/bin" ];
+  #   sessionVariables = {
+  #     DOOMDIR = "${config.xdg.configHome}/doom-config";
+  #     DOOMLOCALDIR = "${config.xdg.configHome}/doom-local";
+  #     DOOMPROFILELOADFILE = "${config.xdg.configHome}/doom-profiles/load.el";
+  #   };
+  # };
+
+  # xdg = {
+  #   enable = true;
+  #   configFile = {
+  #     "doom-config" = {
+  #       source = ./doom.d;
+  #       # onChange = update-doom;
+  #     };
+  #     "emacs" = {
+  #       source = inputs.doom-emacs;
+  #       onChange = update-doom;
+  #     };
+  #     # "emacs/profiles" = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/doom-profiles";
+  #   };
+  # };
 }

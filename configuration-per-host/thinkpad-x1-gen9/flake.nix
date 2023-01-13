@@ -15,7 +15,8 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Home-manager and modules
-    home-manager.url = "github:nix-community/home-manager/master";
+    # home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.url = "path:/home/anton/Workdir/home-manager";
     # home-manager.url = "github:nix-community/home-manager/release-22.05";
     # base16.url = "github:alukardbf/base16-nix";
     # base16.url = "github:pltanton/base16-nix";
@@ -64,11 +65,12 @@
     # My own flakes
     bwmenu.url = "github:pltanton/bitwarden-dmenu";
 
+    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
     doom-emacs.url = "github:doomemacs/doomemacs";
     doom-emacs.flake = false;
 
-    fish-z-plugin.url = "github:jethrokuan/z";
-    fish-z-plugin.flake = false;
+    fish-async-prompt-plugin.url = "github:acomagu/fish-async-prompt";
+    fish-async-prompt-plugin.flake = false;
     fish-colored-man-plugin.url = "github:decors/fish-colored-man";
     fish-colored-man-plugin.flake = false;
     fish-grc.url = "github:oh-my-fish/plugin-grc";
@@ -81,7 +83,7 @@
 
   outputs = { self, nixpkgs, home-manager, nur, nix-alien, emacs-overlay
     , emacs-ng, mach-nix, hyprland, hyprpaper, ddcsync, jetbrains-flake, stylix
-    , ... }@inputs: {
+    , nix-doom-emacs, ... }@inputs: {
       nixosConfigurations = let
         inherit (inputs.nixpkgs) lib;
 
@@ -119,6 +121,7 @@
                 type = lib.types.attrsOf (lib.types.submoduleWith {
                   modules = [
                     # (import inputs.base16.hmModule)
+                    nix-doom-emacs.hmModule
                     hyprland.homeManagerModules.default
                     ddcsync.homeManagerModules.default
                   ];
