@@ -6,7 +6,7 @@
 
       transmission-remote-gtk
       transmission-gtk
-      stable.rapid-photo-downloader
+      master.rapid-photo-downloader
 
       shotcut
 

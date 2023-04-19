@@ -9,20 +9,19 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.11";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-mesa.url = "github:K900/nixpkgs/mesa-22.3";
 
     nix.url = "github:nixos/nix";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Home-manager and modules
-    # home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.url = "path:/home/anton/Workdir/home-manager";
+    home-manager.url = "github:nix-community/home-manager/master";
+    # home-manager.url = "path:/home/anton/Workdir/home-manager";
     # home-manager.url = "github:nix-community/home-manager/release-22.05";
     # base16.url = "github:alukardbf/base16-nix";
     # base16.url = "github:pltanton/base16-nix";
 
     base16-schemes = {
-      url = "github:base16-project/base16-schemes";
+      url = "github:tinted-theming/base16-schemes";
       flake = false;
     };
     stylix.url = "github:danth/stylix";
@@ -36,12 +35,13 @@
     ddcsync.inputs.nixpkgs.follows = "nixpkgs";
 
     hyprland = {
+      # url = "github:hyprwm/Hyprland/8531d1d7a67f6213de73466f0351a1ae709f8f4f";
       url = "github:hyprwm/Hyprland";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprpaper = {
       url = "github:hyprwm/hyprpaper";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-alien = {
       url = "github:thiagokokada/nix-alien";
@@ -59,7 +59,12 @@
     # Extra flakes with application sets
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nur.url = "github:nix-community/NUR";
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
+
+    emacs-catppuccin.url = "github:catppuccin/emacs";
+    emacs-catppuccin.flake = false;
+
+    emacs-overlay.url =
+      "github:nix-community/emacs-overlay/c16be6de78ea878aedd0292aa5d4a1ee0a5da501";
     emacs-ng.url = "github:emacs-ng/emacs-ng";
 
     # My own flakes
@@ -170,10 +175,6 @@
                     config.allowUnfree = true;
                   };
                   stable = import inputs.nixpkgs-stable {
-                    system = "x86_64-linux";
-                    config.allowUnfree = true;
-                  };
-                  nixpkgs-mesa = import inputs.nixpkgs-mesa {
                     system = "x86_64-linux";
                     config.allowUnfree = true;
                   };

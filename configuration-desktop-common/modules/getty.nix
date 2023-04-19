@@ -1,5 +1,1 @@
-{ pkgs, ... }: {
-  services.getty = {
-    # autologinUser = "anton";
-  };
-}
+{ pkgs, ... }: { services.getty = { autologinUser = "anton"; }; }

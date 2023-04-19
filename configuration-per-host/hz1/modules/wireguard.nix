@@ -11,6 +11,16 @@
       ips = [ "10.10.10.1/24" ];
       listenPort = 51820;
       privateKeyFile = "/root/nixos/wgkey";
+
+      postSetup = ''
+        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o ens3 -j MASQUERADE
+      '';
+
+      # This undoes the above command
+      postShutdown = ''
+        ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o ens3 -j MASQUERADE
+      '';
+
       peers = [
         {
           allowedIPs = [ "10.10.10.10/32" ]; # Home server

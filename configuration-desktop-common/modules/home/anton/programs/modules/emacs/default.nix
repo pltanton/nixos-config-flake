@@ -15,7 +15,7 @@ let
   # emacsPackage = (pkgs.emacs.override {
   # withPgtk = true;
   # });
-  emacsPackage = pkgs.emacsPgtk;
+  # emacsPackage = pkgs.emacsPgtk;
   # emacsPackage = pkgs.emacsng;
   # emacsPackage = pkgs.emacs;
 in {
@@ -33,8 +33,8 @@ in {
     binutils
     gnutls
     direnv
-    # ripgrep
-    (ripgrep.override { withPCRE2 = true; })
+    ripgrep
+    # (ripgrep.override { withPCRE2 = true; })
     fd
 
     hunspell
@@ -56,10 +56,13 @@ in {
     gopls
   ];
 
+  home.file.".doom.d/themes/catppuccin-theme.el".text =
+    builtins.readFile "${inputs.emacs-catppuccin}/catppuccin-theme.el";
+
   programs.doom-emacs = {
     enable = true;
     doomPrivateDir = ./doom.d;
-    emacsPackage = emacsPackage;
+    emacsPackage = pkgs.emacsPgtk;
   };
 
   # services.emacs = {

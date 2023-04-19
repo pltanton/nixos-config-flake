@@ -2,8 +2,8 @@
 
 (setq fancy-splash-image "$DOOMDIR/images/Emacs-logo-vim.svg")
 
-(set-frame-parameter nil 'alpha-background 85) ; For current frame
-(add-to-list 'default-frame-alist '(alpha-background . 85)) ; For all new frames henceforth
+;; (set-frame-parameter nil 'alpha-background 85) ; For current frame
+;; (add-to-list 'default-frame-alist '(alpha-background . 85)) ; For all new frames henceforth
 
 (setq  user-full-name "Anton Plotnikov"
        user-mail-address "plotnikovanton@gmail.com")
@@ -20,7 +20,7 @@
 ;; Org roam configuration
 
 (make-directory "~/org-roam" t)
-(setq org-roam-database-connector 'sqlite3)
+;; (setq org-roam-database-connector 'sqlite3)
 (setq org-roam-directory (file-truename "~/org-roam"))
 
 ;; (use-package! websocket

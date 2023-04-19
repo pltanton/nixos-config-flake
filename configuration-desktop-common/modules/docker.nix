@@ -6,11 +6,12 @@
 
     podman = {
       enable = false;
-      dockerCompat = false;
+      dockerCompat = true;
     };
   };
 
-  environment.systemPackages =
-    lib.mkIf (config.virtualisation.docker.enable) [ pkgs.docker-compose ];
-
+  environment.systemPackages = [
+    (lib.mkIf config.virtualisation.docker.enable pkgs.docker-compose)
+    (lib.mkIf config.virtualisation.podman.enable pkgs.podman-compose)
+  ];
 }

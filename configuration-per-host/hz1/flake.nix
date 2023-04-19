@@ -10,6 +10,10 @@
     nixpkgs-old.url = "github:nixos/nixpkgs/nixos-21.11";
     nix.url = "github:nixos/nix";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    kraslab-memes-bot.url =
+      "git+ssh://gitea@gitea.kaliwe.ru/pltanton/kraslab-memes-bot.git";
+    kraslab-memes-bot.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
@@ -27,6 +31,7 @@
           # The host configuration itself
           (import ./configuration.nix)
           (import ../../configuration-common)
+          (import ./overlays)
 
           ({ pkgs, ... }: {
             nix.settings = {

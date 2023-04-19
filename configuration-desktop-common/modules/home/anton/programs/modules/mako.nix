@@ -1,5 +1,5 @@
 { pkgs, osConfig, lib, ... }: {
-  programs.mako = with osConfig.lib.stylix.colors; {
+  services.mako = with osConfig.lib.stylix.colors; {
     enable = false;
     package = pkgs.waylandPkgs.mako;
     borderColor = lib.mkForce "#${base01-hex}";

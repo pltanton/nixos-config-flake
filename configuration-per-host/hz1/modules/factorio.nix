@@ -1,7 +1,7 @@
 { pkgs, lib, config, secrets, ... }: {
   services.factorio = {
     package = pkgs.unstable.factorio-headless;
-    enable = true;
+    enable = false;
     token = secrets.factorio.token;
     description = "Elite community server for the best ones of human race.";
     public = false;

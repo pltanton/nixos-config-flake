@@ -10,7 +10,10 @@ in {
           Whether to enable avizo.
         '';
       };
-      config = mkOption { default = { }; };
+      config = mkOption {
+
+        default = { };
+      };
 
       package = mkOption {
         type = types.package;

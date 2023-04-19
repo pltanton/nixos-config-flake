@@ -1,8 +1,8 @@
 { pkgs, inputs, ... }: {
   stylix = {
+    # base16Scheme = "${inputs.base16-schemes}/catppuccin-mocha.yaml";
     base16Scheme = "${inputs.base16-schemes}/nord.yaml";
     image = ./home/backgrounds/nord-1.jpg;
-    targets.swaylock.enable = false;
 
     fonts = {
       serif = {

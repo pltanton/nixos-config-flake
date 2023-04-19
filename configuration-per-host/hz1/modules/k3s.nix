@@ -1,12 +1,12 @@
 { pkgs, lib, config, ... }:
 
 {
-  networking.firewall.allowedTCPPorts =
-    lib.mkIf config.services.k3s.enable [ 6443 ];
-  environment.systemPackages = lib.mkIf config.services.k3s.enable [ pkgs.k3s ];
-
+  # This is required so that pod can reach the API server (running on port 6443 by default)
+  networking.firewall.allowedTCPPorts = [ 6443 ];
   services.k3s.enable = false;
   services.k3s.role = "server";
-  services.k3s.extraFlags = toString [ ];
-
+  services.k3s.extraFlags = toString [
+    # "--kubelet-arg=v=4" # Optionally add additional args to k3s
+  ];
+  environment.systemPackages = [ pkgs.k3s ];
 }

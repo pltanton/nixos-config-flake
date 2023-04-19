@@ -1,1 +1,1 @@
-{ pkgs, ... }: { imports = [ ./wob.nix ./avizo.nix ]; }
+{ pkgs, ... }: { imports = [ ./wob.nix ]; }

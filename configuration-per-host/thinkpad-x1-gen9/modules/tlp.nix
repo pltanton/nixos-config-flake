@@ -29,8 +29,8 @@
 
       #     INTEL_GPU_MAX_FREQ_ON_AC = 1150;
       #     INTEL_GPU_MAX_FREQ_ON_BAT = 800;
-      #     INTEL_GPU_MIN_FREQ_ON_AC = 300;
-      #     INTEL_GPU_MIN_FREQ_ON_BAT = 300;
+      # INTEL_GPU_MIN_FREQ_ON_AC = 800;
+      # INTEL_GPU_MIN_FREQ_ON_BAT = 100;
       #     INTEL_GPU_BOOST_FREQ_ON_AC = 1150;
       #     INTEL_GPU_BOOST_FREQ_ON_BAT = 900;
 

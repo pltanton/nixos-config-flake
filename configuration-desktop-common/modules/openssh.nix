@@ -1,7 +1,6 @@
 { pkgs, ... }: {
   services.openssh = {
-    permitRootLogin = "yes";
+    settings.PermitRootLogin = "yes";
     enable = true;
-    forwardX11 = true;
   };
 }

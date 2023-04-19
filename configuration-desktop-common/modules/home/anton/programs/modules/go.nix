@@ -20,7 +20,7 @@
       go-outline
       gopkgs
       go-tools
-      cobra-cli
+      # master.cobra-cli
 
       (buildGoModule {
         name = "goose";

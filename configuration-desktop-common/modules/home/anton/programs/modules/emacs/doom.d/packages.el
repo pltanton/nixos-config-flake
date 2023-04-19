@@ -7,7 +7,7 @@
 
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
-(package! org-jira)
+;; (package! org-jira)
 ;; (package! auth-source)
 
 ;; To install a package directly from a remote git repo, you must specify a
@@ -69,8 +69,8 @@
 ;; (package! org-roam-ui)
 
 
-(package! emacsql-sqlite3)
-(package! protobuf-mode)
+;; (package! emacsql-sqlite3)
+;; (package! protobuf-mode)
 
 ;; (package! copilot
 ;;   :recipe (:host github :repo "zerolfx/copilot.el"

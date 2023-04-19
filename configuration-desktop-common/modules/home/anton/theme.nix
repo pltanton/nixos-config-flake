@@ -14,7 +14,7 @@ let
     # cursorTheme = "Qogir-dark";
     # cursorTheme = "Adwaita";
     cursorTheme = "phinger-cursors";
-    cursorSize = 48;
+    cursorSize = 32;
     cursorSizeX2 = cursorSize * 2;
 
     gradient0 = "8fbcbb";
@@ -44,10 +44,10 @@ in {
 
   gtk = {
     enable = tilingWM;
-    # theme = {
-    #   package = pkgs.nordic;
-    #   # name = themeConsts.gtkTheme;
-    # };
+    theme = {
+      package = pkgs.nordic;
+      name = themeConsts.gtkTheme;
+    };
     iconTheme = {
       package = themeConsts.iconPackage;
       name = themeConsts.iconTheme;
@@ -60,8 +60,8 @@ in {
   };
 
   qt = {
-    #    enable = tilingWM;
-    #    platformTheme = "gtk";
+    enable = tilingWM;
+    platformTheme = "gtk";
   };
 
   # home.file.".icons/default/index.theme".text = ''
@@ -73,12 +73,7 @@ in {
     package = pkgs.qogir-icon-theme;
     name = themeConsts.cursorTheme;
     size = themeConsts.cursorSize;
-    x11.enable = tilingWM;
+    x11.enable = false;
     gtk.enable = tilingWM;
-  };
-
-  home.sessionVariables = lib.mkIf tilingWM {
-    XCURSOR_THEME = themeConsts.cursorTheme;
-    XCURSOR_SIZE = themeConsts.cursorSize;
   };
 }

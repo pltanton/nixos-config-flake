@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, secrets, ... }:
 
 {
   imports = builtins.map (name: ./modules + "/${name}")
@@ -19,6 +19,16 @@
     #useDHCP = true;
     #resolvconf.useLocalResolver = true;
     networkmanager.enable = false;
+
+    wireless = {
+      enable = true;
+      userControlled.enable = true;
+      networks."Ananasik" = { psk = secrets.wifiPassword; };
+      networks."AnanasikRE" = {
+        psk = secrets.wifiPassword;
+        priority = 1;
+      };
+    };
 
     firewall.enable = false;
     firewall.allowedTCPPorts = [

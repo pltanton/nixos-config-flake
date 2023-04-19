@@ -4,8 +4,8 @@
   services.xsettingsd = {
     enable = true;
     settings = {
-      "Gdk/UnscaledDPI" = "166912";
-      "Xft/DPI" = "166912";
+      "Gdk/UnscaledDPI" = "199680";
+      "Xft/DPI" = "199680";
     };
   };
 }

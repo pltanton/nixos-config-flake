@@ -6,13 +6,6 @@ in {
   imports = [ ./style.nix ];
 
   programs.waybar = with config.lib.base16.theme; {
-    # package = pkgs.waybar.overrideAttrs (oldAttrs: {
-    #   mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    # });
-    # package = if config.wayland.windowManager.sway.enable then
-    #   pkgs.waybar
-    # else
-    #   pkgs.waybar-hyprland;
     package = pkgs.waybar-hyprland;
     enable = config.wayland.windowManager.sway.enable
       || config.wayland.windowManager.hyprland.enable;

@@ -31,7 +31,7 @@ in {
   # NIX based pure services
   services = {
     zigbee2mqtt = {
-      enable = true;
+      enable = false;
       # package = pkgs.nur.repos.mweinelt.zigbee2mqtt;
       settings = {
         homeassistant = true;
@@ -59,7 +59,7 @@ in {
     };
 
     mosquitto = {
-      enable = true;
+      enable = false;
       listeners = [{
         settings = {
 

@@ -1,4 +1,17 @@
-{ pkgs, lib, fetchPypi, inputs, ... }: {
+{ pkgs, lib, fetchPypi, inputs, ... }:
+let
+  enlargeCursorForDesktopEntry = package:
+    (package.overrideAttrs (e: rec {
+      # Add arguments to the .desktop entry
+      desktopItem =
+        e.desktopItem.override (d: { exec = "env XCURSOR_SIZE=64 ${d.exec}"; });
+
+      # Update the install script to use the new .desktop entry
+      installPhase =
+        builtins.replaceStrings [ "${e.desktopItem}" ] [ "${desktopItem}" ]
+        e.installPhase;
+    }));
+in {
   home.packages = with pkgs;
     lib.mkIf true [
       hack-font
@@ -20,7 +33,7 @@
       shared-mime-info
       pantheon.elementary-files
       pcmanfm
-      xournal
+      xournalpp
 
       # Fonts
       font-awesome
@@ -61,7 +74,7 @@
       plantuml
 
       # GUI
-      libreoffice
+      stable.libreoffice
       evince
       imv
       gthumb
@@ -94,7 +107,6 @@
       # (texlive.combine { inherit (texlive) scheme-medium titlesec wrapfig; })
 
       # Dev
-      docker-compose
       clang-tools
       kubectl
       kubectx
@@ -104,21 +116,8 @@
       grpc
       grpcurl # grpc client
       nodejs
-      # master.jetbrains.idea-community
-      # jetbrains.idea-ultimate
-      # intellij-idea-community-eap
-      # jetbrains.datagrip
-      # android-studio
-      # (stable.jetbrains.idea-ultimate.overrideAttrs (oldAttrs: rec {
-      #   src = fetchurl {
-      #     url = "https://download.jetbrains.com/idea/ideaIU-2022.3.tar.gz";
-      #     sha256 =
-      #       "9675c15bea4b3d0e2b00265f1b4c7c775f4187cfda9b894b4109c90ceb8e3061";
-      #   };
-      # }))
-      # jetbrains.idea-ultimate
-      nur.repos.utybo.jetbrains.idea-ultimate
-      # intellij-idea-ultimate
+      # nur.repos.utybo.jetbrains.idea-ultimate
+      (enlargeCursorForDesktopEntry master.jetbrains.idea-ultimate)
 
       dbeaver
       beekeeper-studio

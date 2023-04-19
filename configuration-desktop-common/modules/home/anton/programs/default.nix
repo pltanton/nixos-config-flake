@@ -12,7 +12,7 @@ in {
     blueman-applet.enable = tilingEnabled;
     nextcloud-client.enable = true;
     udiskie.enable = tilingEnabled;
-    clipman.enable = tilingEnabled;
+    clipman.enable = false;
     ddcsync.enable = tilingEnabled;
     wob.enable = false;
   };

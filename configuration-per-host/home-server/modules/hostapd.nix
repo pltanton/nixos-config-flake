@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   secrets = import ../secrets.nix;
@@ -10,28 +10,29 @@ let
   dhcpRange = "10.1.0.2,10.1.0.199,5m";
 in {
   services.hostapd = {
-    enable = true;
+    enable = false;
     interface = wifi;
     ssid = "AnanasikServerAP";
     wpaPassphrase = secrets.apPassword;
   };
 
-  networking.nat = {
+  networking.nat = lib.mkIf config.services.hostapd.enable {
     enable = true;
     externalInterface = lan;
     internalIPs = [ "10.1.0.1/24" ];
   };
 
-  networking.interfaces."${wifi}".ipv4.addresses = [{
-    address = "${ipAddress}";
-    prefixLength = prefixLength;
-  }];
+  networking.interfaces."${wifi}".ipv4.addresses =
+    lib.mkIf config.services.hostapd.enable [{
+      address = "${ipAddress}";
+      prefixLength = prefixLength;
+    }];
 
-  systemd.services.dnsmasq = {
+  systemd.services.dnsmasq = lib.mkIf config.services.hostapd.enable {
     after = [ "wireguard-wg0.service" ];
     requires = [ "wireguard-wg0.service" ];
   };
-  services.dnsmasq = {
+  services.dnsmasq = lib.mkIf config.services.hostapd.enable {
     enable = true;
     servers = [ "8.8.8.8" "8.8.4.4" ];
     extraConfig = ''
@@ -71,10 +72,11 @@ in {
       address=/motioneye.kaliwe.ru/192.168.50.2
     '';
   };
-  networking.firewall.allowedUDPPorts = [ 53 67 ]; # DNS & DHCP
-  services.haveged.enable = true;
+  networking.firewall.allowedUDPPorts =
+    lib.mkIf config.services.hostapd.enable [ 53 67 ]; # DNS & DHCP
+  services.haveged.enable = lib.mkIf config.services.hostapd.enable true;
 
-  services.resolved.extraConfig = ''
+  services.resolved.extraConfig = lib.mkIf config.services.hostapd.enable ''
     DNSStubListener=no
   '';
 }

@@ -15,10 +15,18 @@ let
       brightness = "${pkgs.brightness}/bin/brightness";
       xprop = "${pkgs.xorg.xprop}/bin/xprop";
 
+      cliphist = "${pkgs.cliphist}/bin/cliphist";
+      wl-paste = "${pkgs.wl-clipboard}/bin/wl-paste";
+
       gtkTheme = config.gtk.theme.name;
       iconTheme = config.gtk.iconTheme.name;
       cursorTheme = config.home.pointerCursor.name;
       cursorSize = toString config.home.pointerCursor.size;
+
+      gsettingsDesktopSchemasName = pkgs.gsettings-desktop-schemas.name;
+      gsettingsDesktopSchemas = pkgs.gsettings-desktop-schemas;
+
+      fontUIName = "Inter";
 
       base0 = base00;
       base1 = base01;
@@ -49,11 +57,13 @@ in {
       hyprpaper
       wl-clipboard
 
-      clipman
+      cliphist
 
       swaylock-fancy
       wofi-emoji
       pamixer
+
+      playerctl
 
       # Scripts
       # brightness

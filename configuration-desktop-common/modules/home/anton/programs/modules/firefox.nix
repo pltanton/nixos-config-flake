@@ -10,18 +10,6 @@
     #   extraPolicies = { ExtensionSettings = { }; };
     # };
     # enableGnomeExtensions = true;
-    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      bitwarden
-      ublock-origin
-      react-devtools
-      stylus
-      foxyproxy-standard
-      multi-account-containers
-      sponsorblock
-      vimium
-
-      pkgs.nur.repos.ethancedwards8.firefox-addons.enhancer-for-youtube
-    ];
     profiles = {
       default = {
         id = 0;
@@ -46,6 +34,18 @@
         #     visibility: collapse !important;
         #   }
         # '';
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          bitwarden
+          ublock-origin
+          react-devtools
+          stylus
+          foxyproxy-standard
+          multi-account-containers
+          sponsorblock
+          vimium
+
+          pkgs.nur.repos.ethancedwards8.firefox-addons.enhancer-for-youtube
+        ];
       };
       nc = {
         id = 1;
@@ -54,6 +54,18 @@
           "gfx.webrender.all" = true;
           "layout.css.devPixelsPerPx" = "-1.0";
         };
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          bitwarden
+          ublock-origin
+          react-devtools
+          stylus
+          foxyproxy-standard
+          multi-account-containers
+          sponsorblock
+          vimium
+
+          pkgs.nur.repos.ethancedwards8.firefox-addons.enhancer-for-youtube
+        ];
       };
     };
   };
