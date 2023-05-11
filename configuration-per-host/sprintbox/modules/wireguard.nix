@@ -18,8 +18,20 @@
           publicKey = "W1a3Fdij/Sk/GDMOl37msCzVjJHcKM2qcdp2dgliVSI=";
         }
         {
-          allowedIPs = [ "10.10.10.201/32" ];
+          allowedIPs = [ "10.10.10.201/32" ]; # Anton phone
           publicKey = "RGG0VTALtT0FfYFpuAoPBj8mspaD1YfZP51xbIWhFXE=";
+        }
+        {
+          allowedIPs = [ "10.10.10.204/32" ]; # Anton pc
+          publicKey = "ePvGkH8PBne/zc7poF53RiPTs9dZIWMdF+WVX/kMLh4=";
+        }
+        {
+          allowedIPs = [ "10.10.10.202/32" ]; # Julia phone
+          publicKey = "pEYR+Kas6XaqjW02qT+rTZkFYXmlpP8LB0AT3J+nDQc=";
+        }
+        {
+          allowedIPs = [ "10.10.10.203/32" ]; # Julia pc
+          publicKey = "i4TEdsRr75rjqNOs5qroTGBmA/J0dmj7CAfEEle5X30=";
         }
       ];
 

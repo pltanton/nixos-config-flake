@@ -1,6 +1,6 @@
 { pkgs, homeBaseDir, ... }: {
 
-  nix.trustedUsers = [ "root" "@wheel" ];
+  nix.settings.trusted-users = [ "root" "@wheel" ];
 
   programs.fish = {
     shellInit = ''

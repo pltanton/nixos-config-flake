@@ -3,8 +3,9 @@
 
   inputs = {
     nixpkgs-local.url = "github:pltanton/nixpkgs/master";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.05";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.11";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nix.url = "github:nixos/nix";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -27,13 +28,13 @@
           (import ../../configuration-common)
 
           ({ pkgs, ... }: {
-            nix = {
+            nix.settings = {
               # add binary caches
-              binaryCachePublicKeys = [
+              trusted-public-keys = [
                 "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
                 # "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
               ];
-              binaryCaches = [
+              substituters = [
                 "https://cache.nixos.org"
                 # "https://nix-community.cachix.org"
               ];

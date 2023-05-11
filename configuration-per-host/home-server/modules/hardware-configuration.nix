@@ -3,10 +3,10 @@
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, ... }:
 
-let
-  consts = import ../constants.nix;
+let consts = import ../constants.nix;
 in {
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules =
+    [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ "dm-snapshot" "dm-mirror" ];
   boot.kernelModules = [ "kvm-amd" ];
 
@@ -33,10 +33,9 @@ in {
   };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/f7e254a9-e6b9-4b1e-a238-af7778b9f7a2"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/f7e254a9-e6b9-4b1e-a238-af7778b9f7a2"; }];
 
-  nix.maxJobs = lib.mkDefault 8;
+  nix.settings.max-jobs = lib.mkDefault 8;
 
   hardware.enableRedistributableFirmware = true;
   hardware.opengl.driSupport32Bit = true;

@@ -1,1 +1,1 @@
-{ config, pkgs, ... }: { services.redis = { enable = true; }; }
+{ config, pkgs, ... }: { services.redis.servers.main = { enable = true; }; }

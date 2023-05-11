@@ -11,13 +11,19 @@
     postgresql = {
       enable = true;
       dataDir = "/var/lib/postgresql/11";
-      package = pkgs.postgresql_11;
+      package = pkgs.postgresql_12;
 
-      ensureDatabases = [ "nextcloud" ];
-      ensureUsers = [{
-        name = "nextcloud";
-        ensurePermissions = { "DATABASE nextcloud" = "ALL PRIVILEGES"; };
-      }];
+      ensureDatabases = [ "nextcloud" "hass" ];
+      ensureUsers = [
+        {
+          name = "nextcloud";
+          ensurePermissions = { "DATABASE nextcloud" = "ALL PRIVILEGES"; };
+        }
+        {
+          name = "hass";
+          ensurePermissions = { "DATABASE hass" = "ALL PRIVILEGES"; };
+        }
+      ];
 
       enableTCPIP = true;
 

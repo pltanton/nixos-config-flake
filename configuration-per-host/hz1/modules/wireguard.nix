@@ -44,7 +44,7 @@
         }
         {
           allowedIPs = [ "10.10.10.202/32" ]; # slava phone
-          publicKey = "gPpywei9tp2L9Y3e0Grl1ZaL44sJzYoUwafAe0gPyhY=";
+          publicKey = "f8ogEhKiJ9QoLcn0yIXayh9nlsAQSFvm9H+gAq6wPFg=";
         }
         {
           allowedIPs = [ "10.10.10.203/32" ]; # slava pc
@@ -65,6 +65,18 @@
         {
           allowedIPs = [ "10.10.10.207/32" ]; # ilya pc
           publicKey = "DOGViCn15QPd3kBPHZpIPy8DS574iEY0MVM0Aa0G9QY=";
+        }
+        {
+          allowedIPs = [ "10.10.10.208/32" ]; # slava tablet
+          publicKey = "dPdeMPwUBUsOUGgvMwtVd+fza6vK30ntto6l2oHU0AU=";
+        }
+        {
+          allowedIPs = [ "10.10.10.209/32" ]; # slava mac
+          publicKey = "CxJgnutIiQpjYGGLDQZtD/b07cePINrjbaKJF5AbT1Q=";
+        }
+        {
+          allowedIPs = [ "10.10.10.210/32" ]; # papa 1
+          publicKey = "mC/nrtTgfOZ44YTHCJMyN0zB40JlK96ONGRPKO62zmQ=";
         }
       ];
     };

@@ -1,6 +1,7 @@
 { pkgs, lib, ... }: {
+
   services.resolved = {
-    enable = true;
+    enable = false;
     extraConfig = (lib.generators.toINI { } {
       Resolve = {
         DNS = "10.100.0.1";
@@ -9,6 +10,9 @@
       };
     });
   };
+
+  systemd.services.NetworkManager-wait-online.enable = false;
+
   networking = {
     hosts = { };
     networkmanager = {
@@ -16,4 +20,5 @@
       wifi.powersave = true;
     };
   };
+
 }

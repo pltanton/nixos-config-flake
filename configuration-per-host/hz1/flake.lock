@@ -43,11 +43,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1677803579,
-        "narHash": "sha256-iHesuhKZ6SL5TznnQgUh13+IwHs6jpe0YorDWEgZNFw=",
+        "lastModified": 1683135410,
+        "narHash": "sha256-sUUubo0ZEPlwFL3u6L7ogpWuXXZKUZDDaZMVVOOVLxU=",
         "ref": "refs/heads/master",
-        "rev": "c79d541ba6f9f168aabd2e0967b8b823640d1036",
-        "revCount": 3,
+        "rev": "5b2f832e8da0a39c3131f3b09525d2114da1f372",
+        "revCount": 5,
         "type": "git",
         "url": "ssh://gitea@gitea.kaliwe.ru/pltanton/kraslab-memes-bot.git"
       },

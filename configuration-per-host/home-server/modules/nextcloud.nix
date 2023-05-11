@@ -4,7 +4,7 @@ let
   secrets = import ../secrets.nix;
   consts = import ../constants.nix;
   nextcloudHome = "${consts.archiveMountPoint}/nextcloud-home";
-  nextcloudPackage = pkgs.nextcloud24;
+  nextcloudPackage = pkgs.nextcloud25;
 
   archiveDst = "${nextcloudHome}/data/anton/files/Archive";
 
@@ -30,6 +30,7 @@ in {
 
   services = {
     nextcloud = {
+      enableBrokenCiphersForSSE = false;
       phpExtraExtensions = all: with all; [ pdlib bz2 ];
       caching = {
         apcu = true;

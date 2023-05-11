@@ -8,6 +8,7 @@ let
     # iconTheme = "Adwaita";
     # iconTheme = "Qogir-dark";
     iconPackage = pkgs.kora-icon-theme;
+    # iconTheme = "kora";
     iconTheme = "kora";
     gtkTheme = "Nordic-bluish-accent";
     # gtkTheme = "Adwaita-dark";

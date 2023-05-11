@@ -85,6 +85,7 @@ in {
       mpv
       stable.tdesktop
       xsane
+      simple-scan
       spotify
 
       slack

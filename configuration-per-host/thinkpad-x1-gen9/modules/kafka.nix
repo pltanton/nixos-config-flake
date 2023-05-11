@@ -12,39 +12,39 @@
   services.zookeeper = { enable = false; };
 
   virtualisation.oci-containers.containers = {
-    zookeeper = {
-      image = "bitnami/zookeeper:latest";
-      ports = [ "2181:2181" ];
-      environment = { ALLOW_ANONYMOUS_LOGIN = "yes"; };
-      volumes = [ "zookeeper_data:/bitnami/zookeeper" ];
-    };
-    kafka = {
-      image = "bitnami/kafka:latest";
-      ports = [ "9092:9092" ];
-      autoStart = true;
-      dependsOn = [ "zookeeper" ];
-      volumes = [ "kafka_data:/bitnami/kafka" ];
-      environment = {
-        KAFKA_BROKER_ID = "1";
-        KAFKA_LISTENERS = "DNS://:29092,LOCAL_IP://:9092";
-        KAFKA_ADVERTISED_LISTENERS =
-          "DNS://kafka.dns.podman:29092,LOCAL_IP://127.0.0.1:9092";
-        KAFKA_LISTENER_SECURITY_PROTOCOL_MAP =
-          "DNS:PLAINTEXT,LOCAL_IP:PLAINTEXT";
-        KAFKA_ZOOKEEPER_CONNECT = "zookeeper.dns.podman:2181";
-        KAFKA_INTER_BROKER_LISTENER_NAME = "LOCAL_IP";
-        ALLOW_PLAINTEXT_LISTENER = "yes";
-        KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR = "1";
-      };
-    };
+    # zookeeper = {
+    #   image = "bitnami/zookeeper:latest";
+    #   ports = [ "2181:2181" ];
+    #   environment = { ALLOW_ANONYMOUS_LOGIN = "yes"; };
+    #   volumes = [ "zookeeper_data:/bitnami/zookeeper" ];
+    # };
+    # kafka = {
+    #   image = "bitnami/kafka:latest";
+    #   ports = [ "9092:9092" ];
+    #   autoStart = true;
+    #   dependsOn = [ "zookeeper" ];
+    #   volumes = [ "kafka_data:/bitnami/kafka" ];
+    #   environment = {
+    #     KAFKA_BROKER_ID = "1";
+    #     KAFKA_LISTENERS = "DNS://:29092,LOCAL_IP://:9092";
+    #     KAFKA_ADVERTISED_LISTENERS =
+    #       "DNS://kafka.dns.podman:29092,LOCAL_IP://127.0.0.1:9092";
+    #     KAFKA_LISTENER_SECURITY_PROTOCOL_MAP =
+    #       "DNS:PLAINTEXT,LOCAL_IP:PLAINTEXT";
+    #     KAFKA_ZOOKEEPER_CONNECT = "zookeeper.dns.podman:2181";
+    #     KAFKA_INTER_BROKER_LISTENER_NAME = "LOCAL_IP";
+    #     ALLOW_PLAINTEXT_LISTENER = "yes";
+    #     KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR = "1";
+    #   };
+    # };
 
-    kafka-ui = {
-      image = "provectuslabs/kafka-ui:latest";
-      ports = [ "9080:8080" ];
-      environment = {
-        KAFKA_CLUSTERS_0_NAME = "local";
-        KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS = "kafka.dns.podman:29092";
-      };
-    };
+    # kafka-ui = {
+    #   image = "provectuslabs/kafka-ui:latest";
+    #   ports = [ "9080:8080" ];
+    #   environment = {
+    #     KAFKA_CLUSTERS_0_NAME = "local";
+    #     KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS = "kafka.dns.podman:29092";
+    #   };
+    # };
   };
 }

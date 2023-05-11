@@ -4,8 +4,8 @@
 
 # deploy-home-server: target = root@home.kaliwe.ru
 # deploy-home-server: build_host = root@home.kaliwe.ru
-deploy-home-server: target = root@192.168.10.20
-deploy-home-server: build_host = root@192.168.10.20
+deploy-home-server: target = root@192.168.0.100
+deploy-home-server: build_host = root@192.168.0.100
 
 deploy-hz1: target = root@hz1.kaliwe.ru
 deploy-hz1: build_host = root@hz1.kaliwe.ru
@@ -28,7 +28,7 @@ deploy-offline-thinkpad-x1:
 	sudo nixos-rebuild --flake ./configuration-per-host/thinkpad-x1#thinkpad-x1 --option substitute false --fast switch
 
 deploy-offline-thinkpad-x1-gen9:
-	sudo nixos-rebuild --flake ./configuration-per-host/thinkpad-x1-gen9#thinkpad-x1-gen9 --option substitute false --fast switch
+	sudo nixos-rebuild --flake ./configuration-per-host/thinkpad-x1-gen9#thinkpad-x1-gen9 --offline --fast switch
 
 update-%:
 	@echo Run nix flake update form machine $*
