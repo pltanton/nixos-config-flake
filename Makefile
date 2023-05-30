@@ -1,3 +1,4 @@
+TIME=$(shell date +'%Y.%m.%d %H:%M:%S')
 # prepare-desktop:
 # 	@echo Remove mimeapps.list file
 # 	if [[ -L "~/.config/mimeapps.list" ]]; then rm -f ~/.config/mimeapps.list; fi
@@ -33,6 +34,10 @@ deploy-offline-thinkpad-x1-gen9:
 update-%:
 	@echo Run nix flake update form machine $*
 	cd ./configuration-per-host/$*; nix flake update
+	@echo Commiting lock file after update $*
+	git add ./configuration-per-host/$*/flake.lock
+	git add ./configuration-per-host/$*/flake.nix
+	git commit -m "$*: update lock file $(TIME)"
 
 boot:
 	sudo nixos-rebuild --flake ./configuration-per-host/thinkpad-x1-gen9#thinkpad-x1-gen9 --option substitute false --fast boot
