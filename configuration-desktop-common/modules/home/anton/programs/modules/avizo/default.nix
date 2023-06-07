@@ -20,10 +20,10 @@ in {
         fade-in = 0.1;
         fade-out = 0.2;
         padding = 10;
-        # background = "${toRgba "00" "0.8"}";
-        # border-color = "${toRgba "00" "0.8"}";
-        # bar-bg-color = "${toRgba "01" "1"}";
-        # bar-fg-color = "${toRgba "05" "1"}";
+        background = "${toRgba "00" "0.8"}";
+        border-color = "${toRgba "00" "0.8"}";
+        bar-bg-color = "${toRgba "01" "1"}";
+        bar-fg-color = "${toRgba "05" "1"}";
         # image-base-dir = "${./images}";
       };
     };

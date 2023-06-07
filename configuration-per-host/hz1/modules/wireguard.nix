@@ -78,6 +78,10 @@
           allowedIPs = [ "10.10.10.210/32" ]; # papa 1
           publicKey = "mC/nrtTgfOZ44YTHCJMyN0zB40JlK96ONGRPKO62zmQ=";
         }
+        {
+          allowedIPs = [ "10.10.10.211/32" ]; # pavel b 1
+          publicKey = "JB4d5wDPbr72um0g6TP9t0N9uRvT9pdFpeJ7Hqj+k3M=";
+        }
       ];
     };
   };

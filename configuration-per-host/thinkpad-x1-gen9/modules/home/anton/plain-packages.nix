@@ -8,8 +8,6 @@
       transmission-gtk
       master.rapid-photo-downloader
 
-      shotcut
-
       # tor-browser-bundle-bin
 
       (steam.override {
@@ -20,13 +18,14 @@
       # steam-run
 
       darktable
-      kdenlive
-      shotcut
       rawtherapee
+      lightworks
+      pitivi
+      kdenlive
 
-      (pkgs.factorio.override {
-        username = "pltanton";
-        token = "2233a0430e2167528d62bf19499fa7";
-      })
+      # (pkgs.factorio.override {
+      #   username = "pltanton";
+      #   token = "2233a0430e2167528d62bf19499fa7";
+      # })
     ];
 }
