@@ -1,17 +1,22 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   consts = import ../constants.nix;
   secrets = import ../secrets.nix;
-  transmissionHome = "${consts.mediaAppHomes}";
+  # transmissionHome = "${consts.mediaAppHomes}";
   downloadsDir = "${consts.publicMedia}/downloads";
 in {
+  systemd.tmpfiles.rules = lib.mkIf config.service.transmission.enable [
+    "d ${consts.publicMedia}/downloads 1774 publicstore publicstore"
+    "d ${consts.publicMedia}/tvshows 1774 publicstore publicstore"
+    "d ${consts.publicMedia}/movies 1774 publicstore publicstore"
+  ];
   services = {
     transmission = {
       enable = true;
       group = "publicstore";
       # user = "publicstore";
-      home = "${transmissionHome}/transmission-home";
+      # home = "${transmissionHome}/transmission-home";
 
       settings = {
         download-dir = downloadsDir;

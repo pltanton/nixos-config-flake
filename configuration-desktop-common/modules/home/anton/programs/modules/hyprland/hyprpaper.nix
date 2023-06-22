@@ -1,5 +1,5 @@
 { config, lib, pkgs, inputs, ... }:
-let wallpaper = ../../../../backgrounds/ign_unsplash44.png;
+let wallpaper = ../../../../backgrounds/nord-1.jpg;
 in {
 
   home.file."${config.xdg.configHome}/hypr/hyprpaper.conf".text = ''

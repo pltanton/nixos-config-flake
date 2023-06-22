@@ -61,7 +61,7 @@ window#waybar.hidden {
 }
 
 #clock {
-  background-color: #@gradient0@;
+  /* background-color: #@gradient0@; */
 }
 
 #custom-submap {
@@ -70,7 +70,7 @@ window#waybar.hidden {
 #battery {
   /* background-color: #@baseD@; */
   /* background-color: #@gradient2@; */
-  background-image: linear-gradient(to right, #@gradient2@, #@gradient3@);
+  /* background-image: linear-gradient(to right, #@gradient2@, #@gradient3@); */
   color: #@backgroundColor@;
 }
 
@@ -109,7 +109,7 @@ window#waybar.hidden {
 
 #backlight {
   /* background: #@gradient1@; */
-  background-image: linear-gradient(to right, #@gradient1@, #@gradient2@);
+  /* background-image: linear-gradient(to right, #@gradient1@, #@gradient2@); */
 }
 
 #network {
@@ -129,7 +129,7 @@ window#waybar.hidden {
 #pulseaudio {
   /* background-color: #@baseA@; */
   /* background-color: #@gradient0@; */
-  background-image: linear-gradient(to right, #@gradient0@, #@gradient1@);
+  /* background-image: linear-gradient(to right, #@gradient0@, #@gradient1@); */
   min-width: 1.5em;
   color: #@backgroundColor@;
 }
@@ -178,7 +178,7 @@ window#waybar.hidden {
 
 #custom-kbd,
 #language {
-  background-color: #@gradient3@;
+  /* background-color: #@gradient3@; */
   min-width: 2em;
 }
 
@@ -205,8 +205,8 @@ window#waybar.hidden {
 }
 
 #workspaces button.active {
-  background-color: #@baseD@;
-  color: #@base0@;
+  /* background-color: #@baseD@; */
+  color: #@base5@;
   /* border-bottom: 3px solid #@baseD@; */
   transition: all 0.2s cubic-bezier(.55,-0.68,.48,1.682);
 }

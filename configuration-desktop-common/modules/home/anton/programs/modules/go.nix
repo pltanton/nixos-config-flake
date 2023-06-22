@@ -36,5 +36,20 @@
         vendorSha256 = "1yng6dlmr4j8cq2f43jg5nvcaaik4n51y79p5zmqwdzzmpl8jgrv";
         subPackages = [ "cmd/goose" ];
       })
+
+      # (buildGoModule {
+      #   name = "protodep";
+      #   version = "0.1.7";
+
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "stormcat24";
+      #     repo = "protode";
+      #     rev = "59b660a6414294c86f25bf9fc3ad4f32ca903124";
+      #     sha256 = "0000000000000000000000000000000000000000000000000000";
+      #   };
+
+      #   vendorSha256 = "0000000000000000000000000000000000000000000000000000";
+      #   subPackages = [ "cmd/root" ];
+      # })
     ];
 }

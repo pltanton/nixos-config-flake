@@ -8,7 +8,12 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   systemd = {
-    network.enable = true;
+    network = {
+      enable = true;
+      wait-online.anyInterface = true;
+      wait-online.timeout = 10;
+      wait-online.ignoredInterfaces = [ "wg0" "wg-hz" ];
+    };
     enableEmergencyMode = false;
   };
 

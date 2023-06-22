@@ -115,6 +115,7 @@ in {
       postgresql_13
       coreutils
       grpc
+      grpc-gateway
       grpcurl # grpc client
       nodejs
       # nur.repos.utybo.jetbrains.idea-ultimate
@@ -124,7 +125,7 @@ in {
       beekeeper-studio
       gcc
       black # Python code formatter
-      (stable.python310.withPackages (pp:
+      (python311.withPackages (pp:
         with pp; [
           pip
           pylint
@@ -137,9 +138,9 @@ in {
           pika
           grpcio-tools
           python-lsp-server
-          poetry
         ]))
       # python-language-server
+      poetry
       inputs.mach-nix.defaultPackage.x86_64-linux
       protobuf
       protoc-gen-go
