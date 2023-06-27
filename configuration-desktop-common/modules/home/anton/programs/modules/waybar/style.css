@@ -49,7 +49,7 @@ window#waybar.hidden {
 #language {
   background-color: #@base5@;
   color: #@base1@;
-  padding: 0 12px;
+  padding: 0 8px;
   margin: 0 4px;
   border-radius: 6px;
   background-clip: padding-box;
@@ -61,17 +61,15 @@ window#waybar.hidden {
 }
 
 #clock {
-  /* background-color: #@gradient0@; */
+  background-color: #@gradient0@;
 }
 
 #custom-submap {
 }
 
 #battery {
-  /* background-color: #@baseD@; */
-  /* background-color: #@gradient2@; */
-  /* background-image: linear-gradient(to right, #@gradient2@, #@gradient3@); */
-  color: #@backgroundColor@;
+  background-image: linear-gradient(to right, #@gradient2@, #@gradient3@);
+  /* color: #@backgroundColor@; */
 }
 
 #battery.charging {
@@ -109,7 +107,7 @@ window#waybar.hidden {
 
 #backlight {
   /* background: #@gradient1@; */
-  /* background-image: linear-gradient(to right, #@gradient1@, #@gradient2@); */
+  background-image: linear-gradient(to right, #@gradient1@, #@gradient2@);
 }
 
 #network {
@@ -127,11 +125,9 @@ window#waybar.hidden {
 }
 
 #pulseaudio {
-  /* background-color: #@baseA@; */
-  /* background-color: #@gradient0@; */
-  /* background-image: linear-gradient(to right, #@gradient0@, #@gradient1@); */
+  background-image: linear-gradient(to right, #@gradient0@, #@gradient1@);
   min-width: 1.5em;
-  color: #@backgroundColor@;
+  /* color: #@backgroundColor@; */
 }
 
 #pulseaudio.muted {
@@ -178,8 +174,8 @@ window#waybar.hidden {
 
 #custom-kbd,
 #language {
-  /* background-color: #@gradient3@; */
-  min-width: 2em;
+  background-color: #@gradient3@;
+  min-width: 1.2em;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */

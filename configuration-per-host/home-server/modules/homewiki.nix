@@ -9,9 +9,7 @@
     virtualHosts."homewiki.kaliwe.ru" = {
       enableACME = true;
       forceSSL = true;
-      locations."/" = {
-        root = "/var/lib/homewiki/current";
-      };
+      locations."/" = { root = "/var/lib/homewiki/current"; };
     };
   };
 }

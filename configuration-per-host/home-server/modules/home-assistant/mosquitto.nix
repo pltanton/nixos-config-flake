@@ -14,7 +14,7 @@
     }];
   };
 
-  services.nginx.virtualHosts."mqtt.kaliwe.ru" = { enableACME = true; };
+  # services.nginx.virtualHosts."mqtt.kaliwe.ru" = { enableACME = true; };
 
   users.groups.acme.members = [ "mosquitto" ];
 }

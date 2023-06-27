@@ -120,6 +120,7 @@ in {
       nodejs
       # nur.repos.utybo.jetbrains.idea-ultimate
       (enlargeCursorForDesktopEntry master.jetbrains.idea-ultimate)
+      (enlargeCursorForDesktopEntry master.jetbrains.idea-community)
 
       dbeaver
       beekeeper-studio

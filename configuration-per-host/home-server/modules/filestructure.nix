@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }: {
-  systemd.tmpfiles.rules = lib.mkIf config.service.transmission.enable [
-    "d /media 1774 publicstore publicstore"
-    "d /media/store 1774 publicstore publicstore"
+  systemd.tmpfiles.rules = [
+    "d /media 0755 root root"
+    "d /media/store 0775 publicstore publicstore"
+    "d /media/store/media 0775 publicstore publicstore"
   ];
 }

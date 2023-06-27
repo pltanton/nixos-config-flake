@@ -70,7 +70,7 @@
 
 
 ;; (package! emacsql-sqlite3)
-;; (package! protobuf-mode)
+(package! protobuf-mode)
 
 ;; (package! copilot
 ;;   :recipe (:host github :repo "zerolfx/copilot.el"

@@ -6,10 +6,10 @@ let
   # transmissionHome = "${consts.mediaAppHomes}";
   downloadsDir = "${consts.publicMedia}/downloads";
 in {
-  systemd.tmpfiles.rules = lib.mkIf config.service.transmission.enable [
-    "d ${consts.publicMedia}/downloads 1774 publicstore publicstore"
-    "d ${consts.publicMedia}/tvshows 1774 publicstore publicstore"
-    "d ${consts.publicMedia}/movies 1774 publicstore publicstore"
+  systemd.tmpfiles.rules = lib.mkIf config.services.transmission.enable [
+    "d ${consts.publicMedia}/downloads 0775 publicstore publicstore"
+    "d ${consts.publicMedia}/downloads/tvshows 0775 publicstore publicstore"
+    "d ${consts.publicMedia}/downloads/movies 0775 publicstore publicstore"
   ];
   services = {
     transmission = {

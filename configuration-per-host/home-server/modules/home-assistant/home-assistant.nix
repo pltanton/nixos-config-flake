@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
   services.home-assistant = {
-    enable = false;
+    enable = true;
     extraComponents = [
       # Components required to complete the onboarding
       "met"
@@ -19,8 +19,16 @@
 
       # recorder.db_url = "postgresql://@/hass";
     };
-    package =
-      (pkgs.home-assistant.override { extraPackages = ps: [ ps.psycopg2 ]; });
+    package = (pkgs.home-assistant.override {
+      extraPackages = ps:
+        with ps; [
+          psycopg2
+          paho-mqtt
+          getmac
+          huawei-lte-api
+          url-normalize
+        ];
+    });
 
     # extraPackages = python3Packages:
     #   with python3Packages;
@@ -31,19 +39,16 @@
   };
 
   services.nginx = {
+    recommendedProxySettings = true;
     virtualHosts."hass.kaliwe.ru" = {
-      enableACME = true;
       forceSSL = true;
+      enableACME = true;
+      extraConfig = ''
+        proxy_buffering off;
+      '';
       locations."/" = {
-        proxyPass = "http://127.0.0.1:8123";
+        proxyPass = "http://[::1]:8123";
         proxyWebsockets = true;
-
-        extraConfig = ''
-          proxy_set_header Host $host;
-          proxy_set_header X-Real-IP $remote_addr;
-          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_set_header X-Forwarded-Proto $scheme;
-        '';
       };
     };
   };

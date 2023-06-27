@@ -27,7 +27,7 @@
         }
         {
           allowedIPs = [ "10.10.10.202/32" ]; # Julia phone
-          publicKey = "pEYR+Kas6XaqjW02qT+rTZkFYXmlpP8LB0AT3J+nDQc=";
+          publicKey = "w6OgTrYLTjvjo1PekDWn7OlNBg9tU+tDtzCjrc9MGl4=";
         }
         {
           allowedIPs = [ "10.10.10.203/32" ]; # Julia pc

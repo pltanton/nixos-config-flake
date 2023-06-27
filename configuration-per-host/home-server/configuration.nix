@@ -10,6 +10,17 @@
   systemd = {
     network = {
       enable = true;
+      networks = {
+        "10-enp1s0" = {
+          matchConfig.Name = "enp1s0";
+          networkConfig = {
+            DHCP = "ipv4";
+            IPv6AcceptRA = "no";
+            LinkLocalAddressing = "no";
+
+          };
+        };
+      };
       wait-online.anyInterface = true;
       wait-online.timeout = 10;
       wait-online.ignoredInterfaces = [ "wg0" "wg-hz" ];
@@ -21,7 +32,7 @@
 
   networking = {
     hostName = "home-server";
-    #useDHCP = true;
+    useDHCP = true;
     #resolvconf.useLocalResolver = true;
     networkmanager.enable = false;
 
