@@ -3,10 +3,10 @@ TIME=$(shell date +'%Y.%m.%d %H:%M:%S')
 # 	@echo Remove mimeapps.list file
 # 	if [[ -L "~/.config/mimeapps.list" ]]; then rm -f ~/.config/mimeapps.list; fi
 
-# deploy-home-server: target = root@home.kaliwe.ru
-# deploy-home-server: build_host = root@home.kaliwe.ru
-deploy-home-server: target = root@192.168.0.100
-deploy-home-server: build_host = root@192.168.0.100
+deploy-home-server: target = root@home.kaliwe.ru
+deploy-home-server: build_host = root@home.kaliwe.ru
+# deploy-home-server: target = root@192.168.0.100
+# deploy-home-server: build_host = root@192.168.0.100
 
 deploy-hz1: target = root@hz1.kaliwe.ru
 deploy-hz1: build_host = root@hz1.kaliwe.ru

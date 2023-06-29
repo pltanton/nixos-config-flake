@@ -35,6 +35,7 @@
     useDHCP = true;
     #resolvconf.useLocalResolver = true;
     networkmanager.enable = false;
+    nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
     wireless = {
       enable = true;
