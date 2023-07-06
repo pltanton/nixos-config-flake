@@ -24,17 +24,16 @@ in {
   # };
 
   networking.wireguard.interfaces = {
-    # wg-home = {
-    #   privateKeyFile = "/root/secrets/wg/home";
-    #   ips = [ "10.100.0.3/32" ];
-    #   peers = [{
-    #     publicKey = "Rv9ZSp8/fvFj1Zohwragvv4K4Z+qo0c9rinZvfaJ5CY=";
-    #     allowedIPs = [ "10.100.0.0/24" ];
-    #     # allowedIPs = [ "0.0.0.0/0" ];
-    #     endpoint = "home.kaliwe.ru:51820";
-    #     persistentKeepalive = 25;
-    #   }];
-    # };
+    wg-home = {
+      privateKey = secrets.wg.home.privateKey;
+      ips = [ "10.100.0.4/32" ];
+      peers = [{
+        publicKey = "Rv9ZSp8/fvFj1Zohwragvv4K4Z+qo0c9rinZvfaJ5CY=";
+        allowedIPs = [ "10.100.0.0/24" ];
+        endpoint = "home.kaliwe.ru:51820";
+        persistentKeepalive = 25;
+      }];
+    };
 
     # wg-sprintbox = {
     #   privateKey = secrets.wg.sprintbox.privateKey;

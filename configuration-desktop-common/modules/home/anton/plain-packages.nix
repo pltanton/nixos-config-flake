@@ -50,6 +50,7 @@ in {
       gitAndTools.gh
       libnotify
       xdg-utils
+      glab
 
       ffmpeg
       curlie # replacement for httpie

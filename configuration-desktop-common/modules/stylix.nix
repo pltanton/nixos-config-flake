@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: {
+{ config, pkgs, inputs, lib, ... }: {
   stylix = {
     # base16Scheme = "${inputs.base16-schemes}/catppuccin-mocha.yaml";
     base16Scheme = "${inputs.base16-schemes}/nord.yaml";

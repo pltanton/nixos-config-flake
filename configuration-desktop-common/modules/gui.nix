@@ -1,5 +1,5 @@
 { pkgs, lib, config, inputs, ... }: {
-  gtk.iconCache.enable = true;
+  # gtk.iconCache.eable = true;
   xdg.icons.enable = true;
 
   # Gnome system packages
@@ -44,10 +44,10 @@
 
   # programs.sway.enable = false;
   # xdg.portal
-  xdg.portal = lib.mkIf (config.services.xserver.desktopManager.gnome.enable) {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  };
+  # xdg.portal = lib.mkIf (config.services.xserver.desktopManager.gnome.enable) {
+  #   enable = true;
+  #   extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  # };
 
   # programs.dconf.enable =
   #   lib.mkIf (!config.services.xserver.desktopManager.gnome.enable) true;

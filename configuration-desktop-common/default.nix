@@ -12,6 +12,10 @@
     (import ./overlays/customPackages.nix inputs)
     (import ./overlays/scripts)
     # inputs.nixpkgs-wayland.overlay
+    (self: super:
+      {
+
+      })
   ];
 
   nixpkgs.config = {

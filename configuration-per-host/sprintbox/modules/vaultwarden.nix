@@ -17,15 +17,9 @@
     };
   };
 
-  services.nginx = {
-    virtualHosts."bitwarden.kaliwe.ru" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/".proxyPass = "http://127.0.0.1:8222";
-    };
-  };
-
-  security.acme.certs = {
-    "bitwarden.kaliwe.ru".email = "plotnikovanton@gmail.com";
+  services.caddy = {
+    virtualHosts."bitwarden.kaliwe.ru".extraConfig = ''
+      reverse_proxy http://127.0.0.1:8222
+    '';
   };
 }

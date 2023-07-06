@@ -2,7 +2,7 @@
 
 let
   nfsDeviceDefaults =
-    "x-systemd.mount-timeout=10,x-systemd.idle-timeout=1min,nofail,_netdev,users,rw,noauto";
+    "x-systemd.mount-timeout=10,x-systemd.idle-timeout=1min,nofail,_netdev,user,users,rw,noauto";
 in {
   imports = [ inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-9th-gen ];
 

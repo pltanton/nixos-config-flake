@@ -32,6 +32,7 @@ let
       baseF = base0F;
 
       # TODO Replace it with stylix
+      gradientStylix0 = osConfig.lib.stylix.extracolors.gradient00;
       gradient0 = "8fbcbb";
       gradient1 = "88c0d0";
       gradient2 = "81a1c1";

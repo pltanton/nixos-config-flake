@@ -10,4 +10,11 @@
     libgnome-keyring
     gnome.gnome-keyring
   ];
+
+  security.wrappers."mount.nfs" = {
+    setuid = true;
+    owner = "root";
+    group = "root";
+    source = "${pkgs.nfs-utils.out}/bin/mount.nfs";
+  };
 }

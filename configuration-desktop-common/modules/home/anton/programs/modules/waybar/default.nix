@@ -1,11 +1,13 @@
-{ pkgs, config, lib, ... }@input:
+{ pkgs, config, osConfig, lib, ... }@input:
 let
   scripts = import ./scripts input;
   hyprlandPkg = config.wayland.windowManager.hyprland.package;
 in {
-  imports = [ ./style.nix ];
-
   programs.waybar = with config.lib.base16.theme; {
+    style = builtins.readFile (osConfig.lib.stylix.colors {
+      template = builtins.readFile ./waybar.css.mustache;
+      extension = "css";
+    });
     package = pkgs.waybar-hyprland;
     enable = config.wayland.windowManager.sway.enable
       || config.wayland.windowManager.hyprland.enable;
@@ -15,12 +17,12 @@ in {
       layer = "top";
       position = "top";
       height = 24;
-      margin = "12 18 0 18";
+      margin = "6 18 0 18";
       modules-left = [
         # "sway/worspaces"
         "wlr/workspaces"
         "custom/spotify"
-        "custom/submap"
+        "hyprland/submap"
         # "sway/mode"
       ];
       modules-center = [
@@ -31,12 +33,18 @@ in {
         "tray"
         "idle_inhibitor"
         "clock"
-        "pulseaudio"
-        "backlight"
+        "wireplumber"
+        # "backlight"
         "battery"
         "custom/kbd"
         # "hyprland/language"
       ];
+      "wireplumber" = {
+        "format" = " {icon} {volume}%";
+        "format-muted" = "";
+        "on-click" = "helvum";
+        "format-icons" = [ "" "" "" ];
+      };
       idle_inhibitor = {
         format = "{icon}";
         format-icons = {
@@ -159,6 +167,7 @@ in {
         exec = "${scripts.hyprland-kbd}/bin/hyprland-kbd";
       };
       "sway/language" = { "format" = "{short}"; };
+      "hyprland/sumbap" = { };
       "hyprland/window" = {
         "format" = "{}";
         "separate-outputs" = true;

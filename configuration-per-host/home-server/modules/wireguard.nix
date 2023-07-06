@@ -1,10 +1,10 @@
 { config, pkgs, secrets, ... }: {
   networking.nat.enable = true;
-  networking.nat.internalInterfaces = [ "wg0" "wg-hz" ];
+  networking.nat.internalInterfaces = [ "wg-home" "wg-hz" ];
   networking.firewall = { allowedUDPPorts = [ 51820 ]; };
 
   networking.wireguard.interfaces = {
-    wg0 = {
+    wg-home = {
       ips = [ "10.100.0.1/24" ];
       listenPort = 51820;
 
@@ -17,27 +17,26 @@
         }
         {
           allowedIPs = [ "10.100.0.3/32" ];
-          publicKey = "TZeNcgaKDcQRsUktBPcjtcKbVLouDkc24jdoSrWHtVs="; # Thinkpad x1
+          publicKey =
+            "TZeNcgaKDcQRsUktBPcjtcKbVLouDkc24jdoSrWHtVs="; # Thinkpad x1
         }
         {
           allowedIPs = [ "10.100.0.4/32" ];
-          publicKey = "q1iXNfb6u4J5clKyE4dT4iyPGwB0kWcieLX3pjscaSE="; # Ozon Thnikbook
+          publicKey =
+            "TB6b0XRczhJmH/yyVIL0gCPGL4sIx3EcMti28og0g14="; # Thinkpad x1 gen9
         }
       ];
     };
 
-
     wg-hz = {
       privateKey = secrets.wireguard.hz1;
       ips = [ "10.10.10.10/32" ];
-      peers = [
-        {
-          publicKey = "0vuNrDaID3o8YwbNBZ7RViB0O0z6Kt32mpK36PUDgg8=";
-          allowedIPs = [ "10.10.10.0/24" ];
-          endpoint = "hz1.kaliwe.ru:51820";
-          persistentKeepalive = 25;
-        }
-      ];
+      peers = [{
+        publicKey = "0vuNrDaID3o8YwbNBZ7RViB0O0z6Kt32mpK36PUDgg8=";
+        allowedIPs = [ "10.10.10.0/24" ];
+        endpoint = "hz1.kaliwe.ru:51820";
+        persistentKeepalive = 25;
+      }];
     };
   };
 

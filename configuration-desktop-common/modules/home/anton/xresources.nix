@@ -6,7 +6,7 @@
     #   (config.lib.base16.templateFile { name = "xresources"; });
 
     properties = {
-      "*dpi" = "192";
+      # "*dpi" = "192";
       "Xft.dpi" = "192";
     };
   };

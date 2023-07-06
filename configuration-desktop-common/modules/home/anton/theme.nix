@@ -14,7 +14,7 @@ let
     # gtkTheme = "Adwaita-dark";
     # cursorTheme = "Qogir-dark";
     # cursorTheme = "Adwaita";
-    cursorTheme = "phinger-cursors";
+    cursorTheme = "phinger-cursors-light";
     cursorSize = 32;
     cursorSizeX2 = cursorSize * 2;
 
