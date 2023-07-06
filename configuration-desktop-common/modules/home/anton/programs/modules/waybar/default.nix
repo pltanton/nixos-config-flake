@@ -17,7 +17,7 @@ in {
       layer = "top";
       position = "top";
       height = 24;
-      margin = "6 18 0 18";
+      margin = "10 18 0 18";
       modules-left = [
         # "sway/worspaces"
         "wlr/workspaces"
@@ -35,12 +35,18 @@ in {
         "clock"
         "wireplumber"
         # "backlight"
+        "temperature"
         "battery"
         "custom/kbd"
         # "hyprland/language"
       ];
+      "temperature" = {
+        "format" = "{temperatureC}°C ";
+        "critical-threshold" = 90;
+        "format-critical" = "{temperatureC}°C ";
+      };
       "wireplumber" = {
-        "format" = " {icon} {volume}%";
+        "format" = "{icon} {volume}%";
         "format-muted" = "";
         "on-click" = "helvum";
         "format-icons" = [ "" "" "" ];

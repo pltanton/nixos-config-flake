@@ -2,7 +2,7 @@
   services.tlp = {
     # enable = !config.services.xserver.desktopManager.gnome.enable
     #   && !config.services.xserver.desktopManager.plasma5.enable;
-    enable = false;
+    enable = !config.services.power-profiles-daemon.enable;
     settings = {
       PLATFORM_PROFILE_ON_AC = "balanced";
       PLATFORM_PROFILE_ON_BAT = "low-power";

@@ -1,1 +1,1 @@
-{ pkgs, ... }: { services.flatpak.enable = false; }
+{ pkgs, ... }: { services.flatpak.enable = true; }

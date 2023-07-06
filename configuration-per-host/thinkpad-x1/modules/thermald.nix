@@ -8,5 +8,7 @@
                 --ignore-cpuid-check \
                 --adaptive
   '');
-  services.thermald = { enable = true; };
+  services.thermald.enable.enable =
+    !config.services.xserver.desktopManager.gnome.enable
+    && !config.services.xserver.desktopManager.plasma5.enable;
 }

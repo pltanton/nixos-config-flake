@@ -119,9 +119,9 @@ in {
       grpc-gateway
       grpcurl # grpc client
       nodejs
-      # nur.repos.utybo.jetbrains.idea-ultimate
-      (enlargeCursorForDesktopEntry master.jetbrains.idea-ultimate)
-      (enlargeCursorForDesktopEntry master.jetbrains.idea-community)
+      (enlargeCursorForDesktopEntry nur.repos.utybo.jetbrains.idea-community)
+      # (enlargeCursorForDesktopEntry master.jetbrains.idea-ultimate)
+      # (enlargeCursorForDesktopEntry master.jetbrains.idea-community)
 
       dbeaver
       beekeeper-studio

@@ -1,3 +1,9 @@
+@keyframes background-move {
+    0%{background-position:50% 0%}
+    50%{background-position:50% 100%}
+    100%{background-position:50% 00%}
+}
+
 * {
   border: none;
   border-radius: 0;
@@ -49,9 +55,8 @@ window#waybar.hidden {
 #custom-kbd,
 #window,
 #language {
-  /* background-color: #{{base05}}; */
-  /* color: #{{base01}}; */
-  color: #{{base05}};
+  background-color: #{{base0D}};
+  color: #{{base00}};
   padding: 0 8px;
   margin: 0 4px;
   border-radius: 6px;
@@ -73,12 +78,14 @@ window#waybar.hidden {
   animation-iteration-count: infinite;
 }
 
-#battery {
+#battery.charging {
 }
 
-#battery.charging {
-  /* background-color: #{{base0C}}; */
-  color: #{{backgroundColor}};
+@keyframes blink {
+  to {
+    background-color: #{{base05}};
+    color: #{{base09}};
+  }
 }
 
 #battery.critical:not(.charging) {
@@ -114,7 +121,6 @@ window#waybar.hidden {
 
 #pulseaudio, #wireplumber {
   min-width: 1.3em;
-  /* color: #{{backgroundColor}}; */
 }
 
 #pulseaudio.muted, #wireplumber.muted {
@@ -164,11 +170,9 @@ window#waybar.hidden {
   min-width: 1.2em;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button {
   padding: 0px;
   min-width: 24px;
-  /* background-color: #{{base05}}; */
   background-color: transparent;
   color: #{{base03}};
   border-radius: 14px;
@@ -176,20 +180,13 @@ window#waybar.hidden {
 }
 
 #workspaces button.visible {
-  /* background-color: #{{base05}}; */
-  /* color: #{{base00}}; */
-  /* border-bottom: 3px solid #{{base00}}; */
 }
 
 #workspaces button.focused {
-  /* background-color: #{{base05}}; */
-  /* border-bottom: 3px solid #{{base0D}}; */
 }
 
 #workspaces button.active {
-  /* background-color: #{{base0D}}; */
   color: #{{base05}};
-  /* border-bottom: 3px solid #{{base0D}}; */
   transition: all 0.2s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
@@ -204,15 +201,26 @@ button:disabled {
   /* background-image: none; */
 }
 
-@keyframes background-move {
-    0%{background-position:50% 0%}
-    50%{background-position:50% 100%}
-    100%{background-position:50% 00%}
+#temperature.critical {
+  background: #{{base08}};
+  color: #ffffff;
 }
 
-@keyframes blink {
-  to {
-    background-color: #{{base05}};
-    color: #000000;
-  }
+/* System monitoring block */
+
+#pulseaudio, #wireplumber {
+  padding: 0 8px;
+  margin-right: 0;
+  border-radius: 6px 0 0 6px;
 }
+
+#temperature {
+  margin: 0;
+  border-radius: 0;
+}
+
+#battery {
+  margin-left: 0;
+  border-radius: 0 6px 6px 0;
+}
+

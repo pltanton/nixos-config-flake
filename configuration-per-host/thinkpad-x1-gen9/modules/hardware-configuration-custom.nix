@@ -28,7 +28,7 @@ in {
 
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   boot.kernel.sysctl = { };
-  boot.kernelParams = [ "i915.enable_psr=0" ];
+  boot.kernelParams = [ "i915.enable_psr=1" ];
   # boot.kernelModules = [ "v4l2loopback" "i2c-dev" "iwlwifi" ];
   boot.kernelModules = [ "i2c-dev" "iwlwifi" ];
 

@@ -71,6 +71,7 @@
 
 ;; (package! emacsql-sqlite3)
 (package! protobuf-mode)
+(package! mustache-mode)
 
 ;; (package! copilot
 ;;   :recipe (:host github :repo "zerolfx/copilot.el"
