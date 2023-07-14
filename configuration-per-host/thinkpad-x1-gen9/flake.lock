@@ -734,18 +734,14 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1688552611,
-        "narHash": "sha256-pV/1/AU1l5CNFeKmdJ1jofcaKHhtKAbxY4gazeCyoSo=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "b23c7501f7e0a001486c9a5555a6c53ac7b08e85",
-        "type": "github"
+        "lastModified": 1688658242,
+        "narHash": "sha256-4lM6cIUlO+Qod/SOyYnUxBDnUAxVwLzQFU/cg21zEdA=",
+        "path": "/home/anton/Workdir/home-manager",
+        "type": "path"
       },
       "original": {
-        "owner": "nix-community",
-        "ref": "master",
-        "repo": "home-manager",
-        "type": "github"
+        "path": "/home/anton/Workdir/home-manager",
+        "type": "path"
       }
     },
     "home-manager_2": {

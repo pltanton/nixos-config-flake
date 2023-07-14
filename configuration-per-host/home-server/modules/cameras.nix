@@ -17,17 +17,9 @@ in {
     extraOptions = [ "--network=host" ];
   };
 
+  networking.firewall.allowedTCPPorts = [ 8081 8082 ];
 
-  networking.firewall.allowedTCPPorts = [
-    8081
-    8082
-  ];
-
-  services.nginx = {
-    virtualHosts."motioneye.kaliwe.ru" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/".proxyPass = "http://localhost:8765";
-    };
-  };
+  services.caddy.virtualHosts."motioneye.kaliwe.ru".extraConfig = ''
+    reverse_proxy http://127.0.0.1:8765
+  '';
 }

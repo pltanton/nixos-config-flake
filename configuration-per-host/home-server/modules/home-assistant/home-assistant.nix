@@ -29,27 +29,11 @@
           url-normalize
         ];
     });
-
-    # extraPackages = python3Packages:
-    #   with python3Packages;
-    #   [
-    #     # postgresql support
-    #     psycopg2
-    #   ];
   };
 
-  services.nginx = {
-    recommendedProxySettings = true;
-    virtualHosts."hass.kaliwe.ru" = {
-      forceSSL = true;
-      enableACME = true;
-      extraConfig = ''
-        proxy_buffering off;
-      '';
-      locations."/" = {
-        proxyPass = "http://[::1]:8123";
-        proxyWebsockets = true;
-      };
-    };
+  services.caddy = {
+    virtualHosts."hass.kaliwe.ru".extraConfig = ''
+      reverse_proxy http://[::1]:8123
+    '';
   };
 }

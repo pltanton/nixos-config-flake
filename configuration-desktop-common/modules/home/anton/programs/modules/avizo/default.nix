@@ -7,7 +7,7 @@ let
   },${opacity})";
 in {
   services.avizo = {
-    enable = true;
+    enable = false;
     package = pkgs.avizo.overrideAttrs (final: prev: {
       patchPhase = ''
         cp ${./images}/*.png data/images/

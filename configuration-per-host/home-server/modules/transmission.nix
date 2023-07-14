@@ -11,34 +11,24 @@ in {
     "d ${consts.publicMedia}/downloads/tvshows 0775 publicstore publicstore"
     "d ${consts.publicMedia}/downloads/movies 0775 publicstore publicstore"
   ];
-  services = {
-    transmission = {
-      enable = true;
-      group = "publicstore";
-      # user = "publicstore";
-      # home = "${transmissionHome}/transmission-home";
+  services.transmission = {
+    enable = true;
+    group = "publicstore";
+    # user = "publicstore";
+    # home = "${transmissionHome}/transmission-home";
 
-      settings = {
-        download-dir = downloadsDir;
-        incomplete-dir-enabled = false;
-        rpc-username = "admin";
-        rpc-password = secrets.transmissionRpcPassword;
-        rpc-authentication-required = "true";
-      };
-    };
-
-    nginx = {
-      virtualHosts."torrent.kaliwe.ru" = {
-        enableACME = true;
-        forceSSL = true;
-        locations."/".proxyPass = "http://localhost:9091";
-      };
+    settings = {
+      download-dir = downloadsDir;
+      incomplete-dir-enabled = false;
+      rpc-username = "admin";
+      rpc-password = secrets.transmissionRpcPassword;
+      rpc-authentication-required = "true";
     };
   };
 
-  security.acme.certs = {
-    "torrent.kaliwe.ru".email = "plotnikovanton@gmail.com";
-  };
+  services.caddy.virtualHosts."torrent.kaliwe.ru".extraConfig = ''
+    reverse_proxy http://127.0.0.1:9091
+  '';
 
   users.users.transmission.extraGroups = [ "publicstore" ];
 }

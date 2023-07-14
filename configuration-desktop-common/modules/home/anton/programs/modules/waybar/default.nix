@@ -18,37 +18,27 @@ in {
       position = "top";
       height = 24;
       margin = "10 18 0 18";
-      modules-left = [
-        # "sway/worspaces"
-        "wlr/workspaces"
-        "custom/spotify"
-        "hyprland/submap"
-        # "sway/mode"
-      ];
-      modules-center = [
-        "hyprland/window"
-
-      ];
+      modules-left = [ "wlr/workspaces" "custom/spotify" "hyprland/submap" ];
+      modules-center = [ "hyprland/window" ];
       modules-right = [
         "tray"
         "idle_inhibitor"
         "clock"
         "wireplumber"
-        # "backlight"
         "temperature"
         "battery"
         "custom/kbd"
-        # "hyprland/language"
       ];
       "temperature" = {
-        "format" = "{temperatureC}°C ";
+        "format" = " {temperatureC}°C";
+        "thermal-zone" = 3;
         "critical-threshold" = 90;
-        "format-critical" = "{temperatureC}°C ";
+        "format-critical" = " {temperatureC}°C";
       };
       "wireplumber" = {
         "format" = "{icon} {volume}%";
-        "format-muted" = "";
-        "on-click" = "helvum";
+        "format-muted" = "";
+        "on-click" = "pavucontrol";
         "format-icons" = [ "" "" "" ];
       };
       idle_inhibitor = {
@@ -172,7 +162,6 @@ in {
         return-type = "json";
         exec = "${scripts.hyprland-kbd}/bin/hyprland-kbd";
       };
-      "sway/language" = { "format" = "{short}"; };
       "hyprland/sumbap" = { };
       "hyprland/window" = {
         "format" = "{}";

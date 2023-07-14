@@ -1,0 +1,21 @@
+{ config, pkgs, ... }:
+
+let
+  consts = import ../constants.nix;
+  secrets = import ../secrets.nix;
+in {
+  virtualisation.oci-containers.containers = {
+    monitorrent = {
+      image = "werwolfby/alpine-monitorrent";
+      ports = [ "6687:6687" ];
+      extraOptions = [ "--network=host" ];
+      volumes = [
+        "${consts.mediaAppHomes}/monitorrent-home/monitorrent.db:/var/www/monitorrent/monitorrent.db"
+      ];
+    };
+  };
+
+  services.caddy.virtualHosts."monitorrent.kaliwe.ru".extraConfig = ''
+    reverse_proxy http://localhost:6687
+  '';
+}

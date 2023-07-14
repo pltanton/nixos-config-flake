@@ -4,7 +4,7 @@ let
   secrets = import ../secrets.nix;
   consts = import ../constants.nix;
   nextcloudHome = "${consts.archiveMountPoint}/nextcloud-home";
-  nextcloudPackage = pkgs.nextcloud26;
+  nextcloudPackage = pkgs.nextcloud27;
 
   archiveDst = "${nextcloudHome}/data/anton/files/Archive";
 
@@ -30,6 +30,8 @@ in {
 
   services = {
     nextcloud = {
+      enable = true;
+
       enableBrokenCiphersForSSE = false;
       phpExtraExtensions = all: with all; [ pdlib bz2 ];
       caching = {
@@ -39,7 +41,6 @@ in {
       };
       autoUpdateApps.enable = true;
       package = nextcloudPackage;
-      enable = true;
       config = {
         # adminpass = "adminpass";
         adminpassFile = "/media/archive/nextcloud-home/adminpass";
@@ -47,7 +48,7 @@ in {
       };
       home = "/media/archive/nextcloud-home";
       hostName = "nextcloud.kaliwe.ru";
-      https = true;
+      # https = true;
       phpOptions = {
         short_open_tag = "Off";
         expose_php = "Off";
@@ -81,21 +82,9 @@ in {
         fingerprint
       '';
     };
-
-    nginx = {
-      virtualHosts."nextcloud.kaliwe.ru" = {
-        enableACME = true;
-        forceSSL = true;
-      };
-    };
-  };
-
-  security.acme.certs = {
-    "nextcloud.kaliwe.ru".email = "plotnikovanton@gmail.com";
   };
 
   users.users.nextcloud.extraGroups = [ "lp" "privatestore" ];
-  users.users.nginx.extraGroups = [ "lp" ];
 
   environment.systemPackages = with pkgs; [ dlib netpbm nodejs ];
 
@@ -110,4 +99,27 @@ in {
       options = [ "bind" ];
     };
   };
+
+  services.phpfpm.pools.nextcloud.settings = {
+    "listen.owner" = config.services.caddy.user;
+    "listen.group" = config.services.caddy.group;
+  };
+  users.groups.nextcloud.members = [ "nextcloud" config.services.caddy.user ];
+
+  services.caddy.virtualHosts."nextcloud.kaliwe.ru".extraConfig = ''
+    root * ${config.services.nextcloud.package}
+    root /store-apps/* ${config.services.nextcloud.home}  # <<< these two lines
+    root /nix-apps/* ${config.services.nextcloud.home}    # <<< these two lines
+    encode zstd gzip
+
+    php_fastcgi unix//${config.services.phpfpm.pools.nextcloud.socket}
+    file_server
+
+    header {
+      Strict-Transport-Security max-age=31536000;
+    }
+
+    redir /.well-known/carddav /remote.php/dav 301
+    redir /.well-known/caldav /remote.php/dav 301
+  '';
 }

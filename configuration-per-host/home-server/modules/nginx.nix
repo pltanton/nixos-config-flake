@@ -1,13 +1,1 @@
-{ config, pkgs, ... }: {
-  services.nginx = {
-    enable = true;
-
-    virtualHosts."home.kaliwe.ru" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/".proxyPass = "http://192.168.88.1:88";
-    };
-  };
-
-  security.acme.defaults.email = "plotnikovanton@gmail.com";
-}
+{ config, pkgs, ... }: { services.nginx.enable = false; }

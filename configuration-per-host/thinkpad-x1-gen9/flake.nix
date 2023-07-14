@@ -14,8 +14,8 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Home-manager and modules
-    home-manager.url = "github:nix-community/home-manager/master";
-    # home-manager.url = "path:/home/anton/Workdir/home-manager";
+    # home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.url = "path:/home/anton/Workdir/home-manager";
     # home-manager.url = "github:nix-community/home-manager/release-22.05";
     # base16.url = "github:alukardbf/base16-nix";
     # base16.url = "github:pltanton/base16-nix";

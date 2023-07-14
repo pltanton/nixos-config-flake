@@ -87,7 +87,6 @@
         shell = pkgs.bashInteractive;
         uid = 1050;
       };
-      nginx = { extraGroups = [ "mosquitto" ]; };
     };
 
     groups = {
