@@ -23,8 +23,9 @@ let
     gradient2 = "81a1c1";
     gradient3 = "5e81ac";
   };
-  tilingWM = true && (config.wayland.windowManager.sway.enable
-    || config.wayland.windowManager.hyprland.enable);
+  # tilingWM = true && (config.wayland.windowManager.sway.enable
+  # || config.wayland.windowManager.hyprland.enable);
+  tilingWM = true;
 in {
   home.packages = [
     pkgs.qogir-theme

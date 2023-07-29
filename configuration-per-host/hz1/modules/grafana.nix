@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
-let
-  domain = "grafana.kaliwe.ru";
-  port = 3001;
+let domain = "grafana.kaliwe.ru";
 in {
   services = {
     grafana = {
@@ -11,21 +9,15 @@ in {
         server = {
           domain = domain;
           root_url = "https://${domain}";
-          http_port = port;
+          http_port = 3001;
         };
       };
     };
   };
 
-  services.nginx = {
-    enable = true;
-    virtualHosts."${domain}" = {
-      enableACME = true;
-      forceSSL = true;
-
-      locations."/".proxyPass = "http://127.0.0.1:${toString port}";
-    };
-  };
-
-  security.acme.certs = { "${domain}".email = "plotnikovanton@gmail.com"; };
+  services.caddy.virtualHosts."${domain}".extraConfig = ''
+    reverse_proxy http://127.0.0.1:${
+      toString config.services.grafana.settings.server.http_port
+    }
+  '';
 }

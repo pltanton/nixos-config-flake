@@ -19,8 +19,12 @@
     functions = {
       gitignore = "curl -sL https://www.gitignore.io/api/$argv";
       nshell = "nix shell --impure n#$argv";
+      nsearch = "nix search n $argv";
       mshell = "nix shell --impure m#$argv";
+      msearch = "nix search m $argv";
       sshell = "nix shell --impure s#$argv";
+      ssearch = "nix search s $argv";
+
       limcpu =
         ''systemd-run -p CPUQuota="$argv[1]"% --scope --user -- $argv[2..-1]'';
     };

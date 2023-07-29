@@ -8,11 +8,11 @@
   environment.systemPackages = with pkgs;
     lib.mkIf (config.services.xserver.desktopManager.gnome.enable) [
       gnome.gnome-tweaks
-      gnomeExtensions.pano
+
+      gnomeExtensions.extensions-sync
       gnomeExtensions.user-themes-x
       gnomeExtensions.windownavigator
       gnomeExtensions.tiling-assistant
-      gnomeExtensions.pop-shell
     ];
 
   # environment.systemPackages = with pkgs; [ gnomeExtensions.material-shell ];

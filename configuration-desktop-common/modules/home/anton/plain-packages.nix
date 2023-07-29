@@ -119,30 +119,14 @@ in {
       grpc-gateway
       grpcurl # grpc client
       nodejs
-      (enlargeCursorForDesktopEntry nur.repos.utybo.jetbrains.idea-community)
+      nur.repos.utybo.jetbrains.idea-community
+      master.jetbrains.pycharm-professional
       # (enlargeCursorForDesktopEntry master.jetbrains.idea-ultimate)
       # (enlargeCursorForDesktopEntry master.jetbrains.idea-community)
 
       dbeaver
       beekeeper-studio
       gcc
-      black # Python code formatter
-      (python311.withPackages (pp:
-        with pp; [
-          pip
-          pylint
-          pyright
-          jedi
-          flake8
-          autopep8
-          pygments
-          hvac
-          pika
-          grpcio-tools
-          python-lsp-server
-        ]))
-      # python-language-server
-      poetry
       inputs.mach-nix.defaultPackage.x86_64-linux
       protobuf
       protoc-gen-go

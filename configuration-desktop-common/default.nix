@@ -5,8 +5,8 @@
     (builtins.attrNames (builtins.readDir ./modules)));
 
   # time.timeZone = "Europe/Moscow";
-  # time.timeZone = "Asia/Nicosia";
-  time.timeZone = "Europe/Belgrade";
+  time.timeZone = "Asia/Nicosia";
+  # time.timeZone = "Europe/Belgrade";
 
   nixpkgs.overlays = [
     (import ./overlays/customPackages.nix inputs)

@@ -5,7 +5,7 @@ let
     (lib.generators.toINI { } {
       "Desktop Entry" = {
         Type = "Application";
-        Exec = "env GDK_BACKEND=x11 dbeaver";
+        Exec = "env GDK_BACKEND=x11 env XCURSOR_SIZE=64 dbeaver";
         Terminal = false;
         Name = "dbeaver (X11)";
         Icon = "dbeaver";

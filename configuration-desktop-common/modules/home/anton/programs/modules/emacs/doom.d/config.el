@@ -8,7 +8,7 @@
 (setq  user-full-name "Anton Plotnikov"
        user-mail-address "plotnikovanton@gmail.com")
 
-(setq doom-theme 'doom-nord)
+(setq doom-theme 'doom-nord-aurora)
 
 ;; (setq display-line-numbers-type "relative")
 
@@ -105,14 +105,14 @@
 ;; LSP extra configuration
 (after! lsp-mode
   ;; (setq lsp-headerline-breadcrumb-enable t)
-  ;; (setq lsp-ui-doc-enable t)
-  ;; (setq lsp-ui-doc-show-with-cursor t)
-  ;; (setq lsp-ui-doc-show-with-mouse t)
+  (setq lsp-ui-doc-enable t)
+  (setq lsp-ui-doc-show-with-cursor t)
+  (setq lsp-ui-doc-show-with-mouse t)
   ;; (setq lsp-lens-enable t)
   ;; (setq lsp-ui-sideline-show-diagnostics t)
-  ;; (setq lsp-ui-sideline-show-hover t)
+  (setq lsp-ui-sideline-show-hover t)
   ;; (setq lsp-ui-sideline-show-code-actions t)
-  (setq lsp-pylsp-server-command "pylsp"))
+  (setq lsp-pylsp-plugins-flake8-enabled t))
 
 
 ;; Chain checkers with lsp checker for flycheck
@@ -134,10 +134,6 @@
 
 ;; Disable minibuffer for treemacs
 (setq treemacs-read-string-input 'from-minibuffer)
-
-(after! so-long
-  (setq so-long-threshold 2048)
-  (delq! 'go-mode so-long-target-modes))
 
 
 ;; Configure org latex export
@@ -208,13 +204,5 @@
         )
   )
 
-(defun sort-words (reverse beg end)
-  "Sort words in region alphabetically, in REVERSE if negative.
-    Prefixed with negative \\[universal-argument], sorts in reverse.
-
-    The variable `sort-fold-case' determines whether alphabetic case
-    affects the sort order.
-
-    See `sort-regexp-fields'."
-  (interactive "*P\nr")
-  (sort-regexp-fields reverse "\\w+" "\\&" beg end))
+(setq plantuml-executable-path "/etc/profiles/per-user/anton/bin/plantuml")
+(setq plantuml-default-exec-mode 'executable)

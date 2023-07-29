@@ -14,17 +14,7 @@
     };
   };
 
-  services.nginx = {
-    enable = true;
-    virtualHosts."gitea.kaliwe.ru" = {
-      enableACME = true;
-      forceSSL = true;
-
-      locations."/".proxyPass = "http://127.0.0.1:3003";
-    };
-  };
-
-  security.acme.certs = {
-    "gitea.kaliwe.ru".email = "plotnikovanton@gmail.com";
-  };
+  services.caddy.virtualHosts."gitea.kaliwe.ru".extraConfig = ''
+    reverse_proxy http://127.0.0.1:3003
+  '';
 }

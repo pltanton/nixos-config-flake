@@ -20,8 +20,10 @@ let
 
       gtkTheme = config.gtk.theme.name;
       iconTheme = config.gtk.iconTheme.name;
-      cursorTheme = config.home.pointerCursor.name;
-      cursorSize = toString config.home.pointerCursor.size;
+      # cursorTheme = config.home.pointerCursor.name;
+      cursorTheme = "Phinger";
+      # cursorSize = toString config.home.pointerCursor.size;
+      cursorSize = "32";
 
       gsettingsDesktopSchemasName = pkgs.gsettings-desktop-schemas.name;
       gsettingsDesktopSchemas = pkgs.gsettings-desktop-schemas;

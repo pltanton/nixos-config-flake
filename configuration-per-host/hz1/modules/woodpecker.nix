@@ -10,13 +10,7 @@
     rootUrl = "https://ci.kaliwe.ru";
   };
 
-  services.nginx = {
-    enable = true;
-    virtualHosts."ci.kaliwe.ru" = {
-      enableACME = true;
-      forceSSL = true;
-
-      locations."/".proxyPass = "http://127.0.0.1:3030";
-    };
-  };
+  services.caddy.virtualHosts."ci.kaliwe.ru".extraConfig = ''
+    reverse_proxy http://127.0.0.1:3030
+  '';
 }

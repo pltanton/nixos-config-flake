@@ -20,6 +20,9 @@
     # base16.url = "github:alukardbf/base16-nix";
     # base16.url = "github:pltanton/base16-nix";
 
+    anyrun.url = "github:Kirottu/anyrun";
+    anyrun.inputs.nixpkgs.follows = "nixpkgs";
+
     base16-schemes = {
       url = "github:tinted-theming/base16-schemes";
       flake = false;
@@ -65,7 +68,6 @@
 
     emacs-overlay.url =
       "github:nix-community/emacs-overlay/c16be6de78ea878aedd0292aa5d4a1ee0a5da501";
-    emacs-ng.url = "github:emacs-ng/emacs-ng";
 
     # My own flakes
     bwmenu.url = "github:pltanton/bitwarden-dmenu";
@@ -87,8 +89,8 @@
   };
 
   outputs = { self, nixpkgs, home-manager, nur, nix-alien, emacs-overlay
-    , emacs-ng, mach-nix, hyprland, hyprpaper, ddcsync, jetbrains-flake, stylix
-    , nix-doom-emacs, ... }@inputs: {
+    , mach-nix, hyprland, hyprpaper, ddcsync, jetbrains-flake, stylix
+    , nix-doom-emacs, anyrun, ... }@inputs: {
       nixosConfigurations = let
         inherit (inputs.nixpkgs) lib;
 
@@ -129,6 +131,7 @@
                     nix-doom-emacs.hmModule
                     hyprland.homeManagerModules.default
                     ddcsync.homeManagerModules.default
+                    anyrun.homeManagerModules.default
                   ];
 
                   specialArgs = commonSpecialArgs // { super = config; };
@@ -138,6 +141,7 @@
 
             ({ pkgs, ... }: {
               nix.settings = {
+                builders-use-substitutes = true;
                 trusted-public-keys = [
                   "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
                   "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
@@ -145,6 +149,7 @@
                   "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
                   "liff.cachix.org-1:Uid73LCbEljychK4hx5pn3BkTehHPDBt+S717gFBp90="
                   "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+                  "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
                 ];
                 substituters = [
                   "https://nixpkgs-wayland.cachix.org"
@@ -152,13 +157,13 @@
                   "https://emacsng.cachix.org"
                   "https://cache.nixos.org"
                   "https://hyprland.cachix.org"
+                  "https://anyrun.cachix.org"
                 ];
               };
 
               nixpkgs.overlays = [
                 nur.overlay
                 emacs-overlay.overlay
-                emacs-ng.overlays.default
                 nix-alien.overlay
                 hyprland.overlays.default
                 hyprpaper.overlays.default

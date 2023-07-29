@@ -18,7 +18,7 @@
             scale = 2.0;
           }
           {
-            criteria = "Dell Inc. DELL U2723QE 93TGGH3";
+            criteria = "Dell Inc. DELL U2723QE JSJ91P3";
             status = "enable";
             scale = 1.0;
           }

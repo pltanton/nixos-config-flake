@@ -104,6 +104,7 @@ in {
     "listen.owner" = config.services.caddy.user;
     "listen.group" = config.services.caddy.group;
   };
+
   users.groups.nextcloud.members = [ "nextcloud" config.services.caddy.user ];
 
   services.caddy.virtualHosts."nextcloud.kaliwe.ru".extraConfig = ''
