@@ -1,5 +1,7 @@
-{ config, lib, pkgs, inputs, ... }:
-let wallpaper = ../../../../backgrounds/nord-1.jpg;
+{ config, osConfig, lib, pkgs, inputs, ... }:
+let
+  # wallpaper = ../../../../backgrounds/yosemite.png;
+  wallpaper = osConfig.stylix.image;
 in {
 
   home.file."${config.xdg.configHome}/hypr/hyprpaper.conf".text = ''

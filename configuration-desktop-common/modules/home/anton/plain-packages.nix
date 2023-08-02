@@ -75,7 +75,8 @@ in {
       plantuml
 
       # GUI
-      stable.libreoffice
+      wpsoffice
+      onlyoffice-bin
       evince
       imv
       gthumb
@@ -119,10 +120,10 @@ in {
       grpc-gateway
       grpcurl # grpc client
       nodejs
-      nur.repos.utybo.jetbrains.idea-community
+      # nur.repos.utybo.jetbrains.idea-community
       master.jetbrains.pycharm-professional
       # (enlargeCursorForDesktopEntry master.jetbrains.idea-ultimate)
-      # (enlargeCursorForDesktopEntry master.jetbrains.idea-community)
+      (enlargeCursorForDesktopEntry master.jetbrains.idea-community)
 
       dbeaver
       beekeeper-studio

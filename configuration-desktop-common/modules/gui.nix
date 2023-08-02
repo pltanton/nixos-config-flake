@@ -10,9 +10,11 @@
       gnome.gnome-tweaks
 
       gnomeExtensions.extensions-sync
+      gnomeExtensions.appindicator
       gnomeExtensions.user-themes-x
       gnomeExtensions.windownavigator
       gnomeExtensions.tiling-assistant
+      gnomeExtensions.forge
     ];
 
   # environment.systemPackages = with pkgs; [ gnomeExtensions.material-shell ];

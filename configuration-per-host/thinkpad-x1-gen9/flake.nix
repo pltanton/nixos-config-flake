@@ -14,8 +14,8 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Home-manager and modules
-    # home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.url = "path:/home/anton/Workdir/home-manager";
+    home-manager.url = "github:nix-community/home-manager/master";
+    # home-manager.url = "path:/home/anton/Workdir/home-manager";
     # home-manager.url = "github:nix-community/home-manager/release-22.05";
     # base16.url = "github:alukardbf/base16-nix";
     # base16.url = "github:pltanton/base16-nix";
@@ -68,6 +68,8 @@
 
     emacs-overlay.url =
       "github:nix-community/emacs-overlay/c16be6de78ea878aedd0292aa5d4a1ee0a5da501";
+    # "github:nix-community/emacs-overlay";
+    emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
     # My own flakes
     bwmenu.url = "github:pltanton/bitwarden-dmenu";
@@ -119,7 +121,7 @@
 
             # Home manager with default overridings
             home-manager.nixosModules.home-manager
-            hyprland.nixosModules.default
+            # hyprland.nixosModules.default
             stylix.nixosModules.stylix
 
             # Default home-manager user overrides (add modules and special args)
@@ -129,7 +131,7 @@
                   modules = [
                     # (import inputs.base16.hmModule)
                     nix-doom-emacs.hmModule
-                    hyprland.homeManagerModules.default
+                    # hyprland.homeManagerModules.default
                     ddcsync.homeManagerModules.default
                     anyrun.homeManagerModules.default
                   ];

@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  services.thermald.enable = true;
+  services.thermald.enable = false;
 
   systemd.services.thermald.serviceConfig.ExecStart = lib.mkForce (''
     ${pkgs.thermald}/sbin/thermald \

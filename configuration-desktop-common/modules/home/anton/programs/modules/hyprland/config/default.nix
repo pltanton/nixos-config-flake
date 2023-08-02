@@ -1,62 +1,11 @@
-{ osConfig, config, lib, pkgs, inputs, ... }:
-let
-  grabScreenshot = pkgs.writeShellScript "grabScreenshot" ''
-    mkdir -p ~/Screenshots
-    FILE_PATH=~/Screenshots/shot_$(date +"%y%m%d%H%M%S").png
-    grim -g "$(slurp)" - | swappy -f - -o "$FILE_PATH"
-    wl-copy -t image/png < $FILE_PATH
-  '';
+{ osConfig, config, lib, pkgs, inputs, ... }: {
 
-  hyprctlConfig = with osConfig.lib.stylix.colors;
-    pkgs.substituteAll ({
-      src = ./hyprland.conf;
+  imports = [ ./keybinds.nix ./hyprland-config.nix ./rules.nix ];
 
-      glib = "${pkgs.glib}/bin/gsettings";
-      brightness = "${pkgs.brightness}/bin/brightness";
-      xprop = "${pkgs.xorg.xprop}/bin/xprop";
-
-      cliphist = "${pkgs.cliphist}/bin/cliphist";
-      wl-paste = "${pkgs.wl-clipboard}/bin/wl-paste";
-
-      gtkTheme = config.gtk.theme.name;
-      iconTheme = config.gtk.iconTheme.name;
-      # cursorTheme = config.home.pointerCursor.name;
-      cursorTheme = "Phinger";
-      # cursorSize = toString config.home.pointerCursor.size;
-      cursorSize = "32";
-
-      gsettingsDesktopSchemasName = pkgs.gsettings-desktop-schemas.name;
-      gsettingsDesktopSchemas = pkgs.gsettings-desktop-schemas;
-
-      fontUIName = "Inter";
-
-      base0 = base00;
-      base1 = base01;
-      base2 = base02;
-      base3 = base03;
-      base4 = base04;
-      base5 = base05;
-      base6 = base06;
-      base7 = base07;
-      base8 = base08;
-      base9 = base09;
-      baseA = base0A;
-      baseB = base0B;
-      baseC = base0C;
-      baseD = base0D;
-      baseE = base0E;
-      baseF = base0F;
-
-      # TODO Replace it with stylix
-      gradient0 = "8fbcbb";
-      gradient1 = "88c0d0";
-      gradient2 = "81a1c1";
-      gradient3 = "5e81ac";
-    });
-in {
   home.packages = lib.mkIf config.wayland.windowManager.hyprland.enable
     (with pkgs; [
       hyprpaper
+
       wl-clipboard
 
       cliphist
@@ -68,14 +17,6 @@ in {
       playerctl
 
       # Scripts
-      # brightness
       screenshot
     ]);
-
-  wayland.windowManager.hyprland = {
-    extraConfig = ''
-      source=${hyprctlConfig}
-      source=${./keybinds.conf}
-    '';
-  };
 }

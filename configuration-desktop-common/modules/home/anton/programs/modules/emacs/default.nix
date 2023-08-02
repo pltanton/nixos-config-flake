@@ -1,26 +1,18 @@
 { pkgs, config, inputs, nur, ... }:
 
-let doomLocalPrivateDir = ".doom.d";
+let
+  DOOMLOCALDIR = "${config.xdg.dataHome}/doom";
+  DOOMDIR = "${config.xdg.configHome}/doom";
+  DOOMPROFILELOADFILE = "${config.xdg.dataHome}/doom/cache/profile-load.el";
 in {
-  home.file."${doomLocalPrivateDir}".source = pkgs.linkFarm "doom.d" [
-    # straight needs a (possibly empty) `config.el` file to build
-    {
-      name = "config.el";
-      path = ./doom.d/config.el;
-    }
-  ];
 
   home.packages = with pkgs; [
-    graphviz # org-roam graph vizualization
+    graphviz
     binutils
     gnutls
     direnv
     ripgrep
     fd
-    hunspell
-    hunspellDicts.en-us
-    hunspellDicts.ru-ru
-    hunspellDicts.en-gb-large
     editorconfig-core-c
     hlint
     cabal-install
@@ -28,39 +20,35 @@ in {
     pipenv
     sqls
     gopls
+
+    emacs-all-the-icons-fonts
+
+    hunspell
+    hunspellDicts.en-us
+    hunspellDicts.ru-ru
+    hunspellDicts.en-gb-large
   ];
 
-  # home.file.".doom.d/themes/catppuccin-theme.el".text =
-  #   builtins.readFile "${inputs.emacs-catppuccin}/catppuccin-theme.el";
+  home.sessionVariables = { inherit DOOMLOCALDIR DOOMDIR DOOMPROFILELOADFILE; };
+  systemd.user.sessionVariables = {
+    inherit DOOMLOCALDIR DOOMDIR DOOMPROFILELOADFILE;
+  };
 
-  programs.doom-emacs = {
+  xdg.configFile."doom".source = ./doom.d;
+  xdg.dataFile."doom/cache/.keep".text = "";
+
+  xdg.configFile."emacs" = {
+    source = pkgs.applyPatches {
+      name = "doom-emacs-source";
+      src = inputs.doom-emacs;
+    };
+    force = true;
+  };
+
+  home.sessionPath = [ "${config.xdg.configHome}/emacs/bin" ];
+
+  programs.emacs = {
     enable = true;
-    emacsPackage = pkgs.emacsPgtk;
-    doomPrivateDir = pkgs.linkFarm "my-doom-packages" [
-      {
-        name = "config.el";
-        path = ./doom.d/config.el;
-      }
-      {
-        name = "init.el";
-        path = ./doom.d/init.el;
-      }
-    ];
-
-    doomPackageDir = pkgs.linkFarm "my-doom-packages" [
-      # straight needs a (possibly empty) `config.el` file to build
-      {
-        name = "config.el";
-        path = pkgs.emptyFile;
-      }
-      {
-        name = "init.el";
-        path = ./doom.d/init.el;
-      }
-      {
-        name = "packages.el";
-        path = ./doom.d/packages.el;
-      }
-    ];
+    package = pkgs.emacs29-pgtk;
   };
 }

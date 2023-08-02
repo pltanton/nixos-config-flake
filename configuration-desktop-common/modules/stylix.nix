@@ -1,8 +1,8 @@
 { config, pkgs, inputs, lib, ... }: {
   stylix = {
-    # base16Scheme = "${inputs.base16-schemes}/catppuccin-mocha.yaml";
-    base16Scheme = "${inputs.base16-schemes}/nord.yaml";
-    image = ./home/backgrounds/nord-1.jpg;
+    base16Scheme = "${inputs.base16-schemes}/catppuccin-macchiato.yaml";
+    # base16Scheme = "${inputs.base16-schemes}/nord.yaml";
+    image = ./home/backgrounds/evening-sky.png;
 
     fonts = {
       serif = {

@@ -6,7 +6,7 @@
     use = "web, web=checkip.dyndns.com/, web-skip='Current IP Address: '";
     ssl = true;
     server = "dynv6.com";
-    domains = [ "pltanton-home.dns.army" ];
+    domains = [ "kaliwe.ru" ];
     # configFile = "/root/ddclient.conf";
   };
 }

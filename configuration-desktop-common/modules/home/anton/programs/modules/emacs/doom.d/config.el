@@ -9,6 +9,7 @@
        user-mail-address "plotnikovanton@gmail.com")
 
 (setq doom-theme 'doom-nord-aurora)
+;; (setq doom-theme 'catppuccin)
 
 ;; (setq display-line-numbers-type "relative")
 

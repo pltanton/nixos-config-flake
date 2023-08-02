@@ -2,7 +2,7 @@
 
 {
   services.throttled = {
-    enable = false;
+    enable = true;
     extraConfig = ''
       [GENERAL]
       # Enable or disable the script execution
@@ -25,7 +25,7 @@
       # Time window #2 duration
       PL2_Duration_S: 0.002
       # Max allowed temperature before throttling
-      Trip_Temp_C: 85
+      Trip_Temp_C: 80
       # Set cTDP to normal=0, down=1 or up=2 (EXPERIMENTAL)
       cTDP: 0
       # Disable BDPROCHOT (EXPERIMENTAL)
@@ -44,10 +44,10 @@
       # Time window #2 duration
       PL2_Duration_S: 0.002
       # Max allowed temperature before throttling
-      Trip_Temp_C: 95
+      Trip_Temp_C: 85
       # Set HWP energy performance hints to 'performance' on high load (EXPERIMENTAL)
       # Uncomment only if you really want to use it
-      # HWP_Mode: False
+      HWP_Mode: True
       # Set cTDP to normal=0, down=1 or up=2 (EXPERIMENTAL)
       cTDP: 0
       # Disable BDPROCHOT (EXPERIMENTAL)

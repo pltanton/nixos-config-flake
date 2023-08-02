@@ -17,7 +17,6 @@
       hidpi = true;
     };
 
-    recommendedEnvironment = true;
     systemdIntegration = true;
   };
 

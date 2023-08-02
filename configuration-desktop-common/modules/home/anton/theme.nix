@@ -5,18 +5,8 @@ let
     fontConsoleSize = "17";
     fontUIName = "Inter";
     fontUISize = "15";
-    # iconTheme = "Adwaita";
-    # iconTheme = "Qogir-dark";
-    iconPackage = pkgs.kora-icon-theme;
-    # iconTheme = "kora";
-    iconTheme = "kora";
+
     gtkTheme = "Nordic-bluish-accent";
-    # gtkTheme = "Adwaita-dark";
-    # cursorTheme = "Qogir-dark";
-    # cursorTheme = "Adwaita";
-    cursorTheme = "phinger-cursors-light";
-    cursorSize = 32;
-    cursorSizeX2 = cursorSize * 2;
 
     gradient0 = "8fbcbb";
     gradient1 = "88c0d0";
@@ -33,9 +23,16 @@ in {
     pkgs.gnome-icon-theme
     pkgs.hicolor-icon-theme
     pkgs.papirus-icon-theme
-    pkgs.master.phinger-cursors
     pkgs.gnome.adwaita-icon-theme
     pkgs.nordic
+
+    (pkgs.catppuccin-gtk.override {
+      accents = [ "pink" ];
+      size = "compact";
+      tweaks = [ "rimless" ];
+      variant = "macchiato";
+    })
+    pkgs.catppuccin-kde
   ];
   # themes.base16 = {
   #   enable = true;
@@ -48,17 +45,12 @@ in {
     enable = tilingWM;
     theme = {
       package = pkgs.nordic;
-      name = themeConsts.gtkTheme;
+      name = "Catppuccin-Macchiato-Compact-Pink-dark";
     };
     iconTheme = {
-      package = themeConsts.iconPackage;
-      name = themeConsts.iconTheme;
+      package = pkgs.kora-icon-theme;
+      name = "kora";
     };
-    # gtk3.extraConfig.gtk-cursor-theme-name = themeConsts.cursorTheme;
-    # gtk3.extraConfig.gtk-cursor-theme-size = themeConsts.cursorSize;
-    # gtk4.extraConfig.gtk-cursor-theme-name = themeConsts.cursorTheme;
-    # gtk4.extraConfig.gtk-cursor-theme-size = themeConsts.cursorSize;
-    # gtk4.extraConfig.gtk-prefer-dark-theme = 1;
     gtk2.extraConfig = ''
       gtk-font-name = "Inter 30";
       font_name = "Inter 30";
@@ -71,15 +63,10 @@ in {
     platformTheme = "gtk";
   };
 
-  # home.file.".icons/default/index.theme".text = ''
-  #   [icon theme]
-  #   Inherits=${themeConsts.cursorTheme}
-  # '';
-
   home.pointerCursor = lib.mkIf tilingWM {
-    package = pkgs.qogir-icon-theme;
-    name = themeConsts.cursorTheme;
-    size = themeConsts.cursorSize;
+    package = pkgs.master.phinger-cursors;
+    name = "phinger-cursors-light";
+    size = 32;
     x11.enable = false;
     gtk.enable = tilingWM;
   };
