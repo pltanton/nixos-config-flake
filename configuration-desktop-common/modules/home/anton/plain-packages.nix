@@ -77,6 +77,8 @@ in {
       # GUI
       wpsoffice
       onlyoffice-bin
+      libreoffice
+
       evince
       imv
       gthumb
@@ -110,6 +112,8 @@ in {
       # (texlive.combine { inherit (texlive) scheme-medium titlesec wrapfig; })
 
       # Dev
+      semver
+      envsubst
       clang-tools
       kubectl
       kubectx

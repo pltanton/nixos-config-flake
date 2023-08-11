@@ -67,11 +67,10 @@ in {
 
       decoration = {
         rounding = 7;
-        blur = true;
-        blur_new_optimizations = true;
+        blur = { enabled = false; };
         drop_shadow = false;
-        shadow_range = 15;
-        shadow_render_power = 4;
+        shadow_range = 8;
+        shadow_render_power = 3;
         dim_inactive = false;
         dim_strength = 0.2;
       };

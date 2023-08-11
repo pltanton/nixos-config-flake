@@ -38,18 +38,18 @@
       })
 
       # (buildGoModule {
-      #   name = "protodep";
-      #   version = "0.1.7";
+      #   name = "swag";
+      #   version = "1.16.1";
 
       #   src = pkgs.fetchFromGitHub {
-      #     owner = "stormcat24";
-      #     repo = "protode";
-      #     rev = "59b660a6414294c86f25bf9fc3ad4f32ca903124";
+      #     owner = "swaggo";
+      #     repo = "http-swagger";
+      #     tag = "1.16.1";
       #     sha256 = "0000000000000000000000000000000000000000000000000000";
       #   };
 
       #   vendorSha256 = "0000000000000000000000000000000000000000000000000000";
-      #   subPackages = [ "cmd/root" ];
+      #   subPackages = [ "cmd/swag" ];
       # })
     ];
 }

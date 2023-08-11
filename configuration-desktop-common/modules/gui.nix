@@ -13,8 +13,9 @@
       gnomeExtensions.appindicator
       gnomeExtensions.user-themes-x
       gnomeExtensions.windownavigator
-      gnomeExtensions.tiling-assistant
-      gnomeExtensions.forge
+      # gnomeExtensions.tiling-assistant
+      # gnomeExtensions.forge
+      gnomeExtensions.pop-shell
     ];
 
   # environment.systemPackages = with pkgs; [ gnomeExtensions.material-shell ];

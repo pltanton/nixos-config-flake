@@ -2,7 +2,7 @@
 
 {
   networking.networkmanager.enableFccUnlock = true;
-  networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
+  networking.nameservers = [ "8.8.8.8" "1.1.1.1" ];
 
   networking.extraHosts = ''
     127.0.0.1 db

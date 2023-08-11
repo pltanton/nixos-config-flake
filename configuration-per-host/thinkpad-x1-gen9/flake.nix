@@ -121,7 +121,7 @@
 
             # Home manager with default overridings
             home-manager.nixosModules.home-manager
-            # hyprland.nixosModules.default
+            hyprland.nixosModules.default
             stylix.nixosModules.stylix
 
             # Default home-manager user overrides (add modules and special args)

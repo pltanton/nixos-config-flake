@@ -26,6 +26,7 @@
         "windowdance,class:^(jetbrains-.*)$"
         "size 60% 80%,class:^(jetbrains-.*)$,floating:1,title:$ ^"
         "center,class:^(jetbrains-.*)$,floating:1,title:$ ^"
+        "center,class:^(jetbrains-.*)$,floating:1,title:$ ^Open Project"
 
       ];
     };

@@ -1,5 +1,15 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
+;; (setq doom-theme 'doom-nord-aurora)
+;; (setq doom-theme 'catppuccin)
+;; (setq catppuccin-flavor 'macchiato)
+;; (load-theme 'catppuccin t t)
+;; (catppuccin-reload)
+
+(use-package! catppuccin-theme
+  :init (setq catppuccin-flavor 'macchiato)
+  :config (setq doom-theme 'catppuccin))
+
 (setq fancy-splash-image "$DOOMDIR/images/Emacs-logo-vim.svg")
 
 ;; (set-frame-parameter nil 'alpha-background 85) ; For current frame
@@ -8,8 +18,6 @@
 (setq  user-full-name "Anton Plotnikov"
        user-mail-address "plotnikovanton@gmail.com")
 
-(setq doom-theme 'doom-nord-aurora)
-;; (setq doom-theme 'catppuccin)
 
 ;; (setq display-line-numbers-type "relative")
 
