@@ -14,6 +14,5 @@ in {
     udiskie.enable = tilingEnabled;
     clipman.enable = false;
     ddcsync.enable = tilingEnabled;
-    wob.enable = false;
   };
 }

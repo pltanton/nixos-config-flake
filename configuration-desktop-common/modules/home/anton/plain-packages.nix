@@ -79,6 +79,8 @@ in {
       onlyoffice-bin
       libreoffice
 
+      logseq
+
       evince
       imv
       gthumb
@@ -112,6 +114,7 @@ in {
       # (texlive.combine { inherit (texlive) scheme-medium titlesec wrapfig; })
 
       # Dev
+      yarn
       semver
       envsubst
       clang-tools
@@ -141,6 +144,8 @@ in {
       nodePackages.prettier
       nodePackages.vue-language-server
       nodePackages.eslint
+      nodePackages.yaml-language-server
+
       gnumake
       zip
 

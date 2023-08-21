@@ -63,7 +63,15 @@ in {
   '';
 
   services.caddy.virtualHosts."savor-dev.kaliwe.ru".extraConfig = ''
-    reverse_proxy localhost:8080
+    reverse_proxy localhost:3000
+  '';
+
+  services.caddy.virtualHosts."anton.savor-dev.kaliwe.ru".extraConfig = ''
+    reverse_proxy 10.10.10.2:3000
+  '';
+
+  services.caddy.virtualHosts."savor-dev-anton.kaliwe.ru".extraConfig = ''
+    reverse_proxy 10.10.10.2:3000
   '';
 
   environment.systemPackages = [ pkgs.k3s ];

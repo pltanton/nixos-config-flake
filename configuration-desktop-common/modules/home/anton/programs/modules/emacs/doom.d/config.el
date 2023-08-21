@@ -21,7 +21,7 @@
 
 ;; (setq display-line-numbers-type "relative")
 
-(setq doom-font (font-spec :family "Iosevka" :size 23))
+(setq doom-font (font-spec :family "Iosevka" :size 19))
 
 (make-directory "~/org" t)
 (setq org-directory "~/org")
@@ -31,22 +31,6 @@
 (make-directory "~/org-roam" t)
 ;; (setq org-roam-database-connector 'sqlite3)
 (setq org-roam-directory (file-truename "~/org-roam"))
-
-;; (use-package! websocket
-;;   :after org-roam)
-
-;; (use-package! org-roam-ui
-;;   :after org-roam ;; or :after org
-;;   ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
-;;   ;;         a hookable mode anymore, you're advised to pick something yourself
-;;   ;;         if you don't care about startup time, use
-;;   ;;  :hook (after-init . org-roam-ui-mode)
-;;   :config
-;;   (setq org-roam-ui-sync-theme t
-;;         org-roam-ui-follow t
-;;         org-roam-ui-update-on-save t
-;;         org-roam-ui-open-on-start t))
-
 
 (setq projectile-project-search-path '("~/Workdir/" "~/Workdir/nc" "~/Workdir/blackbird-platform" ))
 
@@ -113,14 +97,6 @@
 
 ;; LSP extra configuration
 (after! lsp-mode
-  ;; (setq lsp-headerline-breadcrumb-enable t)
-  (setq lsp-ui-doc-enable t)
-  (setq lsp-ui-doc-show-with-cursor t)
-  (setq lsp-ui-doc-show-with-mouse t)
-  ;; (setq lsp-lens-enable t)
-  ;; (setq lsp-ui-sideline-show-diagnostics t)
-  (setq lsp-ui-sideline-show-hover t)
-  ;; (setq lsp-ui-sideline-show-code-actions t)
   (setq lsp-pylsp-plugins-flake8-enabled t))
 
 
@@ -215,3 +191,19 @@
 
 (setq plantuml-executable-path "/etc/profiles/per-user/anton/bin/plantuml")
 (setq plantuml-default-exec-mode 'executable)
+
+;; Setup org roam ui
+(use-package! websocket
+    :after org-roam)
+
+(use-package! org-roam-ui
+    :after org-roam ;; or :after org
+;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;;         a hookable mode anymore, you're advised to pick something yourself
+;;         if you don't care about startup time, use
+;;  :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))

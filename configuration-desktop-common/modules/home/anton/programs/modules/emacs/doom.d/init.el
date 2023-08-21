@@ -85,6 +85,7 @@
        grammar           ; tasing grammar mistake every you make
 
        :tools
+       tree-sitter
        ;;ansible
        (debugger +lsp)          ; FIXME stepping through code, to help you add bugs
        direnv
@@ -169,7 +170,7 @@
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
        web               ; the tubes
-       yaml              ; JSON, but readable
+       (yaml +lsp +tree-sitter)              ; JSON, but readable
        ;;zig               ; C, but simpler
 
        :email
