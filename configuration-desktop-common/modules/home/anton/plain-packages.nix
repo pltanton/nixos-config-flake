@@ -130,7 +130,8 @@ in {
       # nur.repos.utybo.jetbrains.idea-community
       master.jetbrains.pycharm-professional
       # (enlargeCursorForDesktopEntry master.jetbrains.idea-ultimate)
-      (enlargeCursorForDesktopEntry master.jetbrains.idea-community)
+      # (enlargeCursorForDesktopEntry master.jetbrains.idea-community)
+      master.jetbrains.idea-community
 
       dbeaver
       beekeeper-studio
@@ -139,6 +140,7 @@ in {
       protobuf
       protoc-gen-go
       protoc-gen-go-grpc
+      openapi-generator-cli
 
       nodePackages.yaml-language-server
       nodePackages.prettier

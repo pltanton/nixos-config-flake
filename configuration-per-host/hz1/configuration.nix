@@ -26,6 +26,8 @@
     useDHCP = true;
     useNetworkd = false;
 
+    hostName = "hz1";
+
     # defaultGateway.interface = "ens3";
 
     networkmanager.enable = false;

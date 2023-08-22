@@ -4,14 +4,14 @@ in {
   wayland.windowManager.hyprland = with osConfig.lib.stylix.colors; {
     settings = {
       exec-once = [
-        "${pkgs.xorg.xprop}/bin/xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
-
         #Stores only text data
         "wl-paste --type text --watch cliphist store"
         #Stores only image data
         "wl-paste --type image --watch cliphist store"
 
         "hyprpaper"
+
+        # "${pkgs.xorg.xprop}/bin/xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
       ];
 
       exec = [
@@ -28,9 +28,9 @@ in {
         "NIXOS_OZONE_WL,1"
         "XCURSOR_SIZE,${cursorSize}"
 
-        "GDK_SCALE,2"
-        "QT_ENABLE_HIGHDPI_SCALING,1"
-        "QT_SCALE_FACTOR,2"
+        # "GDK_SCALE,2"
+        # "QT_ENABLE_HIGHDPI_SCALING,1"
+        # "QT_SCALE_FACTOR,2"
 
         "WLR_DRM_NO_ATOMIC,1"
         "XDG_DATA_DIRS,${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:$XDG_DATA_DIRS"

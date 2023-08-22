@@ -11,13 +11,19 @@ let
     spec = {
       valuesContent = builtins.toJSON {
         ports = {
-          web.exposedPort = 8080;
-          websecure.exposedPort = 8443;
+          web.exposedPort = 9080;
+          websecure.exposedPort = 9443;
         };
         ssl = {
           enabled = false;
           permanentRedirect = false;
         };
+        additionalArguments = [
+          "--providers.kubernetesingress.allowemptyservices=true"
+          "--providers.kubernetesingress.allowexternalnameservices=true"
+          "--providers.kubernetescrd.allowemptyservices=true"
+          "--providers.kubernetescrd.allowexternalnameservices=true"
+        ];
       };
     };
   };
@@ -59,19 +65,21 @@ in {
   };
 
   services.caddy.virtualHosts."savor.kaliwe.ru".extraConfig = ''
-    reverse_proxy localhost:8080
+    reverse_proxy localhost:9080
   '';
 
   services.caddy.virtualHosts."savor-dev.kaliwe.ru".extraConfig = ''
-    reverse_proxy localhost:3000
+    reverse_proxy localhost:9080
   '';
 
   services.caddy.virtualHosts."anton.savor-dev.kaliwe.ru".extraConfig = ''
-    reverse_proxy 10.10.10.2:3000
-  '';
+    handle /api/* {
+      reverse_proxy 10.10.10.2:3301
+    }
 
-  services.caddy.virtualHosts."savor-dev-anton.kaliwe.ru".extraConfig = ''
-    reverse_proxy 10.10.10.2:3000
+    handle {
+      reverse_proxy 10.10.10.2:3000
+    }
   '';
 
   environment.systemPackages = [ pkgs.k3s ];

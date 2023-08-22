@@ -12,10 +12,7 @@
     enable = true;
     # package = pkgs.hyprland-hidpi;
 
-    xwayland = {
-      enable = true;
-      hidpi = true;
-    };
+    xwayland = { enable = true; };
 
     systemdIntegration = true;
   };

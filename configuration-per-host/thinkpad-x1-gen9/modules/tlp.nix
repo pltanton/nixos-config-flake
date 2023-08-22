@@ -1,5 +1,5 @@
 { pkgs, config, ... }: {
-  services.power-profiles-daemon.enable = false;
+  services.power-profiles-daemon.enable = true;
 
   services.tlp = {
     # enable = !config.services.xserver.desktopManager.gnome.enable

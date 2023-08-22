@@ -7,6 +7,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nix.url = "github:nixos/nix";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
@@ -52,6 +53,10 @@
                   config.allowUnfree = true;
                 };
                 local = import inputs.nixpkgs-local {
+                  system = "x86_64-linux";
+                  config.allowUnfree = true;
+                };
+                unstable = import inputs.nixpkgs-unstable {
                   system = "x86_64-linux";
                   config.allowUnfree = true;
                 };
