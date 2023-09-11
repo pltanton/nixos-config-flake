@@ -638,8 +638,8 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1693158805,
-        "narHash": "sha256-j/RZREPL28NAA4mHYdeePUcrfY3CReIg2O8bcpP7BdQ=",
+        "lastModified": 1694441422,
+        "narHash": "sha256-o9zb88knkOCf6OxwUBaa+IqgKQxYOD1lMIrOd+9/IsU=",
         "path": "/home/anton/Workdir/home-manager",
         "type": "path"
       },
@@ -998,11 +998,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1694438898,
-        "narHash": "sha256-jG0iQiU9FUlQIDIT9hjihkk8A/1NVOqJqCmoulX9MnM=",
+        "lastModified": 1694441409,
+        "narHash": "sha256-CE5/0rW8SKwj4sncE5x3j9UiZXn+UKBF30fLi0gBDEM=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "437c962732be5ced0fabf5a787ccd5386c135904",
+        "rev": "6b824d00165546ed05c2ad17f1f1f2bcfba9faf9",
         "type": "github"
       },
       "original": {
@@ -1115,11 +1115,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1693003285,
-        "narHash": "sha256-5nm4yrEHKupjn62MibENtfqlP6pWcRTuSKrMiH9bLkc=",
+        "lastModified": 1693663421,
+        "narHash": "sha256-ImMIlWE/idjcZAfxKK8sQA7A1Gi/O58u5/CJA+mxvl8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5690c4271f2998c304a45c91a0aeb8fb69feaea7",
+        "rev": "e56990880811a451abd32515698c712788be5720",
         "type": "github"
       },
       "original": {
@@ -1257,11 +1257,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1694435637,
-        "narHash": "sha256-THp+1ijHASSWurcwSCU6w+2tEbIdVrieRoXQS6ZfTD8=",
+        "lastModified": 1694440746,
+        "narHash": "sha256-GAoPfFE6+siKSa/1SES4rr90lPixRoOPQSXJMucKjP8=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "394c8807d7b7d5dac3db92cbb6f522668f848b01",
+        "rev": "b37fc649f6e042c9844c1d6c884b5573ee253e74",
         "type": "github"
       },
       "original": {
