@@ -10,8 +10,9 @@
       windowrulev2 = [
         # telegram media viewer
         "float,class:^(telegramdesktop)$,title:^(Media viewer)$"
-        "size 1100 700,class:^(telegramdesktop)$,title:^(Choose)(.*)$"
-        "center,class:^(telegramdesktop)$,title:^(Choose)(.*)$"
+        "float,class:^(.telegram-desktop-wrapped)$,title:^(Choose)(.*)$"
+        "size 1100 700,class:^(.telegram-desktop-wrapped)$,title:^(Choose)(.*)$"
+        "center,class:^(.telegram-desktop-wrapped)$,title:^(Choose)(.*)$"
 
         # firefox picture in picture float and pin
         "float,class:^(firefox)$,title:^(Picture-in-Picture)$"
@@ -27,7 +28,6 @@
         "size 60% 80%,class:^(jetbrains-.*)$,floating:1,title:$ ^"
         "center,class:^(jetbrains-.*)$,floating:1,title:$ ^"
         "center,class:^(jetbrains-.*)$,floating:1,title:$ ^Open Project"
-
       ];
     };
   };

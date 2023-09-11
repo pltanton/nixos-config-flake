@@ -2,3 +2,4 @@ fix.ru,host-contains,firefox -P nc
 slack.com,host-contains,firefox -P nc
 miro.io,host-contains,firefox -P nc
 rtbst.com,host-contains,firefox -P nc
+wallet-bot.atlassian.net,host-contains,firefox -P nc

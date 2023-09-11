@@ -27,6 +27,7 @@ in {
       env = [
         "NIXOS_OZONE_WL,1"
         "XCURSOR_SIZE,${cursorSize}"
+        "QT_QPA_PLATFORMTHEME,gtk3"
 
         # "GDK_SCALE,2"
         # "QT_ENABLE_HIGHDPI_SCALING,1"
@@ -87,6 +88,7 @@ in {
       dwindle = {
         pseudotile = 0; # enable pseudotiling on dwindle
         preserve_split = true;
+        no_gaps_when_only = 1;
       };
 
       misc = {

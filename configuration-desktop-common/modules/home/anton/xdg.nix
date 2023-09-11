@@ -15,7 +15,7 @@
 
       # "x-scheme-handler/mailto" = "userapp-Thunderbird-X4TET0.desktop";
       "x-scheme-handler/tg;application/x-xdg-protocol-tg" =
-        "telegramdesktop.desktop";
+        "org.telegram.desktop.desktop";
       # "x-scheme-handler/zoommtng" = "Zoom.desktop";
     };
   };

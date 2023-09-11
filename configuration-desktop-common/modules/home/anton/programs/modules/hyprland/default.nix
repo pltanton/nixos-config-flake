@@ -28,7 +28,7 @@
     '';
 
   xdg.configFile."hypr/hyprland.conf".text = (pkgs.lib.mkBefore ''
-    exec=systemctl --user import-environment PATH XDG_BACKEND XDG_SESSION_TYPE XCURSOR_SIZE
+    exec=systemctl --user import-environment PATH XDG_BACKEND XDG_SESSION_TYPE XCURSOR_SIZE QT_QPA_PLATFORMTHEME
   '');
 
 }

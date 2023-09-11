@@ -16,8 +16,10 @@ in {
     settings = [{
       layer = "top";
       position = "top";
-      height = 24;
-      margin = "10 18 0 18";
+      # height = 24;
+      height = 30;
+      # margin = "10 18 0 18";
+      margin = "0 0 0 0";
       modules-left = [ "wlr/workspaces" "custom/spotify" "hyprland/submap" ];
       modules-center = [ "hyprland/window" ];
       modules-right = [
