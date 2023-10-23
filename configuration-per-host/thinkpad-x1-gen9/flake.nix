@@ -166,7 +166,7 @@
               nixpkgs.overlays = [
                 nur.overlay
                 emacs-overlay.overlay
-                nix-alien.overlay
+                #nix-alien.overlay
                 hyprland.overlays.default
                 hyprpaper.overlays.default
                 ddcsync.overlays.default
