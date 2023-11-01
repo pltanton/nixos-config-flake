@@ -23,6 +23,8 @@
     anyrun.url = "github:Kirottu/anyrun";
     anyrun.inputs.nixpkgs.follows = "nixpkgs";
 
+    sops-nix.url = "github:Mic92/sops-nix";
+
     base16-schemes = {
       url = "github:tinted-theming/base16-schemes";
       flake = false;
@@ -92,7 +94,7 @@
 
   outputs = { self, nixpkgs, home-manager, nur, nix-alien, emacs-overlay
     , mach-nix, hyprland, hyprpaper, ddcsync, jetbrains-flake, stylix
-    , nix-doom-emacs, anyrun, ... }@inputs: {
+    , nix-doom-emacs, anyrun, sops-nix, ... }@inputs: {
       nixosConfigurations = let
         inherit (inputs.nixpkgs) lib;
 
@@ -118,6 +120,7 @@
             (import ./configuration.nix)
             (import ../../configuration-desktop-common)
             (import ../../configuration-common)
+            sops-nix.nixosModules.sops
 
             # Home manager with default overridings
             home-manager.nixosModules.home-manager
@@ -134,6 +137,7 @@
                     # hyprland.homeManagerModules.default
                     ddcsync.homeManagerModules.default
                     anyrun.homeManagerModules.default
+                    sops-nix.homeManagerModules.sops
                   ];
 
                   specialArgs = commonSpecialArgs // { super = config; };

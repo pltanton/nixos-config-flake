@@ -6,9 +6,11 @@ let
   };
 in {
   services.nwg-dock = {
-    enable = true;
+    enable = false;
     package = pkgs.master.nwg-dock-hyprland;
     executableName = "nwg-dock-hyprland";
+    configDir = "${config.xdg.configHome}/nwg-dock-hyprland";
+    hotspotDelay = 0;
     style = style;
   };
 }

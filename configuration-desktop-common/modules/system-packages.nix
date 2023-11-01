@@ -14,6 +14,5 @@
     keyutils
 
     home-manager
-    super
   ];
 }

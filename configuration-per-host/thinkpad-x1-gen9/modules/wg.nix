@@ -1,4 +1,4 @@
-{ config, pkgs, lib, secrets, ... }:
+{ config, pkgs, lib, sops, ... }:
 
 let
   ip = "${pkgs.iproute2}/bin/ip";
@@ -23,14 +23,29 @@ in {
   #   after = lib.mkForce [ ];
   # };
 
+  sops.secrets."wireguard/home" = { };
+  sops.secrets."wireguard/hz1" = { };
+
   networking.wireguard.interfaces = {
     wg-home = {
-      privateKey = secrets.wg.home.privateKey;
+      privateKeyFile = "/run/secrets/wireguard/home";
       ips = [ "10.100.0.4/32" ];
       peers = [{
         publicKey = "Rv9ZSp8/fvFj1Zohwragvv4K4Z+qo0c9rinZvfaJ5CY=";
         allowedIPs = [ "10.100.0.0/24" ];
-        endpoint = "home.kaliwe.ru:51820";
+        # endpoint = "home.kaliwe.ru:51820";
+        endpoint = "192.168.0.100:51820";
+        persistentKeepalive = 25;
+      }];
+    };
+
+    wg-hz1 = {
+      ips = [ "10.10.10.2/32" ];
+      privateKeyFile = "/run/secrets/wireguard/hz1";
+      peers = [{
+        allowedIPs = [ "10.10.10.0/24" ];
+        publicKey = "0vuNrDaID3o8YwbNBZ7RViB0O0z6Kt32mpK36PUDgg8=";
+        endpoint = "195.201.150.251:51820";
         persistentKeepalive = 25;
       }];
     };

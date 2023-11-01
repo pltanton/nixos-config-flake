@@ -1,0 +1,29 @@
+keys:
+  - &admin age1vw3vqkfndv0vesfp60wjk8muc0xvck4y83pknlsx8jtygzcz9ycqxnakjd
+  - &server_hz1 age1t6u47xmualvn7lndtsn98y8xlpxuyndfsz6jrlcm9cpn35us5s3qhfwtlt
+  - &server_home age1tprf2san093h29kcg0m24w9mj0004hleq272cav9fpk2vpjqugxs9gpghz
+  - &server_gen9 age1fvg2us7x9egswfkpw8h4yrq85jmda9v2grullgfh0uva8eauk3esqune00
+creation_rules:
+  - path_regex: configuration-per-host/hz1/secrets.yaml$
+    key_groups:
+    - age:
+      - *admin
+      - *server_hz1
+
+  - path_regex: configuration-per-host/home-server/secrets.yaml$
+    key_groups:
+    - age:
+      - *admin
+      - *server_home
+
+  - path_regex: configuration-per-host/thinkpad-x1-gen9/secrets/secrets.yaml$
+    key_groups:
+    - age:
+      - *admin
+      - *server_gen9
+
+  - path_regex: configuration-desktop-common/modules/home/anton/secrets/secrets.yaml$
+    key_groups:
+    - age:
+      - *admin
+      - *server_gen9

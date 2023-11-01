@@ -22,6 +22,7 @@ in {
         "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface text-scaling-factor 1.0"
         "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface font-name 'Inter 11'"
         "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface scaling-factor 1"
+        "${pkgs.glib}/bin/gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'"
       ];
 
       env = [
@@ -48,6 +49,7 @@ in {
         kb_rules = "";
         repeat_rate = 40;
         follow_mouse = 1;
+        float_switch_override_focus = 0;
         sensitivity = 0.65;
 
         touchpad = { natural_scroll = true; };
@@ -58,10 +60,7 @@ in {
 
         gaps_in = 5;
         gaps_out = 10;
-        border_size = 2;
-
-        "col.active_border" = "rgb(${base07}) rgb(${base0F}) 45deg";
-        "col.inactive_border" = "0xff${base03}";
+        border_size = 3;
 
         cursor_inactive_timeout = 4;
       };
@@ -98,9 +97,17 @@ in {
         disable_autoreload = true;
         focus_on_activate = true;
 
-        render_titles_in_groupbar = false;
-        groupbar_titles_font_size = 12;
-        groupbar_gradients = true;
+      };
+
+      group = {
+        groupbar = {
+          render_titles = false;
+          gradients = false;
+          "col.active" = "rgb(${base07}) rgb(${base0F}) 45deg";
+          "col.inactive" = "0xff${base03}";
+          "col.locked_active" = "rgb(${base07}) rgb(${base0F}) 45deg";
+          "col.locked_inactive" = "0xff${base03}";
+        };
       };
 
       binds = { workspace_back_and_forth = true; };

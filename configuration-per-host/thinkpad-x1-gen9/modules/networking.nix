@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  networking.networkmanager.enableFccUnlock = true;
   networking.nameservers = [ "8.8.8.8" "1.1.1.1" ];
 
   networking.extraHosts = ''

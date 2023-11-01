@@ -1,60 +1,46 @@
 { pkgs, config, lib, inputs, ... }:
 let
-  themeConsts = rec {
-    fontConsoleName = "Iosevka";
-    fontConsoleSize = "17";
-    fontUIName = "Inter";
-    fontUISize = "15";
-
-    gtkTheme = "Nordic-bluish-accent";
-
-    gradient0 = "8fbcbb";
-    gradient1 = "88c0d0";
-    gradient2 = "81a1c1";
-    gradient3 = "5e81ac";
-  };
-  # tilingWM = true && (config.wayland.windowManager.sway.enable
-  # || config.wayland.windowManager.hyprland.enable);
   tilingWM = true;
+
+  gtkTheme = {
+    package = (pkgs.catppuccin-gtk.override {
+      accents = [ "lavender" ];
+      size = "compact";
+      tweaks = [ "rimless" ];
+      variant = "macchiato";
+    });
+    name = "Catppuccin-Macchiato-Compact-Lavender-Dark";
+    # name = "Catppuccin-Macchiato-Compact-Lavender-Dark-hdpi"
+  };
+  gtkThemeDir = "${gtkTheme.package}/share/themes/${gtkTheme.name}";
 in {
+  xfconf.enable = lib.mkForce false;
+
   home.packages = [
     pkgs.gnome-icon-theme
     pkgs.hicolor-icon-theme
     pkgs.gnome.adwaita-icon-theme
     pkgs.catppuccin-kde
   ];
-  # themes.base16 = {
-  #   enable = true;
-  #   scheme = "nord";
-  #   variant = "nord";
-  #   extraParams = themeConsts;
-  # };
 
   gtk = {
     enable = tilingWM;
-    theme = {
-      package =
-
-        (pkgs.catppuccin-gtk.override {
-          accents = [ "pink" ];
-          size = "compact";
-          tweaks = [ "rimless" ];
-          variant = "macchiato";
-        });
-      name = "Catppuccin-Macchiato-Compact-Pink-dark";
-    };
+    theme = gtkTheme;
     iconTheme = {
-      package = pkgs.catppuccin-papirus-folders.override {
-        flavor = "macchiato";
-        accent = "green";
-      };
-      name = "Papirus-Dark";
+      package = pkgs.kora-icon-theme;
+      name = "kora";
     };
     gtk2.extraConfig = ''
       gtk-font-name = "Inter 30";
       font_name = "Inter 30";
       gtk-cursor-theme-size = 64;
     '';
+  };
+
+  xdg.configFile = {
+    "gtk-4.0/assets".source = "${gtkThemeDir}/gtk-4.0/assets";
+    "gtk-4.0/gtk.css".source = "${gtkThemeDir}/gtk-4.0/gtk.css";
+    "gtk-4.0/gtk-dark.css".source = "${gtkThemeDir}/gtk-4.0/gtk-dark.css";
   };
 
   qt = {

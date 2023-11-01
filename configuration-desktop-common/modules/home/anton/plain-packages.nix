@@ -19,6 +19,8 @@ in {
       nixfmt
       shfmt
 
+      age
+
       ###################
       # Packages for DE #
       ###################
@@ -31,15 +33,21 @@ in {
       pavucontrol
       pulseaudio
       shared-mime-info
-      pantheon.elementary-files
+      # pantheon.elementary-files
       pcmanfm
       xournalpp
+
+      gnome.nautilus
+      gnome.file-roller
+      gnome.sushi
+      gnome.eog
 
       # Fonts
       font-awesome
       emojione
       iosevka
       inter
+      liberation_ttf
       #nerdfonts
 
       #############
@@ -75,7 +83,7 @@ in {
       plantuml
 
       # GUI
-      wpsoffice
+      # wpsoffice
       onlyoffice-bin
       libreoffice
 
@@ -98,7 +106,7 @@ in {
 
       inputs.activate-linux.defaultPackage.x86_64-linux
 
-      thunderbird-wayland
+      thunderbird
       bitwarden
       sidequest
       scrcpy
@@ -128,6 +136,7 @@ in {
       grpcurl # grpc client
       nodejs
       # nur.repos.utybo.jetbrains.idea-community
+      master.jetbrains-toolbox
       master.jetbrains.pycharm-professional
       # (enlargeCursorForDesktopEntry master.jetbrains.idea-ultimate)
       # (enlargeCursorForDesktopEntry master.jetbrains.idea-community)

@@ -76,7 +76,7 @@
         "SUPERSHIFT,tab,movetoworkspace,10"
 
         # Media keys
-        ",XF86AudioPlay,exec,playerctl play"
+        ",XF86AudioPlay,exec,playerctl play-pause"
         ",XF86AudioStop,exec,playerctl pause"
         ",XF86AudioNext,exec,playerctl next"
         ",XF86AudioPrev,exec,playerctl previous"

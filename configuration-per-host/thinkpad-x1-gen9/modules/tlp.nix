@@ -12,8 +12,8 @@
       CPU_ENERGY_PERF_POLICY_ON_AC = "balanced_performance";
       CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
 
-      START_CHARGE_THRESH_BAT0 = 75;
-      STOP_CHARGE_THRESH_BAT0 = 85;
+      # START_CHARG E_THRESH_BAT0 = 75;
+      # STOP_CHARGE_THRESH_BAT0 = 85;
 
       USB_DENYLIST = "0bda:8153";
 

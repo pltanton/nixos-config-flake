@@ -8,5 +8,6 @@
     targets.waybar.enable = false;
     targets.avizo.enable = false;
     targets.vscode.enable = false;
+    targets.hyprland.enable = false;
   };
 }

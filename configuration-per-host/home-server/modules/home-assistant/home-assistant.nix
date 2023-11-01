@@ -12,7 +12,7 @@
       default_config = { };
 
       http = {
-        server_host = "::1";
+        # server_host = "::1";
         trusted_proxies = [ "::1" ];
         use_x_forwarded_for = true;
       };
@@ -22,6 +22,7 @@
     package = (pkgs.home-assistant.override {
       extraPackages = ps:
         with ps; [
+          spotipy
           psycopg2
           paho-mqtt
           getmac

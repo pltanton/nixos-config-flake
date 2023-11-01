@@ -204,6 +204,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-stable_2": {
+      "locked": {
+        "lastModified": 1697929210,
+        "narHash": "sha256-RkQZif6QhswEwv7484mrKfIU8XmIWm+ED6llbr4IyxM=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "fb000224952bf7749a9e8b3779104ef7ea4465c8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "release-23.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1691472822,
@@ -252,6 +268,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1697886341,
+        "narHash": "sha256-AdE67xPty9M9wn36nPVp6aDntIdigrs7UbyaGv1VAaM=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "44881e03af1c730cbb1d72a4d41274a2c957813a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "kraslab-memes-bot": "kraslab-memes-bot",
@@ -262,7 +294,27 @@
         "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-old": "nixpkgs-old",
         "nixpkgs-stable": "nixpkgs-stable",
-        "nixpkgs-unstable": "nixpkgs-unstable"
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "sops-nix": "sops-nix"
+      }
+    },
+    "sops-nix": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_4",
+        "nixpkgs-stable": "nixpkgs-stable_2"
+      },
+      "locked": {
+        "lastModified": 1697943852,
+        "narHash": "sha256-DaBxUPaZhQ3yLCmAATshYB7qo7NwcMvSFWz9T3bjYYY=",
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "rev": "30a0ba4a20703b4bfe047fe5def1fc24978e322c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "type": "github"
       }
     },
     "utils": {

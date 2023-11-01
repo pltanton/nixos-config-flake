@@ -9,10 +9,17 @@
     #  signByDefault = true;
     # };
     extraConfig = {
+      url = { "git@github.com:" = { insteadOf = [ "https://github.com/" ]; }; };
+
       url = {
         "ssh://git@gitlab.fix.ru/" = { insteadOf = "https://gitlab.fix.ru/"; };
       };
-      url = { "git@github.com:" = { insteadOf = [ "https://github.com/" ]; }; };
+
+      url = {
+        "ssh://git@gitlab.walletteam.org/" = {
+          insteadOf = "https://gitlab.walletteam.org/";
+        };
+      };
     };
   };
 

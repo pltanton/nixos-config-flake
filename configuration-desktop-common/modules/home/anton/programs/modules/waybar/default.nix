@@ -8,7 +8,7 @@ in {
       template = builtins.readFile ./waybar.css.mustache;
       extension = "css";
     });
-    package = pkgs.waybar-hyprland;
+    package = pkgs.waybar;
     enable = config.wayland.windowManager.sway.enable
       || config.wayland.windowManager.hyprland.enable;
     # enable = true;
@@ -20,7 +20,8 @@ in {
       height = 30;
       # margin = "10 18 0 18";
       margin = "0 0 0 0";
-      modules-left = [ "wlr/workspaces" "custom/spotify" "hyprland/submap" ];
+      modules-left =
+        [ "hyprland/workspaces" "custom/spotify" "hyprland/submap" ];
       modules-center = [ "hyprland/window" ];
       modules-right = [
         "tray"
@@ -75,25 +76,7 @@ in {
         "format-icons" = [ "" "" "" ];
       };
       "sway/mode" = { format = ''<span style="italic">{}</span>''; };
-      "sway/workspaces" = {
-        numeric-first = true;
-        disable-scroll = true;
-        disable-markup = false;
-        all-outputs = false;
-        format = "  {value}: {icon}  ";
-        format-icons = {
-          "1" = "";
-          "2" = "";
-          "3" = "";
-          "4" = "";
-          "8" = "";
-          "9" = "";
-          "im" = "";
-          "focused" = "";
-          "default" = "";
-        };
-      };
-      "wlr/workspaces" = {
+      "hyprland/workspaces" = {
         # format = "{name}: {icon}";
         format = "{name}";
         # sort-by-coordinates = false;
@@ -176,6 +159,13 @@ in {
         # "keyboard-name" = "AT Translated Set 2 keyboard";
       };
     }];
+  };
+
+  systemd.user.targets.tray = {
+    Unit = {
+      Description = "Home Manager System Tray";
+      Requires = [ "graphical-session-pre.target" ];
+    };
   };
 
   systemd.user.services.waybar.Service.Environment =

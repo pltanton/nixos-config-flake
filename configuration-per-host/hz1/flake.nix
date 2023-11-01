@@ -10,13 +10,14 @@
     nixpkgs-old.url = "github:nixos/nixpkgs/nixos-21.11";
     nix.url = "github:nixos/nix";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    sops-nix.url = "github:Mic92/sops-nix";
 
     kraslab-memes-bot.url =
       "git+ssh://gitea@gitea.kaliwe.ru/pltanton/kraslab-memes-bot.git";
     kraslab-memes-bot.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs, sops-nix, ... }@inputs: {
     nixosConfigurations = let inherit (inputs.nixpkgs) lib;
     in {
       hz1 = lib.nixosSystem {
@@ -31,6 +32,7 @@
           # The host configuration itself
           (import ./configuration.nix)
           (import ../../configuration-common)
+          sops-nix.nixosModules.sops
 
           ({ pkgs, ... }: {
             nix.settings = {

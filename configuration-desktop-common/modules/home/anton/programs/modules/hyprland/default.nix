@@ -10,11 +10,11 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    # package = pkgs.hyprland-hidpi;
+    # package = pkgs.unstable.hyprland;
 
     xwayland = { enable = true; };
 
-    systemdIntegration = true;
+    systemd.enable = true;
   };
 
   # home.packages = [ (pkgs.hiPrio pkgs.unstable.xwayland) ];

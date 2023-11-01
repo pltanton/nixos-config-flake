@@ -9,13 +9,6 @@ let
   ipAddress = "10.1.0.1";
   dhcpRange = "10.1.0.2,10.1.0.199,5m";
 in {
-  services.hostapd = {
-    enable = false;
-    interface = wifi;
-    ssid = "AnanasikServerAP";
-    wpaPassphrase = secrets.apPassword;
-  };
-
   networking.nat = lib.mkIf config.services.hostapd.enable {
     enable = true;
     externalInterface = lan;

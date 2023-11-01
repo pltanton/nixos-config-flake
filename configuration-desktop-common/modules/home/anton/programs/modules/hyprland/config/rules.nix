@@ -22,12 +22,15 @@
         "float,class:^(firefox)$,title:^(.*)(Sharing Indicator)$"
         "move 0 0:^(firefox)$,title:^(.*)(Sharing Indicator)$"
 
-        # Jetbrains products
-        "forceinput,class:^(jetbrains-.*)$,title:^(?!(win)).*$"
-        "windowdance,class:^(jetbrains-.*)$"
-        "size 60% 80%,class:^(jetbrains-.*)$,floating:1,title:$ ^"
-        "center,class:^(jetbrains-.*)$,floating:1,title:$ ^"
-        "center,class:^(jetbrains-.*)$,floating:1,title:$ ^Open Project"
+        # # Jetbrains products
+        "noanim,class:^(jetbrains-.*)"
+        "float,floating:0,class:^(jetbrains-.*),title:^(win.*)"
+        "noinitialfocus,class:^(jetbrains-.*),title:^(win.*)"
+        "float,class:^(jetbrains-.*),title:^(Welcome to.*)"
+        # "float,floating:0,class:^(jetbrains-.*),title:^(?!win.*)"
+        # "forceinput,class:^(jetbrains-.*)"
+        # "stayfocused,class:^(jetbrains-.*),title:^(?!win.*)"
+        "windowdance,class:^(jetbrains-.*)" # allows IDE to move child windows
       ];
     };
   };
