@@ -749,14 +749,18 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1698068591,
-        "narHash": "sha256-jMwpY/PpFLfmLItCQDMgVwipdTjBC42c2xEcF+P1Jg8=",
-        "path": "/home/anton/Workdir/home-manager",
-        "type": "path"
+        "lastModified": 1698795315,
+        "narHash": "sha256-fF5ScAWLMHXOuqsbLSG137kS1D+gr9JPtm4H2c4yBbU=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "9bc7d84b8213255ecd5eb6299afdb77c36ece71d",
+        "type": "github"
       },
       "original": {
-        "path": "/home/anton/Workdir/home-manager",
-        "type": "path"
+        "owner": "nix-community",
+        "ref": "master",
+        "repo": "home-manager",
+        "type": "github"
       }
     },
     "home-manager_2": {
@@ -1122,11 +1126,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1698843710,
-        "narHash": "sha256-adS8DKLtSsR9t9qjlzPinZyz5mMkuaZC2oVrv2shn38=",
+        "lastModified": 1698845248,
+        "narHash": "sha256-rdk4KXK8jaGTHTc2VMA5nH4qkGho/Rs5Scrm17dEiqE=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "9750e40bd2f63d5a039f7adf4ff8b11c9b649b3b",
+        "rev": "b243313808ef3c44a46410bb8a30667d3d6e67c8",
         "type": "github"
       },
       "original": {
