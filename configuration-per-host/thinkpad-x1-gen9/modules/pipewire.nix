@@ -23,4 +23,5 @@
     '';
   };
 
+  programs.noisetorch.enable = true;
 }

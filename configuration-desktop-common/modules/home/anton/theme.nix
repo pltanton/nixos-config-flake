@@ -3,7 +3,7 @@ let
   tilingWM = true;
 
   gtkTheme = {
-    package = (pkgs.catppuccin-gtk.override {
+    package = (pkgs.master.catppuccin-gtk.override {
       accents = [ "lavender" ];
       size = "compact";
       tweaks = [ "rimless" ];
@@ -48,13 +48,13 @@ in {
     platformTheme = "gtk";
   };
 
-  home.pointerCursor = lib.mkIf tilingWM {
-    package = pkgs.master.phinger-cursors;
-    name = "phinger-cursors-light";
-    # package = pkgs.catppuccin-cursors.macchiatoDark;
-    # name = "Catppuccin-Macchiato-Dark-Cursors";
-    size = 32;
-    x11.enable = false;
-    gtk.enable = tilingWM;
-  };
+  # home.pointerCursor = lib.mkIf tilingWM {
+  #   package = pkgs.master.phinger-cursors;
+  #   name = "phinger-cursors-light";
+  #   # package = pkgs.catppuccin-cursors.macchiatoDark;
+  #   # name = "Catppuccin-Macchiato-Dark-Cursors";
+  #   size = 32;
+  #   x11.enable = false;
+  #   gtk.enable = tilingWM;
+  # };
 }

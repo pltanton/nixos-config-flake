@@ -9,5 +9,10 @@
     targets.avizo.enable = false;
     targets.vscode.enable = false;
     targets.hyprland.enable = false;
+
+    cursor = {
+      package = pkgs.master.phinger-cursors;
+      name = "phinger-cursors-light";
+    };
   };
 }

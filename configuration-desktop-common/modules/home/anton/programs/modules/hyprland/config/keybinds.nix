@@ -12,7 +12,6 @@
         ",Print,exec,screenshot"
         "SHIFT,Print,exec,screenshot -e"
         "SUPERSHIFT,Return,exec,alacritty"
-
         "SUPERSHIFT,Q,exit,"
 
         # Manipulate with active window state

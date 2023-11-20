@@ -7,11 +7,11 @@
 
       transmission-remote-gtk
       transmission-gtk
-      #rapid-photo-downloader
+      # rapid-photo-downloader
 
       # tor-browser-bundle-bin
 
-      (steam.override {
+      (stable.steam.override {
         extraPkgs = pkgs: with pkgs; [ SDL2 renderdoc ];
         extraProfile = "unset VK_ICD_FILENAMES";
       })

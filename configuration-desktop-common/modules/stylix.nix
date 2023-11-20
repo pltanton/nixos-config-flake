@@ -17,8 +17,8 @@
 
       monospace = {
         # package = pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; };
-        package = pkgs.iosevka;
-        name = "Iosevka";
+        package = pkgs.monaspace;
+        name = "Monaspace Argon";
       };
 
       emoji = {

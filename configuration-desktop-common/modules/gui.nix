@@ -22,6 +22,7 @@
 
   services.xserver = {
     enable = false;
+    exportConfiguration = true;
 
     displayManager.lightdm = { enable = false; };
     displayManager.startx = { enable = true; };

@@ -29,6 +29,7 @@ in {
         "NIXOS_OZONE_WL,1"
         "XCURSOR_SIZE,${cursorSize}"
         "QT_QPA_PLATFORMTHEME,gtk3"
+        "ANKI_WAYLAND,1"
 
         # "GDK_SCALE,2"
         # "QT_ENABLE_HIGHDPI_SCALING,1"
@@ -60,17 +61,17 @@ in {
 
         gaps_in = 5;
         gaps_out = 10;
-        border_size = 3;
+        border_size = 2;
 
         cursor_inactive_timeout = 4;
       };
 
       decoration = {
-        rounding = 7;
+        rounding = 6;
         blur = { enabled = false; };
-        drop_shadow = false;
+        drop_shadow = true;
         shadow_range = 8;
-        shadow_render_power = 3;
+        shadow_render_power = 2;
         dim_inactive = false;
         dim_strength = 0.2;
       };

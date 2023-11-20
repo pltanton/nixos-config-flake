@@ -2,11 +2,6 @@
 
   programs.firefox = {
     enable = true;
-    # package = pkgs.firefox-wayland;
-    package = pkgs.firefox-wayland.override {
-      # See nixpkgs' firefox/wrapper.nix to check which options you can use
-      cfg = { enableFXCastBridge = true; };
-    };
 
     profiles = {
       default = {
@@ -28,7 +23,7 @@
           sponsorblock
           vimium
 
-          pkgs.nur.repos.ethancedwards8.firefox-addons.enhancer-for-youtube
+          # pkgs.nur.repos.ethancedwards8.firefox-addons.enhancer-for-youtube
         ];
       };
       nc = {
@@ -49,7 +44,7 @@
           sponsorblock
           vimium
 
-          pkgs.nur.repos.ethancedwards8.firefox-addons.enhancer-for-youtube
+          # pkgs.nur.repos.ethancedwards8.firefox-addons.e	MINISTRY OF EDUCATION, SPORT AND YOUTH - ADULTS EDUCATIONAL CENTRES	MINISTRY OF EDUCATION, SPORT AND YOUTH - ADULTS EDUCATIONAL CENTRESnhancer-for-youtube
         ];
       };
     };

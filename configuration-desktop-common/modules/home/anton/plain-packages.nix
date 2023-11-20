@@ -15,6 +15,7 @@ in {
   home.packages = with pkgs;
     lib.mkIf true [
       hack-font
+      monaspace
 
       nixfmt
       shfmt
@@ -88,6 +89,7 @@ in {
       libreoffice
 
       logseq
+      anki-bin
 
       evince
       imv
@@ -97,7 +99,7 @@ in {
       #   plugins = with gimpPlugins; [ resynthesizer ];
       # })
       mpv
-      stable.tdesktop
+      telegram-desktop
       xsane
       simple-scan
       spotify
@@ -160,6 +162,6 @@ in {
       gnumake
       zip
 
-      steam-run-native
+      # steam-run-native
     ];
 }
