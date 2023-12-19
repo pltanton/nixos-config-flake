@@ -52,6 +52,7 @@
   #   enable = true;
   #   extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   # };
+  # xdg.portal.enable = true;
 
   # programs.dconf.enable =
   #   lib.mkIf (!config.services.xserver.desktopManager.gnome.enable) true;

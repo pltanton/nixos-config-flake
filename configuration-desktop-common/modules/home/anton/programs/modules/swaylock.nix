@@ -3,7 +3,7 @@ let
   lockScript = with osConfig.lib.stylix.colors;
   ## TODO Replace fonts with stylix
     pkgs.writeShellScriptBin "lock" ''
-      ${pkgs.swaylock-effects}/bin/swaylock \
+      ${pkgs.master.swaylock-effects}/bin/swaylock \
         -f \
         --clock \
         --indicator \

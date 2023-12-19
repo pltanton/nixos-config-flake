@@ -3,7 +3,7 @@
   stylix = {
     targets.swaylock.enable = false;
     targets.rofi.enable = false;
-    targets.gtk.enable = false;
+    targets.gtk.enable = true;
     targets.gnome.enable = false;
     targets.waybar.enable = false;
     targets.avizo.enable = false;

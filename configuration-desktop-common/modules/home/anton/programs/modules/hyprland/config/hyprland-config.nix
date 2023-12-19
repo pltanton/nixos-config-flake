@@ -1,4 +1,4 @@
-{ pkgs, osConfig, config, ... }:
+{ pkgs, osConfig, config, inputs, ... }:
 let cursorSize = toString config.home.pointerCursor.size;
 in {
   wayland.windowManager.hyprland = with osConfig.lib.stylix.colors; {
@@ -43,10 +43,12 @@ in {
       ];
 
       input = {
+        # kb_layout = "us,ru,us,gr";
+        # kb_variant = "dvorak,,colemak,colemak";
         kb_layout = "us,ru";
         kb_variant = "dvorak,";
         kb_model = "";
-        kb_options = "grp:caps_toggle";
+        kb_options = "grp:win_space_toggle";
         kb_rules = "";
         repeat_rate = 40;
         follow_mouse = 1;
@@ -59,29 +61,51 @@ in {
       general = {
         sensitivity = 1;
 
-        gaps_in = 5;
-        gaps_out = 10;
+        gaps_in = 6;
+        gaps_out = 8;
         border_size = 2;
+        # gaps_workspaces = 100;
 
         cursor_inactive_timeout = 4;
+
+        "col.active_border" = "rgb(${base0E}) rgb(${base0D}) 45deg";
+        "col.inactive_border" = "rgb(${base02})";
       };
 
       decoration = {
-        rounding = 6;
+        rounding = 14;
         blur = { enabled = false; };
+
         drop_shadow = true;
-        shadow_range = 8;
-        shadow_render_power = 2;
+        shadow_range = 15;
+        shadow_render_power = 3;
+
         dim_inactive = false;
         dim_strength = 0.2;
       };
 
       animations = {
         enabled = 1;
+        bezier = [
+          "md3_standard, 0.2, 0, 0, 1"
+          "md3_decel, 0.05, 0.7, 0.1, 1"
+          "md3_accel, 0.3, 0, 0.8, 0.15"
+          "overshot, 0.05, 0.9, 0.1, 1.1"
+          "crazyshot, 0.1, 1.5, 0.76, 0.92"
+          "hyprnostretch, 0.05, 0.9, 0.1, 1.0"
+          "fluent_decel, 0.1, 1, 0, 1"
+          "easeInOutCirc, 0.85, 0, 0.15, 1"
+          "easeOutCirc, 0, 0.55, 0.45, 1"
+        ];
         animation = [
-          "workspaces,1,1,default,slide"
-          "fade,1,7,default"
-          "windowsMove,0,7,default"
+          # "workspaces,1,1,default,slide"
+          # "fade,1,7,default"
+          # "windowsMove,0,7,default"
+          "windows, 1, 3, default, popin 80%"
+          "border, 1, 10, default"
+          "fade, 1, 2, default"
+          "workspaces, 1, 2, md3_decel, slide"
+          "specialWorkspace, 1, 3, md3_decel, slidefadevert 15%"
         ];
       };
 

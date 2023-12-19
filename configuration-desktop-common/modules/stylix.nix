@@ -2,7 +2,7 @@
   stylix = {
     base16Scheme = "${inputs.base16-schemes}/catppuccin-macchiato.yaml";
     # base16Scheme = "${inputs.base16-schemes}/nord.yaml";
-    image = ./home/backgrounds/evening-sky.png;
+    image = ./home/backgrounds/mountain.png;
 
     fonts = {
       serif = {

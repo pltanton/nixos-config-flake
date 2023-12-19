@@ -163,5 +163,8 @@ in {
       zip
 
       # steam-run-native
+
+      # ZMK
+      python311Packages.west
     ];
 }

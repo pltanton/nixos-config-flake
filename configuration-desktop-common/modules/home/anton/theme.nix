@@ -25,7 +25,7 @@ in {
 
   gtk = {
     enable = tilingWM;
-    theme = gtkTheme;
+    # theme = gtkTheme;
     iconTheme = {
       package = pkgs.kora-icon-theme;
       name = "kora";
@@ -37,11 +37,11 @@ in {
     '';
   };
 
-  xdg.configFile = {
-    "gtk-4.0/assets".source = "${gtkThemeDir}/gtk-4.0/assets";
-    "gtk-4.0/gtk.css".source = "${gtkThemeDir}/gtk-4.0/gtk.css";
-    "gtk-4.0/gtk-dark.css".source = "${gtkThemeDir}/gtk-4.0/gtk-dark.css";
-  };
+  # xdg.configFile = {
+  #   "gtk-4.0/assets".source = "${gtkThemeDir}/gtk-4.0/assets";
+  #   "gtk-4.0/gtk.css".source = "${gtkThemeDir}/gtk-4.0/gtk.css";
+  #   "gtk-4.0/gtk-dark.css".source = "${gtkThemeDir}/gtk-4.0/gtk-dark.css";
+  #  };
 
   qt = {
     enable = tilingWM;

@@ -4,7 +4,6 @@
       bind = [
         # Rofi keybinds
         "SUPERSHIFT,v,exec,cliphist list | rofi -dmenu -lines -p  | cliphist decode | wl-copy"
-        "SUPER,v,exec,rofi-vpn"
         "SUPERSHIFT,e,exec,rofi -show emoji -modi emoji"
         "SUPER,Return,exec,rofi -show drun -show-icons"
 
@@ -19,6 +18,8 @@
         "SUPERSHIFT,Space,togglefloating,"
         "SUPER,F,fullscreen,"
         "SUPERSHIFT,P,pin,"
+
+        "SUPER,v,togglesplit,"
 
         # Move through windows
         "SUPER,h,movefocus,l"

@@ -26,12 +26,6 @@ inputs: self: super: rec {
 
   # fido2luks = import ./pkgs/fido2luks.nix super;
 
-  swaylock-effects = super.swaylock-effects.overrideAttrs (oldAttrs: rec {
-    version = inputs.swaylock-effects-src.rev;
-
-    src = inputs.swaylock-effects-src;
-  });
-
   sublime-music = super.callPackage ./pkgs/sublime-music.nix { };
 
   brother-dcp-t710 =

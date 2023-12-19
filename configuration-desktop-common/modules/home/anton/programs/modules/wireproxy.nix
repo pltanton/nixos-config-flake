@@ -5,7 +5,10 @@ let
   wireproxyConfig = pkgs.writeText "wireproxy.ini"
     (lib.generators.toINIWithGlobalSection { } {
       globalSection = { WGConfig = wireguardConfig; };
-      sections = { Socks5 = { BindAddress = "127.0.0.1:25344"; }; };
+      sections = { 
+        Socks5 = { BindAddress = "127.0.0.1:25344"; }; 
+        
+      };
     });
 in {
   sops.secrets."wireguard/wallet" = { path = wireguardConfig; };

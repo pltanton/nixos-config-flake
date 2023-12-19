@@ -44,10 +44,14 @@
       url = "github:hyprwm/Hyprland";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprpaper = {
-      url = "github:hyprwm/hyprpaper";
-      # inputs.nixpkgs.follows = "nixpkgs";
+
+    hyprfocus = {
+      url = "github:VortexCoyote/hyprfocus";
     };
+    # hyprpaper = {
+    #   url = "github:hyprwm/hyprpaper";
+    #   # inputs.nixpkgs.follows = "nixpkgs";
+    # };
     nix-alien = {
       url = "github:thiagokokada/nix-alien";
       inputs.nixpkgs.follows = "nixpkgs"; # not mandatory but recommended
@@ -86,14 +90,10 @@
     fish-colored-man-plugin.flake = false;
     fish-grc.url = "github:oh-my-fish/plugin-grc";
     fish-grc.flake = false;
-
-    swaylock-effects-src.url = "github:mortie/swaylock-effects";
-    swaylock-effects-src.flake = false;
-
   };
 
   outputs = { self, nixpkgs, home-manager, nur, nix-alien, emacs-overlay
-    , mach-nix, hyprland, hyprpaper, ddcsync, jetbrains-flake, stylix
+    , mach-nix, hyprland, ddcsync, jetbrains-flake, stylix
     , nix-doom-emacs, anyrun, sops-nix, ... }@inputs: {
       nixosConfigurations = let
         inherit (inputs.nixpkgs) lib;
@@ -172,7 +172,6 @@
                 emacs-overlay.overlay
                 #nix-alien.overlay
                 hyprland.overlays.default
-                hyprpaper.overlays.default
                 ddcsync.overlays.default
                 jetbrains-flake.overlays.default
 

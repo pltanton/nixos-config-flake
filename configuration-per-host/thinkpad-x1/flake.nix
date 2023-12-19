@@ -63,10 +63,6 @@
     fish-colored-man-plugin.flake = false;
     fish-grc.url = "github:oh-my-fish/plugin-grc";
     fish-grc.flake = false;
-
-    swaylock-effects-src.url = "github:mortie/swaylock-effects";
-    swaylock-effects-src.flake = false;
-
   };
 
   outputs = { self, nixpkgs, home-manager, nur, nix-alien, emacs-overlay

@@ -2,6 +2,11 @@
 
   imports = [ ./keybinds.nix ./hyprland-config.nix ./rules.nix ];
 
+  wayland.windowManager.hyprland = {
+    # package = null;
+    enable = true;
+  };
+
   home.packages = lib.mkIf config.wayland.windowManager.hyprland.enable
     (with pkgs; [
       hyprpaper
