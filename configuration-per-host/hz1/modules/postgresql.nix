@@ -6,7 +6,7 @@
     postgresql = {
       enable = true;
       dataDir = "/var/lib/postgresql/11.1";
-      package = pkgs.postgresql_11;
+      package = pkgs.stable.postgresql_11;
       enableTCPIP = true;
       authentication = ''
         # "local" is for Unix domain socket connections only

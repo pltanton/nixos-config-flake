@@ -2,6 +2,6 @@
   services.gpg-agent = {
     enable = true;
     defaultCacheTtl = 18000;
-    pinentryFlavor = "gtk2";
+    pinentryFlavor = "gnome3";
   };
 }

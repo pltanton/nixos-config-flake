@@ -18,7 +18,7 @@ shift "$((OPTIND - 1))"
 mkdir -p ~/Screenshots
 FILE_PATH=~/Screenshots/shot_$(date +"%y%m%d%H%M%S").png
 if [ "$e_flag" = true ]; then
-  grim -g "$(slurp)" - | swappy -f - -o "$FILE_PATH"
+  grim -g "$(slurp)" - | satty --filename - --output-filename "$FILE_PATH"
 else
   grim -g "$(slurp)" "$FILE_PATH"
 fi

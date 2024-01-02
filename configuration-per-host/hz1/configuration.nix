@@ -46,6 +46,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  users.groups.proxyuser = {};
   users.extraUsers.proxyuser = {
     group = "proxyuser";
     isSystemUser = true;

@@ -1,7 +1,7 @@
 { pkgs, config, lib, ... }: {
   services.printing = {
     enable = true;
-    drivers = with pkgs; [ epson-escpr epson-escpr2 ];
+    drivers = with pkgs.stable; [ epson-escpr epson-escpr2 ];
   };
 
   hardware.sane.enable = true;

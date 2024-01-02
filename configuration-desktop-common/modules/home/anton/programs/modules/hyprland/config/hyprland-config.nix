@@ -61,8 +61,8 @@ in {
       general = {
         sensitivity = 1;
 
-        gaps_in = 6;
-        gaps_out = 8;
+        gaps_in = 4;
+        gaps_out = 6;
         border_size = 2;
         # gaps_workspaces = 100;
 
@@ -73,12 +73,12 @@ in {
       };
 
       decoration = {
-        rounding = 14;
+        rounding = 10;
         blur = { enabled = false; };
 
         drop_shadow = true;
-        shadow_range = 15;
-        shadow_render_power = 3;
+        shadow_range = 3;
+        shadow_render_power = 1;
 
         dim_inactive = false;
         dim_strength = 0.2;
@@ -121,13 +121,16 @@ in {
         mouse_move_enables_dpms = true;
         disable_autoreload = true;
         focus_on_activate = true;
-
+        no_vfr = false;
       };
 
       group = {
         groupbar = {
           render_titles = false;
-          gradients = false;
+          font_size = 24;
+          font_family = "Inter";
+          text_color = "rgb(${base01})";
+          gradients = true;
           "col.active" = "rgb(${base07}) rgb(${base0F}) 45deg";
           "col.inactive" = "0xff${base03}";
           "col.locked_active" = "rgb(${base07}) rgb(${base0F}) 45deg";

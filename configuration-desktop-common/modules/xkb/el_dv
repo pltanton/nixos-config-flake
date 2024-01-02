@@ -14,7 +14,7 @@
 default partial alphanumeric_keys alternate_group
 xkb_symbols "basic" {
 
-    include "pc/el_dv(bare)"
+    include "el_dv(bare)"
 
     key <TLDE> {	[     grave,	asciitilde	]	};
     key <AE01> {	[	  1,	exclam 		]	};
@@ -46,7 +46,7 @@ xkb_symbols "basic" {
 hidden partial alphanumeric_keys alternate_group
 xkb_symbols "bare" {
 
-    name[Group1] = "ISO8859-7";
+    name[Group1] = "Greek (Dvorak)";
     
     key <AB01> { [      semicolon,              colon           ] };
     key <AB02> { [	dead_acute,		dead_diaeresis	] };
