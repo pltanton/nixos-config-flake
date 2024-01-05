@@ -5,14 +5,15 @@
     nixpkgs-local.url = "github:pltanton/nixpkgs/master";
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nix.url = "github:nixos/nix";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = { self, nixpkgs, nur, ... }@inputs: {
+  outputs = { self, nixpkgs, nur, sops-nix, ... }@inputs: {
     nixosConfigurations = let inherit (inputs.nixpkgs) lib;
     in {
       home-server = lib.nixosSystem {
@@ -28,16 +29,16 @@
           (import ./configuration.nix)
           (import ../../configuration-common)
 
+          sops-nix.nixosModules.sops
+
           ({ pkgs, ... }: {
             nix.settings = {
               # add binary caches
               trusted-public-keys = [
                 "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-                # "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
               ];
               substituters = [
                 "https://cache.nixos.org"
-                # "https://nix-community.cachix.org"
               ];
             };
             # Overlays available for each host

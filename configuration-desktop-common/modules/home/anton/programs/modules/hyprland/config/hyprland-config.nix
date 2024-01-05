@@ -121,7 +121,7 @@ in {
         mouse_move_enables_dpms = true;
         disable_autoreload = true;
         focus_on_activate = true;
-        no_vfr = false;
+        # no_vfr = false;
       };
 
       group = {
