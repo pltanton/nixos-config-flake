@@ -14,6 +14,7 @@
         rocketPort = 8222;
       };
       environmentFile = "/root/vaultvarden.env";
+      # backupDir = "/var/backup/vaultwarden";
     };
   };
 

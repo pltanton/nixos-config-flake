@@ -32,7 +32,8 @@
 
   networking = {
     hostName = "home-server";
-    useDHCP = true;
+    useNetworkd = true;
+    # useDHCP = true;
     #resolvconf.useLocalResolver = true;
     networkmanager.enable = false;
     nameservers = [ "1.1.1.1" "8.8.8.8" ];
@@ -99,4 +100,12 @@
   security.acme.acceptTerms = true;
 
   system.stateVersion = "21.11";
+
+  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  sops.age.keyFile = "/var/lib/sops-nix/key.txt";
+  sops.defaultSopsFile = ./secrets.yaml;
+  sops.age.generateKey = true;
+
+
+  nixpkgs.config.permittedInsecurePackages = [ "openssl-1.1.1w" ];
 }

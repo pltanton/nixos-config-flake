@@ -1,10 +1,9 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
-  secrets = import ../secrets.nix;
   consts = import ../constants.nix;
   nextcloudHome = "${consts.archiveMountPoint}/nextcloud-home";
-  nextcloudPackage = pkgs.nextcloud27;
+  nextcloudPackage = pkgs.nextcloud28;
 
   archiveDst = "${nextcloudHome}/data/anton/files/Archive";
 
@@ -32,8 +31,8 @@ in {
     nextcloud = {
       enable = true;
 
-      enableBrokenCiphersForSSE = false;
       phpExtraExtensions = all: with all; [ pdlib bz2 ];
+
       caching = {
         apcu = true;
         redis = false;
@@ -49,40 +48,19 @@ in {
       home = "/media/archive/nextcloud-home";
       hostName = "nextcloud.kaliwe.ru";
       # https = true;
-      phpOptions = {
-        short_open_tag = "Off";
-        expose_php = "Off";
-        error_reporting = "E_ALL & ~E_DEPRECATED & ~E_STRICT";
-        display_errors = "stderr";
-        "opcache.enbale" = "1";
-        "opcache.enable_cli" = "1";
-        "opcache.interned_strings_buffer" = "8";
-        "opcache.max_accelerated_files" = "10000";
-        "opcache.memory_consumption" = "128";
-        "opcache.revalidate_freq" = "1";
-        "opcache.fast_shutdown" = "1";
-        "openssl.cafile" = "/etc/ssl/certs/ca-certificates.crt";
-        catch_workers_output = "yes";
-        # memory_limit = "5120M";
-        default_phone_region = "RU";
+
+      extraOptions = {
+        "memories.exiftool" = "${lib.getExe pkgs.exiftool}";
+        "memories.exiftool_no_local" = true;
+        "memories.vod.ffmpeg" = "${pkgs.ffmpeg-headless}/bin/ffmpeg";
+        "memories.vod.ffprobe" = "${pkgs.ffmpeg-headless}/bin/ffprobe";
+        "default_language" = "en";
       };
     };
 
-    # Proxy for Nextloud Talk
-    coturn = {
-      enable = true;
-      use-auth-secret = true;
-      static-auth-secret = secrets.turnSecret;
-      realm = "turn.kaliwe.ru";
-      extraConfig = ''
-        total-quota=100
-        bps-capacity=0
-        stale-nonce
-        no-multicast-peers
-        fingerprint
-      '';
-    };
   };
+
+  systemd.services.nextcloud-cron.path = [ pkgs.perl ];
 
   users.users.nextcloud.extraGroups = [ "lp" "privatestore" ];
 
@@ -109,8 +87,8 @@ in {
 
   services.caddy.virtualHosts."nextcloud.kaliwe.ru".extraConfig = ''
     root * ${config.services.nextcloud.package}
-    root /store-apps/* ${config.services.nextcloud.home}  # <<< these two lines
-    root /nix-apps/* ${config.services.nextcloud.home}    # <<< these two lines
+    root /store-apps/* ${config.services.nextcloud.home}
+    root /nix-apps/* ${config.services.nextcloud.home}
     encode zstd gzip
 
     php_fastcgi unix//${config.services.phpfpm.pools.nextcloud.socket}
