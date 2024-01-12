@@ -8,7 +8,7 @@
   home.packages = with pkgs;
     lib.mkIf config.programs.go.enable [
       delve # Go debugging tool
-      gocode
+      gopls
       godef
       gotools
       golangci-lint

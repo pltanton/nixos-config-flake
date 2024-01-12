@@ -109,7 +109,7 @@ in {
       inputs.activate-linux.defaultPackage.x86_64-linux
 
       thunderbird
-      bitwarden
+      goldwarden
       sidequest
       scrcpy
 

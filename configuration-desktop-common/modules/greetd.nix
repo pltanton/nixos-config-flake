@@ -1,6 +1,6 @@
 { pkgs, config, ... }: {
   services.greetd = {
-    enable = true;
+    enable = !config.services.xserver.displayManager.gdm.enable;
     settings = {
       terminal.vt = 1;
       default_session.command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time "

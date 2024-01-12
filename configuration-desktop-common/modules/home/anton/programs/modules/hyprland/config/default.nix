@@ -1,6 +1,6 @@
 { osConfig, config, lib, pkgs, inputs, ... }: {
 
-  imports = [ ./keybinds.nix ./hyprland-config.nix ./rules.nix ];
+  imports = [ ./keybinds.nix ./hyprland-config.nix ./rules.nix ./plugins.nix ];
 
   wayland.windowManager.hyprland = {
     # package = null;

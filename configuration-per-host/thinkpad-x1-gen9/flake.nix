@@ -14,8 +14,8 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Home-manager and modules
-    home-manager.url = "github:nix-community/home-manager/master";
-    # home-manager.url = "path:/home/anton/Workdir/home-manager";
+    # home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.url = "path:/home/anton/Workdir/home-manager";
     # home-manager.url = "github:nix-community/home-manager/release-22.05";
     # base16.url = "github:alukardbf/base16-nix";
     # base16.url = "github:pltanton/base16-nix";
@@ -45,9 +45,12 @@
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprfocus = {
-      url = "github:VortexCoyote/hyprfocus";
+    hycov = {
+      url = "github:DreamMaoMao/hycov";
+      inputs.hyprland.follows = "hyprland";
     };
+
+    hyprfocus = { url = "github:VortexCoyote/hyprfocus"; };
     # hyprpaper = {
     #   url = "github:hyprwm/hyprpaper";
     #   # inputs.nixpkgs.follows = "nixpkgs";
@@ -93,7 +96,7 @@
   };
 
   outputs = { self, nixpkgs, home-manager, nur, nix-alien, emacs-overlay
-    , mach-nix, hyprland, ddcsync, jetbrains-flake, stylix
+    , mach-nix, hyprland, hycov, ddcsync, jetbrains-flake, stylix
     , nix-doom-emacs, anyrun, sops-nix, ... }@inputs: {
       nixosConfigurations = let
         inherit (inputs.nixpkgs) lib;
