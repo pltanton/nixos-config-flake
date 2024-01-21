@@ -5,7 +5,7 @@
     # Nixos related inputs
     # nixpkgs-local.url = "path:/home/anton/Workdir/nixpkgs";
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -42,7 +42,7 @@
     hyprland = {
       # url = "github:hyprwm/Hyprland/8531d1d7a67f6213de73466f0351a1ae709f8f4f";
       url = "github:hyprwm/Hyprland";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hycov = {
