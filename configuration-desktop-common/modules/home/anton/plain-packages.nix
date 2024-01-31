@@ -91,6 +91,8 @@ in {
       logseq
       anki-bin
 
+      bitwarden
+
       evince
       imv
       gthumb
@@ -109,7 +111,6 @@ in {
       inputs.activate-linux.defaultPackage.x86_64-linux
 
       thunderbird
-      goldwarden
       sidequest
       scrcpy
 
@@ -139,7 +140,6 @@ in {
       nodejs
       # nur.repos.utybo.jetbrains.idea-community
       master.jetbrains-toolbox
-      master.jetbrains.pycharm-professional
       # (enlargeCursorForDesktopEntry master.jetbrains.idea-ultimate)
       # (enlargeCursorForDesktopEntry master.jetbrains.idea-community)
       master.jetbrains.idea-community
@@ -163,8 +163,5 @@ in {
       zip
 
       # steam-run-native
-
-      # ZMK
-      python311Packages.west
     ];
 }

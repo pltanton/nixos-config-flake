@@ -85,17 +85,17 @@
       bindel = [
         # Media keys
 
-        ",XF86AudioRaiseVolume,exec,swayosd --output-volume raise"
-        ",XF86AudioLowerVolume,exec,swayosd --output-volume lower"
-        ",XF86AudioMute,exec,swayosd --output-volume mute-toggle"
+        ",XF86AudioRaiseVolume,exec,swayosd-client --output-volume raise"
+        ",XF86AudioLowerVolume,exec,swayosd-client --output-volume lower"
+        ",XF86AudioMute,exec,swayosd-client --output-volume mute-toggle"
         ",XF86AudioMicMute,exec,volumectl -m toggle-mute"
       ];
 
       binde = [
         # Media keys
 
-        ",XF86MonBrightnessUp,exec,swayosd --brightness raise"
-        ",XF86MonBrightnessDown,exec,swayosd --brightness lower"
+        ",XF86MonBrightnessUp,exec,swayosd-client --brightness raise"
+        ",XF86MonBrightnessDown,exec,swayosd-client --brightness lower"
       ];
 
       # Mouse bindings

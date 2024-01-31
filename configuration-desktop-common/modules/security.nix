@@ -9,6 +9,7 @@
   environment.systemPackages = with pkgs; [
     libgnome-keyring
     gnome.gnome-keyring
+    goldwarden
   ];
 
   security.wrappers."mount.nfs" = {

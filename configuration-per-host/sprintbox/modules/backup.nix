@@ -1,0 +1,50 @@
+{ lib, config, pkgs, ... }:
+
+let
+  mastodonCfg = config.services.mastodon;
+  syncthingCfg = config.services.syncthing;
+  pgBackupDir = config.services.postgresqlBackup.location;
+
+  backupFileLocation = "${pgBackupDir}/all.sql.gz";
+  backupDir = "${syncthingCfg.dataDir}/Backups";
+in {
+  services.postgresqlBackup = { enable = true; };
+
+  systemd.services."postgresqlBackup-all".serviceConfig = {
+    ExecStartPost = ''
+      chmod g+rw ${backupFileLocation} && \
+      chgrp ${syncthingCfg.group} ${backupFileLocation} && \
+      cp ${backupFileLocation} ${backupDir}/all-sprintbox.sql.gz && \
+      echo "DB dump moved to the backup directory"'
+    '';
+  };
+
+  services.syncthing = {
+    enable = true;
+    folders = {
+      "${backupDir}" = let folderId = "db-dump";
+      in {
+        id = folderId;
+        label = folderId;
+        devices = devices;
+        rescanInterval = 300;
+        type = "sendonly";
+        versioning = {
+          type = "simple";
+          params.keep = "6";
+        };
+      };
+    };
+    extraFlags = [ "--no-upgrade" "--no-restart" ];
+  };
+
+  systemd.tmpfiles.rules = [
+    "z ${syncthingCfg.dataDir} 0750 ${syncthingCfg.user} ${syncthingCfg.group}"
+    "d ${backupDir} 0775 ${syncthingCfg.user} ${syncthingCfg.group}"
+  ];
+
+  users.users = {
+    postgres.extraGroups = [ syncthingCfg.group ];
+  };
+}
+

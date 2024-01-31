@@ -21,9 +21,5 @@
         host  all  all 0.0.0.0/0 md5
       '';
     };
-
-    postgresqlBackup = {
-      enable = true;
-    };
   };
 }

@@ -126,15 +126,16 @@ in {
 
       group = {
         groupbar = {
-          render_titles = false;
-          font_size = 24;
+          render_titles = true;
+          font_size = 17;
+          height = 20;
           font_family = "Inter";
-          text_color = "rgb(${base01})";
+          text_color = "rgb(${base05})";
           gradients = true;
-          "col.active" = "rgb(${base07}) rgb(${base0F}) 45deg";
-          "col.inactive" = "0xff${base03}";
-          "col.locked_active" = "rgb(${base07}) rgb(${base0F}) 45deg";
-          "col.locked_inactive" = "0xff${base03}";
+          "col.active" = "0xff${base02}";
+          "col.inactive" = "0xff${base00}";
+          "col.locked_active" = "0xff${base02}";
+          "col.locked_inactive" = "0xff${base00}";
         };
       };
 
