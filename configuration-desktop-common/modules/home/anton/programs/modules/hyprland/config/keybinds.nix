@@ -101,6 +101,10 @@
       # Mouse bindings
       bindm = [ "SUPER,mouse:272,movewindow" "SUPER,mouse:273,resizewindow" ];
 
+      bindl = [
+        "SUPER,BackSpace,exec,pkill -SIGUSR1 lock && WAYLAND_DISPLAY=wayland-1 lock"
+      ];
+
     };
 
     extraConfig = ''

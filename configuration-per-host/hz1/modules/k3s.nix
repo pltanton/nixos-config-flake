@@ -64,10 +64,6 @@ in {
     };
   };
 
-  services.caddy.virtualHosts."savor.kaliwe.ru".extraConfig = ''
-    reverse_proxy localhost:9080
-  '';
-
   services.caddy.virtualHosts."savor-dev.kaliwe.ru".extraConfig = ''
     reverse_proxy localhost:9080
   '';

@@ -6,15 +6,16 @@ let
   pgBackupDir = config.services.postgresqlBackup.location;
 
   backupFileLocation = "${pgBackupDir}/all.sql.gz";
-  backupDir = "${syncthingCfg.dataDir}/Backups";
+  backupDir = "${syncthingCfg.dataDir}/backup-sprintbox";
+  devices = [];
 in {
   services.postgresqlBackup = { enable = true; };
 
-  systemd.services."postgresqlBackup-all".serviceConfig = {
+  systemd.services."postgresqlBackup".serviceConfig = {
     ExecStartPost = ''
       chmod g+rw ${backupFileLocation} && \
       chgrp ${syncthingCfg.group} ${backupFileLocation} && \
-      cp ${backupFileLocation} ${backupDir}/all-sprintbox.sql.gz && \
+      cp ${backupFileLocation} ${backupDir}/all.sql.gz && \
       echo "DB dump moved to the backup directory"'
     '';
   };
@@ -26,8 +27,8 @@ in {
       in {
         id = folderId;
         label = folderId;
+        rescanIntervalS = 300;
         devices = devices;
-        rescanInterval = 300;
         type = "sendonly";
         versioning = {
           type = "simple";

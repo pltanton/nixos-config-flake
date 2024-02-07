@@ -18,6 +18,8 @@ in {
       monaspace
 
       nixfmt
+      nixpkgs-fmt
+      rnix-lsp
       shfmt
 
       age

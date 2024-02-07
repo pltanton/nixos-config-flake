@@ -9,6 +9,7 @@
     targets.avizo.enable = false;
     targets.vscode.enable = false;
     targets.hyprland.enable = false;
+    targets.k9s.enable = false;
 
     cursor = {
       package = pkgs.master.phinger-cursors;

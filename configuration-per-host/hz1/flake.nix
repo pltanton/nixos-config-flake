@@ -44,6 +44,8 @@
                 "https://cache.nixos.org"
                 "https://nix-community.cachix.org"
               ];
+
+              sandbox = false; # Required for custom caddy build
             };
             # Overlays available for each host
             nixpkgs.overlays = [
