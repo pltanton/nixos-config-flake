@@ -14,9 +14,9 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Home-manager and modules
-    # home-manager.url = "github:nix-community/home-manager/master";
     home-manager = {
-      url = "path:/home/anton/Workdir/home-manager";
+      # url = "path:/home/anton/Workdir/home-manager";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # home-manager.url = "github:nix-community/home-manager/release-22.05";
@@ -98,109 +98,127 @@
     fish-grc.flake = false;
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, nix-alien, emacs-overlay
-    , mach-nix, hyprland, hycov, ddcsync, jetbrains-flake, stylix
-    , nix-doom-emacs, anyrun, sops-nix, ... }@inputs: {
-      nixosConfigurations = let
-        inherit (inputs.nixpkgs) lib;
+  outputs =
+    { self
+    , nixpkgs
+    , home-manager
+    , nur
+    , nix-alien
+    , emacs-overlay
+    , mach-nix
+    , hyprland
+    , hycov
+    , ddcsync
+    , jetbrains-flake
+    , stylix
+    , nix-doom-emacs
+    , anyrun
+    , sops-nix
+    , ...
+    }@inputs: {
+      nixosConfigurations =
+        let
+          inherit (inputs.nixpkgs) lib;
 
-        # Special args for booth home-manager and nixos system configuration
-        commonSpecialArgs = {
-          inherit inputs; # Add an inputs raw link
+          # Special args for booth home-manager and nixos system configuration
+          commonSpecialArgs = {
+            inherit inputs; # Add an inputs raw link
 
-          homeBaseDir = ../../home;
-          # Add secrets if present
-          secrets = let secretsPath = ./secrets.nix;
-          in if (builtins.pathExists secretsPath) then
-            import secretsPath
-          else
-            { };
-        };
+            homeBaseDir = ../../home;
+            # Add secrets if present
+            secrets =
+              let secretsPath = ./secrets.nix;
+              in if (builtins.pathExists secretsPath) then
+                import secretsPath
+              else
+                { };
+          };
 
-      in {
-        thinkpad-x1-gen9 = lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = commonSpecialArgs;
-          modules = [
-            # A host configuration itself
-            (import ./configuration.nix)
-            (import ../../configuration-desktop-common)
-            (import ../../configuration-common)
-            sops-nix.nixosModules.sops
+        in
+        {
+          thinkpad-x1-gen9 = lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = commonSpecialArgs;
+            modules = [
+              # A host configuration itself
+              (import ./configuration.nix)
+              (import ../../configuration-desktop-common)
+              (import ../../configuration-common)
+              sops-nix.nixosModules.sops
 
-            # Home manager with default overridings
-            home-manager.nixosModules.home-manager
-            hyprland.nixosModules.default
-            stylix.nixosModules.stylix
+              # Home manager with default overridings
+              home-manager.nixosModules.home-manager
+              hyprland.nixosModules.default
+              stylix.nixosModules.stylix
 
-            # Default home-manager user overrides (add modules and special args)
-            ({ config, ... }: {
-              options.home-manager.users = lib.mkOption {
-                type = lib.types.attrsOf (lib.types.submoduleWith {
-                  modules = [
-                    # (import inputs.base16.hmModule)
-                    nix-doom-emacs.hmModule
-                    # hyprland.homeManagerModules.default
-                    ddcsync.homeManagerModules.default
-                    anyrun.homeManagerModules.default
-                    sops-nix.homeManagerModules.sops
+              # Default home-manager user overrides (add modules and special args)
+              ({ config, ... }: {
+                options.home-manager.users = lib.mkOption {
+                  type = lib.types.attrsOf (lib.types.submoduleWith {
+                    modules = [
+                      # (import inputs.base16.hmModule)
+                      nix-doom-emacs.hmModule
+                      # hyprland.homeManagerModules.default
+                      ddcsync.homeManagerModules.default
+                      anyrun.homeManagerModules.default
+                      sops-nix.homeManagerModules.sops
+                    ];
+
+                    specialArgs = commonSpecialArgs // { super = config; };
+                  });
+                };
+              })
+
+              ({ pkgs, ... }: {
+                nix.settings = {
+                  builders-use-substitutes = true;
+                  trusted-public-keys = [
+                    "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+                    "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+                    "emacsng.cachix.org-1:i7wOr4YpdRpWWtShI8bT6V7lOTnPeI7Ho6HaZegFWMI="
+                    "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+                    "liff.cachix.org-1:Uid73LCbEljychK4hx5pn3BkTehHPDBt+S717gFBp90="
+                    "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+                    "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
                   ];
+                  substituters = [
+                    "https://nixpkgs-wayland.cachix.org"
+                    "https://nix-community.cachix.org"
+                    "https://emacsng.cachix.org"
+                    "https://cache.nixos.org"
+                    "https://hyprland.cachix.org"
+                    "https://anyrun.cachix.org"
+                  ];
+                };
 
-                  specialArgs = commonSpecialArgs // { super = config; };
-                });
-              };
-            })
+                nixpkgs.overlays = [
+                  nur.overlay
+                  emacs-overlay.overlay
+                  #nix-alien.overlay
+                  hyprland.overlays.default
+                  ddcsync.overlays.default
+                  jetbrains-flake.overlays.default
 
-            ({ pkgs, ... }: {
-              nix.settings = {
-                builders-use-substitutes = true;
-                trusted-public-keys = [
-                  "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
-                  "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-                  "emacsng.cachix.org-1:i7wOr4YpdRpWWtShI8bT6V7lOTnPeI7Ho6HaZegFWMI="
-                  "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-                  "liff.cachix.org-1:Uid73LCbEljychK4hx5pn3BkTehHPDBt+S717gFBp90="
-                  "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-                  "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
+                  (final: prev: {
+                    unstable = import inputs.nixpkgs-unstable {
+                      system = "x86_64-linux";
+                      config.allowUnfree = true;
+                    };
+                    master = import inputs.nixpkgs-master {
+                      system = "x86_64-linux";
+                      config.allowUnfree = true;
+                    };
+                    stable = import inputs.nixpkgs-stable {
+                      system = "x86_64-linux";
+                      config.allowUnfree = true;
+                    };
+                  })
+
+                  inputs.nixpkgs-wayland.overlay
                 ];
-                substituters = [
-                  "https://nixpkgs-wayland.cachix.org"
-                  "https://nix-community.cachix.org"
-                  "https://emacsng.cachix.org"
-                  "https://cache.nixos.org"
-                  "https://hyprland.cachix.org"
-                  "https://anyrun.cachix.org"
-                ];
-              };
-
-              nixpkgs.overlays = [
-                nur.overlay
-                emacs-overlay.overlay
-                #nix-alien.overlay
-                hyprland.overlays.default
-                ddcsync.overlays.default
-                jetbrains-flake.overlays.default
-
-                (final: prev: {
-                  unstable = import inputs.nixpkgs-unstable {
-                    system = "x86_64-linux";
-                    config.allowUnfree = true;
-                  };
-                  master = import inputs.nixpkgs-master {
-                    system = "x86_64-linux";
-                    config.allowUnfree = true;
-                  };
-                  stable = import inputs.nixpkgs-stable {
-                    system = "x86_64-linux";
-                    config.allowUnfree = true;
-                  };
-                })
-
-                inputs.nixpkgs-wayland.overlay
-              ];
-            })
-          ];
+              })
+            ];
+          };
         };
-      };
     };
 }
