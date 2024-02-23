@@ -127,7 +127,7 @@ in {
       group = {
         groupbar = {
           render_titles = true;
-          font_size = 17;
+          font_size = 14;
           height = 20;
           font_family = "Inter";
           text_color = "rgb(${base05})";

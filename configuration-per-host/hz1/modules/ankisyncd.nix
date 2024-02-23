@@ -1,10 +1,21 @@
-{ pkgs, config, ... }: {
-  services.ankisyncd = {
+{ pkgs, config, sops, ... }: {
+  sops.secrets."anki/anton" = {};
+  sops.secrets."anki/julsa" = {};
+  services.anki-sync-server = {
     enable = true;
-    # host = "ankisyncd.kaliwe.ru";
+    users = [
+      {
+        username = "anton";
+        passwordFile = config.sops.secrets."anki/anton".path;
+      }
+      {
+        username = "julsa";
+        passwordFile = config.sops.secrets."anki/julsa".path;
+      }
+    ];
   };
 
-  services.caddy.virtualHosts."ankisyncd.kaliwe.ru".extraConfig = ''
-    reverse_proxy http://127.0.0.1:${toString config.services.ankisyncd.port}
+  services.caddy.virtualHosts."anki.kaliwe.ru".extraConfig = ''
+    reverse_proxy [::1]:${toString config.services.anki-sync-server.port}
   '';
 }

@@ -9,6 +9,9 @@
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
+
+  # boot.initrd.luks.fido2Support
+
   boot.initrd.luks.devices.crypted.device =
     "/dev/disk/by-uuid/0e20fecd-4ffa-44f9-9ab1-7a439be49286";
   boot.kernelModules = [ "kvm-intel" ];

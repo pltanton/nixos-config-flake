@@ -98,7 +98,7 @@ in {
       evince
       imv
       gthumb
-      gimp
+      pinta
       # (gimp-with-plugins.override {
       #   plugins = with gimpPlugins; [ resynthesizer ];
       # })
@@ -144,7 +144,7 @@ in {
       master.jetbrains-toolbox
       # (enlargeCursorForDesktopEntry master.jetbrains.idea-ultimate)
       # (enlargeCursorForDesktopEntry master.jetbrains.idea-community)
-      master.jetbrains.idea-community
+      # master.jetbrains.idea-community
 
       dbeaver
       beekeeper-studio

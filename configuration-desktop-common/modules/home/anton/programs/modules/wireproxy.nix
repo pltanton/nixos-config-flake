@@ -7,7 +7,7 @@ let
       globalSection = { WGConfig = wireguardConfig; };
       sections = { 
         Socks5 = { BindAddress = "127.0.0.1:25344"; }; 
-        
+        http = { BindAddress = "127.0.0.1:25345"; }; 
       };
     });
 in {

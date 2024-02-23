@@ -1,18 +1,6 @@
 { pkgs, config, lib, inputs, ... }:
 let
   tilingWM = true;
-
-  gtkTheme = {
-    package = (pkgs.master.catppuccin-gtk.override {
-      accents = [ "lavender" ];
-      size = "compact";
-      tweaks = [ "rimless" ];
-      variant = "macchiato";
-    });
-    name = "Catppuccin-Macchiato-Compact-Lavender-Dark";
-    # name = "Catppuccin-Macchiato-Compact-Lavender-Dark-hdpi"
-  };
-  gtkThemeDir = "${gtkTheme.package}/share/themes/${gtkTheme.name}";
 in {
   xfconf.enable = lib.mkForce false;
 
