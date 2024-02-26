@@ -48,6 +48,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hypridle = {
+      url = "github:hyprwm/hypridle";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     hycov = {
       url = "github:DreamMaoMao/hycov";
       inputs.hyprland.follows = "hyprland";
@@ -107,6 +113,7 @@
     , emacs-overlay
     , mach-nix
     , hyprland
+    , hypridle
     , hycov
     , ddcsync
     , jetbrains-flake
@@ -158,7 +165,8 @@
                     modules = [
                       # (import inputs.base16.hmModule)
                       nix-doom-emacs.hmModule
-                      # hyprland.homeManagerModules.default
+                      hyprland.homeManagerModules.default
+                      hypridle.homeManagerModules.default
                       ddcsync.homeManagerModules.default
                       anyrun.homeManagerModules.default
                       sops-nix.homeManagerModules.sops
