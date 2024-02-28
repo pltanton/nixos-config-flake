@@ -126,12 +126,12 @@ in {
 
       group = {
         groupbar = {
-          render_titles = true;
+          render_titles = false;
           font_size = 14;
-          height = 20;
+          height = 2;
           font_family = "Inter";
           text_color = "rgb(${base05})";
-          gradients = true;
+          gradients = false;
           "col.active" = "0xff${base02}";
           "col.inactive" = "0xff${base00}";
           "col.locked_active" = "0xff${base02}";

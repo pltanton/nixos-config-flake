@@ -51,7 +51,11 @@
     hypridle = {
       url = "github:hyprwm/hypridle";
       inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.hyprland.follows = "hyprland";
+    };
+
+    hyprlock = {
+      url = "github:hyprwm/hyprlock";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hycov = {
@@ -114,6 +118,7 @@
     , mach-nix
     , hyprland
     , hypridle
+    , hyprlock
     , hycov
     , ddcsync
     , jetbrains-flake
@@ -163,10 +168,11 @@
                 options.home-manager.users = lib.mkOption {
                   type = lib.types.attrsOf (lib.types.submoduleWith {
                     modules = [
-                      # (import inputs.base16.hmModule)
-                      nix-doom-emacs.hmModule
                       hyprland.homeManagerModules.default
                       hypridle.homeManagerModules.default
+                      hyprlock.homeManagerModules.default
+
+                      nix-doom-emacs.hmModule
                       ddcsync.homeManagerModules.default
                       anyrun.homeManagerModules.default
                       sops-nix.homeManagerModules.sops

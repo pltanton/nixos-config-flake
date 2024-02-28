@@ -38,19 +38,21 @@
         name = "grc";
         src = inputs.fish-grc;
       }
-      # {
-      #   name = "async-prompt";
-      #   src = inputs.fish-async-prompt-plugin;
-      # }
       (with fzf-fish; { inherit name src; })
       (with done; { inherit name src; })
       (with pisces; { inherit name src; })
       (with pure; { inherit name src; })
-      # (with hydro; { inherit name src; })
     ];
 
     shellInit = ''
       # set -g async_prompt_functions _pure_prompt_git
+    '';
+
+    interactiveShellInit = ''
+      function reload-theme --on-variable _reload_theme
+        # Apply theme on theme toggle trigger
+        rg '^\s*source /nix/store/.+base16-.+-.+fish$' ~/.config/fish/config.fish -A 1 -N --trim | source
+      end
     '';
   };
 

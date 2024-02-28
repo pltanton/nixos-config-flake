@@ -2,10 +2,10 @@
   imports = [
     ./config
     ./hyprpaper.nix
-    ./swayidle.nix
+    ./hypridle.nix
+    ./hyprlock.nix
     ./targets.nix
     ./targets-config.nix
-    # ./desktop-items-overrides.nix
   ];
 
   wayland.windowManager.hyprland = {

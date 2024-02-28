@@ -29,9 +29,9 @@
 
     wacom.enable = true;
 
-    layout = "us,us";
-    xkbVariant = "dvorak,";
-    xkbOptions = "eurosign:e,grp:win_space_toggle";
+    xkb.layout = "us,us";
+    xkb.variant = "dvorak,";
+    xkb.options = "eurosign:e,grp:win_space_toggle";
 
     libinput = {
       enable = true;
@@ -39,9 +39,7 @@
     };
   };
 
-  # programs.sway.enable = false;
-  # xdg.portal
-  # xdg.portal = lib.mkIf (config.services.xserver.desktopManager.gnome.enable) {
+  # xdg.portal = {
   #   enable = true;
   #   extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   # };

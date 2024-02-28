@@ -3,7 +3,7 @@ let hyprlandPkg = config.wayland.windowManager.hyprland.package;
 in {
   systemd.user.services.swayidle.Service.Environment = lib.mkForce [ ];
   services.swayidle = lib.mkIf config.wayland.windowManager.hyprland.enable {
-    enable = true;
+    enable = false;
     events = [
       {
         event = "lock";
@@ -29,5 +29,11 @@ in {
         resumeCommand = "${hyprlandPkg}/bin/hyprctl dispatch dpms on";
       }
     ];
+  };
+
+  services.hypridle = {
+    enable = true;
+    lockCmd = "lock";
+    beforeSleepCmd = "lock";
   };
 }
