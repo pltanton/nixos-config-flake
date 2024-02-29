@@ -31,7 +31,7 @@
 
     theme = lib.mkDefault {
       name = "Catppuccin-Macchiato-Standard-Maroon-Dark";
-      package = (pkgs.catppuccin-gtk.override {
+      package = (pkgs.master.catppuccin-gtk.override {
         accents = [ "maroon" ];
         size = "standard";
         tweaks = [ "normal" ];
@@ -48,21 +48,19 @@
 
   specialisation.light.configuration = {
     home.packages = [
-      (
-        (pkgs.writeShellApplication {
-          name = "toggle-theme";
-          runtimeInputs = with pkgs; [ home-manager coreutils ripgrep fish ];
-          text =
-            ''
-              "$(home-manager generations | head -2 | tail -1 | rg -o '/[^ ]*')"/activate
-              fish --command 'set -U _reload_theme (date +%s)'
-            '';
-        })
-      )
+      (pkgs.writeShellApplication {
+        name = "toggle-theme";
+        runtimeInputs = with pkgs; [ home-manager coreutils ripgrep fish ];
+        text =
+          ''
+            "$(home-manager generations | head -2 | tail -1 | rg -o '/[^ ]*')"/activate
+            fish --command 'set -U _reload_theme (date +%s)'
+          '';
+      })
     ];
     gtk.theme = {
       name = "Catppuccin-Latte-Standard-Maroon-Light";
-      package = pkgs.catppuccin-gtk.override {
+      package = pkgs.master.catppuccin-gtk.override {
         accents = [ "maroon" ];
         size = "standard";
         tweaks = [ "normal" ];

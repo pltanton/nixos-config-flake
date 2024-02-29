@@ -1,9 +1,6 @@
 { pkgs, lib, inputs, ... }: {
 
   stylix = {
-    base16Scheme = lib.mkDefault "${inputs.base16-schemes}/catppuccin-macchiato.yaml";
-    targets.gnome.enable = true;
-
     targets.gtk.enable = false;
     targets.firefox.enable = false;
     targets.swaylock.enable = false;
@@ -12,8 +9,8 @@
     targets.avizo.enable = false;
     targets.vscode.enable = false;
     targets.hyprland.enable = false;
-    targets.fish.enable = true;
 
+    base16Scheme = lib.mkDefault "${inputs.base16-schemes}/catppuccin-macchiato.yaml";
     polarity = lib.mkDefault "dark";
     cursor = {
       package = pkgs.master.phinger-cursors;

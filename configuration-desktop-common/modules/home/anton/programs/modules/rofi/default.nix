@@ -7,8 +7,8 @@ in {
   programs.rofi = {
     enable = true;
     package = rofi;
-    font = "${osConfig.stylix.fonts.serif.name} 20";
-    theme = (osConfig.lib.stylix.colors {
+    font = "${config.stylix.fonts.serif.name} 20";
+    theme = (config.lib.stylix.colors {
       template = builtins.readFile ./rounded.rasi.mustache;
       extension = "rasi";
     });

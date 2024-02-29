@@ -5,7 +5,7 @@
     defaultApplications =
       let
         # browser = "org.qutebrowser.qutebrowser.desktop";
-        browser = "browser-select.desktop";
+        browser = "firefox.desktop";
         imageViewer = "org.gnome.eog.desktop";
       in
       {
