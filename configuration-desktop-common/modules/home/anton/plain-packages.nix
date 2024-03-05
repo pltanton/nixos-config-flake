@@ -165,5 +165,6 @@ in {
       zip
 
       # steam-run-native
+      chiaki
     ];
 }
