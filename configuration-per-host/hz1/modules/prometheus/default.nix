@@ -35,15 +35,6 @@
           scrape_interval = "15s";
           static_configs = [{ targets = [ "localhost:2019" ]; }];
         }
-        {
-          job_name = "hass";
-          scrape_interval = "10s";
-          metrics_path = "/api/prometheus";
-          scheme = "https";
-          bearer_token =
-            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI3MTFkMjAyYTI0NTM0MmI5ODUxNzM3NTc0MGI0Zjc0ZCIsImlhdCI6MTU3MjkxMjY0MCwiZXhwIjoxODg4MjcyNjQwfQ.NAyrG4kOgR4QV-FqxfQy3fn-lxVIZRwlmFN3jwq1nPU";
-          static_configs = [{ targets = [ "hass.kaliwe.ru:443" ]; }];
-        }
       ];
     };
   };

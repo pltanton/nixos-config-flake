@@ -7,7 +7,7 @@ let
 in {
   services = {
     vault = {
-      enable = true;
+      enable = false;
       address = "127.0.0.1:${port}";
       storageBackend = "postgresql";
       storageConfig = ''

@@ -6,12 +6,25 @@ in {
     grafana = {
       enable = true;
       settings = {
+        unified_alerting = {
+          enabled = "true";
+        };
+
+        "unified_alerting.screenshot" = {
+          capture = "true";
+        };
+
         server = {
           domain = domain;
           root_url = "https://${domain}";
           http_port = 3001;
         };
       };
+    };
+
+    grafana-image-renderer = {
+      enable = true;
+      provisionGrafana = true;
     };
   };
 

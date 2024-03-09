@@ -13,7 +13,7 @@ in {
   networking.firewall.allowedUDPPorts = [ port ];
 
   services.openvpn.servers.mainServer = {
-    autoStart = true;
+    autoStart = false;
     config = ''
       server 10.10.20.0 255.255.255.0
 
