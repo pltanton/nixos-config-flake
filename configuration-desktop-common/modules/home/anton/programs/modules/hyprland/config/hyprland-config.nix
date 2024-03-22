@@ -40,6 +40,9 @@ in {
         "WLR_DRM_NO_MODIFIERS,1"
         "SDL_VIDEODRIVER,wayland"
         "_JAVA_AWT_WM_NONREPARENTING,1"
+
+        "HYPRCURSOR_THEME,HyprBibataModernClassicSVG"
+        "HYPRCURSOR_SIZE,24"
       ];
 
       input = {
@@ -121,11 +124,13 @@ in {
         mouse_move_enables_dpms = true;
         disable_autoreload = true;
         focus_on_activate = true;
+        enable_hyprcursor = true;
         # no_vfr = false;
       };
 
       group = {
         groupbar = {
+          enabled = false;
           render_titles = false;
           font_size = 14;
           height = 2;
@@ -143,7 +148,7 @@ in {
 
       xwayland = {
         use_nearest_neighbor = false;
-        force_zero_scaling = false;
+        force_zero_scaling = true;
       };
 
       gestures = {

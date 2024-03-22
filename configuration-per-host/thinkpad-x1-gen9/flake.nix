@@ -43,9 +43,14 @@
     ddcsync.inputs.nixpkgs.follows = "nixpkgs";
 
     hyprland = {
-      # url = "github:hyprwm/Hyprland/8531d1d7a67f6213de73466f0351a1ae709f8f4f";
       url = "github:hyprwm/Hyprland";
+      # url = "github:hyprwm/Hyprland/v0.36.0";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    rose-pine-hyprcursor = {
+      url = "github:ndom91/rose-pine-cursor-hyprcursor";
+      flake = false;
     };
 
     hypridle = {

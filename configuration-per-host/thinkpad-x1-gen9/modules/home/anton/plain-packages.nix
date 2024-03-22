@@ -7,7 +7,7 @@
 
       transmission-remote-gtk
       transmission-gtk
-      # rapid-photo-downloader
+      rapid-photo-downloader
 
       # tor-browser-bundle-bin
 

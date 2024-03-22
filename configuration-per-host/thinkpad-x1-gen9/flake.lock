@@ -853,11 +853,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1709942067,
-        "narHash": "sha256-DGU4zQDwIx6pXM6oHdA+89UU/QjqE05HiXOvigECJjI=",
+        "lastModified": 1710203373,
+        "narHash": "sha256-m5I69a5t+xXxNMQrFuzKgPR6nrFiWDEDnEqlVwTy4C4=",
         "owner": "hyprwm",
         "repo": "hyprcursor",
-        "rev": "a2233d4a2a58233457712acfd88d10a2a8a85711",
+        "rev": "2a78c30da000084acbfa78fbbcf96698693cd336",
         "type": "github"
       },
       "original": {
@@ -994,11 +994,11 @@
         "xdph": "xdph_2"
       },
       "locked": {
-        "lastModified": 1710007975,
-        "narHash": "sha256-crtEyLlqul6ZiGFvp+tIpVW8okDG/2GSlry+iNWD/dk=",
+        "lastModified": 1710189206,
+        "narHash": "sha256-BKD+JrinQN3V0Xf8Ft/P770shnUpxNRVjGKB0YU1OoI=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "26cd1bf949d0460b754fe3b1ae7f06bd4b2535ee",
+        "rev": "a065b481f32f4297596a9cd9c538794fd4669b1a",
         "type": "github"
       },
       "original": {
@@ -1866,8 +1866,25 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixpkgs-wayland": "nixpkgs-wayland",
         "nur": "nur",
+        "rose-pine-hyprcursor": "rose-pine-hyprcursor",
         "sops-nix": "sops-nix",
         "stylix": "stylix"
+      }
+    },
+    "rose-pine-hyprcursor": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1710238655,
+        "narHash": "sha256-h7qivaCqoJj1ZbWT86WA1gp769vgTUhDDxcJOZ1WfMU=",
+        "owner": "ndom91",
+        "repo": "rose-pine-cursor-hyprcursor",
+        "rev": "f96a8e09fa7e60d5e48543e15693774dcf092fbe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ndom91",
+        "repo": "rose-pine-cursor-hyprcursor",
+        "type": "github"
       }
     },
     "rotate-text": {

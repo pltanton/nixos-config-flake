@@ -2,7 +2,7 @@
   "log":{},
   "inbounds":[
     {
-      "port":"1080",
+      "port":"10808",
       "protocol":"socks",
       "settings":{
         "auth":"noauth",
@@ -10,7 +10,7 @@
       }
     },
     {
-      "port":"1081",
+      "port":"10809",
       "protocol":"http",
       "settings":{}
     }

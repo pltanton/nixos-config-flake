@@ -1,13 +1,10 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 {
-
   services.xray = {
     enable = true;
     settings = {
-
-
       log = {
-        loglevel = "warning";
+        loglevel = "debug";
       };
       inbounds = [
         {
@@ -17,14 +14,14 @@
           settings = {
             clients = [
               {
-                id = "";
-                email = "putin@huilo.com";
+                id = "fcbedce3-a331-4bd6-9f96-45113c30a844";
+                email = "anon@anon.com";
               }
             ];
             decryption = "none";
           };
           streamSettings = {
-            security = "none";
+            security =  "none";
             network = "h2";
             httpSettings = {
               path = "/posts";
@@ -59,21 +56,15 @@
           }
         ];
       };
-
-
-
     };
   };
 
   # ADD FAKE STATIC SITE
   services.caddy.virtualHosts."kaliwe.ru".extraConfig = ''
-    reverse_proxy /posts http://127.0.0.1:2001 {
+    reverse_proxy /posts 127.0.0.1:2001 {
       transport http {
-        version h2c
+        versions h2c
       }
     }
-
-    redir https://pltanton.dev
   '';
-}
 }
