@@ -120,7 +120,6 @@
     , nur
     , nix-alien
     , emacs-overlay
-    , mach-nix
     , hyprland
     , hypridle
     , hyprlock
