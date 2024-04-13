@@ -14,15 +14,15 @@
           ["bluez5.enable-msbc"] = true,
           ["bluez5.enable-hw-volume"] = true,
           ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]",
-          ["bluez5.codecs"] = "[ sbc sbc_xq aac aptx aptx_hd aptx_ll ]",
-          ["bluez5.auto-connect"] = "[ hfp_hf hsp_hs a2dp_sink ]"
-        }
+          ["bluez5.autoswitch-profile"] = true
+      '')
+      (pkgs.writeTextDir "share/wireplumber/policy.lua.d/11-bluetooth-polity.lua" ''
+        bluetooth_policy.policy["media-role.use-headset-profile"] = true
       '')
     ];
-
   };
 
   nixpkgs.config.pulseaudio = true;
   hardware.pulseaudio.enable = false;
-  programs.noisetorch.enable = true;
+  programs.noisetorch.enable = false;
 }

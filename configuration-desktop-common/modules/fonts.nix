@@ -1,8 +1,7 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, lib, ... }: {
   fonts = {
     enableDefaultPackages = true;
     enableGhostscriptFonts = true;
-    fontDir.enable = true;
 
     packages = with pkgs; [ terminus_font inter ubuntu_font_family ];
 

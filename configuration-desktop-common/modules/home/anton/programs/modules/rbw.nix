@@ -4,7 +4,6 @@
     settings = {
       email = "plotnikovanton@gmail.com";
       base_url = "https://bitwarden.kaliwe.ru";
-      pinentry = "gnome3";
     };
   };
 }

@@ -34,6 +34,7 @@ in {
         # "GDK_SCALE,2"
         # "QT_ENABLE_HIGHDPI_SCALING,1"
         # "QT_SCALE_FACTOR,2"
+        "GDK_BAKCEND,wayland"
 
         "WLR_DRM_NO_ATOMIC,1"
         "XDG_DATA_DIRS,${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:$XDG_DATA_DIRS"

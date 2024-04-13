@@ -12,5 +12,6 @@
   '';
 
   systemd.services.ModemManager.enable = true;
-
+  hardware.usb-modeswitch.enable = true;
+  networking.networkmanager.fccUnlockScripts = [{ id = "1eac:1001"; path = "${pkgs.modemmanager}/share/ModemManager/fcc-unlock.available.d/1eac:1001"; }];
 }

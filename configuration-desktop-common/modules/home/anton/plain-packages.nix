@@ -17,9 +17,8 @@ in {
       hack-font
       monaspace
 
-      nixfmt
       nixpkgs-fmt
-      rnix-lsp
+      nixd
       shfmt
 
       age
@@ -149,7 +148,6 @@ in {
       dbeaver
       beekeeper-studio
       gcc
-      inputs.mach-nix.defaultPackage.x86_64-linux
       protobuf
       protoc-gen-go
       protoc-gen-go-grpc

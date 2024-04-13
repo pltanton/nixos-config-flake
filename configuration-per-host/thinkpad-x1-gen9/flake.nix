@@ -42,6 +42,10 @@
     ddcsync.url = "github:pltanton/ddcsync";
     ddcsync.inputs.nixpkgs.follows = "nixpkgs";
 
+    autobrowser.url = "path:/home/anton/Workdir/autobrowser";
+    # ddcsync.url = "github:pltanton/ddcsync";
+    autobrowser.inputs.nixpkgs.follows = "nixpkgs";
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
       # url = "github:hyprwm/Hyprland/v0.36.0";
@@ -125,6 +129,7 @@
     , hyprlock
     , hycov
     , ddcsync
+    , autobrowser
     , jetbrains-flake
     , stylix
     , nix-doom-emacs
@@ -178,6 +183,7 @@
 
                       nix-doom-emacs.hmModule
                       ddcsync.homeManagerModules.default
+                      autobrowser.homeManagerModules.default
                       anyrun.homeManagerModules.default
                       sops-nix.homeManagerModules.sops
                     ];
@@ -215,6 +221,7 @@
                   #nix-alien.overlay
                   hyprland.overlays.default
                   ddcsync.overlays.default
+                  autobrowser.overlays.default
                   jetbrains-flake.overlays.default
 
                   (final: prev: {

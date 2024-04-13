@@ -8,7 +8,7 @@ in {
       template = builtins.readFile ./waybar.css.mustache;
       extension = "css";
     });
-    package = pkgs.waybar;
+    package = pkgs.master.waybar;
     enable = config.wayland.windowManager.sway.enable
       || config.wayland.windowManager.hyprland.enable;
     # enable = true;

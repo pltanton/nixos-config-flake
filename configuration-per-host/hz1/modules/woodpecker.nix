@@ -30,13 +30,13 @@
   networking.firewall.allowedTCPPorts = [ 9000 ];
   networking.firewall.allowedUDPPorts = [ 9000 ];
 
-  services.postgresql = {
-    ensureDatabases = [ "woodpecker_server" ];
-    ensureUsers = [{
-      name = "woodpecker-server";
-      ensurePermissions = { "DATABASE woodpecker_server" = "ALL PRIVILEGES"; };
-    }];
-  };
+  # services.postgresql = {
+  #   ensureDatabases = [ "woodpecker_server" ];
+  #   ensureUsers = [{
+  #     name = "woodpecker-server";
+  #     ensurePermissions = { "DATABASE woodpecker_server" = "ALL PRIVILEGES"; };
+  #   }];
+  # };
 
   services.woodpecker-agents.agents = {
     docker = {

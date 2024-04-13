@@ -23,8 +23,8 @@ in {
     };
 
     grafana-image-renderer = {
-      enable = true;
-      provisionGrafana = true;
+      enable = false;
+      provisionGrafana = false;
     };
   };
 
