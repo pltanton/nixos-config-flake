@@ -115,6 +115,9 @@
     fish-colored-man-plugin.flake = false;
     fish-grc.url = "github:oh-my-fish/plugin-grc";
     fish-grc.flake = false;
+
+    dbeaver.url = "github:padhia/nix-dbeaver";
+    dbeaver.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -135,6 +138,7 @@
     , nix-doom-emacs
     , anyrun
     , sops-nix
+    , dbeaver
     , ...
     }@inputs: {
       nixosConfigurations =
@@ -223,6 +227,7 @@
                   ddcsync.overlays.default
                   autobrowser.overlays.default
                   jetbrains-flake.overlays.default
+                  dbeaver.overlays.default
 
                   (final: prev: {
                     unstable = import inputs.nixpkgs-unstable {
