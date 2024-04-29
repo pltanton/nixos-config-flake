@@ -19,10 +19,10 @@
   ];
 
   nixpkgs.config = {
-    allowBroken = true;
+    allowBroken = false;
     allowUnfree = true;
 
-    permittedInsecurePackages = [ "ffmpeg-3.4.8" ];
+    permittedInsecurePackages = [  ];
   };
 
   networking.firewall.enable = false;

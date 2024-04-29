@@ -9,6 +9,7 @@
     targets.avizo.enable = false;
     targets.vscode.enable = false;
     targets.hyprland.enable = false;
+    targets.bemenu.enable = false;
 
     base16Scheme = lib.mkDefault "${inputs.base16-schemes}/catppuccin-macchiato.yaml";
     polarity = lib.mkDefault "dark";

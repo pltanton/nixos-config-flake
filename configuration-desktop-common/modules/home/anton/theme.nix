@@ -31,7 +31,7 @@
 
     theme = lib.mkDefault {
       name = "Catppuccin-Macchiato-Standard-Maroon-Dark";
-      package = (pkgs.master.catppuccin-gtk.override {
+      package = (pkgs.catppuccin-gtk.override {
         accents = [ "maroon" ];
         size = "standard";
         tweaks = [ "normal" ];
@@ -60,7 +60,7 @@
     ];
     gtk.theme = {
       name = "Catppuccin-Latte-Standard-Maroon-Light";
-      package = pkgs.master.catppuccin-gtk.override {
+      package = pkgs.catppuccin-gtk.override {
         accents = [ "maroon" ];
         size = "standard";
         tweaks = [ "normal" ];

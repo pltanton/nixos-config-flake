@@ -21,7 +21,7 @@
       gopkgs
       go-tools
       go-swag
-      goose
+      # master.goose
       go-jet
       # master.cobra-cli
 

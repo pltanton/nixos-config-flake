@@ -9,9 +9,10 @@ let
       # Update the install script to use the new .desktop entry
       installPhase =
         builtins.replaceStrings [ "${e.desktopItem}" ] [ "${desktopItem}" ]
-        e.installPhase;
+          e.installPhase;
     }));
-in {
+in
+{
   home.packages = with pkgs;
     lib.mkIf true [
       hack-font
@@ -46,7 +47,7 @@ in {
 
       # Fonts
       font-awesome
-      emojione
+      # emojione
       iosevka
       inter
       liberation_ttf
@@ -86,26 +87,25 @@ in {
 
       # GUI
       # wpsoffice
-      onlyoffice-bin
-      libreoffice
+      # onlyoffice-bin
+      # unstable.libreoffice
 
-      logseq
+      # logseq
       anki-bin
 
-      bitwarden
+      stable.bitwarden
 
       evince
-      imv
       gthumb
       pinta
       # (gimp-with-plugins.override {
       #   plugins = with gimpPlugins; [ resynthesizer ];
       # })
       mpv
-      telegram-desktop
+      unstable.telegram-desktop
       xsane
       simple-scan
-      spotify
+      # spotify
 
       slack
 
@@ -116,7 +116,7 @@ in {
       scrcpy
 
       # Web
-      chromium
+      # chromium
       # nur.repos.sikmir.qutebrowser-bin
       # qutebrowser
 
@@ -140,13 +140,13 @@ in {
       grpcurl # grpc client
       nodejs
       # nur.repos.utybo.jetbrains.idea-community
-      master.jetbrains-toolbox
+      unstable.jetbrains-toolbox
       # (enlargeCursorForDesktopEntry master.jetbrains.idea-ultimate)
       # (enlargeCursorForDesktopEntry master.jetbrains.idea-community)
       # master.jetbrains.idea-community
 
-      dbeaver
-      beekeeper-studio
+      # dbeaver
+      # beekeeper-studio
       gcc
       protobuf
       protoc-gen-go

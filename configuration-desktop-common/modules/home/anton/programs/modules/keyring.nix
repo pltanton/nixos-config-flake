@@ -3,6 +3,6 @@
 
   services = {
     gnome-keyring.enable = true;
-    gnome-keyring.components = [ "pkcs11" "secrets" "ssh" ];
+    # gnome-keyring.components = [ "pkcs11" "secrets" "ssh" ];
   };
 }

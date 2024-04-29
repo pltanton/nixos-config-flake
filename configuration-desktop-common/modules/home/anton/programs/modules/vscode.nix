@@ -3,7 +3,7 @@
 {
   programs.vscode = {
     enable = true;
-    package = pkgs.master.vscodium;
+    package = pkgs.vscodium;
     extensions = with pkgs.vscode-extensions; [
       golang.go
       vscodevim.vim

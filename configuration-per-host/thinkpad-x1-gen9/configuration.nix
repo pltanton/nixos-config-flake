@@ -15,5 +15,5 @@
   sops.age.generateKey = true;
 
 
-  nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
+  nixpkgs.config.permittedInsecurePackages = [ ];
 }

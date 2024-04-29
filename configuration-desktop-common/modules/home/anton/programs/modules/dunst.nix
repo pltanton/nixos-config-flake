@@ -10,7 +10,6 @@
         origin = "top-center";
         alignment = "center";
         follow = "mouse";
-        # TODO Replace it with stylix or custom module
         frame_width = 0;
         separator_height = 0;
         sort = true;

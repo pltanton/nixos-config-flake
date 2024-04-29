@@ -1,7 +1,6 @@
 { pkgs, config, ... }: {
   programs.hyprland = {
     enable = true;
-    
   };
 
   # xdg.portal = {
@@ -9,13 +8,13 @@
   #   extraPortals = [ 
   #     pkgs.xdg-desktop-portal-gtk 
   #   ];
-  #   configPackages = [
-  #     config.programs.hyprland.portalPackage
-  #   ];
-  #   config = {
-  #     preferred = {
-  #       default = "gtk;hyprland";
-  #     };
-  #   };
+    # configPackages = [
+    #   config.programs.hyprland.portalPackage
+    # ];
+    # config = {
+    #   preferred = {
+    #     default = "gtk;hyprland";
+    #   };
+    # };
   # };
 }

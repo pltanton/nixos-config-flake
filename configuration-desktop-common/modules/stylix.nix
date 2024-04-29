@@ -4,6 +4,8 @@
     image = ./home/backgrounds/mountain.png;
     base16Scheme = "${inputs.base16-schemes}/catppuccin-macchiato.yaml";
 
+    targets.plymouth.enable = false;
+
     fonts = {
       serif = {
         package = pkgs.inter;

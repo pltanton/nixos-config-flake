@@ -7,7 +7,7 @@ self: super: rec {
   };
   screenshot = super.writeShellApplication {
     name = "screenshot";
-    runtimeInputs = with super.pkgs; [ satty grim slurp libnotify ];
+    runtimeInputs = with super.pkgs; [ unstable.satty grim slurp libnotify ];
     text = builtins.readFile ./screenshot.sh;
   };
 }

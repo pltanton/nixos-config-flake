@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   security.pam.services = {
+    hyprlock = { };
     swaylock = { };
     swaylock-effects = { };
     hyprlock = {
@@ -16,7 +17,7 @@
   environment.systemPackages = with pkgs; [
     libgnome-keyring
     gnome.gnome-keyring
-    goldwarden
+    # goldwarden
   ];
 
   security.wrappers."mount.nfs" = {

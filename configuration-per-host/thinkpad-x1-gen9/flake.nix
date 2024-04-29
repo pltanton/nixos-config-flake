@@ -190,7 +190,7 @@
 
                       nix-doom-emacs.hmModule
                       ddcsync.homeManagerModules.default
-                      autobrowser.homeModules.default
+                      # autobrowser.homeModules.default
                       anyrun.homeManagerModules.default
                       sops-nix.homeManagerModules.sops
                     ];
@@ -227,7 +227,7 @@
                   #nix-alien.overlay
                   hyprland.overlays.default
                   ddcsync.overlays.default
-                  autobrowser.overlays.default
+                  # autobrowser.overlays.default
                   # jetbrains-flake.overlays.default
                   # dbeaver.overlays.default
 

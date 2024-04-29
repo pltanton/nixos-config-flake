@@ -28,7 +28,7 @@
 
   environment.systemPackages = [
     pkgs.kora-icon-theme
-    (pkgs.master.catppuccin-gtk.override {
+    (pkgs.catppuccin-gtk.override {
       accents = [ "lavender" ];
       size = "compact";
       tweaks = [ "rimless" ];

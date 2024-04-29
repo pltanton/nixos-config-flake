@@ -39,12 +39,8 @@
     };
   };
 
-  # xdg.portal = {
+  # services.libinput = {
   #   enable = true;
-  #   extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  #   touchpad = { tapping = true; };
   # };
-  # xdg.portal.enable = true;
-
-  # programs.dconf.enable =
-  #   lib.mkIf (!config.services.xserver.desktopManager.gnome.enable) true;
 }

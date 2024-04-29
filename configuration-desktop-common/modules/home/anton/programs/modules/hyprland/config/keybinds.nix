@@ -7,7 +7,7 @@
         "SUPERSHIFT,e,exec,rofi -show emoji -modi emoji"
         "SUPER,Return,exec,rofi -show drun -show-icons"
 
-        "SUPER,f12,exec,lock"
+        "SUPER,f12,exec,hyprlock"
         ",Print,exec,screenshot"
         "SHIFT,Print,exec,screenshot -e"
         "SUPERSHIFT,Return,exec,alacritty"
@@ -102,7 +102,7 @@
       bindm = [ "SUPER,mouse:272,movewindow" "SUPER,mouse:273,resizewindow" ];
 
       bindl = [
-        "SUPER,BackSpace,exec,pkill -SIGUSR1 lock && WAYLAND_DISPLAY=wayland-1 lock"
+        "SUPER,BackSpace,exec,pkill -SIGUSR1 hyprlock && WAYLAND_DISPLAY=wayland-1 hyprlock"
       ];
 
     };

@@ -2,6 +2,6 @@
   services.gpg-agent = {
     enable = true;
     defaultCacheTtl = 18000;
-    pinentryPackage = pkgs.pinentry-gnome3;
+    # pinentryPackage = pkgs.pinentry-gnome3;
   };
 }

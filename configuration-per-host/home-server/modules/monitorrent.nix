@@ -6,7 +6,7 @@ let
 in {
   virtualisation.oci-containers.containers = {
     monitorrent = {
-      image = "werwolfby/alpine-monitorrent";
+      image = "werwolfby/monitorrent";
       ports = [ "6687:6687" ];
       extraOptions = [ "--network=host" ];
       volumes = [

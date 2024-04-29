@@ -38,6 +38,6 @@ in {
   nix.settings.max-jobs = lib.mkDefault 8;
 
   hardware.enableRedistributableFirmware = true;
-  hardware.opengl.driSupport32Bit = true;
+  # hardware.opengl.driSupport32Bit = true;
   hardware.opengl.enable = true;
 }
