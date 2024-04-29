@@ -32,7 +32,11 @@
       url = "github:tinted-theming/base16-schemes";
       flake = false;
     };
+    # stylix.url = "github:danth/stylix";
+    # stylix.url = "github:danth/stylix/release-23.11";
     stylix.url = "github:danth/stylix";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
+
     base16-rofi = {
       url = "github:tinted-theming/base16-rofi";
       flake = false;
@@ -186,7 +190,7 @@
 
                       nix-doom-emacs.hmModule
                       ddcsync.homeManagerModules.default
-                      autobrowser.homeManagerModules.default
+                      autobrowser.homeModules.default
                       anyrun.homeManagerModules.default
                       sops-nix.homeManagerModules.sops
                     ];
@@ -203,7 +207,6 @@
                     "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
                     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
                     "emacsng.cachix.org-1:i7wOr4YpdRpWWtShI8bT6V7lOTnPeI7Ho6HaZegFWMI="
-                    "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
                     "liff.cachix.org-1:Uid73LCbEljychK4hx5pn3BkTehHPDBt+S717gFBp90="
                     "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
                     "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
@@ -220,13 +223,13 @@
 
                 nixpkgs.overlays = [
                   nur.overlay
-                  emacs-overlay.overlay
+                  # emacs-overlay.overlay
                   #nix-alien.overlay
                   hyprland.overlays.default
                   ddcsync.overlays.default
                   autobrowser.overlays.default
-                  jetbrains-flake.overlays.default
-                  dbeaver.overlays.default
+                  # jetbrains-flake.overlays.default
+                  # dbeaver.overlays.default
 
                   (final: prev: {
                     unstable = import inputs.nixpkgs-unstable {
