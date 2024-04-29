@@ -3,10 +3,9 @@
 
   inputs = {
     # Nixos related inputs
-    # nixpkgs-local.url = "path:/home/anton/Workdir/nixpkgs";
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -17,6 +16,7 @@
     home-manager = {
       # url = "path:/home/anton/Workdir/home-manager";
       url = "github:nix-community/home-manager/master";
+      # url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # home-manager.url = "github:nix-community/home-manager/release-22.05";
@@ -43,8 +43,7 @@
     ddcsync.inputs.nixpkgs.follows = "nixpkgs";
 
     autobrowser.url = "path:/home/anton/Workdir/autobrowser";
-    # ddcsync.url = "github:pltanton/ddcsync";
-    autobrowser.inputs.nixpkgs.follows = "nixpkgs";
+    autobrowser.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     hyprland = {
       url = "github:hyprwm/Hyprland";
