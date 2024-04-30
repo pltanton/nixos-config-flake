@@ -8,10 +8,10 @@ in {
       template = builtins.readFile ./waybar.css.mustache;
       extension = "css";
     });
-    package = pkgs.waybar;
+    package = pkgs.unstable.waybar;
     enable = config.wayland.windowManager.sway.enable
       || config.wayland.windowManager.hyprland.enable;
-    # enable = true;
+    # enable = true;https://my.telegram.org/auth?to=delete
     systemd.enable = true;
     settings = [{
       layer = "top";
