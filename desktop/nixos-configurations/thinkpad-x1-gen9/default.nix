@@ -12,5 +12,7 @@
 
     ./hardware-configuration.nix
     ./hardware-configuration-custom.nix
-  ] ++ inputs.self.lib.modulesDir ./modules;
+
+    (import ./modules)
+  ];
 }

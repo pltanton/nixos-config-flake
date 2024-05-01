@@ -17,7 +17,4 @@
 
     permittedInsecurePackages = [ ];
   };
-
-
-  system.stateVersion = stateVersion;
 }

@@ -135,6 +135,7 @@ in
       jetbrains-toolbox
 
       nil # nix language server
+      nixd
 
       dbeaver
 

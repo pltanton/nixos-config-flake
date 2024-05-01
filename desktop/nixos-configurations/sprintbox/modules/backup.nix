@@ -22,7 +22,7 @@ in {
 
   services.syncthing = {
     enable = true;
-    folders = {
+    settings.folders = {
       "${backupDir}" = let folderId = "db-dump";
       in {
         id = folderId;

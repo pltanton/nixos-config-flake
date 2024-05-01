@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   services = {
     openssh = {
-      permitRootLogin = "yes";
+      settings.permitRootLogin = "yes";
       enable = true;
       knownHosts = {
         soloKeyPersonalLaptop = {

@@ -1,6 +1,9 @@
-{ inputs, ... }:
+{ inputs, stateVersion, ... }:
+
 {
   imports = with inputs;[
-    self.nixosModules.sops
+    sops-nix.nixosModules.sops
   ] ++ inputs.self.lib.modulesDir ./.;
+
+  system.stateVersion = stateVersion;
 }

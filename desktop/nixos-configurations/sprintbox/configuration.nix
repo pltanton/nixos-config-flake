@@ -9,7 +9,6 @@
     (builtins.attrNames (builtins.readDir ./modules));
 
   boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/vda"; # or "nodev" for efi only
 
   environment.systemPackages = [ pkgs.vim pkgs.pgloader ];
@@ -25,8 +24,6 @@
   networking.interfaces.ens3.useDHCP = false;
 
   time.timeZone = "Europe/Moscow";
-
-  system.stateVersion = "21.11"; # Did you read the comment?
 
   security.acme.defaults.email = "plotnikovanton@gmail.com";
   security.acme.acceptTerms = true;

@@ -3,7 +3,14 @@ keys:
   - &server_hz1 age1t6u47xmualvn7lndtsn98y8xlpxuyndfsz6jrlcm9cpn35us5s3qhfwtlt
   - &server_home age1tprf2san093h29kcg0m24w9mj0004hleq272cav9fpk2vpjqugxs9gpghz
   - &server_gen9 age1fvg2us7x9egswfkpw8h4yrq85jmda9v2grullgfh0uva8eauk3esqune00
+  - &server_sprintbox age1aymjp4hned88yn7h9qn3mmxamd4grwc4z4zl4nx85csw7m986anqn39hq4
 creation_rules:
+  - path_regex: desktop/nixos-configurations/sprintbox/secrets.yaml$
+    key_groups:
+    - age:
+      - *admin
+      - *server_sprintbox
+
   - path_regex: configuration-per-host/hz1/secrets.yaml$
     key_groups:
     - age:

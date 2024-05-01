@@ -11,22 +11,22 @@ deploy-home-server: build_host = root@192.168.0.100
 deploy-hz1: target = root@hz1.kaliwe.ru
 deploy-hz1: build_host = root@hz1.kaliwe.ru
 
-deploy-sprintbox: target = root@sprintbox.kaliwe.ru
-# deploy-sprintbox: build_host =  root@sprintbox.kaliwe.ru
-deploy-sprintbox: build_host = ""
+rebuild-switch-sprintbox: target = root@sprintbox.kaliwe.ru
+rebuild-switch-sprintbox: build_host = root@sprintbox.kaliwe.ru
 
 # deploy-thinkpad-x1: prepare-desktop
 deploy-thinkpad-x1: target = ""
 deploy-thinkpad-x1: build_host = ""
-
-deploy-thinkpad-x1-gen9: target = ""
-deploy-thinkpad-x1-gen9: build_host = ""
 
 switch-desktop-x1-gen9:
 	sudo nixos-rebuild --flake ./desktop#thinkpad-x1-gen9 --fast switch
 
 switch-home-x1-gen9-anton:
 	home-manager --flake ./desktop#thinkpad-x1-gen9-anton switch
+
+rebuild-switch-%:
+	@echo Run nixos-rebuild for machine $* on host: ${target} with build_host: ${build_host}
+	nixos-rebuild --flake ./desktop#$* --build-host ${build_host} --target-host ${target} --use-remote-sudo --fast switch
 
 deploy-%:
 	@echo Run nixos-rebuild for machine $* on host: ${target} with build_host: ${build_host}

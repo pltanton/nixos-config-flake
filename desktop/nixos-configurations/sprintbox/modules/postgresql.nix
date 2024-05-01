@@ -10,7 +10,7 @@
       ensureDatabases = [ "vaultwarden" ];
       ensureUsers = [{
         name = "vaultwarden";
-        ensurePermissions = { "DATABASE vaultwarden" = "ALL PRIVILEGES"; };
+        # ensurePermissions = { "DATABASE vaultwarden" = "ALL PRIVILEGES"; };
       }];
 
       # enableTCPIP = true;

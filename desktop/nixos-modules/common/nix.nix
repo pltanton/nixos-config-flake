@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: {
+{ inputs, ... }: {
   nix = {
     extraOptions = ''
       experimental-features = nix-command flakes
@@ -20,6 +20,6 @@
         "https://nix-community.cachix.org"
         "https://cache.nixos.org"
       ];
-    }
-      };
-  }
+    };
+  };
+}
