@@ -1,5 +1,15 @@
-{ inputs, ... }:
+{ inputs, lib, config, ... }:
 {
-  system = "x86_64-linux";
-  home.stateVersion = "24.05";
+  imports = with inputs;[
+    nur.hmModules.nur
+    sops-nix.homeManagerModules.sops
+    stylix.homeManagerModules.stylix
+  ];
+
+  home = {
+    homeDirectory = lib.mkDefault "/home/${config.home.username}";
+    username = "anton";
+  };
+
+  programs.home-manager.enable = true;
 }

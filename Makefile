@@ -22,6 +22,12 @@ deploy-thinkpad-x1: build_host = ""
 deploy-thinkpad-x1-gen9: target = ""
 deploy-thinkpad-x1-gen9: build_host = ""
 
+switch-desktop-x1-gen9:
+	sudo nixos-rebuild --flake ./desktop#thinkpad-x1-gen9 --fast switch
+
+switch-home-x1-gen9-anton:
+	home-manager --flake ./desktop#thinkpad-x1-gen9-anton switch
+
 deploy-%:
 	@echo Run nixos-rebuild for machine $* on host: ${target} with build_host: ${build_host}
 	nixos-rebuild --flake ./configuration-per-host/$*#$* --build-host ${build_host} --target-host ${target} --use-remote-sudo switch
@@ -29,8 +35,9 @@ deploy-%:
 deploy-offline-thinkpad-x1:
 	sudo nixos-rebuild --flake ./configuration-per-host/thinkpad-x1#thinkpad-x1 --option substitute false --fast switch
 
-deploy-offline-thinkpad-x1-gen9:
+deploy-offline-thinkpad-x1-gen9-old:
 	sudo nixos-rebuild --flake ./configuration-per-host/thinkpad-x1-gen9#thinkpad-x1-gen9 --offline --fast switch
+
 
 update-%:
 	@echo Run nix flake update form machine $*

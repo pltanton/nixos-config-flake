@@ -131,6 +131,30 @@
     flakelight ./. {
       inherit inputs;
 
+      lib = {
+        modulesDir = with builtins;dir: (map
+          (name: dir + "/${name}")
+          (attrNames (removeAttrs (readDir dir) [ "default.nix" ]))
+        );
+      };
+
+      withOverlays = [
+        (final: prev: {
+          unstable = import inputs.nixpkgs-unstable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+          master = import inputs.nixpkgs-master {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+          stable = import inputs.nixpkgs-stable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+        })
+      ];
+
       nixDir = ./.;
       nixDirAliases = {
         nixosConfigurations = [ "nixos-configurations" ];

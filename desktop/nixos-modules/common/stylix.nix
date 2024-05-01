@@ -1,6 +1,7 @@
 { config, pkgs, inputs, lib, ... }: {
   stylix = {
     # base16Scheme = "${inputs.base16-schemes}/nord.yaml";
+    image = ../../test.png;
     base16Scheme = "${inputs.base16-schemes}/catppuccin-macchiato.yaml";
 
     targets.plymouth.enable = false;
