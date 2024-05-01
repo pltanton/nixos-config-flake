@@ -10,6 +10,7 @@ let
         (builtins.attrNames (builtins.readDir localDir));
     };
 in {
+  home-manager.backupFileExtension = "bak";
   home-manager.users.anton = { pkgs, inputs, ... }@value: {
     imports = (builtins.map (name: ./anton + "/${name}")
       (builtins.attrNames (builtins.readDir ./anton)));

@@ -3,11 +3,10 @@
 
   inputs = {
     # Nixos related inputs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.follows = "nixpkgs-unstable";
 
     nix.url = "github:nixos/nix";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -52,7 +51,7 @@
     hyprland = {
       url = "github:hyprwm/Hyprland";
       # url = "github:hyprwm/Hyprland/v0.36.0";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     rose-pine-hyprcursor = {
@@ -190,7 +189,7 @@
 
                       nix-doom-emacs.hmModule
                       ddcsync.homeManagerModules.default
-                      # autobrowser.homeModules.default
+                      autobrowser.homeModules.default
                       anyrun.homeManagerModules.default
                       sops-nix.homeManagerModules.sops
                     ];
@@ -212,24 +211,19 @@
                     "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
                   ];
                   substituters = [
-                    "https://nixpkgs-wayland.cachix.org"
                     "https://nix-community.cachix.org"
                     "https://emacsng.cachix.org"
                     "https://cache.nixos.org"
                     "https://hyprland.cachix.org"
-                    "https://anyrun.cachix.org"
                   ];
                 };
 
                 nixpkgs.overlays = [
                   nur.overlay
-                  # emacs-overlay.overlay
-                  #nix-alien.overlay
                   # hyprland.overlays.default
                   ddcsync.overlays.default
-                  # autobrowser.overlays.default
-                  # jetbrains-flake.overlays.default
-                  # dbeaver.overlays.default
+                  autobrowser.overlays.default
+                  dbeaver.overlays.default
 
                   (final: prev: {
                     unstable = import inputs.nixpkgs-unstable {

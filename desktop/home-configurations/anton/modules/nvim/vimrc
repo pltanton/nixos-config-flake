@@ -1,0 +1,187 @@
+syntax on
+set shell=/bin/sh
+set encoding=utf-8
+set spelllang=en_us,ru_ru
+set showcmd
+set mouse=a
+set incsearch
+set nohlsearch
+set ignorecase
+set smartcase
+set wrap
+set autoread
+set ruler
+set hidden
+set colorcolumn=80
+set modeline
+set modelines=5
+set number relativenumber
+set splitbelow
+set splitright
+
+set termguicolors
+
+let mapleader="\<Space>"
+let maplocalleader=","
+
+" Indents
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
+" History
+set history=64
+set undolevels=128
+set undofile
+set undodir=~/.config/nvim/undodir
+set undolevels=1000
+set undoreload=10000
+
+" Windows
+nmap <leader>s<left>   :leftabove  vnew<cr>
+nmap <leader>s<right>  :rightbelow vnew<cr>
+nmap <leader>s<up>     :leftabove  new<cr>
+nmap <leader>s<down>   :rightbelow new<cr>
+
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+
+
+" Buffers
+nnoremap <leader>x      :bp <bar> bd #<cr>
+nnoremap <leader>n      :bn<cr>
+nnoremap <leader>p      :bp<cr>
+
+" Improved navigation on wrapped lines
+nnoremap j gj
+nnoremap k gk
+
+"==============================================================================
+"=== SPECIAL VIM MAGIC
+"==============================================================================
+
+" Some utility functions
+function! Mapped(fn, l)
+    let new_list = deepcopy(a:l)
+    call map(new_list, string(a:fn) . '(v:val)')
+    return new_list
+endfunction
+
+function! AsExtRegex(str)
+	return '\.' . a:str . '$'
+endfunction
+
+" Switch to US layout on normal mode
+let g:layout='dvorak'
+function! SetUsLayout()
+    let g:layout=system('xkblayout-state print %v')
+    silent ! xkblayout-state set 0
+endfunction
+
+function! RestoreLayout()
+    if g:layout != 'dvorak'
+        silent ! xkblayout-state set 1
+    endif
+endfunction
+
+" autocmd InsertLeave * call SetUsLayout()
+" autocmd InsertEnter * call RestoreLayout()
+
+" Save files which require root permission
+cmap w!! %!sudo tee > /dev/null %
+
+inoremap jj <Esc> " Esc is so far away without this mapping...
+
+" Disable arrows
+map <Up> <NOP>
+map <Down> <NOP>
+map <Left> <NOP>
+map <Right> <NOP>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
+" Move visual blocks
+vnoremap < <gv
+vnoremap > >gv
+
+colorscheme OceanicNext
+
+
+" Deoplete
+"set completeopt+=noselect
+let g:deoplete#enable_at_startup = 1
+autocmd CompleteDone * silent! pclose!
+autocmd InsertLeave * silent! pclose!
+
+" Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'oceanicnext'
+
+" NERD Tree
+map <F10> :NERDTreeToggle<CR>
+let NERDTreeIgnore = Mapped(function("AsExtRegex"), [
+    \'aux', 'bcf', 'fdb_latexmk', 'fls', 'run\.xml', 'synctex\.gz', 'toc',
+    \'bbl', 'blg'
+\])
+
+" GHC Mod
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+" Tabulation for filetypes
+autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
+
+" LasguageClient
+let g:LanguageClient_serverCommands = {
+       \ 'go': ['gopls'],
+       \ 'python': ['pyls'],
+       \ 'tex': ['texlab']
+       \ }
+
+nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
+nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
+nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+" Echodoc
+set cmdheight=2
+let g:echodoc#enable_at_startup = 1
+
+" Always draw the signcolumn.
+set signcolumn=yes
+
+" Run gofmt and goimports on save
+autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
+
+
+" Vimtex
+let g:tex_flavor = 'latex'
+let g:vimtex_enable = 1
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_compiler_method = 'latexmk'
+
+" Float preview
+let g:float_preview#docked = 1
+
+" Vimwiki
+let g:vimwiki_list = [{'path': '~/.wiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+
+
