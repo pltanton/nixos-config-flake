@@ -18,7 +18,7 @@
 
     shellAliases = {
       hm = "home-manager --flake ~/Workdir/nixos-config-flake/desktop#$hostname-$USER";
-      nr = "nixos-rebuild --flake ~/Workdir/nixos-config-flake/dekstop#$hostname";
+      nr = "nixos-rebuild --flake ~/Workdir/nixos-config-flake/desktop#$hostname";
     };
 
     functions = {

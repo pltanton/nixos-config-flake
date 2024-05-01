@@ -134,6 +134,8 @@ in
       nodejs
       jetbrains-toolbox
 
+      nil # nix language server
+
       dbeaver
 
       gcc

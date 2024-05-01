@@ -8,7 +8,7 @@
   };
 
   modules = with inputs;[
-    self.nixosModules.common
+    self.nixosModules.desktop
 
     ./hardware-configuration.nix
     ./hardware-configuration-custom.nix
