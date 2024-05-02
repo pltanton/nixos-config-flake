@@ -9,7 +9,6 @@
     hypridle.homeManagerModules.default
     hyprlock.homeManagerModules.default
 
-    nix-doom-emacs.hmModule
     anyrun.homeManagerModules.default
 
     ddcsync.homeManagerModules.default

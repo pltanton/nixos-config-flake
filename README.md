@@ -4,8 +4,18 @@ My personal cross-machine nixos system configurations. The purpose of repository
 
 ## How it works?
 
-TBD;
+Actual setup utilizes flakelight to setup infrastructure.
+
+Target system configurations located in `nixos-configurations`. 
+Common logic and some extensions located in `nixos-modules`.
+
+Home environment managed by `home-manager`. Common home environment definition located in `home-modules` in `home-configurations` 
+you can find final targets overrides for each desktop system. 
+
+Secrets distributed with sops-nix by `nixos-modules/sops` module.
 
 ## How to use?
 
-TBD;
+System can be enabled by `nixos-rebuild .#target-name switch --use-remote-sudo`.
+
+Home configuration can be switched by `home-manager --flake .#target-name-username switch`.
