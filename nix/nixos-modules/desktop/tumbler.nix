@@ -1,1 +1,1 @@
-{ pkgs, ... }: { services.tumbler.enable = true; }
+{pkgs, ...}: {services.tumbler.enable = true;}

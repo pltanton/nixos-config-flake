@@ -1,14 +1,16 @@
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   consts = import ../constants.nix;
   secrets = import ../secrets.nix;
 in {
   virtualisation.oci-containers.containers = {
     monitorrent = {
       image = "werwolfby/monitorrent";
-      ports = [ "6687:6687" ];
-      extraOptions = [ "--network=host" ];
+      ports = ["6687:6687"];
+      extraOptions = ["--network=host"];
       volumes = [
         "${consts.mediaAppHomes}/monitorrent-home/monitorrent.db:/var/www/monitorrent/monitorrent.db"
       ];

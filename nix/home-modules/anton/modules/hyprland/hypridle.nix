@@ -1,7 +1,13 @@
-{ config, lib, pkgs, inputs, ... }:
-let hyprlandPkg = config.wayland.windowManager.hyprland.package;
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: let
+  hyprlandPkg = config.wayland.windowManager.hyprland.package;
 in {
-  systemd.user.services.swayidle.Service.Environment = lib.mkForce [ ];
+  systemd.user.services.swayidle.Service.Environment = lib.mkForce [];
 
   services.hypridle = {
     enable = true;

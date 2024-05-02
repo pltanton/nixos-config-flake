@@ -1,9 +1,11 @@
-{ inputs, lib, ... }:
-
 {
+  inputs,
+  lib,
+  ...
+}: {
   system = "x86_64-linux";
 
-  modules = with inputs;[
+  modules = with inputs; [
     self.homeModules.anton
 
     {

@@ -1,8 +1,13 @@
-{ pkgs, inputs, config, ... }: {
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}: {
   programs.go = {
     package = pkgs.go;
     enable = true;
-    goPrivate = [ "gitlab.walletteam.org/" "gitlab.fix.ru/neocrypto" ];
+    goPrivate = ["gitlab.walletteam.org/" "gitlab.fix.ru/neocrypto"];
   };
 
   home.packages = with pkgs;

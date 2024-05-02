@@ -1,14 +1,16 @@
-{ pkgs, ... }:
-let printerIp = "192.168.50.31";
+{pkgs, ...}: let
+  printerIp = "192.168.50.31";
 in {
   # imports = [ inputs.nixos-hardware.nixosModules.common-pc-laptop-acpi_call ];
 
   services.printing.enable = true;
-  hardware.printers.ensurePrinters = [{
-    name = "DCP-T710W";
-    model = "everywhere";
-    deviceUri = "ipp://${printerIp}/";
-  }];
+  hardware.printers.ensurePrinters = [
+    {
+      name = "DCP-T710W";
+      model = "everywhere";
+      deviceUri = "ipp://${printerIp}/";
+    }
+  ];
 
   hardware.sane = {
     enable = true;
@@ -22,5 +24,4 @@ in {
       };
     };
   };
-
 }

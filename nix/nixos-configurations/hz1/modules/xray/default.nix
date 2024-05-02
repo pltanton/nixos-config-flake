@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   services.xray = {
     enable = true;
     settings = {
@@ -21,7 +20,7 @@
             decryption = "none";
           };
           streamSettings = {
-            security =  "none";
+            security = "none";
             network = "h2";
             httpSettings = {
               path = "/posts";
@@ -36,12 +35,12 @@
         {
           tag = "direct";
           protocol = "freedom";
-          settings = { };
+          settings = {};
         }
         {
           tag = "blocked";
           protocol = "blackhole";
-          settings = { };
+          settings = {};
         }
       ];
       routing = {

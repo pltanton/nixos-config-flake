@@ -1,4 +1,8 @@
-{ inputs, pkgs, ... }: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   nix = {
     extraOptions = ''
       experimental-features = nix-command flakes

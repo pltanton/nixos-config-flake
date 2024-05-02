@@ -1,4 +1,9 @@
-{ pkgs, config, sops, ... }: {
+{
+  pkgs,
+  config,
+  sops,
+  ...
+}: {
   sops.secrets."anki/anton" = {};
   sops.secrets."anki/julsa" = {};
   services.anki-sync-server = {

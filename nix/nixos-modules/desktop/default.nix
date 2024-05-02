@@ -1,13 +1,25 @@
-{ inputs, stateVersion, ... }:
-
 {
-  imports = with inputs;[
-    self.nixosModules.common
+  inputs,
+  stateVersion,
+  ...
+}: {
+  imports = with inputs;
+    [
+      self.nixosModules.common
+      self.nixosModules.sops
 
-    home-manager.nixosModules.home-manager
-    hyprland.nixosModules.default
-    stylix.nixosModules.stylix
-  ] ++ self.lib.modulesDir ./.;
+      home-manager.nixosModules.home-manager
+      hyprland.nixosModules.default
+      stylix.nixosModules.stylix
+    ]
+    ++ self.lib.modulesDir ./.;
+
+  sops = {
+    scope = "desktop";
+    age.keyFile = "/home/anton/.config/sops/age/keys.txt";
+    age.sshKeyPaths = ["/home/anton/.ssh/id_ed25519"];
+    age.generateKey = true;
+  };
 
   time.timeZone = "Asia/Nicosia";
 
@@ -15,6 +27,6 @@
     allowBroken = false;
     allowUnfree = true;
 
-    permittedInsecurePackages = [ ];
+    permittedInsecurePackages = [];
   };
 }

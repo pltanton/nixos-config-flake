@@ -1,6 +1,9 @@
-{ config, pkgs, lib, ... }:
-
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   consts = import ../constants.nix;
   nextcloudHome = "${consts.archiveMountPoint}/nextcloud-home";
   nextcloudPackage = pkgs.nextcloud28;
@@ -15,8 +18,8 @@ let
 in {
   systemd = {
     timers.simple-timer = {
-      wantedBy = [ "timers.target" ];
-      partOf = [ "nextcloud-facerecognition.service" ];
+      wantedBy = ["timers.target"];
+      partOf = ["nextcloud-facerecognition.service"];
       timerConfig.OnCalendar = "hourly";
     };
     services.nextcloud-facerecognition = {
@@ -31,7 +34,7 @@ in {
     nextcloud = {
       enable = true;
 
-      phpExtraExtensions = all: with all; [ pdlib bz2 ];
+      phpExtraExtensions = all: with all; [pdlib bz2];
 
       caching = {
         apcu = true;
@@ -57,24 +60,23 @@ in {
         "default_language" = "en";
       };
     };
-
   };
 
-  systemd.services.nextcloud-cron.path = [ pkgs.perl ];
+  systemd.services.nextcloud-cron.path = [pkgs.perl];
 
-  users.users.nextcloud.extraGroups = [ "lp" "privatestore" ];
+  users.users.nextcloud.extraGroups = ["lp" "privatestore"];
 
-  environment.systemPackages = with pkgs; [ dlib netpbm nodejs ];
+  environment.systemPackages = with pkgs; [dlib netpbm nodejs];
 
   fileSystems = {
     "${photoDst}" = {
       device = photoSrc;
-      options = [ "bind" ];
+      options = ["bind"];
     };
 
     "${photoRawDst}" = {
       device = photoRawSrc;
-      options = [ "bind" ];
+      options = ["bind"];
     };
   };
 
@@ -83,7 +85,7 @@ in {
     "listen.group" = config.services.caddy.group;
   };
 
-  users.groups.nextcloud.members = [ "nextcloud" config.services.caddy.user ];
+  users.groups.nextcloud.members = ["nextcloud" config.services.caddy.user];
 
   services.caddy.virtualHosts."nextcloud.kaliwe.ru".extraConfig = ''
     root * ${config.services.nextcloud.package}

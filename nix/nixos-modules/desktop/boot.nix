@@ -1,16 +1,16 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   boot = {
     loader = {
       systemd-boot = {
         enable = true;
         configurationLimit = 10;
       };
-      efi = { canTouchEfiVariables = true; };
+      efi = {canTouchEfiVariables = true;};
     };
 
     initrd.systemd.enable = true;
 
-    kernelParams = [ "quiet" ];
+    kernelParams = ["quiet"];
 
     plymouth.enable = true;
   };

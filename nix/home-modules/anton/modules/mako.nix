@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }: {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   services.mako = with config.lib.stylix.colors; {
     enable = true;
     borderColor = lib.mkForce "#${base01-hex}";

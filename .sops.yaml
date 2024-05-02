@@ -5,31 +5,25 @@ keys:
   - &server_gen9 age1fvg2us7x9egswfkpw8h4yrq85jmda9v2grullgfh0uva8eauk3esqune00
   - &server_sprintbox age1aymjp4hned88yn7h9qn3mmxamd4grwc4z4zl4nx85csw7m986anqn39hq4
 creation_rules:
-  - path_regex: nix/nixos-configurations/sprintbox/secrets.yaml$
+  - path_regex: nix/nixos-modules/sops/sprintbox.yaml$
     key_groups:
     - age:
       - *admin
       - *server_sprintbox
 
-  - path_regex: configuration-per-host/hz1/secrets.yaml$
+  - path_regex: nix/nixos-modules/sops/hz1.yaml$
     key_groups:
     - age:
       - *admin
       - *server_hz1
 
-  - path_regex: configuration-per-host/home-server/secrets.yaml$
+  - path_regex: nix/nixos-modules/sops/home-server.yaml$
     key_groups:
     - age:
       - *admin
       - *server_home
 
-  - path_regex: nix/home-modules/anton/secrets/secrets.yaml$
-    key_groups:
-    - age:
-      - *admin
-      - *server_gen9
-
-  - path_regex: nix/nixos-modules/desktop/sops/secrets/secrets.yaml$
+  - path_regex: nix/nixos-modules/sops/{anton,desktop}.yaml$
     key_groups:
     - age:
       - *admin

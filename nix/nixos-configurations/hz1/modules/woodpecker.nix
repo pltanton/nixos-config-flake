@@ -1,6 +1,9 @@
-{ pkgs, config, lib, ... }:
-
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   services.woodpecker-server = {
     enable = true;
     package = pkgs.unstable.woodpecker-server;
@@ -10,25 +13,21 @@
       WOODPECKER_DATABASE_DRIVER = "postgres";
       WOODPECKER_SERVER_ADDR = ":3030";
 
-      WOODPECKER_DATABASE_DATASOURCE =
-        "postgres://woodpecker-server@/woodpecker_server?host=/run/postgresql";
+      WOODPECKER_DATABASE_DATASOURCE = "postgres://woodpecker-server@/woodpecker_server?host=/run/postgresql";
 
       WOODPECKER_OPEN = "true";
 
       WOODPECKER_GITEA = "true";
       WOODPECKER_GITEA_URL = "https://gitea.kaliwe.ru";
       WOODPECKER_GITEA_SKIP_VERIFY = "false";
-      WOODPECKER_GITEA_CLIENT_FILE =
-        "/var/lib/woodpecker-server/gitea-client-id";
-      WOODPECKER_GITEA_SECRET_FILE =
-        "/var/lib/woodpecker-server/gitea-client-secret";
-      WOODPECKER_AGENT_SECRET =
-        "d03db2f4cc46104075afc8261633e9dee26df3b701009e49b4800f35df5a2e36";
+      WOODPECKER_GITEA_CLIENT_FILE = "/var/lib/woodpecker-server/gitea-client-id";
+      WOODPECKER_GITEA_SECRET_FILE = "/var/lib/woodpecker-server/gitea-client-secret";
+      WOODPECKER_AGENT_SECRET = "d03db2f4cc46104075afc8261633e9dee26df3b701009e49b4800f35df5a2e36";
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 9000 ];
-  networking.firewall.allowedUDPPorts = [ 9000 ];
+  networking.firewall.allowedTCPPorts = [9000];
+  networking.firewall.allowedUDPPorts = [9000];
 
   # services.postgresql = {
   #   ensureDatabases = [ "woodpecker_server" ];
@@ -49,10 +48,9 @@
         WOODPECKER_BACKEND = "docker";
         WOODPECKER_SERVER = "127.0.0.1:9000";
         WOODPECKER_HOSTNAME = "ci.kaliwe.ru";
-        WOODPECKER_AGENT_SECRET =
-          "d03db2f4cc46104075afc8261633e9dee26df3b701009e49b4800f35df5a2e36";
+        WOODPECKER_AGENT_SECRET = "d03db2f4cc46104075afc8261633e9dee26df3b701009e49b4800f35df5a2e36";
       };
-      extraGroups = [ "docker" ];
+      extraGroups = ["docker"];
     };
   };
 

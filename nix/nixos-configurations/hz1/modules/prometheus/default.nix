@@ -1,7 +1,9 @@
-{ config, pkgs, ... }:
-
 {
-  imports = [ ./blackbox.nix ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [./blackbox.nix];
 
   services = {
     prometheus = {
@@ -22,18 +24,18 @@
             url: 'http://ip_telegram_bot:8080'
       '';
 
-      exporters = { node.enable = true; };
+      exporters = {node.enable = true;};
 
       scrapeConfigs = [
         {
           job_name = "node";
           scrape_interval = "10s";
-          static_configs = [{ targets = [ "localhost:9100" "10.10.10.10:9100" ]; }];
+          static_configs = [{targets = ["localhost:9100" "10.10.10.10:9100"];}];
         }
         {
           job_name = "caddy";
           scrape_interval = "15s";
-          static_configs = [{ targets = [ "localhost:2019" ]; }];
+          static_configs = [{targets = ["localhost:2019"];}];
         }
       ];
     };

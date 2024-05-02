@@ -1,8 +1,11 @@
-{ config, pkgs, inputs, ... }:
-let
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}: let
   catppuccinGitea = builtins.fetchurl {
-    url =
-      "https://github.com/catppuccin/gitea/releases/download/v0.2.1/catppuccin-gitea.tar.gz";
+    url = "https://github.com/catppuccin/gitea/releases/download/v0.2.1/catppuccin-gitea.tar.gz";
     sha256 = "40db2ede0335f360f177c733402593569524f5794616a7a97fd92be7203f86a2";
   };
 in {
@@ -20,7 +23,7 @@ in {
           ROOT_URL = "https://gitea.kaliwe.ru";
           HTTP_PORT = 3003;
         };
-        webhook = { ALLOWED_HOST_LIST = "external,loopback"; };
+        webhook = {ALLOWED_HOST_LIST = "external,loopback";};
         # ui = {
         #   THEMES =
         #     "catppuccin-mocha-teal,catppuccin-latte-maroon,catppuccin-frappe-lavender,catppuccin-macchiato-flamingo";

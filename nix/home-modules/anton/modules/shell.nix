@@ -1,8 +1,13 @@
-{ pkgs, inputs, lib, ... }: {
+{
+  pkgs,
+  inputs,
+  lib,
+  ...
+}: {
   home = {
-    packages = with pkgs; [ fasd fzf grc ];
+    packages = with pkgs; [fasd fzf grc];
 
-    sessionPath = [ "/home/anton/go/bin" ];
+    sessionPath = ["/home/anton/go/bin"];
 
     sessionVariables = rec {
       KUBECONFIG = "/home/anton/.kube/config";
@@ -30,8 +35,7 @@
       sshell = "nix shell --impure s#$argv";
       ssearch = "nix search s $argv";
 
-      limcpu =
-        ''systemd-run -p CPUQuota="$argv[1]"% --scope --user -- $argv[2..-1]'';
+      limcpu = ''systemd-run -p CPUQuota="$argv[1]"% --scope --user -- $argv[2..-1]'';
     };
 
     plugins = with pkgs.fishPlugins; [
@@ -43,10 +47,10 @@
         name = "grc";
         src = inputs.fish-grc;
       }
-      (with fzf-fish; { inherit name src; })
-      (with done; { inherit name src; })
-      (with pisces; { inherit name src; })
-      (with pure; { inherit name src; })
+      (with fzf-fish; {inherit name src;})
+      (with done; {inherit name src;})
+      (with pisces; {inherit name src;})
+      (with pure; {inherit name src;})
     ];
 
     shellInit = ''

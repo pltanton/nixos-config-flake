@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   programs = {
     direnv = {
       enable = true;
@@ -19,20 +24,19 @@
 
     fish.functions = lib.mkIf config.programs.direnv.nix-direnv.enable {
       flakify = ''
-        if not test -e flake.nix 
+        if not test -e flake.nix
           nix flake new -t github:nix-community/nix-direnv .
-        else if not test -e .envrc 
+        else if not test -e .envrc
           echo "use flake" > .envrc
           direnv allow
         end
 
-        if set -q EDITOR 
+        if set -q EDITOR
           $EDITOR flake.nix
         else
           nvim flake.nix
         end
       '';
     };
-
   };
 }

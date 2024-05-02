@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   services = {
     openssh = {
       settings.PermitRootLogin = "yes";

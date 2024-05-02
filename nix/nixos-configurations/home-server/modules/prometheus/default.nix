@@ -1,5 +1,5 @@
-{ pkgs, ... }: {
-  imports = [ ./exporters ];
+{pkgs, ...}: {
+  imports = [./exporters];
 
   services = {
     prometheus = {
@@ -7,11 +7,10 @@
       exporters = {
         node = {
           enable = true;
-          enabledCollectors = [ "textfile" ];
+          enabledCollectors = ["textfile"];
           extraFlags = ["--collector.textfile.directory=/var/lib/node_exporter/textfile_collector"];
         };
       };
-
     };
   };
 }

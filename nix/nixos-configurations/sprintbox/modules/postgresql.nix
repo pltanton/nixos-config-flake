@@ -1,17 +1,21 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   services = {
     postgresql = {
       enable = true;
       dataDir = "/var/lib/postgresql/14";
       package = pkgs.postgresql_14;
 
-      ensureDatabases = [ "vaultwarden" ];
-      ensureUsers = [{
-        name = "vaultwarden";
-        # ensurePermissions = { "DATABASE vaultwarden" = "ALL PRIVILEGES"; };
-      }];
+      ensureDatabases = ["vaultwarden"];
+      ensureUsers = [
+        {
+          name = "vaultwarden";
+          # ensurePermissions = { "DATABASE vaultwarden" = "ALL PRIVILEGES"; };
+        }
+      ];
 
       # enableTCPIP = true;
 

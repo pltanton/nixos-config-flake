@@ -1,6 +1,10 @@
-{ inputs, lib, config, ... }:
 {
-  imports = with inputs;[
+  inputs,
+  lib,
+  config,
+  ...
+}: {
+  imports = with inputs; [
     nur.hmModules.nur
     sops-nix.homeManagerModules.sops
     stylix.homeManagerModules.stylix

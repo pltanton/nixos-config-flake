@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   services.home-assistant = {
     enable = true;
     extraComponents = [
@@ -9,17 +13,17 @@
     config = {
       # Includes dependencies for a basic setup
       # https://www.home-assistant.io/integrations/default_config/
-      default_config = { };
+      default_config = {};
 
       http = {
         # server_host = "::1";
-        trusted_proxies = [ "::1" ];
+        trusted_proxies = ["::1"];
         use_x_forwarded_for = true;
       };
 
       # recorder.db_url = "postgresql://@/hass";
     };
-    package = (pkgs.home-assistant.override {
+    package = pkgs.home-assistant.override {
       extraPackages = ps:
         with ps; [
           spotipy
@@ -29,7 +33,7 @@
           huawei-lte-api
           url-normalize
         ];
-    });
+    };
   };
 
   services.caddy = {

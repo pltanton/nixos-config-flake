@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   services.dunst = {
     enable = true;
     settings = with config.lib.stylix.colors; {

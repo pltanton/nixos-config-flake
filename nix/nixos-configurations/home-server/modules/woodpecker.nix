@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   services.woodpecker-agents.agents = {
     docker = {
       enable = true;
@@ -13,10 +16,9 @@
         WOODPECKER_SERVER = "hz1.kaliwe.ru:9000";
         WOODPECKER_HOSTNAME = "ci.kaliwe.ru";
         WOODPECKER_MAX_WORKFLOWS = "4";
-        WOODPECKER_AGENT_SECRET =
-          "KOKOJ2JICI6SPXZ5AQRNAX4SYGVZ7OZIQ5GUQSEB6H4JPGFTYK5Q====";
+        WOODPECKER_AGENT_SECRET = "KOKOJ2JICI6SPXZ5AQRNAX4SYGVZ7OZIQ5GUQSEB6H4JPGFTYK5Q====";
       };
-      extraGroups = [ "docker" ];
+      extraGroups = ["docker"];
     };
   };
 }

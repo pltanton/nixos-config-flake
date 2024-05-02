@@ -1,5 +1,4 @@
-{ inputs, ... }:
-{
+{inputs, ...}: {
   system = "x86_64-linux";
 
   specialArgs = {
@@ -7,7 +6,7 @@
     stateVersion = "22.05";
   };
 
-  modules = with inputs;[
+  modules = with inputs; [
     self.nixosModules.desktop
 
     ./hardware-configuration.nix

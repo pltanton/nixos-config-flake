@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   consts = import ../constants.nix;
   secrets = import ../secrets.nix;
 in {

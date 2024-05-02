@@ -1,4 +1,8 @@
-{ pkgs, inputs, ... }: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   programs.autobrowser = {
     package = inputs.autobrowser.packages.x86_64-linux.default;
     enable = true;

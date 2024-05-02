@@ -1,4 +1,10 @@
-{ pkgs, lib, config, inputs, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}: {
   # gtk.iconCache.eable = true;
   xdg.icons.enable = true;
 
@@ -36,6 +42,6 @@
 
   services.libinput = {
     enable = true;
-    touchpad = { tapping = true; };
+    touchpad = {tapping = true;};
   };
 }

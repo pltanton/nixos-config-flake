@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.starship = {
     enable = false;
     settings = {
@@ -7,24 +7,24 @@
       #   c = { symbol = " "; };
       #   conda = { symbol = " "; };
       #   dart = { symbol = " "; };
-      directory = { read_only = " "; };
-      docker_context = { symbol = " "; };
+      directory = {read_only = " ";};
+      docker_context = {symbol = " ";};
       #   elixir = { symbol = " "; };
       #   elm = { symbol = " "; };
-      git_branch = { symbol = " "; };
-      golang = { symbol = " "; };
+      git_branch = {symbol = " ";};
+      golang = {symbol = " ";};
       #   guix_shell = { symbol = " "; };
       #   haskell = { symbol = " "; };
       #   haxe = { symbol = "⌘ "; };
       #   hg_branch = { symbol = " "; };
-      java = { symbol = " "; };
+      java = {symbol = " ";};
       #   julia = { symbol = " "; };
       #   lua = { symbol = " "; };
       #   memory_usage = { symbol = " "; };
       #   meson = { symbol = "喝 "; };
       #   nim = { symbol = " "; };
-      nix_shell = { symbol = " "; };
-      nodejs = { symbol = " "; };
+      nix_shell = {symbol = " ";};
+      nodejs = {symbol = " ";};
       #   os.symbols = {
       #     Alpine = " ";
       #     Amazon = " ";
@@ -64,7 +64,7 @@
       #     Windows = " ";
       #   };
       #   package = { symbol = " "; };
-      python = { symbol = " "; };
+      python = {symbol = " ";};
       #   rlang = { symbol = "ﳒ "; };
       #   ruby = { symbol = " "; };
       #   rust = { symbol = " "; };

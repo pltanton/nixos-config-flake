@@ -13,8 +13,15 @@
     sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = { self, nixpkgs, nur, sops-nix, ... }@inputs: {
-    nixosConfigurations = let inherit (inputs.nixpkgs) lib;
+  outputs = {
+    self,
+    nixpkgs,
+    nur,
+    sops-nix,
+    ...
+  } @ inputs: {
+    nixosConfigurations = let
+      inherit (inputs.nixpkgs) lib;
     in {
       home-server = lib.nixosSystem {
         system = "x86_64-linux";
@@ -31,7 +38,7 @@
 
           sops-nix.nixosModules.sops
 
-          ({ pkgs, ... }: {
+          ({pkgs, ...}: {
             nix.settings = {
               # add binary caches
               trusted-public-keys = [

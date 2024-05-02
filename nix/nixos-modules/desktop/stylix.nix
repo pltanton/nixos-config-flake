@@ -1,4 +1,10 @@
-{ config, pkgs, inputs, lib, ... }: {
+{
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}: {
   stylix = {
     # base16Scheme = "${inputs.base16-schemes}/nord.yaml";
     image = ../../test.png;
@@ -29,5 +35,4 @@
       };
     };
   };
-
 }

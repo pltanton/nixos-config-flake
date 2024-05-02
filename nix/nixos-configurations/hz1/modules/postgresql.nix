@@ -1,12 +1,14 @@
-{ config, pkgs, ... }:
-
 {
-  environment.systemPackages = [ pkgs.pgloader ];
+  config,
+  pkgs,
+  ...
+}: {
+  environment.systemPackages = [pkgs.pgloader];
   services = {
     postgresql = {
       enable = true;
-      dataDir = "/var/lib/postgresql/11.1";
-      package = pkgs.stable.postgresql_11;
+      dataDir = "/var/lib/postgresql/16";
+      package = pkgs.postgresql_16;
       enableTCPIP = true;
       authentication = ''
         # "local" is for Unix domain socket connections only

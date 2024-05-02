@@ -1,4 +1,7 @@
-{ pkgs, config, ... }:
 {
-  # services.pcscd.enable = false; 
+  pkgs,
+  config,
+  ...
+}: {
+  # services.pcscd.enable = false;
 }

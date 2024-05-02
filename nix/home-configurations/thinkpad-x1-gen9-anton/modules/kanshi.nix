@@ -1,15 +1,23 @@
-{ pkgs, config, lib, home-manager, ... }: {
+{
+  pkgs,
+  config,
+  lib,
+  home-manager,
+  ...
+}: {
   services.kanshi = {
     enable = true;
     # package = pkgs.waylandPkgs.kanshi;
     profiles = {
       laptopOnly = {
-        outputs = [{
-          criteria = "eDP-1";
-          status = "enable";
-          scale = 2.0;
-          position = "0,0";
-        }];
+        outputs = [
+          {
+            criteria = "eDP-1";
+            status = "enable";
+            scale = 2.0;
+            position = "0,0";
+          }
+        ];
       };
       withDellDisplay = {
         outputs = [

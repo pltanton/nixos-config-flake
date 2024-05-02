@@ -1,6 +1,9 @@
-{ config, pkgs, secrets, ... }:
-
 {
+  config,
+  pkgs,
+  secrets,
+  ...
+}: {
   services = {
     vaultwarden = {
       enable = true;

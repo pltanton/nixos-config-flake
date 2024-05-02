@@ -1,6 +1,9 @@
-{ config, pkgs, lib, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   #imports = [ (nixpkgs + "/nixos/modules/profiles/qemu-guest.nix") ];
 
   boot = {
@@ -11,7 +14,7 @@
       hwclock -s
     '';
 
-    initrd.kernelModules = [ "virtio_balloon" "virtio_console" "virtio_rng" ];
+    initrd.kernelModules = ["virtio_balloon" "virtio_console" "virtio_rng"];
     initrd.availableKernelModules = [
       "virtio_net"
       "virtio_pci"
@@ -30,7 +33,6 @@
     loader.grub.enable = true;
     loader.grub.device = "/dev/sda";
     kernel.sysctl."net.ipv4.ip_forward" = 1;
-
   };
 
   fileSystems."/" = {

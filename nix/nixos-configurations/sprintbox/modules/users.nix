@@ -1,5 +1,9 @@
-{ pkgs, config, ... }: {
-  users.groups.deploy = { };
+{
+  pkgs,
+  config,
+  ...
+}: {
+  users.groups.deploy = {};
   users = {
     users = {
       anton = {
@@ -12,7 +16,7 @@
         isNormalUser = true;
         shell = pkgs.fish;
         home = "/home/anton";
-        extraGroups = [ "wheel" "docker" ];
+        extraGroups = ["wheel" "docker"];
       };
     };
   };

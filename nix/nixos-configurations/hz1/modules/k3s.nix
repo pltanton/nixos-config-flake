@@ -1,6 +1,9 @@
-{ pkgs, lib, config, secrets, ... }:
-
-let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   traefikConfig = builtins.toJSON {
     apiVersion = "helm.cattle.io/v1";
     kind = "HelmChartConfig";
@@ -29,7 +32,7 @@ let
   };
 in {
   # This is required so that pod can reach the API server (running on port 6443 by default)
-  networking.firewall.allowedTCPPorts = [ 6443 ];
+  networking.firewall.allowedTCPPorts = [6443];
   services.k3s = {
     enable = true;
     role = "server";
@@ -45,23 +48,8 @@ in {
     echo '${traefikConfig}' > "/var/lib/rancher/k3s/server/manifests/traefik-config.yaml"
   '';
 
-  environment.etc = {
-    "rancher/k3s/registries.yaml" = {
-      text = builtins.toJSON {
-        mirrors = {
-          "gitea.kaliwe.ru" = { endpoint = [ "https://gitea.kaliwe.ru" ]; };
-        };
-        configs = {
-          "gitea.kaliwe.ru" = {
-            auth = {
-              username = "pltanton";
-              password = secrets.gitea;
-            };
-          };
-        };
-      };
-      mode = "0440";
-    };
+  sops.secrets."rancher/registries" = {
+    path = "/etc/rancher/k3s/registries.yaml";
   };
 
   services.caddy.virtualHosts."savor-dev.kaliwe.ru".extraConfig = ''
@@ -79,5 +67,5 @@ in {
     }
   '';
 
-  environment.systemPackages = [ pkgs.k3s ];
+  environment.systemPackages = [pkgs.k3s];
 }

@@ -1,7 +1,11 @@
-{ pkgs, config, ... }: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   security.sudo.wheelNeedsPassword = false;
 
-  nix.settings.trusted-users = [ "root" "@wheel" ];
+  nix.settings.trusted-users = ["root" "@wheel"];
 
   programs.fish = {
     shellInit = ''
@@ -9,7 +13,7 @@
     '';
   };
 
-  users.groups.deploy = { };
+  users.groups.deploy = {};
   users = {
     users = {
       anton = {
@@ -46,7 +50,7 @@
         isNormalUser = true;
         shell = pkgs.bash;
         group = "deploy";
-        extraGroups = [ "wheel" ];
+        extraGroups = ["wheel"];
       };
     };
   };

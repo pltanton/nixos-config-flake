@@ -1,9 +1,12 @@
-{pkgs, secrets, config, ...}:
 {
-
+  pkgs,
+  secrets,
+  config,
+  ...
+}: {
   sops.secrets."gitea-actions" = {
     mode = "0444";
-   };
+  };
 
   services.gitea-actions-runner = {
     instances = {

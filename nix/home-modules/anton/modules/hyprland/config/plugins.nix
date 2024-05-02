@@ -1,5 +1,11 @@
-{ pkgs, osConfig, config, inputs, ... }:
-let cursorSize = toString config.home.pointerCursor.size;
+{
+  pkgs,
+  osConfig,
+  config,
+  inputs,
+  ...
+}: let
+  cursorSize = toString config.home.pointerCursor.size;
 in {
   wayland.windowManager.hyprland = with osConfig.lib.stylix.colors; {
     # plugins = [ inputs.hycov.packages.${pkgs.system}.hycov ];

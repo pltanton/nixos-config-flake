@@ -1,1 +1,1 @@
-{ pkgs, ... }: { environment.systemPackages = with pkgs; [ busybox ]; }
+{pkgs, ...}: {environment.systemPackages = with pkgs; [busybox];}

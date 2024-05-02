@@ -14,15 +14,21 @@
     auto-optimise-store = true;
   };
 
-  outputs = { flakelight, home-manager, ... }@inputs:
+  outputs = {
+    flakelight,
+    home-manager,
+    ...
+  } @ inputs:
     flakelight ./. {
       inherit inputs;
 
       lib = {
-        modulesDir = with builtins;dir: (map
-          (name: dir + "/${name}")
-          (attrNames (removeAttrs (readDir dir) [ "default.nix" ]))
-        );
+        modulesDir = with builtins;
+          dir: (
+            map
+            (name: dir + "/${name}")
+            (attrNames (removeAttrs (readDir dir) ["default.nix"]))
+          );
       };
 
       withOverlays = [
@@ -44,12 +50,11 @@
 
       nixDir = ./nix;
       nixDirAliases = {
-        nixosConfigurations = [ "nixos-configurations" ];
-        homeConfigurations = [ "home-configurations" ];
+        nixosConfigurations = ["nixos-configurations"];
+        homeConfigurations = ["home-configurations"];
 
-
-        nixosModules = [ "nixos-modules" ];
-        homeModules = [ "home-modules" ];
+        nixosModules = ["nixos-modules"];
+        homeModules = ["home-modules"];
       };
     };
 
@@ -65,7 +70,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Home-manager and modules
-    home-manager={
+    home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -74,8 +79,6 @@
 
     anyrun.url = "github:Kirottu/anyrun";
     anyrun.inputs.nixpkgs.follows = "nixpkgs";
-
-
 
     stylix.url = "github:danth/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
@@ -119,7 +122,7 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    hyprfocus = { url = "github:VortexCoyote/hyprfocus"; };
+    hyprfocus = {url = "github:VortexCoyote/hyprfocus";};
     # hyprpaper = {
     #   url = "github:hyprwm/hyprpaper";
     #   # inputs.nixpkgs.follows = "nixpkgs";
@@ -144,8 +147,7 @@
     emacs-catppuccin.url = "github:catppuccin/emacs";
     emacs-catppuccin.flake = false;
 
-    emacs-overlay.url =
-      "github:nix-community/emacs-overlay/c16be6de78ea878aedd0292aa5d4a1ee0a5da501";
+    emacs-overlay.url = "github:nix-community/emacs-overlay/c16be6de78ea878aedd0292aa5d4a1ee0a5da501";
     # "github:nix-community/emacs-overlay";
     emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
 

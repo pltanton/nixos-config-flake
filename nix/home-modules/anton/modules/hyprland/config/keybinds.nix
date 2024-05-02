@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   wayland.windowManager.hyprland = {
     settings = {
       bind = [
@@ -99,12 +99,11 @@
       ];
 
       # Mouse bindings
-      bindm = [ "SUPER,mouse:272,movewindow" "SUPER,mouse:273,resizewindow" ];
+      bindm = ["SUPER,mouse:272,movewindow" "SUPER,mouse:273,resizewindow"];
 
       bindl = [
         "SUPER,BackSpace,exec,pkill -SIGUSR1 hyprlock && WAYLAND_DISPLAY=wayland-1 hyprlock"
       ];
-
     };
 
     extraConfig = ''

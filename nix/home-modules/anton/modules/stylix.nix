@@ -1,5 +1,10 @@
-{ pkgs, lib, inputs, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  inputs,
+  config,
+  ...
+}: {
   stylix = {
     image = config.backgrounds."mountain.png";
     base16Scheme = lib.mkDefault "${inputs.base16-schemes}/catppuccin-macchiato.yaml";

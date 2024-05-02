@@ -1,15 +1,18 @@
-{ config, pkgs, ... }:
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   port = 1337;
   vpn-dev = "tun0";
 in {
   networking.nat = {
     enable = true;
     externalInterface = "ens3";
-    internalInterfaces = [ vpn-dev ];
+    internalInterfaces = [vpn-dev];
   };
 
-  networking.firewall.allowedUDPPorts = [ port ];
+  networking.firewall.allowedUDPPorts = [port];
 
   services.openvpn.servers.mainServer = {
     autoStart = false;

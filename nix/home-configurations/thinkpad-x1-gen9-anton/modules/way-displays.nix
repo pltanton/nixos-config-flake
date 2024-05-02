@@ -1,4 +1,3 @@
-{ pkgs, ... }: {
-  home.packages = [ pkgs.way-displays ];
-
+{pkgs, ...}: {
+  home.packages = [pkgs.way-displays];
 }

@@ -1,5 +1,4 @@
-pkgs: with pkgs;
-{
+pkgs: with pkgs; {
   float-preview = pkgs.vimUtils.buildVimPlugin {
     name = "float-preview";
     src = pkgs.fetchFromGitHub {
@@ -71,24 +70,24 @@ pkgs: with pkgs;
   };
 
   coc-nvim = let
-      version = "0.0.67";
-      index_js = fetchzip {
-          url = "https://github.com/neoclide/coc.nvim/releases/download/v${version}/coc.tar.gz";
-          sha256 = "0cqgrfyaq9nck1y6mb63gmwgdrxqzgdgns5gjshpp1xzfq6asrqj";
-        };
-  in pkgs.vimUtils.buildVimPlugin {
-    pname = "coc-nvim";
-    version = "2019-05-23";
-    src = fetchFromGitHub {
-      owner = "neoclide";
-      repo = "coc.nvim";
-      rev = "86f938db42dd071257a16c6f500c7d7a8dd8f34d";
-      sha256 = "0p2w7brlvhsxcvq199a4x59w6zmm3m4mhnr52rm660dydrbvd8gl";
+    version = "0.0.67";
+    index_js = fetchzip {
+      url = "https://github.com/neoclide/coc.nvim/releases/download/v${version}/coc.tar.gz";
+      sha256 = "0cqgrfyaq9nck1y6mb63gmwgdrxqzgdgns5gjshpp1xzfq6asrqj";
     };
-    postInstall = ''
-      mkdir -p $out/share/vim-plugins/coc-nvim/build
-      cp ${index_js}/index.js $out/share/vim-plugins/coc-nvim/build/
-    '';
-  };
-
+  in
+    pkgs.vimUtils.buildVimPlugin {
+      pname = "coc-nvim";
+      version = "2019-05-23";
+      src = fetchFromGitHub {
+        owner = "neoclide";
+        repo = "coc.nvim";
+        rev = "86f938db42dd071257a16c6f500c7d7a8dd8f34d";
+        sha256 = "0p2w7brlvhsxcvq199a4x59w6zmm3m4mhnr52rm660dydrbvd8gl";
+      };
+      postInstall = ''
+        mkdir -p $out/share/vim-plugins/coc-nvim/build
+        cp ${index_js}/index.js $out/share/vim-plugins/coc-nvim/build/
+      '';
+    };
 }

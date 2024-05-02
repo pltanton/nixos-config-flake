@@ -1,4 +1,9 @@
-{ pkgs, config, secrets, ... }: {
+{
+  pkgs,
+  config,
+  secrets,
+  ...
+}: {
   services = {
     zigbee2mqtt = {
       enable = true;
@@ -6,8 +11,8 @@
       settings = {
         homeassistant = true;
         permit_join = true;
-        serial = { port = "/dev/ttyUSB0"; };
-        advanced = { rtscts = false; };
+        serial = {port = "/dev/ttyUSB0";};
+        advanced = {rtscts = false;};
         mqtt = {
           base_topic = "zigbee2mqtt";
           server = "http://localhost";
@@ -15,10 +20,10 @@
           password = secrets.mqtt_unpacked.hass;
         };
         devices = {
-          "0x00124b001f877829" = { friendly_name = "sonoff_climate_sensor_1"; };
-          "0x00124b002a4f0280" = { friendly_name = "sonoff_climate_sensor_2"; };
-          "0x00124b002a4f1b89" = { friendly_name = "sonoff_climate_sensor_3"; };
-          "0x00124b002a6bbee9" = { friendly_name = "sonoff_climate_sensor_4"; };
+          "0x00124b001f877829" = {friendly_name = "sonoff_climate_sensor_1";};
+          "0x00124b002a4f0280" = {friendly_name = "sonoff_climate_sensor_2";};
+          "0x00124b002a4f1b89" = {friendly_name = "sonoff_climate_sensor_3";};
+          "0x00124b002a6bbee9" = {friendly_name = "sonoff_climate_sensor_4";};
           # "0x00158d000301606a" = { friendly_name = "corridor_light_relay"; };
           # "0x00158d000302ef25" = { friendly_name = "bathroom_light_relay"; };
           # "0x00158d00014a5529" = { friendly_name = "room_light_relay"; };

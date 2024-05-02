@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 with lib; {
   options.services.prometheus.custom-exporters = with types;
     mkOption {

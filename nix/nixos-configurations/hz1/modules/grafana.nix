@@ -1,6 +1,9 @@
-{ config, pkgs, ... }:
-
-let domain = "grafana.kaliwe.ru";
+{
+  config,
+  pkgs,
+  ...
+}: let
+  domain = "grafana.kaliwe.ru";
 in {
   services = {
     grafana = {

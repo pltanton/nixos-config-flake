@@ -1,5 +1,10 @@
-{ pkgs, config, lib, ... }: {
-  xdg.configFile = lib.mkIf config.services.easyeffects.enable ({
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
+  xdg.configFile = lib.mkIf config.services.easyeffects.enable {
     "easyeffects/output/advanced-auto-gain.json" = {
       text = builtins.readFile ./advanced-auto-gain.json;
     };
@@ -12,8 +17,8 @@
       text = builtins.readFile ./input-preset.json;
     };
 
-    "easyeffects/output/none.json" = { text = builtins.readFile ./none.json; };
-  });
+    "easyeffects/output/none.json" = {text = builtins.readFile ./none.json;};
+  };
 
   # home.packages = [
   #   (pkgs.easyeffects.override {
@@ -24,9 +29,8 @@
   services.easyeffects = {
     enable = true;
     package = pkgs.easyeffects.override {
-      speexdsp = pkgs.speexdsp.overrideAttrs (old: { configureFlags = [ ]; });
+      speexdsp = pkgs.speexdsp.overrideAttrs (old: {configureFlags = [];});
     };
     # preset = "advanced-auto-gain";
   };
-
 }

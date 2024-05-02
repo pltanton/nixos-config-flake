@@ -1,6 +1,9 @@
-{ config, pkgs, lib, ... }:
-
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   consts = import ../constants.nix;
   secrets = import ../secrets.nix;
   # transmissionHome = "${consts.mediaAppHomes}";
@@ -30,5 +33,5 @@ in {
     reverse_proxy http://127.0.0.1:9091
   '';
 
-  users.users.transmission.extraGroups = [ "publicstore" ];
+  users.users.transmission.extraGroups = ["publicstore"];
 }

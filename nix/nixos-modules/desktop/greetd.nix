@@ -1,11 +1,16 @@
-{ pkgs, config, ... }: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   services.greetd = {
     enable = false;
     settings = {
       terminal.vt = 1;
-      default_session.command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time "
+      default_session.command =
+        "${pkgs.greetd.tuigreet}/bin/tuigreet --time "
         + "--remember --remember-user-session "
-	+ "--cmd Hyprland";
+        + "--cmd Hyprland";
     };
   };
 
@@ -29,9 +34,9 @@
   environment.systemPackages = [
     pkgs.kora-icon-theme
     (pkgs.catppuccin-gtk.override {
-      accents = [ "lavender" ];
+      accents = ["lavender"];
       size = "compact";
-      tweaks = [ "rimless" ];
+      tweaks = ["rimless"];
       variant = "macchiato";
     })
   ];

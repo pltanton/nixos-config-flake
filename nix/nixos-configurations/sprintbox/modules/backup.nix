@@ -1,6 +1,9 @@
-{ lib, config, pkgs, ... }:
-
-let
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
   mastodonCfg = config.services.mastodon;
   syncthingCfg = config.services.syncthing;
   pgBackupDir = config.services.postgresqlBackup.location;
@@ -9,7 +12,7 @@ let
   backupDir = "${syncthingCfg.dataDir}/backup-sprintbox";
   devices = [];
 in {
-  services.postgresqlBackup = { enable = true; };
+  services.postgresqlBackup = {enable = true;};
 
   systemd.services."postgresqlBackup".serviceConfig = {
     ExecStartPost = ''
@@ -23,7 +26,8 @@ in {
   services.syncthing = {
     enable = true;
     settings.folders = {
-      "${backupDir}" = let folderId = "db-dump";
+      "${backupDir}" = let
+        folderId = "db-dump";
       in {
         id = folderId;
         label = folderId;
@@ -36,7 +40,7 @@ in {
         };
       };
     };
-    extraFlags = [ "--no-upgrade" "--no-restart" ];
+    extraFlags = ["--no-upgrade" "--no-restart"];
   };
 
   systemd.tmpfiles.rules = [
@@ -45,7 +49,6 @@ in {
   ];
 
   users.users = {
-    postgres.extraGroups = [ syncthingCfg.group ];
+    postgres.extraGroups = [syncthingCfg.group];
   };
 }
-

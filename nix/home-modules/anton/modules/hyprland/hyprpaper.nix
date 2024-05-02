@@ -1,9 +1,13 @@
-{ config, lib, pkgs, inputs, ... }:
-let
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: let
   # wallpaper = ../../../../backgrounds/yosemite.png;
   wallpaper = config.stylix.image;
 in {
-
   home.file."${config.xdg.configHome}/hypr/hyprpaper.conf".text = ''
     preload = ${wallpaper}
     wallpaper = eDP-1,${wallpaper}

@@ -1,1 +1,1 @@
-{ pkgs, ... }: { services.ssh-agent.enable = true; }
+{pkgs, ...}: {services.ssh-agent.enable = true;}

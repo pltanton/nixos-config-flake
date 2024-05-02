@@ -1,13 +1,17 @@
-{ pkgs, config, ... }@input: {
+{
+  pkgs,
+  config,
+  ...
+} @ input: {
   mediaplayer = pkgs.writeShellApplication {
     name = "mediaplayer";
-    runtimeInputs = with pkgs; [ playerctl ];
+    runtimeInputs = with pkgs; [playerctl];
     text = builtins.readFile ./mediaplayer.sh;
   };
 
   hyprland-submap = pkgs.writeShellApplication {
     name = "hyprland-submap";
-    runtimeInputs = with pkgs; [ netcat ];
+    runtimeInputs = with pkgs; [netcat];
     text = builtins.readFile ./hyprland-submap.bash;
   };
 

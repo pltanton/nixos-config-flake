@@ -1,14 +1,13 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   security.pam.services = {
-    hyprlock = { };
-    swaylock = { };
-    swaylock-effects = { };
+    hyprlock = {};
+    swaylock = {};
+    swaylock-effects = {};
     hyprlock = {
       text = pkgs.lib.mkDefault (pkgs.lib.mkBefore ''
         auth            sufficient      pam_unix.so try_first_pass likeauth nullok
         auth            sufficient      pam_fprintd.so
       '');
-
     };
   };
 

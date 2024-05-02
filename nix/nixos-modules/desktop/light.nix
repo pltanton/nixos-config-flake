@@ -1,3 +1,3 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.light.enable = true;
 }

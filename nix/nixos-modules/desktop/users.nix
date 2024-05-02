@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   # home-manager.useGlobalPkgs = true;
   # home-manager.useUserPackages = false;
 
@@ -31,8 +31,7 @@
       julsa = {
         isNormalUser = true;
         home = "/home/julsa";
-        extraGroups =
-          [ "wheel" "networkmanager" "audio" "video" "docker" "lp" "scanner" ];
+        extraGroups = ["wheel" "networkmanager" "audio" "video" "docker" "lp" "scanner"];
       };
     };
   };

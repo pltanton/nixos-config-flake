@@ -1,7 +1,7 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   virtualisation.libvirtd.enable = false;
   programs.virt-manager.enable = false;
-  users.users.anton.extraGroups = [ "libvirtd" ];
+  users.users.anton.extraGroups = ["libvirtd"];
 
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = ["kvm-intel"];
 }

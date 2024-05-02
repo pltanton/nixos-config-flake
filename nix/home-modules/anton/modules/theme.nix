@@ -1,17 +1,20 @@
-{ pkgs, config, lib, inputs, ... }:
-
 {
+  pkgs,
+  config,
+  lib,
+  inputs,
+  ...
+}: {
   xfconf.enable = lib.mkForce false;
 
   home.packages = [
     (lib.lowPrio (pkgs.writeShellApplication {
       name = "toggle-theme";
-      runtimeInputs = with pkgs; [ home-manager coreutils ripgrep fish ];
-      text =
-        ''
-          "$(home-manager generations | head -1 | rg -o '/[^ ]*')"/specialisation/light/activate
-          fish --command 'set -U _reload_theme (date +%s)'
-        '';
+      runtimeInputs = with pkgs; [home-manager coreutils ripgrep fish];
+      text = ''
+        "$(home-manager generations | head -1 | rg -o '/[^ ]*')"/specialisation/light/activate
+        fish --command 'set -U _reload_theme (date +%s)'
+      '';
     }))
   ];
 
@@ -31,12 +34,12 @@
 
     theme = lib.mkDefault {
       name = "Catppuccin-Macchiato-Standard-Maroon-Dark";
-      package = (pkgs.catppuccin-gtk.override {
-        accents = [ "maroon" ];
+      package = pkgs.catppuccin-gtk.override {
+        accents = ["maroon"];
         size = "standard";
-        tweaks = [ "normal" ];
+        tweaks = ["normal"];
         variant = "macchiato";
-      });
+      };
     };
   };
 
@@ -45,25 +48,23 @@
     platformTheme.name = "gtk";
   };
 
-
   specialisation.light.configuration = {
     home.packages = [
       (pkgs.writeShellApplication {
         name = "toggle-theme";
-        runtimeInputs = with pkgs; [ home-manager coreutils ripgrep fish ];
-        text =
-          ''
-            "$(home-manager generations | head -2 | tail -1 | rg -o '/[^ ]*')"/activate
-            fish --command 'set -U _reload_theme (date +%s)'
-          '';
+        runtimeInputs = with pkgs; [home-manager coreutils ripgrep fish];
+        text = ''
+          "$(home-manager generations | head -2 | tail -1 | rg -o '/[^ ]*')"/activate
+          fish --command 'set -U _reload_theme (date +%s)'
+        '';
       })
     ];
     gtk.theme = {
       name = "Catppuccin-Latte-Standard-Maroon-Light";
       package = pkgs.catppuccin-gtk.override {
-        accents = [ "maroon" ];
+        accents = ["maroon"];
         size = "standard";
-        tweaks = [ "normal" ];
+        tweaks = ["normal"];
         variant = "latte";
       };
     };

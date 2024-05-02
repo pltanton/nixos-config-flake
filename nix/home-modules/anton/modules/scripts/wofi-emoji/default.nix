@@ -1,5 +1,9 @@
-{ stdenv, substituteAll, libxml2, wofi }:
-
+{
+  stdenv,
+  substituteAll,
+  libxml2,
+  wofi,
+}:
 stdenv.mkDerivation {
   name = "wofi-emoji";
 
