@@ -2,10 +2,7 @@
   config,
   pkgs,
   ...
-}: let
-  consts = import ../constants.nix;
-  secrets = import ../secrets.nix;
-in {
+}: {
   services.jellyfin = {
     enable = true;
     group = "publicstore";

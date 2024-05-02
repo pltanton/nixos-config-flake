@@ -1,6 +1,5 @@
 {
   pkgs,
-  secrets,
   config,
   ...
 }: {
@@ -13,7 +12,7 @@
       act = {
         enable = true;
         url = "https://gitea.kaliwe.ru";
-        tokenFile = "/run/secrets/gitea-actions";
+        tokenFile = config.sops.secrets.gitea-actions.path;
         name = "home-server";
         labels = [
           "ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:act-latest"

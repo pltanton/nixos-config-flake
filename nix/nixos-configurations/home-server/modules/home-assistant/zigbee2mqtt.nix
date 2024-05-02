@@ -4,10 +4,10 @@
   secrets,
   ...
 }: {
+  sops.secrets.zigbee2mqtt-secret = {};
   services = {
     zigbee2mqtt = {
       enable = true;
-      # package = pkgs.nur.repos.mweinelt.zigbee2mqtt;
       settings = {
         homeassistant = true;
         permit_join = true;
@@ -16,8 +16,8 @@
         mqtt = {
           base_topic = "zigbee2mqtt";
           server = "http://localhost";
-          user = "hass";
-          password = secrets.mqtt_unpacked.hass;
+          user = "'!${config.sops.secrets.zigbee2mqtt-secret.path} user'";
+          password = "'!${config.sops.secrets.zigbee2mqtt-secret.path} password'";
         };
         devices = {
           "0x00124b001f877829" = {friendly_name = "sonoff_climate_sensor_1";};

@@ -18,7 +18,6 @@
     scope = "desktop";
     age.keyFile = "/home/anton/.config/sops/age/keys.txt";
     age.sshKeyPaths = ["/home/anton/.ssh/id_ed25519"];
-    age.generateKey = true;
   };
 
   time.timeZone = "Asia/Nicosia";

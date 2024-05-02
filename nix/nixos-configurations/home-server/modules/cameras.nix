@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  secrets,
   ...
 }: let
   consts = import ../constants.nix;

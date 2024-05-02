@@ -4,7 +4,6 @@
   ...
 }: let
   consts = import ../constants.nix;
-  secrets = import ../secrets.nix;
 in {
   virtualisation.oci-containers.containers = {
     monitorrent = {

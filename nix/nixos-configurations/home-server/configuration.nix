@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  secrets,
   ...
 }: {
   imports =
@@ -33,6 +32,8 @@
 
   time.timeZone = "Europe/Moscow";
 
+  sops.secrets."networking-environment" = {};
+
   networking = {
     hostName = "home-server";
     useNetworkd = true;
@@ -44,11 +45,8 @@
     wireless = {
       enable = true;
       userControlled.enable = true;
-      networks."Ananasik" = {psk = secrets.wifiPassword;};
-      networks."AnanasikRE" = {
-        psk = secrets.wifiPassword;
-        priority = 1;
-      };
+      environmentFile = config.sops.secrets."networking-environment".path;
+      networks."Ananasik" = {psk = "@PSK_ANANASIK@";};
     };
 
     firewall.enable = false;
@@ -101,13 +99,6 @@
 
   nixpkgs.config.allowUnfree = true;
   security.acme.acceptTerms = true;
-
-  system.stateVersion = "21.11";
-
-  sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
-  sops.age.keyFile = "/var/lib/sops-nix/key.txt";
-  sops.defaultSopsFile = ./secrets.yaml;
-  sops.age.generateKey = true;
 
   nixpkgs.config.permittedInsecurePackages = ["openssl-1.1.1w"];
 }

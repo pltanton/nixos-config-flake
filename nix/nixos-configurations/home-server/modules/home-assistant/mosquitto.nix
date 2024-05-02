@@ -1,9 +1,9 @@
 {
   config,
   pkgs,
-  secrets,
   ...
 }: {
+  sops.secrets."mosquitto/hass" = {};
   services.mosquitto = {
     enable = true;
     listeners = [
@@ -13,7 +13,7 @@
         users = {
           hass = {
             acl = ["readwrite #"];
-            password = secrets.mqtt_unpacked.hass;
+            passwordFile = config.sops.secrets."mosquitto/hass".path;
           };
         };
       }

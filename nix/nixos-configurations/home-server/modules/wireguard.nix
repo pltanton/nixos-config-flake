@@ -1,19 +1,21 @@
 {
   config,
   pkgs,
-  secrets,
   ...
 }: {
   networking.nat.enable = true;
   networking.nat.internalInterfaces = ["wg-home" "wg-hz"];
   networking.firewall = {allowedUDPPorts = [51820];};
 
+  sops.secrets."wireguard/hz1" = {};
+  sops.secrets."wireguard/home" = {};
+
   networking.wireguard.interfaces = {
     wg-home = {
       ips = ["10.100.0.1/24"];
       listenPort = 51820;
 
-      privateKeyFile = "/root/nixos/wgkey";
+      privateKeyFile = config.sops.secrets."wireguard/home".path;
 
       peers = [
         {
@@ -32,7 +34,7 @@
     };
 
     wg-hz = {
-      privateKey = secrets.wireguard.hz1;
+      privateKeyFile = config.sops.secrets."wireguard/hz1".path;
       ips = ["10.10.10.10/32"];
       peers = [
         {
