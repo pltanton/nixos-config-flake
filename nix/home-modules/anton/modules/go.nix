@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   config,
   ...
 }: {
@@ -26,23 +25,7 @@
       gopkgs
       go-tools
       go-swag
-      # master.goose
       go-jet
-      # master.cobra-cli
 
-      # (buildGoModule {
-      #   name = "swag";
-      #   version = "1.16.1";
-
-      #   src = pkgs.fetchFromGitHub {
-      #     owner = "swaggo";
-      #     repo = "http-swagger";
-      #     tag = "1.16.1";
-      #     sha256 = "0000000000000000000000000000000000000000000000000000";
-      #   };
-
-      #   vendorSha256 = "0000000000000000000000000000000000000000000000000000";
-      #   subPackages = [ "cmd/swag" ];
-      # })
     ];
 }

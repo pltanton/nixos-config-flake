@@ -1,8 +1,5 @@
 {
   config,
-  lib,
-  pkgs,
-  inputs,
   ...
 }: let
   # wallpaper = ../../../../backgrounds/yosemite.png;

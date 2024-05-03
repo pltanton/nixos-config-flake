@@ -1,23 +1,10 @@
 {
   pkgs,
-  lib,
-  fetchPypi,
   inputs,
   ...
-}: let
-  enlargeCursorForDesktopEntry = package: (package.overrideAttrs (e: rec {
-    # Add arguments to the .desktop entry
-    desktopItem =
-      e.desktopItem.override (d: {exec = "env XCURSOR_SIZE=64 ${d.exec}";});
-
-    # Update the install script to use the new .desktop entry
-    installPhase =
-      builtins.replaceStrings ["${e.desktopItem}"] ["${desktopItem}"]
-      e.installPhase;
-  }));
-in {
-  home.packages = with pkgs;
-    lib.mkIf true [
+}: 
+{
+  home.packages = with pkgs; [
       hack-font
       monaspace
 

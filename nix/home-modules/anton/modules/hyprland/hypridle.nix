@@ -1,8 +1,6 @@
 {
   config,
   lib,
-  pkgs,
-  inputs,
   ...
 }: let
   hyprlandPkg = config.wayland.windowManager.hyprland.package;

@@ -3,6 +3,7 @@
 
   nixConfig = {
     extra-experimental-features = "nix-command flakes";
+    # Substituters suitable for build of system
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://hyprland.cachix.org"

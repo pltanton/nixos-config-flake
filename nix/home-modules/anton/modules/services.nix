@@ -1,8 +1,8 @@
-{pkgs, ...}: {
+{...}: {
   services = {
     network-manager-applet.enable = true;
     blueman-applet.enable = true;
-    nextcloud-client.enable = false;
+    nextcloud-client.enable = true;
     udiskie.enable = true;
     ddcsync.enable = true;
   };
