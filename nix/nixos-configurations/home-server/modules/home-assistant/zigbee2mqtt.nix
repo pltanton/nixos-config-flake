@@ -1,10 +1,11 @@
 {
-  pkgs,
   config,
-  secrets,
   ...
 }: {
-  sops.secrets.zigbee2mqtt-secret = {};
+  sops.secrets.zigbee2mqtt-secret = {
+    path = "/var/lib/secrets.yaml";
+    owner = "zigbee2mqtt";
+  };
   services = {
     zigbee2mqtt = {
       enable = true;

@@ -17,7 +17,6 @@
 
   outputs = {
     flakelight,
-    home-manager,
     ...
   } @ inputs:
     flakelight ./. {

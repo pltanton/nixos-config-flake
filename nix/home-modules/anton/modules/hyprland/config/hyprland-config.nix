@@ -1,11 +1,12 @@
-{
-  pkgs,
-  config,
-  inputs,
-  ...
-}: let
+{ pkgs
+, config
+, inputs
+, ...
+}:
+let
   cursorSize = toString config.home.pointerCursor.size;
-in {
+in
+{
   wayland.windowManager.hyprland = with config.lib.stylix.colors; {
     settings = {
       exec-once = [
@@ -64,7 +65,7 @@ in {
         float_switch_override_focus = 0;
         sensitivity = 0.65;
 
-        touchpad = {natural_scroll = true;};
+        touchpad = { natural_scroll = true; };
       };
 
       general = {
@@ -83,7 +84,7 @@ in {
 
       decoration = {
         rounding = 10;
-        blur = {enabled = false;};
+        blur = { enabled = false; };
 
         drop_shadow = true;
         shadow_range = 3;
@@ -105,16 +106,25 @@ in {
           "fluent_decel, 0.1, 1, 0, 1"
           "easeInOutCirc, 0.85, 0, 0.15, 1"
           "easeOutCirc, 0, 0.55, 0.45, 1"
+          "myBezier, 0.05, 0.9, 0.1, 1.05"
         ];
         animation = [
           # "workspaces,1,1,default,slide"
           # "fade,1,7,default"
           # "windowsMove,0,7,default"
-          "windows, 1, 3, default, popin 80%"
+
+          "windows, 1, 4, default, popin 80%"
           "border, 1, 10, default"
           "fade, 1, 2, default"
           "workspaces, 1, 2, md3_decel, slide"
           "specialWorkspace, 1, 3, md3_decel, slidefadevert 15%"
+
+          # "windows, 1, 7, myBezier" # Windows animation
+          # "windowsOut, 1, 7, default, popin 80%" # Windows out animation
+          # "border, 1, 10, default" # Border animation
+          # "borderangle, 1, 8, default" # Border angle animation
+          # "fade, 1, 7, default" # Fade animation
+          # "workspaces, 1, 6, default" # Workspaces animation
         ];
       };
 
@@ -150,7 +160,7 @@ in {
         };
       };
 
-      binds = {workspace_back_and_forth = true;};
+      binds = { workspace_back_and_forth = true; };
 
       xwayland = {
         use_nearest_neighbor = false;
