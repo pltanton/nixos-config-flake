@@ -32,6 +32,7 @@
       };
 
       withOverlays = [
+        inputs.hyprland.overlays.default
         (final: prev: {
           unstable = import inputs.nixpkgs-unstable {
             system = "x86_64-linux";
