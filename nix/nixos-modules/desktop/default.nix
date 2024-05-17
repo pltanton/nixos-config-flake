@@ -1,15 +1,10 @@
-{
-  inputs,
-  stateVersion,
-  ...
-}: {
+{inputs, ...}: {
   imports = with inputs;
     [
       self.nixosModules.common
       self.nixosModules.sops
 
       home-manager.nixosModules.home-manager
-      hyprland.nixosModules.default
       stylix.nixosModules.stylix
     ]
     ++ self.lib.modulesDir ./.;

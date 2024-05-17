@@ -15,10 +15,7 @@
     auto-optimise-store = true;
   };
 
-  outputs = {
-    flakelight,
-    ...
-  } @ inputs:
+  outputs = {flakelight, ...} @ inputs:
     flakelight ./. {
       inherit inputs;
 
@@ -49,13 +46,20 @@
         })
       ];
 
-      nixDir = ./nix;
       nixDirAliases = {
         nixosConfigurations = ["nixos-configurations"];
         homeConfigurations = ["home-configurations"];
 
         nixosModules = ["nixos-modules"];
         homeModules = ["home-modules"];
+      };
+
+      devShell.packages = pkgs: with pkgs; [alejandra dprint];
+
+      formatters = {
+        "*.yml" = "dprint fmt";
+        "*.md" = "dprint fmt";
+        "*.nix" = "alejandra";
       };
     };
 
@@ -80,12 +84,6 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    base16-schemes.url = "github:tinted-theming/base16-schemes";
-    base16-schemes.flake = false;
-
-    base16-rofi.url = "github:tinted-theming/base16-rofi";
-    base16-rofi.flake = false;
 
     # ─── APPS ────────────────────────────────────────────────────────
     ddcsync = {
@@ -132,6 +130,7 @@
     nur.url = "github:nix-community/NUR";
 
     # ─── NON FLAKE INPUTS ────────────────────────────────────────────
+
     fish-async-prompt-plugin = {
       url = "github:acomagu/fish-async-prompt";
       flake = false;
@@ -142,6 +141,15 @@
     };
     fish-grc = {
       url = "github:oh-my-fish/plugin-grc";
+      flake = false;
+    };
+
+    base16-schemes = {
+      url = "github:tinted-theming/base16-schemes";
+      flake = false;
+    };
+    base16-rofi = {
+      url = "github:tinted-theming/base16-rofi";
       flake = false;
     };
 

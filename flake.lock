@@ -44,14 +44,11 @@
     },
     "autobrowser": {
       "inputs": {
-        "flakelight": "flakelight",
-        "nixpkgs": [
-          "nixpkgs-unstable"
-        ]
+        "flakelight": "flakelight"
       },
       "locked": {
-        "lastModified": 1714388097,
-        "narHash": "sha256-hST3EVBQhBi2vHLHYx4yP8Ff/S5LfNHVDI1A88QLQK8=",
+        "lastModified": 1715947100,
+        "narHash": "sha256-Bn4oTubTUaSSWh0XRYLclR/2oL7zq/M9kdbRgZDZ3ag=",
         "path": "/home/anton/Workdir/autobrowser",
         "type": "path"
       },

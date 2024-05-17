@@ -5,10 +5,6 @@
 
     self.nixosModules.sops
 
-    hyprland.homeManagerModules.default
-    hypridle.homeManagerModules.default
-    hyprlock.homeManagerModules.default
-
     anyrun.homeManagerModules.default
 
     ddcsync.homeManagerModules.default

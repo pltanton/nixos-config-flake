@@ -1,7 +1,6 @@
 {
-    "blocklist": [],
-    "output": {
-        "plugins_order": [
-        ]
-    }
+  "blocklist": [],
+  "output": {
+    "plugins_order": []
+  }
 }

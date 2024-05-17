@@ -5,17 +5,28 @@
   ...
 }: let
   consts = import ../constants.nix;
-  nextcloudHome = "${consts.archiveMountPoint}/nextcloud-home";
-  nextcloudPackage = pkgs.nextcloud28;
 
-  archiveDst = "${nextcloudHome}/data/anton/files/Archive";
-
+  nextcloudData = "${consts.archiveMountPoint}/nextcloud-data";
   photoSrc = "${consts.archiveMountPoint}/archive/photo";
   photoRawSrc = "${consts.archiveMountPoint}/archive/photo_raw";
-
-  photoDst = "${archiveDst}/photo";
-  photoRawDst = "${archiveDst}/photo_raw";
 in {
+  fileSystems = {
+    "${config.services.nextcloud.home}/data" = {
+      device = nextcloudData;
+      options = ["bind"];
+    };
+
+    "${config.services.nextcloud.home}/data/anton/files/Archive/photo_raw" = {
+      device = photoRawSrc;
+      options = ["bind" "ro"];
+    };
+
+    "${config.services.nextcloud.home}/data/anton/files/Archive/photo" = {
+      device = photoSrc;
+      options = ["bind" "ro"];
+    };
+  };
+
   systemd = {
     timers.simple-timer = {
       wantedBy = ["timers.target"];
@@ -30,62 +41,49 @@ in {
     };
   };
 
-  services = {
-    nextcloud = {
-      enable = true;
+  services.nextcloud = {
+    enable = true;
+    package = pkgs.nextcloud29;
 
-      phpExtraExtensions = all: with all; [pdlib bz2];
+    phpExtraExtensions = all: with all; [pdlib bz2];
 
-      caching = {
-        apcu = true;
-        redis = false;
-        memcached = false;
-      };
-      autoUpdateApps.enable = true;
-      package = nextcloudPackage;
-      config = {
-        # adminpass = "adminpass";
-        adminpassFile = "/media/archive/nextcloud-home/adminpass";
-        dbtype = "pgsql";
-      };
-      home = "/media/archive/nextcloud-home";
-      hostName = "nextcloud.kaliwe.ru";
-      # https = true;
+    caching = {
+      apcu = true;
+      redis = false;
+      memcached = false;
+    };
+    autoUpdateApps.enable = true;
+    config = {
+      # adminpass = "adminpass";
+      adminpassFile = "/media/archive/nextcloud-home/adminpass";
+      dbtype = "pgsql";
+    };
+    # home = "/media/archive/nextcloud-home";
+    hostName = "nextcloud.kaliwe.ru";
+    # https = true;
 
-      extraOptions = {
-        "memories.exiftool" = "${lib.getExe pkgs.exiftool}";
-        "memories.exiftool_no_local" = true;
-        "memories.vod.ffmpeg" = "${pkgs.ffmpeg-headless}/bin/ffmpeg";
-        "memories.vod.ffprobe" = "${pkgs.ffmpeg-headless}/bin/ffprobe";
-        "default_language" = "en";
-      };
+    extraOptions = {
+      "memories.exiftool" = "${lib.getExe pkgs.exiftool}";
+      "memories.exiftool_no_local" = true;
+      "memories.vod.ffmpeg" = "${pkgs.ffmpeg-headless}/bin/ffmpeg";
+      "memories.vod.ffprobe" = "${pkgs.ffmpeg-headless}/bin/ffprobe";
+      "default_language" = "en";
     };
   };
 
   systemd.services.nextcloud-cron.path = [pkgs.perl];
 
+  users.users.nextcloud.uid = 1002;
   users.users.nextcloud.extraGroups = ["lp" "privatestore"];
+  users.groups.nextcloud.members = ["nextcloud" config.services.caddy.user];
+  users.groups.privatestore.members = [config.services.caddy.user];
 
   environment.systemPackages = with pkgs; [dlib netpbm nodejs];
-
-  fileSystems = {
-    "${photoDst}" = {
-      device = photoSrc;
-      options = ["bind"];
-    };
-
-    "${photoRawDst}" = {
-      device = photoRawSrc;
-      options = ["bind"];
-    };
-  };
 
   services.phpfpm.pools.nextcloud.settings = {
     "listen.owner" = config.services.caddy.user;
     "listen.group" = config.services.caddy.group;
   };
-
-  users.groups.nextcloud.members = ["nextcloud" config.services.caddy.user];
 
   services.caddy.virtualHosts."nextcloud.kaliwe.ru".extraConfig = ''
     root * ${config.services.nextcloud.package}

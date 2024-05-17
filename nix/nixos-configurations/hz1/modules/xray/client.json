@@ -1,68 +1,64 @@
 {
-  "log":{},
-  "inbounds":[
+  "log": {},
+  "inbounds": [
     {
-      "port":"10808",
-      "protocol":"socks",
-      "settings":{
-        "auth":"noauth",
-        "udp":true
+      "port": "10808",
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true
       }
     },
     {
-      "port":"10809",
-      "protocol":"http",
-      "settings":{}
+      "port": "10809",
+      "protocol": "http",
+      "settings": {}
     }
   ],
-  "outbounds":[
+  "outbounds": [
     {
-      "protocol":"vless",
-      "settings":{
-        "vnext":[
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
           {
-            "address":"kaliwe.ru",
-            "port":443,
-            "users":[
+            "address": "kaliwe.ru",
+            "port": 443,
+            "users": [
               {
-                "id":"fcbedce3-a331-4bd6-9f96-45113c30a844",
-                "encryption":"none"
+                "id": "fcbedce3-a331-4bd6-9f96-45113c30a844",
+                "encryption": "none"
               }
             ]
           }
         ]
       },
-      "streamSettings":{
-        "network":"h2",
-        "security":"tls",
-        "httpSettings":{
-          "host":[
-            "kaliwe.ru"
-          ],
-          "path":"/posts"
+      "streamSettings": {
+        "network": "h2",
+        "security": "tls",
+        "httpSettings": {
+          "host": ["kaliwe.ru"],
+          "path": "/posts"
         }
       }
     },
     {
-      "tag":"direct",
-      "protocol":"freedom",
-      "settings":{}
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {}
     },
     {
-      "tag":"blocked",
-      "protocol":"blackhole",
-      "settings":{}
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
     }
   ],
-  "routing":{
-    "domainStrategy":"IPOnDemand",
-    "rules":[
+  "routing": {
+    "domainStrategy": "IPOnDemand",
+    "rules": [
       {
-        "type":"field",
-        "ip":[
-          "geoip:private"
-        ],
-        "outboundTag":"direct"
+        "type": "field",
+        "ip": ["geoip:private"],
+        "outboundTag": "direct"
       }
     ]
   }

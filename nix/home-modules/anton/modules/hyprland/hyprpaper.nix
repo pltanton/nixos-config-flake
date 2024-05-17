@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: let
+{config, ...}: let
   # wallpaper = ../../../../backgrounds/yosemite.png;
   wallpaper = config.stylix.image;
 in {

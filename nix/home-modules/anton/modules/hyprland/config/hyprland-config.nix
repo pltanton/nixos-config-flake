@@ -1,12 +1,11 @@
-{ pkgs
-, config
-, inputs
-, ...
-}:
-let
-  cursorSize = toString config.home.pointerCursor.size;
-in
 {
+  pkgs,
+  config,
+  inputs,
+  ...
+}: let
+  cursorSize = toString config.home.pointerCursor.size;
+in {
   wayland.windowManager.hyprland = with config.lib.stylix.colors; {
     settings = {
       exec-once = [
@@ -65,7 +64,7 @@ in
         float_switch_override_focus = 0;
         sensitivity = 0.65;
 
-        touchpad = { natural_scroll = true; };
+        touchpad = {natural_scroll = true;};
       };
 
       general = {
@@ -84,7 +83,7 @@ in
 
       decoration = {
         rounding = 10;
-        blur = { enabled = false; };
+        blur = {enabled = false;};
 
         drop_shadow = true;
         shadow_range = 3;
@@ -160,7 +159,7 @@ in
         };
       };
 
-      binds = { workspace_back_and_forth = true; };
+      binds = {workspace_back_and_forth = true;};
 
       xwayland = {
         use_nearest_neighbor = false;

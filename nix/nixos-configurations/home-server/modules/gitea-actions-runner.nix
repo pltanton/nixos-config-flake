@@ -10,7 +10,7 @@
   services.gitea-actions-runner = {
     instances = {
       act = {
-        enable = true;
+        enable = false;
         url = "https://gitea.kaliwe.ru";
         tokenFile = config.sops.secrets.gitea-actions.path;
         name = "home-server";

@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: {
+{config, ...}: {
   sops.secrets.zigbee2mqtt-secret = {
     path = "/var/lib/secrets.yaml";
     owner = "zigbee2mqtt";

@@ -7,24 +7,24 @@ keys:
 creation_rules:
   - path_regex: nix/nixos-modules/sops/sprintbox.yaml$
     key_groups:
-    - age:
-      - *admin
-      - *server_sprintbox
+      - age:
+          - *admin
+          - *server_sprintbox
 
   - path_regex: nix/nixos-modules/sops/hz1.yaml$
     key_groups:
-    - age:
-      - *admin
-      - *server_hz1
+      - age:
+          - *admin
+          - *server_hz1
 
   - path_regex: nix/nixos-modules/sops/home-server.yaml$
     key_groups:
-    - age:
-      - *admin
-      - *server_home
+      - age:
+          - *admin
+          - *server_home
 
   - path_regex: nix/nixos-modules/sops/{anton,desktop}.yaml$
     key_groups:
-    - age:
-      - *admin
-      - *server_gen9
+      - age:
+          - *admin
+          - *server_gen9

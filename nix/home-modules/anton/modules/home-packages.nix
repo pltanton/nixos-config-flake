@@ -1,14 +1,12 @@
-{ pkgs
-, inputs
-, ...
-}:
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   home.packages = with pkgs; [
     hack-font
     monaspace
 
-    nixpkgs-fmt
-    nixd
     shfmt
 
     age
@@ -81,7 +79,7 @@
     anytype
     anki-bin
 
-    stable.bitwarden
+    bitwarden
 
     evince
     gthumb
@@ -90,14 +88,16 @@
     #   plugins = with gimpPlugins; [ resynthesizer ];
     # })
     mpv
-    unstable.telegram-desktop
-    xsane
+    telegram-desktop
+    slack
+
     simple-scan
     spotify
 
-    slack
     inputs.activate-linux.defaultPackage.x86_64-linux
     scrcpy
+
+    zed-editor
 
     # Web
     thunderbird
@@ -123,9 +123,9 @@
     nodejs
     jetbrains-toolbox
 
-    nil # nix language server
-    nixd
+    nixd # nix language server
     alejandra # nix formatting tool
+    dprint
 
     dbeaver
     beekeeper-studio

@@ -1,4 +1,5 @@
-pkgs: with pkgs; {
+pkgs:
+with pkgs; {
   float-preview = pkgs.vimUtils.buildVimPlugin {
     name = "float-preview";
     src = pkgs.fetchFromGitHub {

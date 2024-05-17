@@ -9,24 +9,26 @@ in {
 
   services.hypridle = {
     enable = true;
-    lockCmd = "hyprlock";
-    beforeSleepCmd = "hyprlock --immediate";
-    afterSleepCmd = "${hyprlandPkg}/bin/hyprctl dispatch dpms on";
-    listeners = [
-      {
-        timeout = 200;
-        onTimeout = "hyprlock";
-      }
-      {
-        timeout = 300;
-        onTimeout = "${hyprlandPkg}/bin/hyprctl dispatch dpms off";
-        onResume = "${hyprlandPkg}/bin/hyprctl dispatch dpms on";
-      }
-      {
-        timeout = 900; # 15 min
-        onTimeout = "systemctl suspend";
-        onResume = "${hyprlandPkg}/bin/hyprctl dispatch dpms on";
-      }
-    ];
+    settings = {
+      lockCmd = "hyprlock";
+      beforeSleepCmd = "hyprlock --immediate";
+      afterSleepCmd = "${hyprlandPkg}/bin/hyprctl dispatch dpms on";
+      listener = [
+        {
+          timeout = 200;
+          on-timeout = "hyprlock";
+        }
+        {
+          timeout = 300;
+          on-timeout = "${hyprlandPkg}/bin/hyprctl dispatch dpms off";
+          on-resume = "${hyprlandPkg}/bin/hyprctl dispatch dpms on";
+        }
+        {
+          timeout = 900; # 15 min
+          on-timeout = "systemctl suspend";
+          on-resume = "${hyprlandPkg}/bin/hyprctl dispatch dpms on";
+        }
+      ];
+    };
   };
 }

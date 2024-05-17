@@ -26,6 +26,5 @@
       go-tools
       go-swag
       go-jet
-
     ];
 }
