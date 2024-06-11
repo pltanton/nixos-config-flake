@@ -101,7 +101,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     dbeaver = {
       url = "github:padhia/nix-dbeaver";
@@ -110,7 +110,7 @@
 
     hycov = {
       url = "github:DreamMaoMao/hycov";
-      inputs.hyprland.follows = "hyprland";
+      # inputs.hyprland.follows = "hyprland";
     };
 
     nix-alien = {
