@@ -7,18 +7,16 @@
     enable = true;
   };
 
-  # xdg.portal = {
-  #   enable = true;
-  #   extraPortals = [
-  #     pkgs.xdg-desktop-portal-gtk
-  #   ];
-  # configPackages = [
-  #   config.programs.hyprland.portalPackage
-  # ];
-  # config = {
-  #   preferred = {
-  #     default = "gtk;hyprland";
-  #   };
-  # };
-  # };
+  xdg.portal = {
+    enable = true;
+    # xdgOpenUsePortal = true;
+    # extraPortals = [
+    #   pkgs.xdg-desktop-portal-gtk
+    #   pkgs.xdg-desktop-portal-hyprland
+    # ];
+
+    # configPackages = [
+    #   config.programs.hyprland.portalPackage
+    # ];
+  };
 }

@@ -93,7 +93,7 @@
 
     autobrowser = {
       url = "path:/home/anton/Workdir/autobrowser";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      # inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     anyrun = {
@@ -101,10 +101,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     dbeaver = {
       url = "github:padhia/nix-dbeaver";

@@ -75,10 +75,13 @@ in {
         border_size = 2;
         # gaps_workspaces = 100;
 
-        cursor_inactive_timeout = 4;
-
         "col.active_border" = "rgb(${base0E}) rgb(${base0D}) 45deg";
         "col.inactive_border" = "rgb(${base02})";
+      };
+
+      cursor = {
+        inactive_timeout = 4;
+        hide_on_key_press = false;
       };
 
       decoration = {
@@ -139,8 +142,6 @@ in {
         mouse_move_enables_dpms = true;
         disable_autoreload = true;
         focus_on_activate = true;
-        enable_hyprcursor = true;
-        # no_vfr = false;
       };
 
       group = {

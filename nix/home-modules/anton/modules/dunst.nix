@@ -5,7 +5,7 @@
   ...
 }: {
   services.dunst = {
-    enable = true;
+    enable = false;
     settings = with config.lib.stylix.colors; {
       global = {
         width = 500;

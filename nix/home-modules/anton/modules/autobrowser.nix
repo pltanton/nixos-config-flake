@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{pkgs, ...}: {
   programs.autobrowser = {
     # package = inputs.autobrowser.packages.x86_64-linux.default;
     enable = true;
@@ -12,4 +12,5 @@
     ];
     default = "home";
   };
+  home.packages = [ pkgs.autobrowser ];
 }

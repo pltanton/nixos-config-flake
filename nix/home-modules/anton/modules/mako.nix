@@ -5,7 +5,7 @@
   ...
 }: {
   services.mako = with config.lib.stylix.colors; {
-    enable = true;
+    enable = false;
     borderColor = lib.mkForce "#${base01-hex}";
     width = 500;
     height = 800;

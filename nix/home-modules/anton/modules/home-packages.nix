@@ -103,7 +103,7 @@
     thunderbird
 
     # LaTeX
-    texlive.combined.scheme-full
+    texliveFull
     texlab
     # (texlive.combine { inherit (texlive) scheme-medium titlesec wrapfig; })
 
@@ -122,6 +122,7 @@
     grpcurl # grpc client
     nodejs
     jetbrains-toolbox
+    jetbrains.idea-community
 
     nixd # nix language server
     alejandra # nix formatting tool

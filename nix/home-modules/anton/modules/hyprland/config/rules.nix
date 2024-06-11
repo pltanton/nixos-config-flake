@@ -23,10 +23,10 @@
         "move 0 0:^(firefox)$,title:^(.*)(Sharing Indicator)$"
 
         # # Jetbrains products
-        "noanim,class:^(jetbrains-.*)"
+        # "noanim,class:^(jetbrains-.*)"
         "float,floating:0,class:^(jetbrains-.*),title:^(win.*)"
-        "noinitialfocus,class:^(jetbrains-.*),title:^(win.*)"
-        "float,class:^(jetbrains-.*),title:^(Welcome to.*)"
+        # "noinitialfocus,class:^(jetbrains-.*),title:^(win.*)"
+        # "float,class:^(jetbrains-.*),title:^(Welcome to.*)"
         # "float,floating:0,class:^(jetbrains-.*),title:^(?!win.*)"
         # "forceinput,class:^(jetbrains-.*)"
         # "stayfocused,class:^(jetbrains-.*),title:^(?!win.*)"
