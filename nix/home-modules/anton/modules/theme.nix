@@ -10,9 +10,9 @@
   home.packages = [
     (lib.lowPrio (pkgs.writeShellApplication {
       name = "toggle-theme";
-      runtimeInputs = with pkgs; [home-manager coreutils ripgrep fish];
+      runtimeInputs = with pkgs; [home-manager coreutils ripgrep  fish];
       text = ''
-        "$(home-manager generations | head -1 | rg -o '/[^ ]*')"/specialisation/light/activate
+        "$(home-manager generations | head -1 | ${pkgs.ripgrep}/bin/rg -o '/[^ ]*')"/specialisation/light/activate
         fish --command 'set -U _reload_theme (date +%s)'
       '';
     }))

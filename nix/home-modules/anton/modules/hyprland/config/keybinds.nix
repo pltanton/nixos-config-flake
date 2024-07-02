@@ -128,11 +128,17 @@
       # Notification submap
       bind=SUPERSHIFT,N,submap,notifications
       submap=notifications
-
-      bind=SHIFT,d,exec,hyprctl dispatch submap reset; dunstctl close-all
-      bind=,Return,exec,hyprctl dispatch submap reset; dunstctl action; dunsctl close
-      bind=,d,exec,dunstctl close
       bind=,escape,submap,reset
+
+      # toggle panel
+      bind=,n,exec,swaync-client -t 
+      # toggle DND
+      bind=,d,exec,swaync-client -d bitdepth,10bitdepth,10
+      bind=,d,submap,reset
+      # clear all notifications
+      bind=shift,c,exec,swaync-client --close-all
+      bind=shift,c,submap,reset
+      # clear latest notification
 
       submap=reset
     '';

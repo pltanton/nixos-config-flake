@@ -25,7 +25,7 @@
     fish.functions = lib.mkIf config.programs.direnv.nix-direnv.enable {
       flakify = ''
         if not test -e flake.nix
-          nix flake new -t github:nix-community/nix-direnv .
+          nix flake new -t github:nix-community/flakelight .
         else if not test -e .envrc
           echo "use flake" > .envrc
           direnv allow

@@ -1,6 +1,6 @@
 {config, ...}: {
   sops.secrets.zigbee2mqtt-secret = {
-    path = "/var/lib/secrets.yaml";
+    path = "/var/lib/zigbee2mqtt/secrets.yaml";
     owner = "zigbee2mqtt";
   };
   services = {
@@ -8,14 +8,15 @@
       enable = true;
       settings = {
         homeassistant = true;
-        permit_join = true;
+        permit_join = false;
         serial = {port = "/dev/ttyUSB0";};
         advanced = {rtscts = false;};
+        availability = true;
         mqtt = {
           base_topic = "zigbee2mqtt";
-          server = "http://localhost";
-          user = "'!${config.sops.secrets.zigbee2mqtt-secret.path} user'";
-          password = "'!${config.sops.secrets.zigbee2mqtt-secret.path} password'";
+          server = "mqtt://localhost";
+          user = "!${config.sops.secrets.zigbee2mqtt-secret.path} user";
+          password = "!${config.sops.secrets.zigbee2mqtt-secret.path} password";
         };
         devices = {
           "0x00124b001f877829" = {friendly_name = "sonoff_climate_sensor_1";};

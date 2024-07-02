@@ -19,10 +19,10 @@
           ["bluez5.enable-msbc"] = true,
           ["bluez5.enable-hw-volume"] = true,
           ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]",
-          ["bluez5.autoswitch-profile"] = true
+          ["bluez5.autoswitch-profile"] = false
       '')
       (pkgs.writeTextDir "share/wireplumber/policy.lua.d/11-bluetooth-polity.lua" ''
-        bluetooth_policy.policy["media-role.use-headset-profile"] = true
+        bluetooth_policy.policy["media-role.use-headset-profile"] = false
       '')
     ];
   };

@@ -14,6 +14,7 @@
       127.0.0.1 db-user-service
       127.0.0.1 zookeeper
       127.0.0.1 trap-server
+      127.0.0.1 user-service
       127.0.0.1 kafka
     '';
   };

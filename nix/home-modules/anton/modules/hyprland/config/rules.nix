@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   wayland.windowManager.hyprland = {
     settings = {
       windowrule = [
@@ -22,15 +22,21 @@
         "float,class:^(firefox)$,title:^(.*)(Sharing Indicator)$"
         "move 0 0:^(firefox)$,title:^(.*)(Sharing Indicator)$"
 
-        # # Jetbrains products
-        # "noanim,class:^(jetbrains-.*)"
-        "float,floating:0,class:^(jetbrains-.*),title:^(win.*)"
-        # "noinitialfocus,class:^(jetbrains-.*),title:^(win.*)"
-        # "float,class:^(jetbrains-.*),title:^(Welcome to.*)"
-        # "float,floating:0,class:^(jetbrains-.*),title:^(?!win.*)"
-        # "forceinput,class:^(jetbrains-.*)"
-        # "stayfocused,class:^(jetbrains-.*),title:^(?!win.*)"
-        "windowdance,class:^(jetbrains-.*)" # allows IDE to move child windows
+        # Jetbrains xwayland fixes
+        # "stayfocused,class:^(jetbrains-.*),floating:0,xwayland:1"
+        "windowdance,class:^(jetbrains-.*)"
+        "dimaround,class:^(jetbrains-.*)$,floating:1,title:^(?!win)"
+        "center,class:^(jetbrains-.*)$,floating:1,title:^(?!win)"
+        "noanim,class:^(jetbrains-.*)$,title:^(win.*)$"
+        "noinitialfocus,class:^(jetbrains-.*)$,title:^(win.*)$"
+
+        # Swaync do not focus
+        "animation slide, class:(swaync)"
+      ];
+
+      layerrule = [
+        "blur,swaync-control-center"
+        "ignorezero,swaync-control-center"
       ];
     };
   };

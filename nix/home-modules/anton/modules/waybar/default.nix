@@ -1,13 +1,14 @@
 {
   pkgs,
   config,
-  lib,
   ...
 } @ input: let
   scripts = import ./scripts input;
   hyprlandPkg = config.wayland.windowManager.hyprland.package;
+  swayncClient = "${config.services.swaync.package}/bin/swaync-client";
+  colors = config.lib.stylix.colors;
 in {
-  programs.waybar = with config.lib.base16.theme; {
+  programs.waybar = {
     style = builtins.readFile (config.lib.stylix.colors {
       template = builtins.readFile ./waybar.css.mustache;
       extension = "css";
@@ -31,7 +32,7 @@ in {
         modules-right = [
           "tray"
           "idle_inhibitor"
-          "notification"
+          "custom/notification"
           "clock"
           "wireplumber"
           "temperature"
@@ -143,45 +144,32 @@ in {
           exec = "${scripts.mediaplayer}/bin/mediaplayer 2> /dev/null";
           exec-if = "${pkgs.busybox}/bin/pgrep spotify";
         };
-        "custom/submap" = {
-          format = "{}";
-          return-type = "json";
-          exec = "${scripts.hyprland-submap}/bin/hyprland-submap";
-        };
-        "custom/kbd" = {
-          format = "{}";
-          return-type = "json";
-          exec = "${scripts.hyprland-kbd}/bin/hyprland-kbd";
-        };
         "hyprland/sumbap" = {};
         "hyprland/window" = {
           "format" = "{}";
           "separate-outputs" = true;
         };
         "hyprland/language" = {
-          "format" = "{}";
-          "format-en" = "en";
           "format-ru" = "ru";
-          # "keyboard-name" = "AT Translated Set 2 keyboard";
+          "format-en" = "en";
         };
         "custom/notification" = {
-          "tooltip" = false;
+          "tooltip" = true;
           "format" = "{icon}";
           "format-icons" = {
-            "notification" = "<span foreground='red'><sup></sup></span>";
-            "none" = "";
-            "dnd-notification" = "<span foreground='red'><sup></sup></span>";
-            "dnd-none" = "";
-            "inhibited-notification" = "<span foreground='red'><sup></sup></span>";
-            "inhibited-none" = "";
-            "dnd-inhibited-notification" = "<span foreground='red'><sup></sup></span>";
-            "dnd-inhibited-none" = "";
+            "notification" = "<span foreground='#${colors.base08}'>*</span>";
+            "none" = "";
+            "dnd-notification" = "";
+            "dnd-none" = "";
+            "inhibited-notification" = "";
+            "inhibited-none" = "";
+            "dnd-inhibited-notification" = "";
+            "dnd-inhibited-none" = "";
           };
           "return-type" = "json";
-          "exec-if" = "which swaync-client";
-          "exec" = "swaync-client -swb";
-          "on-click" = "swaync-client -t -sw";
-          "on-click-right" = "swaync-client -d -sw";
+          "exec" = "${swayncClient} -swb";
+          "on-click" = "${swayncClient} -t -sw";
+          "on-click-right" = "${swayncClient} -d -sw";
           "escape" = true;
         };
       }

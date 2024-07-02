@@ -20,17 +20,11 @@
     "easyeffects/output/none.json" = {text = builtins.readFile ./none.json;};
   };
 
-  # home.packages = [
-  #   (pkgs.easyeffects.override {
-  #     speexdsp = pkgs.speexdsp.overrideAttrs (old: { configureFlags = [ ]; });
-  #   })
-  # ];
-
   services.easyeffects = {
     enable = true;
-    package = pkgs.easyeffects.override {
-      speexdsp = pkgs.speexdsp.overrideAttrs (old: {configureFlags = [];});
-    };
+    # package = pkgs.easyeffects.override {
+    #   speexdsp = pkgs.speexdsp.overrideAttrs (old: {configureFlags = [];});
+    # };
     # preset = "advanced-auto-gain";
   };
 }

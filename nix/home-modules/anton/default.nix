@@ -16,7 +16,7 @@
   nixpkgs.overlays = with inputs; [
     ddcsync.overlays.default
     autobrowser.overlays.default
-    dbeaver.overlays.default
+    # dbeaver.overlays.default
   ];
   nixpkgs.config.allowUnfree = true;
 

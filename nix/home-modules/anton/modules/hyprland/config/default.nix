@@ -5,10 +5,14 @@
   inputs,
   ...
 }: {
-  imports = [./keybinds.nix ./hyprland-config.nix ./rules.nix ./plugins.nix];
+  imports = [
+    ./hyprland-config.nix
+    ./keybinds.nix
+    ./rules.nix
+    ./plugins.nix
+ ];
 
   wayland.windowManager.hyprland = {
-    # package = null;
     enable = true;
   };
 

@@ -50,19 +50,20 @@
     xdg-utils
     glab
 
-    ffmpeg
-    curlie # replacement for httpie
     bat # cat but with highlights
-    duf # beauty df
-    tldr # cheatsheets for cli
-    procs # modern ps
-    jq
     bitwarden-cli
-    htop
     btop
-    powertop
+    curlie # replacement for httpie
+    duf # beauty df
+    ffmpeg
+    htop
     inetutils
+    jq
     nfs-utils
+    powertop
+    procs # modern ps
+    ripgrep
+    tldr # cheatsheets for cli
 
     tmux
     unzip
@@ -122,13 +123,13 @@
     grpcurl # grpc client
     nodejs
     jetbrains-toolbox
-    jetbrains.idea-community
+    jetbrains.idea-community-bin
 
     nixd # nix language server
     alejandra # nix formatting tool
     dprint
 
-    dbeaver
+    dbeaver-bin
     beekeeper-studio
 
     gcc

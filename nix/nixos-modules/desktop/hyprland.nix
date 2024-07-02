@@ -1,6 +1,6 @@
 {
   pkgs,
-  config,
+  inputs,
   ...
 }: {
   programs.hyprland = {

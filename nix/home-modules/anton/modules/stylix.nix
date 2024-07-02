@@ -6,7 +6,9 @@
   ...
 }: {
   stylix = {
-    image = config.backgrounds."mountain.png";
+    enable = true;
+
+    image = config.backgrounds."unsplash-mountains.jpg";
     base16Scheme = lib.mkDefault "${inputs.base16-schemes}/catppuccin-macchiato.yaml";
 
     targets.gtk.enable = false;
@@ -18,6 +20,7 @@
     targets.vscode.enable = false;
     targets.hyprland.enable = false;
     targets.bemenu.enable = false;
+    targets.alacritty.enable = true;
 
     polarity = lib.mkDefault "dark";
     cursor = {

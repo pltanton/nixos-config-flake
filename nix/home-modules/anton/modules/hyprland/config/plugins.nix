@@ -23,19 +23,19 @@ in {
     #   }
     # '';
 
-    settings = {
-      bind = [
-        # hycov binds
-        # "ALT,tab,hycov:toggleoverview"
-        # "ALT,left,hycov:movefocus,l"
-        # "ALT,right,hycov:movefocus,r"
-        # "ALT,up,hycov:movefocus,u"
-        # "ALT,down,hycov:movefocus,d"
-        # "ALT,h,hycov:movefocus,l"
-        # "ALT,l,hycov:movefocus,r"
-        # "ALT,k,hycov:movefocus,u"
-        # "ALT,j,hycov:movefocus,d"
-      ];
-    };
+    # settings = {
+    #   bind = [
+    #     # hycov binds
+    #     # "ALT,tab,hycov:toggleoverview"
+    #     # "ALT,left,hycov:movefocus,l"
+    #     # "ALT,right,hycov:movefocus,r"
+    #     # "ALT,up,hycov:movefocus,u"
+    #     # "ALT,down,hycov:movefocus,d"
+    #     # "ALT,h,hycov:movefocus,l"
+    #     # "ALT,l,hycov:movefocus,r"
+    #     # "ALT,k,hycov:movefocus,u"
+    #     # "ALT,j,hycov:movefocus,d"
+    #   ];
+    # };
   };
 }

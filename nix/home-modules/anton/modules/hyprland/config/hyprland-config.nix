@@ -1,12 +1,23 @@
 {
   pkgs,
   config,
-  inputs,
   ...
 }: let
-  cursorSize = toString config.home.pointerCursor.size;
+  colors = config.lib.stylix.colors;
 in {
-  wayland.windowManager.hyprland = with config.lib.stylix.colors; {
+  home.sessionVariables = {
+    ANKI_WAYLAND = 1;
+    GDK_BAKCEND = "wayland";
+    HYPRCURSOR_SIZE = config.home.pointerCursor.size;
+    HYPRCURSOR_THEME = "HyprBibataModernClassicSVG";
+    NIXOS_OZONE_WL = 1;
+    SDL_VIDEODRIVER = "wayland";
+    WLR_DRM_NO_ATOMIC = 1;
+    WLR_DRM_NO_MODIFIERS = 1;
+    _JAVA_AWT_WM_NONREPARENTING = 1;
+  };
+
+  wayland.windowManager.hyprland = {
     settings = {
       exec-once = [
         #Stores only text data
@@ -15,41 +26,18 @@ in {
         "wl-paste --type image --watch cliphist store"
 
         "hyprpaper"
-
-        # "${pkgs.xorg.xprop}/bin/xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
       ];
 
-      exec = [
-        "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme '${config.gtk.theme.name}'"
-        "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface icon-theme '${config.gtk.iconTheme.name}'"
-        "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface cursor-theme '${config.home.pointerCursor.name}'"
-        "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface cursor-size ${cursorSize}"
-        "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface text-scaling-factor 1.0"
-        "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface font-name 'Inter 11'"
-        "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface scaling-factor 1"
-        "${pkgs.glib}/bin/gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'"
-      ];
-
-      env = [
-        "NIXOS_OZONE_WL,1"
-        "XCURSOR_SIZE,${cursorSize}"
-        "QT_QPA_PLATFORMTHEME,gtk3"
-        "ANKI_WAYLAND,1"
-
-        # "GDK_SCALE,2"
-        # "QT_ENABLE_HIGHDPI_SCALING,1"
-        # "QT_SCALE_FACTOR,2"
-        "GDK_BAKCEND,wayland"
-
-        "WLR_DRM_NO_ATOMIC,1"
-        "XDG_DATA_DIRS,${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:$XDG_DATA_DIRS"
-        "WLR_DRM_NO_MODIFIERS,1"
-        "SDL_VIDEODRIVER,wayland"
-        "_JAVA_AWT_WM_NONREPARENTING,1"
-
-        "HYPRCURSOR_THEME,HyprBibataModernClassicSVG"
-        "HYPRCURSOR_SIZE,24"
-      ];
+      # exec = [
+      #   "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme '${config.gtk.theme.name}'"
+      #   "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface icon-theme '${config.gtk.iconTheme.name}'"
+      #   "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface cursor-theme '${config.home.pointerCursor.name}'"
+      #   "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface cursor-size ${cursorSize}"
+      #   "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface text-scaling-factor 1.0"
+      #   "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface font-name 'Inter 11'"
+      #   "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface scaling-factor 1"
+      #   "${pkgs.glib}/bin/gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'"
+      # ];
 
       input = {
         # kb_layout = "us,ru,us,gr";
@@ -60,7 +48,6 @@ in {
         kb_options = "grp:win_space_toggle";
         kb_rules = "";
         repeat_rate = 40;
-        follow_mouse = 1;
         float_switch_override_focus = 0;
         sensitivity = 0.65;
 
@@ -75,13 +62,10 @@ in {
         border_size = 2;
         # gaps_workspaces = 100;
 
-        "col.active_border" = "rgb(${base0E}) rgb(${base0D}) 45deg";
-        "col.inactive_border" = "rgb(${base02})";
-      };
+        "col.active_border" = "rgb(${colors.base0E}) rgb(${colors.base0D}) 45deg";
+        "col.inactive_border" = "rgb(${colors.base02})";
 
-      cursor = {
-        inactive_timeout = 4;
-        hide_on_key_press = false;
+        cursor_inactive_timeout = 5;
       };
 
       decoration = {
@@ -151,12 +135,12 @@ in {
           font_size = 14;
           height = 2;
           font_family = "Inter";
-          text_color = "rgb(${base05})";
+          text_color = "rgb(${colors.base05})";
           gradients = false;
-          "col.active" = "0xff${base02}";
-          "col.inactive" = "0xff${base00}";
-          "col.locked_active" = "0xff${base02}";
-          "col.locked_inactive" = "0xff${base00}";
+          "col.active" = "0xff${colors.base02}";
+          "col.inactive" = "0xff${colors.base00}";
+          "col.locked_active" = "0xff${colors.base02}";
+          "col.locked_inactive" = "0xff${colors.base00}";
         };
       };
 
