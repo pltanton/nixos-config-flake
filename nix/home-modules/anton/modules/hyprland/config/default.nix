@@ -19,11 +19,7 @@
   home.packages =
     lib.mkIf config.wayland.windowManager.hyprland.enable
     (with pkgs; [
-      hyprpaper
-
       wl-clipboard
-
-      cliphist
 
       swaylock-fancy
       wofi-emoji

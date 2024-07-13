@@ -19,15 +19,6 @@ in {
 
   wayland.windowManager.hyprland = {
     settings = {
-      exec-once = [
-        #Stores only text data
-        "wl-paste --type text --watch cliphist store"
-        #Stores only image data
-        "wl-paste --type image --watch cliphist store"
-
-        "hyprpaper"
-      ];
-
       # exec = [
       #   "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme '${config.gtk.theme.name}'"
       #   "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface icon-theme '${config.gtk.iconTheme.name}'"
@@ -126,6 +117,8 @@ in {
         mouse_move_enables_dpms = true;
         disable_autoreload = true;
         focus_on_activate = true;
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
       };
 
       group = {

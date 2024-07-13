@@ -123,6 +123,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    catppuccin.url = "github:catppuccin/nix";
+
     # ─── APPLICATION SETS ────────────────────────────────────────────
     nur.url = "github:nix-community/NUR";
 
