@@ -2,6 +2,7 @@
   pkgs,
   config,
   inputs,
+  lib,
   ...
 }: let
   rofi = pkgs.rofi-wayland.override {
@@ -12,10 +13,10 @@ in {
     enable = true;
     package = rofi;
     font = "${config.stylix.fonts.serif.name} 20";
-    theme = config.lib.stylix.colors {
+    theme = lib.mkDefault (config.lib.stylix.colors {
       template = builtins.readFile ./rounded.rasi.mustache;
       extension = "rasi";
-    };
+    });
     # theme = (osConfig.lib.stylix.colors inputs.base16-rofi);
     extraConfig = {
       width = 30;

@@ -3,7 +3,7 @@
     settings = {
       bind = [
         # Rofi keybinds
-        "SUPERSHIFT,v,exec,cliphist list | rofi -dmenu -lines -p  | cliphist decode | wl-copy"
+        "SUPERSHIFT,v,exec,cliphist list | rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img -show clipboard -show-icons -p "
         "SUPERSHIFT,e,exec,rofi -show emoji -modi emoji"
         "SUPER,Return,exec,rofi -show drun -show-icons"
 

@@ -19,16 +19,15 @@ in {
 
   wayland.windowManager.hyprland = {
     settings = {
-      # exec = [
-      #   "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme '${config.gtk.theme.name}'"
-      #   "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface icon-theme '${config.gtk.iconTheme.name}'"
-      #   "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface cursor-theme '${config.home.pointerCursor.name}'"
-      #   "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface cursor-size ${cursorSize}"
-      #   "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface text-scaling-factor 1.0"
-      #   "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface font-name 'Inter 11'"
-      #   "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface scaling-factor 1"
-      #   "${pkgs.glib}/bin/gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'"
-      # ];
+      exec = [
+        "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme '${config.gtk.theme.name}'"
+        "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface icon-theme '${config.gtk.iconTheme.name}'"
+        "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface cursor-theme '${config.home.pointerCursor.name}'"
+        "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface text-scaling-factor 1.0"
+        "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface font-name 'Inter 11'"
+        "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface scaling-factor 1"
+        "${pkgs.glib}/bin/gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'"
+      ];
 
       input = {
         # kb_layout = "us,ru,us,gr";
@@ -55,8 +54,6 @@ in {
 
         "col.active_border" = "rgb(${colors.base0E}) rgb(${colors.base0D}) 45deg";
         "col.inactive_border" = "rgb(${colors.base02})";
-
-        cursor_inactive_timeout = 5;
       };
 
       decoration = {
@@ -86,22 +83,11 @@ in {
           "myBezier, 0.05, 0.9, 0.1, 1.05"
         ];
         animation = [
-          # "workspaces,1,1,default,slide"
-          # "fade,1,7,default"
-          # "windowsMove,0,7,default"
-
           "windows, 1, 4, default, popin 80%"
           "border, 1, 10, default"
           "fade, 1, 2, default"
           "workspaces, 1, 2, md3_decel, slide"
           "specialWorkspace, 1, 3, md3_decel, slidefadevert 15%"
-
-          # "windows, 1, 7, myBezier" # Windows animation
-          # "windowsOut, 1, 7, default, popin 80%" # Windows out animation
-          # "border, 1, 10, default" # Border animation
-          # "borderangle, 1, 8, default" # Border angle animation
-          # "fade, 1, 7, default" # Fade animation
-          # "workspaces, 1, 6, default" # Workspaces animation
         ];
       };
 

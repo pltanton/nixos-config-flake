@@ -32,15 +32,15 @@
       gtk-cursor-theme-size = 64;
     '';
 
-    theme = lib.mkDefault {
-      name = "Catppuccin-Macchiato-Standard-Maroon-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = ["maroon"];
-        size = "standard";
-        tweaks = ["normal"];
-        variant = "macchiato";
-      };
-    };
+    # theme = lib.mkDefault {
+    #   name = "Catppuccin-Macchiato-Standard-Maroon-Dark";
+    #   package = pkgs.catppuccin-gtk.override {
+    #     accents = ["maroon"];
+    #     size = "standard";
+    #     tweaks = ["normal"];
+    #     variant = "macchiato";
+    #   };
+    # };
   };
 
   qt = {
@@ -59,14 +59,14 @@
         '';
       })
     ];
-    gtk.theme = {
-      name = "Catppuccin-Latte-Standard-Maroon-Light";
-      package = pkgs.catppuccin-gtk.override {
-        accents = ["maroon"];
-        size = "standard";
-        tweaks = ["normal"];
-        variant = "latte";
-      };
-    };
+    # gtk.theme = {
+    #   name = "Catppuccin-Latte-Standard-Maroon-Light";
+    #   package = pkgs.catppuccin-gtk.override {
+    #     accents = ["maroon"];
+    #     size = "standard";
+    #     tweaks = ["normal"];
+    #     variant = "latte";
+    #   };
+    # };
   };
 }

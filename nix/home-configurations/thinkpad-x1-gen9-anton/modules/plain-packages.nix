@@ -11,7 +11,7 @@
       discord
 
       transmission-remote-gtk
-      transmission-gtk
+      transmission_4-gtk
       rapid-photo-downloader
 
       steam

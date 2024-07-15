@@ -11,7 +11,7 @@
     image = config.backgrounds."unsplash-mountains.jpg";
     base16Scheme = lib.mkDefault "${inputs.base16-schemes}/catppuccin-macchiato.yaml";
 
-    targets.gtk.enable = false;
+    targets.gtk.enable = true;
     targets.firefox.enable = false;
     targets.swaylock.enable = false;
     targets.rofi.enable = false;
@@ -60,4 +60,8 @@
     # polarity = "light";
     # cursor.name = "phinger-cursors";
   };
+
+  # catppuccin = {
+  #   enable = true;
+  # };
 }
