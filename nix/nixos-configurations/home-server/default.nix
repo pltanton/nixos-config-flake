@@ -19,6 +19,8 @@
     })
 
     ./configuration.nix
+
+    (import ./packages)
     (import ./modules)
   ];
 }

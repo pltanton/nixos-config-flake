@@ -131,7 +131,7 @@
       bind=,escape,submap,reset
 
       # toggle panel
-      bind=,n,exec,swaync-client -t 
+      bind=,n,exec,swaync-client -t
       # toggle DND
       bind=,d,exec,swaync-client -d bitdepth,10bitdepth,10
       bind=,d,submap,reset

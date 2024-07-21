@@ -12,7 +12,7 @@
 
       transmission-remote-gtk
       transmission_4-gtk
-      rapid-photo-downloader
+      stable.rapid-photo-downloader
 
       steam
 

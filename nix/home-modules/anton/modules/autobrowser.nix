@@ -9,8 +9,9 @@
     rules = [
       "work:app.class=Slack"
       "work:app.class=Alacritty"
+      ":app.class=Alacritty"
     ];
     default = "home";
   };
-  home.packages = [ pkgs.autobrowser ];
+  home.packages = [pkgs.autobrowser];
 }

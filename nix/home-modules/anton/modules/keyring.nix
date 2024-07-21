@@ -3,7 +3,7 @@
   config,
   ...
 }: {
-  home.packages = with pkgs; [gnome.seahorse];
+  home.packages = [pkgs.seahorse];
 
   services = {
     gnome-keyring.enable = true;

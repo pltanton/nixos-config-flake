@@ -11,7 +11,7 @@
 
     sessionVariables = rec {
       KUBECONFIG = "/home/anton/.kube/config";
- 
+
       # NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [ pkgs.stdenv.cc.cc ];
       # LD_LIBRARY_PATH = lib.makeLibraryPath [ pkgs.stdenv.cc.cc ];
       # NIX_LD = pkgs.binutils.dynamicLinker;

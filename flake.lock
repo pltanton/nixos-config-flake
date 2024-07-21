@@ -656,6 +656,24 @@
         "type": "github"
       }
     },
+    "jbr-wayland": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "lastModified": 1720461084,
+        "narHash": "sha256-b0BXzF88xO629nbBd6zHsAOHVM0zjExqIMuxUtq8CZk=",
+        "owner": "BananchickPasha",
+        "repo": "jbr-wayland-nix",
+        "rev": "bb417a805091931d6c7bb751337e4e5a77ff5be2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BananchickPasha",
+        "repo": "jbr-wayland-nix",
+        "type": "github"
+      }
+    },
     "nix-alien": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -697,7 +715,7 @@
     },
     "nix-index-database": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_5"
       },
       "locked": {
         "lastModified": 1720926593,
@@ -842,6 +860,22 @@
     },
     "nixpkgs_4": {
       "locked": {
+        "lastModified": 1718086528,
+        "narHash": "sha256-hoB7B7oPgypePz16cKWawPfhVvMSXj4G/qLsfFuhFjw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "47b604b07d1e8146d5398b42d3306fdebd343986",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-24.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_5": {
+      "locked": {
         "lastModified": 1720768451,
         "narHash": "sha256-EYekUHJE2gxeo2pM/zM9Wlqw1Uw2XTJXOSAO79ksc4Y=",
         "owner": "NixOS",
@@ -856,7 +890,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_5": {
+    "nixpkgs_6": {
       "locked": {
         "lastModified": 1720781449,
         "narHash": "sha256-po3TZO9kcZwzvkyMJKb0WCzzDtiHWD34XeRaX1lWXp0=",
@@ -903,6 +937,7 @@
         "flakelight": "flakelight_2",
         "home-manager": "home-manager",
         "hycov": "hycov",
+        "jbr-wayland": "jbr-wayland",
         "nix-alien": "nix-alien",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": [
@@ -935,7 +970,7 @@
     },
     "sops-nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": "nixpkgs_6",
         "nixpkgs-stable": "nixpkgs-stable_2"
       },
       "locked": {

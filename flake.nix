@@ -30,6 +30,7 @@
 
       withOverlays = [
         # inputs.hyprland.overlays.default
+        # inputs.jbr-wayland.overlays.jbrOverlay
         (final: prev: {
           unstable = import inputs.nixpkgs-unstable {
             system = "x86_64-linux";
@@ -125,8 +126,9 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
-    # ─── APPLICATION SETS ────────────────────────────────────────────
+    # ─── APPLICATIONS ────────────────────────────────────────────────
     nur.url = "github:nix-community/NUR";
+    jbr-wayland.url = "github:BananchickPasha/jbr-wayland-nix";
 
     # ─── NON FLAKE INPUTS ────────────────────────────────────────────
 

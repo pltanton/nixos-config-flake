@@ -1,6 +1,16 @@
-{config, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   programs.firefox = {
     enable = true;
+    package = pkgs.firefox.override {
+      # See nixpkgs' firefox/wrapper.nix to check which options you can use
+      nativeMessagingHosts = [
+        pkgs.fx-cast-bridge
+      ];
+    };
 
     profiles = {
       default = {

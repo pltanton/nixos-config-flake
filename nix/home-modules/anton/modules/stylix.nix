@@ -11,7 +11,6 @@
     image = config.backgrounds."unsplash-mountains.jpg";
     base16Scheme = lib.mkDefault "${inputs.base16-schemes}/catppuccin-macchiato.yaml";
 
-    targets.gtk.enable = true;
     targets.firefox.enable = false;
     targets.swaylock.enable = false;
     targets.rofi.enable = false;
@@ -55,13 +54,27 @@
     };
   };
 
-  specialisation.light.configuration.stylix = {
-    # base16Scheme = "${inputs.base16-schemes}/catppuccin-latte.yaml";
-    # polarity = "light";
-    # cursor.name = "phinger-cursors";
+  catppuccin = {
+    enable = true;
+    flavor = lib.mkDefault "macchiato";
+    accent = "sky";
   };
 
-  # catppuccin = {
-  #   enable = true;
-  # };
+  gtk.catppuccin.enable = false;
+  qt.style.catppuccin.enable = false;
+  wayland.windowManager.hyprland.catppuccin.enable = false;
+  programs.alacritty.catppuccin.enable = false;
+  programs.rofi.catppuccin.enable = false;
+
+  specialisation.light.configuration = {
+    stylix = {
+      base16Scheme = "${inputs.base16-schemes}/catppuccin-latte.yaml";
+      polarity = "light";
+      # cursor.name = "phinger-cursors";
+    };
+
+    catppuccin = {
+      flavor = "latte";
+    };
+  };
 }

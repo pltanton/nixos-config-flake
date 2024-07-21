@@ -10,7 +10,7 @@
     ./keybinds.nix
     ./rules.nix
     ./plugins.nix
- ];
+  ];
 
   wayland.windowManager.hyprland = {
     enable = true;

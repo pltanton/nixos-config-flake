@@ -27,10 +27,10 @@
     pcmanfm
     xournalpp
 
-    gnome.nautilus
-    gnome.file-roller
-    gnome.sushi
-    gnome.eog
+    nautilus
+    file-roller
+    sushi
+    eog
 
     # Fonts
     font-awesome
