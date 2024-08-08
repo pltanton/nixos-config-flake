@@ -15,6 +15,7 @@
         "center,class:^(.telegram-desktop-wrapped)$,title:^(Choose)(.*)$"
 
         # firefox picture in picture float and pin
+        "float,class:^(firefox)$,title:^(Extension: \(fx_cast\))(.*)$"
         "float,class:^(firefox)$,title:^(Picture-in-Picture)$"
         "pin,class:^(firefox)$,title:^(Picture-in-Picture)$"
         "center,class:^(firefox)$,title:^(Picture-in-Picture)$"

@@ -79,6 +79,7 @@
   sops.secrets."firefly/nordigen-id".owner = config.services.firefly-iii.user;
   sops.secrets."firefly/nordigen-key".owner = config.services.firefly-iii.user;
   sops.secrets."firefly/gocardless-config".owner = config.services.firefly-iii.user;
+  sops.secrets."firefly/revolut-config".owner = config.services.firefly-iii.user;
   systemd.services."firefly-iii-data-importer-job" = let
     artisan = "${config.services.firefly-iii-data-importer.package}/artisan";
   in {
@@ -96,6 +97,7 @@
       set +a
 
       ${artisan} importer:import ${config.sops.secrets."firefly/gocardless-config".path}
+      ${artisan} importer:import ${config.sops.secrets."firefly/revolut-config".path}
     '';
 
     serviceConfig = {

@@ -45,7 +45,7 @@
 
   qt = {
     enable = true;
-    platformTheme.name = "gtk";
+    # platformTheme.name = "gtk";
   };
 
   specialisation.light.configuration = {

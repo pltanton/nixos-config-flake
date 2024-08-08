@@ -40,6 +40,7 @@ in {
                 "https://jellyfin.kaliwe.ru"
                 "https://monitorrent.kaliwe.ru"
                 "https://nextcloud.kaliwe.ru"
+                "https://firefly.kaliwe.ru"
                 "https://s3.kaliwe.ru"
                 "https://pltanton.dev"
               ];
