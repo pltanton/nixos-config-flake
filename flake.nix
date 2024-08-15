@@ -31,6 +31,7 @@
       withOverlays = [
         # inputs.hyprland.overlays.default
         # inputs.jbr-wayland.overlays.jbrOverlay
+        inputs.jetbrains.overlays.default
         (final: prev: {
           unstable = import inputs.nixpkgs-unstable {
             system = "x86_64-linux";
@@ -87,6 +88,10 @@
     };
 
     # ─── APPS ────────────────────────────────────────────────────────
+    jetbrains = {
+      url = "github:liff/jetbrains-flake";
+    };
+
     ddcsync = {
       url = "github:pltanton/ddcsync";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -103,7 +108,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     dbeaver = {
       url = "github:padhia/nix-dbeaver";
