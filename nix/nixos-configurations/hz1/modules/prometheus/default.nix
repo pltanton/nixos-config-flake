@@ -8,6 +8,7 @@
   services = {
     prometheus = {
       enable = true;
+      retentionTime = "210d";
       alertmanager.enable = false;
       alertmanager.configText = ''
         route:

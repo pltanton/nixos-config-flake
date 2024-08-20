@@ -17,11 +17,6 @@ in {
   hardware.steam-hardware.enable = false;
   hardware.pulseaudio.support32Bit = true;
 
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [vaapiIntel intel-media-driver];
-    driSupport32Bit = true;
-  };
   environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;

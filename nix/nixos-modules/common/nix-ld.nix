@@ -4,6 +4,7 @@
   ...
 }: {
   programs.nix-ld.enable = true;
+  programs.nix-ld.package = pkgs.nix-ld-rs;
   programs.nix-ld.libraries = with pkgs; [
     curl
     expat
@@ -14,6 +15,7 @@
     glib
     icu
     libclang.lib
+    glibc
     libdbusmenu
     libxcrypt-legacy
     libxml2
@@ -29,5 +31,6 @@
     xorg.libXtst
     xz
     zlib
+    linux
   ];
 }

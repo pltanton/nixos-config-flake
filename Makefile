@@ -1,7 +1,9 @@
 TIME=$(shell date +'%Y.%m.%d %H:%M:%S')
 
-rebuild-switch-home-server: target = root@192.168.0.100
-rebuild-switch-home-server: build_host = root@192.168.0.100
+# rebuild-switch-home-server: target = root@192.168.0.100
+# rebuild-switch-home-server: build_host = root@192.168.0.100
+rebuild-switch-home-server: target = root@home.kaliwe.ru
+rebuild-switch-home-server: build_host = root@home.kaliwe.ru
 
 rebuild-switch-hz1: target = root@hz1.kaliwe.ru
 rebuild-switch-hz1: build_host = root@hz1.kaliwe.ru

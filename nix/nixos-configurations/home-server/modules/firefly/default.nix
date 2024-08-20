@@ -45,8 +45,11 @@
       # APP_DEBUG = true;
       # LOG_LEVEL = "debug";
       FIREFLY_III_URL = "https://firefly.kaliwe.ru";
-      FIREFLY_III_CLIENT_ID = "4";
-      # FIREFLY_III_ACCESS_TOKEN_FILE = config.sops.secrets.firefly-data-importer-oauth-token.path;
+      IMPORT_DIR_ALLOWLIST = dirOf config.sops.secrets."firefly/gocardless-config".path;
+
+      FIREFLY_III_ACCESS_TOKEN_FILE = config.sops.secrets."firefly/access-token".path;
+      NORDIGEN_ID_FILE = config.sops.secrets."firefly/nordigen-id".path;
+      NORDIGEN_KEY_FILE = config.sops.secrets."firefly/nordigen-key".path;
     };
   };
 
@@ -63,6 +66,9 @@
       file_server
       root * ${config.services.firefly-iii-data-importer.package}/public
       php_fastcgi unix/${config.services.phpfpm.pools.firefly-iii-data-importer.socket}
+      basicauth / {
+        anton $2a$14$a60.ZB7Synyo5AjfCAh1R.Qc8xIMLmPC7DBeWpSfZ83ZGWHnvZh6C
+      }
     '';
   };
   systemd.timers."firefly-iii-data-importer-job" = {
@@ -74,7 +80,6 @@
     };
   };
 
-
   sops.secrets."firefly/access-token".owner = config.services.firefly-iii.user;
   sops.secrets."firefly/nordigen-id".owner = config.services.firefly-iii.user;
   sops.secrets."firefly/nordigen-key".owner = config.services.firefly-iii.user;
@@ -84,23 +89,12 @@
     artisan = "${config.services.firefly-iii-data-importer.package}/artisan";
   in {
     script = ''
-      set -eu
-
-      set -a
-      FIREFLY_III_ACCESS_TOKEN="$(< ${config.sops.secrets."firefly/access-token".path})"
-      FIREFLY_III_URL=${config.services.firefly-iii-data-importer.settings.FIREFLY_III_URL}
-
-      NORDIGEN_ID="$(< ${config.sops.secrets."firefly/nordigen-id".path})"
-      NORDIGEN_KEY="$(< ${config.sops.secrets."firefly/nordigen-key".path})"
-
-      IMPORT_DIR_ALLOWLIST="$(dirname ${config.sops.secrets."firefly/gocardless-config".path})"
-      set +a
-
       ${artisan} importer:import ${config.sops.secrets."firefly/gocardless-config".path}
       ${artisan} importer:import ${config.sops.secrets."firefly/revolut-config".path}
     '';
 
     serviceConfig = {
+      ReadWritePaths = [config.services.firefly-iii-data-importer.dataDir];
       Type = "oneshot";
       User = config.services.firefly-iii.user;
     };

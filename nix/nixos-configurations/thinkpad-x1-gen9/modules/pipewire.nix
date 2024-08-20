@@ -12,19 +12,21 @@
     pulse.enable = true;
     jack.enable = false;
 
-    wireplumber.configPackages = [
-      (pkgs.writeTextDir "share/wireplumber/bluetooth.lua.d/51-bluez-config.lua" ''
-        bluez_monitor.properties = {
-          ["bluez5.enable-sbc-xq"] = true,
-          ["bluez5.enable-msbc"] = true,
-          ["bluez5.enable-hw-volume"] = true,
-          ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]",
-          ["bluez5.autoswitch-profile"] = false
-      '')
-      (pkgs.writeTextDir "share/wireplumber/policy.lua.d/11-bluetooth-polity.lua" ''
-        bluetooth_policy.policy["media-role.use-headset-profile"] = false
-      '')
-    ];
+    wireplumber.extraConfig = {
+        # "10-disable-camera" = {
+        #     "wireplumber.profiles" = {
+        #       main."monitor.libcamera" = "disabled";
+        #     };
+        # };
+
+        bluetoothEnhancements = {
+            "monitor.bluez.properties" = {
+                "bluez5.enable-sbc-xq" = true;
+                "bluez5.enable-msbc" = true;
+                "bluez5.enable-hw-volume" = true;
+            };
+        };
+    };
   };
 
   nixpkgs.config.pulseaudio = true;

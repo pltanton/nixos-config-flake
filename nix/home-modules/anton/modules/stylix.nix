@@ -9,7 +9,7 @@
     enable = true;
 
     image = config.backgrounds."unsplash-mountains.jpg";
-    base16Scheme = lib.mkDefault "${inputs.base16-schemes}/catppuccin-frappe.yaml";
+    base16Scheme = lib.mkDefault "${inputs.base16-schemes}/catppuccin-mocha.yaml";
 
     targets.firefox.enable = false;
     targets.swaylock.enable = false;
@@ -56,7 +56,7 @@
 
   catppuccin = {
     enable = true;
-    flavor = lib.mkDefault "frappe";
+    flavor = lib.mkDefault "mocha";
     accent = "sky";
   };
 

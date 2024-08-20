@@ -13,9 +13,6 @@
       transmission-remote-gtk
       transmission_4-gtk
       stable.rapid-photo-downloader
-
-      steam
-
       # stable.darktable
       # rawtherapee
       # lightworks

@@ -4,7 +4,7 @@
   ...
 }: {
   programs.go = {
-    package = pkgs.go;
+    package = pkgs.go_1_23;
     enable = true;
     goPrivate = ["gitlab.walletteam.org/" "gitlab.fix.ru/neocrypto" "github.com/TONSNIPERS"];
   };
@@ -21,7 +21,7 @@
       gotests
       gotools
       mockgen
-      go-outline
+      go-outlineevents-consumer-b6fc5dffd-mqkp2events-consumer-b6fc5dffd-mqkp2
       gopkgs
       go-tools
       go-swag

@@ -35,23 +35,28 @@
         {
           tag = "direct";
           protocol = "freedom";
-          settings = {};
         }
         {
-          tag = "blocked";
+          tag = "block";
           protocol = "blackhole";
-          settings = {};
         }
       ];
       routing = {
-        domainStrategy = "AsIs";
+        domainStrategy = "IPIfNonMatch";
         rules = [
           {
             type = "field";
             ip = [
               "geoip:private"
             ];
-            outboundTag = "blocked";
+            outboundTag = "block";
+          }
+          {
+            type = "field";
+            protocol = [
+              "bittorrent"
+            ];
+            outboundTag = "block";
           }
         ];
       };

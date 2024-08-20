@@ -25,7 +25,6 @@
 
         # Jetbrains xwayland fixes
         # "stayfocused,class:^(jetbrains-.*),floating:0,xwayland:1"
-        "windowdance,class:^(jetbrains-.*)"
         "dimaround,class:^(jetbrains-.*)$,floating:1,title:^(?!win)"
         "center,class:^(jetbrains-.*)$,floating:1,title:^(?!win)"
         "noanim,class:^(jetbrains-.*)$,title:^(win.*)$"
@@ -33,6 +32,8 @@
 
         # Swaync do not focus
         "animation slide, class:(swaync)"
+
+        "opacity 0.9,class:(Alacritty),focus:0$"
       ];
 
       layerrule = [

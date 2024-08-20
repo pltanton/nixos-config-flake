@@ -16,6 +16,7 @@
   };
 
   time.timeZone = "Asia/Nicosia";
+  # time.timeZone = "Europe/Belgrade";
 
   nixpkgs.config = {
     allowBroken = false;

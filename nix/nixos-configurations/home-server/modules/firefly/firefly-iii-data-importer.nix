@@ -41,10 +41,8 @@
   firefly-iii-maintenance = pkgs.writeShellScript "firefly-iii-maintenance.sh" ''
     ${fileenv-func}
 
-    ${artisan} package:discover
-    ${artisan} cache:clear
+    ${artisan} config:clear
     ${artisan} config:cache
-    ${artisan} importer:version
   '';
 
   commonServiceConfig = {

@@ -77,7 +77,7 @@
     # onlyoffice-bin
     libreoffice
 
-    anytype
+    master.anytype
     anki-bin
 
     bitwarden
@@ -101,7 +101,7 @@
     zed-editor
 
     # Web
-    thunderbird
+    thunderbird-128
 
     # LaTeX
     texliveFull
@@ -123,7 +123,8 @@
     grpcurl # grpc client
     nodejs
     jetbrains-toolbox
-    jetbrains.idea-community-bin
+    jetbrains.idea-ultimate
+    # intellij-idea-ultimate
 
     nixd # nix language server
     alejandra # nix formatting tool

@@ -15,8 +15,7 @@
   services.gnome.gnome-keyring.enable = true;
   environment.systemPackages = with pkgs; [
     libgnome-keyring
-    gnome.gnome-keyring
-    # goldwarden
+    gnome-keyring
   ];
 
   security.wrappers."mount.nfs" = {
