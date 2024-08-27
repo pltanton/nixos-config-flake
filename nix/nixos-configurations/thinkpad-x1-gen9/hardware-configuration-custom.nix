@@ -9,14 +9,13 @@
 in {
   imports = [inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-9th-gen];
 
-  hardware.steam-hardware.enable = false;
   hardware.pulseaudio.support32Bit = true;
 
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.kernelPackages = pkgs.linuxPackages;
   # boot.kernelPackages = pkgs.linuxPackages_zen;
-  # boot.kernelPackages = pkgs.linuxPackages_xanmod;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
   hardware.trackpoint.enable = true;
   hardware.trackpoint.emulateWheel = config.hardware.trackpoint.enable;

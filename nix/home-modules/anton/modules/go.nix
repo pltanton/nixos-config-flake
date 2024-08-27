@@ -21,7 +21,7 @@
       gotests
       gotools
       mockgen
-      go-outlineevents-consumer-b6fc5dffd-mqkp2events-consumer-b6fc5dffd-mqkp2
+      go-outline
       gopkgs
       go-tools
       go-swag

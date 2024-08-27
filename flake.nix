@@ -109,6 +109,7 @@
     };
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    xdph.url = "github:hyprwm/xdg-desktop-portal-hyprland";
 
     dbeaver = {
       url = "github:padhia/nix-dbeaver";

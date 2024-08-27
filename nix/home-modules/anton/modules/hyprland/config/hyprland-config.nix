@@ -19,6 +19,10 @@ in {
 
   wayland.windowManager.hyprland = {
     settings = {
+      monitor = [
+        ",preferred,auto,1,bitdepth,8"
+      ];
+
       exec = [
         "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme '${config.gtk.theme.name}'"
         "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface icon-theme '${config.gtk.iconTheme.name}'"
@@ -39,13 +43,12 @@ in {
         kb_rules = "";
         repeat_rate = 40;
         float_switch_override_focus = 0;
-        sensitivity = 0.65;
+        sensitivity = 1;
 
         touchpad = {natural_scroll = true;};
       };
 
       general = {
-        sensitivity = 1;
 
         gaps_in = 4;
         gaps_out = 6;

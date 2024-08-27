@@ -130,7 +130,7 @@
     alejandra # nix formatting tool
     dprint
 
-    dbeaver-bin
+    stable.dbeaver-bin
     beekeeper-studio
 
     gcc

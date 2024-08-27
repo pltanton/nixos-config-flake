@@ -133,7 +133,7 @@
       # toggle panel
       bind=,n,exec,swaync-client -t
       # toggle DND
-      bind=,d,exec,swaync-client -d bitdepth,10bitdepth,10
+      bind=,d,exec,swaync-client -d
       bind=,d,submap,reset
       # clear all notifications
       bind=shift,c,exec,swaync-client --close-all

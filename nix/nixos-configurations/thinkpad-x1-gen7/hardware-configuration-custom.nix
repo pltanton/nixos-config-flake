@@ -14,7 +14,6 @@ in {
     inputs.nixos-hardware.nixosModules.common-pc-laptop
   ];
 
-  hardware.steam-hardware.enable = false;
   hardware.pulseaudio.support32Bit = true;
 
   environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
