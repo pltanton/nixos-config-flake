@@ -9,9 +9,10 @@
 
       windowrulev2 = [
         # telegram media viewer
-        "float,class:^(telegramdesktop)$,title:^(Media viewer)$"
+        # "float,class:^(telegramdesktop)$,title:^(Media viewer)$"
         "float,class:^(.telegram-desktop-wrapped)$,title:^(Choose)(.*)$"
         "size 1100 700,class:^(.telegram-desktop-wrapped)$,title:^(Choose)(.*)$"
+        "move onscreen cursor 50% 50%,class:^(.telegram-desktop-wrapped)$,title:^(Choose)(.*)$"
         "center,class:^(.telegram-desktop-wrapped)$,title:^(Choose)(.*)$"
 
         # firefox picture in picture float and pin

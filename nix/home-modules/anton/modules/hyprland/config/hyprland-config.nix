@@ -15,6 +15,7 @@ in {
     WLR_DRM_NO_ATOMIC = 1;
     WLR_DRM_NO_MODIFIERS = 1;
     _JAVA_AWT_WM_NONREPARENTING = 1;
+    QT_QPA_PLATFORMTHEME = "gtk3"; # GTK file choser for QT apps, telegram fe
   };
 
   wayland.windowManager.hyprland = {
@@ -49,7 +50,6 @@ in {
       };
 
       general = {
-
         gaps_in = 4;
         gaps_out = 6;
         border_size = 2;

@@ -24,7 +24,7 @@
   programs.fish.loginShellInit = lib.mkIf config.wayland.windowManager.hyprland.enable ''
     set TTY1 (tty)
     if test -z "$DISPLAY"; and test $TTY1 = "/dev/tty1"
-      exec sh -c 'Hyprland; systemctl --user stop graphical-session.target'
+      exec sh -c 'Hyprland; systemctl --user stop graphical-session.target; systemctl --user stop dbus'
     end
   '';
 

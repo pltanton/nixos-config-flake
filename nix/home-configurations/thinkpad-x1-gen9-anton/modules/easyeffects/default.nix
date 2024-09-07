@@ -21,7 +21,7 @@
   };
 
   services.easyeffects = {
-    enable = true;
+    enable = false;
     package = pkgs.stable.easyeffects;
     # package = pkgs.easyeffects.override {
     #   speexdsp = pkgs.speexdsp.overrideAttrs (old: {configureFlags = [];});

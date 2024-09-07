@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  system-packages = [
+  environment.systemPackages = [
     pkgs.pritunl-client
   ];
 }
