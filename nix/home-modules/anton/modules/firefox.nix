@@ -20,6 +20,7 @@
           "gfx.webrender.all" = true;
           "layout.css.devPixelsPerPx" = "-1.0";
           "privacy.webrtc.legacyGlobalIndicator" = false;
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
 
         extensions = with config.nur.repos.rycee.firefox-addons; [
@@ -32,6 +33,19 @@
           sponsorblock
           vimium
         ];
+
+        userChrome = ''
+          @-moz-document url(chrome://browser/content/browser.xul), url(chrome://browser/content/browser.xhtml) {
+            #TabsToolbar {
+              visibility: collapse !important;
+              margin-bottom: 21px !important;
+            }
+
+            #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+              display: none;
+            }
+          }
+        '';
       };
     };
   };

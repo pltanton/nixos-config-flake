@@ -8,7 +8,8 @@
   home.packages = with pkgs;
     lib.mkIf true [
       audacity
-      discord
+      # discord
+      vesktop
 
       transmission-remote-gtk
       transmission_4-gtk

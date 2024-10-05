@@ -20,7 +20,7 @@
     ffmpegthumbnailer
     pamixer
     paprefs
-    pavucontrol
+    pwvucontrol
     pulseaudio
     shared-mime-info
     # pantheon.elementary-files

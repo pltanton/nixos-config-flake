@@ -10,9 +10,11 @@ in {
   services.hypridle = {
     enable = true;
     settings = {
-      lockCmd = "hyprlock";
-      beforeSleepCmd = "hyprlock --immediate";
-      afterSleepCmd = "${hyprlandPkg}/bin/hyprctl dispatch dpms on";
+      general = {
+        loc_cmd = "hyprlock";
+        before_sleep_cmd = "hyprlock --immediate";
+        after_sleep_cmd = "${hyprlandPkg}/bin/hyprctl dispatch dpms on";
+      };
       listener = [
         {
           timeout = 200;
