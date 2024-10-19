@@ -3,11 +3,7 @@
   config,
   ...
 }: {
-  imports = [./firefly-iii-data-importer.nix];
-
-  sops.secrets."firefly/key" = {
-    owner = config.services.firefly-iii.user;
-  };
+  sops.secrets."firefly/key".owner = config.services.firefly-iii.user;
   services.firefly-iii = {
     enable = true;
     user = config.services.caddy.user;
@@ -19,6 +15,7 @@
       DB_DATABASE = "firefly-iii";
       DB_USERNAME = config.services.firefly-iii.user;
       APP_ENV = "production";
+      ALLOW_WEBHOOKS = "true";
     };
   };
 
@@ -34,19 +31,15 @@
   };
 
   services.phpfpm.pools.firefly-iii-data-importer.phpOptions = ''
-    max_execution_time=600
+    max_execution_time=3600
   '';
+
   services.firefly-iii-data-importer = {
     enable = true;
-    package = pkgs.firefly-iii-data-importer.override (prev: {
-      dataDir = config.services.firefly-iii-data-importer.dataDir;
-    });
+    user = config.services.firefly-iii.user;
     settings = {
-      # APP_DEBUG = true;
-      # LOG_LEVEL = "debug";
       FIREFLY_III_URL = "https://firefly.kaliwe.ru";
       IMPORT_DIR_ALLOWLIST = dirOf config.sops.secrets."firefly/gocardless-config".path;
-
       FIREFLY_III_ACCESS_TOKEN_FILE = config.sops.secrets."firefly/access-token".path;
       NORDIGEN_ID_FILE = config.sops.secrets."firefly/nordigen-id".path;
       NORDIGEN_KEY_FILE = config.sops.secrets."firefly/nordigen-key".path;
@@ -76,7 +69,7 @@
     timerConfig = {
       OnCalendar = "*-*-* 19:00:00";
       Persistent = true;
-      Unit = "hello-world.service";
+      Unit = "firefly-iii-data-importer-job.service";
     };
   };
 
@@ -98,5 +91,24 @@
       Type = "oneshot";
       User = config.services.firefly-iii.user;
     };
+  };
+
+  sops.secrets."firefly/ai-categorizer-env" = {};
+  virtualisation.oci-containers.containers."firefly-iii-ai-categorize" = {
+    image = "ghcr.io/bahuma20/firefly-iii-ai-categorize:main";
+    # ports = ["3300:3000"];
+    environment = {
+      PORT = "3300";
+      FIREFLY_URL = "https://firefly.kaliwe.ru";
+      ENABLE_UI = "true";
+    };
+    extraOptions = ["--network=host"];
+    environmentFiles = [
+      config.sops.secrets."firefly/ai-categorizer-env".path
+    ];
+  };
+
+  services.firefly-iii-boc-fixer = {
+    enable = true;
   };
 }

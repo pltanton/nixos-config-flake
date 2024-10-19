@@ -9,6 +9,8 @@
   modules = with inputs; [
     self.nixosModules.common
 
+    firefly-iii-boc-fixer.nixosModules.default
+
     self.nixosModules.sops
     ({...}: {
       sops = {

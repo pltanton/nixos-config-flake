@@ -45,8 +45,8 @@
     wireless = {
       enable = true;
       userControlled.enable = true;
-      environmentFile = config.sops.secrets."networking-environment".path;
-      networks."Ananasik" = {psk = "@PSK_ANANASIK@";};
+      secretsFile = config.sops.secrets."networking-environment".path;
+      networks."Ananasik" = {psk = "ext:ananasik";};
     };
 
     firewall.enable = false;

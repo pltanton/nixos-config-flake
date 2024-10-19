@@ -1,8 +1,5 @@
 {pkgs, ...}: {
   security.pam.services = {
-    hyprlock = {};
-    swaylock = {};
-    swaylock-effects = {};
     hyprlock = {
       text = pkgs.lib.mkBefore ''
         auth            sufficient      pam_unix.so try_first_pass likeauth nullok

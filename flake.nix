@@ -103,6 +103,11 @@
       # inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    firefly-iii-boc-fixer = {
+      # url = "github:pltanton/firefly-iii-boc-fixer";
+      url = "path:/home/anton/Workdir/firefly-iii-boc-fixer";
+    };
+
     anyrun = {
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";

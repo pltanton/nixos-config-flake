@@ -13,19 +13,24 @@
     jack.enable = false;
 
     wireplumber.extraConfig = {
-        # "10-disable-camera" = {
-        #     "wireplumber.profiles" = {
-        #       main."monitor.libcamera" = "disabled";
-        #     };
-        # };
+      # "10-disable-camera" = {
+      #     "wireplumber.profiles" = {
+      #       main."monitor.libcamera" = "disabled";
+      #     };
+      # };
 
-        bluetoothEnhancements = {
-            "monitor.bluez.properties" = {
-                "bluez5.enable-sbc-xq" = true;
-                "bluez5.enable-msbc" = true;
-                "bluez5.enable-hw-volume" = true;
-            };
+      bluetoothEnhancements = {
+        "wireplumber.settings" = {
+          "bluetooth.autoswitch-to-headset-profile" = false;
         };
+
+        "monitor.bluez.properties" = {
+          "bluez5.enable-hw-volume" = false;
+          "bluez5.enable-sbc-xq" = true;
+          "bluez5.enable-msbc" = true;
+          "bluez5.roles" = [ "a2dp_sink" "a2dp_source" ];
+        };
+      };
     };
   };
 

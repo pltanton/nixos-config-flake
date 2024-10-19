@@ -125,6 +125,7 @@
     jetbrains-toolbox
     jetbrains.idea-ultimate
     # intellij-idea-ultimate
+    sops
 
     nixd # nix language server
     alejandra # nix formatting tool
