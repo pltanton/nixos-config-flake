@@ -170,5 +170,10 @@
       url = "github:ndom91/rose-pine-cursor-hyprcursor";
       flake = false;
     };
+
+    ccsync = {
+      url = "github:CCExtractor/ccsync";
+      flake = false;
+    };
   };
 }

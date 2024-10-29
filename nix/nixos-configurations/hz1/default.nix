@@ -8,6 +8,7 @@
 
   modules = with inputs; [
     self.nixosModules.common
+    self.nixosModules.custom-services
 
     self.nixosModules.sops
     ({...}: {

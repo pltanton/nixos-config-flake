@@ -54,6 +54,7 @@
     bitwarden-cli
     btop
     curlie # replacement for httpie
+    dig
     duf # beauty df
     ffmpeg
     htop
@@ -109,23 +110,22 @@
     # (texlive.combine { inherit (texlive) scheme-medium titlesec wrapfig; })
 
     # Dev
-    yarn
-    semver
-    envsubst
     clang-tools
-    kubectl
-    kubectx
-    sqlite
-    postgresql_13
     coreutils
+    envsubst
     grpc
     grpc-gateway
     grpcurl # grpc client
-    nodejs
     jetbrains-toolbox
     jetbrains.idea-ultimate
-    # intellij-idea-ultimate
+    kubectl
+    kubectx
+    nodejs
+    postgresql_13
+    semver
     sops
+    sqlite
+    yarn
 
     nixd # nix language server
     alejandra # nix formatting tool

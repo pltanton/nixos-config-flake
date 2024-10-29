@@ -93,22 +93,14 @@
     };
   };
 
-  sops.secrets."firefly/ai-categorizer-env" = {};
-  virtualisation.oci-containers.containers."firefly-iii-ai-categorize" = {
-    image = "ghcr.io/bahuma20/firefly-iii-ai-categorize:main";
-    # ports = ["3300:3000"];
-    environment = {
-      PORT = "3300";
-      FIREFLY_URL = "https://firefly.kaliwe.ru";
-      ENABLE_UI = "true";
-    };
-    extraOptions = ["--network=host"];
-    environmentFiles = [
-      config.sops.secrets."firefly/ai-categorizer-env".path
-    ];
-  };
-
+  sops.secrets."firefly/boc-fixer-env" = {};
   services.firefly-iii-boc-fixer = {
     enable = true;
+    settings = {
+      FIREFLY_BOC_FIXER_PORT = "3300";
+      LOG_LEVEL = "DEBUG";
+      FIREFLY_URL = "https://firefly.kaliwe.ru";
+    };
+    environmentFile = config.sops.secrets."firefly/boc-fixer-env".path;
   };
 }

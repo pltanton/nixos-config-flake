@@ -32,6 +32,7 @@
           getmac
           huawei-lte-api
           url-normalize
+          qingping-ble
         ];
     };
   };

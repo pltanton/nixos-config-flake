@@ -20,6 +20,12 @@
       };
     })
 
+    ({...}: {
+      nixpkgs.overlays = with inputs; [
+        firefly-iii-boc-fixer.overlays.default
+      ];
+    })
+
     ./configuration.nix
 
     (import ./packages)
