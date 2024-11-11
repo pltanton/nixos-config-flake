@@ -26,10 +26,11 @@
 
         # Jetbrains xwayland fixes
         # "stayfocused,class:^(jetbrains-.*),floating:0,xwayland:1"
-        "dimaround,class:^(jetbrains-.*)$,floating:1,title:^(?!win)"
-        "center,class:^(jetbrains-.*)$,floating:1,title:^(?!win)"
-        "noanim,class:^(jetbrains-.*)$,title:^(win.*)$"
-        "noinitialfocus,class:^(jetbrains-.*)$,title:^(win.*)$"
+        # "center,class:^(jetbrains-.*)$,floating:1,xwayland:1"
+        "dimaround,class:^(jetbrains-.*)$,floating:1,title:^(?!win),xwayland:1"
+        # "center,class:^(jetbrains-.*)$,floating:1,title:^(?!win),xwayland:1"
+        "noanim,class:^(jetbrains-.*)$,title:^(win.*),xwayland:1$"
+        "noinitialfocus,class:^(jetbrains-.*)$,title:^(win.*),xwayland:1$"
 
         # Swaync do not focus
         "animation slide, class:(swaync)"

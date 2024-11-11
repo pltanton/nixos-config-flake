@@ -11,7 +11,7 @@ in {
     enable = true;
     settings = {
       general = {
-        loc_cmd = "hyprlock";
+        lock_cmd = "hyprlock";
         before_sleep_cmd = "hyprlock --immediate";
         after_sleep_cmd = "${hyprlandPkg}/bin/hyprctl dispatch dpms on";
       };

@@ -1,9 +1,11 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: {
   sops.secrets."firefly/key".owner = config.services.firefly-iii.user;
+
   services.firefly-iii = {
     enable = true;
     user = config.services.caddy.user;

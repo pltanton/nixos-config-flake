@@ -8,7 +8,7 @@
       enable = true;
       settings = {
         homeassistant = true;
-        permit_join = false;
+        permit_join = true;
         serial = {port = "/dev/ttyUSB0";};
         advanced = {rtscts = false;};
         availability = true;

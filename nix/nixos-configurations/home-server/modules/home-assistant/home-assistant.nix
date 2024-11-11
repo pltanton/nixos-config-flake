@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   ...
 }: {
@@ -9,6 +8,10 @@
       # Components required to complete the onboarding
       "met"
       "radio_browser"
+      "homekit"
+      "homekit_controller"
+      "xiaomi"
+      "qingping"
     ];
     config = {
       # Includes dependencies for a basic setup
@@ -33,6 +36,9 @@
           huawei-lte-api
           url-normalize
           qingping-ble
+          pychromecast
+          aiohomekit
+          pyipp
         ];
     };
   };

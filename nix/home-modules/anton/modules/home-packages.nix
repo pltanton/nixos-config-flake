@@ -15,7 +15,6 @@
     # Packages for DE #
     ###################
     wdisplays
-    wf-recorder
 
     ffmpegthumbnailer
     pamixer
