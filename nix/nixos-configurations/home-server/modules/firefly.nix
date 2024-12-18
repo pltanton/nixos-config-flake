@@ -8,7 +8,7 @@
 
   services.firefly-iii = {
     enable = true;
-    user = config.services.caddy.user;
+    inherit (config.services.caddy) user;
     settings = {
       APP_URL = "https://firefly.kaliwe.ru";
       APP_KEY_FILE = config.sops.secrets."firefly/key".path;
@@ -38,7 +38,7 @@
 
   services.firefly-iii-data-importer = {
     enable = true;
-    user = config.services.firefly-iii.user;
+    inherit (config.services.firefly-iii) user;
     settings = {
       FIREFLY_III_URL = "https://firefly.kaliwe.ru";
       IMPORT_DIR_ALLOWLIST = dirOf config.sops.secrets."firefly/gocardless-config".path;

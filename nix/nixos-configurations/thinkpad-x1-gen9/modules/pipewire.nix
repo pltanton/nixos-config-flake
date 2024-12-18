@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}: {
+_: {
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -13,6 +8,12 @@
 
     pulse.enable = true;
     extraConfig.pipewire-pulse = {
+      # "10-tune" = {
+      #   "stream.propertiesa" = {
+      #     "resample.quality" = 10;
+      #   };
+      # };
+
       "60-echo-cancel" = {
         "context.modules" = [
           {
@@ -98,6 +99,23 @@
         #   "bluez5.enable-msbc" = true;
         #   "bluez5.roles" = [ "a2dp_sink" "a2dp_source" ];
         # };
+      };
+
+      "12-fix-stutterings" = {
+        "monitor.alsa.rules" = [
+          {
+            "matches" = [
+              {"node.name" = "~alsa_output.*";}
+            ];
+            "actions" = {
+              "update-props" = {
+                "api.alsa.period-size" = 1024;
+                "api.alsa.headroom" = 8192;
+                "session.suspend-timeout-seconds" = 0;
+              };
+            };
+          }
+        ];
       };
     };
   };

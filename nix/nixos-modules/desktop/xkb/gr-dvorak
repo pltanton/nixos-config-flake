@@ -1,0 +1,37 @@
+xkb_symbols "gr-dvorak" {
+    include "us(dvorak)"
+
+    name[Group1] = "Greek (Dvorak)";
+
+    key <AB01> { [  semicolon,      colon           ] };
+    key <AB02> { [	dead_acute,		dead_diaeresis	] };
+    key <AB03> { [	Greek_xi,		Greek_XI	] };
+    key <AB04> { [	Greek_kappa,	Greek_KAPPA	] };
+    key <AB05> { [	Greek_chi,		Greek_CHI	] };
+    key <AB06> { [	Greek_beta,		Greek_BETA	] };
+    key <AB07> { [	Greek_mu,		Greek_MU	] };
+    key <AB08> { [	Greek_finalsmallsigma,	Greek_SIGMA	] };
+    key <AB09> { [	Greek_omega,		Greek_OMEGA	] };
+    key <AB10> { [	Greek_zeta,		Greek_ZETA	] };
+    
+    key <AC01> { [	Greek_alpha,		Greek_ALPHA	] };
+    key <AC02> { [	Greek_omicron,		Greek_OMICRON	] };
+    key <AC03> { [	Greek_epsilon,		Greek_EPSILON	] };
+    key <AC04> { [	Greek_theta,		Greek_THETA	] };
+    key <AC05> { [	Greek_iota,		Greek_IOTA	] };
+    key <AC06> { [	Greek_delta,		Greek_DELTA	] };
+    key <AC07> { [	Greek_eta,		Greek_ETA	] };
+    key <AC08> { [	Greek_tau,		Greek_TAU	] };
+    key <AC09> { [	Greek_nu,		Greek_NU	] };
+    key <AC10> { [	Greek_sigma,		Greek_SIGMA	] };
+    
+    key <AD04> { [	Greek_pi,		Greek_PI	] };
+    key <AD05> { [	Greek_upsilon,		Greek_UPSILON	] };
+    key <AD06> { [	Greek_phi,		Greek_PHI	] };
+    key <AD07> { [	Greek_gamma,		Greek_GAMMA	] };
+    key <AD08> { [	Greek_psi,		Greek_PSI	] };
+    key <AD09> { [	Greek_rho,		Greek_RHO	] };
+    key <AD10> { [	Greek_lamda,		Greek_LAMDA	] };
+
+    key <LSGT> { [	guillemotleft,		guillemotright	] };
+};

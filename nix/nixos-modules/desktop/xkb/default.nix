@@ -4,10 +4,10 @@
   ...
 }: {
   services.xserver.xkb.extraLayouts = {
-    el_dv = {
-      symbolsFile = ./el_dv;
-      description = "Greek Dvorak layout";
-      languages = ["gr"];
+    gr-dvorak = {
+      symbolsFile = ./gr-dvorak;
+      description = "Greek (Dvorak)";
+      languages = ["ell"];
     };
   };
 }

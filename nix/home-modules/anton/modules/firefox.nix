@@ -21,6 +21,10 @@
           "layout.css.devPixelsPerPx" = "-1.0";
           "privacy.webrtc.legacyGlobalIndicator" = false;
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+
+          # Potential fix for cracking sound from pipewire
+          "reader.parse-on-load.enabled" = false;
+          "media.webspeech.synth.enabled" = false;
         };
 
         extensions = with config.nur.repos.rycee.firefox-addons; [

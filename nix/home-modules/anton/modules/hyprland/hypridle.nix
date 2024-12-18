@@ -4,6 +4,7 @@
   ...
 }: let
   hyprlandPkg = config.wayland.windowManager.hyprland.package;
+  hyprlockPkg = config.programs.hyprlock.package;
 in {
   systemd.user.services.swayidle.Service.Environment = lib.mkForce [];
 
@@ -11,8 +12,8 @@ in {
     enable = true;
     settings = {
       general = {
-        lock_cmd = "hyprlock";
-        before_sleep_cmd = "hyprlock --immediate";
+        lock_cmd = "pidof hyprlock || ${hyprlockPkg}/bin/hyprlock --immediate";
+        before_sleep_cmd = "loginctl lock-session";
         after_sleep_cmd = "${hyprlandPkg}/bin/hyprctl dispatch dpms on";
       };
       listener = [

@@ -32,7 +32,7 @@ in {
         id = folderId;
         label = folderId;
         rescanIntervalS = 300;
-        devices = devices;
+        inherit devices;
         type = "sendonly";
         versioning = {
           type = "simple";

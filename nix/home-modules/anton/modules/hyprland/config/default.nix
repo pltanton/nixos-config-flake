@@ -9,7 +9,6 @@
     ./hyprland-config.nix
     ./keybinds.nix
     ./rules.nix
-    ./plugins.nix
   ];
 
   home.packages =
@@ -22,9 +21,6 @@
       pamixer
 
       playerctl
-
-      # Scripts
-      screenshot
 
       # Hyprcursor cursor
       (pkgs.runCommand "moveUp" {} ''

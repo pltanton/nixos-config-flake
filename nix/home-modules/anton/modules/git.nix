@@ -19,7 +19,7 @@
         };
       };
 
-      credential.helper = "${pkgs.git.override { withLibsecret = true; }}/bin/git-credential-libsecret";
+      # credential.helper = "${pkgs.git.override { withLibsecret = true; }}/bin/git-credential-libsecret";
     };
 
     signing = {

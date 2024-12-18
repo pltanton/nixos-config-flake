@@ -11,11 +11,7 @@ in {
 
   hardware.pulseaudio.support32Bit = true;
 
-
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
-  # boot.kernelPackages = pkgs.linuxPackages;
-  # boot.kernelPackages = pkgs.linuxPackages_zen;
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
 
   hardware.trackpoint.enable = true;
   hardware.trackpoint.emulateWheel = config.hardware.trackpoint.enable;

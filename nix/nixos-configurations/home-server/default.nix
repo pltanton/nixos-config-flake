@@ -12,7 +12,7 @@
     firefly-iii-boc-fixer.nixosModules.default
 
     self.nixosModules.sops
-    ({...}: {
+    (_: {
       sops = {
         scope = "home-server";
         age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
@@ -20,7 +20,7 @@
       };
     })
 
-    ({...}: {
+    (_: {
       nixpkgs.overlays = with inputs; [
         firefly-iii-boc-fixer.overlays.default
       ];

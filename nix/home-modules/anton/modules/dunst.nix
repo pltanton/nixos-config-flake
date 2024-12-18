@@ -20,8 +20,8 @@
     };
 
     iconTheme = {
-      name = config.gtk.iconTheme.name;
-      package = config.gtk.iconTheme.package;
+      inherit (config.gtk.iconTheme) name;
+      inherit (config.gtk.iconTheme) package;
       size = "128x128";
     };
   };

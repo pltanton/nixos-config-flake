@@ -7,9 +7,8 @@
 }: {
   home.packages = with pkgs;
     lib.mkIf true [
-      audacity
-      # discord
       vesktop
+      skypeforlinux
 
       transmission-remote-gtk
       transmission_4-gtk

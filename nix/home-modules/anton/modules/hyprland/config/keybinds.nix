@@ -3,15 +3,15 @@
     settings = {
       bind = [
         # Rofi keybinds
-        "SUPERSHIFT,v,exec,cliphist list | rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img -show clipboard -show-icons -p "
-        "SUPERSHIFT,e,exec,rofi -show emoji -modi emoji"
-        "SUPER,Return,exec,rofi -show drun -show-icons"
+        "SUPERSHIFT,v,exec,cliphist list | uwsm app -- rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img -show clipboard -show-icons -p "
+        "SUPERSHIFT,e,exec,uwsm app -- rofi -show emoji -modi emoji"
+        "SUPER,Return,exec,uwsm app -- rofi -show drun -show-icons"
 
-        "SUPER,f12,exec,hyprlock"
-        ",Print,exec,screenshot"
-        "SHIFT,Print,exec,screenshot -e"
-        "SUPERSHIFT,Return,exec,alacritty"
-        "SUPERSHIFT,Q,exit,"
+        "SUPER,f12,exec,loginctl lock-session"
+        ",Print,exec,uwsm app -- screenshot"
+        "SHIFT,Print,exec,uwsm app -- screenshot -e"
+        "SUPERSHIFT,Return,exec,uwsm app -- alacritty"
+        "SUPERSHIFT,Q,exec,loginctl terminate-user ''"
 
         # Manipulate with active window state
         "SUPERSHIFT,C,killactive,"
@@ -80,6 +80,10 @@
         ",XF86AudioStop,exec,playerctl pause"
         ",XF86AudioNext,exec,playerctl next"
         ",XF86AudioPrev,exec,playerctl previous"
+
+        # Keyboard layout switch
+        "SUPER,Space,exec,xkb-smart-switch"
+        "SUPER,g,exec,hyprctl switchxkblayout current 2"
       ];
 
       bindel = [
@@ -100,10 +104,6 @@
 
       # Mouse bindings
       bindm = ["SUPER,mouse:272,movewindow" "SUPER,mouse:273,resizewindow"];
-
-      bindl = [
-        "SUPER,BackSpace,exec,pkill -SIGUSR1 hyprlock && WAYLAND_DISPLAY=wayland-1 hyprlock"
-      ];
     };
 
     extraConfig = ''

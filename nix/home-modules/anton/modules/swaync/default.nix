@@ -1,7 +1,7 @@
-{...}: {
+_: {
   services.swaync = {
     enable = true;
-    style = ./style.css;
+    # style = ./style.css;
     settings = {
       positionX = "right";
       positionY = "top";

@@ -5,8 +5,7 @@
 }: let
   shouldEnable = config.wayland.windowManager.hyprland.enable;
   targetOverride =
-    lib.mkIf shouldEnable {systemdTarget = "hyprland-session.target";};
+    lib.mkIf shouldEnable {systemdTarget = "graphical-session.target";};
 in {
   services.kanshi = targetOverride;
-  services.wlsunset = targetOverride;
 }

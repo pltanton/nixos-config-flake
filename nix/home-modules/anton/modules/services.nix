@@ -1,4 +1,4 @@
-{...}: {
+_: {
   services = {
     network-manager-applet.enable = true;
     blueman-applet.enable = true;

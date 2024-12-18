@@ -6,7 +6,7 @@
   scripts = import ./scripts input;
   hyprlandPkg = config.wayland.windowManager.hyprland.package;
   swayncClient = "${config.services.swaync.package}/bin/swaync-client";
-  colors = config.lib.stylix.colors;
+  inherit (config.lib.stylix) colors;
 in {
   programs.waybar = {
     style = builtins.readFile (config.lib.stylix.colors {
@@ -150,8 +150,10 @@ in {
           "separate-outputs" = true;
         };
         "hyprland/language" = {
-          "format-ru" = "ru";
+          format = "{}";
+          "format-ru" = "ру";
           "format-en" = "en";
+          "format-gr-dvorak" = "ελ";
         };
         "custom/notification" = {
           "tooltip" = true;
@@ -174,13 +176,6 @@ in {
         };
       }
     ];
-  };
-
-  systemd.user.targets.tray = {
-    Unit = {
-      Description = "Home Manager System Tray";
-      Requires = ["graphical-session-pre.target"];
-    };
   };
 
   systemd.user.services.waybar.Service.Environment = ["PATH=$PATH:${hyprlandPkg}/bin"];

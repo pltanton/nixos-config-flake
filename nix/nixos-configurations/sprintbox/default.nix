@@ -10,7 +10,7 @@
     self.nixosModules.common
 
     self.nixosModules.sops
-    ({...}: {
+    (_: {
       sops = {
         scope = "sprintbox";
         age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];

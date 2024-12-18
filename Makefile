@@ -14,18 +14,9 @@ rebuild-switch-sprintbox: build_host = root@sprintbox.kaliwe.ru
 rebuild-switch-thinkpad-x1-gen9: target = ""
 rebuild-switch-thinkpad-x1-gen9: build_host = ""
 
-rebuild-switch-thinkpad-x1-gen7: target = ""
-rebuild-switch-thinkpad-x1-gen7: build_host = ""
-
 rebuild-switch-%:
 	@echo Run nixos-rebuild for machine $* on host: ${target} with build_host: ${build_host}
 	nixos-rebuild --flake .#$* --build-host ${build_host} --target-host ${target} --use-remote-sudo --fast switch
-
-switch-home-x1-gen9-anton:
-	home-manager --flake .#thinkpad-x1-gen9-anton switch
-
-switch-home-x1-gen9-anton:
-	home-manager --flake .#thinkpad-x1-gen7-anton switch
 
 update:
 	@echo Run nix flake update

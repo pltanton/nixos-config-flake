@@ -11,7 +11,7 @@
     self.nixosModules.custom-services
 
     self.nixosModules.sops
-    ({...}: {
+    (_: {
       sops = {
         scope = "hz1";
         age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];

@@ -81,6 +81,7 @@
     anki-bin
 
     bitwarden
+    goldwarden
 
     evince
     gthumb
@@ -98,7 +99,7 @@
     inputs.activate-linux.defaultPackage.x86_64-linux
     scrcpy
 
-    zed-editor
+    # zed-editor
 
     # Web
     thunderbird-128
@@ -116,7 +117,7 @@
     grpc-gateway
     grpcurl # grpc client
     jetbrains-toolbox
-    jetbrains.idea-ultimate
+    master.jetbrains.idea-ultimate
     kubectl
     kubectx
     nodejs

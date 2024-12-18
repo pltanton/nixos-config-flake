@@ -18,7 +18,7 @@ in {
         };
 
         server = {
-          domain = domain;
+          inherit domain;
           root_url = "https://${domain}";
           http_port = 3001;
         };
