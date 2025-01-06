@@ -142,7 +142,7 @@ in {
         enabled = true;
         mode = "tilt";
         shake = {
-          effects = "tilt";
+          effects = 1;
         };
         hyprcursor = {
           nearest = false;

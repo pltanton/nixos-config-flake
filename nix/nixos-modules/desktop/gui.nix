@@ -18,11 +18,5 @@
     touchpad = {tapping = true;};
   };
 
-  # services.displayManager.ly = {
-  #   enable = true;
-  #   settings = {
-  #     default_input = "password";
-  #     session_log = "ly-session.log";
-  #   };
-  # };
+  environment.pathsToLink = ["/share/xdg-desktop-portal" "/share/applications"];
 }

@@ -142,7 +142,6 @@
 
     nodePackages.yaml-language-server
     nodePackages.prettier
-    nodePackages.vue-language-server
     nodePackages.eslint
     nodePackages.yaml-language-server
 

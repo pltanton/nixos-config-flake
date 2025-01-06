@@ -13,7 +13,7 @@
       transmission-remote-gtk
       transmission_4-gtk
       stable.rapid-photo-downloader
-      # stable.darktable
+      darktable
       # rawtherapee
       # lightworks
       # kdenlive

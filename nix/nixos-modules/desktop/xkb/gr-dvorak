@@ -1,25 +1,35 @@
+# layout published in https://stackoverflow.com/questions/54963112/greek-dvorak-keyboard-layout
+# got better accent position 
+
+# +---+---+---+---+---+---+---+---+---+---+
+# | ' | , | . | π | υ | φ | γ | δ | ρ | λ |
+# +---+---+---+---+---+---+---+---+---+---+
+# | α | ο | ε | ς | ι | ΄ | η | τ | ν | σ |
+# +---+---+---+---+---+---+---+---+---+---+
+# | ; | ψ | ξ | κ | χ | β | μ | θ | ω | ζ |
+# +---+---+---+---+---+---+---+---+---+---+
+
 xkb_symbols "gr-dvorak" {
     include "us(dvorak)"
-
     name[Group1] = "Greek (Dvorak)";
 
     key <AB01> { [  semicolon,      colon           ] };
-    key <AB02> { [	dead_acute,		dead_diaeresis	] };
+    key <AB02> { [	Greek_psi,		Greek_PSI	] };
     key <AB03> { [	Greek_xi,		Greek_XI	] };
     key <AB04> { [	Greek_kappa,	Greek_KAPPA	] };
     key <AB05> { [	Greek_chi,		Greek_CHI	] };
     key <AB06> { [	Greek_beta,		Greek_BETA	] };
     key <AB07> { [	Greek_mu,		Greek_MU	] };
-    key <AB08> { [	Greek_finalsmallsigma,	Greek_SIGMA	] };
+    key <AB08> { [	Greek_theta,		Greek_THETA	] };
     key <AB09> { [	Greek_omega,		Greek_OMEGA	] };
     key <AB10> { [	Greek_zeta,		Greek_ZETA	] };
     
     key <AC01> { [	Greek_alpha,		Greek_ALPHA	] };
     key <AC02> { [	Greek_omicron,		Greek_OMICRON	] };
     key <AC03> { [	Greek_epsilon,		Greek_EPSILON	] };
-    key <AC04> { [	Greek_theta,		Greek_THETA	] };
+    key <AC04> { [	Greek_finalsmallsigma,	Greek_SIGMA	] };
     key <AC05> { [	Greek_iota,		Greek_IOTA	] };
-    key <AC06> { [	Greek_delta,		Greek_DELTA	] };
+    key <AC06> { [	dead_acute,		dead_diaeresis	] };
     key <AC07> { [	Greek_eta,		Greek_ETA	] };
     key <AC08> { [	Greek_tau,		Greek_TAU	] };
     key <AC09> { [	Greek_nu,		Greek_NU	] };
@@ -29,7 +39,7 @@ xkb_symbols "gr-dvorak" {
     key <AD05> { [	Greek_upsilon,		Greek_UPSILON	] };
     key <AD06> { [	Greek_phi,		Greek_PHI	] };
     key <AD07> { [	Greek_gamma,		Greek_GAMMA	] };
-    key <AD08> { [	Greek_psi,		Greek_PSI	] };
+    key <AD08> { [	Greek_delta,		Greek_DELTA	] };
     key <AD09> { [	Greek_rho,		Greek_RHO	] };
     key <AD10> { [	Greek_lamda,		Greek_LAMDA	] };
 
