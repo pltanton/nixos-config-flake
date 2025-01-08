@@ -30,6 +30,27 @@
             };
           };
         }
+
+        {
+          listen = "@xrayxhttp.sock";
+          protocol = "vless";
+          settings = {
+            clients = [
+              {
+                id = "6a369e27-31c2-448e-9d17-18e6b190daf3";
+                email = "anon@anon.com";
+              }
+            ];
+            decryption = "none";
+          };
+          streamSettings = {
+            security = "none";
+            network = "xhttp";
+            xhttpSettings = {
+              path = "/topics";
+            };
+          };
+        }
       ];
       outbounds = [
         {
@@ -63,6 +84,12 @@
     reverse_proxy /posts 127.0.0.1:2001 {
       transport http {
         versions h2c
+      }
+    }
+    reverse_proxy /topics/* unix/@xrayxhttp.sock {
+      flush_interval -1
+      transport http {
+        versions h2c 2
       }
     }
   '';

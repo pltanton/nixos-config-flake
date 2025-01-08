@@ -11,7 +11,7 @@
         ",Print,exec,uwsm app -- screenshot"
         "SHIFT,Print,exec,uwsm app -- screenshot -e"
         "SUPERSHIFT,Return,exec,uwsm app -- alacritty"
-        "SUPERSHIFT,Q,exec,loginctl terminate-user ''"
+        "SUPERSHIFT,Q,exec,uwsm stop"
 
         # Manipulate with active window state
         "SUPERSHIFT,C,killactive,"
@@ -31,9 +31,13 @@
         "SUPER,j,movefocus,d"
         "SUPER,down,movefocus,d"
         "SUPERSHIFT,h,movewindow,l"
+        "SUPERSHIFT,left,movewindow,l"
         "SUPERSHIFT,l,movewindow,r"
+        "SUPERSHIFT,right,movewindow,r"
         "SUPERSHIFT,k,movewindow,u"
+        "SUPERSHIFT,up,movewindow,u"
         "SUPERSHIFT,j,movewindow,d"
+        "SUPERSHIFT,,movewindow,d"
 
         "SUPER,w,togglegroup,"
         "SUPERSHIFT,w,moveoutofgroup,"
