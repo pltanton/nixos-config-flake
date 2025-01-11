@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   imports = [./exporters];
 
   services = {

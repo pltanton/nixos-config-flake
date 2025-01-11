@@ -32,7 +32,7 @@
         # inputs.hyprland.overlays.default
         # inputs.jbr-wayland.overlays.jbrOverlay
         inputs.jetbrains.overlays.default
-        (final: prev: {
+        (_final: _prev: {
           unstable = import inputs.nixpkgs-unstable {
             system = "x86_64-linux";
             config.allowUnfree = true;

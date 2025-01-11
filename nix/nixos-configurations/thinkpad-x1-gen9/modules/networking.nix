@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{...}: {
   networking = {
     hostName = "thinkpad-x1-gen9";
 

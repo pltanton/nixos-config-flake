@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  inputs,
   lib,
   ...
 }: let
@@ -36,7 +35,7 @@ in {
   };
 
   home.packages = with pkgs; [
-    (rofi-vpn.overrideAttrs (finalAttrs: previousAttrs: {
+    (rofi-vpn.overrideAttrs (_finalAttrs: _previousAttrs: {
       installPhase = ''
         runHook preInstall
         install -D --target-directory=$out/bin/ ./rofi-vpn

@@ -1,9 +1,4 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   fonts = {
     enableDefaultPackages = true;
     enableGhostscriptFonts = true;

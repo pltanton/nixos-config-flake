@@ -1,8 +1,4 @@
-{
-  inputs,
-  lib,
-  ...
-}: {
+{inputs, ...}: {
   system = "x86_64-linux";
 
   modules = with inputs; [

@@ -1,1 +1,1 @@
-{pkgs, ...}: {powerManagement.powertop.enable = false;}
+{...}: {powerManagement.powertop.enable = false;}

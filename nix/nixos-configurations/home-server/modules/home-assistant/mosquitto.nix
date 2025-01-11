@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{config, ...}: {
   sops.secrets."mosquitto/hass" = {};
   services.mosquitto = {
     enable = true;

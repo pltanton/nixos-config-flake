@@ -1,9 +1,4 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
-}: {
+{config, ...}: {
   sops.secrets."firefly/key".owner = config.services.firefly-iii.user;
 
   services.firefly-iii = {

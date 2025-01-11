@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{config, ...}: {
   services.tlp = {
     # enable = !config.services.xserver.desktopManager.gnome.enable
     #   && !config.services.xserver.desktopManager.plasma5.enable;

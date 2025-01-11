@@ -58,7 +58,7 @@
   sops.secrets."home-assistant-secrets" = {
     owner = "hass";
     path = "/var/lib/hass/secrets.yaml";
-    restartUnits = [ "home-assistant.service" ];
+    restartUnits = ["home-assistant.service"];
   };
 
   services.caddy = {

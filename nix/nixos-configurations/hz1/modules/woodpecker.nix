@@ -1,9 +1,4 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   services.woodpecker-server = {
     enable = true;
     package = pkgs.unstable.woodpecker-server;

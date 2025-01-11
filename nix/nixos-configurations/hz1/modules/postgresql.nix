@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   environment.systemPackages = [pkgs.pgloader];
   services = {
     postgresql = {

@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   home-manager = {
     backupFileExtension = "bak";
     useGlobalPkgs = true;

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{config, ...}: {
   sops.secrets."gitea-actions" = {
     mode = "0444";
   };

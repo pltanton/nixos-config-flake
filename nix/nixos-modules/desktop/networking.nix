@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{lib, ...}: {
   services.resolved = {
     enable = false;
     extraConfig = lib.generators.toINI {} {

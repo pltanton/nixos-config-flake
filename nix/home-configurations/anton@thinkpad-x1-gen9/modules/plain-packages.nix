@@ -1,8 +1,6 @@
 {
   pkgs,
   lib,
-  fetchPypi,
-  inputs,
   ...
 }: {
   home.packages = with pkgs;

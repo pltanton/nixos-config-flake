@@ -1,10 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  inputs,
-  ...
-}: {
+{...}: {
   xdg.icons.enable = true;
 
   services.xserver = {

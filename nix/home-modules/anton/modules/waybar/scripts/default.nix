@@ -2,7 +2,7 @@
   pkgs,
   config,
   ...
-} @ input: {
+}: {
   mediaplayer = pkgs.writeShellApplication {
     name = "mediaplayer";
     runtimeInputs = with pkgs; [playerctl];

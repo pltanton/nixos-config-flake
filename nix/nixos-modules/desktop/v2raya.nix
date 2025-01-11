@@ -1,5 +1,4 @@
-_:
-{
+_: {
   services.v2raya = {
     enable = true;
   };

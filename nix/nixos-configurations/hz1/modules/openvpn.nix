@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{config, ...}: let
   port = 1337;
   vpn-dev = "tun0";
 in {

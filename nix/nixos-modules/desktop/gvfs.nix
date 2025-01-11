@@ -1,1 +1,1 @@
-{pkgs, ...}: {services.gvfs.enable = true;}
+{...}: {services.gvfs.enable = true;}

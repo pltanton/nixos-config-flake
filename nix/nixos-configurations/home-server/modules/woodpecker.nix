@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   services.woodpecker-agents.agents = {
     docker = {
       enable = true;

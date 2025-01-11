@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{...}: {
   services.jellyfin = {
     enable = true;
     group = "publicstore";

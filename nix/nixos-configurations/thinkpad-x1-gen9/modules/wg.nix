@@ -1,19 +1,8 @@
 {
-  config,
   pkgs,
-  lib,
   sops,
   ...
-}: let
-  ip = "${pkgs.iproute2}/bin/ip";
-  rules = action: host: iface: [
-    "${ip} rule ${action} to 192.168.0.0/16 lookup main pref 30" # Home assistant
-    "${ip} rule ${action} to 10.100.0.0/24 lookup main pref 30" # Home server wireguard
-    "${ip} rule ${action} to ${host} lookup main pref 30"
-    "${ip} rule ${action} to all lookup 80 pref 40"
-    "${ip} route ${action} default dev ${iface} table 80"
-  ];
-in {
+}: {
   # systemd.services.wireguard-wg-home = {
   #   before = lib.mkForce [ ];
   #   after = lib.mkForce [ ];

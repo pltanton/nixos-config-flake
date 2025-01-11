@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{config, ...}: {
   networking.nat.enable = true;
   networking.nat.internalInterfaces = ["wg-home" "wg-hz"];
   networking.firewall = {allowedUDPPorts = [51820];};

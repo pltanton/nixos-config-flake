@@ -1,10 +1,4 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}: let
-  mastodonCfg = config.services.mastodon;
+{config, ...}: let
   syncthingCfg = config.services.syncthing;
   pgBackupDir = config.services.postgresqlBackup.location;
 

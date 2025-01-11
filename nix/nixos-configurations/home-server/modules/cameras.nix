@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{...}: let
   consts = import ../constants.nix;
   storageDir = "${consts.storeMountPoint}/motioneye";
 in {

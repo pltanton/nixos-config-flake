@@ -7,7 +7,7 @@
   cfg = config.services.ccsync;
 
   defaultSettings = {
-    CONTAINER_ORIGIN="http://localhost:${toString config.services.taskchampion-sync-server.port}";
+    CONTAINER_ORIGIN = "http://localhost:${toString config.services.taskchampion-sync-server.port}";
   };
 in {
   options.services.ccsync = {

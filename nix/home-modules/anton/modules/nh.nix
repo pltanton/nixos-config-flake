@@ -4,4 +4,4 @@ _: {
     # clean.enable = true;
     flake = "/home/anton/Workdir/nixos-config-flake";
   };
-} 
+}

@@ -5,7 +5,6 @@
 }: let
   host = "vault.kaliwe.ru";
   port = "8200";
-  certBase = "${config.security.acme.directory}/${host}";
 in {
   services = {
     vault = {

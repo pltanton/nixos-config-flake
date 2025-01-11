@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: {
+{config, ...}: {
   services.taskchampion-sync-server = {
     enable = true;
   };

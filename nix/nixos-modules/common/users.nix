@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   nix.settings.trusted-users = ["root" "@wheel"];
 
   programs.fish = {

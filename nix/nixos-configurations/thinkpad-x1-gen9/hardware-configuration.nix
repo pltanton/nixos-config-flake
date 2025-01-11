@@ -4,7 +4,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }: {
@@ -14,9 +13,8 @@
   boot.initrd.kernelModules = ["dm-snapshot"];
 
   boot.initrd.luks.devices.crypted.device = "/dev/disk/by-uuid/0e20fecd-4ffa-44f9-9ab1-7a439be49286";
-  boot.initrd.luks.devices.crypted.crypttabExtraOpts =  [ "fido2-device=auto" ];
+  boot.initrd.luks.devices.crypted.crypttabExtraOpts = ["fido2-device=auto"];
   boot.initrd.systemd.enable = true;
-
 
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];

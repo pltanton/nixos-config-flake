@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   services.xray = {
     enable = true;
     settings = {

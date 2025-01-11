@@ -7,13 +7,13 @@
         chat_id = "!secret tg_notifications_channel";
       }
 
-      { 
+      {
         platform = "group";
         name = "everyone";
         services = [
-          { action = "telegram"; }
-          { action = "mobile_app_anton_mi_11t_pro"; }
-          { action = "mobile_app_2107113sg"; }
+          {action = "telegram";}
+          {action = "mobile_app_anton_mi_11t_pro";}
+          {action = "mobile_app_2107113sg";}
         ];
       }
     ];
@@ -26,7 +26,7 @@
             trigger = "numeric_state";
             entity_id = "sensor.cgllc_cgd1st_38aa_co2_density";
             above = 1500;
-            for.minutes = 5; 
+            for.minutes = 5;
           }
         ];
         actions = [
