@@ -126,6 +126,7 @@
     sops
     sqlite
     yarn
+    devpod
 
     nixd # nix language server
     alejandra # nix formatting tool

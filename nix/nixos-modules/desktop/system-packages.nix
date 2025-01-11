@@ -13,7 +13,6 @@
     exfat
     ntfs3g
     nfs-utils
-    suidChroot
 
     sshfs
     keyutils

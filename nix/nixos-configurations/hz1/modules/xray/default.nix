@@ -7,8 +7,7 @@
       };
       inbounds = [
         {
-          port = 2001;
-          listen = "127.0.0.1";
+          listen = "/dev/shm/Xray-VLESS-gRPC.socket,0666";
           protocol = "vless";
           settings = {
             clients = [
@@ -20,13 +19,9 @@
             decryption = "none";
           };
           streamSettings = {
-            security = "none";
-            network = "h2";
-            httpSettings = {
-              path = "/posts";
-              host = [
-                "kaliwe.ru"
-              ];
+            network = "grpc";
+            grpcSettings = {
+              serviceName = "ChillService";
             };
           };
         }
@@ -85,7 +80,12 @@
 
   # ADD FAKE STATIC SITE
   services.caddy.virtualHosts."kaliwe.ru".extraConfig = ''
-    reverse_proxy /posts 127.0.0.1:2001 {
+    @grpc {
+      protocol grpc
+      path /ChillService/*
+    }
+    reverse_proxy @grpc unix//dev/shm/Xray-VLESS-gRPC.socket {
+      flush_interval -1
       transport http {
         versions h2c
       }

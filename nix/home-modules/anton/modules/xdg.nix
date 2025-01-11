@@ -9,16 +9,42 @@
       imageViewer = "org.gnome.eog.desktop";
     in {
       "text/html" = browser;
-      # "x-scheme-handler/http" = browser;
-      # "x-scheme-handler/https" = browser;
-      # "x-scheme-handler/about" = browser;
-      "image/bmp;image/gif;image/jpeg;image/jpg;image/pjpeg;image/png;image/tiff;image/webp;image/x-bmp;image/x-gray;image/x-icb;image/x-ico;image/x-png;image/x-portable-anymap;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-xbitmap;image/x-xpixmap;image/x-pcx;image/svg+xml;image/svg+xml-compressed;image/vnd.wap.wbmp;image/x-icns;" = imageViewer;
-      # "x-scheme-handler/unknown" = browser;
+      "x-scheme-handler/http" = browser;
+      "x-scheme-handler/https" = browser;
+      "x-scheme-handler/about" = browser;
+      "x-scheme-handler/unknown" = browser;
+
+      "image/bmp" = imageViewer;
+      "image/gif" = imageViewer;
+      "image/jpeg" = imageViewer;
+      "image/jpg" = imageViewer;
+      "image/pjpeg" = imageViewer;
+      "image/png" = imageViewer;
+      "image/tiff" = imageViewer;
+      "image/webp" = imageViewer;
+      "image/x-bmp" = imageViewer;
+      "image/x-gray" = imageViewer;
+      "image/x-icb" = imageViewer;
+      "image/x-ico" = imageViewer;
+      "image/x-png" = imageViewer;
+      "image/x-portable-anymap" = imageViewer;
+      "image/x-portable-bitmap" = imageViewer;
+      "image/x-portable-graymap" = imageViewer;
+      "image/x-portable-pixmap" = imageViewer;
+      "image/x-xbitmap" = imageViewer;
+      "image/x-xpixmap" = imageViewer;
+      "image/x-pcx" = imageViewer;
+      "image/svg+xml" = imageViewer;
+      "image/svg+xml-compressed" = imageViewer;
+      "image/vnd.wap.wbmp" = imageViewer;
+      "image/x-icns" = imageViewer;
+
       "application/pdf" = "org.gnome.Evince.desktop";
 
-      # "x-scheme-handler/mailto" = "userapp-Thunderbird-X4TET0.desktop";
       "x-scheme-handler/tg;application/x-xdg-protocol-tg" = "org.telegram.desktop.desktop";
-      # "x-scheme-handler/zoommtng" = "Zoom.desktop";
+
+      "text/*" = ["zed.desktop" "codium.desktop"];
+      "inode/directory" = "org.gnome.Nautilus.desktop";
     };
   };
 }

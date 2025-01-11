@@ -14,8 +14,9 @@
   ;; Note: consider using different time values for your different fingers.
   ;; For example, your pinkies might be slower to release keys and index
   ;; fingers faster.
-  tap-time 50
-  hold-time 150
+  tap-time 200
+  tap-time-slow 250
+  hold-time 250
 
   left-hand-keys (
     q w e r t
@@ -46,22 +47,14 @@
     (on-idle-fakekey to-base tap 20)
   )
 
-  a (tap-hold-release-keys $tap-time $hold-time (multi a @tap) lmet $left-hand-keys)
-  s (tap-hold-release-keys $tap-time $hold-time (multi s @tap) lalt $left-hand-keys)
+  a (tap-hold-release-keys $tap-time-slow $hold-time (multi a @tap) lmet $left-hand-keys)
+  s (tap-hold-release-keys $tap-time-slow $hold-time (multi s @tap) lalt $left-hand-keys)
   d (tap-hold-release-keys $tap-time $hold-time (multi d @tap) lctl $left-hand-keys)
   f (tap-hold-release-keys $tap-time $hold-time (multi f @tap) lsft $left-hand-keys)
   j (tap-hold-release-keys $tap-time $hold-time (multi j @tap) rsft $right-hand-keys)
   k (tap-hold-release-keys $tap-time $hold-time (multi k @tap) rctl $right-hand-keys)
-  l (tap-hold-release-keys $tap-time $hold-time (multi l @tap) ralt $right-hand-keys)
-  ; (tap-hold-release-keys $tap-time $hold-time (multi ; @tap) rmet $right-hand-keys)
+  l (tap-hold-release-keys $tap-time-slow $hold-time (multi l @tap) ralt $right-hand-keys)
+  ; (tap-hold-release-keys $tap-time-slow $hold-time (multi ; @tap) rmet $right-hand-keys)
 
   escaps (fork esc caps (lsft rsft))
-)
-
-(defchordsv2-experimental
-  (j k) bspc 15 first-release ()
-  (h j) C-bspc 15 first-release ()
-  (d f) del 15 first-release ()
-  (f g) C-del 15 first-release ()
-  (d m) (macro r p s k l g v s . a l k s l S-2 u m a g p e i s m) 15 first-release ()
 )

@@ -58,13 +58,11 @@
     enable = true;
     flavor = lib.mkDefault "mocha";
     accent = "sky";
-  };
 
-  gtk.catppuccin.enable = false;
-  qt.style.catppuccin.enable = false;
-  wayland.windowManager.hyprland.catppuccin.enable = false;
-  programs.alacritty.catppuccin.enable = false;
-  programs.rofi.catppuccin.enable = false;
+    rofi.enable = false;
+    kvantum.enable = false;
+    alacritty.enable = false;
+  };
 
   specialisation.light.configuration = {
     stylix = {
