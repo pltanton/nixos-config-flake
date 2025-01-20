@@ -18,8 +18,8 @@ _: {
         "bordersize 0, floating:0, onworkspace:f[1]"
         "rounding 0, floating:0, onworkspace:f[1]"
 
-        "workspace 10,class:^(.telegram-desktop-wrapped)$"
-        "workspace 10,title:(^Slack.*$)"
+        "workspace tab,class:^(.telegram-desktop-wrapped)$"
+        "workspace tab,title:(^Slack.*$)"
         "workspace 1,class:(^firefox$)"
 
         # telegram media viewer

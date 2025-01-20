@@ -22,7 +22,8 @@
     systemd.enable = false; # since it conflicts with uwsm
 
     plugins = with pkgs.hyprlandPlugins; [
-      # hypr-dynamic-cursors
+      hypr-dynamic-cursors
+      hy3
       # hyprexpo
       # hyprspace
     ];

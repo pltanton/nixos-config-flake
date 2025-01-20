@@ -9,7 +9,7 @@
   inherit (config.lib.stylix) colors;
 in {
   programs.waybar = {
-    style = builtins.readFile (config.lib.stylix.colors {
+    style = builtins.readFile (colors {
       template = builtins.readFile ./waybar.css.mustache;
       extension = "css";
     });

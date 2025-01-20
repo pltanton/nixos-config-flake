@@ -19,7 +19,8 @@
     targets.vscode.enable = false;
     targets.hyprland.enable = false;
     targets.bemenu.enable = false;
-    targets.alacritty.enable = true;
+    targets.alacritty.enable = false;
+    targets.zed.enable = false;
 
     polarity = lib.mkDefault "dark";
     cursor = {
@@ -51,6 +52,10 @@
         package = pkgs.noto-fonts-emoji;
         name = "Noto Color Emoji";
       };
+
+      sizes = {
+        terminal = 14;
+      };
     };
   };
 
@@ -61,18 +66,19 @@
 
     rofi.enable = false;
     kvantum.enable = false;
-    alacritty.enable = false;
   };
 
-  specialisation.light.configuration = {
-    stylix = {
-      base16Scheme = "${inputs.base16-schemes}/catppuccin-latte.yaml";
-      polarity = "light";
-      # cursor.name = "phinger-cursors";
-    };
 
-    catppuccin = {
-      flavor = "latte";
-    };
-  };
+
+  # specialisation.light.configuration = {
+  #   stylix = {
+  #     base16Scheme = "${inputs.base16-schemes}/catppuccin-latte.yaml";
+  #     polarity = "light";
+  #     # cursor.name = "phinger-cursors";
+  #   };
+
+  #   catppuccin = {
+  #     flavor = "latte";
+  #   };
+  # };
 }

@@ -1,14 +1,11 @@
 {
   pkgs,
-  inputs,
   ...
 }: {
   home.packages = with pkgs; [
-    hack-font
     monaspace
 
     shfmt
-
     age
 
     ###################
@@ -17,7 +14,6 @@
     wdisplays
 
     ffmpegthumbnailer
-    pamixer
     paprefs
     pwvucontrol
     pulseaudio
@@ -64,6 +60,7 @@
     procs # modern ps
     ripgrep
     tldr # cheatsheets for cli
+    yazi
 
     tmux
     unzip
@@ -96,7 +93,6 @@
     simple-scan
     spotify
 
-    inputs.activate-linux.defaultPackage.x86_64-linux
     scrcpy
 
     # zed-editor
@@ -132,7 +128,7 @@
     alejandra # nix formatting tool
     dprint
 
-    stable.dbeaver-bin
+    dbeaver-bin
     beekeeper-studio
 
     gcc

@@ -52,10 +52,13 @@ in {
       gaps_in = 4;
       gaps_out = 6;
       border_size = 2;
+      layout = "hy3";
       # gaps_workspaces = 100;
 
-      "col.active_border" = "rgb(${colors.base0E}) rgb(${colors.base0D}) 45deg";
-      "col.inactive_border" = "rgb(${colors.base02})";
+      # "col.active_border" = "rgb(${colors.base0E}) rgb(${colors.base0D}) 45deg";
+      # "col.inactive_border" = "rgb(${colors.base02})";
+      "col.active_border" = "$teal $sapphire 45deg";
+      "col.inactive_border" = "$surface2";
     };
 
     decoration = {
@@ -96,7 +99,6 @@ in {
     dwindle = {
       pseudotile = 0; # enable pseudotiling on dwindle
       preserve_split = true;
-      # no_gaps_when_only = 1;
     };
 
     misc = {
@@ -111,17 +113,18 @@ in {
 
     group = {
       groupbar = {
-        enabled = false;
+        enabled = true;
         render_titles = false;
         font_size = 14;
-        height = 2;
+        height = 14;
         font_family = "Inter";
-        text_color = "rgb(${colors.base05})";
         gradients = false;
-        "col.active" = "0xff${colors.base02}";
-        "col.inactive" = "0xff${colors.base00}";
-        "col.locked_active" = "0xff${colors.base02}";
-        "col.locked_inactive" = "0xff${colors.base00}";
+        # text_color = "rgb(${colors.base05})";
+        text_color = "$text";
+        # "col.active" = "0xff${colors.base02}";
+        # "col.inactive" = "0xff${colors.base00}";
+        # "col.locked_active" = "0xff${colors.base02}";
+        # "col.locked_inactive" = "0xff${colors.base00}";
       };
     };
 
@@ -139,13 +142,29 @@ in {
 
     plugin = {
       dynamic-cursors = {
-        enabled = true;
+        enabled = false;
         mode = "tilt";
         shake = {
           effects = 1;
         };
         hyprcursor = {
           nearest = false;
+        };
+      };
+
+      hy3 = {
+        no_gaps_when_only = 0;
+
+        tabs = {
+          opacity = 0.8;
+          "col.active" = "$sapphire";
+          "col.text.active" = "$base";
+          "col.inactive" = "$crust";
+          "col.text.inactive" = "$text";
+        };
+
+        autotile = {
+          enable = true;
         };
       };
     };

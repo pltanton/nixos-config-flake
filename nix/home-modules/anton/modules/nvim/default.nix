@@ -1,6 +1,6 @@
 {...}: {
   programs.neovim = {
-    enable = true;
+    enable = false;
 
     # extraConfig = builtins.readFile ./vimrc;
     # #configure = import ../configs/vim/vim.nix;

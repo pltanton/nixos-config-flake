@@ -1,7 +1,42 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: let
+  directions = rec {
+    left = "l";
+    right = "r";
+    up = "u";
+    down = "d";
+    h = left;
+    j = down;
+    k = up;
+    l = right;
+  };
+  workspaces = [
+    "1"
+    "2"
+    "3"
+    "4"
+    "5"
+    "6"
+    "7"
+    "8"
+    "9"
+    "0"
+    "F1"
+    "F2"
+    "F3"
+    "F4"
+    "F5"
+    "F6"
+    "F7"
+    "F8"
+    "F9"
+    "F10"
+    "F11"
+    "F12"
+  ];
+in {
   wayland.windowManager.hyprland = {
     settings = {
-      bind = [
+      bind = lib.flatten [
         # Rofi keybinds
         "SUPERSHIFT,v,exec,cliphist list | uwsm app -- rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img -show clipboard -show-icons -p "
         "SUPERSHIFT,e,exec,uwsm app -- rofi -show emoji -modi emoji"
@@ -10,44 +45,33 @@
         "SUPER,f12,exec,loginctl lock-session"
         ",Print,exec,uwsm app -- screenshot"
         "SHIFT,Print,exec,uwsm app -- screenshot -e"
-        "SUPERSHIFT,Return,exec,uwsm app -- alacritty"
+        # "SUPERSHIFT,Return,exec,uwsm app -- alacritty"
+        "SUPERSHIFT,Return,exec,uwsm app -- ghostty"
         "SUPERSHIFT,Q,exec,uwsm stop"
 
         # Manipulate with active window state
         "SUPERSHIFT,C,killactive,"
-        "SUPERSHIFT,Space,togglefloating,"
+        "SUPERSHIFT,F,togglefloating,"
         "SUPER,F,fullscreen,"
         "SUPERSHIFT,P,pin,"
 
-        "SUPER,v,togglesplit,"
+        "SUPER,v,hy3:makegroup,v,ephemeral"
+        "SUPER,w,hy3:makegroup,h,ephemeral"
+        "SUPER,x,hy3:changegroup,opposite"
+
+        (lib.mapAttrsToList (key: direction: "SUPERALT,${key},moveintogroup,${direction},visible") directions)
+
+        # Groups aka tabs
+        "SUPER,g,hy3:changegroup,toggletab"
 
         # Move through windows
-        "SUPER,h,movefocus,l"
-        "SUPER,left,movefocus,l"
-        "SUPER,l,movefocus,r"
-        "SUPER,right,movefocus,r"
-        "SUPER,k,movefocus,u"
-        "SUPER,up,movefocus,u"
-        "SUPER,j,movefocus,d"
-        "SUPER,down,movefocus,d"
-        "SUPERSHIFT,h,movewindow,l"
-        "SUPERSHIFT,left,movewindow,l"
-        "SUPERSHIFT,l,movewindow,r"
-        "SUPERSHIFT,right,movewindow,r"
-        "SUPERSHIFT,k,movewindow,u"
-        "SUPERSHIFT,up,movewindow,u"
-        "SUPERSHIFT,j,movewindow,d"
-        "SUPERSHIFT,,movewindow,d"
+        (lib.mapAttrsToList (key: direction: "SUPER,${key},hy3:movefocus,${direction},visible") directions)
+        (lib.mapAttrsToList (key: direction: "SUPERSHIFT,${key},hy3:movewindow,${direction},visible") directions)
+        "SUPER,p,hy3:focustab,l,,wrap"
+        "SUPER,n,hy3:focustab,r,,wrap"
+        "SUPER,period,changegroupactive,f"
+        "SUPERSHIFT,period,changegroupactive,b"
 
-        "SUPER,w,togglegroup,"
-        "SUPERSHIFT,w,moveoutofgroup,"
-        "SUPER,n,changegroupactive,f"
-        "SUPER,p,changegroupactive,b"
-
-        "SUPER_CONTROL,h,moveintogroup,l"
-        "SUPER_CONTROL,l,moveintogroup,r"
-        "SUPER_CONTROL,k,moveintogroup,u"
-        "SUPER_CONTROL,j,moveintogroup,d"
 
         # Moving through monitors
         "SUPER,apostrophe,focusmonitor,l"
@@ -56,28 +80,10 @@
         "SUPERSHIFT,comma,movecurrentworkspacetomonitor,r"
 
         # Moving through workspaces
-        "SUPER,1,workspace,1"
-        "SUPER,2,workspace,2"
-        "SUPER,3,workspace,3"
-        "SUPER,4,workspace,4"
-        "SUPER,5,workspace,5"
-        "SUPER,6,workspace,6"
-        "SUPER,7,workspace,7"
-        "SUPER,8,workspace,8"
-        "SUPER,9,workspace,9"
-        "SUPER,0,workspace,10"
-        "SUPER,tab,workspace,10"
-        "SUPERSHIFT,1,movetoworkspace,1"
-        "SUPERSHIFT,2,movetoworkspace,2"
-        "SUPERSHIFT,3,movetoworkspace,3"
-        "SUPERSHIFT,4,movetoworkspace,4"
-        "SUPERSHIFT,5,movetoworkspace,5"
-        "SUPERSHIFT,6,movetoworkspace,6"
-        "SUPERSHIFT,7,movetoworkspace,7"
-        "SUPERSHIFT,8,movetoworkspace,8"
-        "SUPERSHIFT,9,movetoworkspace,9"
-        "SUPERSHIFT,0,movetoworkspace,10"
-        "SUPERSHIFT,tab,movetoworkspace,10"
+        (map (n: "SUPER,${n},workspace,name:${n}") workspaces)
+        (map (n: "SUPERSHIFT,${n},hy3:movetoworkspace,name:${n},follow") workspaces)
+        "SUPER,tab,workspace,name:tab"
+        "SUPERSHIFT,tab,hy3:movetoworkspace,name:tab,follow"
 
         # Media keys
         ",XF86AudioPlay,exec,playerctl play-pause"
@@ -87,7 +93,7 @@
 
         # Keyboard layout switch
         "SUPER,Space,exec,xkb-smart-switch"
-        "SUPER,g,exec,hyprctl switchxkblayout current 2"
+        "SUPERSHIFT,Space,exec,hyprctl switchxkblayout current 2"
       ];
 
       bindel = [
@@ -108,6 +114,10 @@
 
       # Mouse bindings
       bindm = ["SUPER,mouse:272,movewindow" "SUPER,mouse:273,resizewindow"];
+
+      bindn = [
+        ",mouse:272,hy3:focustab,mouse"
+      ];
     };
 
     extraConfig = ''

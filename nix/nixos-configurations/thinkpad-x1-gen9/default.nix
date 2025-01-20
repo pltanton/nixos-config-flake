@@ -2,7 +2,6 @@
   system = "x86_64-linux";
 
   specialArgs = {
-    inherit inputs;
     stateVersion = "22.05";
   };
 

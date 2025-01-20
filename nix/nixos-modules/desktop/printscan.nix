@@ -6,8 +6,21 @@
 }: {
   services.printing = {
     enable = true;
-    drivers = with pkgs; [epson-escpr epson-escpr2];
+    drivers = with pkgs; [stable.epson-escpr2 stable.cups-filters stable.epson-escpr];
+    package = pkgs.stable.cups;
   };
+
+  # hardware.printers = {
+  #   ensurePrinters = [
+  #     {
+  #       name = "L3256";
+  #       location = "Home";
+  #       deviceUri = "ipp://192.168.0.102/ipp/print";
+  #       model = "everywhere";
+  #     }
+  #   ];
+  #   ensureDefaultPrinter = "Dell_1250c";
+  # };
 
   hardware.sane.enable = true;
 
