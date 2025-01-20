@@ -1,1 +1,1 @@
-{...}: {services.tumbler.enable = true;}
+_: {services.tumbler.enable = true;}

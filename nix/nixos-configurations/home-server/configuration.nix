@@ -23,9 +23,11 @@
           };
         };
       };
-      wait-online.anyInterface = true;
-      wait-online.timeout = 10;
-      wait-online.ignoredInterfaces = ["wg0" "wg-hz"];
+      wait-online = {
+        anyInterface = true;
+        timeout = 10;
+        ignoredInterfaces = ["wg0" "wg-hz"];
+      };
     };
     enableEmergencyMode = false;
   };

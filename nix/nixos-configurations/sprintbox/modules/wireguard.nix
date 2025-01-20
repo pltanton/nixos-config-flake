@@ -2,11 +2,14 @@
   sops.secrets."wireguard/server-key" = {};
 
   networking = {
-    firewall.enable = false;
-    firewall = {allowedUDPPorts = [51820];};
-    nat.enable = true;
-    nat.internalInterfaces = ["wg-sprintbox"];
-    nat.externalInterface = "ens3";
+    firewall = {
+      allowedUDPPorts = [51820];
+    };
+    nat = {
+      enable = true;
+      internalInterfaces = ["wg-sprintbox"];
+      externalInterface = "ens3";
+    };
 
     wireguard.interfaces = {
       wg-sprintbox = {

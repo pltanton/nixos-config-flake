@@ -9,12 +9,16 @@
 }: {
   imports = [(modulesPath + "/profiles/qemu-guest.nix")];
 
-  boot.initrd.availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "sr_mod" "virtio_blk"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = [];
-  boot.extraModulePackages = [];
+  boot = {
+    initrd = {
+      availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "sr_mod" "virtio_blk"];
+      kernelModules = [];
+    };
+    kernelModules = [];
+    extraModulePackages = [];
 
-  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+    kernel.sysctl."net.ipv4.ip_forward" = 1;
+  };
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/7707dfcc-43b0-471a-9041-dcd8b9bf97aa";

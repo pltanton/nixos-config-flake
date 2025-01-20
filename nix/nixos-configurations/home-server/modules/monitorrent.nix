@@ -1,4 +1,4 @@
-{...}: let
+_: let
   consts = import ../constants.nix;
 in {
   virtualisation.oci-containers.containers = {

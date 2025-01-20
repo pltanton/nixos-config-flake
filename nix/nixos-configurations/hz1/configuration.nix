@@ -11,9 +11,11 @@
   systemd = {
     network = {
       enable = false;
-      wait-online.anyInterface = true;
-      wait-online.timeout = 10;
-      wait-online.ignoredInterfaces = ["wg0"];
+      wait-online = {
+        anyInterface = true;
+        timeout = 10;
+        ignoredInterfaces = ["wg0"];
+      };
     };
 
     enableEmergencyMode = false;

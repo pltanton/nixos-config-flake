@@ -1,4 +1,4 @@
-{...}: {
+_: {
   services.minio = {
     enable = true;
     listenAddress = ":9200";

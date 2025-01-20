@@ -3,10 +3,10 @@
     # package = inputs.autobrowser.packages.x86_64-linux.default;
     enable = true;
     variables = {
-      work = "firefox 'ext+container:name=Work&url={}'";
-      home = "firefox {}";
-      meet-work = "chromium '--app={}?authuser=1'";
-      meet-personal = "chromium '--app={}?authuser=0'";
+      work = "firefox 'ext+container:name=Work&url=_'";
+      home = "firefox _";
+      meet-work = "chromium '--app=_?authuser=1'";
+      meet-personal = "chromium '--app=_?authuser=0'";
     };
     rules = [
       "meet-work:url.host='meet.google.com';app.class=Slack"

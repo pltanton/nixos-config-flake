@@ -1,4 +1,4 @@
-{...}: {
+_: {
   networking.firewall.allowedUDPPorts = [8388 8388];
   networking.firewall.allowedTCPPorts = [8388 8388];
 

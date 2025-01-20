@@ -23,7 +23,7 @@
       playerctl
 
       # Hyprcursor cursor
-      (pkgs.runCommand "moveUp" {} ''
+      (pkgs.runCommand "moveUp" _ ''
         mkdir -p $out/share/icons
         ln -s ${inputs.rose-pine-hyprcursor} $out/share/icons/rose-pine-hyprcursor
       '')

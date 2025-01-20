@@ -1,32 +1,38 @@
 {config, ...}: {
-  networking.nat.enable = true;
-  networking.nat.internalInterfaces = ["wg-home" "wg-hz"];
-  networking.firewall = {allowedUDPPorts = [51820];};
+  sops.secrets = {
+    "wireguard/hz1" = {};
+    "wireguard/home" = {};
+  };
 
-  sops.secrets."wireguard/hz1" = {};
-  sops.secrets."wireguard/home" = {};
+  networking = {
+    nat = {
+      enable = true;
+      internalInterfaces = ["wg-home" "wg-hz"];
+    };
+    firewall = {allowedUDPPorts = [51820];};
 
-  networking.wireguard.interfaces = {
-    wg-home = {
-      ips = ["10.100.0.1/24"];
-      listenPort = 51820;
+    wireguard.interfaces = {
+      wg-home = {
+        ips = ["10.100.0.1/24"];
+        listenPort = 51820;
 
-      privateKeyFile = config.sops.secrets."wireguard/home".path;
+        privateKeyFile = config.sops.secrets."wireguard/home".path;
 
-      peers = [
-        {
-          allowedIPs = ["10.100.0.2/32"];
-          publicKey = "+Sn1TvwU92p1ZiGQfv0qSCbSML894x/u7OuLRH0URig=";
-        }
-        {
-          allowedIPs = ["10.100.0.3/32"];
-          publicKey = "TZeNcgaKDcQRsUktBPcjtcKbVLouDkc24jdoSrWHtVs="; # Thinkpad x1
-        }
-        {
-          allowedIPs = ["10.100.0.4/32"];
-          publicKey = "TB6b0XRczhJmH/yyVIL0gCPGL4sIx3EcMti28og0g14="; # Thinkpad x1 gen9
-        }
-      ];
+        peers = [
+          {
+            allowedIPs = ["10.100.0.2/32"];
+            publicKey = "+Sn1TvwU92p1ZiGQfv0qSCbSML894x/u7OuLRH0URig=";
+          }
+          {
+            allowedIPs = ["10.100.0.3/32"];
+            publicKey = "TZeNcgaKDcQRsUktBPcjtcKbVLouDkc24jdoSrWHtVs="; # Thinkpad x1
+          }
+          {
+            allowedIPs = ["10.100.0.4/32"];
+            publicKey = "TB6b0XRczhJmH/yyVIL0gCPGL4sIx3EcMti28og0g14="; # Thinkpad x1 gen9
+          }
+        ];
+      };
     };
 
     wg-hz = {

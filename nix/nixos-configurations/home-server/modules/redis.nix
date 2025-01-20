@@ -1,1 +1,1 @@
-{...}: {services.redis.servers.main = {enable = true;};}
+_: {services.redis.servers.main = {enable = true;};}

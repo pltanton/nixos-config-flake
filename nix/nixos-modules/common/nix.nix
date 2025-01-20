@@ -4,9 +4,11 @@
       experimental-features = nix-command flakes
     '';
 
-    registry.n.flake = inputs.nixpkgs;
-    registry.m.flake = inputs.nixpkgs-master;
-    registry.s.flake = inputs.nixpkgs-stable;
+    registry = {
+      n.flake = inputs.nixpkgs;
+      m.flake = inputs.nixpkgs-master;
+      s.flake = inputs.nixpkgs-stable;
+    };
 
     settings = {
       builders-use-substitutes = true;

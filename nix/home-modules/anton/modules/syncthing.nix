@@ -1,1 +1,1 @@
-{...}: {services.syncthing = {enable = false;};}
+_: {services.syncthing = {enable = false;};}

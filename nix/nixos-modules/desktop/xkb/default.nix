@@ -1,4 +1,4 @@
-{...}: {
+_: {
   services.xserver.xkb.extraLayouts = {
     gr-dvorak = {
       symbolsFile = ./gr-dvorak;

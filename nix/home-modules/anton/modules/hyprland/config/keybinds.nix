@@ -1,4 +1,8 @@
-{pkgs, lib, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   directions = rec {
     left = "l";
     right = "r";
@@ -71,7 +75,6 @@ in {
         "SUPER,n,hy3:focustab,r,,wrap"
         "SUPER,period,changegroupactive,f"
         "SUPERSHIFT,period,changegroupactive,b"
-
 
         # Moving through monitors
         "SUPER,apostrophe,focusmonitor,l"

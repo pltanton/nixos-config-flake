@@ -8,43 +8,50 @@
 in {
   imports = [inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-9th-gen];
 
-  hardware.pulseaudio.support32Bit = true;
+  hardware = {
+    pulseaudio.support32Bit = true;
 
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
-
-  hardware.trackpoint.enable = true;
-  hardware.trackpoint.emulateWheel = config.hardware.trackpoint.enable;
+    trackpoint = {
+      enable = true;
+      emulateWheel = config.hardware.trackpoint.enable;
+    };
+  };
 
   services.xserver.videoDrivers = ["intel"];
 
-  boot.extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
-  boot.kernel.sysctl = {};
-  boot.kernelParams = ["i915.enable_psr=1"];
-  # boot.kernelModules = [ "v4l2loopback" "i2c-dev" "iwlwifi" ];
-  boot.kernelModules = ["i2c-dev" "iwlwifi"];
-
-  fileSystems."/mnt/hass" = {
-    device = "10.100.0.1:/var/lib/hass";
-    # device = ":/var/lib/hass";
-    fsType = "nfs";
-    options = [nfsDeviceDefaults];
+  boot = {
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
+    extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
+    kernel.sysctl = {};
+    kernelParams = ["i915.enable_psr=1"];
+    # kernelModules = [ "v4l2loopback" "i2c-dev" "iwlwifi" ];
+    kernelModules = ["i2c-dev" "iwlwifi"];
   };
 
-  fileSystems."/mnt/home-nfs-archive" = {
-    device = "10.100.0.1:/media/archive/archive";
-    fsType = "nfs";
-    options = [nfsDeviceDefaults];
-  };
+  fileSystems = {
+    "/mnt/hass" = {
+      device = "10.100.0.1:/var/lib/hass";
+      # device = ":/var/lib/hass";
+      fsType = "nfs";
+      options = [nfsDeviceDefaults];
+    };
 
-  fileSystems."/mnt/home-nfs-public" = {
-    device = "10.100.0.1:/media/store/media";
-    fsType = "nfs";
-    options = [nfsDeviceDefaults];
-  };
+    "/mnt/home-nfs-archive" = {
+      device = "10.100.0.1:/media/archive/archive";
+      fsType = "nfs";
+      options = [nfsDeviceDefaults];
+    };
 
-  fileSystems."/mnt/windows" = {
-    device = "/dev/nvme0n1p4";
-    fsType = "ntfs";
-    options = ["rw"];
+    "/mnt/home-nfs-public" = {
+      device = "10.100.0.1:/media/store/media";
+      fsType = "nfs";
+      options = [nfsDeviceDefaults];
+    };
+
+    "/mnt/windows" = {
+      device = "/dev/nvme0n1p4";
+      fsType = "ntfs";
+      options = ["rw"];
+    };
   };
 }

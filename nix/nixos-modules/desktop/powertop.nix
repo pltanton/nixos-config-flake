@@ -1,1 +1,1 @@
-{...}: {powerManagement.powertop.enable = false;}
+_: {powerManagement.powertop.enable = false;}

@@ -1,4 +1,4 @@
-{...}: {
+_: {
   services.udev.extraRules = ''
     KERNEL=="i2c-[0-9]*", GROUP="ddc", MODE="0660"
   '';

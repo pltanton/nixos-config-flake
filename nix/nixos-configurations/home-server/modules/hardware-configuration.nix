@@ -4,8 +4,10 @@
 {lib, ...}: let
   consts = import ../constants.nix;
 in {
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = ["dm-snapshot" "dm-mirror"];
+  boot.initrd = {
+    availableKernelModules = ["xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
+    kernelModules = ["dm-snapshot" "dm-mirror"];
+  };
   boot.kernelModules = ["kvm-amd"];
 
   fileSystems = {
@@ -34,7 +36,11 @@ in {
 
   nix.settings.max-jobs = lib.mkDefault 8;
 
-  hardware.enableRedistributableFirmware = true;
-  hardware.graphics.enable = true;
-  hardware.graphics.enable32Bit = true;
+  hardware = {
+    enableRedistributableFirmware = true;
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+  };
 }

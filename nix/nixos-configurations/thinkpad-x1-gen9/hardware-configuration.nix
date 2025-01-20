@@ -9,24 +9,30 @@
 }: {
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = ["dm-snapshot"];
+  boot = {
+    initrd = {
+      availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
+      kernelModules = ["dm-snapshot"];
 
-  boot.initrd.luks.devices.crypted.device = "/dev/disk/by-uuid/0e20fecd-4ffa-44f9-9ab1-7a439be49286";
-  boot.initrd.luks.devices.crypted.crypttabExtraOpts = ["fido2-device=auto"];
-  boot.initrd.systemd.enable = true;
+      luks.devices.crypted.device = "/dev/disk/by-uuid/0e20fecd-4ffa-44f9-9ab1-7a439be49286";
+      luks.devices.crypted.crypttabExtraOpts = ["fido2-device=auto"];
+      systemd.enable = true;
+    };
 
-  boot.kernelModules = ["kvm-intel"];
-  boot.extraModulePackages = [];
-
-  fileSystems."/" = {
-    device = "/dev/mapper/vg-root";
-    fsType = "btrfs";
+    kernelModules = ["kvm-intel"];
+    extraModulePackages = [];
   };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/CD3C-8091";
-    fsType = "vfat";
+  fileSystems = {
+    "/" = {
+      device = "/dev/mapper/vg-root";
+      fsType = "btrfs";
+    };
+
+    "/boot" = {
+      device = "/dev/disk/by-uuid/CD3C-8091";
+      fsType = "vfat";
+    };
   };
 
   swapDevices = [{device = "/dev/mapper/vg-swap";}];

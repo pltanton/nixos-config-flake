@@ -60,12 +60,12 @@ in {
         };
         "memory" = {
           "interval" = 30;
-          "format" = " {}%";
+          "format" = " _%";
           "max-length" = 10;
         };
         "cpu" = {
           "interval" = 10;
-          "format" = " {}%";
+          "format" = " _%";
           "max-length" = 10;
         };
         "keyboard-state" = {
@@ -82,7 +82,7 @@ in {
           "format" = "{icon} {percent}%";
           "format-icons" = ["" "" ""];
         };
-        "sway/mode" = {format = ''<span style="italic">{}</span>'';};
+        "sway/mode" = {format = ''<span style="italic">_</span>'';};
         "hyprland/workspaces" = {
           # format = "{name}: {icon}";
           format = "{name}";
@@ -137,7 +137,7 @@ in {
           ignored-sinks = ["EasyEffects Sink"];
         };
         "custom/spotify" = {
-          format = " {}";
+          format = " _";
           max-length = 40;
           on-click = "playerctl play-pause";
           interval = 1;
@@ -146,11 +146,11 @@ in {
         };
         "hyprland/sumbap" = {};
         "hyprland/window" = {
-          "format" = "{}";
+          "format" = "_";
           "separate-outputs" = true;
         };
         "hyprland/language" = {
-          format = "{}";
+          format = "_";
           "format-ru" = "ру";
           "format-en" = "en";
           "format-gr-dvorak" = "ελ";

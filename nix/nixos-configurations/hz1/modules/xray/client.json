@@ -1,5 +1,5 @@
 {
-  "log": {},
+  "log": _,
   "inbounds": [
     {
       "port": "10808",
@@ -12,7 +12,7 @@
     {
       "port": "10809",
       "protocol": "http",
-      "settings": {}
+      "settings": _
     }
   ],
   "outbounds": [
@@ -44,12 +44,12 @@
     {
       "tag": "direct",
       "protocol": "freedom",
-      "settings": {}
+      "settings": _
     },
     {
       "tag": "blocked",
       "protocol": "blackhole",
-      "settings": {}
+      "settings": _
     }
   ],
   "routing": {

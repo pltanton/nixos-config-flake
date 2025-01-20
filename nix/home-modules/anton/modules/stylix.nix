@@ -11,16 +11,18 @@
     image = config.backgrounds."unsplash-mountains.jpg";
     base16Scheme = lib.mkDefault "${inputs.base16-schemes}/catppuccin-mocha.yaml";
 
-    targets.firefox.enable = false;
-    targets.swaylock.enable = false;
-    targets.rofi.enable = false;
-    targets.waybar.enable = false;
-    targets.avizo.enable = false;
-    targets.vscode.enable = false;
-    targets.hyprland.enable = false;
-    targets.bemenu.enable = false;
-    targets.alacritty.enable = false;
-    targets.zed.enable = false;
+    targets = {
+      firefox.enable = false;
+      swaylock.enable = false;
+      rofi.enable = false;
+      waybar.enable = false;
+      avizo.enable = false;
+      vscode.enable = false;
+      hyprland.enable = false;
+      bemenu.enable = false;
+      alacritty.enable = false;
+      zed.enable = false;
+    };
 
     polarity = lib.mkDefault "dark";
     cursor = {
@@ -67,18 +69,4 @@
     rofi.enable = false;
     kvantum.enable = false;
   };
-
-
-
-  # specialisation.light.configuration = {
-  #   stylix = {
-  #     base16Scheme = "${inputs.base16-schemes}/catppuccin-latte.yaml";
-  #     polarity = "light";
-  #     # cursor.name = "phinger-cursors";
-  #   };
-
-  #   catppuccin = {
-  #     flavor = "latte";
-  #   };
-  # };
 }
