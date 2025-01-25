@@ -8,6 +8,7 @@
     nur.modules.homeManager.default
     sops-nix.homeManagerModules.sops
     stylix.homeManagerModules.stylix
+    walker.homeManagerModules.default
   ];
 
   home = {

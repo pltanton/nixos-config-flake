@@ -33,5 +33,6 @@
     ./keyring.nix
     ./services.nix
     ./taskwarrion.nix
+    ./walker.nix
   ];
 }
