@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  inherit (config.lib.stylix) colors;
+  # inherit (config.lib.stylix) colors;
 in {
   xdg.configFile = {
     "uwsm/env".text = ''
@@ -138,6 +138,7 @@ in {
     gestures = {
       workspace_swipe = true;
       workspace_swipe_create_new = false;
+      # workspace_swipe_use_r = true;
     };
 
     plugin = {
@@ -154,10 +155,12 @@ in {
 
       hy3 = {
         no_gaps_when_only = 0;
+        height = 26; 
+
 
         tabs = {
           opacity = 0.8;
-          "col.active" = "$sapphire";
+          "col.active" = "$mauve";
           "col.text.active" = "$base";
           "col.inactive" = "$crust";
           "col.text.inactive" = "$text";

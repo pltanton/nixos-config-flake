@@ -7,7 +7,7 @@ _: {
     config = {
       ui.fullscreen = true;
       list = {
-        height = 200;
+        height = 500;
       };
     };
 

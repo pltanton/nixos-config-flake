@@ -86,11 +86,25 @@ in {
         "hyprland/workspaces" = {
           # format = "{name}: {icon}";
           format = "{name}";
-          # sort-by-coordinates = false;
-          sort-by-number = true;
+          # format = "{name}: {windows}";
+          sort-by = "number";
           on-click = "activate";
           on-scroll-down = "${hyprlandPkg}/bin/hyprctl dispatch workspace e+1";
           on-scroll-up = "${hyprlandPkg}/bin/hyprctl dispatch workspace e-1";
+
+          window-rewrite-default = "";
+          window-rewrite = {
+            "title<.*youtube.*>" = ""; # 
+            "class<firefox>" = ""; 
+            "class<.*jetbrains.*>" = "";
+            "foot" = ""; 
+            "VSCodium" = "";
+            "class<com.mitchellh.ghostty>" = "";
+            "class<org.telegram.desktop>" = "";
+            "class<Slack>" = "";
+            "spotify" = "";
+          };
+
           format-icons = {
             "1" = "";
             "2" = "";
@@ -98,7 +112,7 @@ in {
             "4" = "";
             "8" = "";
             "9" = "";
-            "10" = "";
+            "tab" = "";
             "focused" = "";
             "default" = "";
           };

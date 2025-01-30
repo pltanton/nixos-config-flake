@@ -1,4 +1,4 @@
-{inputs, ...}: {
+_: {
   # imports = inputs.self.lib.modulesDir ./.;
   imports = [
     ./autobrowser.nix

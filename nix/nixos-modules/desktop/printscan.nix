@@ -6,8 +6,7 @@
 }: {
   services.printing = {
     enable = true;
-    drivers = with pkgs; [stable.epson-escpr2 stable.cups-filters stable.epson-escpr];
-    package = pkgs.stable.cups;
+    drivers = [pkgs.epson-escpr2 pkgs.cups-filters pkgs.epson-escpr];
   };
 
   # hardware.printers = {

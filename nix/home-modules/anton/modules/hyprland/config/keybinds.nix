@@ -42,9 +42,10 @@ in {
     settings = {
       bind = lib.flatten [
         # Rofi keybinds
-        "SUPERSHIFT,v,exec,cliphist list | uwsm app -- rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img -show clipboard -show-icons -p "
+        # "SUPERSHIFT,v,exec,cliphist list | uwsm app -- rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img -show clipboard -show-icons -p "
         # "SUPERSHIFT,e,exec,uwsm app -- rofi -show emoji -modi emoji"
         # "SUPER,Return,exec,uwsm app -- rofi -show drun -show-icons"
+        "SUPERSHIFT,v,exec,cliphist list | uwsm app -- walker -m clipboard"
         "SUPERSHIFT,e,exec,uwsm app -- walker -m emoji"
         "SUPER,Return,exec,uwsm app -- walker"
 
@@ -69,14 +70,15 @@ in {
 
         # Groups aka tabs
         "SUPER,g,hy3:changegroup,toggletab"
+        "SUPERSIFT,g,hy3:changefocus,tab"
 
         # Move through windows
         (lib.mapAttrsToList (key: direction: "SUPER,${key},hy3:movefocus,${direction},visible") directions)
         (lib.mapAttrsToList (key: direction: "SUPERSHIFT,${key},hy3:movewindow,${direction},visible") directions)
         "SUPER,p,hy3:focustab,l,,wrap"
         "SUPER,n,hy3:focustab,r,,wrap"
-        "SUPER,period,changegroupactive,f"
-        "SUPERSHIFT,period,changegroupactive,b"
+        "SUPER,u,hy3:changefocus,raise"
+        "SUPER,d,hy3:changefocus,down"
 
         # Moving through monitors
         "SUPER,apostrophe,focusmonitor,l"

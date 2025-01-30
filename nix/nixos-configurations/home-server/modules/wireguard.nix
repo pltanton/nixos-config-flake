@@ -33,19 +33,19 @@
           }
         ];
       };
-    };
 
-    wg-hz = {
-      privateKeyFile = config.sops.secrets."wireguard/hz1".path;
-      ips = ["10.10.10.10/32"];
-      peers = [
-        {
-          publicKey = "0vuNrDaID3o8YwbNBZ7RViB0O0z6Kt32mpK36PUDgg8=";
-          allowedIPs = ["10.10.10.0/24"];
-          endpoint = "hz1.kaliwe.ru:51820";
-          persistentKeepalive = 25;
-        }
-      ];
+      wg-hz = {
+        privateKeyFile = config.sops.secrets."wireguard/hz1".path;
+        ips = ["10.10.10.10/32"];
+        peers = [
+          {
+            publicKey = "0vuNrDaID3o8YwbNBZ7RViB0O0z6Kt32mpK36PUDgg8=";
+            allowedIPs = ["10.10.10.0/24"];
+            endpoint = "hz1.kaliwe.ru:51820";
+            persistentKeepalive = 25;
+          }
+        ];
+      };
     };
   };
 }
