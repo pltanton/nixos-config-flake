@@ -13,7 +13,7 @@
       "qingping"
     ];
 
-    customComponents = [pkgs.master.home-assistant-custom-components.xiaomi_miot];
+    customComponents = [pkgs.home-assistant-custom-components.xiaomi_miot];
 
     config = {
       # Includes dependencies for a basic setup

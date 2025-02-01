@@ -119,8 +119,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    xdph.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+    hyprland.url = "github:hyprwm/Hyprland?ref=v0.47.0";
+    hy3 = {
+      url = "github:outfoxxed/hy3?ref=hl0.47.0"; # where {version} is the hyprland release version
+      # url = "github:outfoxxed/hy3?ref=hl{version}"; # where {version} is the hyprland release version
+      # or "github:outfoxxed/hy3" to follow the development branch.
+      # (you may encounter issues if you dont do the same for hyprland)
+      inputs.hyprland.follows = "hyprland";
+    };
 
     dbeaver = {
       url = "github:padhia/nix-dbeaver";

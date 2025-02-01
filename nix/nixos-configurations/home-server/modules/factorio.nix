@@ -7,7 +7,7 @@
 
   services.factorio = {
     enable = true;
-    package = pkgs.master.factorio-headless;
+    package = pkgs.factorio-headless;
     openFirewall = true;
     requireUserVerification = false;
     extraSettingsFile = config.sops.secrets."factorio".path;

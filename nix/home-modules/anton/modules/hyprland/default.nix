@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
@@ -17,13 +18,15 @@
   wayland.windowManager.hyprland = {
     enable = true;
     # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # package = pkgs.stable.hyprland;
     xwayland.enable = true;
 
     systemd.enable = false; # since it conflicts with uwsm
 
-    plugins = with pkgs.hyprlandPlugins; [
-      hypr-dynamic-cursors
-      hy3
+    plugins = with pkgs.stable.hyprlandPlugins; [
+      # hypr-dynamic-cursors
+      # hy3
+      inputs.hy3.packages.x86_64-linux.hy3
       # hyprexpo
       # hyprspace
     ];
