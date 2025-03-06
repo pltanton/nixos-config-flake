@@ -8,9 +8,9 @@
   imports = [
     ./scripts
     ./config
+    ./hyprlock
     ./hyprpaper.nix
     ./hypridle.nix
-    ./hyprlock.nix
     ./targets.nix
     ./targets-config.nix
   ];

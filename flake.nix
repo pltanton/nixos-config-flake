@@ -97,6 +97,7 @@
     };
 
     walker.url = "github:abenz1267/walker";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     ddcsync = {
       url = "github:pltanton/ddcsync";

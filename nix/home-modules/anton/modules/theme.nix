@@ -20,8 +20,8 @@
     enable = true;
 
     iconTheme = {
-      package = pkgs.kora-icon-theme;
-      name = "kora";
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus";
     };
 
     gtk2.extraConfig = ''

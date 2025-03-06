@@ -1,38 +1,36 @@
 _: {
-  # imports = inputs.self.lib.modulesDir ./.;
   imports = [
     ./autobrowser.nix
-    ./go.nix
-    ./nh.nix
-    ./shell.nix
-    ./theme.nix
+    ./alacritty.nix
     ./cliphist.nix
-    ./gpg-agent.nix
-    ./npm.nix
-    ./ssh-agent.nix
-    ./vscode.nix
-    ./home-packages.nix
-    ./nvim
-    ./stylix.nix
-    ./waybar
     ./direnv.nix
-    ./hyprland
-    ./portals.nix
-    ./swaync
-    ./xdg.nix
     ./firefox.nix
-    ./index.nix
-    ./python.nix
-    ./swayosd.nix
-    ./zed.nix
     ./ghostty.nix
-    ./java.nix
-    ./rofi
-    ./syncthing.nix
     ./git.nix
+    ./go.nix
+    ./gpg-agent.nix
+    ./home-packages.nix
+    ./hyprland
+    ./index.nix
+    ./java.nix
     ./keyring.nix
+    ./nh.nix
+    ./npm.nix
+    ./nvim
+    ./portals.nix
+    ./python.nix
+    ./rofi
     ./services.nix
+    ./shell.nix
+    ./ssh-agent.nix
+    ./stylix.nix
+    ./swaync.nix
+    ./swayosd.nix
     ./taskwarrion.nix
-    ./walker.nix
+    ./theme.nix
+    ./vscode.nix
+    ./waybar
+    ./xdg.nix
+    ./zed.nix
   ];
 }

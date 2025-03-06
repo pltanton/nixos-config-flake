@@ -1,8 +1,8 @@
 {inputs, ...}: {
   system = "x86_64-linux";
 
-  modules = with inputs; [
-    self.homeModules.anton
+  modules = [
+    inputs.self.homeModules.anton
 
     {
       home.stateVersion = "22.05";

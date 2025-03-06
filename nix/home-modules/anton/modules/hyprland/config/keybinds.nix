@@ -13,47 +13,42 @@
     k = up;
     l = right;
   };
+  buildWorkspace = key: id: {
+    inherit key;
+    inherit id;
+  };
+  buildWorkspaceDefault = key: buildWorkspace key key;
   workspaces = [
-    "1"
-    "2"
-    "3"
-    "4"
-    "5"
-    "6"
-    "7"
-    "8"
-    "9"
-    "0"
-    "F1"
-    "F2"
-    "F3"
-    "F4"
-    "F5"
-    "F6"
-    "F7"
-    "F8"
-    "F9"
-    "F10"
-    "F11"
-    "F12"
+    (buildWorkspaceDefault "1")
+    (buildWorkspaceDefault "2")
+    (buildWorkspaceDefault "3")
+    (buildWorkspaceDefault "4")
+    (buildWorkspaceDefault "5")
+    (buildWorkspaceDefault "6")
+    (buildWorkspaceDefault "7")
+    (buildWorkspaceDefault "8")
+    (buildWorkspaceDefault "9")
+    (buildWorkspace "0" "10")
+    (buildWorkspace "tab" "11")
   ];
 in {
   wayland.windowManager.hyprland = {
     settings = {
       bind = lib.flatten [
         # Rofi keybinds
-        # "SUPERSHIFT,v,exec,cliphist list | uwsm app -- rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img -show clipboard -show-icons -p "
-        # "SUPERSHIFT,e,exec,uwsm app -- rofi -show emoji -modi emoji"
-        # "SUPER,Return,exec,uwsm app -- rofi -show drun -show-icons"
-        "SUPERSHIFT,v,exec,cliphist list | uwsm app -- walker -m clipboard"
-        "SUPERSHIFT,e,exec,uwsm app -- walker -m emoji"
-        "SUPER,Return,exec,uwsm app -- walker"
+        "SUPERSHIFT,v,exec,cliphist list | uwsm app -- rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img -show clipboard -show-icons -p "
+        "SUPERSHIFT,e,exec,uwsm app -- rofi -show emoji -modi emoji"
+        "SUPER,Return,exec,uwsm app -- rofi -show drun -show-icons"
+
+        # "SUPERSHIFT,v,exec,cliphist list | uwsm app -- walker -m clipboard"
+        # "SUPERSHIFT,e,exec,uwsm app -- walker -m emojis"
+        # "SUPER,Return,exec,uwsm app -- walker"
 
         "SUPER,f12,exec,loginctl lock-session"
         ",Print,exec,uwsm app -- screenshot"
         "SHIFT,Print,exec,uwsm app -- screenshot -e"
-        # "SUPERSHIFT,Return,exec,uwsm app -- alacritty"
-        "SUPERSHIFT,Return,exec,uwsm app -- ghostty"
+        "SUPERSHIFT,Return,exec,uwsm app -- alacritty"
+        # "SUPERSHIFT,Return,exec,uwsm app -- ghostty"
         "SUPERSHIFT,Q,exec,uwsm stop"
 
         # Manipulate with active window state
@@ -87,10 +82,8 @@ in {
         "SUPERSHIFT,comma,movecurrentworkspacetomonitor,r"
 
         # Moving through workspaces
-        (map (n: "SUPER,${n},workspace,name:${n}") workspaces)
-        (map (n: "SUPERSHIFT,${n},hy3:movetoworkspace,name:${n},follow") workspaces)
-        "SUPER,tab,workspace,name:tab"
-        "SUPERSHIFT,tab,hy3:movetoworkspace,name:tab,follow"
+        (map (n: "SUPER,${n.key},workspace,${n.id}") workspaces)
+        (map (n: "SUPERSHIFT,${n.key},hy3:movetoworkspace,${n.id},follow") workspaces)
 
         # Media keys
         ",XF86AudioPlay,exec,playerctl play-pause"

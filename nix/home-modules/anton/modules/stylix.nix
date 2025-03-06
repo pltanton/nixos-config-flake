@@ -8,8 +8,8 @@
   stylix = {
     enable = true;
 
-    image = config.backgrounds."unsplash-mountains.jpg";
-    base16Scheme = lib.mkDefault "${inputs.base16-schemes}/catppuccin-mocha.yaml";
+    image = config.backgrounds."van-chilling.png";
+    base16Scheme = "${inputs.base16-schemes}/catppuccin-mocha.yaml";
 
     targets = {
       firefox.enable = false;
@@ -19,6 +19,7 @@
       avizo.enable = false;
       vscode.enable = false;
       hyprland.enable = false;
+      hyprlock.enable = false;
       bemenu.enable = false;
       alacritty.enable = false;
       zed.enable = false;
@@ -26,10 +27,8 @@
 
     polarity = lib.mkDefault "dark";
     cursor = {
-      # package = pkgs.master.phinger-cursors;
-      # name = lib.mkDefault "phinger-cursors-light";
       package = pkgs.bibata-cursors;
-      name = lib.mkDefault "Bibata-Modern-Classic";
+      name = "Bibata-Modern-Classic";
       size = 24;
     };
 
@@ -45,7 +44,6 @@
       };
 
       monospace = {
-        # package = pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; };
         package = pkgs.monaspace;
         name = "Monaspace Argon";
       };
@@ -63,7 +61,7 @@
 
   catppuccin = {
     enable = true;
-    flavor = lib.mkDefault "mocha";
+    flavor = "mocha";
     accent = "sky";
 
     rofi.enable = false;

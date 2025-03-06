@@ -1,6 +1,9 @@
 _: {
   programs.zed-editor = {
-    enable = true;
+    enable = false;
     extensions = ["nix"];
+    userSettings = {
+      vim_mode = true;
+    };
   };
 }

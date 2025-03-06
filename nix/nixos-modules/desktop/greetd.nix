@@ -32,7 +32,8 @@
       accents = ["lavender"];
       size = "compact";
       tweaks = ["rimless"];
-      variant = "macchiato";
+      # variant = "macchiato";
+      variant = "mocha";
     })
   ];
 }

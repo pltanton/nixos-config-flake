@@ -9,10 +9,7 @@
   inherit (config.lib.stylix) colors;
 in {
   programs.waybar = {
-    style = builtins.readFile (colors {
-      template = builtins.readFile ./waybar.css.mustache;
-      extension = "css";
-    });
+    style = builtins.readFile ./waybar.css;
     package = pkgs.unstable.waybar;
     enable =
       config.wayland.windowManager.sway.enable
@@ -24,7 +21,7 @@ in {
         layer = "top";
         position = "top";
         # height = 24;
-        height = 36;
+        height = 20;
         # margin = "10 18 0 18";
         margin = "0 0 0 0";
         modules-left = ["hyprland/workspaces" "custom/spotify" "hyprland/submap"];
@@ -94,10 +91,10 @@ in {
 
           window-rewrite-default = "";
           window-rewrite = {
-            "title<.*youtube.*>" = ""; # 
-            "class<firefox>" = ""; 
+            "title<.*youtube.*>" = ""; #
+            "class<firefox>" = "";
             "class<.*jetbrains.*>" = "";
-            "foot" = ""; 
+            "foot" = "";
             "VSCodium" = "";
             "class<com.mitchellh.ghostty>" = "";
             "class<org.telegram.desktop>" = "";
@@ -118,7 +115,7 @@ in {
           };
         };
         tray = {
-          icon-size = 15;
+          icon-size = 14;
           spacing = 10;
         };
         clock = {
@@ -160,8 +157,8 @@ in {
         };
         "hyprland/sumbap" = {};
         "hyprland/window" = {
-          "format" = "{}";
           "separate-outputs" = true;
+          "max-length" = 50;
         };
         "hyprland/language" = {
           format = "{}";

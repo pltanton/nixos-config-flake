@@ -1,5 +1,4 @@
 {inputs, ...}: {
-  # imports = inputs.self.lib.modulesDir ./.;
   imports = [
     ./hyprland
     ./kanshi.nix

@@ -1,6 +1,6 @@
 _: {
   programs.ghostty = {
-    enable = true;
+    enable = false;
     enableFishIntegration = true;
     settings = {
       window-decoration = false;

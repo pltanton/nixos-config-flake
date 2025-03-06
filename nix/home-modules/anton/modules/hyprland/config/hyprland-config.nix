@@ -49,25 +49,33 @@ in {
     };
 
     general = {
-      gaps_in = 4;
-      gaps_out = 6;
+      gaps_in = 5;
+      gaps_out = 15;
       border_size = 2;
       layout = "hy3";
       # gaps_workspaces = 100;
 
       # "col.active_border" = "rgb(${colors.base0E}) rgb(${colors.base0D}) 45deg";
       # "col.inactive_border" = "rgb(${colors.base02})";
-      "col.active_border" = "$teal $sapphire 45deg";
+      "col.active_border" = "$lavender $pink 45deg";
       "col.inactive_border" = "$surface2";
     };
 
     decoration = {
-      rounding = 10;
-      blur = {enabled = false;};
+      rounding = 12;
+      blur = {
+        passes = 2;
+        size = 4;
+        enabled = true;
+      };
 
-      # drop_shadow = true;
-      # shadow_range = 3;
-      # shadow_render_power = 1;
+      shadow = {
+        enabled = false;
+        # range = 3;
+        # render_power = 1;
+        range = 8;
+        color = "rgba($pinkAlpha1a)";
+      };
 
       dim_inactive = false;
       dim_strength = 0.2;
@@ -102,7 +110,7 @@ in {
     };
 
     misc = {
-      enable_swallow = true;
+      enable_swallow = false;
       swallow_regex = "^(Alacritty)$";
       mouse_move_enables_dpms = true;
       disable_autoreload = true;
@@ -155,15 +163,15 @@ in {
 
       hy3 = {
         no_gaps_when_only = 0;
-        height = 26; 
-
+        height = 26;
 
         tabs = {
           opacity = 0.8;
+          border_width = 0;
           "col.active" = "$mauve";
-          "col.text.active" = "$base";
-          "col.inactive" = "$crust";
-          "col.text.inactive" = "$text";
+          "col.active.text" = "$base";
+          "col.inactive" = "$surface0";
+          "col.inactive.text" = "$text";
         };
 
         autotile = {

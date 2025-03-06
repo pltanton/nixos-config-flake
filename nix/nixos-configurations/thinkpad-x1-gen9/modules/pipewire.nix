@@ -46,47 +46,47 @@ _: {
         };
       };
 
-      "10-device-profile-priority" = {
-        "wireplumber.settings" = {
-          "device.restore-profile" = true;
-        };
+      # "10-device-profile-priority" = {
+      #   "wireplumber.settings" = {
+      #     "device.restore-profile" = true;
+      #   };
 
-        "device.profile.priority.rules" = [
-          {
-            matches = [
-              {
-                "device.name" = "alsa_card.pci-0000_00_1f.3-platform-skl_hda_dsp_generic";
-              }
-            ];
-            actions = {
-              update-props = {
-                priorities = [
-                  "HiFi (HDMI1, HDMI2, HDMI3, Mic1, Mic2, Speaker)"
-                  "HiFi (HDMI1, HDMI2, HDMI3, Headphones, Mic1, Mic2)"
-                  "pro-audio"
-                ];
-              };
-            };
-          }
-        ];
-      };
+      #   "device.profile.priority.rules" = [
+      #     {
+      #       matches = [
+      #         {
+      #           "device.name" = "alsa_card.pci-0000_00_1f.3-platform-skl_hda_dsp_generic";
+      #         }
+      #       ];
+      #       actions = {
+      #         update-props = {
+      #           priorities = [
+      #             "HiFi (HDMI1, HDMI2, HDMI3, Mic1, Mic2, Speaker)"
+      #             "HiFi (HDMI1, HDMI2, HDMI3, Headphones, Mic1, Mic2)"
+      #             "pro-audio"
+      #           ];
+      #         };
+      #       };
+      #     }
+      #   ];
+      # };
 
-      "10-disable-hdmi-audio" = {
-        "monitor.alsa.rules" = [
-          {
-            "matches" = [
-              {"node.name" = "alsa_output.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__HDMI1__sink";}
-            ];
-            "actions" = {
-              "update-props" = {
-                "node.disabled" = true;
-                # "priority.session" = 1;
-                # "priority.driver" = 1;
-              };
-            };
-          }
-        ];
-      };
+      # "10-disable-hdmi-audio" = {
+      #   "monitor.alsa.rules" = [
+      #     {
+      #       "matches" = [
+      #         {"node.name" = "alsa_output.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__HDMI1__sink";}
+      #       ];
+      #       "actions" = {
+      #         "update-props" = {
+      #           "node.disabled" = true;
+      #           # "priority.session" = 1;
+      #           # "priority.driver" = 1;
+      #         };
+      #       };
+      #     }
+      #   ];
+      # };
 
       "11-bluez" = {
         "wireplumber.settings" = {
