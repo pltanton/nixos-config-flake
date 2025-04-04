@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   home.packages = with pkgs; [
     ####################
     # System Utilities #
@@ -38,7 +42,7 @@
     libreoffice # A free and open-source office suite.
     anytype # A note-taking and organization tool.
     anki-bin # A spaced repetition flashcard program.
-    thunderbird # A popular email client.
+    thunderbird-latest # A popular email client.
 
     ####################
     # Media & Graphics #
@@ -46,7 +50,6 @@
     gthumb # An image viewer and organizer.
     pinta # A lightweight image editing tool.
     mpv # A versatile media player.
-    spotify # A music streaming service.
 
     ####################
     # Communication    #
@@ -78,8 +81,11 @@
     tree # A command-line tool to display directory structures.
     plantuml # A tool for creating UML diagrams from text.
 
+    kubectl # K8S
+    kubectx
+
     # Programming Languages & Tools
-    clang-tools # A collection of Clang-based tools for C/C++ development.
+
     coreutils # GNU core utilities for basic file and text operations.
     grpc # A high-performance RPC framework.
     grpcurl # A command-line tool for interacting with gRPC servers.
@@ -94,10 +100,12 @@
     gnumake # A build automation tool.
     zed-editor # High performance editor
     zip # A compression and file packaging utility.
+    neovim # Highly customizable text editor.
+    vscodium.fhs # VSCodium with FHS support
 
     # IDEs & Editors
     jetbrains-toolbox # A tool for managing JetBrains IDEs.
-    master.jetbrains.idea-ultimate # JetBrains IntelliJ IDEA Ultimate edition.
+    jetbrains.idea-ultimate # JetBrains IntelliJ IDEA Ultimate edition.
     nixd # A language server for Nix.
     alejandra # A Nix code formatter.
     dprint # A pluggable and configurable code formatting platform.
@@ -115,6 +123,7 @@
     # Web Browsers     #
     ####################
     chromium # An open-source web browser.
+    inputs.zen-browser.packages."${system}".default
 
     #########################
     # LaTeX & Documentation #

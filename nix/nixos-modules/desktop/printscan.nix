@@ -21,7 +21,15 @@
   #   ensureDefaultPrinter = "Dell_1250c";
   # };
 
-  hardware.sane.enable = true;
+  hardware.sane = {
+    enable = true;
+    extraBackends = [
+      pkgs.epkowa
+      pkgs.sane-airscan
+    ];
+  };
+
+  services.udev.packages = [pkgs.sane-airscan];
 
   environment.systemPackages =
     lib.mkIf config.services.printing.enable [pkgs.system-config-printer];

@@ -7,6 +7,7 @@
     lib.mkIf true [
       vesktop
       skypeforlinux
+      sidequest
 
       transmission-remote-gtk
       transmission_4-gtk

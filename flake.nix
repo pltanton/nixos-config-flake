@@ -36,6 +36,8 @@
         # inputs.hyprland.overlays.default
         # inputs.jbr-wayland.overlays.jbrOverlay
         inputs.jetbrains.overlays.default
+        inputs.nh.overlays.default
+
         (_final: _prev: {
           unstable = import inputs.nixpkgs-unstable {
             system = "x86_64-linux";
@@ -154,6 +156,21 @@
     # ─── APPLICATIONS ────────────────────────────────────────────────
     nur.url = "github:nix-community/NUR";
     jbr-wayland.url = "github:BananchickPasha/jbr-wayland-nix";
+    nh.url = "github:viperML/nh";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
+    hyprcursor-phinger.url = "github:jappie3/hyprcursor-phinger";
+    hyprpanel = {
+      url = "github:Jas-SinghFSU/HyprPanel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+
+      # THIS IS IMPORTANT
+      # Mismatched system dependencies will lead to crashes and other issues.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # ─── NON FLAKE INPUTS ────────────────────────────────────────────
 
@@ -176,11 +193,6 @@
     };
     base16-rofi = {
       url = "github:tinted-theming/base16-rofi";
-      flake = false;
-    };
-
-    rose-pine-hyprcursor = {
-      url = "github:ndom91/rose-pine-cursor-hyprcursor";
       flake = false;
     };
 

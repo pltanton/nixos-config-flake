@@ -32,5 +32,6 @@ _: {
     ./waybar
     ./xdg.nix
     ./zed.nix
+    ./spotify.nix
   ];
 }

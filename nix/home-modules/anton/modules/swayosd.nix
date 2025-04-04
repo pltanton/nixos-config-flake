@@ -1,5 +1,5 @@
 _: {
   services.swayosd = {
-    enable = true;
+    enable = false;
   };
 }

@@ -13,7 +13,8 @@ in {
     package = pkgs.unstable.waybar;
     enable =
       config.wayland.windowManager.sway.enable
-      || config.wayland.windowManager.hyprland.enable;
+      || config.wayland.windowManager.hyprland.enable
+      && false;
     # enable = true;https://my.telegram.org/auth?to=delete
     systemd.enable = true;
     settings = [
@@ -21,9 +22,9 @@ in {
         layer = "top";
         position = "top";
         # height = 24;
-        height = 20;
-        # margin = "10 18 0 18";
-        margin = "0 0 0 0";
+        height = 18;
+        margin = "7 16 0 16";
+        # margin = "0 0 0 0";
         modules-left = ["hyprland/workspaces" "custom/spotify" "hyprland/submap"];
         modules-center = ["hyprland/window"];
         modules-right = [

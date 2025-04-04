@@ -47,8 +47,8 @@ in {
         "SUPER,f12,exec,loginctl lock-session"
         ",Print,exec,uwsm app -- screenshot"
         "SHIFT,Print,exec,uwsm app -- screenshot -e"
-        "SUPERSHIFT,Return,exec,uwsm app -- alacritty"
-        # "SUPERSHIFT,Return,exec,uwsm app -- ghostty"
+        # "SUPERSHIFT,Return,exec,uwsm app -- alacritty"
+        "SUPERSHIFT,Return,exec,uwsm app -- ghostty"
         "SUPERSHIFT,Q,exec,uwsm stop"
 
         # Manipulate with active window state
@@ -99,10 +99,14 @@ in {
       bindel = [
         # Media keys
 
-        ",XF86AudioRaiseVolume,exec,swayosd-client --output-volume raise"
-        ",XF86AudioLowerVolume,exec,swayosd-client --output-volume lower"
-        ",XF86AudioMute,exec,swayosd-client --output-volume mute-toggle"
-        ",XF86AudioMicMute,exec,volumectl -m toggle-mute"
+        ",XF86AudioRaiseVolume,exec,wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
+        ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ",XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ",XF86AudioMicMute,exec,wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        # ",XF86AudioRaiseVolume,exec,swayosd-client --output-volume raise"
+        # ",XF86AudioLowerVolume,exec,swayosd-client --output-volume lower"
+        # ",XF86AudioMute,exec,swayosd-client --output-volume mute-toggle"
+        # ",XF86AudioMicMute,exec,volumectl -m toggle-mute"
       ];
 
       binde = [

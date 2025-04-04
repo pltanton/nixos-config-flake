@@ -1,4 +1,5 @@
-{lib, ...}: {
+{lib, ...}: let
+in {
   config.systemd.user.services = {
     kanshi.Unit.After = lib.mkForce ["graphical-session.target"];
     waybar.Unit.After = lib.mkForce ["graphical-session.target"];

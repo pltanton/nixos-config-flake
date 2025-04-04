@@ -16,24 +16,31 @@ in {
       export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
       export SDL_VIDEODRIVER=wayland
       export ANKI_WAYLAND=1
-      export XCURSOR_SIZE=${toString config.stylix.cursor.size}
-      export XCURSOR_THEME=${config.stylix.cursor.name}
     '';
   };
+  # export XCURSOR_SIZE=${toString config.stylix.cursor.size}
+  # export XCURSOR_THEME=${config.stylix.cursor.name}
 
   wayland.windowManager.hyprland.settings = {
     monitor = [
       ",preferred,auto,1,bitdepth,8"
     ];
 
+    exec-once = [
+      "uwsm --app -- slack"
+      "uwsm --app -- telegram-desktop"
+      "uwsm --app -- zen"
+    ];
+
     exec = [
-      "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme '${config.gtk.theme.name}'"
-      "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface icon-theme '${config.gtk.iconTheme.name}'"
-      "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface cursor-theme '${config.home.pointerCursor.name}'"
-      "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface text-scaling-factor 1.0"
-      "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface font-name 'Inter 11'"
-      "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface scaling-factor 1"
-      "${pkgs.glib}/bin/gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'"
+      # "hyprctl setcursor ${toString config.stylix.cursor.name} ${toString config.stylix.cursor.size}"
+
+      # "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme '${config.gtk.theme.name}'"
+      # "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface icon-theme '${config.gtk.iconTheme.name}'"
+      # "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface text-scaling-factor 1.0"
+      # "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface font-name 'Inter 11'"
+      # "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface scaling-factor 1"
+      # "${pkgs.glib}/bin/gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'"
     ];
 
     input = {
@@ -168,7 +175,7 @@ in {
         tabs = {
           opacity = 0.8;
           border_width = 0;
-          "col.active" = "$mauve";
+          "col.active" = "$lavender";
           "col.active.text" = "$base";
           "col.inactive" = "$surface0";
           "col.inactive.text" = "$text";

@@ -1,6 +1,6 @@
 _: {
   services.swaync = {
-    enable = true;
+    enable = false;
     settings = {
       positionX = "right";
       positionY = "top";
@@ -13,6 +13,12 @@ _: {
       notification-icon-size = 64;
       notification-body-image-height = 60;
       notification-body-image-width = 100;
+
+      control-center-margin-top = 15;
+      control-center-margin-bottom = 15;
+      control-center-margin-left = 15;
+      control-center-margin-right = 15;
+
       widgets = [
         "title"
         "mpris"

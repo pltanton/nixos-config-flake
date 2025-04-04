@@ -8,11 +8,12 @@
   imports = [
     ./scripts
     ./config
-    ./hyprlock
+    ./hyprlock.nix
     ./hyprpaper.nix
     ./hypridle.nix
     ./targets.nix
     ./targets-config.nix
+    ./hyprpanel.nix
   ];
 
   wayland.windowManager.hyprland = {

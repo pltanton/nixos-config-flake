@@ -11,13 +11,16 @@
     ddcsync.homeManagerModules.default
     autobrowser.homeModules.default
 
+    hyprcursor-phinger.homeManagerModules.hyprcursor-phinger
+    spicetify-nix.homeManagerModules.spicetify
+
     (import ./modules)
   ];
 
   nixpkgs.overlays = with inputs; [
     ddcsync.overlays.default
     autobrowser.overlays.default
-    # dbeaver.overlays.default
+    inputs.hyprpanel.overlay
   ];
   nixpkgs.config.allowUnfree = true;
 

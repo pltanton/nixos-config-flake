@@ -4,35 +4,40 @@
 }
 
 #waybar {
-    background: transparent;
+    /* background: transparent; */
+    background-color: alpha(@crust, 0.9);
     color: @text;
-    margin: 5px 5px 0 5px;
+    border-radius: 1rem;
+    /* margin: 5px 5px 0 5px; */
+    /* padding: 5px 5px 0 5px; */
 }
 
 #workspaces {
-    border-radius: 1rem;
-    margin: 5px 5px 0 1rem;
-    background-color: alpha(@surface0, 0.9);
+    /* border-radius: 1rem; */
+    margin: 0px 5px 0 1rem;
+    /* background-color: alpha(@surface0, 0.9); */
+    /* background-color: alpha(@crust, 0.9); */
 }
 
 #workspaces button {
     color: @lavender;
-    border-radius: 1rem;
+    /* border-radius: 1rem; */
     padding: 0.3rem;
-    background-color: alpha(@surface0, 0.9);
+    /* background-color: alpha(@surface0, 0.9); */
+    /* background-color: alpha(@crust, 0.9); */
 }
 
 #workspaces button.active {
     color: @sky;
-    border-radius: 1rem;
+    /* border-radius: 1rem; */
 }
 
 #workspaces button:hover {
     color: @sapphire;
-    border-radius: 1rem;
+    /* border-radius: 1rem; */
 }
 
-/* #window, */
+#window,
 #clock,
 #battery,
 #cpu,
@@ -53,18 +58,23 @@
 #custom-kbd,
 #custom-notification,
 #language {
-    background-color: alpha(@surface0, 0.9);
+    /* background-color: alpha(@surface0, 0.95); */
+    /* background-color: alpha(@crust, 0.95); */
     padding: 0.2rem 0.4rem;
-    margin-top: 5px;
+    margin-top: 0px;
+}
+
+#custom-spotify {
+    /* border-radius: 1rem; */
 }
 
 #window {
-    color: @crust;
+    color: @text;
 }
 
 #battery {
     color: @blue;
-    border-radius: 0px 1rem 1rem 0px;
+    /* border-radius: 0px 1rem 1rem 0px; */
     margin-right: 1rem;
 }
 
@@ -87,7 +97,7 @@
 
 #idle_inhibitor {
     color: @maroon;
-    border-radius: 1rem 0px 0px 1rem;
+    /* border-radius: 1rem 0px 0px 1rem; */
     min-width: 2rem;
     margin-left: 2rem;
 }
@@ -111,4 +121,5 @@
 #tray {
     margin-right: 1rem;
     border-radius: 1rem;
+    background-color: alpha(#11111b, 0.4);
 }

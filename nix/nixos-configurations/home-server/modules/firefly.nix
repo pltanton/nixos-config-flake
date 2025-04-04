@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   sops.secrets = {
     "firefly/key".owner = config.services.firefly-iii.user;
     "firefly/access-token".owner = config.services.firefly-iii.user;
@@ -12,6 +16,7 @@
   services = {
     firefly-iii = {
       enable = true;
+      package = pkgs.master.firefly-iii;
       inherit (config.services.caddy) user;
       settings = {
         APP_URL = "https://firefly.kaliwe.ru";

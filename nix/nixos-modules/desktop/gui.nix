@@ -8,6 +8,12 @@ _: {
       options = "eurosign:e,grp:win_space_toggle";
     };
 
+    xserver = {
+      enable = false;
+      displayManager.gdm.enable = false;
+      desktopManager.gnome.enable = false;
+    };
+
     libinput = {
       enable = true;
       touchpad = {tapping = true;};

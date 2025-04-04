@@ -17,7 +17,7 @@ in {
     };
   };
 
-  services.xserver.videoDrivers = ["intel"];
+  # services.xserver.videoDrivers = ["intel"];
 
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_6_12;

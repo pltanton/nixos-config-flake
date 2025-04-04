@@ -7,9 +7,17 @@
     zigbee2mqtt = {
       enable = true;
       settings = {
+        frontend = {
+          enabled = true;
+          port = 8124;
+        };
         homeassistant = true;
         permit_join = true;
-        serial = {port = "/dev/ttyUSB0";};
+        serial = {
+          port = "/dev/ttyUSB0";
+          adapter = "zstack";
+          disable_led = true;
+        };
         advanced = {rtscts = false;};
         availability = true;
         mqtt = {

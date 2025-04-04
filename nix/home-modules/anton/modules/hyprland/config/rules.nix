@@ -10,9 +10,10 @@ _: {
       ];
 
       windowrulev2 = [
-        "workspace 11,class:^(.telegram-desktop-wrapped)$"
+        "workspace 11,class:^.telegram-desktop-wrapped$"
         "workspace 11,title:(^Slack.*$)"
         "workspace 1,class:(^firefox$)"
+        "workspace 1,class:(^zen$)"
 
         # telegram media viewer
         "float,class:^(.telegram-desktop-wrapped)$,title:^(Choose)(.*)$"
@@ -25,14 +26,34 @@ _: {
         "float,class:^(firefox)$,title:^(Picture-in-Picture)$"
         "pin,class:^(firefox)$,title:^(Picture-in-Picture)$"
         "center,class:^(firefox)$,title:^(Picture-in-Picture)$"
-
         "float,class:^(firefox)$,title:^(.*)(Sharing Indicator)$"
         "move 0 0:^(firefox)$,title:^(.*)(Sharing Indicator)$"
 
+        # zen picture in picture float and pin
+        "float,class:^(zen)$,title:^(Extension: \(fx_cast\))(.*)$"
+        "float,class:^(zen)$,title:^(Picture-in-Picture)$"
+        "pin,class:^(zen)$,title:^(Picture-in-Picture)$"
+        "center,class:^(zen)$,title:^(Picture-in-Picture)$"
+        "float,class:^(zen)$,title:^(.*)(Sharing Indicator)$"
+        "move 0 0:^(zen)$,title:^(.*)(Sharing Indicator)$"
+
+        # Notifications
         "animation slide, class:(swaync)"
 
-        "opacity 0.9,class:(com.mitchellh.ghostty)"
-        "opacity 0.9,class:(Alacritty)"
+        # Thunderbird
+        "float,class:thunderbird,initialTitle:Calendar Reminders"
+
+        # Transparent terminals
+        "opacity 0.95,class:(com.mitchellh.ghostty)"
+        "opacity 0.95,class:(Alacritty)"
+
+        # Idea
+        "noinitialfocus, class:(jetbrains-)(.*), floating:1"
+
+        # Floating DE elements
+        "float,class:^\.blueman-manager-wrapped$"
+        "float,class:^nm-connection-editor$"
+        "float,title:^Extension: (Bitwarden Password Manager).*$"
       ];
 
       layerrule = [

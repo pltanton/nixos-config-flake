@@ -15,6 +15,7 @@
     age.sshKeyPaths = ["/home/anton/.ssh/id_ed25519"];
   };
 
+  # time.timeZone = "Asia/Dubai";
   time.timeZone = "Asia/Nicosia";
   # time.timeZone = "Europe/Belgrade";
 

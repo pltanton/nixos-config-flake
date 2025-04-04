@@ -15,8 +15,8 @@
       kernelModules = ["dm-snapshot"];
 
       luks.devices.crypted.device = "/dev/disk/by-uuid/0e20fecd-4ffa-44f9-9ab1-7a439be49286";
-      luks.devices.crypted.crypttabExtraOpts = ["fido2-device=auto"];
-      systemd.enable = true;
+      # luks.devices.crypted.crypttabExtraOpts = ["fido2-device=auto"];
+      # systemd.enable = true;
     };
 
     kernelModules = ["kvm-intel"];

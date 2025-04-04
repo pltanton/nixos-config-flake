@@ -10,6 +10,7 @@
 
     sessionVariables = rec {
       KUBECONFIG = "/home/anton/.kube/config";
+      EDITOR = "nvim";
 
       # NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [ pkgs.stdenv.cc.cc ];
       # LD_LIBRARY_PATH = lib.makeLibraryPath [ pkgs.stdenv.cc.cc ];
@@ -59,22 +60,8 @@
 
       interactiveShellInit = ''
         function reload-theme --on-variable _reload_theme
-          # Apply theme on theme toggle trigger
-          rg '^\s*source /nix/store/.+base16-.+-.+fish$' ~/.config/fish/config.fish -A 1 -N --trim | source
+          rg "fish_config theme" ~/.config/fish/config.fish -N -m1 | source
         end
-
-        # function auto-source --on-event fish_prompt -d 'auto source config.fish if gets modified!'
-        #     set -q FISH_CONFIG_TIME
-        #     if test $status -ne 0
-        #         set -g FISH_CONFIG_TIME (date +%s -r $FISH_CONFIG_PATH)
-        #     else
-        #         set FISH_CONFIG_TIME_NEW (date +%s -r $FISH_CONFIG_PATH)
-        #         if test "$FISH_CONFIG_TIME" != "$FISH_CONFIG_TIME_NEW"
-        #             fsr
-        #             set FISH_CONFIG_TIME (date +%s -r $FISH_CONFIG_PATH)
-        #         end
-        #     end
-        # end
       '';
     };
 
