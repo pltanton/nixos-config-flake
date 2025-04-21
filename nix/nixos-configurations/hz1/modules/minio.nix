@@ -1,8 +1,11 @@
-_: {
+{config, ...}: {
+  sops.secrets."minio-root-password" = {};
+
   services.minio = {
     enable = true;
     listenAddress = ":9200";
     consoleAddress = ":9201";
+    rootCredentialsFile = config.sops.secrets."minio-root-password".path;
   };
 
   systemd.services.minio.environment = {

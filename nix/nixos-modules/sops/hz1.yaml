@@ -10,11 +10,8 @@ anki:
     julsa: ENC[AES256_GCM,data:+BhPX+EHHYKGsJJo,iv:m9luV+a8I96SxSalZBoeq8a7VJfIYXkhqsZZ+PBQ+Vk=,tag:72fzu00AnhGgwkKSUEpgGA==,type:str]
 rancher:
     registries: ENC[AES256_GCM,data:cNdqNHtbYvAy+0xalQ6X4idJ/veBPyvTp+d6eV9sE3NyxVR8WSEH1Z9Bp0lWa1LLIZUBvEgEf5clP0o+uu6sImTCAQHFTVJl/PL8saVpT3kGuxnabW/W3W6H05kSMKP8AfSWNHOgeIDM/RwbY3Clqr2zGRvyixUFZS+jUIlEhrFs7kHLOMXWRlwnTXMuBby3Ig+fbB15tqgeasSHIsbECfUU9JU7Jgt/dIItVWCcFbTPrERSIl0m62Fq+ce+pDgmhcaXMf3li+Z+xpWwD3NlG7F7ZT7IHsfgJGW5URN2c/c=,iv:MEK/D2rSKa+3I8Xgn9uX59GXhf6Jmt+StGCq99dmZTE=,tag:+v2Yf0F7qQmldM6tvZh8SQ==,type:str]
+minio-root-password: ENC[AES256_GCM,data:MdUnKZU77po46qTAHG83LnKKIJHD6IXXRIiYIYQE7LZmBIKqyfei3I9A49IbY1sAihhsvaMFry+C,iv:qxfLSVsortPcv5vwAgpHuTSNSYsJslpJ4MvUjzecgeo=,tag:b4d7jfgt+FVgsBZAFc1dyQ==,type:str]
 sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
     age:
         - recipient: age1vw3vqkfndv0vesfp60wjk8muc0xvck4y83pknlsx8jtygzcz9ycqxnakjd
           enc: |
@@ -34,8 +31,7 @@ sops:
             U0YwVUZzbnVMbCtzWXRPY0p3TEpkWFEKFLGGCv1q87PebbZ3sLr5tYo6hT6ewmtX
             fu8DVqkdNmDfKGULGEWCyDbZiKBA3X/YqeAm+vPuIYOsztAeoyIa8Q==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-21T09:31:22Z"
-    mac: ENC[AES256_GCM,data:myZNQ01mENOBRcMoLIIZPqXkUR3lNtSGVphD2gvj8qsjk8a75IIalf1b9+TjdJswHmYMTTNRkVygd+Vf+lE/xDIzjXaO830MfwgVp22zrW+hF19i5Vt1knRjpp4Z6zFkHdfRHv2+46qxzHmfdxnpgXQRH01pDrGEcpb7ilChFAs=,iv:YyFt+XACOlcstmBzqacZ5OdXi9TwhOHRpeFezFYdO/Q=,tag:UX3rPcAxcLzWJuTYoKgltw==,type:str]
-    pgp: []
+    lastmodified: "2025-04-16T07:19:53Z"
+    mac: ENC[AES256_GCM,data:meRtBK519UxgTzQwyLahRXaj43+1Q0tii/DUJfNHU1ngI9FTP1vferUvUhzLN8MtSowAKD8Fi6DjjW9Yqe3vP3Db1OfGrqNgtOiX62+2Z1IF6pkDOuiuN6lPPo8sHDgqgi3D4jotXJeGTOhOCWTLx5ZMuFesxI8aEd84ThYoe9s=,iv:ORiL1ScbhhHCCSFkvgoiUXSu4hMN9F04hjAOIep2/CE=,tag:jS1fn1YmK0OgC6+9UqyiuQ==,type:str]
     unencrypted_suffix: _unencrypted
-    version: 3.9.1
+    version: 3.10.1

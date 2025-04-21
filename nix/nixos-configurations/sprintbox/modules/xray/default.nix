@@ -7,31 +7,6 @@ _: {
       };
       inbounds = [
         {
-          port = 2001;
-          listen = "127.0.0.1";
-          protocol = "vless";
-          settings = {
-            clients = [
-              {
-                id = "6a369e27-31c2-448e-9d17-18e6b190daf3";
-                email = "anon@anon.com";
-              }
-            ];
-            decryption = "none";
-          };
-          streamSettings = {
-            security = "none";
-            network = "h2";
-            httpSettings = {
-              path = "/posts";
-              host = [
-                "sprintbox.kaliwe.ru"
-              ];
-            };
-          };
-        }
-
-        {
           listen = "@xrayxhttp.sock";
           protocol = "vless";
           settings = {

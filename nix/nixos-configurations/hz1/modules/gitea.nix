@@ -22,6 +22,9 @@ in {
           ROOT_URL = "https://gitea.kaliwe.ru";
           HTTP_PORT = 3003;
         };
+        service = {
+          DISABLE_REGISTRATION = true;
+        };
         webhook = {ALLOWED_HOST_LIST = "external,loopback";};
         # ui = {
         #   THEMES =

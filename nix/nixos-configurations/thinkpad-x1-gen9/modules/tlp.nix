@@ -1,8 +1,11 @@
 {config, ...}: {
+  services.power-profiles-daemon.enable = true;
+
   services.tlp = {
     # enable = !config.services.xserver.desktopManager.gnome.enable
     #   && !config.services.xserver.desktopManager.plasma5.enable;
-    enable = !config.services.power-profiles-daemon.enable;
+    # enable = !config.services.power-profiles-daemon.enable;
+    enable = false;
     settings = {
       CPU_DRIVER_OPMODE_ON_AC = "active";
       CPU_DRIVER_OPMODE_ON_BAT = "active";

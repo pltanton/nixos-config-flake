@@ -5,8 +5,8 @@
     variables = {
       # work = "firefox 'ext+container:name=Work&url={}'";
       # home = "firefox {}";
-      work = "zen 'ext+container:name=Work&url={}'";
-      home = "zen {}";
+      work = "zen-beta 'ext+container:name=Work&url={}'";
+      home = "zen-beta '{}'";
       meet-work = "chromium '--app={}?authuser=1'";
       meet-personal = "chromium '--app={}?authuser=0'";
     };

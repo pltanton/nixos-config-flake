@@ -57,23 +57,34 @@ in {
         "SUPER,F,fullscreen,"
         "SUPERSHIFT,P,pin,"
 
-        "SUPER,v,hy3:makegroup,v,ephemeral"
-        "SUPER,w,hy3:makegroup,h,ephemeral"
-        "SUPER,x,hy3:changegroup,opposite"
+        # "SUPER,v,hy3:makegroup,v,ephemeral"
+        # "SUPER,w,hy3:makegroup,h,ephemeral"
+        # "SUPER,x,hy3:changegroup,opposite"
+
+        # "SUPER,v,preselect,v"
+        # "SUPER,w,preselect,h"
+        "SUPER,x,layoutmsg,togglesplit"
+        "SUPERSHIFT,x,layoutmsg,swapsplit"
 
         (lib.mapAttrsToList (key: direction: "SUPERALT,${key},moveintogroup,${direction},visible") directions)
 
         # Groups aka tabs
-        "SUPER,g,hy3:changegroup,toggletab"
-        "SUPERSIFT,g,hy3:changefocus,tab"
+        # "SUPER,g,hy3:changegroup,toggletab"
+        # "SUPERSIFT,g,hy3:changefocus,tab"
+
+        "SUPER,g,togglegroup"
+        "SUPER,p,changegroupactive,b"
+        "SUPER,n,changegroupactive,f"
 
         # Move through windows
-        (lib.mapAttrsToList (key: direction: "SUPER,${key},hy3:movefocus,${direction},visible") directions)
-        (lib.mapAttrsToList (key: direction: "SUPERSHIFT,${key},hy3:movewindow,${direction},visible") directions)
-        "SUPER,p,hy3:focustab,l,,wrap"
-        "SUPER,n,hy3:focustab,r,,wrap"
-        "SUPER,u,hy3:changefocus,raise"
-        "SUPER,d,hy3:changefocus,down"
+        (lib.mapAttrsToList (key: direction: "SUPER,${key},movefocus,${direction}") directions)
+        (lib.mapAttrsToList (key: direction: "SUPERSHIFT,${key},movewindow,${direction}") directions)
+        # (lib.mapAttrsToList (key: direction: "SUPER,${key},hy3:movefocus,${direction},visible") directions)
+        # (lib.mapAttrsToList (key: direction: "SUPERSHIFT,${key},hy3:movewindow,${direction},visible") directions)
+        # "SUPER,p,hy3:focustab,l,,wrap"
+        # "SUPER,n,hy3:focustab,r,,wrap"
+        # "SUPER,u,hy3:changefocus,raise"
+        # "SUPER,d,hy3:changefocus,down"
 
         # Moving through monitors
         "SUPER,apostrophe,focusmonitor,l"
@@ -83,7 +94,8 @@ in {
 
         # Moving through workspaces
         (map (n: "SUPER,${n.key},workspace,${n.id}") workspaces)
-        (map (n: "SUPERSHIFT,${n.key},hy3:movetoworkspace,${n.id},follow") workspaces)
+        # (map (n: "SUPERSHIFT,${n.key},hy3:movetoworkspace,${n.id},follow") workspaces)
+        (map (n: "SUPERSHIFT,${n.key},movetoworkspace,${n.id}") workspaces)
 
         # Media keys
         ",XF86AudioPlay,exec,playerctl play-pause"
@@ -112,16 +124,18 @@ in {
       binde = [
         # Media keys
 
-        ",XF86MonBrightnessUp,exec,swayosd-client --brightness raise"
-        ",XF86MonBrightnessDown,exec,swayosd-client --brightness lower"
+        ",XF86MonBrightnessUp,exec,light -A 5"
+        ",XF86MonBrightnessDown,exec,light -U 5"
+        # ",XF86MonBrightnessUp,exec,swayosd-client --brightness raise"
+        # ",XF86MonBrightnessDown,exec,swayosd-client --brightness lower"
       ];
 
       # Mouse bindings
       bindm = ["SUPER,mouse:272,movewindow" "SUPER,mouse:273,resizewindow"];
 
-      bindn = [
-        ",mouse:272,hy3:focustab,mouse"
-      ];
+      # bindn = [
+      #   ",mouse:272,hy3:focustab,mouse"
+      # ];
     };
 
     extraConfig = ''

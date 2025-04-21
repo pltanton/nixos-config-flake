@@ -11,17 +11,19 @@
 
     postgresql = {
       enable = true;
-      package = pkgs.postgresql_15;
+      package = pkgs.postgresql_17;
+      extensions = ps: with ps; [postgis];
 
       ensureDatabases = ["nextcloud" "hass"];
+      # ensureDatabases = ["nextcloud" "hass"];
       ensureUsers = [
         {
           name = "nextcloud";
-          # ensurePermissions = {"DATABASE nextcloud" = "ALL PRIVILEGES";};
+          # ensureDBOwnership = true;
         }
         {
           name = "hass";
-          # ensurePermissions = {"DATABASE hass" = "ALL PRIVILEGES";};
+          # ensureDBOwnership = true;
         }
       ];
 
@@ -42,11 +44,11 @@
   };
 
   environment.systemPackages = [
-    pkgs.postgresql_15
+    # pkgs.postgresql_17
     (let
       # XXX specify the postgresql package you'd like to upgrade to.
       # Do not forget to list the extensions you need.
-      newPostgres = pkgs.postgresql_15.withPackages (_pp: [
+      newPostgres = pkgs.postgresql_17.withPackages (_pp: [
         # pp.plv8
       ]);
     in

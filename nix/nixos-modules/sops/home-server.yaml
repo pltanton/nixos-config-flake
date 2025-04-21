@@ -23,11 +23,10 @@ firefly:
     revolut-config: ENC[AES256_GCM,data:BhiEZK06LRwS7M0O5FBr3xXkBR8cVGJtjefkis8L3PEGlaIuQfTDEsvJxNm20K8XMf65FiOtwpVVvNHDeRx9GLB61aq1HPUDLtY8ze/R+uE9PGHAh+xCfWVDnplp/78M7aAW0vsiT81K7eZoNFaiiAk0Wyqxjq+++tSoX3QDZ5px4TjhAK48nXDJBfCIAKMon8j56VQhyAz/70E9RFyKQ/YEJbzc/4wJd327uEXS+HVuEvUoW7jHQONAgwM523iN6iziw2In4dkPXhzAd6hjjS0BVu6ihseUCqas0oC6VEUis1+oNx6l/xTHuwXmcG2nIJEaFU/bmcstMstQFLNqHjl/gIpSrqJfhPyw73SlBmNIcr+AhpAwVvBqezgqcpNs5WEfwNJ8GFw7L+xcLNCkHBYk+gnAVqQz4Wuj1pTidI//gSRiNUxG4SY5xo6pZt4zgeLSxMQdYsPjVt6zguZN2VIfoNOw8MsECyYa8dVKMnQ6D0XIFkvEmJsp5rwocpHkWhnWwKjLidmMXyXQ/5X5pMVJFckWlV6x4SZXUruuDe0f5so8wjubEEG9RfmGtSHFoNsHjpBrFZDM9rjeddGaiQ16DxXZr689evUl7kMSejTA2GuoLBm3ZsOPQ45l1Na2NWOcnEyqLU7b1612nT7ILOSA8+EIpXajN6WymIkibE0XKsU/20mxf/gehCY2AoXrgX5HCHWa5w+A3WXhkKHg8wLmjTQMRuAXMBn/Gl8ijgv6GcREzf3ssOOWSjlAdVeP7/NJdL6pmHOgryq8ztBlaLqSq5tsWp/CQwWd28sgacm5f+mLb6s02kYFQsMoAuY/y059cTmnpwxJ7p5oLlsIiYtLrCe4JrZofI7FcPtkvXU/8i+ZYC+vgfKAZTFt+pAEIDZ1qZbG0vKWzUvO/RrepJepUM+VeOFVYv5drOvE7sHVyNsYgvMpU3ogodkvcsC2/ZI1rWpUTtx3XHIhO2sSTj3x/F1bn/6oqDmhmTl0XQTqEiRczSfJe4l0tVeS7qGeEN+2OpST1ybyyo1bteaErnEHdnGnLXHKA2ObmnptqP00enPVtREak2hcRPyxdS28erBaMPJPc0u9LFnFyJp8BnQUuASR1SjCgiEHU2GAc23wG2ynXfnc5BlEMYT2zfKDWQ8EWTZF1XhKl2cK78qQbxcj3fuSlyRiBQsQhEqIBzZq0IP55GIEfh2yop90exfcS3kfF4HDu0kVA5B98LQthAQNRC8YhfLzBia8nP79J1vJdKPYbnOIZ6IYZXxIzCmdoqUGvDyTCNVqQY3bPiIWr2VA055eyj0BaiKS45jKZATl+3WWnsioxUISul6hCu1EMPWpFe2v/K/Vc9k24ExF0y3EIkwg0Xx7Yu2dZYEUyXgOq0FzV1ZFGIsV9KfQsov2RrkpXFhURQ3JZBhGFcqNGyn77E0cRiw9kZYm+RCiGQ/Ib9cKnfayy/EBdRaEyEhQXNd376+8WZuENqTdPUB0wU7PvNpxuErVqAtxHdj+qMUeEBiXyeaTxhSjV+TGMjodsmB0fy/lVxcr/WhAN720pIyo/8V9yclrm48pklopCxlQ74NPNQsP52JKD2T2GAwaXOTILrZkpa4ZkM5lFXBXp6vbjEl+/DOTY+hN367HT0RNL/r5Sz1x8srETqfDz/F81DwbL5j1bLHMZkJejzGTQt1iKA==,iv:bBFIwR192fgwyzP1HdzsS+OIglaw5herFfWMjUVCRyY=,tag:TiL7C3+0V7izsC11OF+EQA==,type:str]
 factorio: ENC[AES256_GCM,data:iX/BkaSGhM/NYCmLXVLBEecqgRQkcu5w1PNOO5yXLT4rCYrhD6g/cuk7WFnOCwrKXSiJHfVeM2WZuuNpqSFw7h7B27l/m0McwUUeq3LwRE35bsyx/bxkLiNWcuae5rnk/GubNmanGJSRvg/Ivg==,iv:dwtXHnTQhJi5f4qpXWttGQE+pgUMludqEET1lEG77LY=,tag:dHhYsASrqdk04aOWzuy2kw==,type:str]
 home-assistant-secrets: ENC[AES256_GCM,data:lhzwcsp1H0XXdkUpE2La59bbrdLJjoIYWlu9O2g5f6Arr7rjyWdMOIS+iefsO9rCDMnhhBYAwyRmM5dJweJv8BaTFMJm3o+wAiGfaKw+cKM6tmzBnxAIxAiU1lutxIyAd7uqhfj6s4ukFw==,iv:CxG2v1/din5UZJLuBeXwMhRDJJsmrOZiEa79MUVmn1I=,tag:slUy+RMLh8afS/zLuzolZQ==,type:str]
+couchdb-config: ENC[AES256_GCM,data:N7ZT+LNdIM+iZpg8PTnYSAGJOAm6OdQdRA5WS1xAwKg=,iv:E0sZE8QZTWqNk9QoUT+I7MnL0HnaO6Cfadc7j1nEs0I=,tag:5ABlHT6ifzSqvkDdrpMeNQ==,type:str]
+minio-root-password: ENC[AES256_GCM,data:V+GubICYR/tRhhZPPKMlqhzEqYTGljj/ICdhL/Yzq6Ev47d6lxHIjn39d3FQg1v43sEX4wHdRDAfezo=,iv:vt13MGU1gaePfD7+Kk0xZXZe567nfwMrLVNYnpriTv0=,tag:gJqOEjFktfjCxg01jpc+0g==,type:str]
+frigate-env: ENC[AES256_GCM,data:9z8DoaEpBRXdzWqCMeDiaGWWhXgHvLlappeYhMtZHuO95kFs56IbTXOhp0rpcbTzBUkpIPMRaxShHMyeay4T1YBrOrAtoFh4Gh5bejgYRRDOYiutxlNCtHvBrU+FnkE/2Ny0THk=,iv:16xk/FWHvIBdcfXPWLJc9cXFfienU4EApfjHC6oycuQ=,tag:+8cMp+TM26ZEeQ+7luRYZg==,type:str]
 sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
     age:
         - recipient: age1vw3vqkfndv0vesfp60wjk8muc0xvck4y83pknlsx8jtygzcz9ycqxnakjd
           enc: |
@@ -47,8 +46,7 @@ sops:
             TjVDbnVQbThEeGpaMWt1T095REFhdUkKgZcSelm7aI1q5sB491X/v7vohX8tomm0
             6ZqTCK423mv+eeOE603TaCusUS6oGF9OjtJXiJgmX62a8m+7uAlvnw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-10T11:05:25Z"
-    mac: ENC[AES256_GCM,data:gO9tHe/7WLwzFhp8DLGZ2TPuuO5TfXgLUXORnTikP3qud8yXkqG9wjY9oG7vFPaCTldQldKU6zpWzxsSPJgQk+X98fIXSlyBIaX9ZJ4v/cUu6/nHGXeiqbT65sF5KUNnHE3kNdMfrCDa/08Q0kOzeuNhPcs8GlH46Qa5QLJefQM=,iv:LZ4F37DvDo8+0//9LaPsDogcsqbOEiyIBaqttlgS1q0=,tag:vO+kbzMMxmmWeYKdhtVFtw==,type:str]
-    pgp: []
+    lastmodified: "2025-04-19T19:50:00Z"
+    mac: ENC[AES256_GCM,data:hV1ATkIe6VYxFkDdUvMwDgHM0tYfJUuGVttcA1UB96LwXqrTetaaULACj4yI+59pmtxDtwnf50ikkWwPSNPscIrcl8HKYQTEBEVzBnjI02thgKxNbKqPZiWCanFwEo3h9R8U+uYO42vmu+EMCrp1FYvv5vlGRIAQkrkLZX1Z7eY=,iv:ZHP/61gUHsZLqYmQPaX9NQmXD3kMHIY0xB9jSqohvto=,tag:UskJoXDv/4y0eKHAv9CwkA==,type:str]
     unencrypted_suffix: _unencrypted
-    version: 3.9.4
+    version: 3.10.1

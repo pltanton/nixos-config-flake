@@ -33,7 +33,7 @@ in {
     ];
 
     exec = [
-      # "hyprctl setcursor ${toString config.stylix.cursor.name} ${toString config.stylix.cursor.size}"
+      "hyprctl setcursor ${toString config.stylix.cursor.name} ${toString config.stylix.cursor.size}"
 
       # "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme '${config.gtk.theme.name}'"
       # "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface icon-theme '${config.gtk.iconTheme.name}'"
@@ -131,11 +131,17 @@ in {
         enabled = true;
         render_titles = false;
         font_size = 14;
-        height = 14;
+        height = 25;
+        indicator_height = 10;
+        # text_offset = 25;
+        # text_offset = 25;
         font_family = "Inter";
         gradients = false;
         # text_color = "rgb(${colors.base05})";
+        "col.active" = "$lavender";
         text_color = "$text";
+        "col.inactive" = "$surface0";
+        # "col.inactive.text" = "$text";
         # "col.active" = "0xff${colors.base02}";
         # "col.inactive" = "0xff${colors.base00}";
         # "col.locked_active" = "0xff${colors.base02}";
@@ -169,6 +175,7 @@ in {
       };
 
       hy3 = {
+        enabled = false;
         no_gaps_when_only = 0;
         height = 26;
 

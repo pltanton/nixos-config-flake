@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  blackboxConfig = pkgs.writeText "blackbox-config.yaml" (lib.generators.toYAML _ {
+  blackboxConfig = pkgs.writeText "blackbox-config.yaml" (lib.generators.toYAML {} {
     modules.http_2xx = {
       prober = "http";
       timeout = "5s";

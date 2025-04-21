@@ -15,7 +15,8 @@
     polarity = lib.mkDefault "dark";
 
     targets = {
-      gtk.enable = true;
+      gtk.enable = false;
+      gnome.enable = false;
 
       spicetify.enable = false;
       firefox.enable = false;
@@ -93,12 +94,28 @@
     ghostty.enable = false;
   };
 
+  qt = {
+    enable = true;
+    style.name = lib.mkForce "adwaita-dark";
+  };
+
+  gtk = {
+    cursorTheme = {
+      package = pkgs.phinger-cursors;
+      name = lib.mkDefault "phinger-cursors-light";
+      size = 32;
+    };
+    enable = true;
+    theme.package = lib.mkForce pkgs.gnome-themes-extra;
+    theme.name = lib.mkForce "Adwaita";
+  };
+
   home.packages = [
     (lib.lowPrio (pkgs.writeShellApplication {
       name = "theme-toggle";
       runtimeInputs = with pkgs; [home-manager coreutils ripgrep fish];
       text = ''
-        "$(home-manager generations | head -1 | rg -o '/[^ ]*')"/specialisation/light/activate
+        "$(home-manager generations | head -1 | rg -o '/[^ ]*')"/specialisation/light/activate -b bak
         fish --command 'set -U _reload_theme (date +%s)'
       '';
     }))
@@ -129,7 +146,7 @@
         name = "theme-toggle";
         runtimeInputs = with pkgs; [home-manager coreutils ripgrep fish];
         text = ''
-          "$(home-manager generations | head -2 | tail -1 | rg -o '/[^ ]*')"/activate
+          "$(home-manager generations | head -2 | tail -1 | rg -o '/[^ ]*')"/activate -b bak
           fish --command 'set -U _reload_theme (date +%s)'
         '';
       })

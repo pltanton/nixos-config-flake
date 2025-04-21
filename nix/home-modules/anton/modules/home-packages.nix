@@ -27,6 +27,9 @@
     evince # A document viewer for PDFs and other formats.
     simple-scan # A simple document scanning tool.
 
+    # Gnome
+    gnome-tweaks
+
     ###########
     # Fonts   #
     ###########
@@ -41,6 +44,7 @@
     xournalpp # A handwriting notetaking software with PDF annotation support.
     libreoffice # A free and open-source office suite.
     anytype # A note-taking and organization tool.
+    obsidian
     anki-bin # A spaced repetition flashcard program.
     thunderbird-latest # A popular email client.
 
@@ -50,6 +54,7 @@
     gthumb # An image viewer and organizer.
     pinta # A lightweight image editing tool.
     mpv # A versatile media player.
+    calibre
 
     ####################
     # Communication    #
@@ -112,7 +117,7 @@
 
     # Database Tools
     dbeaver-bin # A universal database tool for developers.
-    beekeeper-studio # A modern SQL editor and database manager.
+    # beekeeper-studio # A modern SQL editor and database manager.
 
     ####################
     # Security         #

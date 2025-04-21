@@ -28,7 +28,7 @@
 
     plugins = with pkgs.hyprlandPlugins; [
       # hypr-dynamic-cursors
-      hy3
+      # hy3
       # inputs.hy3.packages.x86_64-linux.hy3
       # hyprexpo
       # hyprspace

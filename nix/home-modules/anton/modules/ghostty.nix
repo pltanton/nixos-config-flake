@@ -4,7 +4,7 @@ _: {
     enableFishIntegration = true;
     settings = {
       gtk-single-instance = true;
-      window-decoration = false;
+      window-decoration = "auto";
       font-feature = ["calt" "liga"];
       font-size = 15;
       # shell-integration-features = "no-cursor";

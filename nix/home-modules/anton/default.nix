@@ -6,7 +6,7 @@
     self.nixosModules.sops
 
     anyrun.homeManagerModules.default
-    catppuccin.homeManagerModules.catppuccin
+    catppuccin.homeModules.catppuccin
 
     ddcsync.homeManagerModules.default
     autobrowser.homeModules.default

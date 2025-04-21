@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  services.dbus = lib.mkIf (!config.services.xserver.desktopManager.gnome.enable) {
+  services.dbus = {
     enable = true;
     packages = with pkgs; [dconf gcr];
     implementation = "broker";

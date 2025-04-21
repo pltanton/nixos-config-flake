@@ -33,5 +33,6 @@ _: {
     ./xdg.nix
     ./zed.nix
     ./spotify.nix
+    ./gnome.nix
   ];
 }
