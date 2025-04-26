@@ -5,7 +5,6 @@
 
     self.nixosModules.sops
 
-    anyrun.homeManagerModules.default
     catppuccin.homeModules.catppuccin
 
     ddcsync.homeManagerModules.default

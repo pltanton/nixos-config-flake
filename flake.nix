@@ -117,11 +117,6 @@
       url = "path:/home/anton/Workdir/firefly-iii-boc-fixer";
     };
 
-    anyrun = {
-      url = "github:Kirottu/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     hyprland.url = "github:hyprwm/Hyprland?ref=v0.47.0";
     hy3 = {
       url = "github:outfoxxed/hy3?ref=hl0.47.0"; # where {version} is the hyprland release version

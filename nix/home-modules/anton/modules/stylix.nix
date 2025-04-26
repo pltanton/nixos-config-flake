@@ -15,8 +15,8 @@
     polarity = lib.mkDefault "dark";
 
     targets = {
-      gtk.enable = false;
-      gnome.enable = false;
+      gtk.enable = true;
+      gnome.enable = true;
 
       spicetify.enable = false;
       firefox.enable = false;
@@ -94,20 +94,11 @@
     ghostty.enable = false;
   };
 
-  qt = {
+  dconf = {
     enable = true;
-    style.name = lib.mkForce "adwaita-dark";
-  };
-
-  gtk = {
-    cursorTheme = {
-      package = pkgs.phinger-cursors;
-      name = lib.mkDefault "phinger-cursors-light";
-      size = 32;
+    settings = {
+      "org/gnome/desktop/interface".color-scheme = lib.mkDefault "prefer-dark";
     };
-    enable = true;
-    theme.package = lib.mkForce pkgs.gnome-themes-extra;
-    theme.name = lib.mkForce "Adwaita";
   };
 
   home.packages = [
@@ -122,7 +113,7 @@
   ];
 
   specialisation.light.configuration = {
-    # xdg.dataFile."home-manager/specialisation".text = "light";
+    xdg.dataFile."home-manager/specialisation".text = "light";
 
     stylix = {
       base16Scheme = "${inputs.base16-schemes}/catppuccin-latte.yaml";
@@ -151,5 +142,11 @@
         '';
       })
     ];
+
+    # dconf = {
+    #   settings = {
+    #     "org/gnome/desktop/interface".color-scheme = "prefer-light";
+    #   };
+    # };
   };
 }

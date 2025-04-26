@@ -27,12 +27,12 @@ _: {
     ./swaync.nix
     ./swayosd.nix
     ./taskwarrion.nix
-    ./theme.nix
     ./vscode.nix
     ./waybar
     ./xdg.nix
     ./zed.nix
     ./spotify.nix
+    ./syncthing.nix
     ./gnome.nix
   ];
 }

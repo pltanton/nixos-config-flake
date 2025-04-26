@@ -3,7 +3,7 @@
   wallpaper = config.stylix.image;
 in {
   services.hyprpaper = {
-    enable = true;
+    enable = config.wayland.windowManager.hyprland.enable;
     settings = {
       ipc = false;
       wallpaper = [

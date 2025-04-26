@@ -8,6 +8,12 @@
   modules = with inputs; [
     self.nixosModules.common
 
+    inputs.home-manager.nixosModules.home-manager
+    {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+    }
+
     firefly-iii-boc-fixer.nixosModules.default
 
     self.nixosModules.sops

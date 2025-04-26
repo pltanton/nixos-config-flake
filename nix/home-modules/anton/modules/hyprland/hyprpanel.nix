@@ -54,8 +54,9 @@
       bar = {
         workspaces = {
           numbered_active_indicator = "highlight";
-          showApplicationIcons = true;
-          showWsIcons = true;
+          showApplicationIcons = false;
+          show_numbered = true;
+          # showWsIcons = true;
         };
 
         customModules = {

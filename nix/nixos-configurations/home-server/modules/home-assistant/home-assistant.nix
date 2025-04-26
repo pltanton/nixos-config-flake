@@ -13,7 +13,15 @@
       "qingping"
     ];
 
-    customComponents = [pkgs.home-assistant-custom-components.xiaomi_miot];
+    customComponents = with pkgs.home-assistant-custom-components; [
+      xiaomi_miot
+      frigate
+    ];
+
+    customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [
+      advanced-camera-card
+      mini-graph-card
+    ];
 
     config = {
       # Includes dependencies for a basic setup

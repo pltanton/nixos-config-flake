@@ -8,9 +8,15 @@
   storageDir = "${consts.storeMountPoint}/motioneye";
   settings = pkgs.writeText "settings.yaml" (lib.generators.toYAML {} {
     auth.enabled = true;
-    mqtt.enabled = false;
     tls.enabled = false;
     detect.enabled = true;
+
+    mqtt = {
+      enabled = true;
+      host = "172.17.0.1";
+      user = "{FRIGATE_MQTT_USER}";
+      password = "{FRIGATE_MQTT_PASS}";
+    };
     record = {
       enabled = true;
       retain = {
@@ -32,8 +38,17 @@
       path = "/openvino-model/ssdlite_mobilenet_v2.xml";
       labelmap_path = "/openvino-model/coco_91cl_bkgr.txt";
     };
+
+    go2rtc = {
+      streams = {
+        outdoor_camera = [
+          # "rtsp://{FRIGATE_OUTDOOR_USER}:{FRIGATE_OUTDOOR_PASSWORD}@{FRIGATE_OUTDOOR_IP}/stream1#audio=aac#video=copy"
+          "tapo://{FRIGATE_TAPO_ACCOUNT_PASSWORD}@{FRIGATE_OUTDOOR_IP}"
+        ];
+      };
+    };
     cameras = {
-      outdoor = {
+      outdoor_camera = {
         enabled = true;
         onvif = {
           host = "192.168.0.89";
@@ -41,16 +56,16 @@
           user = "{FRIGATE_OUTDOOR_USER}";
           password = "{FRIGATE_OUTDOOR_PASSWORD}";
         };
-        ffmpeg.inputs = [
-          {
-            path = "rtsp://{FRIGATE_OUTDOOR_USER}:{FRIGATE_OUTDOOR_PASSWORD}@{FRIGATE_OUTDOOR_IP}/stream1";
-            roles = ["record"];
-          }
-          {
-            path = "rtsp://{FRIGATE_OUTDOOR_USER}:{FRIGATE_OUTDOOR_PASSWORD}@{FRIGATE_OUTDOOR_IP}/stream2";
-            roles = ["detect"];
-          }
-        ];
+
+        ffmpeg = {
+          output_args.record = "preset-record-generic-audio-aac";
+          inputs = [
+            {
+              path = "rtsp://127.0.0.1:8554/outdoor_camera?video&audio";
+              roles = ["record"];
+            }
+          ];
+        };
       };
     };
   });
@@ -72,7 +87,7 @@ in {
       "--device=/dev/kfd"
       "--device=/dev/dri"
     ];
-    ports = ["8971:8971"];
+    ports = ["8971:8971" "8554:8554" "8555:8555"];
     environmentFiles = [config.sops.secrets."frigate-env".path];
   };
 }

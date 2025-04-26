@@ -35,6 +35,7 @@
     ###########
     font-awesome # A popular icon font.
     monaspace # A modern monospaced font designed for code readability.
+    iosevka
     inter # A highly readable font for UI and text.
     liberation_ttf # A font family that replaces common Microsoft fonts.
 
@@ -53,8 +54,12 @@
     ####################
     gthumb # An image viewer and organizer.
     pinta # A lightweight image editing tool.
+    gimp3
     mpv # A versatile media player.
     calibre
+    shotcut
+    lightworks
+    stable.davinci-resolve
 
     ####################
     # Communication    #

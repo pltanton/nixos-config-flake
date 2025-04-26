@@ -9,6 +9,9 @@
       gnome-browser-connector.enable = true;
     };
 
+    desktopManager.cosmic.enable = false;
+    displayManager.cosmic-greeter.enable = false;
+
     xserver = {
       enable = false;
       displayManager.gdm.enable = true;
@@ -27,7 +30,7 @@
     portal.enable = true;
   };
 
-  environment = lib.mkIf config.service.xserver.gnome.enable {
+  environment = lib.mkIf config.services.xserver.desktopManager.gnome.enable {
     pathsToLink = ["/share/xdg-desktop-portal" "/share/applications"];
 
     systemPackages = with pkgs.gnomeExtensions; [
@@ -39,6 +42,7 @@
       quick-lang-switch
       caffeine
       smile-complementary-extension
+      quick-settings-tweaker
       pkgs.smile
     ];
 

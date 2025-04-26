@@ -129,23 +129,17 @@ in {
     group = {
       groupbar = {
         enabled = true;
-        render_titles = false;
+        render_titles = true;
+        # text_offset = 14;
+        gradients = true;
+        gradient_rounding = 12;
         font_size = 14;
         height = 25;
-        indicator_height = 10;
-        # text_offset = 25;
-        # text_offset = 25;
+        indicator_height = 0;
         font_family = "Inter";
-        gradients = false;
-        # text_color = "rgb(${colors.base05})";
-        "col.active" = "$lavender";
+        "col.active" = "$surface1";
         text_color = "$text";
         "col.inactive" = "$surface0";
-        # "col.inactive.text" = "$text";
-        # "col.active" = "0xff${colors.base02}";
-        # "col.inactive" = "0xff${colors.base00}";
-        # "col.locked_active" = "0xff${colors.base02}";
-        # "col.locked_inactive" = "0xff${colors.base00}";
       };
     };
 
