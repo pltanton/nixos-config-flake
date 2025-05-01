@@ -1,5 +1,5 @@
 _: {
-  services.blueman.enable = true;
+  services.blueman.enable = false;
 
   hardware = {
     bluetooth = {

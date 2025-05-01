@@ -5,23 +5,38 @@
     enable = true;
     extraComponents = [
       # Components required to complete the onboarding
-      "met"
-      "radio_browser"
-      "homekit"
-      "homekit_controller"
-      "xiaomi"
-      "qingping"
+      # "met"
+      # "radio_browser"
+      # "homekit"
+      # "homekit_controller"
+      # "xiaomi"
+      # "qingping"
     ];
 
-    customComponents = with pkgs.home-assistant-custom-components; [
-      xiaomi_miot
-      frigate
-    ];
+    # extraPackages = python3Packages:
+    #   with python3Packages; [
+    #     spotifyaio
+    #     spotipy
+    #     psycopg2
+    #     paho-mqtt
+    #     getmac
+    #     huawei-lte-api
+    #     url-normalize
+    #     qingping-ble
+    #     pychromecast
+    #     aiohomekit
+    #     pyipp
+    #   ];
 
-    customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [
-      advanced-camera-card
-      mini-graph-card
-    ];
+    # customComponents = with pkgs.home-assistant-custom-components; [
+    #   xiaomi_miot
+    #   frigate
+    # ];
+
+    # customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [
+    #   advanced-camera-card
+    #   mini-graph-card
+    # ];
 
     config = {
       # Includes dependencies for a basic setup
@@ -45,22 +60,23 @@
 
       # recorder.db_url = "postgresql://@/hass";
     };
-    package = pkgs.home-assistant.override {
-      extraPackages = ps:
-        with ps; [
-          spotifyaio
-          spotipy
-          psycopg2
-          paho-mqtt
-          getmac
-          huawei-lte-api
-          url-normalize
-          qingping-ble
-          pychromecast
-          aiohomekit
-          pyipp
-        ];
-    };
+    package = pkgs.stable.home-assistant;
+    # package = pkgs.stable.home-assistant.override {
+    #   extraPackages = ps:
+    #     with ps; [
+    #       spotifyaio
+    #       spotipy
+    #       psycopg2
+    #       paho-mqtt
+    #       getmac
+    #       huawei-lte-api
+    #       url-normalize
+    #       qingping-ble
+    #       pychromecast
+    #       aiohomekit
+    #       pyipp
+    #     ];
+    # };
   };
 
   sops.secrets."home-assistant-secrets" = {
