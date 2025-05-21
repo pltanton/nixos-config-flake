@@ -6,7 +6,6 @@
   home.packages = with pkgs;
     lib.mkIf true [
       vesktop
-      skypeforlinux
       sidequest
 
       transmission-remote-gtk

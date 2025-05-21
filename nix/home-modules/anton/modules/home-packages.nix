@@ -28,7 +28,7 @@
     simple-scan # A simple document scanning tool.
 
     # Gnome
-    gnome-tweaks
+    # gnome-tweaks
 
     ###########
     # Fonts   #
@@ -59,7 +59,7 @@
     calibre
     shotcut
     lightworks
-    stable.davinci-resolve
+    # stable.davinci-resolve
 
     ####################
     # Communication    #
@@ -112,6 +112,7 @@
     zip # A compression and file packaging utility.
     neovim # Highly customizable text editor.
     vscodium.fhs # VSCodium with FHS support
+    uv
 
     # IDEs & Editors
     jetbrains-toolbox # A tool for managing JetBrains IDEs.

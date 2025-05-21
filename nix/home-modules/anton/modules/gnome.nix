@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  enable = true;
+  enable = false;
 in
   lib.mkIf enable {
     programs.gnome-shell = {

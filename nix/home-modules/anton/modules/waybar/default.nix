@@ -11,10 +11,7 @@ in {
   programs.waybar = {
     style = builtins.readFile ./waybar.css;
     package = pkgs.unstable.waybar;
-    enable =
-      config.wayland.windowManager.sway.enable
-      || config.wayland.windowManager.hyprland.enable
-      && false;
+    enable = true;
     # enable = true;https://my.telegram.org/auth?to=delete
     systemd.enable = true;
     settings = [

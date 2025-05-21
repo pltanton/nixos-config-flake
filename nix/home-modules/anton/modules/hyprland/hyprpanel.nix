@@ -5,10 +5,10 @@
 }: {
   imports = [inputs.hyprpanel.homeManagerModules.hyprpanel];
 
-  xdg.configFile.hyprpanel.force = true;
+  # xdg.configFile.hyprpanel.force = true;
 
   programs.hyprpanel = {
-    enable = true;
+    enable = false;
     systemd.enable = true;
     hyprland.enable = true;
     overwrite.enable = true;

@@ -141,6 +141,8 @@ in {
         text_color = "$text";
         "col.inactive" = "$surface0";
       };
+      "col.border_active" = "$lavender";
+      "col.border_inactive" = "$surface0";
     };
 
     binds = {workspace_back_and_forth = true;};

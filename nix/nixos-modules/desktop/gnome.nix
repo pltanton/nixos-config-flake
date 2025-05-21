@@ -6,7 +6,7 @@
 }: {
   services = {
     gnome = {
-      gnome-browser-connector.enable = true;
+      gnome-browser-connector.enable = config.services.xserver.desktopManager.gnome.enable;
     };
 
     desktopManager.cosmic.enable = false;
@@ -14,8 +14,8 @@
 
     xserver = {
       enable = false;
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
+      desktopManager.gnome.enable = false;
+      displayManager.gdm.enable = config.services.xserver.desktopManager.gnome.enable;
     };
 
     libinput = {

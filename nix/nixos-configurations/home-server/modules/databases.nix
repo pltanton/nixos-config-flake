@@ -11,7 +11,7 @@
 
     postgresql = {
       enable = true;
-      package = pkgs.postgresql_17;
+      package = pkgs.stable.postgresql_17;
       extensions = ps: with ps; [postgis];
 
       ensureDatabases = ["nextcloud" "hass"];

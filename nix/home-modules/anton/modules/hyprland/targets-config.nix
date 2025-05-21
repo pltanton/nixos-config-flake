@@ -1,6 +1,6 @@
 {lib, ...}: let
-  target = "wayland-session@Hyprland.target";
-  # target = "graphical-session.target";
+  # target = "wayland-session@Hyprland.target";
+  target = "graphical-session.target";
 in {
   config.systemd.user.services = {
     kanshi.Unit.After = lib.mkForce [target];

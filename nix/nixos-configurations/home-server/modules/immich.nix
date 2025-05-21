@@ -1,9 +1,15 @@
-{config, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   consts = import ../constants.nix;
 in {
+  nixpkgs.config.allowBroken = true;
   services = {
     immich = {
       enable = true;
+      package = pkgs.immich;
       mediaLocation = "${consts.archiveMountPoint}/photoprism-data";
       settings = {
         server = {

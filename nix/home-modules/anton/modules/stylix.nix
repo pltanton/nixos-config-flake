@@ -18,9 +18,12 @@
       gtk.enable = true;
       gnome.enable = true;
 
+      # In most cases integration is disabled
+      # if have catppuccin implementation
       spicetify.enable = false;
       firefox.enable = false;
       swaylock.enable = false;
+      swaync.enable = false;
       rofi.enable = false;
       waybar.enable = false;
       avizo.enable = false;
@@ -88,18 +91,18 @@
     flavor = lib.mkDefault "mocha";
     accent = lib.mkDefault "sky";
 
-    rofi.enable = false;
-    kvantum.enable = false;
+    # rofi.enable = false;
+    # kvantum.enable = false;
     zed.enable = false;
-    ghostty.enable = false;
+    # ghostty.enable = false;
   };
 
-  dconf = {
-    enable = true;
-    settings = {
-      "org/gnome/desktop/interface".color-scheme = lib.mkDefault "prefer-dark";
-    };
-  };
+  # dconf = {
+  #   enable = true;
+  #   settings = {
+  #     "org/gnome/desktop/interface".color-scheme = lib.mkDefault "prefer-dark";
+  #   };
+  # };
 
   home.packages = [
     (lib.lowPrio (pkgs.writeShellApplication {
