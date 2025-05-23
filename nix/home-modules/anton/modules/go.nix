@@ -4,7 +4,7 @@
   ...
 }: {
   programs.go = {
-    package = pkgs.go_1_23;
+    package = pkgs.go_1_24;
     enable = true;
     goPrivate = ["gitlab.walletteam.org/" "gitlab.fix.ru/neocrypto" "github.com/TONSNIPERS"];
   };

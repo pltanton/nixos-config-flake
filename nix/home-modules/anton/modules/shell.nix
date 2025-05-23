@@ -1,15 +1,16 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }: {
   home = {
     packages = with pkgs; [fasd fzf grc];
 
-    sessionPath = ["/home/anton/go/bin"];
+    sessionPath = ["${config.home.homeDirectory}/go/bin"];
 
     sessionVariables = rec {
-      KUBECONFIG = "/home/anton/.kube/config";
+      KUBECONFIG = "${config.home.homeDirectory}/.kube/config";
       EDITOR = "nvim";
 
       # NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [ pkgs.stdenv.cc.cc ];
@@ -21,11 +22,6 @@
   programs = {
     fish = {
       enable = true;
-
-      shellAliases = {
-        hm = "home-manager --flake ~/Workdir/nixos-config-flake#$hostname-$USER";
-        nr = "nixos-rebuild --flake ~/Workdir/nixos-config-flake#$hostname";
-      };
 
       functions = {
         gitignore = "curl -sL https://www.gitignore.io/api/$argv";

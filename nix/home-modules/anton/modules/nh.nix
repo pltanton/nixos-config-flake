@@ -1,7 +1,7 @@
-_: {
+{config, ...}: {
   programs.nh = {
     enable = true;
     # clean.enable = true;
-    flake = "/home/anton/Workdir/nixos-config-flake";
+    flake = "${config.home.homeDirectory}/Workdir/nixos-config-flake";
   };
 }

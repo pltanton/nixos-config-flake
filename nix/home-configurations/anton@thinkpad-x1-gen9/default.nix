@@ -3,6 +3,7 @@
 
   modules = [
     inputs.self.homeModules.anton
+    inputs.self.homeModules.anton-linux
 
     {
       home.stateVersion = "22.05";
