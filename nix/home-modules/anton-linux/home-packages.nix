@@ -83,7 +83,6 @@
     jq # A command-line JSON processor.
     procs # A modern replacement for `ps` with additional features.
     ripgrep # A fast and efficient search tool for files.
-    tldr # Simplified and community-driven man pages.
     yazi # A terminal file manager.
     tmux # A terminal multiplexer for managing multiple terminal sessions.
     unzip # A utility for extracting ZIP archives.

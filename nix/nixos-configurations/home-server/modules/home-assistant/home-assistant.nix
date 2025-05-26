@@ -5,33 +5,33 @@
     enable = true;
     extraComponents = [
       # Components required to complete the onboarding
-      # "met"
-      # "radio_browser"
-      # "homekit"
-      # "homekit_controller"
-      # "xiaomi"
-      # "qingping"
+      "met"
+      "radio_browser"
+      "homekit"
+      "homekit_controller"
+      "xiaomi"
+      "qingping"
     ];
 
-    # extraPackages = python3Packages:
-    #   with python3Packages; [
-    #     spotifyaio
-    #     spotipy
-    #     psycopg2
-    #     paho-mqtt
-    #     getmac
-    #     huawei-lte-api
-    #     url-normalize
-    #     qingping-ble
-    #     pychromecast
-    #     aiohomekit
-    #     pyipp
-    #   ];
+    extraPackages = python3Packages:
+      with python3Packages; [
+        spotifyaio
+        spotipy
+        psycopg2
+        paho-mqtt
+        getmac
+        huawei-lte-api
+        url-normalize
+        qingping-ble
+        pychromecast
+        aiohomekit
+        pyipp
+      ];
 
-    # customComponents = with pkgs.home-assistant-custom-components; [
-    #   xiaomi_miot
-    #   frigate
-    # ];
+    customComponents = with pkgs.home-assistant-custom-components; [
+      xiaomi_miot
+      frigate
+    ];
 
     # customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [
     #   advanced-camera-card

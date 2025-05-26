@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     inputs.self.darwinModules.common
   ];
@@ -11,6 +15,7 @@
 
   system.primaryUser = "anton";
   users.users.anton = {
+    shell = pkgs.fish;
     name = "anton";
     home = "/Users/anton";
   };

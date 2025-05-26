@@ -16,7 +16,7 @@
   services = {
     firefly-iii = {
       enable = true;
-      package = pkgs.master.firefly-iii;
+      package = pkgs.firefly-iii;
       inherit (config.services.caddy) user;
       settings = {
         APP_URL = "https://firefly.kaliwe.ru";

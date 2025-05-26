@@ -8,7 +8,7 @@ in {
   nixpkgs.config.allowBroken = true;
   services = {
     immich = {
-      enable = true;
+      enable = false;
       package = pkgs.immich;
       mediaLocation = "${consts.archiveMountPoint}/photoprism-data";
       settings = {
