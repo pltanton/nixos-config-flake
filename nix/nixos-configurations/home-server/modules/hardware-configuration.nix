@@ -36,11 +36,17 @@ in {
 
   nix.settings.max-jobs = lib.mkDefault 8;
 
+  nixpkgs.config.rocmSupport = true;
   hardware = {
     enableRedistributableFirmware = true;
     graphics = {
       enable = true;
       enable32Bit = true;
+    };
+
+    amdgpu = {
+      amdvlk.enable = true;
+      opencl.enable = true;
     };
   };
 }

@@ -2,7 +2,7 @@
   description = "Pltanton's desktop flake";
 
   nixConfig = {
-    extra-experimental-features = "nix-command flakes";
+    experimental-features = "nix-command flakes";
 
     extra-substituters = [
       "https://nix-community.cachix.org"

@@ -1,52 +1,105 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
-    nixd # A language server for Nix.
-    alejandra # A Nix code formatter.
+    #######################
+    # Development Tools   #
+    #######################
 
-    gopls
+    # IDE and Code Editors
+    neovim # Highly extensible, vim-based text editor
+    nixd # Language server for Nix development
+    gopls # Official Go language server
 
-    ####################
-    # Development      #
-    ####################
-    # CLI Tools
-    gitAndTools.gh # GitHub CLI for interacting with GitHub from the command line.
-    glab # A GitLab CLI tool.
-    bat # A `cat` replacement with syntax highlighting.
-    btop # A modern resource monitor for processes and system usage.
-    curlie # A user-friendly alternative to `httpie` for HTTP requests.
-    dig # A DNS lookup utility.
-    duf # A more user-friendly alternative to `df` for disk usage.
-    htop # An interactive process viewer.
-    inetutils # A collection of common network utilities.
-    jq # A command-line JSON processor.
-    procs # A modern replacement for `ps` with additional features.
-    ripgrep # A fast and efficient search tool for files.
-    yazi # A terminal file manager.
-    tmux # A terminal multiplexer for managing multiple terminal sessions.
-    unzip # A utility for extracting ZIP archives.
-    wget # A command-line tool for downloading files from the web.
-    tree # A command-line tool to display directory structures.
-    tldr
+    # Code Quality and Formatting
+    alejandra # Opinionated Nix code formatter
 
-    kubectl # K8S
-    kubectx
+    # Version Control & Collaboration
+    gitAndTools.gh # GitHub's official command-line tool
+    glab # GitLab command-line tool
 
-    # Programming Languages & Tools
+    # Container & Orchestration
+    kubectl # Command-line tool for Kubernetes
+    kubectx # Tool for switching between kubectl contexts
 
-    nixos-rebuild
-    coreutils # GNU core utilities for basic file and text operations.
-    grpc # A high-performance RPC framework.
-    grpcurl # A command-line tool for interacting with gRPC servers.
-    sops # A tool for managing encrypted secrets.
-    protobuf # A protocol buffers library for serializing structured data.
-    protoc-gen-go # A Go plugin for generating protobuf code.
-    protoc-gen-go-grpc # A Go plugin for generating gRPC code.
-    zip # A compression and file packaging utility.
-    neovim # Highly customizable text editor.
-    uv
+    ########################
+    # Command Line Tools   #
+    ########################
+
+    # File Operations
+    bat # Modern replacement for cat with syntax highlighting
+    ripgrep # Fast pattern searching in files
+    tree # Display directory structure
+    yazi # Modern, feature-rich terminal file manager
+    unzip # Extract ZIP archives
+    zip # Create ZIP archives
+
+    # System Monitoring
+    btop # Resource monitor with CPU, memory, disks, network
+    htop # Interactive process viewer
+    procs # Modern replacement for ps command
+
+    # Network Tools
+    curlie # Frontend for curl with httpie-like interface
+    dig # DNS lookup utility
+    inetutils # Collection of common network utilities
+    wget # File download utility
+
+    # System Utilities
+    coreutils # GNU core utilities
+    duf # User-friendly disk usage utility
+    tmux # Terminal multiplexer
+
+    # Data Processing
+    jq # Command-line JSON processor
+    tldr # Simplified man pages
+
+    ########################
+    # Development SDKs     #
+    ########################
+
+    gradle
+
+    # Python Environment
+    python3
+    python3Packages.pip
+
+    # Node.js Environment
+    # npm
+
+    # Protocol Buffers & gRPC
+    grpc # High-performance RPC framework
+    grpcurl # Command-line tool for interacting with gRPC servers
+    protobuf # Protocol buffers compiler and library
+    protoc-gen-go # Protocol buffer compiler plugin for Go
+    protoc-gen-go-grpc # gRPC compiler plugin for Go
+
+    ########################
+    # Database Tools       #
+    ########################
+
+    postgresql # PostgreSQL database engine
+
+    ########################
+    # System Tools        #
+    ########################
+
+    nixos-rebuild # Tool for rebuilding NixOS system configuration
+    sops # Simple and flexible tool for managing secrets
+    uv # Python packaging and venv management tool
+
+    ########################
+    # Media & Documents   #
+    ########################
+
+    # Document Processing
+    texliveFull # Comprehensive TeX Live distribution
+    texlab # LSP server for LaTeX
+    imagemagick # Suite for image creation and manipulation
+    ghostscript # PostScript and PDF interpreter
+
+    # Media Downloads
+    yt-dlp # Feature-rich video downloader
+
+
+    gnupg
   ];
 }

@@ -1,0 +1,6 @@
+_: {
+  targets.darwin = {
+    defaults = {
+    };
+  };
+}

@@ -1,5 +1,9 @@
 {inputs, ...}: {
-  imports = inputs.self.lib.modulesDir ./modules;
+  imports = with inputs;
+    [
+      self.homeModules.common
+    ]
+    ++ self.lib.modulesDir ./modules;
 
   nixpkgs.config.allowUnfree = true;
 }

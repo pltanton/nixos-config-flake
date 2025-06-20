@@ -1,3 +1,7 @@
 {inputs, ...}: {
-  imports = inputs.self.lib.modulesDir ./.;
+  imports =
+    [
+      inputs.self.darwinModules.kanata
+    ]
+    ++ inputs.self.lib.modulesDir ./.;
 }

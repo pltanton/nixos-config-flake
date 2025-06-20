@@ -4,141 +4,161 @@
   ...
 }: {
   home.packages = with pkgs; [
-    ####################
-    # System Utilities #
-    ####################
-    shfmt # A shell script formatter that formats shell scripts automatically.
-    age # A simple, modern, and secure file encryption tool.
-    libnotify # A library for sending desktop notifications.
-    xdg-utils # Tools for integrating with the XDG desktop environment.
-    powertop # A tool to diagnose power consumption issues.
-    scrcpy # A tool to control Android devices from the desktop.
-
     #######################
     # Desktop Environment #
     #######################
-    wdisplays # A graphical tool for managing and configuring displays.
-    ffmpegthumbnailer # A lightweight video thumbnailer that uses ffmpeg.
-    pwvucontrol # A volume control tool for PipeWire.
-    nautilus # The GNOME file manager.
-    file-roller # An archive manager for GNOME.
-    sushi # A quick previewer for files in GNOME.
-    eog # Eye of GNOME, an image viewer.
-    evince # A document viewer for PDFs and other formats.
-    simple-scan # A simple document scanning tool.
 
-    # Gnome
-    # gnome-tweaks
+    # Display Management
+    wdisplays # GUI display configuration for Wayland
 
-    ###########
-    # Fonts   #
-    ###########
-    font-awesome # A popular icon font.
-    monaspace # A modern monospaced font designed for code readability.
-    iosevka
-    inter # A highly readable font for UI and text.
-    liberation_ttf # A font family that replaces common Microsoft fonts.
+    # File Management
+    nautilus # Modern file manager for GNOME
+    file-roller # Archive manager for GNOME
+    sushi # Quick file previewer for Nautilus
 
-    ####################
-    # Productivity     #
-    ####################
-    xournalpp # A handwriting notetaking software with PDF annotation support.
-    libreoffice # A free and open-source office suite.
-    anytype # A note-taking and organization tool.
-    obsidian
-    anki-bin # A spaced repetition flashcard program.
-    thunderbird-latest # A popular email client.
+    # Document Viewing
+    evince # Document viewer supporting PDF and other formats
+    eog # Eye of GNOME image viewer
 
-    ####################
-    # Media & Graphics #
-    ####################
-    gthumb # An image viewer and organizer.
-    pinta # A lightweight image editing tool.
-    gimp3
-    mpv # A versatile media player.
-    calibre
-    shotcut
-    lightworks
-    # stable.davinci-resolve
+    # System Integration
+    xdg-utils # Tools for desktop integration
+    libnotify # Desktop notification library
+    simple-scan # Document scanning utility
+    pwvucontrol # PipeWire volume control
+    ffmpegthumbnailer # Video thumbnail generator
 
-    ####################
-    # Communication    #
-    ####################
-    telegram-desktop # A desktop client for Telegram.
-    slack # A desktop client for Slack.
+    ########################
+    # System Utilities     #
+    ########################
 
-    ####################
-    # Development      #
-    ####################
-    # CLI Tools
-    gitAndTools.gh # GitHub CLI for interacting with GitHub from the command line.
-    glab # A GitLab CLI tool.
-    bat # A `cat` replacement with syntax highlighting.
-    btop # A modern resource monitor for processes and system usage.
-    curlie # A user-friendly alternative to `httpie` for HTTP requests.
-    dig # A DNS lookup utility.
-    duf # A more user-friendly alternative to `df` for disk usage.
-    htop # An interactive process viewer.
-    inetutils # A collection of common network utilities.
-    jq # A command-line JSON processor.
-    procs # A modern replacement for `ps` with additional features.
-    ripgrep # A fast and efficient search tool for files.
-    yazi # A terminal file manager.
-    tmux # A terminal multiplexer for managing multiple terminal sessions.
-    unzip # A utility for extracting ZIP archives.
-    wget # A command-line tool for downloading files from the web.
-    tree # A command-line tool to display directory structures.
-    plantuml # A tool for creating UML diagrams from text.
+    shfmt # Shell script formatter
+    age # Modern file encryption tool
+    powertop # Power consumption analyzer
+    scrcpy # Android device mirroring
 
-    kubectl # K8S
-    kubectx
+    ########################
+    # Fonts               #
+    ########################
 
-    # Programming Languages & Tools
+    font-awesome # Icon font for UI elements
+    monaspace # Modern monospace coding font
+    iosevka # Highly configurable programming font
+    inter # Clean sans-serif font for interfaces
+    liberation_ttf # Metrically compatible with MS fonts
 
-    coreutils # GNU core utilities for basic file and text operations.
-    grpc # A high-performance RPC framework.
-    grpcurl # A command-line tool for interacting with gRPC servers.
-    nodejs # A JavaScript runtime for server-side development.
-    postgresql_13 # A powerful open-source relational database.
-    sops # A tool for managing encrypted secrets.
-    devpod # A tool for managing development environments.
-    gcc # The GNU Compiler Collection for C/C++.
-    protobuf # A protocol buffers library for serializing structured data.
-    protoc-gen-go # A Go plugin for generating protobuf code.
-    protoc-gen-go-grpc # A Go plugin for generating gRPC code.
-    gnumake # A build automation tool.
-    zed-editor # High performance editor
-    zip # A compression and file packaging utility.
-    neovim # Highly customizable text editor.
-    vscodium.fhs # VSCodium with FHS support
-    uv
+    ########################
+    # Productivity Apps    #
+    ########################
 
-    # IDEs & Editors
-    jetbrains-toolbox # A tool for managing JetBrains IDEs.
-    jetbrains.idea-ultimate # JetBrains IntelliJ IDEA Ultimate edition.
-    nixd # A language server for Nix.
-    alejandra # A Nix code formatter.
-    dprint # A pluggable and configurable code formatting platform.
+    # Office & Notes
+    libreoffice # Full-featured office suite
+    xournalpp # Note-taking and PDF annotation
+    anytype # Personal knowledge management
+    obsidian # Markdown-based note-taking
+    anki-bin # Spaced repetition learning
+    thunderbird-latest # Email and calendar client
+
+    ########################
+    # Media Applications  #
+    ########################
+
+    # Image Editing
+    gimp3 # Professional image editor
+    pinta # Simple image editor
+    gthumb # Image viewer and organizer
+
+    # Video & Audio
+    mpv # Versatile media player
+    shotcut # Video editor
+    lightworks # Professional video editing
+
+    # E-books
+    calibre # E-book management
+
+    ########################
+    # Communication       #
+    ########################
+
+    telegram-desktop # Messaging platform
+    slack # Team communication platform
+
+    ########################
+    # Development Tools   #
+    ########################
+
+    # Version Control
+    gitAndTools.gh # GitHub CLI
+    glab # GitLab CLI
+
+    # Command Line Tools
+    bat # Modern cat replacement
+    btop # System resource monitor
+    curlie # HTTP client
+    dig # DNS lookup utility
+    duf # Disk usage utility
+    htop # Process viewer
+    inetutils # Network utilities
+    jq # JSON processor
+    procs # Process management
+    ripgrep # Fast text search
+    yazi # Terminal file manager
+    tmux # Terminal multiplexer
+    unzip # Archive extraction
+    wget # File downloader
+    tree # Directory viewer
+    plantuml # UML diagram generator
+
+    # Kubernetes Tools
+    kubectl # Kubernetes CLI
+    kubectx # Context switcher
+
+    # Programming Tools
+    coreutils # GNU utilities
+    grpc # RPC framework
+    grpcurl # gRPC testing tool
+    nodejs # JavaScript runtime
+    postgresql_13 # Database server
+    sops # Secrets management
+    devpod # Development environments
+    gcc # GNU Compiler Collection
+    protobuf # Data serialization
+    protoc-gen-go # Go protobuf generator
+    protoc-gen-go-grpc # Go gRPC generator
+    gnumake # Build automation
+    zip # Archive creation
+    uv # Python package manager
+
+    # Editors & IDEs
+    zed-editor # Modern code editor
+    neovim # Terminal editor
+    vscodium.fhs # Open source VS Code
+    jetbrains-toolbox # JetBrains IDE manager
+    jetbrains.idea-ultimate # Java IDE
+    nixd # Nix language server
+    alejandra # Nix formatter
+    dprint # Code formatter
 
     # Database Tools
-    dbeaver-bin # A universal database tool for developers.
-    # beekeeper-studio # A modern SQL editor and database manager.
+    dbeaver-bin # Universal database tool
 
-    ####################
-    # Security         #
-    ####################
-    bitwarden # A password manager with cloud sync.
+    ########################
+    # Security            #
+    ########################
 
-    ####################
-    # Web Browsers     #
-    ####################
-    chromium # An open-source web browser.
-    inputs.zen-browser.packages."${system}".default
+    bitwarden # Password manager
 
-    #########################
-    # LaTeX & Documentation #
-    #########################
-    texliveFull # A full LaTeX distribution.
-    texlab # A Language Server Protocol implementation for LaTeX.
+    ########################
+    # Web Browsers       #
+    ########################
+
+    chromium # Open source browser
+    inputs.zen-browser.packages."${system}".default # Zen browser
+
+    ########################
+    # Documentation      #
+    ########################
+
+    texliveFull # TeX distribution
+    texlab # LaTeX language server
   ];
 }

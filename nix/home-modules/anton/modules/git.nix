@@ -1,4 +1,22 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
+  xdg.configFile."git/config.wallet".text = ''
+    [user]
+      email = "aplotnikov@walletteam.org"
+      name = "Anton Plotnikov"
+      signingkey = "${config.home.homeDirectory}/.ssh/yubikey_wallet_pub.pem"
+    [gpg]
+      format = ssh
+    [gpg.ssh]
+      allowedSignersFile = "${config.home.homeDirectory}/.ssh/allowed_signers"
+    [commit]
+      gpgsign = true
+  '';
+  # sshCommand = "ssh -I ${libykcs11}"
+
   programs.git = {
     enable = true;
     userName = "Anton Plotnikov";
@@ -19,7 +37,9 @@
         };
       };
 
-      # credential.helper = "${pkgs.git.override { withLibsecret = true; }}/bin/git-credential-libsecret";
+      includeIf."hasconfig:remote.*.url:git@gitlab.walletteam.org*/**" = {
+        path = "~/.config/git/config.wallet";
+      };
     };
 
     signing = {

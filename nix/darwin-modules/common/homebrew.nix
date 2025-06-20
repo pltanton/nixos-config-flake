@@ -13,6 +13,8 @@
     };
 
     brews = [
+      "ollama"
+      "ykman"
     ];
 
     casks = [
@@ -28,6 +30,8 @@
       "zen"
       "slack"
       "unnaturalscrollwheels"
+      "karabiner-elements"
+      "ubersicht"
     ];
   };
 }

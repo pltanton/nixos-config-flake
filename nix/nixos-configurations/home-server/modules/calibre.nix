@@ -10,7 +10,7 @@ in {
     autoStart = true;
     ports = ["127.0.0.1:7200:7200"];
     volumes = [
-      "kosync-redis-data:/var/lib/redis"
+      "/var/lib/redis-kosync:/var/lib/redis"
     ];
   };
 

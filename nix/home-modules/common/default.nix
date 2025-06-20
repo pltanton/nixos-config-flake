@@ -7,8 +7,9 @@
   imports = with inputs; [
     nur.modules.homeManager.default
     sops-nix.homeManagerModules.sops
-    stylix.homeManagerModules.stylix
-    walker.homeManagerModules.default
+    stylix.homeModules.stylix
+    catppuccin.homeModules.catppuccin
+    self.homeModules.backgrounds
   ];
 
   home = {
