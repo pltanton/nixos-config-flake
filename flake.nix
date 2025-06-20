@@ -80,6 +80,7 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs-flakehub.url = "https://flakehub.com/f/NixOS/nixpkgs/*";
     nixpkgs.follows = "nixpkgs-unstable";
 
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
