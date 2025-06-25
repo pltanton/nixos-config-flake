@@ -11,6 +11,10 @@
     image = lib.mkDefault config.backgrounds."metheora-mocha.jpg";
     base16Scheme = lib.mkDefault "${inputs.base16-schemes}/catppuccin-mocha.yaml";
 
+    targets = {
+      zed.enable = false;
+    };
+
     fonts = {
       serif = {
         package = pkgs.inter;

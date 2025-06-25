@@ -50,10 +50,6 @@
         (with pure; {inherit name src;})
       ];
 
-      shellInit = ''
-        # set -g async_prompt_functions _pure_prompt_git
-      '';
-
       interactiveShellInit = ''
         function reload-theme --on-variable _reload_theme
           rg "fish_config theme" ~/.config/fish/config.fish -N -m1 | source

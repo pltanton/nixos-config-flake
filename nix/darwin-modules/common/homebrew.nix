@@ -13,25 +13,21 @@
     };
 
     brews = [
-      "ollama"
       "ykman"
     ];
 
     casks = [
+      "linearmouse"
+      "telegram-desktop"
+      "intellij-idea"
       "raycast"
-      "anytype"
       "cloudflare-warp"
-      "docker"
       "nextcloud"
       "obsidian"
       "ghostty"
-      "telegram"
-      "zed"
+      "docker-desktop"
       "zen"
       "slack"
-      "unnaturalscrollwheels"
-      "karabiner-elements"
-      "ubersicht"
     ];
   };
 }

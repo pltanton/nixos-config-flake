@@ -1,4 +1,8 @@
-{lib, ...}: let
+{
+  lib,
+  pkgs,
+  ...
+}: let
   directions = rec {
     left = "left";
     right = "right";
@@ -63,6 +67,10 @@ in {
           run = ["layout tiling"];
         }
         {
+          "if".app-id = "com.apple.QuickTimePlayerX";
+          run = ["layout floating"];
+        }
+        {
           "if".app-id = "app.zen-browser.zen";
           run = ["move-node-to-workspace 1"];
         }
@@ -71,7 +79,7 @@ in {
           run = ["move-node-to-workspace 4"];
         }
         {
-          "if".app-id = "dev.zed.zed";
+          "if".app-id = "dev.zed.Zed";
           run = ["move-node-to-workspace 2"];
         }
       ];
@@ -150,4 +158,24 @@ in {
       };
     };
   };
+
+  home.packages = [pkgs.autoraise];
+
+  xdg.configFile."AutoRaise/config".text = ''
+    #AutoRaise config file
+    pollMillis=150
+    delay=1
+    focusDelay=0
+    warpX=0.5
+    warpY=0.1
+    scale=2.5
+    altTaskSwitcher=false
+    ignoreSpaceChanged=false
+    invertIgnoreApps=false
+    #ignoreApps="IntelliJ IDEA,WebStorm"
+    #ignoreTitles="\\s\\| Microsoft Teams,..."
+    stayFocusedBundleIds="com.apple.SecurityAgent,..."
+    disableKey="control"
+    mouseDelta=0.1
+  '';
 }

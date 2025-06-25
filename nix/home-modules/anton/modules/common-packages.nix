@@ -91,14 +91,13 @@
     ########################
 
     # Document Processing
-    texliveFull # Comprehensive TeX Live distribution
+    # texliveFull # Comprehensive TeX Live distribution
     texlab # LSP server for LaTeX
     imagemagick # Suite for image creation and manipulation
     ghostscript # PostScript and PDF interpreter
 
     # Media Downloads
     yt-dlp # Feature-rich video downloader
-
 
     gnupg
   ];
