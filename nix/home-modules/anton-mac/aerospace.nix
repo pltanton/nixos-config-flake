@@ -41,16 +41,12 @@ in {
       start-at-login = true;
       key-mapping.preset = "dvorak";
       automatically-unhide-macos-hidden-apps = true;
-      accordion-padding = 20;
-      on-focus-changed = [
-        "move-mouse window-lazy-center"
-        "exec-and-forget osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'"
-      ];
+      accordion-padding = 30;
       on-focused-monitor-changed = ["move-mouse monitor-lazy-center"];
       exec-on-workspace-change = [
         "/bin/bash"
         "-c"
-        "/usr/bin/osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'"
+        "${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
       ];
 
       on-window-detected = [
@@ -93,13 +89,17 @@ in {
         inner.vertical = 6;
         outer.left = 6;
         outer.bottom = 6;
-        # outer.top = 40;
-        outer.top = 6;
+        outer.top = [
+          { monitor.built-in = 6; }
+          40
+        ];
+        # outer.top = 6;
         outer.right = 6;
       };
       mode = {
         main.binding =
           {
+            # ctrl-space = "exec-and-forget sketchybar --trigger change_keyboard_layout";
             alt-shift-c = "close";
             alt-m = "macos-native-fullscreen";
             alt-f = "fullscreen";
