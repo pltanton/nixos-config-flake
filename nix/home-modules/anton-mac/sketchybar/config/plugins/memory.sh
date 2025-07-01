@@ -1,5 +1,5 @@
-#!/bin/sh
+#!/bin/bash
 
-usage=$(ps -A -o %mem | awk '{s+=$1} END {print int(s) "%"}')
+USAGE="$(memory_pressure | grep "System-wide memory free percentage:" | awk '{ printf("%02.0f\n", 100-$5"%") }')%"
 
-sketchybar --set "$NAME" label="$usage"
+sketchybar --set $NAME label="$USAGE"
