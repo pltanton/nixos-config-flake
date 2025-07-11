@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }: let
   directions = rec {
@@ -29,7 +30,10 @@
     "5" = "5";
     "6" = "6";
     "7" = "7";
+
     "8" = "8";
+    "o" = "8";
+
     "9" = "9";
     "0" = "10";
     "tab" = "msg";
@@ -46,7 +50,7 @@ in {
       exec-on-workspace-change = [
         "/bin/bash"
         "-c"
-        "${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
+        "${config.programs.sketchybar.package}/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE"
       ];
 
       on-window-detected = [
@@ -76,23 +80,25 @@ in {
         }
         {
           "if".app-id = "dev.zed.Zed";
-          run = ["move-node-to-workspace 2"];
+          run = ["move-node-to-workspace 3"];
         }
       ];
 
-      workspace-to-monitor-force-assignment = {
-        "msg" = "secondary";
-      };
+      # workspace-to-monitor-force-assignment = {
+      #   "msg" = "secondary";
+      # };
 
       gaps = {
         inner.horizontal = 6;
         inner.vertical = 6;
         outer.left = 6;
         outer.bottom = 6;
-        outer.top = [
-          { monitor.built-in = 6; }
-          40
-        ];
+        outer.top = 6;
+        # outer.top = [
+        #   # { monitor.built-in = 6; }
+        #   # 40
+        #   6
+        # ];
         # outer.top = 6;
         outer.right = 6;
       };
@@ -119,7 +125,6 @@ in {
                   end if
               end tell'
             '';
-
             alt-shift-quote = "move-workspace-to-monitor --wrap-around prev";
             alt-quote = "focus-monitor --wrap-around prev";
             alt-shift-comma = "move-workspace-to-monitor --wrap-around next";
@@ -130,7 +135,7 @@ in {
           }
           // (lib.mapAttrs' (key: direction: lib.nameValuePair "alt-${key}" "focus ${direction} --boundaries all-monitors-outer-frame") directions)
           // (lib.mapAttrs' (key: direction: lib.nameValuePair "alt-shift-${key}" "move ${direction}") directions)
-          // (lib.mapAttrs' (key: wspc: lib.nameValuePair "alt-${key}" "workspace ${wspc}") workspaces)
+          // (lib.mapAttrs' (key: wspc: lib.nameValuePair "alt-${key}" "workspace ${wspc} --auto-back-and-forth") workspaces)
           // (lib.mapAttrs' (key: wspc: lib.nameValuePair "alt-shift-${key}" ["move-node-to-workspace ${wspc}" "workspace ${wspc}"]) workspaces);
 
         service.binding = {
@@ -145,6 +150,9 @@ in {
           j = ["join-with down" "mode main"];
           k = ["join-with up" "mode main"];
           l = ["join-with right" "mode main"];
+
+          quote = ["move-workspace-to-monitor --wrap-around prev" "mode main"];
+          comma = ["move-workspace-to-monitor --wrap-around next" "mode main"];
         };
 
         resize.binding = {

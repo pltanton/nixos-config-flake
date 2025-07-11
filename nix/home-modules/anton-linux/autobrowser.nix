@@ -3,8 +3,6 @@
     # package = inputs.autobrowser.packages.x86_64-linux.default;
     enable = true;
     variables = {
-      # work = "firefox 'ext+container:name=Work&url={}'";
-      # home = "firefox {}";
       work = "zen-beta 'ext+container:name=Work&url={}'";
       home = "zen-beta '{}'";
       meet-work = "chromium '--app={}?authuser=1'";

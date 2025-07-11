@@ -8,7 +8,7 @@
 app_switched() {
   for m in $(aerospace list-monitors | awk '{print $1}'); do
     for sid in $(aerospace list-workspaces --monitor $m --visible); do
-      
+
       apps=$( (echo "$INFO"; aerospace list-windows --monitor "$m" --workspace "$sid" \
       | awk -F '|' '{gsub(/^ *| *$/, "", $2); print $2}') \
       | awk '!seen[$0]++' | sort)
@@ -22,7 +22,7 @@ app_switched() {
         icon_strip=" —"
       fi
 
-      sketchybar --animate sin 10 --set space.$sid label="$icon_strip"
+      sketchybar --set space.$sid label="$icon_strip"
     done
   done
 }

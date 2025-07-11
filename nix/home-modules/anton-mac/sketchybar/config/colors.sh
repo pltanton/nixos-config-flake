@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export TRANSPARENT=0x00ffffff
+export BLACK=0xff000000
 
 # -- Gray Scheme --
 export ITEM_COLOR=0xff000000

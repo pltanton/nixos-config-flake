@@ -1,12 +1,12 @@
 _: {
   services.jankyborders = {
-    enable = true;
-    # setting = {
-    #   style = "round";
-    #   width = 6.0;
-    #   hidpi = "off";
-    #   active_color = "0xffe2e2e3";
-    #   inactive_color = "0xff414550";
-    # };
+    enable = false;
+    settings = {
+      style = "round";
+      width = 3.5;
+      hidpi = "off";
+      active_color = "0xff89b4fa";
+      # inactive_color = "0xff414550";
+    };
   };
 }

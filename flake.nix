@@ -105,8 +105,8 @@
     };
 
     autobrowser = {
-      url = "github:pltanton/autobrowser";
-      # url = "path:/home/anton/Workdir/autobrowser";
+      # url = "github:pltanton/autobrowser";
+      url = "path:/Users/anton/Workdir/autobrowser";
       # inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 

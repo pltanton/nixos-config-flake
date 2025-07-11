@@ -1,5 +1,4 @@
 #!/bin/bash
-
 sketchybar --add event aerospace_workspace_change
 
 sketchybar --add item aerospace_dummy left \
@@ -37,7 +36,7 @@ for m in $(aerospace list-monitors | awk '{print $1}'); do
     sketchybar --set space.$sid label="$icon_strip"
 
   done
-  
+
   for empty_space in $(aerospace list-workspaces --monitor $m --empty); do
     sketchybar --set space.$empty_space display=0
   done

@@ -19,6 +19,7 @@
 
   macos-dev-names-include (
     "Apple Internal Keyboard / Trackpad"
+    ;;"Karabiner DriverKit VirtualHIDKeyboard 1.8.0"
   )
 )
 
@@ -43,7 +44,7 @@
   tab   q     w     e     r     t     y     u     i     o     p     [     ]
   @caps @a    @s    @d    @f    g     h     @j    @k    @l    @;    '     \     ret
   lsft  grv   z     x     c     v     b     n     m     ,     .     /     rsft
-  @fnl  lctl  lalt  lmet              spc               rmet  ralt  ◀    ▲ ▼    ▶
+  @fnl  lctl  lalt  @rl               spc               rmet  ralt  ◀    ▲ ▼    ▶
 )
 
 ;; macOS function key glyphs
@@ -65,6 +66,26 @@
   lsft  grv   z     x     c     v     b     n     m     ,     .     /     rsft
   fn    lctl  lalt  lmet              spc               rmet  ralt  ◀    ▲ ▼    ▶
 )
+
+
+(deflayer raise
+  _     _     _     _     _     _     _     _     _     _     _     _     _
+  _     _     _     _     _     _     _     _     _     _     _     _     _     _
+  _     1     2     3     4     5     6     7     8     9     0     _     _
+  _     S-1   S-2   S-3   S-4   S-5   S-6   S-7   S-8   S-9   S-0   _     _     _
+  _     _     _     _     [     ]     S-9   S-0   S-[   S-]   _     _     _
+  _     _     _     _                 _                 _     _     _     _ _   _
+)
+
+(deflayer lower
+  _     _     _     _     _     _     _     _     _     _     _     _     _
+  _     _     _     _     _     _     _     _     _     _     _     _     _     _
+  _     _     _     _     _     _     _     _     _     _     _     _     _
+  _     _     _     _     _     _     _     _     _     _     _     _     _     _
+  _     _     _     _     _     _     _     _     _     _     _     _     _
+  _     _     _     _                 _                 _     _     _     _ _   _
+)
+
 
 (defvar
   ;; Note: consider using different time values for your different fingers.
@@ -114,6 +135,7 @@
   ; (tap-hold-release-keys $tap-time $hold-time (multi ; @tap) rctl $right-hand-keys)
 
   fnl (tap-hold 200 200 fn (layer-toggle fn))
+  rl (layer-toggle raise)
 
   ;; macOS function key glyphs
   mc C-up ;; Mission Control

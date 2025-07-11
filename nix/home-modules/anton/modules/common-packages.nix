@@ -100,5 +100,12 @@
     yt-dlp # Feature-rich video downloader
 
     gnupg
+    yarn
+    # nodejs
+    kotlin-language-server
+    tree-sitter-grammars.tree-sitter-kotlin
+    gemini-cli
+
+    spotify
   ];
 }

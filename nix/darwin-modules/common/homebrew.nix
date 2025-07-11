@@ -14,11 +14,14 @@
 
     brews = [
       "ykman"
+      "node"
+      "lunchy-go"
     ];
 
     casks = [
       "linearmouse"
-      "telegram-desktop"
+      # "telegram-desktop"
+      "telegram"
       "intellij-idea"
       "raycast"
       "cloudflare-warp"
@@ -28,6 +31,12 @@
       "docker-desktop"
       "zen"
       "slack"
+      "sf-symbols"
+      "font-sf-pro"
+      "google-chrome"
+      "inkscape"
+      "zed"
+      "jordanbaird-ice"
     ];
   };
 }
