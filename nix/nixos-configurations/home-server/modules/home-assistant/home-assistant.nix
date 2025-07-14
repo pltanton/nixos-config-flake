@@ -60,7 +60,7 @@
 
       # recorder.db_url = "postgresql://@/hass";
     };
-    package = pkgs.stable.home-assistant;
+    package = pkgs.home-assistant;
     # package = pkgs.stable.home-assistant.override {
     #   extraPackages = ps:
     #     with ps; [

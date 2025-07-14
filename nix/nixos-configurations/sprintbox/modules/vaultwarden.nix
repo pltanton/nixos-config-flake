@@ -1,4 +1,4 @@
-{config, ...}: {
+_: {
   services = {
     vaultwarden = {
       enable = true;
@@ -7,12 +7,9 @@
         domain = "https://bitwarden.kaliwe.ru";
         signupsAllowed = true;
         databaseUrl = "postgresql://vaultwarden@localhost/vaultwarden";
-        #enableDbWal = false;
-        #extendedLogging = true;
         rocketPort = 8222;
       };
       environmentFile = "/root/vaultvarden.env";
-      # backupDir = "/var/backup/vaultwarden";
     };
   };
 

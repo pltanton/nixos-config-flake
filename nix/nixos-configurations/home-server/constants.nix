@@ -1,5 +1,6 @@
 rec {
   archiveMountPoint = "/media/archive";
+  archive = archiveMountPoint;
   storeMountPoint = "/media/store";
 
   publicMedia = "${storeMountPoint}/media";

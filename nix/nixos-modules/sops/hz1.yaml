@@ -11,6 +11,12 @@ anki:
 rancher:
     registries: ENC[AES256_GCM,data:cNdqNHtbYvAy+0xalQ6X4idJ/veBPyvTp+d6eV9sE3NyxVR8WSEH1Z9Bp0lWa1LLIZUBvEgEf5clP0o+uu6sImTCAQHFTVJl/PL8saVpT3kGuxnabW/W3W6H05kSMKP8AfSWNHOgeIDM/RwbY3Clqr2zGRvyixUFZS+jUIlEhrFs7kHLOMXWRlwnTXMuBby3Ig+fbB15tqgeasSHIsbECfUU9JU7Jgt/dIItVWCcFbTPrERSIl0m62Fq+ce+pDgmhcaXMf3li+Z+xpWwD3NlG7F7ZT7IHsfgJGW5URN2c/c=,iv:MEK/D2rSKa+3I8Xgn9uX59GXhf6Jmt+StGCq99dmZTE=,tag:+v2Yf0F7qQmldM6tvZh8SQ==,type:str]
 minio-root-password: ENC[AES256_GCM,data:MdUnKZU77po46qTAHG83LnKKIJHD6IXXRIiYIYQE7LZmBIKqyfei3I9A49IbY1sAihhsvaMFry+C,iv:qxfLSVsortPcv5vwAgpHuTSNSYsJslpJ4MvUjzecgeo=,tag:b4d7jfgt+FVgsBZAFc1dyQ==,type:str]
+restic:
+    repo:
+        home:
+            path: ENC[AES256_GCM,data:MUugQSUc/s0zfHkzjO0qsWMHUurnvDwyFLStSYOIiyEo2WofJV8uBynjn2Jc+cYK+6tRYHwM+SVvTtfa5zg=,iv:i51GOaElC3xUBv/IBGM64LrO886f0GPlbd4fxTQjC2k=,tag:kGC5Hk/AfwOCkYx4PI6cLA==,type:str]
+            password: ENC[AES256_GCM,data:B3YTYNOGlahQckdAQoE=,iv:WapNbZWoSFRyI3ekIlQJtkP13jLJksaZCDebh800S2o=,tag:a7uEopZriLuf/wqSBOuUPQ==,type:str]
+vaultwarden-env: ENC[AES256_GCM,data:jbZ5TI/ZLonqtj+6r+9eGRMAW4G+LRd7UO/9f8BhG8jjf2xKAvqXYJ0+DmzaVCeNlH7oQ03ma16p4sVWdHLZAfHU1HJnFudcAaqyb89ucw==,iv:1B3XoodT4BVJvq/d3mwECkXQIpkGaKwIZ82C+aR9HkM=,tag:B0lE1JE15KNSW6O0odwJzA==,type:str]
 sops:
     age:
         - recipient: age1vw3vqkfndv0vesfp60wjk8muc0xvck4y83pknlsx8jtygzcz9ycqxnakjd
@@ -31,7 +37,7 @@ sops:
             U0YwVUZzbnVMbCtzWXRPY0p3TEpkWFEKFLGGCv1q87PebbZ3sLr5tYo6hT6ewmtX
             fu8DVqkdNmDfKGULGEWCyDbZiKBA3X/YqeAm+vPuIYOsztAeoyIa8Q==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-04-16T07:19:53Z"
-    mac: ENC[AES256_GCM,data:meRtBK519UxgTzQwyLahRXaj43+1Q0tii/DUJfNHU1ngI9FTP1vferUvUhzLN8MtSowAKD8Fi6DjjW9Yqe3vP3Db1OfGrqNgtOiX62+2Z1IF6pkDOuiuN6lPPo8sHDgqgi3D4jotXJeGTOhOCWTLx5ZMuFesxI8aEd84ThYoe9s=,iv:ORiL1ScbhhHCCSFkvgoiUXSu4hMN9F04hjAOIep2/CE=,tag:jS1fn1YmK0OgC6+9UqyiuQ==,type:str]
+    lastmodified: "2025-07-11T19:36:20Z"
+    mac: ENC[AES256_GCM,data:vyFKCSGxClwC4ePpErO2EsjhPYhCjP90NNTVQ66oX6HDI0cc4wvNiqOp7TYECKjGzmCr9NDpNtQy/UbstPmB6dyiFi5KFOsBLM7Rx7Sq4O9/bPi2VhzvytyCoPJr+znjh8AeCMkcCnyPzjuHaizK/juFh1Wwyjl01TV4f1G6uCE=,iv:Eu1fdv+FjiIVI1W7tI9Jki+wUR3X3cPFz73hEZ8TSVo=,tag:44jIvYi/kfui/G7cegZcjg==,type:str]
     unencrypted_suffix: _unencrypted
-    version: 3.10.1
+    version: 3.10.2

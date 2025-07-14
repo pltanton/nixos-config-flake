@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   consts = import ../constants.nix;
@@ -17,7 +18,7 @@ in {
   services = {
     calibre-web = {
       package = pkgs.stable.calibre-web;
-      enable = true;
+      enable = false;
       dataDir = "${consts.archiveMountPoint}/calibre/data";
       options = {
         calibreLibrary = "${consts.archiveMountPoint}/calibre/library";
@@ -25,7 +26,7 @@ in {
       };
     };
 
-    caddy.virtualHosts = {
+    caddy.virtualHosts = lib.mkIf config.services.calibre-web.enable {
       "kosync.pltanton.dev".extraConfig = ''
 
         reverse_proxy * 127.0.0.1:7200 {

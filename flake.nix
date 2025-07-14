@@ -35,16 +35,20 @@
       withOverlays = [
         (_final: _prev: {
           nixpkgs-flake = import inputs.nixpkgs {
+            system = _prev.system;
             config.allowUnfree = true;
           };
 
           unstable = import inputs.nixpkgs-unstable {
+            system = _prev.system;
             config.allowUnfree = true;
           };
           master = import inputs.nixpkgs-master {
+            system = _prev.system;
             config.allowUnfree = true;
           };
           stable = import inputs.nixpkgs-stable {
+            system = _prev.system;
             config.allowUnfree = true;
           };
         })

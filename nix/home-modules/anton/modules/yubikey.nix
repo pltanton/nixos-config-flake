@@ -14,7 +14,7 @@ in {
   };
 
   programs.fish.functions = {
-    ssh-agent-reload =
+    wallet-yubikey-agent =
       /*
       fish
       */

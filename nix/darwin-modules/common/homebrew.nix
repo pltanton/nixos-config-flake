@@ -16,6 +16,7 @@
       "ykman"
       "node"
       "lunchy-go"
+      "openssh"
     ];
 
     casks = [
@@ -37,6 +38,7 @@
       "inkscape"
       "zed"
       "jordanbaird-ice"
+      "vlc"
     ];
   };
 }

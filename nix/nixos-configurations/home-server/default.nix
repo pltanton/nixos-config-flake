@@ -3,6 +3,7 @@
 
   specialArgs = {
     stateVersion = "21.11";
+    consts = import ./constants.nix;
   };
 
   modules = with inputs; [
@@ -33,7 +34,6 @@
 
     ./configuration.nix
 
-    (import ./packages)
     (import ./modules)
   ];
 }
