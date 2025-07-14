@@ -1,5 +1,5 @@
 keys:
-  - &admin age1vw3vqkfndv0vesfp60wjk8muc0xvck4y83pknlsx8jtygzcz9ycqxnakjd
+  - &admin_nitro 0DC2C394B4A6E61B4F1ADAB5CB3A51C0BB088893
   - &server_hz1 age1t6u47xmualvn7lndtsn98y8xlpxuyndfsz6jrlcm9cpn35us5s3qhfwtlt
   - &server_home age1tprf2san093h29kcg0m24w9mj0004hleq272cav9fpk2vpjqugxs9gpghz
   - &server_gen9 age1fvg2us7x9egswfkpw8h4yrq85jmda9v2grullgfh0uva8eauk3esqune00
@@ -7,24 +7,28 @@ keys:
 creation_rules:
   - path_regex: nix/nixos-modules/sops/sprintbox.yaml$
     key_groups:
+      - pgp:
+          - *admin_nitro
       - age:
-          - *admin
           - *server_sprintbox
 
   - path_regex: nix/nixos-modules/sops/hz1.yaml$
     key_groups:
+      - pgp:
+          - *admin_nitro
       - age:
-          - *admin
           - *server_hz1
 
   - path_regex: nix/nixos-modules/sops/home-server.yaml$
     key_groups:
+      - pgp:
+          - *admin_nitro
       - age:
-          - *admin
           - *server_home
 
   - path_regex: nix/nixos-modules/sops/{anton,desktop}.yaml$
     key_groups:
+      - pgp:
+          - *admin_nitro
       - age:
-          - *admin
           - *server_gen9

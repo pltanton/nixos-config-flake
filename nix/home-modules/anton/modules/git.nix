@@ -43,7 +43,7 @@
     };
 
     signing = {
-      key = null;
+      key = "0DC2C394B4A6E61B4F1ADAB5CB3A51C0BB088893";
       signByDefault = true;
     };
   };
