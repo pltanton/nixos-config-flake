@@ -1,18 +1,28 @@
 wireguard:
     wallet: ENC[AES256_GCM,data:dotMfsUhHvvdE8nJNxLDAH7a0CytyfvRGX3NBb30rwsX/LEMWhumcYtZmJ5aQxOjENMam9UBOAPZOGs9JJCj4cqREknABZ0AHzvTOS9bmSNSj4Gm2+7IEFZhpwWqC7UNx3yFI/7B1wivKdHJ4VCoDCbc8RTFFkHnjyFe05RizXfTMgfqorbdKj7eUhVA9zIlFAT7a+XMUi2YlEbGU/ackBtQYFzqJ0FxIYmC22Kkd25/5La+GhIf3u1Vc6h+Z1yiX4x504ZiptDcu4/AZuvwy7EOkHijChWJi5gm7Kag2dLktGZYP6q2amaNe1nQYrrRYMEFvvSnYFk0zdYTuaa86/05IRiYhNkldXU8A8oFN1c3/ukqUc8aaRtk9o85K4w+I1BcOE0itrFkLBI3JXnDMCFBuMwhnM3mGhDaRjvbHTuKkCwM,iv:A8BVLOZE6QBTD4XVkviFb5yvl6JLY0Rc4dP6ovHReh4=,tag:TqtsI6ZKlWSht/vt7dBDew==,type:str]
 sops:
+    age:
+        - recipient: age1fvg2us7x9egswfkpw8h4yrq85jmda9v2grullgfh0uva8eauk3esqune00
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBidmZaQUtHSHRjd2dqM25H
+            c3JJdkVxU0tFckovMWlhR0kzTFZZb0NuYURnCnVBSkIvdkNqWHQxVG5YZjc4bTZC
+            ZUQwNDhBZHFMbnBQRFRub1hxY09WVFEKLS0tICtlSi9TOWNvRDY4c3dmM3BybG1y
+            cTVBaEQ0d2lKV2YxNXRuZ1pjeEFuZlEKo8rcCNx9j4e24w6J4VHr1dfR+DwH6Ai2
+            FhBOjtpuS0T04jyoqrTbOujB/TF6b9AaWZshuTWomxndN9oAFdNdXQ==
+            -----END AGE ENCRYPTED FILE-----
     lastmodified: "2023-10-25T17:54:47Z"
     mac: ENC[AES256_GCM,data:ZDmEZCu5Cqn5ER0xeuZaLiGVArOreA3eQkbFwBir4626ir5UU2eHyfL0sqp+WtvpdhI+Pgq2vGJUkbkuIqUgb+LrlTo5uqOukG4+3IRzRSaJZSZY2+IWCQA/qGWUpqwAo+fIiXmhSg9rWwNsOtkDwtgcj11htwEmPpjGT4YPEBo=,iv:sWu+8Kv7cnm8lT4UaLqOJ/h3xZr8pAm5ARwUtRrdPKs=,tag:SSwfp3fUEQDq3jB+wCa3tA==,type:str]
     pgp:
-        - created_at: "2025-07-14T19:43:18Z"
+        - created_at: "2025-07-14T21:00:19Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hF4D2zvWsZorz0ASAQdAucoxSgEwcHNHHDIgT4B11vx/z16EP2BqCq9/4cZcYEUw
-            fk111rgYGTFMJYaOqD0EOspNU2i6/lC4t8dRXqZEk0+07bQrHpRCq1qgHaSlyz+R
-            0lwB/BEI5xNS9jg88qBahiGymrX9AOLxbSM4AJj3NO0Q2TDJa1+4Dlsjtgh295EW
-            rUCbARmZKjvN/9Qwbbj2TreeztCyYa54wQD02h2bto1a6PsSx1xvFU7t4Suzew==
-            =w6L/
+            hF4D2zvWsZorz0ASAQdA+8d32IgVjHHByiDW6qx/HNv5wrEAg5ogjFwjUoJVWyAw
+            Cul5aDunrreLZ3GskS3d/dIyu4U2wHtaXp9z3kVldPDEOYbq0P5Djtnue07d5Mm4
+            0lwBwEf2bSphEH6VOY3RYir2OG13rIjfRPVQ+jP6PB+luPXkjbvb3WWlev9gXlBi
+            MZq2j5FzU0e1SNaH/SS4h4YcIk9xBCTFVNJFyUf5q6Z5iRPGXPQQqFD59Ug7ZQ==
+            =56Xh
             -----END PGP MESSAGE-----
           fp: 0DC2C394B4A6E61B4F1ADAB5CB3A51C0BB088893
     unencrypted_suffix: _unencrypted

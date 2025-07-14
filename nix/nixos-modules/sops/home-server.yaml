@@ -29,35 +29,29 @@ minio-root-password: ENC[AES256_GCM,data:V+GubICYR/tRhhZPPKMlqhzEqYTGljj/ICdhL/Y
 frigate-env: ENC[AES256_GCM,data:n5nBvmfPjpHzSBEDuZfC9Hu1qzSDFTAiSesLlm19Ooe6rNT1SxSg91RIp+k1Jrw8GOsBUOadTRQI3G5jIlj3qcBjcib68S9duvKdx23X+mJ3sNM2U8IVls1NCEbsVZRZAFDN7vl3VGKwL6L3semmNJffaw7tm2r9FYQVnrdsstjhouQfbBW85PakW/cVtDwoCigP7cMBUfD094sYKwQh7IamY710E026EZ5fQhLKkMqh+CHOZO19z0v+BZFbKlmMGJWH0+3qPzwUj3lOy6o=,iv:uOG22OrqsBeb1mioFErSder3Rh3j8R+5n0D6Jzi7GWQ=,tag:eFY2eP9S08BVaNjqyh19vQ==,type:str]
 restic-htpasswd: ENC[AES256_GCM,data:1anhS9Ap4+ZGEi3O/LWZnukeYjlD7B1vsQH3Jmam+V7L7JQyDBrAN0HMwo5A91liW81wJ2w46TMU95F5956QU/+ZdQ==,iv:0SiFJRVyAeE2REmrUx3mhTraWtF3HXTVAU1Ov5uirN8=,tag:YFjO0MtGG/fF/1OhuM4fNw==,type:str]
 sops:
-    shamir_threshold: 2
-    key_groups:
-        - pgp:
-            - created_at: "2025-07-14T19:50:07Z"
-              enc: |-
-                -----BEGIN PGP MESSAGE-----
-
-                hF4D2zvWsZorz0ASAQdAQ6m4bvX/9d11AImDF2jdp/yyQUj8cU9VXH/O+j5RuCww
-                j8gXDwsDMI7ZAc01HDlaYOyKg7u+ZUxPWqS/2YuxsBzkDwVfrETlMf/1Qr/FGSI8
-                0l8B+4BUiRUH9N/dssy2WvCqU0xRkgoqtHmbM2G+UWNNAHhLrnlGCLiFZH08KFik
-                CPilLjDmjKblBLqvaDLFDr+jaTtzol17oqxHuvScevJ8JeadB/1oXIFBnqG6OBgH
-                qw==
-                =Ulf6
-                -----END PGP MESSAGE-----
-              fp: 0DC2C394B4A6E61B4F1ADAB5CB3A51C0BB088893
-          hc_vault: []
-          age: []
-        - hc_vault: []
-          age:
-            - recipient: age1tprf2san093h29kcg0m24w9mj0004hleq272cav9fpk2vpjqugxs9gpghz
-              enc: |
-                -----BEGIN AGE ENCRYPTED FILE-----
-                YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB1bkZ1VnN2K1ZWVEZ6WjVr
-                eVJ3VEU4MnNkbWJ0S2Vrc2pOSkViMXlKeVFjCkFQamdVNEpyMEhUUjA3UVlGWFR1
-                dUVtV1g5WGVjbVVHR2dDSXEvY0pnUkUKLS0tIHBtT1pIUlFJZERjQUFVZzNKek83
-                M2lQb1lIa1NZL1poejVFdTNJbWYxb1UKWS6mbO10W+JsEhEyZRG0KpsqE1lR2SqU
-                0hRPuLwcOyFQv+eKjCjWU6yWnVb5XYm0IfIX53rwmNain8t99tHfOXs=
-                -----END AGE ENCRYPTED FILE-----
+    age:
+        - recipient: age1tprf2san093h29kcg0m24w9mj0004hleq272cav9fpk2vpjqugxs9gpghz
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBRbFN2QUtHanBQUU9mNmNX
+            ZUY4dHZDM3k3ZUNTSS9ZUUs1QVM1SHBldHdrClJMUmZSTFM5eThLWG5wMFBCeTMy
+            R1BmQldRbXl6SVlRLzRHWEYyb2RudVkKLS0tIGpFaVJvcUVFbUs4UFpEU3VPRjMz
+            aDJ0eEhHakVwRkk0eHh1L2IrVDR1cnMKUlAVOqcErvDQFImhc8N42gIJLdF0ePU/
+            SRELlJi0d0Cz8d3+7zB8T4aY0f4mkBYaS3WmU0t4asvBACA8JoX4/Q==
+            -----END AGE ENCRYPTED FILE-----
     lastmodified: "2025-07-11T16:13:24Z"
     mac: ENC[AES256_GCM,data:joKs4y+KqidhsXajIg8Ffn9u9OLMAmDsR9hu/4XCKb7ad5eHBCdwdUqqnNdUd2dGCir1bl9gQEowXU0KToLW6WpYuj/lEC9JWMd1CkNkZxhY01i0JU9sJZ399zySWz8PGkVG7H+XVm5FvHyxK3KYw0u487//KXhxrvF2C9X8fZE=,iv:cvzySi2s9pbTiMtX7K6cCNfdh/9anHq0FxMaHtLfRKE=,tag:zj2HmGL0+HwN3hmzPFJ8Sw==,type:str]
+    pgp:
+        - created_at: "2025-07-14T21:00:25Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hF4D2zvWsZorz0ASAQdAzETHZUZIbBJC2H8Fur+KWAmKyHPPYZB2ta5z9u58qgsw
+            wFCv6WCMSoOrwePynoMOhwbOl3MTbdjt6hcVW5AQopvwYpEjjezCMznueVo7Ul4k
+            0lwBx7nquUsPpaiITo3/89AFKt5JiJXhuFmzxESZwlQDiZmarGH6o+KzE9Ux5UBC
+            soj0WlLOWhJXf95e1A9kSVLhUhypGhOWIgSf7Xd06ybxSPmcEdp7zDhhsNeBLg==
+            =D1+p
+            -----END PGP MESSAGE-----
+          fp: 0DC2C394B4A6E61B4F1ADAB5CB3A51C0BB088893
     unencrypted_suffix: _unencrypted
     version: 3.10.2

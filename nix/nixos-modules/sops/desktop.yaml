@@ -14,18 +14,28 @@ wireguard:
         #ENC[AES256_GCM,data:pSbPPhLu52/gOs7b7JNnnc68lz1/p1Eu6A9XE/4+Z8gm7gJa9+O1rbqw+ScC,iv:3W/EOSouivXQv9dOFtE38Kk2l5rJX3R9Q/ddea1t/VQ=,tag:OY7cH/RA4Uzho8szmYS2aA==,type:comment]
         sprintbox: ENC[AES256_GCM,data:nsLSvo19VktHSakvRjwCMi04UcN32KDnSqb1gi5hKBGz5Z5zuL33iauVdIs=,iv:rp0KA7AQMMwB4SVQvyyTd6Bu3T2gORKBjVOuMTpM5Lg=,tag:VXcUVs5jkb6oYRtDLFFOLw==,type:str]
 sops:
+    age:
+        - recipient: age1fvg2us7x9egswfkpw8h4yrq85jmda9v2grullgfh0uva8eauk3esqune00
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBlU1ZYdFJ3NzBYL3lsQUdY
+            NzJ5TFI4V2NOWFkyZkRUODlYS2pObXdhM0Q4ClkyNFpLZ1NSVlhCUk8xbUE0UzZy
+            MmVxT0gwLy9iUjV2M3lvNzVuSHNPeWsKLS0tIEdZTWtiT2VOQyt4M0MvaW5CWE9y
+            SVgzb1dvenp6Z0Z5UEZYdWJ0emNqSWcKpxZ6btZb40pr9Y2X+i6NlcqPEXHkl9nm
+            rZbm8oMjdN7eESIQQxEtISJDDNnPeMuO8DQjJZHZe6lQxi8bgyEdjw==
+            -----END AGE ENCRYPTED FILE-----
     lastmodified: "2024-05-01T18:28:11Z"
     mac: ENC[AES256_GCM,data:fSrKjj5SBu8B4dz4r9MUtdtTjQjWSf78M4bIMtkd8NKjFTzriTf/oTsMQdTGZ2NspeuR3gye8jrypkFegzqSz6ISDVx2nLqgWsP2cMi3X9pnDBAt/BR38oyC9AMeVo5Mte3bOgSX4iA4y+ZTI+I7GA3lvVRuwSUIL4WTGs9QY1s=,iv:QCRRrmXgm71qbFbgvhoMaIHkprla7HyOOqHve8qfzPA=,tag:k6Z3+qpnfXPPRyHSbUOYcA==,type:str]
     pgp:
-        - created_at: "2025-07-14T19:43:38Z"
+        - created_at: "2025-07-14T21:00:20Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hF4D2zvWsZorz0ASAQdAUjEcnQ88YX2W8TXK7hm7CK8gD4mQ0FNUXCRK7YXi4Hsw
-            V8vDG0rEtG6tMd9vpeCNISZaXzvDARb5RiHvh8HEdoeELlnVz826hlVifW8+XtAN
-            0lEBI/OMLTuCQREE68LLWBq0WkwD+RVd9ZzjXoL4W4fQjweJ+ROatCLBJwGjDqEx
-            7EfImk5jW/+lzKHjToPeb9Y/6VIEg1Z/Cynx45cMSJ5Rd3I=
-            =LQm2
+            hF4D2zvWsZorz0ASAQdAbz+UoVfhyCmnNqA6vMg1HyxEPeMvt+WnX1Ql06TGiWMw
+            QQopHAZY59UFCwrrEl7FgSOgSpH4gDt67BNzepxaS2gFDlsonZiLUnX16rG6u1hD
+            0lEBX3kCSm63Q87tijDNC/Ohg1qRmLHV6OEfw2N7ZjNSc1caIRpbbIDg7/22zzYP
+            rOxIHOW5fqz0GbvNFR2Fv68WJ0iEVts5Va8LS2gMA890DNc=
+            =nzr5
             -----END PGP MESSAGE-----
           fp: 0DC2C394B4A6E61B4F1ADAB5CB3A51C0BB088893
     unencrypted_suffix: _unencrypted

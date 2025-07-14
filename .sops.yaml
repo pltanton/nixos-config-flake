@@ -9,26 +9,33 @@ creation_rules:
     key_groups:
       - pgp:
           - *admin_nitro
-      - age:
+        age:
           - *server_sprintbox
 
   - path_regex: nix/nixos-modules/sops/hz1.yaml$
     key_groups:
       - pgp:
           - *admin_nitro
-      - age:
+        age:
           - *server_hz1
 
   - path_regex: nix/nixos-modules/sops/home-server.yaml$
     key_groups:
       - pgp:
           - *admin_nitro
-      - age:
+        age:
           - *server_home
 
-  - path_regex: nix/nixos-modules/sops/{anton,desktop}.yaml$
+  - path_regex: nix/nixos-modules/sops/anton.yaml$
     key_groups:
       - pgp:
           - *admin_nitro
-      - age:
+        age:
+          - *server_gen9
+
+  - path_regex: nix/nixos-modules/sops/desktop.yaml$
+    key_groups:
+      - pgp:
+          - *admin_nitro
+        age:
           - *server_gen9

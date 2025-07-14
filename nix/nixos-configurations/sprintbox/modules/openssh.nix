@@ -1,7 +1,7 @@
 _: {
   services = {
     openssh = {
-      settings.PermitRootLogin = "yes";
+      settings.PermitRootLogin = "prohibit-password";
       enable = true;
     };
   };

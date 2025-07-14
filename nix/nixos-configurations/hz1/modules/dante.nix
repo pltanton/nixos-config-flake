@@ -6,8 +6,6 @@
   networking.firewall.allowedUDPPorts = [3128];
   networking.firewall.allowedTCPPorts = [3128];
   services = {
-    openssh.enable = true;
-    openssh.settings.PermitRootLogin = "yes";
     sshd.enable = true;
     _3proxy = {
       enable = true;
