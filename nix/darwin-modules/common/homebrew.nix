@@ -39,6 +39,8 @@
       "zed"
       "jordanbaird-ice"
       "vlc"
+      "pritunl"
+      "yubico-authenticator"
     ];
   };
 }

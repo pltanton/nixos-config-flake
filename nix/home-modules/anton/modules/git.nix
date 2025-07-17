@@ -14,6 +14,8 @@
       allowedSignersFile = "${config.home.homeDirectory}/.ssh/allowed_signers"
     [commit]
       gpgsign = true
+    [signing]
+      key = null
   '';
   # sshCommand = "ssh -I ${libykcs11}"
 
@@ -36,14 +38,18 @@
           insteadOf = "https://gitlab.walletteam.org/";
         };
       };
-
-      includeIf."hasconfig:remote.*.url:git@gitlab.walletteam.org*/**" = {
-        path = "~/.config/git/config.wallet";
-      };
     };
 
+    includes = [
+      {
+        path = "~/.config/git/config.wallet";
+        condition = "hasconfig:remote.*.url:git@gitlab.walletteam.org*/**";
+      }
+    ];
+
     signing = {
-      key = "0DC2C394B4A6E61B4F1ADAB5CB3A51C0BB088893";
+      key = "3CD1E7C05DE129DF2E8608DD666F4A84A390B618";
+      # key = "0DC2C394B4A6E61B4F1ADAB5CB3A51C0BB088893";
       signByDefault = true;
     };
   };

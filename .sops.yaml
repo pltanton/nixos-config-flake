@@ -1,5 +1,6 @@
 keys:
   - &admin_nitro 0DC2C394B4A6E61B4F1ADAB5CB3A51C0BB088893
+  - &admin_yubikey 3CD1E7C05DE129DF2E8608DD666F4A84A390B618
   - &server_hz1 age1t6u47xmualvn7lndtsn98y8xlpxuyndfsz6jrlcm9cpn35us5s3qhfwtlt
   - &server_home age1tprf2san093h29kcg0m24w9mj0004hleq272cav9fpk2vpjqugxs9gpghz
   - &server_gen9 age1fvg2us7x9egswfkpw8h4yrq85jmda9v2grullgfh0uva8eauk3esqune00
@@ -9,6 +10,7 @@ creation_rules:
     key_groups:
       - pgp:
           - *admin_nitro
+          - *admin_yubikey
         age:
           - *server_sprintbox
 
@@ -16,6 +18,7 @@ creation_rules:
     key_groups:
       - pgp:
           - *admin_nitro
+          - *admin_yubikey
         age:
           - *server_hz1
 
@@ -23,6 +26,7 @@ creation_rules:
     key_groups:
       - pgp:
           - *admin_nitro
+          - *admin_yubikey
         age:
           - *server_home
 
@@ -30,6 +34,7 @@ creation_rules:
     key_groups:
       - pgp:
           - *admin_nitro
+          - *admin_yubikey
         age:
           - *server_gen9
 
@@ -37,5 +42,6 @@ creation_rules:
     key_groups:
       - pgp:
           - *admin_nitro
+          - *admin_yubikey
         age:
           - *server_gen9

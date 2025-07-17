@@ -43,11 +43,18 @@
             system = _prev.system;
             config.allowUnfree = true;
           };
+
           master = import inputs.nixpkgs-master {
             system = _prev.system;
             config.allowUnfree = true;
           };
+
           stable = import inputs.nixpkgs-stable {
+            system = _prev.system;
+            config.allowUnfree = true;
+          };
+
+          local = import inputs.nixpkgs-local {
             system = _prev.system;
             config.allowUnfree = true;
           };
@@ -83,6 +90,7 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs-flakehub.url = "https://flakehub.com/f/NixOS/nixpkgs/*";
     nixpkgs.follows = "nixpkgs-unstable";
+    nixpkgs-local.url = "path:/Users/anton/Workdir/nixpkgs";
 
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -109,8 +117,8 @@
     };
 
     autobrowser = {
-      # url = "github:pltanton/autobrowser";
-      url = "path:/Users/anton/Workdir/autobrowser";
+      url = "github:pltanton/autobrowser";
+      # url = "path:/Users/anton/Workdir/autobrowser";
       # inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 

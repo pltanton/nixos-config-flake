@@ -41,6 +41,7 @@
 in {
   programs.aerospace = {
     enable = true;
+    package = pkgs.local.aerospace;
     userSettings = {
       start-at-login = true;
       key-mapping.preset = "dvorak";

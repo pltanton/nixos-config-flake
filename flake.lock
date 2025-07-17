@@ -26,14 +26,17 @@
         "flakelight": "flakelight"
       },
       "locked": {
-        "lastModified": 1752150037,
-        "narHash": "sha256-axNLLX0RFh6zQzBFuw1Ps0Qc72MInHsFbvRqf7+6cI4=",
-        "path": "/Users/anton/Workdir/autobrowser",
-        "type": "path"
+        "lastModified": 1752150032,
+        "narHash": "sha256-HIXgpQ2JWi/74zSf4HzeLKngYb3IK67W6XTl0DYIYak=",
+        "owner": "pltanton",
+        "repo": "autobrowser",
+        "rev": "cd9bf08176367cbd3d29ef692c46a3dcc3923ca7",
+        "type": "github"
       },
       "original": {
-        "path": "/Users/anton/Workdir/autobrowser",
-        "type": "path"
+        "owner": "pltanton",
+        "repo": "autobrowser",
+        "type": "github"
       }
     },
     "base16": {
@@ -554,6 +557,18 @@
         "type": "indirect"
       }
     },
+    "nixpkgs-local": {
+      "locked": {
+        "lastModified": 1752589978,
+        "narHash": "sha256-Lw19vPwjs0hXZn9GXMbDWVBGSLwkW854gIqAkZHg03g=",
+        "path": "/Users/anton/Workdir/nixpkgs",
+        "type": "path"
+      },
+      "original": {
+        "path": "/Users/anton/Workdir/nixpkgs",
+        "type": "path"
+      }
+    },
     "nixpkgs-master": {
       "locked": {
         "lastModified": 1752243887,
@@ -811,6 +826,7 @@
         "nixpkgs": [
           "nixpkgs-unstable"
         ],
+        "nixpkgs-local": "nixpkgs-local",
         "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-unstable": "nixpkgs-unstable",
