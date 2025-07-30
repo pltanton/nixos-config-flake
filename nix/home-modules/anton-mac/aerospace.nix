@@ -64,6 +64,14 @@ in {
           run = ["move-node-to-workspace msg"];
         }
         {
+          "if".app-id = "ru.keepcoder.Telegram";
+          run = ["move-node-to-workspace msg"];
+        }
+        {
+          "if".app-id = "com.jetbrains.intellij";
+          run = ["move-node-to-workspace 4"];
+        }
+        {
           "if".app-id = "com.mitchellh.ghostty";
           run = ["layout tiling"];
         }
@@ -72,12 +80,15 @@ in {
           run = ["layout floating"];
         }
         {
-          "if".app-id = "app.zen-browser.zen";
-          run = ["move-node-to-workspace 1"];
+          "if" = {
+            window-title-regex-substring = "extension";
+            app-id = "app.zen-browser.zen";
+          };
+          run = ["layout floating"];
         }
         {
-          "if".app-id = "com.jetbrains.intellij";
-          run = ["move-node-to-workspace 4"];
+          "if".app-id = "app.zen-browser.zen";
+          run = ["move-node-to-workspace 1"];
         }
         {
           "if".app-id = "dev.zed.Zed";

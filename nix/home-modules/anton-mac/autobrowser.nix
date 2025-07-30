@@ -9,6 +9,7 @@
     rules = [
       "work:app.bundle_id='com.tinyspeck.slackmacgap'"
       "work:app.bundle_id='com.tinyspeck.slackmacgap'"
+      "work:app.bundle_id='com.cloudflare.1dot1dot1dot1.macos'"
       "google-meet:url.host='meet.google.com'"
     ];
     default = "home";

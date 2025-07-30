@@ -20,7 +20,9 @@
     ];
 
     casks = [
+      "gimp"
       "linearmouse"
+      "adobe-acrobat-reader"
       # "telegram-desktop"
       "telegram"
       "intellij-idea"

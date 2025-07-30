@@ -107,5 +107,7 @@
     gemini-cli
 
     spotify
+    discord
+    anki-bin
   ];
 }
