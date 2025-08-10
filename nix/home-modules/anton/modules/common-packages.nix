@@ -96,6 +96,8 @@
     imagemagick # Suite for image creation and manipulation
     ghostscript # PostScript and PDF interpreter
 
+    # texlive.combined.scheme-full
+
     # Media Downloads
     yt-dlp # Feature-rich video downloader
 
@@ -109,5 +111,6 @@
     spotify
     discord
     anki-bin
+    thunderbird
   ];
 }

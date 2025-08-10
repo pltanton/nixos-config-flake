@@ -43,6 +43,7 @@
       "vlc"
       "pritunl"
       "yubico-authenticator"
+      "mactex-no-gui"
     ];
   };
 }

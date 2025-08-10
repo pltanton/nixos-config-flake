@@ -68,4 +68,16 @@ _: {
       }
     }
   '';
+
+  virtualisation.oci-containers.containers.xui = {
+    image = "ghcr.io/mhsanaei/3x-ui:latest";
+    ports = ["127.0.0.1:2053:2053" "57625:57625"];
+    volumes = [
+      "/root/x-ui:/etc/x-ui"
+    ];
+  };
+
+  services.caddy.virtualHosts."xui.sprintbox.pltanton.dev".extraConfig = ''
+    reverse_proxy 127.0.0.1:2053
+  '';
 }
