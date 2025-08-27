@@ -1,5 +1,5 @@
-{pkgs, ...}: {
-  sops.secrets."wireguard/server-key" = {};
+{config, ...}: {
+  sops.secrets."wireguard/hz1" = {};
 
   networking = {
     firewall = {
@@ -7,46 +7,22 @@
     };
     nat = {
       enable = true;
-      internalInterfaces = ["wg-sprintbox"];
+      internalInterfaces = ["wg-sprintbox" "wg-hz"];
       externalInterface = "ens3";
     };
 
     wireguard.interfaces = {
-      wg-sprintbox = {
-        ips = ["10.10.10.1/24"];
-        listenPort = 51820;
-        privateKeyFile = "/run/secrets/wireguard/server-key";
+      wg-hz = {
+        privateKeyFile = config.sops.secrets."wireguard/hz1".path;
+        ips = ["10.10.10.11/32"];
         peers = [
           {
-            allowedIPs = ["10.10.10.2/32"];
-            publicKey = "W1a3Fdij/Sk/GDMOl37msCzVjJHcKM2qcdp2dgliVSI=";
-          }
-          {
-            allowedIPs = ["10.10.10.201/32"]; # Anton phone
-            publicKey = "RGG0VTALtT0FfYFpuAoPBj8mspaD1YfZP51xbIWhFXE=";
-          }
-          {
-            allowedIPs = ["10.10.10.204/32"]; # Anton pc
-            publicKey = "ePvGkH8PBne/zc7poF53RiPTs9dZIWMdF+WVX/kMLh4=";
-          }
-          {
-            allowedIPs = ["10.10.10.202/32"]; # Julia phone
-            publicKey = "w6OgTrYLTjvjo1PekDWn7OlNBg9tU+tDtzCjrc9MGl4=";
-          }
-          {
-            allowedIPs = ["10.10.10.203/32"]; # Julia pc
-            publicKey = "i4TEdsRr75rjqNOs5qroTGBmA/J0dmj7CAfEEle5X30=";
+            publicKey = "FXjJtcUE2Y9TnGcLe+ojTTX7Dev2jUN21YephEoklEQ=";
+            allowedIPs = ["10.10.10.0/24"];
+            endpoint = "hz1.kaliwe.ru:51820";
+            persistentKeepalive = 25;
           }
         ];
-
-        postSetup = ''
-          ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s10.10.10.0/24 -o ens3 -j MASQUERADE
-        '';
-
-        # This undoes the above command
-        postShutdown = ''
-          ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s10.10.10.0/24 -o ens3 -j MASQUERADE
-        '';
       };
     };
   };

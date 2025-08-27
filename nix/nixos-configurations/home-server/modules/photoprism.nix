@@ -3,6 +3,8 @@
 in {
   sops.secrets."photoprism" = {};
 
+
+
   fileSystems = {
     "${config.services.photoprism.originalsPath}/Anton" = {
       device = "${config.services.nextcloud.home}/data/anton/files/InstantUpload/Camera";

@@ -6,29 +6,6 @@ _: {
         loglevel = "warning";
       };
       inbounds = [
-        # {
-        #   protocol = "vless";
-        #   port = 20001;
-        #   settings = {
-        #     clients = [
-        #       {
-        #         id = "fcbedce3-a331-4bd6-9f96-45113c30a844";
-        #         email = "anon@anon.com";
-        #       }
-        #     ];
-        #     decryption = "none";
-        #   };
-        #   streamSettings = {
-        #     network = "raw";
-        #     security = "reality";
-        #     realitySettings = {
-        #       dest = "mirror.thunderhosting.cloud:443";
-        #       serverNames = ["mirror.thunderhosting.cloud, www.mirror.thunderhosting.cloud"];
-        #       shortIds = [""];
-        #     };
-        #   };
-        # }
-
         {
           listen = "/dev/shm/Xray-VLESS-gRPC.socket,0666";
           protocol = "vless";
@@ -102,6 +79,9 @@ _: {
     };
   };
 
+  networking.firewall.allowedTCPPorts = [26602 26603];
+  networking.firewall.allowedUDPPorts = [26602 26603];
+
   # ADD FAKE STATIC SITE
   services.caddy.virtualHosts."kaliwe.ru".extraConfig = ''
     @grpc {
@@ -124,7 +104,7 @@ _: {
 
   virtualisation.oci-containers.containers.xui = {
     image = "ghcr.io/mhsanaei/3x-ui:latest";
-    ports = ["127.0.0.1:2053:2053" "57625:57625"];
+    ports = ["127.0.0.1:2053:2053" "26602:26602" "26603:26603"];
     volumes = [
       "/root/x-ui:/etc/x-ui"
     ];
@@ -132,5 +112,15 @@ _: {
 
   services.caddy.virtualHosts."xui.hz1.pltanton.dev".extraConfig = ''
     reverse_proxy 127.0.0.1:2053
+    tls {
+        protocols tls1.3
+    }
+  '';
+
+  services.caddy.virtualHosts."xui.hz1.kaliwe.ru".extraConfig = ''
+    reverse_proxy 127.0.0.1:2053
+    tls {
+        protocols tls1.3
+    }
   '';
 }

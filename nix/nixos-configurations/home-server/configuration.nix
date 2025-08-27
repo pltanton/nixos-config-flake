@@ -102,5 +102,8 @@
   nixpkgs.config.allowUnfree = true;
   security.acme.acceptTerms = true;
 
-  nixpkgs.config.permittedInsecurePackages = ["openssl-1.1.1w"];
+  nixpkgs.config.permittedInsecurePackages = [
+    "openssl-1.1.1w"
+    "libsoup-2.74.3"
+  ];
 }

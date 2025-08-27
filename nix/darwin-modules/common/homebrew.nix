@@ -44,6 +44,10 @@
       "pritunl"
       "yubico-authenticator"
       "mactex-no-gui"
+      "thunderbird"
+      "darktable"
+      "rawtherapee"
+      "sony-ps-remote-play"
     ];
   };
 }

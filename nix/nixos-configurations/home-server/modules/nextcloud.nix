@@ -48,11 +48,6 @@ in {
 
       phpExtraExtensions = all: with all; [pdlib bz2];
 
-      caching = {
-        apcu = true;
-        redis = false;
-        memcached = false;
-      };
       autoUpdateApps.enable = true;
       config = {
         # adminpass = "adminpass";

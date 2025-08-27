@@ -1,6 +1,8 @@
 wireguard:
     server-key: ENC[AES256_GCM,data:NbmsXNjx3m0PyXn8wBjm4GHYKQmYLaZx6LFCema3jqwHtHhoiYKf6DSjWt0=,iv:3xU/euwx1NntF0f3/W+zD7464AA1d2Dp6mT8tfn0bq4=,tag:se6/3yG4sXTNOw5dn44bpg==,type:str]
     server-key-pub: ENC[AES256_GCM,data:HQK8yM59kLpSe7G8U8Lg7zieakXZ5VtsCDubmcRBQ9eQ2SZ0wwBhmHg+sko=,iv:nHx4OHMVyGQ7RM1jzVDU6bmbQLWkcouRYqnchz92Jho=,tag:SjmVT8Ur8dDdaFlmgZoYMQ==,type:str]
+    hz1: ENC[AES256_GCM,data:roqrlZ/zNkF0feDJTwYWkzmT0xzzVIR8XSA2y3avK7kURmGjtCV7ToreP7g=,iv:fR8fdckjc5F1hNTPGR80Dp1A8hoHAVglpAMhmmyXtQE=,tag:pqt24wPeAGK94fpnWsN+NQ==,type:str]
+    hz1-pub: ENC[AES256_GCM,data:/Ie8zGYWqvDqtS3ezA6ZqRLyRlX0x1/QhhyMZJVR6TFbDxlFsDqhM/g4sN4=,iv:B667JcAVziksdX9xvl6RCyauAcvdHjrvRdRxRpQiDZM=,tag:ezq1tpm+A1QnO2jYnR/HTQ==,type:str]
 restic:
     repo:
         home:
@@ -17,8 +19,8 @@ sops:
             dGtYbSttK2NXUnZ3L0hwVFV4cjZQZU0KqLS9FM0KzV/bimd/VXD2VeS2XFHFQE/S
             F8clhgm0ejZydrjpp/gCg0C08Og96KEV/SvnLLql61YlHQ1mPdD0HQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-07-11T19:05:55Z"
-    mac: ENC[AES256_GCM,data:ry/fFi0xcvF0dmbqsF2pKNO//s9D/Puchoc1bfR89LE8Cann/Zd3C/pKJ5ztX3y/NjeYle5Kdc8n1Z7KvYa+v4Lln2AlSMycvFi66R1r77GLDzfaOQn9efT8N7WoR2HfaHQIrSEiTlWooF/7Ar6V6nQHCkelsBKhzrNNXgxNw2k=,iv:GYy76sBHB3bY1TxwpH/+Yhm7vexmkRJV2e3+zZ269rs=,tag:Q4wwGGfImlF5lR/26g5EKg==,type:str]
+    lastmodified: "2025-08-11T07:31:26Z"
+    mac: ENC[AES256_GCM,data:IIfQ6Zrnlwf5fWdunqqjlvlKJ0oGnmK5U9o2SsgNmbR77aGaX/mP//Eb2PYWZqZPlypEcz9se2r2/axgOiyVt5OWv/jnfOfra1eqDi6ZO3fLQtxwiZ3h8yZY2oTeDqB9ZNDpWhuHCzrFKkxwioe8MhwuTifwrkOCvycO1qUWAZ4=,iv:V+yeOW9S6YsHXkHZwxfVd8h9K9w+HXhll9AfBP5pkWM=,tag:/k5Fzbtcy1z/j3eWdLFRIg==,type:str]
     pgp:
         - created_at: "2025-07-17T11:02:33Z"
           enc: |-

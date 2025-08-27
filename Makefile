@@ -12,6 +12,7 @@ nh-deploy-hz1: target = root@hz1.kaliwe.ru
 nh-deploy-hz1: build_host = root@hz1.kaliwe.ru
 
 rebuild-switch-sprintbox: target = root@sprintbox.kaliwe.ru
+# rebuild-switch-home-server: build_host = root@home.kaliwe.ru
 rebuild-switch-sprintbox: build_host = root@sprintbox.kaliwe.ru
 
 rebuild-switch-thinkpad-x1-gen9: target = ""

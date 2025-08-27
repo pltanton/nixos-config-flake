@@ -7,5 +7,8 @@
 }: {
   stylix = {
     autoEnable = true;
+    targets = {
+      gtk.enable = false;
+    };
   };
 }

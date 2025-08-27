@@ -32,16 +32,24 @@
 
       peers = [
         {
-          allowedIPs = ["10.10.10.10/32"]; # Home server
-          publicKey = "8AEkjWAMTQg20MKLY6GHqLO5y9pWm4rTVOugKs8FpQk=";
+          allowedIPs = ["10.10.10.2/32"];
+          publicKey = "CJAsUIfb2ifA0l9usxC+bGtx6CmFd2r98XQK86thMR0="; # thinkpad-x1
+        }
+        {
+          allowedIPs = ["10.10.10.3/32"];
+          publicKey = "qeiSAebSN8E0p3uIOLx4DpVcZOpXrD60bpEqzOwrD24="; # mac-m4
         }
         {
           allowedIPs = ["10.10.10.4/32"];
           publicKey = "6HRTAMMZi/+rw+niq8RX8KblxY0bYB3Cs9tKuaHqNg8=";
         }
         {
-          allowedIPs = ["10.10.10.2/32"];
-          publicKey = "CJAsUIfb2ifA0l9usxC+bGtx6CmFd2r98XQK86thMR0="; # thinkpad-x1
+          allowedIPs = ["10.10.10.10/32"]; # Home server
+          publicKey = "8AEkjWAMTQg20MKLY6GHqLO5y9pWm4rTVOugKs8FpQk=";
+        }
+        {
+          allowedIPs = ["10.10.10.11/32"];
+          publicKey = "CJAsUIfb2ifA0l9usxC+bGtx6CmFd2r98XQK86thMR0="; # sprintbox
         }
       ];
     };

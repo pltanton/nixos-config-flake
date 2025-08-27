@@ -19,6 +19,7 @@
     # Container & Orchestration
     kubectl # Command-line tool for Kubernetes
     kubectx # Tool for switching between kubectl contexts
+    vault
 
     ########################
     # Command Line Tools   #
