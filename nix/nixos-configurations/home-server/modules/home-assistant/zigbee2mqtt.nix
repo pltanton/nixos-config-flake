@@ -11,7 +11,7 @@
           enabled = true;
           port = 8124;
         };
-        homeassistant = true;
+        # homeassistant = true;
         permit_join = true;
         serial = {
           port = "/dev/ttyUSB0";

@@ -44,7 +44,7 @@
   tab   q     w     e     r     t     y     u     i     o     p     [     ]
   @caps @a    @s    @d    @f    g     h     @j    @k    @l    @;    '     \     ret
   lsft  grv   z     x     c     v     b     n     m     ,     .     /     rsft
-  @fnl  lctl  lalt  @rl               spc               rmet  ralt  ◀    ▲ ▼    ▶
+  lctl  @fnl  lalt  @rl               spc               @lyt  @scr  ◀    ▲ ▼    ▶
 )
 
 ;; macOS function key glyphs
@@ -64,7 +64,7 @@
   tab   q     w     e     r     t     y     u     i     o     p     [     ]
   caps  a     s     d     f     g     h     j     k     l     ;     '     \     ret
   lsft  grv   z     x     c     v     b     n     m     ,     .     /     rsft
-  fn    lctl  lalt  lmet              spc               rmet  ralt  ◀    ▲ ▼    ▶
+  lctl  fn    lalt  lmet              spc               rmet  ralt  ◀    ▲ ▼    ▶
 )
 
 
@@ -143,4 +143,6 @@
   dtn S-C-A-M-f5 ;; Dictation
   dnd S-C-A-M-f6 ;; Do Not Disturb
   lp S-C-A-M-l ;; Launchpad
+  lyt C-spc
+  scr C-M-S-f4 ;; Screenshot
 )

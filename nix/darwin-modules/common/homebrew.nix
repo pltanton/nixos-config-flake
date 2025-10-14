@@ -48,6 +48,7 @@
       "darktable"
       "rawtherapee"
       "sony-ps-remote-play"
+      "libreoffice"
     ];
   };
 }

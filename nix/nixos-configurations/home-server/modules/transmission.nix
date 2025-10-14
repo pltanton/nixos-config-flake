@@ -17,12 +17,15 @@ in {
     enable = true;
     group = "publicstore";
     credentialsFile = config.sops.secrets.transmission-rpc-password.path;
+    downloadDirPermissions = "775";
 
     settings = {
       download-dir = downloadsDir;
       incomplete-dir-enabled = false;
       rpc-username = "admin";
       rpc-authentication-required = "true";
+      rpc-host-whitelist-enabled = false;
+      umask = 2;
     };
   };
 

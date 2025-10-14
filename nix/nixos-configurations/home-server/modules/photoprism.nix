@@ -3,8 +3,6 @@
 in {
   sops.secrets."photoprism" = {};
 
-
-
   fileSystems = {
     "${config.services.photoprism.originalsPath}/Anton" = {
       device = "${config.services.nextcloud.home}/data/anton/files/InstantUpload/Camera";
@@ -22,7 +20,7 @@ in {
 
   services = {
     photoprism = {
-      enable = true;
+      enable = false;
       originalsPath = "${consts.archiveMountPoint}/photoprism-data";
       passwordFile = config.sops.secrets."photoprism".path;
       settings = {
