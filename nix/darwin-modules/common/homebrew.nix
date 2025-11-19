@@ -12,6 +12,14 @@
       upgrade = true;
     };
 
+    taps = [
+      {
+        name = "kde-mac/kde";
+        clone_target = "https://invent.kde.org/packaging/homebrew-kde.git";
+        force_auto_update = true;
+      }
+    ];
+
     brews = [
       "ykman"
       "node"
@@ -49,6 +57,9 @@
       "rawtherapee"
       "sony-ps-remote-play"
       "libreoffice"
+      "calibre"
+      "kde-mac/kde/kdeconnect"
+      "zoom"
     ];
   };
 }

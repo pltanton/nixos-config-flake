@@ -6,6 +6,21 @@
 }: let
   consts = import ../constants.nix;
 in {
+  virtualisation.oci-containers.containers.calibre-web-automated-book-downloader = {
+    image = "crocodilestick/calibre-web-automated:latest";
+    ports = ["4233:8083"];
+    autoStart = true;
+    # environment = {
+    # };
+    volumes = [
+      "${consts.mediaAppHomes}/cwa/ingest:/cwa-book-ingest"
+      "${consts.mediaAppHomes}/cwa/library:/calibre-library"
+      "${consts.mediaAppHomes}/cwa/config:/config"
+    ];
+
+    #extraOptions = [ "--network=traefik_proxy" ];
+  };
+
   virtualisation.oci-containers.containers.kosync = {
     image = "koreader/kosync:latest";
     autoStart = true;
@@ -18,7 +33,7 @@ in {
   services = {
     calibre-web = {
       package = pkgs.stable.calibre-web;
-      enable = false;
+      enable = true;
       dataDir = "${consts.archiveMountPoint}/calibre/data";
       options = {
         calibreLibrary = "${consts.archiveMountPoint}/calibre/library";
@@ -36,8 +51,9 @@ in {
         }
       '';
 
+      # reverse_proxy http://localhost:${toString config.services.calibre-web.listen.port}
       "calibre.pltanton.dev".extraConfig = ''
-        reverse_proxy http://::1:${toString config.services.calibre-web.listen.port}
+        reverse_proxy http://localhost:4233
       '';
     };
   };

@@ -10,7 +10,7 @@
   ...
 }: let
   env = {
-    "APPLICATION_HOSTS" = "dawarich.pltanton.dev";
+    "APPLICATION_HOSTS" = "dawarich.pltanton.dev,127.0.0.1";
     "APPLICATION_PROTOCOL" = "http";
 
     "DATABASE_HOST" = "172.17.0.1";

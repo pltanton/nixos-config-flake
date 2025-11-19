@@ -8,15 +8,13 @@
     environmentFile = config.sops.secrets."homepage-dashboard".path;
     settings = {
       statusStyle = "dot";
-      layout =
-        {
-          "Multimedia" = {
-            style = "row";
-            columns = 3;
-            useEqualHeights = true;
-          };
-        }
-      ;
+      layout = {
+        "Multimedia" = {
+          style = "row";
+          columns = 3;
+          useEqualHeights = true;
+        };
+      };
     };
 
     widgets = [

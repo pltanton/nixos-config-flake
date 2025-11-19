@@ -31,6 +31,10 @@
             allowedIPs = ["10.100.0.4/32"];
             publicKey = "TB6b0XRczhJmH/yyVIL0gCPGL4sIx3EcMti28og0g14="; # Thinkpad x1 gen9
           }
+          {
+            allowedIPs = ["10.100.0.5/32"];
+            publicKey = "WFZjDQy2NRy0bvgoZ4JlqH29t7Rg0+5DpMCWXAJ8+3k="; # Macbook Pro M4
+          }
         ];
       };
 

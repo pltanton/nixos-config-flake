@@ -16,6 +16,10 @@
       enable = true;
     };
 
+    readarr = {
+      enable = true;
+    };
+
     caddy.virtualHosts."prowlarr.pltanton.dev".extraConfig = ''
       reverse_proxy http://127.0.0.1:${toString config.services.prowlarr.settings.server.port}
     '';
@@ -26,6 +30,10 @@
 
     caddy.virtualHosts."radarr.pltanton.dev".extraConfig = ''
       reverse_proxy http://127.0.0.1:${toString config.services.radarr.settings.server.port}
+    '';
+
+    caddy.virtualHosts."readarr.pltanton.dev".extraConfig = ''
+      reverse_proxy http://127.0.0.1:${toString config.services.readarr.settings.server.port}
     '';
   };
 
