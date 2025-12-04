@@ -60,6 +60,7 @@
       "calibre"
       "kde-mac/kde/kdeconnect"
       "zoom"
+      "obs"
     ];
   };
 }

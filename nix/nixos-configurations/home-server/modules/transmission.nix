@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   consts = import ../constants.nix;
@@ -18,6 +19,7 @@ in {
     group = "publicstore";
     credentialsFile = config.sops.secrets.transmission-rpc-password.path;
     downloadDirPermissions = "775";
+    package = pkgs.transmission_4;
 
     settings = {
       download-dir = downloadsDir;

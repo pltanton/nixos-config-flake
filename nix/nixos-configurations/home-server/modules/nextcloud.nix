@@ -44,7 +44,7 @@ in {
   services = {
     nextcloud = {
       enable = true;
-      package = pkgs.nextcloud31;
+      package = pkgs.nextcloud32;
 
       phpExtraExtensions = all: with all; [pdlib bz2];
 

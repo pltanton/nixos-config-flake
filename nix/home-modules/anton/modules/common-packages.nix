@@ -13,7 +13,7 @@
     alejandra # Opinionated Nix code formatter
 
     # Version Control & Collaboration
-    gitAndTools.gh # GitHub's official command-line tool
+    gh # GitHub's official command-line tool
     glab # GitLab command-line tool
 
     # Container & Orchestration
@@ -97,6 +97,9 @@
     imagemagick # Suite for image creation and manipulation
     ghostscript # PostScript and PDF interpreter
 
+    scrcpy
+    android-tools
+
     # texlive.combined.scheme-full
 
     # Media Downloads
@@ -108,6 +111,7 @@
     kotlin-language-server
     tree-sitter-grammars.tree-sitter-kotlin
     gemini-cli
+    tombi
 
     spotify
     discord

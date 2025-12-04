@@ -21,10 +21,8 @@
 
   programs.git = {
     enable = true;
-    userName = "Anton Plotnikov";
-    userEmail = "plotnikovanton@gmail.com";
 
-    extraConfig = {
+    settings = {
       push.autoSetupRemote = true;
 
       url = {"git@github.com:" = {insteadOf = ["https://github.com/"];};};
@@ -37,6 +35,11 @@
         "ssh://git@gitlab.walletteam.org/" = {
           insteadOf = "https://gitlab.walletteam.org/";
         };
+      };
+
+      user = {
+        name = "Anton Plotnikov";
+        email = "plotnikovanton@gmail.com";
       };
     };
 

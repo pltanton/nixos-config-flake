@@ -45,7 +45,6 @@ in {
     };
 
     amdgpu = {
-      amdvlk.enable = true;
       opencl.enable = true;
     };
   };
