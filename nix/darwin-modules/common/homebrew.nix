@@ -31,7 +31,7 @@
       "gimp"
       "linearmouse"
       "adobe-acrobat-reader"
-      # "telegram-desktop"
+      "telegram-desktop"
       "telegram"
       "intellij-idea"
       "raycast"
@@ -57,10 +57,9 @@
       "rawtherapee"
       "sony-ps-remote-play"
       "libreoffice"
-      "calibre"
-      "kde-mac/kde/kdeconnect"
       "zoom"
       "obs"
+      "commander-one"
     ];
   };
 }

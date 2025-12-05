@@ -109,9 +109,13 @@
     yarn
     # nodejs
     kotlin-language-server
+    tree-tree-sitter
     tree-sitter-grammars.tree-sitter-kotlin
+    fd
+    lazygit
     gemini-cli
     tombi
+
 
     spotify
     discord
