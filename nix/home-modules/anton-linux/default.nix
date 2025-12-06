@@ -1,25 +1,48 @@
 {inputs, ...}: {
-  imports = with inputs;
-    [
-      self.homeModules.common
-      self.homeModules.backgrounds
+  imports = with inputs; [
+    self.homeModules.common
+    self.homeModules.backgrounds
 
-      self.nixosModules.sops
+    self.nixosModules.sops
 
-      catppuccin.homeModules.catppuccin
+    # catppuccin.homeModules.catppuccin
 
-      ddcsync.homeManagerModules.default
-      autobrowser.homeModules.default
+    ddcsync.homeManagerModules.default
+    autobrowser.homeModules.default
 
-      hyprcursor-phinger.homeManagerModules.hyprcursor-phinger
-      spicetify-nix.homeManagerModules.spicetify
-    ]
-    ++ inputs.self.lib.modulesDir ./.;
+    hyprcursor-phinger.homeManagerModules.hyprcursor-phinger
+    spicetify-nix.homeManagerModules.spicetify
+
+    ./hyprland
+    ./rofi
+    ./waybar
+    ./autobrowser.nix
+    ./cliphist.nix
+    ./direnv.nix
+    ./ghostty.nix
+    ./gpg-agent.nix
+    ./home-packages.nix
+    ./index.nix
+    ./java.nix
+    ./keyring.nix
+    ./npm.nix
+    ./portals.nix
+    ./python.nix
+    ./services.nix
+    ./spotify.nix
+    ./ssh-agent.nix
+    ./stylix.nix
+    ./swaync.nix
+    ./swayosd.nix
+    ./vscode.nix
+    ./xdg.nix
+    ./zed.nix
+  ];
 
   nixpkgs.overlays = with inputs; [
     ddcsync.overlays.default
     autobrowser.overlays.default
-    inputs.hyprpanel.overlay
+    # inputs.hyprpanel.overlay
   ];
 
   sops = {

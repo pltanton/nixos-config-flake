@@ -3,7 +3,7 @@
     enableDefaultPackages = true;
     enableGhostscriptFonts = true;
 
-    packages = with pkgs; [terminus_font inter ubuntu_font_family];
+    packages = with pkgs; [terminus_font inter ubuntu-classic];
 
     fontconfig = {
       defaultFonts = {

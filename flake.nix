@@ -32,6 +32,8 @@
           );
       };
 
+      lib = {};
+
       withOverlays = [
         (_final: _prev: {
           nixpkgs-flake = import inputs.nixpkgs {
@@ -54,10 +56,10 @@
             config.allowUnfree = true;
           };
 
-          local = import inputs.nixpkgs-local {
-            system = _prev.system;
-            config.allowUnfree = true;
-          };
+          #local = import inputs.nixpkgs-local {
+          #  system = _prev.system;
+          #  config.allowUnfree = true;
+          #};
         })
       ];
 
@@ -108,8 +110,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprcursor-phinger.url = "github:jappie3/hyprcursor-phinger";
+
     # ─── APPS ────────────────────────────────────────────────────────
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    zen-browser.url = "github:youwen5/zen-browser-flake";
+    lazyvim.url = "github:pfassina/lazyvim-nix";
 
     ddcsync = {
       url = "github:pltanton/ddcsync";

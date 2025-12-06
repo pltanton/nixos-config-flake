@@ -3,5 +3,6 @@
     ./hyprland
     ./kanshi.nix
     ./plain-packages.nix
+    ./syncthing.nix
   ];
 }

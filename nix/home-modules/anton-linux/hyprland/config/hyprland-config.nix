@@ -2,9 +2,7 @@
   pkgs,
   config,
   ...
-}: let
-  # inherit (config.lib.stylix) colors;
-in {
+}: {
   xdg.configFile = {
     "uwsm/env".text = ''
       export NIXOS_OZONE_WL=1
@@ -30,6 +28,7 @@ in {
       "uwsm --app -- slack"
       "uwsm --app -- telegram-desktop"
       "uwsm --app -- zen"
+      "uwsm --app -- hyprlauncher -d"
     ];
 
     exec = [
@@ -150,12 +149,6 @@ in {
     xwayland = {
       use_nearest_neighbor = false;
       force_zero_scaling = true;
-    };
-
-    gestures = {
-      workspace_swipe = true;
-      workspace_swipe_create_new = false;
-      # workspace_swipe_use_r = true;
     };
 
     plugin = {

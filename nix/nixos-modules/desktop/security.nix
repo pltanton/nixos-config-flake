@@ -8,7 +8,7 @@
     };
   };
 
-  programs.ssh.startAgent = true;
+  # programs.ssh.startAgent = true;
   services.gnome.gnome-keyring.enable = true;
   environment.systemPackages = with pkgs; [
     libgnome-keyring

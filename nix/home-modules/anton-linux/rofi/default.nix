@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  rofi = pkgs.rofi-wayland.override {
+  rofi = pkgs.rofi.override {
     plugins = with pkgs; [rofi-emoji rofi-power-menu];
   };
 in {

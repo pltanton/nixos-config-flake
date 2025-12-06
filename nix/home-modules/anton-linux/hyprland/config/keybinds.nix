@@ -30,6 +30,11 @@
     (buildWorkspaceDefault "9")
     (buildWorkspace "0" "10")
     (buildWorkspace "tab" "11")
+
+    (buildWorkspace "b" "1") # browser
+    (buildWorkspace "e" "3") # editor
+    (buildWorkspace "t" "3") # terminal
+    (buildWorkspace "i" "4") # ide
   ];
 in {
   wayland.windowManager.hyprland = {
@@ -38,7 +43,8 @@ in {
         # Rofi keybinds
         "SUPERSHIFT,v,exec,cliphist list | uwsm app -- rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img -show clipboard -show-icons -p "
         "SUPERSHIFT,e,exec,uwsm app -- rofi -show emoji -modi emoji"
-        "SUPER,Return,exec,uwsm app -- rofi -show drun -show-icons"
+        # "SUPER,Return,exec,uwsm app -- rofi -show drun -show-icons"
+        "SUPER,Return,exec,uwsm app -- hyprlauncher"
 
         # "SUPERSHIFT,v,exec,cliphist list | uwsm app -- walker -m clipboard"
         # "SUPERSHIFT,e,exec,uwsm app -- walker -m emojis"
@@ -105,6 +111,7 @@ in {
 
         # Keyboard layout switch
         "SUPERSHIFT,Space,exec,hyprctl switchxkblayout current 2"
+        "SUPER,Space,exec,xkb-smart-switch"
       ];
 
       bindel = [

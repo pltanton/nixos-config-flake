@@ -5,7 +5,7 @@
     #######################
 
     # IDE and Code Editors
-    neovim # Highly extensible, vim-based text editor
+    # neovim # Highly extensible, vim-based text editor
     nixd # Language server for Nix development
     gopls # Official Go language server
 
@@ -109,15 +109,14 @@
     yarn
     # nodejs
     kotlin-language-server
-    tree-tree-sitter
+    tree-sitter
     tree-sitter-grammars.tree-sitter-kotlin
     fd
     lazygit
     gemini-cli
     tombi
 
-
-    spotify
+    # spotify
     discord
     anki-bin
     thunderbird

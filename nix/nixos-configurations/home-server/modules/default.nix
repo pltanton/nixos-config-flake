@@ -1,3 +1,39 @@
 {inputs, ...}: {
-  imports = inputs.self.lib.modulesDir ./.;
+  imports = [
+    ./anytype-sync
+    ./home-assistant
+    ./prometheus
+    ./arr.nix
+    ./bluetooth.nix
+    ./caddy.nix
+    ./calibre.nix
+    ./couchdb.nix
+    ./databases.nix
+    ./dawarich.nix
+    ./docker.nix
+    ./factorio.nix
+    ./filestructure.nix
+    ./firefly.nix
+    ./frigate.nix
+    ./gitea-actions-runner.nix
+    ./gitea-worker.nix
+    ./hardware-configuration.nix
+    ./home-page.nix
+    ./immich.nix
+    ./jellyfin.nix
+    ./karakeep.nix
+    ./kavita.nix
+    ./minio.nix
+    ./monitorrent.nix
+    ./nextcloud.nix
+    ./nfs.nix
+    ./ollama.nix
+    ./openssh.nix
+    ./photoprism.nix
+    ./redis.nix
+    ./restic-server.nix
+    ./syncthing.nix
+    ./users.nix
+    ./wireguard.nix
+  ];
 }

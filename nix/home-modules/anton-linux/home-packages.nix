@@ -52,7 +52,7 @@
 
     # Office & Notes
     libreoffice # Full-featured office suite
-    xournalpp # Note-taking and PDF annotation
+    # xournalpp # Note-taking and PDF annotation
     anytype # Personal knowledge management
     obsidian # Markdown-based note-taking
     anki-bin # Spaced repetition learning
@@ -87,7 +87,6 @@
     ########################
 
     # Version Control
-    gitAndTools.gh # GitHub CLI
     glab # GitLab CLI
 
     # Command Line Tools
@@ -117,7 +116,7 @@
     grpc # RPC framework
     grpcurl # gRPC testing tool
     nodejs # JavaScript runtime
-    postgresql_13 # Database server
+    postgresql_17 # Database server
     sops # Secrets management
     devpod # Development environments
     gcc # GNU Compiler Collection
@@ -126,14 +125,14 @@
     protoc-gen-go-grpc # Go gRPC generator
     gnumake # Build automation
     zip # Archive creation
-    uv # Python package manager
+    # uv # Python package manager
 
     # Editors & IDEs
     zed-editor # Modern code editor
-    neovim # Terminal editor
+    # neovim # Terminal editor
     vscodium.fhs # Open source VS Code
-    jetbrains-toolbox # JetBrains IDE manager
-    jetbrains.idea-ultimate # Java IDE
+    # jetbrains-toolbox # JetBrains IDE manager
+    # jetbrains.idea-ultimate # Java IDE
     nixd # Nix language server
     alejandra # Nix formatter
     dprint # Code formatter
@@ -145,7 +144,7 @@
     # Security            #
     ########################
 
-    bitwarden # Password manager
+    bitwarden-desktop # Password manager
 
     ########################
     # Web Browsers       #
@@ -153,6 +152,7 @@
 
     chromium # Open source browser
     inputs.zen-browser.packages."${system}".default # Zen browser
+    # zen
 
     ########################
     # Documentation      #

@@ -15,38 +15,27 @@ wireguard:
         sprintbox: ENC[AES256_GCM,data:nsLSvo19VktHSakvRjwCMi04UcN32KDnSqb1gi5hKBGz5Z5zuL33iauVdIs=,iv:rp0KA7AQMMwB4SVQvyyTd6Bu3T2gORKBjVOuMTpM5Lg=,tag:VXcUVs5jkb6oYRtDLFFOLw==,type:str]
 sops:
     age:
-        - recipient: age1fvg2us7x9egswfkpw8h4yrq85jmda9v2grullgfh0uva8eauk3esqune00
+        - recipient: age1vw3vqkfndv0vesfp60wjk8muc0xvck4y83pknlsx8jtygzcz9ycqxnakjd
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAzWTNuM1lXZzhIQkRIUlFI
-            ZlNPSEdDdng2RUhmVEVHdWpnd3NMajQvM1RvCkRlVkRhbjYzZUc1cm1nOE9nQjdO
-            RVp0cEJ4aVlnSThxZzd2TW5xaUxKNnMKLS0tIFRCcUpFMWlId1AxOHZaNnZuN1Vn
-            YlVLSmVpam9xYkNjOTd3clZpSmtNajgKoYy2a3il2IN/xs2zI17sp9a6Mipa9ezV
-            GqkPpEdd174nn3XLfPEjhFoRGby6Xj0tpzlpziGQkurgp0Y0/2UzOA==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAzN3RTa0hVSHlIQUxISmhq
+            OGFrRGs1b1BKY2lqV1VnK2dJbkxVOURPNmxBCjFUTjV6V051Zi9uSGhiQ2ZudEd0
+            YjJMYThQVkNaK1BVL0FIZkxVVVRydm8KLS0tIGpoR0hNdjJoM3lTa1Y2c3BOMFNG
+            TjZyNVg0VTFUc2Z2dkRibmJ4VndISGcKOfYTWdKwrx4bzjWouFZR5LU5cXgvb6v7
+            hvdyO+BEvZM2XxYfoET54pCoSMUR6yExhbc3S59siHI0waoZxrXnXA==
             -----END AGE ENCRYPTED FILE-----
     lastmodified: "2024-05-01T18:28:11Z"
     mac: ENC[AES256_GCM,data:fSrKjj5SBu8B4dz4r9MUtdtTjQjWSf78M4bIMtkd8NKjFTzriTf/oTsMQdTGZ2NspeuR3gye8jrypkFegzqSz6ISDVx2nLqgWsP2cMi3X9pnDBAt/BR38oyC9AMeVo5Mte3bOgSX4iA4y+ZTI+I7GA3lvVRuwSUIL4WTGs9QY1s=,iv:QCRRrmXgm71qbFbgvhoMaIHkprla7HyOOqHve8qfzPA=,tag:k6Z3+qpnfXPPRyHSbUOYcA==,type:str]
     pgp:
-        - created_at: "2025-07-17T11:02:29Z"
+        - created_at: "2025-12-05T22:57:52Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hF4D2zvWsZorz0ASAQdAKzo6LW+qH+KI7Ma3tVNmmEsgj7z5+GZGth/besRNORYw
-            C9SkSN7368r/mFyYk8+NeGhlKjSoW3P1KcShg+fhn6rj7cAMUaF9Dss5oB4/ccZ/
-            0lEBUa+1Ti3k67nbenyjiAoNZLS2T9XqKyM4cbmSH4TS/3zUTGzedKIKjKUoE/CF
-            iYEjCbtfIPMReXqHXgKTUPT7FnnXCtqyNehLM50aCMhswoc=
-            =rvQ0
-            -----END PGP MESSAGE-----
-          fp: 0DC2C394B4A6E61B4F1ADAB5CB3A51C0BB088893
-        - created_at: "2025-07-17T11:02:29Z"
-          enc: |-
-            -----BEGIN PGP MESSAGE-----
-
-            hF4D5qLO0u7JQjUSAQdAEEKupBhKq4A0X1GIEGAwb9j2EYebTV6wyzYjua2LhAYw
-            s3ArxUSfQL2vy4pPs3jNCh+NeXA0dLuL2sXPG7kk/6f4/NFsYZKHnim7W/dzAsE7
-            0lEBP+sxENy75OPD5v1JGnsL//U4Yq8oRX242qjtaJ73sX19deavJ2eV73FVyRoK
-            4QSpcAhJPXnyjNWUcmpi2fLu68B7YyJmnOSyuBRXMMvGSVo=
-            =GdKC
+            hF4D5qLO0u7JQjUSAQdAk6Pp1xfN47hOcJUk2elakYp+FaWHLh+ehkJ4hA0npy4w
+            Fw6IkFbUQHv+yfxFuexnrqF8v7PzbNvdiLUtNCKvKwHgSjPVjGALd3eoUWd/ZZnk
+            0lEBA8eiN1NsqMmY7FWY89W4mnGYtkNGC1h+E5BU3ZsFYaVuvi8ucMsQ+q/PCOiE
+            tn3k9hPPBrXfyXZHDaY/bcrcUaiM8SELjudcSpzWNnSOO2E=
+            =5ZLt
             -----END PGP MESSAGE-----
           fp: 3CD1E7C05DE129DF2E8608DD666F4A84A390B618
     unencrypted_suffix: _unencrypted

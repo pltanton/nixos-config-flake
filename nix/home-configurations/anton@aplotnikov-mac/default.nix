@@ -11,5 +11,7 @@
 
       nixpkgs.config.allowUnfree = true;
     }
+
+    (import ./syncthing.nix)
   ];
 }

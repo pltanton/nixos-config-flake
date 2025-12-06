@@ -13,7 +13,10 @@
     ./hypridle.nix
     ./targets.nix
     ./targets-config.nix
-    ./hyprpanel.nix
+  ];
+
+  home.packages = lib.mkIf config.wayland.windowManager.hyprland.enable [
+    pkgs.hyprlauncher
   ];
 
   wayland.windowManager.hyprland = {

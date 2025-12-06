@@ -27,7 +27,7 @@ _: {
         "pin,class:^(firefox)$,title:^(Picture-in-Picture)$"
         "center,class:^(firefox)$,title:^(Picture-in-Picture)$"
         "float,class:^(firefox)$,title:^(.*)(Sharing Indicator)$"
-        "move 0 0:^(firefox)$,title:^(.*)(Sharing Indicator)$"
+        # "move 0 0:^(firefox)$,title:^(.*)(Sharing Indicator)$"
 
         # zen picture in picture float and pin
         "float,class:^(zen)$,title:^(Extension: \(fx_cast\))(.*)$"
@@ -35,7 +35,7 @@ _: {
         "pin,class:^(zen)$,title:^(Picture-in-Picture)$"
         "center,class:^(zen)$,title:^(Picture-in-Picture)$"
         "float,class:^(zen)$,title:^(.*)(Sharing Indicator)$"
-        "move 0 0:^(zen)$,title:^(.*)(Sharing Indicator)$"
+        # "move 0 0:^(zen)$,title:^(.*)(Sharing Indicator)$"
 
         # Notifications
         "animation slide, class:(swaync)"
