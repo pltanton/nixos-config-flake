@@ -2,7 +2,6 @@
   imports = with inputs; [
     autobrowser.homeModules.default
 
-    ./sketchybar
     ./aerospace.nix
     ./alacritty.nix
     ./autobrowser.nix

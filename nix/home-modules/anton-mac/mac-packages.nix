@@ -4,5 +4,8 @@
 
     wireguard-tools
     wireguard-go
+
+    codex
+    codex-acp
   ];
 }

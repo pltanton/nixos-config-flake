@@ -17,7 +17,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    homebrew.casks = ["karabiner-elements"];
+    # homebrew.casks = ["karabiner-elements"];
     # services.karabiner-elements.enable = true;
     launchd.daemons = {
       kanata = {

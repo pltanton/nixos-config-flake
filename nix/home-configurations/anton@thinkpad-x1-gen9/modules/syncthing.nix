@@ -1,5 +1,4 @@
-{...}:
-{
+_: {
   services.syncthing = {
     enable = true;
     overrideDevices = true;
@@ -20,7 +19,7 @@
       folders = {
         "/home/anton/Obsidian/Anton" = {
           id = "obsidian-anton";
-          devices = [ "mac" "nothing" "home-server" ];
+          devices = ["mac" "nothing" "home-server"];
           versioning = {
             type = "staggered";
             params = {
@@ -32,7 +31,7 @@
 
         "/home/anton/Obsidian/Family" = {
           id = "obsidian-family";
-          devices = [ "home-server" "mac" "nothing" ];
+          devices = ["home-server" "mac" "nothing"];
           versioning = {
             type = "staggered";
             params = {

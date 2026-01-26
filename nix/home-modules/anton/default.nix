@@ -10,6 +10,7 @@
     ./modules/gpg-agent.nix
     ./modules/nh.nix
     ./modules/nix.nix
+    ./modules/secrets.nix
     ./modules/shell.nix
     ./modules/ssh.nix
     ./modules/stylix.nix

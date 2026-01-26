@@ -18,8 +18,8 @@
   concurrent-tap-hold   yes
 
   macos-dev-names-include (
-    "Apple Internal Keyboard / Trackpad"
-    ;;"Karabiner DriverKit VirtualHIDKeyboard 1.8.0"
+    ;;"Apple Internal Keyboard / Trackpad"
+    "Karabiner DriverKit VirtualHIDKeyboard 1.8.0"
   )
 )
 

@@ -73,6 +73,8 @@
     protoc-gen-go # Protocol buffer compiler plugin for Go
     protoc-gen-go-grpc # gRPC compiler plugin for Go
 
+    codex-acp
+
     ########################
     # Database Tools       #
     ########################
@@ -116,7 +118,7 @@
     gemini-cli
     tombi
 
-    # spotify
+    spotify
     discord
     anki-bin
     thunderbird

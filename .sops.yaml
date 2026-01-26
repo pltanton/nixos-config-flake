@@ -1,6 +1,7 @@
 keys:
   - &admin_nitro 0DC2C394B4A6E61B4F1ADAB5CB3A51C0BB088893
   - &admin_yubikey 3CD1E7C05DE129DF2E8608DD666F4A84A390B618
+  - &admin_main 36CDADF36BB2F60AADA33C0B5AB2E1856C8EA605
   - &server_hz1 age1t6u47xmualvn7lndtsn98y8xlpxuyndfsz6jrlcm9cpn35us5s3qhfwtlt
   - &server_home age1tprf2san093h29kcg0m24w9mj0004hleq272cav9fpk2vpjqugxs9gpghz
   - &server_gen9_old age1fvg2us7x9egswfkpw8h4yrq85jmda9v2grullgfh0uva8eauk3esqune00
@@ -17,27 +18,34 @@ creation_rules:
   - path_regex: nix/nixos-modules/sops/hz1.yaml$
     key_groups:
       - pgp:
-          - *admin_yubikey
+          - *admin_main
         age:
           - *server_hz1
 
   - path_regex: nix/nixos-modules/sops/home-server.yaml$
     key_groups:
       - pgp:
-          - *admin_yubikey
+          - *admin_main
         age:
           - *server_home
 
   - path_regex: nix/nixos-modules/sops/anton.yaml$
     key_groups:
       - pgp:
-          - *admin_yubikey
+          - *admin_main
         age:
           - *server_tp_gen9
 
   - path_regex: nix/nixos-modules/sops/desktop.yaml$
     key_groups:
       - pgp:
-          - *admin_yubikey
+          - *admin_main
+        age:
+          - *server_tp_gen9
+
+  - path_regex: nix/home-modules/anton/secrets.yaml$
+    key_groups:
+      - pgp:
+          - *admin_main
         age:
           - *server_tp_gen9

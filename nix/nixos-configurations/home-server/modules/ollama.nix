@@ -1,4 +1,4 @@
-_: {
+{pkgs, ...}: {
   services.ollama = {
     enable = true;
     host = "0.0.0.0";
@@ -9,8 +9,7 @@ _: {
       "gemma3:4b"
       "gemma3:1b"
     ];
-    acceleration = "rocm";
-    # acceleration = false;
+    package = pkgs.ollama-rocm;
     rocmOverrideGfx = "9.0.0";
     environmentVariables = {
       OLLAMA_ORIGINS = "moz-extension://*,chrome-extension://*,safari-web-extension://*";

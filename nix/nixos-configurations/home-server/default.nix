@@ -8,6 +8,7 @@
 
   modules = with inputs; [
     self.nixosModules.common
+    self.nixosModules.common-ssh-keys
 
     inputs.home-manager.nixosModules.home-manager
     {

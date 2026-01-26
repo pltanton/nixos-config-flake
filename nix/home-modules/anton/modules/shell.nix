@@ -2,8 +2,11 @@
   pkgs,
   inputs,
   config,
+  sops,
   ...
 }: {
+  # sops.secrets."env".owner = "anton";
+
   home = {
     packages = with pkgs; [fasd fzf grc];
 
