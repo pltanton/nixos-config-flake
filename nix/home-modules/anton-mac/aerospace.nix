@@ -43,7 +43,7 @@ in {
     enable = true;
     # package = pkgs.local.aerospace;
     launchd.enable = true;
-    userSettings = {
+    settings = {
       start-at-login = true;
       key-mapping.preset = "dvorak";
       automatically-unhide-macos-hidden-apps = true;
