@@ -1,6 +1,11 @@
 {inputs, ...}: {
   system = "x86_64-darwin";
 
+  sops = {
+    defaultSopsFile = ../secrets.yaml;
+    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
+  };
+
   modules = [
     inputs.self.homeModules.anton
     inputs.self.homeModules.anton-mac

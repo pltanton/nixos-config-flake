@@ -1,7 +1,7 @@
 {lib, ...}: {
   services.resolved = {
     enable = false;
-    extraConfig = lib.generators.toINI {} {
+    settings = {
       Resolve = {
         DNS = "10.100.0.1";
         Domains = "home";

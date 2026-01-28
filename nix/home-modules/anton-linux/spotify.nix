@@ -8,11 +8,8 @@
 in {
   programs.spicetify = {
     enable = true;
-    theme = spicePkgs.themes.catppuccin;
-    colorScheme = lib.mkDefault "mocha";
+    theme = spicePkgs.themes.default;
   };
 
-  specialisation.light.configuration = {
-    programs.spicetify.colorScheme = "latte";
-  };
+  # Removed catppuccin theme to avoid spotify binary conflicts.
 }

@@ -118,7 +118,6 @@
     gemini-cli
     tombi
 
-    spotify
     discord
     anki-bin
     thunderbird

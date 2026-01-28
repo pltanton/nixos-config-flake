@@ -3,11 +3,6 @@
   lib,
   ...
 }: {
-  sops = {
-    defaultSopsFile = ../secrets.yaml;
-    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
-  };
-
   sops.secrets."perplexity-api-key" = {};
 
   programs.fish.interactiveShellInit = lib.mkAfter ''

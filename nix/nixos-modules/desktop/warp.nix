@@ -1,6 +1,6 @@
-{pkgs, ...}: {
-  environment.systemPackages = [pkgs.desktop-file-utils];
+{pkgs, lib, config, ...}: {
+  environment.systemPackages = lib.mkIf config.services.cloudflare-warp.enable [pkgs.desktop-file-utils];
   services.cloudflare-warp = {
-    enable = true;
+    enable = false;
   };
 }

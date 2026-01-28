@@ -56,6 +56,11 @@
             config.allowUnfree = true;
           };
 
+         sof-firmware = (import inputs.nixpkgs-sof {
+            system = _prev.system;
+            config.allowUnfree = true;
+          }).sof-firmware;
+
           #local = import inputs.nixpkgs-local {
           #  system = _prev.system;
           #  config.allowUnfree = true;
@@ -90,9 +95,10 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-sof.url = "github:r-ryantm/nixpkgs/auto-update/sof-firmware";
     # nixpkgs-flakehub.url = "https://flakehub.com/f/NixOS/nixpkgs/*";
     nixpkgs.follows = "nixpkgs-unstable";
-    nixpkgs-local.url = "path:/Users/anton/Workdir/nixpkgs";
+    # nixpkgs-local.url = "path:/Users/anton/Workdir/nixpkgs";
 
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -109,8 +115,6 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    hyprcursor-phinger.url = "github:jappie3/hyprcursor-phinger";
 
     # ─── APPS ────────────────────────────────────────────────────────
     zen-browser.url = "github:youwen5/zen-browser-flake";

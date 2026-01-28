@@ -1,6 +1,6 @@
 _: {
   networking = {
-    hostName = "thinkpad-x1-gen9";
+    hostName = "omen-14";
 
     extraHosts = ''
       127.0.0.1 db

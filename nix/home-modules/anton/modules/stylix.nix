@@ -43,7 +43,7 @@
   };
 
   catppuccin = {
-    enable = true;
+    enable = false;
     flavor = lib.mkDefault "mocha";
     accent = lib.mkDefault "sky";
   };

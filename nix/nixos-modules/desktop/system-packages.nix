@@ -1,9 +1,9 @@
 {pkgs, ...}: {
   programs.fish.enable = true;
-  programs.adb.enable = true;
 
   environment.systemPackages = with pkgs; [
     acpi
+    android-tools
     busybox
 
     exfat

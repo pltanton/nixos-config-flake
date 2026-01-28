@@ -16,36 +16,36 @@
   #   after = lib.mkForce [ ];
   # };
 
-  sops.secrets."wireguard/gen9/home" = {};
-  sops.secrets."wireguard/gen9/hz1" = {};
+  # sops.secrets."wireguard/gen9/home" = {};
+  # sops.secrets."wireguard/gen9/hz1" = {};
 
-  networking.wireguard.interfaces = {
-    wg-home = {
-      privateKeyFile = "/run/secrets/wireguard/gen9/home";
-      ips = ["10.100.0.4/32"];
-      peers = [
-        {
-          publicKey = "Rv9ZSp8/fvFj1Zohwragvv4K4Z+qo0c9rinZvfaJ5CY=";
-          allowedIPs = ["10.100.0.0/24"];
-          # endpoint = "home.kaliwe.ru:51820";
-          endpoint = "192.168.0.100:51820";
-          persistentKeepalive = 25;
-        }
-      ];
-    };
+  # networking.wireguard.interfaces = {
+  #   wg-home = {
+  #     privateKeyFile = "/run/secrets/wireguard/gen9/home";
+  #     ips = ["10.100.0.4/32"];
+  #     peers = [
+  #       {
+  #         publicKey = "Rv9ZSp8/fvFj1Zohwragvv4K4Z+qo0c9rinZvfaJ5CY=";
+  #         allowedIPs = ["10.100.0.0/24"];
+  #         # endpoint = "home.kaliwe.ru:51820";
+  #         endpoint = "192.168.0.100:51820";
+  #         persistentKeepalive = 25;
+  #       }
+  #     ];
+  #   };
 
-    wg-hz1 = {
-      ips = ["10.10.10.2/32"];
-      privateKeyFile = "/run/secrets/wireguard/gen9/hz1";
-      peers = [
-        {
-          allowedIPs = ["10.10.10.0/24"];
-          publicKey = "0vuNrDaID3o8YwbNBZ7RViB0O0z6Kt32mpK36PUDgg8=";
-          endpoint = "195.201.150.251:51820";
-          persistentKeepalive = 25;
-        }
-      ];
-    };
+  #   wg-hz1 = {
+  #     ips = ["10.10.10.2/32"];
+  #     privateKeyFile = "/run/secrets/wireguard/gen9/hz1";
+  #     peers = [
+  #       {
+  #         allowedIPs = ["10.10.10.0/24"];
+  #         publicKey = "0vuNrDaID3o8YwbNBZ7RViB0O0z6Kt32mpK36PUDgg8=";
+  #         endpoint = "195.201.150.251:51820";
+  #         persistentKeepalive = 25;
+  #       }
+  #     ];
+  #   };
 
     # wg-sprintbox = {
     #   privateKey = secrets.wg.sprintbox.privateKey;
@@ -74,5 +74,5 @@
     #       persistentKeepalive = 25;
     #     }];
     #   };
-  };
+  # };
 }

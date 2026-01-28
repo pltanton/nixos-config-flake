@@ -56,10 +56,7 @@ _: {
         "float,title:^Extension: (Bitwarden Password Manager).*$"
       ];
 
-      layerrule = [
-        "blur,swaync-control-center"
-        "ignorezero,swaync-control-center"
-      ];
+
     };
   };
 }

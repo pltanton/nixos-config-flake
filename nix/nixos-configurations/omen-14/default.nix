@@ -2,7 +2,7 @@
   system = "x86_64-linux";
 
   specialArgs = {
-    stateVersion = "22.05";
+    stateVersion = "25.11";
   };
 
   modules = with inputs; [

@@ -6,16 +6,16 @@
 }: {
   services = {
     gnome = {
-      gnome-browser-connector.enable = config.services.xserver.desktopManager.gnome.enable;
+      gnome-browser-connector.enable = config.services.desktopManager.gnome.enable;
     };
 
     desktopManager.cosmic.enable = false;
+    desktopManager.gnome.enable = false;
     displayManager.cosmic-greeter.enable = false;
+    displayManager.gdm.enable = config.services.desktopManager.gnome.enable;
 
     xserver = {
       enable = false;
-      desktopManager.gnome.enable = false;
-      displayManager.gdm.enable = config.services.xserver.desktopManager.gnome.enable;
     };
 
     libinput = {
@@ -30,13 +30,12 @@
     portal.enable = true;
   };
 
-  environment = lib.mkIf config.services.xserver.desktopManager.gnome.enable {
+  environment = lib.mkIf config.services.desktopManager.gnome.enable {
     pathsToLink = ["/share/xdg-desktop-portal" "/share/applications"];
 
     systemPackages = with pkgs.gnomeExtensions; [
       tiling-shell
       clipboard-history
-      cloudflare-warp-toggle
       hot-edge
       mouse-follows-focus
       quick-lang-switch

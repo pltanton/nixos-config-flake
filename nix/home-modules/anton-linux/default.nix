@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{inputs, lib, ...}: {
   imports = with inputs; [
     self.homeModules.common
     self.homeModules.backgrounds
@@ -10,7 +10,6 @@
     ddcsync.homeManagerModules.default
     autobrowser.homeModules.default
 
-    hyprcursor-phinger.homeManagerModules.hyprcursor-phinger
     spicetify-nix.homeManagerModules.spicetify
 
     ./hyprland
@@ -47,6 +46,7 @@
 
   sops = {
     scope = "anton";
+    defaultSopsFile = lib.mkForce ../anton/secrets.yaml;
     age.keyFile = "/home/anton/.config/sops/age/keys.txt";
     age.sshKeyPaths = ["/home/anton/.ssh/id_ed25519"];
   };

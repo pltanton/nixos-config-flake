@@ -18,6 +18,9 @@ rebuild-switch-sprintbox: build_host = root@sprintbox.kaliwe.ru
 rebuild-switch-thinkpad-x1-gen9: target = ""
 rebuild-switch-thinkpad-x1-gen9: build_host = ""
 
+rebuild-switch-omen-14: target = root@192.168.0.82
+rebuild-switch-omen-14: build_host = root@192.168.0.82
+
 rebuild-switch-%:
 	@echo Run nixos-rebuild for machine $* on host: ${target} with build_host: ${build_host}
 	nixos-rebuild --flake .#$* --build-host ${build_host} --target-host ${target} --use-remote-sudo --fast switch
