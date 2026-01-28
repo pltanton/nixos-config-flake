@@ -74,6 +74,7 @@
     protoc-gen-go-grpc # gRPC compiler plugin for Go
 
     codex-acp
+    codex
 
     ########################
     # Database Tools       #

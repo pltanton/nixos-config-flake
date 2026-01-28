@@ -6,7 +6,7 @@
   scripts = import ./scripts input;
   hyprlandPkg = config.wayland.windowManager.hyprland.package;
   swayncClient = "${config.services.swaync.package}/bin/swaync-client";
-  inherit (config.lib.stylix) colors;
+  catppuccinRed = "f38ba8";
 in {
   programs.waybar = {
     style = builtins.readFile ./waybar.css;
@@ -168,7 +168,7 @@ in {
           "tooltip" = true;
           "format" = "{icon}";
           "format-icons" = {
-            "notification" = "<span foreground='#${colors.base08}'>*</span>";
+            "notification" = "<span foreground='#${catppuccinRed}'>*</span>";
             "none" = "";
             "dnd-notification" = "";
             "dnd-none" = "";

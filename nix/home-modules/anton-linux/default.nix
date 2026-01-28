@@ -30,7 +30,7 @@
     ./services.nix
     ./spotify.nix
     ./ssh-agent.nix
-    ./stylix.nix
+    ./theme.nix
     ./swaync.nix
     ./swayosd.nix
     ./vscode.nix

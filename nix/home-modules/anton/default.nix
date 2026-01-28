@@ -13,7 +13,7 @@
     ./modules/secrets.nix
     ./modules/shell.nix
     ./modules/ssh.nix
-    ./modules/stylix.nix
+    ./modules/theme.nix
     ./modules/thunderbird.nix
     ./modules/vim.nix
     ./modules/yubikey.nix

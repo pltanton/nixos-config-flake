@@ -16,7 +16,6 @@
   ];
 
   home.packages = lib.mkIf config.wayland.windowManager.hyprland.enable [
-    pkgs.hyprlauncher
   ];
 
   wayland.windowManager.hyprland = {

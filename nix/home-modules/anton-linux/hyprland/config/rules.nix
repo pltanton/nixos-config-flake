@@ -9,51 +9,51 @@ _: {
         "11, defaultName:"
       ];
 
-      windowrulev2 = [
-        "workspace 11,class:^.telegram-desktop-wrapped$"
-        "workspace 11,title:(^Slack.*$)"
-        "workspace 1,class:(^firefox$)"
-        "workspace 1,class:(^zen$)"
+      windowrule = [
+        "match:class ^.telegram-desktop-wrapped$, workspace 11"
+        "match:title (^Slack.*$), workspace 11"
+        "match:class (^firefox$), workspace 1"
+        "match:class (^zen$), workspace 1"
 
         # telegram media viewer
-        "float,class:^(.telegram-desktop-wrapped)$,title:^(Choose)(.*)$"
-        "size 1100 700,class:^(.telegram-desktop-wrapped)$,title:^(Choose)(.*)$"
-        "move onscreen cursor 50% 50%,class:^(.telegram-desktop-wrapped)$,title:^(Choose)(.*)$"
-        "center,class:^(.telegram-desktop-wrapped)$,title:^(Choose)(.*)$"
+        "match:class ^(.telegram-desktop-wrapped)$, match:title ^(Choose)(.*)$, float 1"
+        "match:class ^(.telegram-desktop-wrapped)$, match:title ^(Choose)(.*)$, size 1100 700"
+        "match:class ^(.telegram-desktop-wrapped)$, match:title ^(Choose)(.*)$, move (cursor_x-(window_w*0.5)) (cursor_y-(window_h*0.5))"
+        "match:class ^(.telegram-desktop-wrapped)$, match:title ^(Choose)(.*)$, center 1"
 
         # firefox picture in picture float and pin
-        "float,class:^(firefox)$,title:^(Extension: \(fx_cast\))(.*)$"
-        "float,class:^(firefox)$,title:^(Picture-in-Picture)$"
-        "pin,class:^(firefox)$,title:^(Picture-in-Picture)$"
-        "center,class:^(firefox)$,title:^(Picture-in-Picture)$"
-        "float,class:^(firefox)$,title:^(.*)(Sharing Indicator)$"
+        "match:class ^(firefox)$, match:title ^(Extension: \\(fx_cast\\))(.*)$, float 1"
+        "match:class ^(firefox)$, match:title ^(Picture-in-Picture)$, float 1"
+        "match:class ^(firefox)$, match:title ^(Picture-in-Picture)$, pin 1"
+        "match:class ^(firefox)$, match:title ^(Picture-in-Picture)$, center 1"
+        "match:class ^(firefox)$, match:title ^(.*)(Sharing Indicator)$, float 1"
         # "move 0 0:^(firefox)$,title:^(.*)(Sharing Indicator)$"
 
         # zen picture in picture float and pin
-        "float,class:^(zen)$,title:^(Extension: \(fx_cast\))(.*)$"
-        "float,class:^(zen)$,title:^(Picture-in-Picture)$"
-        "pin,class:^(zen)$,title:^(Picture-in-Picture)$"
-        "center,class:^(zen)$,title:^(Picture-in-Picture)$"
-        "float,class:^(zen)$,title:^(.*)(Sharing Indicator)$"
+        "match:class ^(zen)$, match:title ^(Extension: \\(fx_cast\\))(.*)$, float 1"
+        "match:class ^(zen)$, match:title ^(Picture-in-Picture)$, float 1"
+        "match:class ^(zen)$, match:title ^(Picture-in-Picture)$, pin 1"
+        "match:class ^(zen)$, match:title ^(Picture-in-Picture)$, center 1"
+        "match:class ^(zen)$, match:title ^(.*)(Sharing Indicator)$, float 1"
         # "move 0 0:^(zen)$,title:^(.*)(Sharing Indicator)$"
 
         # Notifications
-        "animation slide, class:(swaync)"
+        "match:class (swaync), animation slide"
 
         # Thunderbird
-        "float,class:thunderbird,initialTitle:Calendar Reminders"
+        "match:class thunderbird, match:initial_title Calendar Reminders, float 1"
 
         # Transparent terminals
-        "opacity 0.95,class:(com.mitchellh.ghostty)"
-        "opacity 0.95,class:(Alacritty)"
+        "match:class (com.mitchellh.ghostty), opacity 0.95"
+        "match:class (Alacritty), opacity 0.95"
 
         # Idea
-        "noinitialfocus, class:(jetbrains-)(.*), floating:1"
+        "match:class (jetbrains-)(.*), match:float 1, no_initial_focus 1"
 
         # Floating DE elements
-        "float,class:^\.blueman-manager-wrapped$"
-        "float,class:^nm-connection-editor$"
-        "float,title:^Extension: (Bitwarden Password Manager).*$"
+        "match:class ^\\.blueman-manager-wrapped$, float 1"
+        "match:class ^nm-connection-editor$, float 1"
+        "match:title ^Extension: (Bitwarden Password Manager).*$, float 1"
       ];
 
 

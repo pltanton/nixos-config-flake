@@ -111,11 +111,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # ─── APPS ────────────────────────────────────────────────────────
     zen-browser.url = "github:youwen5/zen-browser-flake";
     lazyvim.url = "github:pfassina/lazyvim-nix";

@@ -16,9 +16,6 @@
       export ANKI_WAYLAND=1
     '';
   };
-  # export XCURSOR_SIZE=${toString config.stylix.cursor.size}
-  # export XCURSOR_THEME=${config.stylix.cursor.name}
-
   wayland.windowManager.hyprland.settings = {
     monitor = [
       ",preferred,auto,1,bitdepth,8"
@@ -28,11 +25,10 @@
       "uwsm --app -- slack"
       "uwsm --app -- telegram-desktop"
       "uwsm --app -- zen"
-      "uwsm --app -- hyprlauncher -d"
     ];
 
     exec = [
-      "hyprctl setcursor ${toString config.stylix.cursor.name} ${toString config.stylix.cursor.size}"
+      "hyprctl setcursor ${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}"
 
       # "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme '${config.gtk.theme.name}'"
       # "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface icon-theme '${config.gtk.iconTheme.name}'"
@@ -61,10 +57,8 @@
       layout = "hy3";
       # gaps_workspaces = 100;
 
-      # "col.active_border" = "rgb(${colors.base0E}) rgb(${colors.base0D}) 45deg";
-      # "col.inactive_border" = "rgb(${colors.base02})";
-      "col.active_border" = "$lavender $pink 45deg";
-      "col.inactive_border" = "$surface2";
+      "col.active_border" = "rgba(b4befeFF) rgba(f5c2e7FF) 45deg";
+      "col.inactive_border" = "rgba(585b70FF)";
     };
 
     decoration = {
@@ -80,7 +74,7 @@
         # range = 3;
         # render_power = 1;
         range = 8;
-        color = "rgba($pinkAlpha1a)";
+        color = "rgba(f5c2e71a)";
       };
 
       dim_inactive = false;
@@ -136,12 +130,12 @@
         height = 25;
         indicator_height = 0;
         font_family = "Inter";
-        "col.active" = "$surface1";
-        text_color = "$text";
-        "col.inactive" = "$surface0";
+        "col.active" = "rgba(45475aFF)";
+        text_color = "rgba(cdd6f4FF)";
+        "col.inactive" = "rgba(313244FF)";
       };
-      "col.border_active" = "$lavender";
-      "col.border_inactive" = "$surface0";
+      "col.border_active" = "rgba(b4befeFF)";
+      "col.border_inactive" = "rgba(313244FF)";
     };
 
     binds = {workspace_back_and_forth = true;};
@@ -171,10 +165,10 @@
         tabs = {
           opacity = 0.8;
           border_width = 0;
-          "col.active" = "$lavender";
-          "col.active.text" = "$base";
-          "col.inactive" = "$surface0";
-          "col.inactive.text" = "$text";
+          "col.active" = "rgba(b4befeFF)";
+          "col.active.text" = "rgba(1e1e2eFF)";
+          "col.inactive" = "rgba(313244FF)";
+          "col.inactive.text" = "rgba(cdd6f4FF)";
         };
 
         autotile = {

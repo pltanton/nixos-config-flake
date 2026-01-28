@@ -10,7 +10,7 @@
     ./ghostty.nix
     ./jankyborders.nix
     ./mac-packages.nix
-    ./stylix.nix
+    ./theme.nix
   ];
 
   nixpkgs.overlays = with inputs; [

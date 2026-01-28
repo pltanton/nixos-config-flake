@@ -5,7 +5,7 @@
       self.nixosModules.sops
 
       home-manager.nixosModules.home-manager
-      stylix.nixosModules.stylix
+      catppuccin.nixosModules.catppuccin
     ]
     ++ self.lib.modulesDir ./.;
 

@@ -1,13 +1,21 @@
 {config, ...}: let
   # wallpaper = ../../../../backgrounds/yosemite.png;
-  wallpaper = config.stylix.image;
+  wallpaper = toString config.backgrounds."metheora-mocha.jpg";
 in {
   services.hyprpaper = {
-    enable = config.wayland.windowManager.hyprland.enable;
+    inherit (config.wayland.windowManager.hyprland) enable;
+
     settings = {
       ipc = false;
+      preload = [
+        "${wallpaper}"
+      ];
       wallpaper = [
-        ",${wallpaper}"
+        {
+          monitor = "";
+          path = wallpaper;
+          fit_mode = "cover";
+        }
       ];
     };
   };

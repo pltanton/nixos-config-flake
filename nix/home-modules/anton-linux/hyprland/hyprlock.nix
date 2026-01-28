@@ -2,9 +2,7 @@
   config,
   lib,
   ...
-}: let
-  inherit (config.lib.stylix) colors;
-in {
+}: {
   programs.hyprlock = {
     enable = true;
 
@@ -22,7 +20,7 @@ in {
         {
           monitor = "";
           # path = "screenshot";
-          path = "${config.stylix.image}";
+          path = toString config.backgrounds."metheora-mocha.jpg";
           blur_passes = 3;
           contrast = 0.5;
           brightness = 0.3;

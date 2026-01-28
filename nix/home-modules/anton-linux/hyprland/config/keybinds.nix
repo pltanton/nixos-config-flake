@@ -43,8 +43,7 @@ in {
         # Rofi keybinds
         "SUPERSHIFT,v,exec,cliphist list | uwsm app -- rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img -show clipboard -show-icons -p "
         "SUPERSHIFT,e,exec,uwsm app -- rofi -show emoji -modi emoji"
-        # "SUPER,Return,exec,uwsm app -- rofi -show drun -show-icons"
-        "SUPER,Return,exec,uwsm app -- hyprlauncher"
+        "SUPER,Return,exec,uwsm app -- rofi -show drun"
 
         # "SUPERSHIFT,v,exec,cliphist list | uwsm app -- walker -m clipboard"
         # "SUPERSHIFT,e,exec,uwsm app -- walker -m emojis"
