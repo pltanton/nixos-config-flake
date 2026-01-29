@@ -102,18 +102,22 @@ in {
       # };
 
       gaps = {
-        inner.horizontal = 6;
-        inner.vertical = 6;
-        outer.left = 6;
-        outer.bottom = 6;
-        outer.top = 6;
-        # outer.top = [
-        #   # { monitor.built-in = 6; }
-        #   # 40
-        #   6
-        # ];
-        # outer.top = 6;
-        outer.right = 6;
+        inner = {
+          horizontal = 6;
+          vertical = 6;
+        };
+        outer = {
+          left = 6;
+          bottom = 6;
+          top = 6;
+          # outer.top = [
+          #   # { monitor.built-in = 6; }
+          #   # 40
+          #   6
+          # ];
+          # outer.top = 6;
+          right = 6;
+        };
       };
       mode = {
         main.binding =

@@ -12,38 +12,44 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = ["dm-snapshot"];
+  boot = {
+    initrd = {
+      availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
+      kernelModules = ["dm-snapshot"];
+      luks.devices."lvm".device = "/dev/nvme0n1p2";
+    };
 
-  boot.kernelParams = [
-    "i2c.timeout=100"
-    "drm.debug=0"
-    "nvidia.NVreg_TemporaryFilePath=/var/tmp"
-  ];
-  boot.blacklistedKernelModules = [ "i2c_designware_pci" "i2c_designware_platform" ];
+    kernelParams = [
+      "nvidia.NVreg_TemporaryFilePath=/var/tmp"
+      "loglevel=3"
+      "quiet"
+    ];
+    blacklistedKernelModules = ["i2c_designware_pci" "i2c_designware_platform"];
 
-  boot.initrd.luks.devices."lvm".device = "/dev/nvme0n1p2";
-  boot.loader.systemd-boot.consoleMode = "max";
+    loader.systemd-boot.consoleMode = "max";
 
-  boot.kernelModules = ["kvm-intel" "hp-wmi"];
-  boot.extraModulePackages = [];
-
-  fileSystems."/" = {
-    device = "/dev/mapper/vg0-root";
-    fsType = "btrfs";
-    options = ["subvol=@" "compress=zstd" "noatime"];
+    kernelModules = ["kvm-intel" "hp-wmi"];
+    extraModulePackages = [];
   };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/CE93-2BAE";
-    fsType = "vfat";
-    options = ["fmask=0022" "dmask=0022"];
-  };
+  fileSystems = {
+    "/" = {
+      device = "/dev/mapper/vg0-root";
+      fsType = "btrfs";
+      options = ["subvol=@" "compress=zstd" "noatime"];
+    };
 
-  fileSystems."/home" = {
-    device = "/dev/mapper/vg0-root";
-    fsType = "btrfs";
-    options = ["subvol=@home" "compress=zstd" "noatime"];
+    "/boot" = {
+      device = "/dev/disk/by-uuid/CE93-2BAE";
+      fsType = "vfat";
+      options = ["fmask=0022" "dmask=0022"];
+    };
+
+    "/home" = {
+      device = "/dev/mapper/vg0-root";
+      fsType = "btrfs";
+      options = ["subvol=@home" "compress=zstd" "noatime"];
+    };
   };
 
   swapDevices = [

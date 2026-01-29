@@ -17,33 +17,33 @@
 }: let
   cfg = config.calibre-web-automated;
 in {
-  options = {
-    calibre-web-automated.enable = lib.mkEnableOption "enable calibre-web-automated module";
+  options.calibre-web-automated = {
+    enable = lib.mkEnableOption "enable calibre-web-automated module";
 
-    calibre-web-automated.domainName = lib.mkOption {type = lib.types.str;};
-    calibre-web-automated.certHostDomainName = lib.mkOption {type = lib.types.str;};
+    domainName = lib.mkOption {type = lib.types.str;};
+    certHostDomainName = lib.mkOption {type = lib.types.str;};
 
-    calibre-web-automated.dataDir = lib.mkOption {
+    dataDir = lib.mkOption {
       type = lib.types.str;
       default = "/var/lib/calibre-web-automated";
     };
 
-    calibre-web-automated.libraryDir = lib.mkOption {
+    libraryDir = lib.mkOption {
       type = lib.types.str;
       default = "/var/lib/ebooks";
     };
 
-    calibre-web-automated.user = lib.mkOption {
+    user = lib.mkOption {
       type = lib.types.str;
       default = "calibre";
     };
 
-    calibre-web-automated.group = lib.mkOption {
+    group = lib.mkOption {
       type = lib.types.str;
       default = "calibre";
     };
 
-    calibre-web-automated.port = lib.mkOption {
+    port = lib.mkOption {
       type = lib.types.port;
       default = 8083;
     };
@@ -67,19 +67,40 @@ in {
         clientMaxBodySize = "500m";
       };
 
-      # Create storage for actual media files
-      systemd.tmpfiles.rules = [
-        "d ${cfg.libraryDir} 0755 ${cfg.user} ${cfg.group} "
-        "d ${cfg.dataDir} 0755 ${cfg.user} ${cfg.group} "
-        "d ${configDir} 0755 ${cfg.user} ${cfg.group} "
-        "d ${ingestDir} 0755 ${cfg.user} ${cfg.group} "
-      ];
-
       # Runtime
-      virtualisation.podman = {
-        enable = true;
-        autoPrune.enable = true;
-        dockerCompat = true;
+      virtualisation = {
+        podman = {
+          enable = true;
+          autoPrune.enable = true;
+          dockerCompat = true;
+        };
+
+        oci-containers = {
+          backend = "podman";
+
+          # Containers
+          containers."calibre-web-automated" = {
+            image = "crocodilestick/calibre-web-automated:V3.0.4";
+            environment = {
+              "PGID" = "1000";
+              "PUID" = "1000";
+              "TZ" = "America/Los_Angeles";
+            };
+            volumes = [
+              "${configDir}:/config:rw"
+              "${ingestDir}:/cwa-book-ingest:rw"
+              "${cfg.libraryDir}:/calibre-library:rw"
+            ];
+            ports = [
+              "${builtins.toString cfg.port}:8083/tcp"
+            ];
+            log-driver = "journald";
+            extraOptions = [
+              "--network-alias=calibre-web-automated"
+              "--network=calibre-web-automated_default"
+            ];
+          };
+        };
       };
 
       # Enable container name DNS for all Podman networks.
@@ -92,71 +113,57 @@ in {
         "${matchAll}".allowedUDPPorts = [53];
       };
 
-      virtualisation.oci-containers.backend = "podman";
+      systemd = {
+        # Create storage for actual media files
+        tmpfiles.rules = [
+          "d ${cfg.libraryDir} 0755 ${cfg.user} ${cfg.group} "
+          "d ${cfg.dataDir} 0755 ${cfg.user} ${cfg.group} "
+          "d ${configDir} 0755 ${cfg.user} ${cfg.group} "
+          "d ${ingestDir} 0755 ${cfg.user} ${cfg.group} "
+        ];
 
-      # Containers
-      virtualisation.oci-containers.containers."calibre-web-automated" = {
-        image = "crocodilestick/calibre-web-automated:V3.0.4";
-        environment = {
-          "PGID" = "1000";
-          "PUID" = "1000";
-          "TZ" = "America/Los_Angeles";
+        services."podman-calibre-web-automated" = {
+          serviceConfig = {
+            Restart = lib.mkOverride 90 "always";
+          };
+          after = [
+            "podman-network-calibre-web-automated_default.service"
+          ];
+          requires = [
+            "podman-network-calibre-web-automated_default.service"
+          ];
+          partOf = [
+            "podman-compose-calibre-web-automated-root.target"
+          ];
+          wantedBy = [
+            "podman-compose-calibre-web-automated-root.target"
+          ];
         };
-        volumes = [
-          "${configDir}:/config:rw"
-          "${ingestDir}:/cwa-book-ingest:rw"
-          "${cfg.libraryDir}:/calibre-library:rw"
-        ];
-        ports = [
-          "${builtins.toString cfg.port}:8083/tcp"
-        ];
-        log-driver = "journald";
-        extraOptions = [
-          "--network-alias=calibre-web-automated"
-          "--network=calibre-web-automated_default"
-        ];
-      };
-      systemd.services."podman-calibre-web-automated" = {
-        serviceConfig = {
-          Restart = lib.mkOverride 90 "always";
-        };
-        after = [
-          "podman-network-calibre-web-automated_default.service"
-        ];
-        requires = [
-          "podman-network-calibre-web-automated_default.service"
-        ];
-        partOf = [
-          "podman-compose-calibre-web-automated-root.target"
-        ];
-        wantedBy = [
-          "podman-compose-calibre-web-automated-root.target"
-        ];
-      };
 
-      # Networks
-      systemd.services."podman-network-calibre-web-automated_default" = {
-        path = [pkgs.podman];
-        serviceConfig = {
-          Type = "oneshot";
-          RemainAfterExit = true;
-          ExecStop = "podman network rm -f calibre-web-automated_default";
+        # Networks
+        services."podman-network-calibre-web-automated_default" = {
+          path = [pkgs.podman];
+          serviceConfig = {
+            Type = "oneshot";
+            RemainAfterExit = true;
+            ExecStop = "podman network rm -f calibre-web-automated_default";
+          };
+          script = ''
+            podman network inspect calibre-web-automated_default || podman network create calibre-web-automated_default
+          '';
+          partOf = ["podman-compose-calibre-web-automated-root.target"];
+          wantedBy = ["podman-compose-calibre-web-automated-root.target"];
         };
-        script = ''
-          podman network inspect calibre-web-automated_default || podman network create calibre-web-automated_default
-        '';
-        partOf = ["podman-compose-calibre-web-automated-root.target"];
-        wantedBy = ["podman-compose-calibre-web-automated-root.target"];
-      };
 
-      # Root service
-      # When started, this will automatically create all resources and start
-      # the containers. When stopped, this will teardown all resources.
-      systemd.targets."podman-compose-calibre-web-automated-root" = {
-        unitConfig = {
-          Description = "Root target generated by compose2nix.";
+        # Root service
+        # When started, this will automatically create all resources and start
+        # the containers. When stopped, this will teardown all resources.
+        targets."podman-compose-calibre-web-automated-root" = {
+          unitConfig = {
+            Description = "Root target generated by compose2nix.";
+          };
+          wantedBy = ["multi-user.target"];
         };
-        wantedBy = ["multi-user.target"];
       };
 
       users.users = {

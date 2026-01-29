@@ -35,36 +35,39 @@
       lib = {};
 
       withOverlays = [
-        (_final: _prev: {
+        (_final: _prev: let
           nixpkgs-flake = import inputs.nixpkgs {
-            system = _prev.system;
+            inherit (_prev) system;
             config.allowUnfree = true;
           };
 
           unstable = import inputs.nixpkgs-unstable {
-            system = _prev.system;
+            inherit (_prev) system;
             config.allowUnfree = true;
           };
 
           master = import inputs.nixpkgs-master {
-            system = _prev.system;
+            inherit (_prev) system;
             config.allowUnfree = true;
           };
 
           stable = import inputs.nixpkgs-stable {
-            system = _prev.system;
+            inherit (_prev) system;
             config.allowUnfree = true;
           };
 
-         sof-firmware = (import inputs.nixpkgs-sof {
-            system = _prev.system;
+          nixpkgs-sof = import inputs.nixpkgs-sof {
+            inherit (_prev) system;
             config.allowUnfree = true;
-          }).sof-firmware;
+          };
 
-          #local = import inputs.nixpkgs-local {
-          #  system = _prev.system;
-          #  config.allowUnfree = true;
-          #};
+          # nixpkgs-local = import inputs.nixpkgs-local {
+          #   inherit (_prev) system;
+          #   config.allowUnfree = true;
+          # };
+        in {
+          inherit nixpkgs-flake unstable master stable;
+          inherit (nixpkgs-sof) sof-firmware;
         })
       ];
 
@@ -137,6 +140,7 @@
     };
 
     catppuccin.url = "github:catppuccin/nix";
+    hyprdynamicmonitors.url = "github:fiffeek/hyprdynamicmonitors";
 
     # ─── APPLICATIONS ────────────────────────────────────────────────
     nur.url = "github:nix-community/NUR";
