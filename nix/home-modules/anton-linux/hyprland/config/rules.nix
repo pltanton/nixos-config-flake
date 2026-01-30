@@ -9,6 +9,10 @@ _: {
         "11, defaultName:"
       ];
 
+      layerrule = [
+        "blur on, match:namespace waybar"
+      ];
+
       windowrule = [
         "match:class ^.telegram-desktop-wrapped$, workspace 11"
         "match:title (^Slack.*$), workspace 11"
@@ -47,16 +51,18 @@ _: {
         "match:class (com.mitchellh.ghostty), opacity 0.95"
         "match:class (Alacritty), opacity 0.95"
 
+        # Float TUI utilities
+        "match:class .*(impala|bluetui), float 1"
+        "match:class .*(impala|bluetui), center 1"
+        "match:class .*(impala|bluetui), size 900 600"
+
         # Idea
         "match:class (jetbrains-)(.*), match:float 1, no_initial_focus 1"
 
         # Floating DE elements
-        "match:class ^\\.blueman-manager-wrapped$, float 1"
         "match:class ^nm-connection-editor$, float 1"
         "match:title ^Extension: (Bitwarden Password Manager).*$, float 1"
       ];
-
-
     };
   };
 }

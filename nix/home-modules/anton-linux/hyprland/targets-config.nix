@@ -7,8 +7,6 @@ in {
     waybar.Unit.After = lib.mkForce [target];
     hyprpaper.Unit.After = lib.mkForce [target];
     hypridle.Unit.After = lib.mkForce [target];
-    network-manager-applet.Unit.After = lib.mkForce [target];
-    blueman-applet.Unit.After = lib.mkForce [target];
     cliphist.Unit.After = lib.mkForce [target];
     cliphist-images.Unit.After = lib.mkForce [target];
     swaync.Unit.After = lib.mkForce [target];

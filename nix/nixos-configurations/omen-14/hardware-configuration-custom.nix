@@ -10,8 +10,24 @@ in {
     inputs.nixos-hardware.nixosModules.common-pc-laptop
     inputs.nixos-hardware.nixosModules.common-pc-ssd
   ];
-	boot.kernelPackages = pkgs.linuxPackages_latest;
   hardware.enableAllFirmware = true;
+
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    initrd.verbose = false;
+    kernelParams = [
+      "nvidia.NVreg_TemporaryFilePath=/var/tmp"
+      "quiet"
+      "loglevel=3"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+    ];
+    blacklistedKernelModules = ["i2c_designware_pci" "i2c_designware_platform"];
+    consoleLogLevel = 3;
+
+    loader.systemd-boot.consoleMode = "max";
+  };
 
   services.hardware.openrgb.enable = true;
 

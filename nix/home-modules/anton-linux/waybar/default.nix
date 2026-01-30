@@ -26,12 +26,16 @@ in {
         modules-center = ["hyprland/window"];
         modules-right = [
           "tray"
+
+          "bluetooth"
+          "network"
+          "wireplumber"
+
           "idle_inhibitor"
           "custom/notification"
-          "clock"
-          "wireplumber"
           "temperature"
           "hyprland/language"
+          "clock"
           "battery"
         ];
         "temperature" = {
@@ -39,6 +43,23 @@ in {
           "thermal-zone" = 3;
           "critical-threshold" = 90;
           "format-critical" = " {temperatureC}°C";
+        };
+        "bluetooth" = {
+          "format" = "";
+          "format-connected" = " {num_connections}";
+          "tooltip-format" = "{controller_alias}\n{num_connections} connected";
+          "tooltip-format-connected" = "{controller_alias}\n{num_connections} connected";
+          "tooltip-format-disabled" = "Bluetooth disabled";
+          "on-click" = "${pkgs.ghostty}/bin/ghostty --class=ghostty.bluetui -e ${pkgs.bluetui}/bin/bluetui";
+        };
+        "network" = {
+          "format-wifi" = " {signalStrength}%";
+          "format-ethernet" = "󰈀 {ipaddr}";
+          "format-disconnected" = "󰖪";
+          "tooltip-format-wifi" = "{essid} ({signalStrength}%) {ipaddr}";
+          "tooltip-format-ethernet" = "{ifname} {ipaddr}";
+          "tooltip-format-disconnected" = "Disconnected";
+          "on-click" = "${pkgs.ghostty}/bin/ghostty --class=ghostty.impala -e ${pkgs.impala}/bin/impala";
         };
         "wireplumber" = {
           "format" = "{icon} {volume}%";

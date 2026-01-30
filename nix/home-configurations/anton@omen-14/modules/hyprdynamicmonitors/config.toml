@@ -1,0 +1,40 @@
+[general]
+destination = "$HOME/.config/hypr/monitors.conf"
+
+[profiles.default]
+config_file = "$HOME/.config/hyprdynamicmonitors/hyprconfigs/default.go.tmpl"
+config_file_type = "template"
+
+[[profiles.default.conditions.required_monitors]]
+name = "eDP-1"
+monitor_tag = "laptop"
+
+[profiles.office_dell]
+config_file = "$HOME/.config/hyprdynamicmonitors/hyprconfigs/office-dell.go.tmpl"
+config_file_type = "template"
+
+[[profiles.office_dell.conditions.required_monitors]]
+name = "eDP-1"
+monitor_tag = "laptop"
+
+[[profiles.office_dell.conditions.required_monitors]]
+description = "Dell Inc. DELL U2723QE JSJ91P3"
+monitor_tag = "dell"
+
+[profiles.office_xiaomi_tv]
+config_file = "$HOME/.config/hyprdynamicmonitors/hyprconfigs/office-xiaomi-tv.go.tmpl"
+config_file_type = "template"
+
+[[profiles.office_xiaomi_tv.conditions.required_monitors]]
+name = "eDP-1"
+monitor_tag = "laptop"
+
+[[profiles.office_xiaomi_tv.conditions.required_monitors]]
+description = "XMD Mi TV 0x00000001"
+monitor_tag = "xiaomi_tv"
+
+
+# [[profiles.default.conditions.required_monitors]]
+# name = "DP-.*|HDMI-.*|USB-C-.*"
+# match_name_using_regex = true
+# monitor_tag = "external"

@@ -1,0 +1,9 @@
+{{- $laptop := index .MonitorsByTag "laptop" -}}
+{{- $tv := index .MonitorsByTag "xiaomi_tv" -}}
+
+monitor={{$laptop.Name}},disable
+monitor={{$tv.Name}},preferred,auto-left,3.0
+
+{{range .ExtraMonitors}}
+monitor={{.Name}},preferred,auto-left,auto,
+{{end}}

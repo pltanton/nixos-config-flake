@@ -115,7 +115,10 @@
     };
 
     # ─── APPS ────────────────────────────────────────────────────────
-    zen-browser.url = "github:youwen5/zen-browser-flake";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     lazyvim.url = "github:pfassina/lazyvim-nix";
 
     ddcsync = {
@@ -168,6 +171,11 @@
 
     base16-rofi = {
       url = "github:tinted-theming/base16-rofi";
+      flake = false;
+    };
+
+    catppuccin-zen = {
+      url = "github:catppuccin/zen-browser";
       flake = false;
     };
 

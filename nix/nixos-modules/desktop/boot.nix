@@ -9,9 +9,6 @@ _: {
     };
 
     initrd.systemd.enable = true;
-
-    kernelParams = ["quiet"];
-
     plymouth.enable = true;
   };
 }

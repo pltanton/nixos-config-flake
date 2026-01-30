@@ -2,6 +2,7 @@
   imports = with inputs; [
     self.homeModules.common
     self.homeModules.backgrounds
+    zen-browser.homeModules.beta
 
     self.nixosModules.sops
 
@@ -36,6 +37,7 @@
     ./vscode.nix
     ./xdg.nix
     ./zed.nix
+    ./zen.nix
   ];
 
   nixpkgs.overlays = with inputs; [

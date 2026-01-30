@@ -1,0 +1,10 @@
+{{- $laptop := index .MonitorsByTag "laptop" -}}
+{{- $dell := index .MonitorsByTag "dell" -}}
+
+{{if isLidClosed}}
+monitor={{$laptop.Name}},disable
+{{else}}
+monitor={{$laptop.Name}},preferred,0x0,auto,vrr,3
+{{end}}
+
+monitor={{$dell.Name}},preferred,auto-left,1.67

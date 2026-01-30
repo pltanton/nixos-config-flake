@@ -17,10 +17,6 @@
     '';
   };
   wayland.windowManager.hyprland.settings = {
-    monitor = [
-      ",preferred,auto,1,bitdepth,8"
-    ];
-
     exec-once = [
       "uwsm --app -- slack"
       "uwsm --app -- telegram-desktop"
@@ -81,6 +77,7 @@
       dim_strength = 0.2;
     };
 
+
     animations = {
       enabled = 1;
       bezier = [
@@ -113,7 +110,6 @@
       enable_swallow = false;
       swallow_regex = "^(Alacritty)$";
       mouse_move_enables_dpms = true;
-      disable_autoreload = true;
       focus_on_activate = true;
       disable_hyprland_logo = true;
       disable_splash_rendering = true;

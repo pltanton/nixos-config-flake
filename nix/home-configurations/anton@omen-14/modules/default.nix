@@ -1,7 +1,7 @@
 {inputs, ...}: {
   imports = [
     ./hyprland
-    ./hyprdynamicmonitors.nix
+    ./hyprdynamicmonitors
     ./kanshi.nix
     ./plain-packages.nix
     ./syncthing.nix

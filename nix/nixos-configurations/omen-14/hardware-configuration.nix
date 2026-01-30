@@ -19,15 +19,6 @@
       luks.devices."lvm".device = "/dev/nvme0n1p2";
     };
 
-    kernelParams = [
-      "nvidia.NVreg_TemporaryFilePath=/var/tmp"
-      "loglevel=3"
-      "quiet"
-    ];
-    blacklistedKernelModules = ["i2c_designware_pci" "i2c_designware_platform"];
-
-    loader.systemd-boot.consoleMode = "max";
-
     kernelModules = ["kvm-intel" "hp-wmi"];
     extraModulePackages = [];
   };

@@ -8,9 +8,6 @@
     # Desktop Environment #
     #######################
 
-    # Display Management
-    wdisplays # GUI display configuration for Wayland
-
     # File Management
     nautilus # Modern file manager for GNOME
     file-roller # Archive manager for GNOME
@@ -53,7 +50,6 @@
     # Office & Notes
     libreoffice # Full-featured office suite
     # xournalpp # Note-taking and PDF annotation
-    anytype # Personal knowledge management
     obsidian # Markdown-based note-taking
     anki-bin # Spaced repetition learning
     thunderbird-latest # Email and calendar client
@@ -72,15 +68,12 @@
     shotcut # Video editor
     lightworks # Professional video editing
 
-    # E-books
-    calibre # E-book management
-
     ########################
     # Communication       #
     ########################
 
     telegram-desktop # Messaging platform
-    slack # Team communication platform
+    zoom-us
 
     ########################
     # Development Tools   #
@@ -136,9 +129,14 @@
     nixd # Nix language server
     alejandra # Nix formatter
     dprint # Code formatter
+    opencode # Opencode CLI
 
     # Database Tools
     dbeaver-bin # Universal database tool
+
+    # Network TUI tools
+    bluetui
+    impala
 
     ########################
     # Security            #
@@ -151,7 +149,6 @@
     ########################
 
     chromium # Open source browser
-    inputs.zen-browser.packages."${system}".default # Zen browser
     # zen
 
     ########################

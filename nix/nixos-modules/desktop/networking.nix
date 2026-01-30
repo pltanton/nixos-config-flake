@@ -14,11 +14,6 @@
 
   networking = {
     hosts = {};
-    networkmanager = {
-      enable = true;
-      wifi.powersave = true;
-    };
-
-    firewall.enable = false;
+    wireless.iwd.enable = true;
   };
 }

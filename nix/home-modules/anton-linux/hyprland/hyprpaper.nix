@@ -7,6 +7,7 @@ in {
 
     settings = {
       ipc = false;
+      splash = false;
       preload = [
         "${wallpaper}"
       ];

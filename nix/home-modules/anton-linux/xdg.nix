@@ -7,7 +7,7 @@ _: {
       defaultApplications = let
         # browser = "org.qutebrowser.qutebrowser.desktop";
         # browser = "firefox.desktop";
-        browser = "autobrowser.desktop";
+        browser = "zen.desktop";
         imageViewer = "org.gnome.eog.desktop";
       in {
         "text/html" = browser;

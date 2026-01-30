@@ -26,13 +26,13 @@
 @define-color crust #11111b;
 
 * {
-    font-family: "Inter", "Font Awesome 6 Free";
+    font-family: "Inter", "Ubuntu Nerd Font";
     font-size: 14;
 }
 
 #waybar {
     /* background: transparent; */
-    background-color: alpha(@crust, 0.9);
+    background-color: alpha(@crust, 0.75);
     color: @text;
     border-radius: 1rem;
     /* margin: 5px 5px 0 5px; */
@@ -72,6 +72,7 @@
 #temperature,
 #backlight,
 #network,
+#bluetooth,
 #wireplumber,
 #pulseaudio,
 #tray,
@@ -100,14 +101,7 @@
 }
 
 #battery {
-    color: @blue;
-    /* border-radius: 0px 1rem 1rem 0px; */
-    margin-right: 1rem;
-}
-
-#battery {
-    color: @green;
-    margin-right: 1rem;
+    margin-right: 10px;
 }
 
 #battery.charging {
@@ -125,8 +119,12 @@
 #idle_inhibitor {
     color: @maroon;
     /* border-radius: 1rem 0px 0px 1rem; */
-    min-width: 2rem;
-    margin-left: 2rem;
+    min-width: 10px;
+    margin-left: 20px;
+}
+
+#bluetooth {
+    margin-left: 20px;
 }
 
 #custom-music {
@@ -146,7 +144,6 @@
 }
 
 #tray {
-    margin-right: 1rem;
     border-radius: 1rem;
     background-color: alpha(#11111b, 0.4);
 }
