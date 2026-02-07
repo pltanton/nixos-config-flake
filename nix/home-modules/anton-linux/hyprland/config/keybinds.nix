@@ -54,7 +54,7 @@ in {
         "SHIFT,Print,exec,uwsm app -- screenshot -e"
         # "SUPERSHIFT,Return,exec,uwsm app -- alacritty"
         "SUPERSHIFT,Return,exec,uwsm app -- ghostty"
-        "SUPERSHIFT,Q,exec,uwsm stop"
+        "SUPER,f11,exec,uwsm app -- wleave"
 
         # Manipulate with active window state
         "SUPERSHIFT,C,killactive,"

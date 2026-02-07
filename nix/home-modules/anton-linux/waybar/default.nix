@@ -46,15 +46,15 @@ in {
         };
         "bluetooth" = {
           "format" = "";
-          "format-connected" = " {num_connections}";
+          "format-connected" = "";
           "tooltip-format" = "{controller_alias}\n{num_connections} connected";
           "tooltip-format-connected" = "{controller_alias}\n{num_connections} connected";
           "tooltip-format-disabled" = "Bluetooth disabled";
           "on-click" = "${pkgs.ghostty}/bin/ghostty --class=ghostty.bluetui -e ${pkgs.bluetui}/bin/bluetui";
         };
         "network" = {
-          "format-wifi" = " {signalStrength}%";
-          "format-ethernet" = "󰈀 {ipaddr}";
+          "format-wifi" = "";
+          "format-ethernet" = "󰈀";
           "format-disconnected" = "󰖪";
           "tooltip-format-wifi" = "{essid} ({signalStrength}%) {ipaddr}";
           "tooltip-format-ethernet" = "{ifname} {ipaddr}";
@@ -62,8 +62,9 @@ in {
           "on-click" = "${pkgs.ghostty}/bin/ghostty --class=ghostty.impala -e ${pkgs.impala}/bin/impala";
         };
         "wireplumber" = {
-          "format" = "{icon} {volume}%";
+          "format" = "{icon}";
           "format-muted" = "";
+          "tooltip-format" = "{volume}%";
           "on-click" = "pavucontrol";
           "format-icons" = ["" "" ""];
         };

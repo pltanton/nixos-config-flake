@@ -16,6 +16,7 @@
   ];
 
   home.packages = lib.mkIf config.wayland.windowManager.hyprland.enable [
+    inputs.hyprshutdown.packages.${pkgs.stdenv.hostPlatform.system}.hyprshutdown
   ];
 
   wayland.windowManager.hyprland = {

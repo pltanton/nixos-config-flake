@@ -10,8 +10,6 @@
     };
   };
 
-  systemd.services.NetworkManager-wait-online.enable = false;
-
   networking = {
     hosts = {};
     wireless.iwd.enable = true;

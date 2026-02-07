@@ -18,9 +18,8 @@
   };
   wayland.windowManager.hyprland.settings = {
     exec-once = [
-      "uwsm --app -- slack"
-      "uwsm --app -- telegram-desktop"
-      "uwsm --app -- zen"
+      "uwsm app -- Telegram"
+      "uwsm app -- zen"
     ];
 
     exec = [
@@ -76,7 +75,6 @@
       dim_inactive = false;
       dim_strength = 0.2;
     };
-
 
     animations = {
       enabled = 1;

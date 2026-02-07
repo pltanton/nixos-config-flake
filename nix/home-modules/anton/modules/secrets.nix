@@ -4,6 +4,7 @@
   ...
 }: {
   # sops.secrets."perplexity-api-key" = {};
+  sops.secrets."gmail-token" = {};
 
   # programs.fish.interactiveShellInit = lib.mkAfter ''
   #   if test -f ${config.sops.secrets."perplexity-api-key".path}

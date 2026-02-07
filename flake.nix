@@ -60,7 +60,6 @@
             inherit (_prev) system;
             config.allowUnfree = true;
           };
-
           # nixpkgs-local = import inputs.nixpkgs-local {
           #   inherit (_prev) system;
           #   config.allowUnfree = true;
@@ -137,6 +136,11 @@
       # url = "path:/home/anton/Workdir/firefly-iii-boc-fixer";
     };
 
+    try-rs = {
+      url = "github:tassiovirginio/try-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     activate-linux = {
       url = "github:Kljunas2/activate-linux";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -144,6 +148,12 @@
 
     catppuccin.url = "github:catppuccin/nix";
     hyprdynamicmonitors.url = "github:fiffeek/hyprdynamicmonitors";
+    # omenix.url = "github:noahpro99/omenix";
+    omenix.url = "path:/home/anton/Workdir/omenix";
+    hyprshutdown = {
+      url = "github:hyprwm/hyprshutdown";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # ─── APPLICATIONS ────────────────────────────────────────────────
     nur.url = "github:nix-community/NUR";

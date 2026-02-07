@@ -1,4 +1,8 @@
-{inputs, lib, ...}: {
+{
+  inputs,
+  lib,
+  ...
+}: {
   imports = with inputs; [
     self.homeModules.common
     self.homeModules.backgrounds
@@ -26,6 +30,7 @@
     ./java.nix
     ./keyring.nix
     ./npm.nix
+    ./ollama.nix
     ./portals.nix
     ./python.nix
     ./services.nix
@@ -35,6 +40,7 @@
     ./swaync.nix
     ./swayosd.nix
     ./vscode.nix
+    ./wleave.nix
     ./xdg.nix
     ./zed.nix
     ./zen.nix
@@ -48,7 +54,6 @@
 
   sops = {
     scope = "anton";
-    defaultSopsFile = lib.mkForce ../anton/secrets.yaml;
     age.keyFile = "/home/anton/.config/sops/age/keys.txt";
     age.sshKeyPaths = ["/home/anton/.ssh/id_ed25519"];
   };

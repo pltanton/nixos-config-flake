@@ -41,6 +41,15 @@
         name = "Anton Plotnikov";
         email = "plotnikovanton@gmail.com";
       };
+
+      sendemail = {
+        smtpServer = "smtp.gmail.com";
+        smtpServerPort = 587;
+        smtpEncryption = "tls";
+        smtpUser = "plotnikovanton@gmail.com";
+        from = "Anton Plotnikov <plotnikovanton@gmail.com>";
+        smtpPassCmd = ''cat ${config.sops.secrets."gmail-token".path}'';
+      };
     };
 
     includes = [

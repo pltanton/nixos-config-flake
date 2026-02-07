@@ -1,6 +1,6 @@
 {config, ...}: let
   # wallpaper = ../../../../backgrounds/yosemite.png;
-  wallpaper = toString config.backgrounds."metheora-mocha.jpg";
+  wallpaper = config.backgrounds."metheora-mocha.jpg";
 in {
   services.hyprpaper = {
     inherit (config.wayland.windowManager.hyprland) enable;
@@ -14,7 +14,7 @@ in {
       wallpaper = [
         {
           monitor = "";
-          path = wallpaper;
+          path = toString wallpaper;
           fit_mode = "cover";
         }
       ];

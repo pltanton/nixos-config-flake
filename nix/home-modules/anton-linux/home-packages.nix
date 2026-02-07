@@ -157,5 +157,7 @@
 
     texliveFull # TeX distribution
     texlab # LaTeX language server
+
+    overskride
   ];
 }

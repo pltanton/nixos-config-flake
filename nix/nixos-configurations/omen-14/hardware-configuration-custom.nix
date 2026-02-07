@@ -5,6 +5,9 @@
   ...
 }: let
   nfsDeviceDefaults = "x-systemd.mount-timeout=10,x-systemd.idle-timeout=1min,nofail,_netdev,user,users,rw,noauto";
+  hp-wmi-module = pkgs.callPackage ./hp-wmi-module.nix {
+    kernel = config.boot.kernelPackages.kernel;
+  };
 in {
   imports = [
     inputs.nixos-hardware.nixosModules.common-pc-laptop
@@ -17,14 +20,26 @@ in {
     initrd.verbose = false;
     kernelParams = [
       "nvidia.NVreg_TemporaryFilePath=/var/tmp"
+
       "quiet"
       "loglevel=3"
       "rd.systemd.show_status=false"
       "rd.udev.log_level=3"
       "udev.log_priority=3"
+
+      # "acpi_enforce_resources=lax"
+      # "acpi_osi=Linux"
+      # "acpi_backlight=vendor"
+      # "pstate.default_governor=performance"
     ];
     blacklistedKernelModules = ["i2c_designware_pci" "i2c_designware_platform"];
     consoleLogLevel = 3;
+
+    extraModulePackages = [
+      (hp-wmi-module.overrideAttrs (_: {
+        patches = [./hp-wmi-omen-14.patch];
+      }))
+    ];
 
     loader.systemd-boot.consoleMode = "max";
   };
