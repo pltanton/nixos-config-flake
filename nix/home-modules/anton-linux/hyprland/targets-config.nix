@@ -1,15 +1,26 @@
-{lib, ...}: let
-  # target = "wayland-session@Hyprland.target";
+{
+  config,
+  lib,
+  ...
+}: let
   target = "graphical-session.target";
-in {
-  config.systemd.user.services = {
-    kanshi.Unit.After = lib.mkForce [target];
-    waybar.Unit.After = lib.mkForce [target];
-    hyprpaper.Unit.After = lib.mkForce [target];
-    hypridle.Unit.After = lib.mkForce [target];
-    cliphist.Unit.After = lib.mkForce [target];
-    cliphist-images.Unit.After = lib.mkForce [target];
-    swaync.Unit.After = lib.mkForce [target];
-    nextcloud-client.Unit.After = lib.mkForce [target];
-  };
-}
+in
+  lib.mkIf config.wayland.windowManager.hyprland.enable {
+    systemd.user.services = {
+      waybar = {
+        Unit.After = lib.mkForce [target];
+        Unit.PartOf = [target];
+        Install.WantedBy = lib.mkForce [target];
+      };
+      hyprpaper = {
+        Unit.After = lib.mkForce [target];
+        Unit.PartOf = [target];
+        Install.WantedBy = lib.mkForce [target];
+      };
+      hypridle = {
+        Unit.After = lib.mkForce [target];
+        Unit.PartOf = [target];
+        Install.WantedBy = lib.mkForce [target];
+      };
+    };
+  }

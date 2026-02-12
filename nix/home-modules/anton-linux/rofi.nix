@@ -4,11 +4,11 @@
   lib,
   ...
 }: let
+  inherit (config.catppuccin) accent flavor;
+
   rofi = pkgs.rofi.override {
     plugins = with pkgs; [rofi-emoji rofi-power-menu];
   };
-  accent = config.catppuccin.accent;
-  flavor = config.catppuccin.flavor;
 in {
   catppuccin.rofi.enable = true;
 
@@ -22,14 +22,6 @@ in {
       line-margin = 10;
       lines = 6;
       columns = 2;
-
-      display-emoji = "🫠";
-      display-ssh = "";
-      display-run = "";
-      display-drun = "";
-      display-window = "";
-      display-combi = "";
-      display-prompt = "";
       show-icons = true;
     };
   };
@@ -39,7 +31,7 @@ in {
 
     * {
       accent: @${accent};
-      surface: @surface0;
+      surface: @crust;
       outline: @surface2;
       on-surface: @text;
       on-surface-variant: @subtext0;
@@ -64,7 +56,7 @@ in {
       location: center;
       anchor: center;
       width: 40%;
-      background-color: @surface;
+      background-color: rgba(17, 17, 27, 0.75);
       border-color: @outline;
     }
 
@@ -210,9 +202,4 @@ in {
       text-color: @on-error-container;
     }
   '';
-
-  home.packages = with pkgs; [
-    rofi-rbw
-    wtype
-  ];
 }

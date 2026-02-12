@@ -41,9 +41,9 @@ in {
     settings = {
       bind = lib.flatten [
         # Rofi keybinds
-        "SUPERSHIFT,v,exec,cliphist list | uwsm app -- rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img -show clipboard -show-icons -p "
-        "SUPERSHIFT,e,exec,uwsm app -- rofi -show emoji -modi emoji"
-        "SUPER,Return,exec,uwsm app -- rofi -show drun"
+        "SUPER,v,exec,cliphist list | uwsm app -- rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img -show clipboard -show-icons -p "
+        "SUPER,m,exec,uwsm app -- rofi -show emoji -modi emoji"
+        "SUPER,Return,exec,uwsm app -- rofi -show drun -show-icons"
 
         # "SUPERSHIFT,v,exec,cliphist list | uwsm app -- walker -m clipboard"
         # "SUPERSHIFT,e,exec,uwsm app -- walker -m emojis"
@@ -54,6 +54,7 @@ in {
         "SHIFT,Print,exec,uwsm app -- screenshot -e"
         # "SUPERSHIFT,Return,exec,uwsm app -- alacritty"
         "SUPERSHIFT,Return,exec,uwsm app -- ghostty"
+
         "SUPER,f11,exec,uwsm app -- wleave"
 
         # Manipulate with active window state
@@ -61,6 +62,7 @@ in {
         "SUPERSHIFT,F,togglefloating,"
         "SUPER,F,fullscreen,"
         "SUPERSHIFT,P,pin,"
+        "SUPER,o,hyprexpo:expo,toggle"
 
         # "SUPER,v,hy3:makegroup,v,ephemeral"
         # "SUPER,w,hy3:makegroup,h,ephemeral"
@@ -71,8 +73,6 @@ in {
         "SUPER,x,layoutmsg,togglesplit"
         "SUPERSHIFT,x,layoutmsg,swapsplit"
 
-        (lib.mapAttrsToList (key: direction: "SUPERALT,${key},moveintogroup,${direction},visible") directions)
-
         # Groups aka tabs
         # "SUPER,g,hy3:changegroup,toggletab"
         # "SUPERSIFT,g,hy3:changefocus,tab"
@@ -81,9 +81,12 @@ in {
         "SUPER,p,changegroupactive,b"
         "SUPER,n,changegroupactive,f"
 
+        "SUPERSHIFT,p,movegroupwindow,b"
+        "SUPERSHIFT,n,movegroupwindow,f"
+
         # Move through windows
         (lib.mapAttrsToList (key: direction: "SUPER,${key},movefocus,${direction}") directions)
-        (lib.mapAttrsToList (key: direction: "SUPERSHIFT,${key},movewindow,${direction}") directions)
+        (lib.mapAttrsToList (key: direction: "SUPERSHIFT,${key},movewindoworgroup,${direction}") directions)
         # (lib.mapAttrsToList (key: direction: "SUPER,${key},hy3:movefocus,${direction},visible") directions)
         # (lib.mapAttrsToList (key: direction: "SUPERSHIFT,${key},hy3:movewindow,${direction},visible") directions)
         # "SUPER,p,hy3:focustab,l,,wrap"
@@ -141,6 +144,10 @@ in {
       # bindn = [
       #   ",mouse:272,hy3:focustab,mouse"
       # ];
+
+      gesture = [
+        "3, horizontal, workspace"
+      ];
     };
 
     extraConfig = ''
@@ -163,7 +170,7 @@ in {
       submap=reset
 
       # Notification submap
-      bind=SUPERSHIFT,N,submap,notifications
+      bind=ALT,N,submap,notifications
       submap=notifications
       bind=,escape,submap,reset
 

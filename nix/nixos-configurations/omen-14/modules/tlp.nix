@@ -11,4 +11,6 @@
       STOP_CHARGE_THRESH_BAT0 = 80;
     };
   };
+
+  security.pam.services.sudo.howdy.enable = false;
 }

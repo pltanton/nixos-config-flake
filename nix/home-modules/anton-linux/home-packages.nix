@@ -121,7 +121,6 @@
     # uv # Python package manager
 
     # Editors & IDEs
-    zed-editor # Modern code editor
     # neovim # Terminal editor
     vscodium.fhs # Open source VS Code
     # jetbrains-toolbox # JetBrains IDE manager

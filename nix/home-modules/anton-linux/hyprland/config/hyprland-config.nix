@@ -24,26 +24,22 @@
 
     exec = [
       "hyprctl setcursor ${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}"
-
-      # "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme '${config.gtk.theme.name}'"
-      # "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface icon-theme '${config.gtk.iconTheme.name}'"
-      # "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface text-scaling-factor 1.0"
-      # "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface font-name 'Inter 11'"
-      # "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface scaling-factor 1"
-      # "${pkgs.glib}/bin/gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:'"
     ];
 
     input = {
       kb_layout = "us,ru,gr-dvorak";
       kb_variant = "dvorak,,";
-      # Deprecated in favour of smart switch script
-      # kb_options = "grp:win_space_toggle";
       repeat_rate = 40;
       float_switch_override_focus = 0;
-      sensitivity = 1;
-
       touchpad = {natural_scroll = true;};
     };
+
+    device = [
+      {
+        name = "cx-tb550-2.4ghz-receiver-mouse";
+        sensitivity = -0.3;
+      }
+    ];
 
     general = {
       gaps_in = 5;
@@ -59,8 +55,8 @@
     decoration = {
       rounding = 12;
       blur = {
-        passes = 2;
-        size = 4;
+        passes = 3;
+        size = 5;
         enabled = true;
       };
 
@@ -168,6 +164,17 @@
         autotile = {
           enable = true;
         };
+      };
+
+      hyprexpo = {
+        columns = 3;
+        gap_size = 12;
+        bg_col = "rgba(17, 17, 27, 0.75)";
+        workspace_method = "center current";
+        enable_gesture = true;
+        gesture_fingers = 3;
+        gesture_distance = 300;
+        gesture_positive = false; # swipe up
       };
     };
   };

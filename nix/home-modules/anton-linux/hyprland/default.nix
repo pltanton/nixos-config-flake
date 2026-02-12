@@ -11,7 +11,9 @@
     ./hyprlock.nix
     ./hyprpaper.nix
     ./hypridle.nix
-    ./targets.nix
+    ./portals.nix
+    ./waybar.nix
+    ./wleave.nix
     ./targets-config.nix
   ];
 
@@ -33,8 +35,7 @@
       # hypr-dynamic-cursors
       # hy3
       # inputs.hy3.packages.x86_64-linux.hy3
-      # hyprexpo
-      # hyprspace
+      hyprexpo
     ];
   };
 

@@ -1,11 +1,6 @@
 {pkgs, ...}: {
   security.pam.services = {
-    hyprlock = {
-      text = pkgs.lib.mkBefore ''
-        auth            sufficient      pam_unix.so try_first_pass likeauth nullok
-        auth            sufficient      pam_fprintd.so
-      '';
-    };
+    hyprlock = {};
   };
 
   # programs.ssh.startAgent = true;

@@ -12,6 +12,7 @@ _: {
       layerrule = [
         "blur on, match:namespace waybar"
         "blur on, match:namespace wleave"
+        "blur on, match:namespace rofi"
         # "ignorealpha 0.2, match:namespace wleave"
       ];
 

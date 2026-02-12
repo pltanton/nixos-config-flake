@@ -1,4 +1,8 @@
-{...}: {
+{
+  config,
+  lib,
+  ...
+}: lib.mkIf config.wayland.windowManager.hyprland.enable {
   programs.wleave = {
     enable = true;
 

@@ -18,8 +18,8 @@
     spicetify-nix.homeManagerModules.spicetify
 
     ./hyprland
-    ./rofi
     ./waybar
+    ./rofi.nix
     ./autobrowser.nix
     ./cliphist.nix
     ./direnv.nix
@@ -33,6 +33,7 @@
     ./ollama.nix
     ./portals.nix
     ./python.nix
+    ./session-targets.nix
     ./services.nix
     ./spotify.nix
     ./ssh-agent.nix
@@ -40,7 +41,6 @@
     ./swaync.nix
     ./swayosd.nix
     ./vscode.nix
-    ./wleave.nix
     ./xdg.nix
     ./zed.nix
     ./zen.nix
