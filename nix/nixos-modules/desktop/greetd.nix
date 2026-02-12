@@ -1,11 +1,11 @@
 {pkgs, ...}: {
-  # services.greetd = {
-  #   enable = false;
-  #   settings = {
-  #     terminal.vt = 1;
-  #     default_session.command =
-  #       "${pkgs.greetd.tuigreet}/bin/tuigreet --time "
-  #       + "--remember --remember-user-session ";
-  #   };
-  # };
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command =
+          "${pkgs.tuigreet}/bin/tuigreet --cmd 'uwsm start hyprland-uwsm.desktop'";
+      };
+    };
+  };
 }

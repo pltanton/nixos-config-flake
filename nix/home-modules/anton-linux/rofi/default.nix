@@ -30,7 +30,7 @@ in {
       display-window = "";
       display-combi = "";
       display-prompt = "";
-      show-icons = false;
+      show-icons = true;
     };
   };
 
