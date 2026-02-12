@@ -6,6 +6,6 @@
     ./plain-packages.nix
     ./syncthing.nix
     ./omenix.nix
-    ./try-rs.nix
+    # ./try-rs.nix
   ];
 }
