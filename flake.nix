@@ -150,6 +150,14 @@
     hyprdynamicmonitors.url = "github:fiffeek/hyprdynamicmonitors";
     # omenix.url = "github:noahpro99/omenix";
     omenix.url = "path:/home/anton/Workdir/omenix";
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprshutdown = {
       url = "github:hyprwm/hyprshutdown";
       inputs.nixpkgs.follows = "nixpkgs";

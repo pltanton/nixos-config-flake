@@ -16,9 +16,10 @@
     autobrowser.homeModules.default
 
     spicetify-nix.homeManagerModules.spicetify
+    niri.homeModules.niri
 
-    ./hyprland
-    ./waybar
+    ./niri
+    ./dank-material-shell.nix
     ./rofi.nix
     ./autobrowser.nix
     ./cliphist.nix

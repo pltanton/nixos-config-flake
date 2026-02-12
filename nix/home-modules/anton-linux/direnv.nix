@@ -33,7 +33,7 @@
         if set -q EDITOR
           $EDITOR flake.nix
         else
-          nvim flake.nix
+          hx flake.nix
         end
       '';
     };

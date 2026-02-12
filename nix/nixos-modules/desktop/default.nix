@@ -6,6 +6,7 @@
 
       home-manager.nixosModules.home-manager
       catppuccin.nixosModules.catppuccin
+      dms.nixosModules.greeter
     ]
     ++ self.lib.modulesDir ./.;
 

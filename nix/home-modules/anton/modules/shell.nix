@@ -14,7 +14,7 @@
 
     sessionVariables = rec {
       KUBECONFIG = "${config.home.homeDirectory}/.kube/config";
-      EDITOR = "nvim";
+      EDITOR = "hx";
 
       # NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [ pkgs.stdenv.cc.cc ];
       # LD_LIBRARY_PATH = lib.makeLibraryPath [ pkgs.stdenv.cc.cc ];
