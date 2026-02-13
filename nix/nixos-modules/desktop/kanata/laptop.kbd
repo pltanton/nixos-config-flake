@@ -8,7 +8,7 @@
 ;;
 
 (defsrc
-  a   s   d   f   j   k   l   ;
+  a   s   d   f   j   k   l   ;   ralt
 )
 (defvar
   ;; Note: consider using different time values for your different fingers.
@@ -29,11 +29,11 @@
   )
 )
 (deflayer base
-  @a  @s  @d  @f  @j  @k  @l  @;
+  @a  @s  @d  @f  @j  @k  @l  @;  M-spc
 )
 
 (deflayer nomods
-  a   s   d   f   j   k   l   ;
+  a   s   d   f   j   k   l   ;   ralt
 )
 (deffakekeys
   to-base (layer-switch base)

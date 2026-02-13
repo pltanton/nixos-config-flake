@@ -10,9 +10,6 @@
       vspacecode.vspacecode # Visual Studio Code improvements
       vspacecode.whichkey # An extension for vim keybindings
 
-      catppuccin.catppuccin-vsc-icons # An extension for the catppuccin theme icons
-      catppuccin.catppuccin-vsc # An extension for the catppuccin theme
-
       esbenp.prettier-vscode # Prettier code formatter for VSCode
       yzhang.markdown-all-in-one # Markdown editing features for VSCode
 

@@ -12,6 +12,7 @@
 
   networking = {
     hosts = {};
-    wireless.iwd.enable = true;
+    wireless.iwd.enable = false;
+    networkmanager.enable = true;
   };
 }

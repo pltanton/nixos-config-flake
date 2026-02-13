@@ -7,7 +7,6 @@
   imports = with inputs; [
     nur.modules.homeManager.default
     sops-nix.homeManagerModules.sops
-    catppuccin.homeModules.catppuccin
     self.homeModules.backgrounds
   ];
 

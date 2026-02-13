@@ -17,10 +17,12 @@
 
     spicetify-nix.homeManagerModules.spicetify
     niri.homeModules.niri
+    danksearch.homeModules.dsearch
 
     ./niri
     ./dank-material-shell.nix
-    ./rofi.nix
+    ./danksearch.nix
+    ./codex.nix
     ./autobrowser.nix
     ./cliphist.nix
     ./direnv.nix
@@ -28,7 +30,9 @@
     ./gpg-agent.nix
     ./home-packages.nix
     ./index.nix
+    ./nirius.nix
     ./java.nix
+    ./matugen.nix
     ./keyring.nix
     ./npm.nix
     ./ollama.nix
@@ -36,6 +40,7 @@
     ./python.nix
     ./session-targets.nix
     ./services.nix
+    ./scripts.nix
     ./spotify.nix
     ./ssh-agent.nix
     ./theme.nix

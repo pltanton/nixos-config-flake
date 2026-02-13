@@ -23,6 +23,7 @@
     simple-scan # Document scanning utility
     pwvucontrol # PipeWire volume control
     ffmpegthumbnailer # Video thumbnail generator
+    swappy # Screenshot editor for Wayland
 
     ########################
     # System Utilities     #
@@ -32,6 +33,7 @@
     age # Modern file encryption tool
     powertop # Power consumption analyzer
     scrcpy # Android device mirroring
+    nirius # Utility commands for the niri compositor
 
     ########################
     # Fonts               #

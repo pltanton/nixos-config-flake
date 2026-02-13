@@ -5,10 +5,11 @@
   ];
   programs.dank-material-shell = {
     enable = true;
+    systemd.enable = true;
+    enableDynamicTheming = true;
     niri = {
-      enableSpawn = true;
-      enableKeybinds = true;
-      includes.enable = true;
+      enableSpawn = false;
+      enableKeybinds = false;
     };
   };
 }

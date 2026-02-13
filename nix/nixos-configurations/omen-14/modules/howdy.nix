@@ -10,4 +10,6 @@
     };
     linux-enable-ir-emitter.enable = true;
   };
+
+  security.pam.services.sudo.howdy.enable = false;
 }

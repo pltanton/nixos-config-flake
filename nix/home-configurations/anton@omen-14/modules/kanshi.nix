@@ -1,6 +1,6 @@
 _: {
   services.kanshi = {
-    enable = false;
+    enable = true;
     settings = [
       {
         profile.name = "laptop-only";
@@ -8,7 +8,7 @@ _: {
           {
             criteria = "eDP-1";
             status = "enable";
-            scale = 2.0;
+            scale = 1.75;
             position = "0,0";
           }
         ];
@@ -20,15 +20,29 @@ _: {
           {
             criteria = "eDP-1";
             status = "enable";
-            scale = 2.0;
-            # position = "3840,960"; # for 1.0 scaling
-            position = "3200,600"; # for 1.2 scaling
-            # position = "3072,528"; # for 1.25 scaling
+            scale = 1.75;
+            position = "0,0";
           }
           {
             criteria = "Dell Inc. DELL U2723QE JSJ91P3";
             status = "enable";
-            scale = 1.2;
+            scale = 1.75;
+            position = "-2194,0";
+          }
+        ];
+      }
+
+      {
+        profile.name = "dell-only-lid-closed";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+            status = "disable";
+          }
+          {
+            criteria = "Dell Inc. DELL U2723QE JSJ91P3";
+            status = "enable";
+            scale = 1.75;
             position = "0,0";
           }
         ];

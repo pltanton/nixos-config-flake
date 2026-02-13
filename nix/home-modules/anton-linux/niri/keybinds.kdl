@@ -1,0 +1,103 @@
+binds {
+// --- Apps ---
+Mod+Shift+Return hotkey-overlay-title="Terminal" { spawn "ghostty"; }
+Mod+Return hotkey-overlay-title="Application Launcher" { spawn "dms" "ipc" "spotlight" "toggle"; }
+Mod+V hotkey-overlay-title="Clipboard History" { spawn "dms" "ipc" "clipboard" "toggle"; }
+Mod+B hotkey-overlay-title="Focus Zen" { spawn "nirius" "focus-or-spawn" "--app-id" "zen-beta" "zen-beta"; }
+
+// --- Window Management ---
+Mod+Shift+C hotkey-overlay-title="Close Window" { close-window; }
+Mod+T hotkey-overlay-title="Toggle Floating" { toggle-window-floating; }
+Mod+Shift+V hotkey-overlay-title="Focus Floating/Tiling" { switch-focus-between-floating-and-tiling; }
+Mod+W hotkey-overlay-title="Toggle Column Tabs" { toggle-column-tabbed-display; }
+Mod+F hotkey-overlay-title="Maximize Column" { maximize-column; }
+Mod+Shift+F hotkey-overlay-title="Fullscreen Window" { fullscreen-window; }
+
+// --- Stacking ---
+Mod+Shift+Comma hotkey-overlay-title="Stack Window" { consume-window-into-column; }
+Mod+Shift+Period hotkey-overlay-title="Unstack Window" { expel-window-from-column; }
+
+// --- Screenshots ---
+Print hotkey-overlay-title="Screenshot (Region)" { spawn "dms" "screenshot"; }
+Shift+Print hotkey-overlay-title="Edit Screenshot" { spawn "bash" "-lc" "dms screenshot --no-file --no-clipboard --stdout | swappy -f -"; }
+Ctrl+Print hotkey-overlay-title="Screenshot (Screen)" { screenshot-screen; }
+Alt+Print hotkey-overlay-title="Screenshot (Window)" { screenshot-window; }
+
+// --- Resize ---
+Mod+Minus hotkey-overlay-title="Decrease Column Width" { set-column-width "-10%"; }
+Mod+Equal hotkey-overlay-title="Increase Column Width" { set-column-width "+10%"; }
+Mod+R hotkey-overlay-title="Preset Column Width" { switch-preset-column-width; }
+
+// --- Help ---
+Mod+Shift+Slash hotkey-overlay-title="Show Keybinds" { show-hotkey-overlay; }
+Mod+D repeat=false hotkey-overlay-title="Overview" { toggle-overview; }
+Mod+Tab repeat=false hotkey-overlay-title="Overview" { toggle-overview; }
+Mod+Shift+T hotkey-overlay-title="Reload GTK Theme" { spawn "reload-gtk-theme"; }
+
+// --- Focus ---
+Mod+H { focus-column-left; }
+Mod+J { focus-window-down; }
+Mod+K { focus-window-up; }
+Mod+L { focus-column-right; }
+
+// --- Move ---
+Mod+Shift+H { move-column-left; }
+Mod+Shift+J { move-window-down; }
+Mod+Shift+K { move-window-up; }
+Mod+Shift+L { move-column-right; }
+
+// --- Workspaces ---
+Mod+1 hotkey-overlay-title="Workspace 1" { focus-workspace 1; }
+Mod+2 hotkey-overlay-title="Workspace 2" { focus-workspace 2; }
+Mod+3 hotkey-overlay-title="Workspace 3" { focus-workspace 3; }
+Mod+4 hotkey-overlay-title="Workspace 4" { focus-workspace 4; }
+Mod+5 hotkey-overlay-title="Workspace 5" { focus-workspace 5; }
+Mod+6 hotkey-overlay-title="Workspace 6" { focus-workspace 6; }
+Mod+7 hotkey-overlay-title="Workspace 7" { focus-workspace 7; }
+Mod+8 hotkey-overlay-title="Workspace 8" { focus-workspace 8; }
+Mod+9 hotkey-overlay-title="Workspace 9" { focus-workspace 9; }
+
+Mod+Page_Up hotkey-overlay-title="Workspace Up" { focus-workspace-up; }
+Mod+Page_Down hotkey-overlay-title="Workspace Down" { focus-workspace-down; }
+Mod+U hotkey-overlay-title="Workspace Up" { focus-workspace-up; }
+Mod+I hotkey-overlay-title="Workspace Down" { focus-workspace-down; }
+
+Mod+Ctrl+U hotkey-overlay-title="Move Column to Workspace Up" { move-column-to-workspace-up; }
+Mod+Ctrl+I hotkey-overlay-title="Move Column to Workspace Down" { move-column-to-workspace-down; }
+
+Mod+Shift+1 hotkey-overlay-title="Move Column to Workspace 1" { move-column-to-workspace 1; }
+Mod+Shift+2 hotkey-overlay-title="Move Column to Workspace 2" { move-column-to-workspace 2; }
+Mod+Shift+3 hotkey-overlay-title="Move Column to Workspace 3" { move-column-to-workspace 3; }
+Mod+Shift+4 hotkey-overlay-title="Move Column to Workspace 4" { move-column-to-workspace 4; }
+Mod+Shift+5 hotkey-overlay-title="Move Column to Workspace 5" { move-column-to-workspace 5; }
+Mod+Shift+6 hotkey-overlay-title="Move Column to Workspace 6" { move-column-to-workspace 6; }
+Mod+Shift+7 hotkey-overlay-title="Move Column to Workspace 7" { move-column-to-workspace 7; }
+Mod+Shift+8 hotkey-overlay-title="Move Column to Workspace 8" { move-column-to-workspace 8; }
+Mod+Shift+9 hotkey-overlay-title="Move Column to Workspace 9" { move-column-to-workspace 9; }
+
+// --- System ---
+Mod+Alt+L hotkey-overlay-title="Lock Screen" { spawn "dms" "ipc" "lock" "lock"; }
+Super+X hotkey-overlay-title="Power Menu" { spawn "dms" "ipc" "powermenu" "toggle"; }
+Mod+Escape allow-inhibiting=false hotkey-overlay-title="Toggle Shortcut Inhibit" { toggle-keyboard-shortcuts-inhibit; }
+
+// --- DMS ---
+Mod+N hotkey-overlay-title="Notification Center" { spawn "dms" "ipc" "notifications" "toggle"; }
+Mod+Shift+N hotkey-overlay-title="Notepad" { spawn "dms" "ipc" "notepad" "toggle"; }
+Mod+Comma hotkey-overlay-title="Settings" { spawn "dms" "ipc" "settings" "focusOrToggle"; }
+Mod+Y hotkey-overlay-title="Browse Wallpapers" { spawn "dms" "ipc" "dankdash" "wallpaper"; }
+Mod+M hotkey-overlay-title="Task Manager" { spawn "dms" "ipc" "processlist" "focusOrToggle"; }
+
+// --- Audio ---
+XF86AudioRaiseVolume allow-when-locked=true hotkey-overlay-title="Volume Up" { spawn "dms" "ipc" "audio" "increment" "3"; }
+XF86AudioLowerVolume allow-when-locked=true hotkey-overlay-title="Volume Down" { spawn "dms" "ipc" "audio" "decrement" "3"; }
+XF86AudioMute allow-when-locked=true hotkey-overlay-title="Mute" { spawn "dms" "ipc" "audio" "mute"; }
+XF86AudioMicMute allow-when-locked=true hotkey-overlay-title="Mic Mute" { spawn "dms" "ipc" "audio" "micmute"; }
+XF86AudioPlay allow-when-locked=true hotkey-overlay-title="Play/Pause" { spawn "dms" "ipc" "mpris" "playPause"; }
+XF86AudioPause allow-when-locked=true hotkey-overlay-title="Play/Pause" { spawn "dms" "ipc" "mpris" "playPause"; }
+XF86AudioPrev allow-when-locked=true hotkey-overlay-title="Prev" { spawn "dms" "ipc" "mpris" "previous"; }
+XF86AudioNext allow-when-locked=true hotkey-overlay-title="Next" { spawn "dms" "ipc" "mpris" "next"; }
+
+// --- Brightness ---
+XF86MonBrightnessUp allow-when-locked=true hotkey-overlay-title="Brightness Up" { spawn "dms" "ipc" "brightness" "increment" "5" ""; }
+XF86MonBrightnessDown allow-when-locked=true hotkey-overlay-title="Brightness Down" { spawn "dms" "ipc" "brightness" "decrement" "5" ""; }
+}
